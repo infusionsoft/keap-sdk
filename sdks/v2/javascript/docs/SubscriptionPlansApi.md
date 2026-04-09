@@ -242,7 +242,7 @@ let productId = "productId_example"; // String | product_id
 let subscriptionPlanId = "subscriptionPlanId_example"; // String | subscription_plan_id
 let updateSubscriptionPlanRequest = new KeapCoreServiceV2Sdk.UpdateSubscriptionPlanRequest(); // UpdateSubscriptionPlanRequest | 
 let opts = {
-  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateSubscriptionPlan(productId, subscriptionPlanId, updateSubscriptionPlanRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
  **productId** | **String**| product_id | 
  **subscriptionPlanId** | **String**| subscription_plan_id | 
  **updateSubscriptionPlanRequest** | [**UpdateSubscriptionPlanRequest**](UpdateSubscriptionPlanRequest.md)|  | 
- **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

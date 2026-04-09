@@ -74,6 +74,11 @@ export class CreateProductRequestDetail {
     * If city-based taxes should be applied to this product
     */
     'cityTaxable'?: boolean;
+    'topHtml'?: string;
+    'bottomHtml'?: string;
+    'isPackage'?: boolean;
+    'needsDigitalDelivery'?: boolean;
+    'deliveryDescription'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -168,6 +173,36 @@ export class CreateProductRequestDetail {
             "name": "cityTaxable",
             "baseName": "city_taxable",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "topHtml",
+            "baseName": "top_html",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "bottomHtml",
+            "baseName": "bottom_html",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "isPackage",
+            "baseName": "is_package",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "needsDigitalDelivery",
+            "baseName": "needs_digital_delivery",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "deliveryDescription",
+            "baseName": "delivery_description",
+            "type": "string",
             "format": ""
         }    ];
 

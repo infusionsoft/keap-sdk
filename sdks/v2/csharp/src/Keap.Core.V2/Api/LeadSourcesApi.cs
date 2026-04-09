@@ -138,7 +138,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LeadSource</returns>
-        LeadSource UpdateLeadSource(string leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, string? updateMask = default, int operationIndex = 0);
+        LeadSource UpdateLeadSource(string leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Lead Source
@@ -152,7 +152,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LeadSource</returns>
-        ApiResponse<LeadSource> UpdateLeadSourceWithHttpInfo(string leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<LeadSource> UpdateLeadSourceWithHttpInfo(string leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, Object? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -281,7 +281,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LeadSource</returns>
-        System.Threading.Tasks.Task<LeadSource> UpdateLeadSourceAsync(string leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<LeadSource> UpdateLeadSourceAsync(string leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Lead Source
@@ -296,7 +296,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LeadSource)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LeadSource>> UpdateLeadSourceWithHttpInfoAsync(string leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<LeadSource>> UpdateLeadSourceWithHttpInfoAsync(string leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -1164,7 +1164,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LeadSource</returns>
-        public LeadSource UpdateLeadSource(string leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, string? updateMask = default, int operationIndex = 0)
+        public LeadSource UpdateLeadSource(string leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<LeadSource> localVarResponse = UpdateLeadSourceWithHttpInfo(leadSourceId, createLeadSourceRequest, updateMask);
             return localVarResponse.Data;
@@ -1179,7 +1179,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LeadSource</returns>
-        public Keap.Core.V2.Client.ApiResponse<LeadSource> UpdateLeadSourceWithHttpInfo(string leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<LeadSource> UpdateLeadSourceWithHttpInfo(string leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'leadSourceId' is set
             if (leadSourceId == null)
@@ -1268,7 +1268,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LeadSource</returns>
-        public async System.Threading.Tasks.Task<LeadSource> UpdateLeadSourceAsync(string leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<LeadSource> UpdateLeadSourceAsync(string leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<LeadSource> localVarResponse = await UpdateLeadSourceWithHttpInfoAsync(leadSourceId, createLeadSourceRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1284,7 +1284,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LeadSource)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<LeadSource>> UpdateLeadSourceWithHttpInfoAsync(string leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<LeadSource>> UpdateLeadSourceWithHttpInfoAsync(string leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'leadSourceId' is set
             if (leadSourceId == null)

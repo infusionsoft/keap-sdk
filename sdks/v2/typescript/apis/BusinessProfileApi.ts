@@ -52,7 +52,7 @@ export class BusinessProfileApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateBusinessProfileRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateBusinessProfile(updateBusinessProfileRequest: UpdateBusinessProfileRequest, updateMask?: 'name,email,website,phone,address,currency_code,business_goals,business_primary_color, business_secondary_color', _options?: Configuration): Promise<RequestContext> {
+    public async updateBusinessProfile(updateBusinessProfileRequest: UpdateBusinessProfileRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'updateBusinessProfileRequest' is not null or undefined
@@ -71,7 +71,10 @@ export class BusinessProfileApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'name,email,website,phone,address,currency_code,business_goals,business_primary_color, business_secondary_color'", ""));
+            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
+            }
         }
 
 

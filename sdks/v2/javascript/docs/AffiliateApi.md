@@ -1450,7 +1450,7 @@ null (empty response body)
 
 ## updateAffiliate
 
-> RestAffiliate updateAffiliate(id, updateAffiliateRequest)
+> RestAffiliate updateAffiliate(id, updateAffiliateRequest, opts)
 
 Update an Affiliate
 
@@ -1468,7 +1468,10 @@ oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let id = "id_example"; // String | 
 let updateAffiliateRequest = new KeapCoreServiceV2Sdk.UpdateAffiliateRequest(); // UpdateAffiliateRequest | 
-apiInstance.updateAffiliate(id, updateAffiliateRequest).then((data) => {
+let opts = {
+  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+};
+apiInstance.updateAffiliate(id, updateAffiliateRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -1483,6 +1486,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
  **updateAffiliateRequest** | [**UpdateAffiliateRequest**](UpdateAffiliateRequest.md)|  | 
+ **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -1519,7 +1523,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let customFieldId = "customFieldId_example"; // String | 
 let updateCustomFieldMetaDataRequest = new KeapCoreServiceV2Sdk.UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
 let opts = {
-  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateAffiliateCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -1536,7 +1540,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customFieldId** | **String**|  | 
  **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | 
- **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -1573,7 +1577,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let commissionProgramId = "commissionProgramId_example"; // String | 
 let updateCommissionProgramRequest = new KeapCoreServiceV2Sdk.UpdateCommissionProgramRequest(); // UpdateCommissionProgramRequest | 
 let opts = {
-  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateCommissionProgram(commissionProgramId, updateCommissionProgramRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -1590,7 +1594,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commissionProgramId** | **String**|  | 
  **updateCommissionProgramRequest** | [**UpdateCommissionProgramRequest**](UpdateCommissionProgramRequest.md)|  | 
- **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

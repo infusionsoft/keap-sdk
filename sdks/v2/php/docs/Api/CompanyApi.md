@@ -402,7 +402,7 @@ $apiInstance = new Keap\Core\V2\Api\CompanyApi(
 );
 $company_id = 'company_id_example'; // string
 $update_company_request = new \Keap\Core\V2\Model\UpdateCompanyRequest(); // \Keap\Core\V2\Model\UpdateCompanyRequest
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateCompany($company_id, $update_company_request, $update_mask);
@@ -418,7 +418,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **company_id** | **string**|  | |
 | **update_company_request** | [**\Keap\Core\V2\Model\UpdateCompanyRequest**](../Model/UpdateCompanyRequest.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -465,7 +465,7 @@ $apiInstance = new Keap\Core\V2\Api\CompanyApi(
 );
 $custom_field_id = 'custom_field_id_example'; // string
 $update_custom_field_meta_data_request = new \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest(); // \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateCompanyCustomField($custom_field_id, $update_custom_field_meta_data_request, $update_mask);
@@ -481,7 +481,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **custom_field_id** | **string**|  | |
 | **update_custom_field_meta_data_request** | [**\Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest**](../Model/UpdateCustomFieldMetaDataRequest.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

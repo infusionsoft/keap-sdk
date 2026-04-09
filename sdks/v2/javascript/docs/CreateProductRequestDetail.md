@@ -19,5 +19,10 @@ Name | Type | Description | Notes
 **countryTaxable** | **Boolean** | If country-based taxes should be applied to this product | [optional] 
 **stateTaxable** | **Boolean** | If state-based taxes should be applied to this product | [optional] 
 **cityTaxable** | **Boolean** | If city-based taxes should be applied to this product | [optional] 
+**topHtml** | **String** |  | [optional] 
+**bottomHtml** | **String** |  | [optional] 
+**isPackage** | **Boolean** |  | [optional] 
+**needsDigitalDelivery** | **Boolean** |  | [optional] 
+**deliveryDescription** | **String** |  | [optional] 
 
 

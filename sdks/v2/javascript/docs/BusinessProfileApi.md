@@ -73,7 +73,7 @@ oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new KeapCoreServiceV2Sdk.BusinessProfileApi();
 let updateBusinessProfileRequest = new KeapCoreServiceV2Sdk.UpdateBusinessProfileRequest(); // UpdateBusinessProfileRequest | 
 let opts = {
-  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateBusinessProfile(updateBusinessProfileRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -89,7 +89,7 @@ apiInstance.updateBusinessProfile(updateBusinessProfileRequest, opts).then((data
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateBusinessProfileRequest** | [**UpdateBusinessProfileRequest**](UpdateBusinessProfileRequest.md)|  | 
- **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

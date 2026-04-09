@@ -622,7 +622,7 @@ This endpoint does not need any parameter.
 
 <a id="updatecompany"></a>
 # **UpdateCompany**
-> Company UpdateCompany (string companyId, UpdateCompanyRequest updateCompanyRequest, string? updateMask = null)
+> Company UpdateCompany (string companyId, UpdateCompanyRequest updateCompanyRequest, Object? updateMask = null)
 
 Update a Company
 
@@ -650,7 +650,7 @@ namespace Example
             var apiInstance = new CompanyApi(config);
             var companyId = "companyId_example";  // string | 
             var updateCompanyRequest = new UpdateCompanyRequest(); // UpdateCompanyRequest | 
-            var updateMask = "id,company_name,address,phone_number,fax_number,email_address, notes,website,custom_fields,create_time,update_time";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -695,7 +695,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **companyId** | **string** |  |  |
 | **updateCompanyRequest** | [**UpdateCompanyRequest**](UpdateCompanyRequest.md) |  |  |
-| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -727,7 +727,7 @@ catch (ApiException e)
 
 <a id="updatecompanycustomfield"></a>
 # **UpdateCompanyCustomField**
-> CustomFieldMetaData UpdateCompanyCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = null)
+> CustomFieldMetaData UpdateCompanyCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = null)
 
 Update a Company Custom Field
 
@@ -755,7 +755,7 @@ namespace Example
             var apiInstance = new CompanyApi(config);
             var customFieldId = "customFieldId_example";  // string | 
             var updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-            var updateMask = "group_id,label,options";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -800,7 +800,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **customFieldId** | **string** |  |  |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md) |  |  |
-| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

@@ -828,7 +828,7 @@ const request: TagsApiUpdateTagRequest = {
     },
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: "name,description,category",
+  updateMask: null,
 };
 
 const data = await apiInstance.updateTag(request);
@@ -842,7 +842,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createUpdateTagRequest** | **CreateUpdateTagRequest**|  |
  **tagId** | [**string**] |  | defaults to undefined
- **updateMask** | [**&#39;name,description,category&#39;**]**Array<&#39;name,description,category&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -897,7 +897,7 @@ const request: TagsApiUpdateTagCategoryRequest = {
     description: "Tags for customer segmentation",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: "name,description",
+  updateMask: null,
 };
 
 const data = await apiInstance.updateTagCategory(request);
@@ -911,7 +911,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createUpdateTagCategoryRequest** | **CreateUpdateTagCategoryRequest**|  |
  **tagCategoryId** | [**string**] |  | defaults to undefined
- **updateMask** | [**&#39;name,description&#39;**]**Array<&#39;name,description&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

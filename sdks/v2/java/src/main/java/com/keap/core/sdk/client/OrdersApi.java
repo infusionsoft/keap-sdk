@@ -1357,7 +1357,7 @@ import io.github.resilience4j.retry.Retry;
   /**
    * List orders
    * Retrieves a list of orders
-   * @param filter Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_city&#x60; - (String) &#x60;shipping_region&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_city%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region%3D%3DAZ&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DUS&#x60; (optional)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60; (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
@@ -1372,7 +1372,7 @@ import io.github.resilience4j.retry.Retry;
   /**
    * List orders
    * Retrieves a list of orders
-   * @param filter Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_city&#x60; - (String) &#x60;shipping_region&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_city%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region%3D%3DAZ&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DUS&#x60; (optional)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60; (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
@@ -1550,7 +1550,7 @@ import io.github.resilience4j.retry.Retry;
    * @return OrderV2
    * @throws ApiException if fails to make API call
    */
-  public OrderV2 updateOrder(String orderId, UpdateOrderRequest updateOrderRequest, String updateMask) throws ApiException {
+  public OrderV2 updateOrder(String orderId, UpdateOrderRequest updateOrderRequest, Object updateMask) throws ApiException {
     ApiResponse<OrderV2> localVarResponse = updateOrderWithHttpInfo(orderId, updateOrderRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -1564,7 +1564,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;OrderV2&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<OrderV2> updateOrderWithHttpInfo(String orderId, UpdateOrderRequest updateOrderRequest, String updateMask) throws ApiException {
+  public ApiResponse<OrderV2> updateOrderWithHttpInfo(String orderId, UpdateOrderRequest updateOrderRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateOrderRequestBuilder(orderId, updateOrderRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1605,7 +1605,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateOrderRequestBuilder(String orderId, UpdateOrderRequest updateOrderRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateOrderRequestBuilder(String orderId, UpdateOrderRequest updateOrderRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'orderId' is set
     if (orderId == null) {
       throw new ApiException(400, "Missing the required parameter 'orderId' when calling updateOrder");
@@ -1665,7 +1665,7 @@ import io.github.resilience4j.retry.Retry;
    * @return CustomFieldMetaData
    * @throws ApiException if fails to make API call
    */
-  public CustomFieldMetaData updateOrderCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, String updateMask) throws ApiException {
+  public CustomFieldMetaData updateOrderCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
     ApiResponse<CustomFieldMetaData> localVarResponse = updateOrderCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -1679,7 +1679,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;CustomFieldMetaData&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CustomFieldMetaData> updateOrderCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, String updateMask) throws ApiException {
+  public ApiResponse<CustomFieldMetaData> updateOrderCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateOrderCustomFieldRequestBuilder(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1720,7 +1720,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateOrderCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateOrderCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'customFieldId' is set
     if (customFieldId == null) {
       throw new ApiException(400, "Missing the required parameter 'customFieldId' when calling updateOrderCustomField");
@@ -1781,7 +1781,7 @@ import io.github.resilience4j.retry.Retry;
    * @return OrderItem
    * @throws ApiException if fails to make API call
    */
-  public OrderItem updateOrderItem(String orderId, String orderItemId, UpdateOrderItemRequest updateOrderItemRequest, String updateMask) throws ApiException {
+  public OrderItem updateOrderItem(String orderId, String orderItemId, UpdateOrderItemRequest updateOrderItemRequest, Object updateMask) throws ApiException {
     ApiResponse<OrderItem> localVarResponse = updateOrderItemWithHttpInfo(orderId, orderItemId, updateOrderItemRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -1796,7 +1796,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;OrderItem&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<OrderItem> updateOrderItemWithHttpInfo(String orderId, String orderItemId, UpdateOrderItemRequest updateOrderItemRequest, String updateMask) throws ApiException {
+  public ApiResponse<OrderItem> updateOrderItemWithHttpInfo(String orderId, String orderItemId, UpdateOrderItemRequest updateOrderItemRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateOrderItemRequestBuilder(orderId, orderItemId, updateOrderItemRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1837,7 +1837,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateOrderItemRequestBuilder(String orderId, String orderItemId, UpdateOrderItemRequest updateOrderItemRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateOrderItemRequestBuilder(String orderId, String orderItemId, UpdateOrderItemRequest updateOrderItemRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'orderId' is set
     if (orderId == null) {
       throw new ApiException(400, "Missing the required parameter 'orderId' when calling updateOrderItem");

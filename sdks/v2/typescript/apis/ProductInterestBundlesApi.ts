@@ -313,7 +313,7 @@ export class ProductInterestBundlesApiRequestFactory extends BaseAPIRequestFacto
      * @param updateProductInterestRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateProductInterest(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: 'quantity,price,discount_percent', _options?: Configuration): Promise<RequestContext> {
+    public async updateProductInterest(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'id' is not null or undefined
@@ -346,7 +346,10 @@ export class ProductInterestBundlesApiRequestFactory extends BaseAPIRequestFacto
 
         // Query Params
         if (updateMask !== undefined) {
-            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'quantity,price,discount_percent'", ""));
+            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
+            }
         }
 
 
@@ -383,7 +386,7 @@ export class ProductInterestBundlesApiRequestFactory extends BaseAPIRequestFacto
      * @param updateProductInterestBundleRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateProductInterestBundle(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: 'name,description', _options?: Configuration): Promise<RequestContext> {
+    public async updateProductInterestBundle(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'id' is not null or undefined
@@ -409,7 +412,10 @@ export class ProductInterestBundlesApiRequestFactory extends BaseAPIRequestFacto
 
         // Query Params
         if (updateMask !== undefined) {
-            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'name,description'", ""));
+            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
+            }
         }
 
 

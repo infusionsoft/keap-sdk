@@ -1739,7 +1739,7 @@ void (empty response body)
 ## `updateAffiliate()`
 
 ```php
-updateAffiliate($id, $update_affiliate_request): \Keap\Core\V2\Model\RestAffiliate
+updateAffiliate($id, $update_affiliate_request, $update_mask): \Keap\Core\V2\Model\RestAffiliate
 ```
 
 Update an Affiliate
@@ -1764,9 +1764,10 @@ $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
 );
 $id = 'id_example'; // string
 $update_affiliate_request = new \Keap\Core\V2\Model\UpdateAffiliateRequest(); // \Keap\Core\V2\Model\UpdateAffiliateRequest
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateAffiliate($id, $update_affiliate_request);
+    $result = $apiInstance->updateAffiliate($id, $update_affiliate_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AffiliateApi->updateAffiliate: ', $e->getMessage(), PHP_EOL;
@@ -1779,6 +1780,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**|  | |
 | **update_affiliate_request** | [**\Keap\Core\V2\Model\UpdateAffiliateRequest**](../Model/UpdateAffiliateRequest.md)|  | |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1825,7 +1827,7 @@ $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
 );
 $custom_field_id = 'custom_field_id_example'; // string
 $update_custom_field_meta_data_request = new \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest(); // \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateAffiliateCustomField($custom_field_id, $update_custom_field_meta_data_request, $update_mask);
@@ -1841,7 +1843,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **custom_field_id** | **string**|  | |
 | **update_custom_field_meta_data_request** | [**\Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest**](../Model/UpdateCustomFieldMetaDataRequest.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1888,7 +1890,7 @@ $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
 );
 $commission_program_id = 'commission_program_id_example'; // string
 $update_commission_program_request = new \Keap\Core\V2\Model\UpdateCommissionProgramRequest(); // \Keap\Core\V2\Model\UpdateCommissionProgramRequest
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateCommissionProgram($commission_program_id, $update_commission_program_request, $update_mask);
@@ -1904,7 +1906,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **commission_program_id** | **string**|  | |
 | **update_commission_program_request** | [**\Keap\Core\V2\Model\UpdateCommissionProgramRequest**](../Model/UpdateCommissionProgramRequest.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

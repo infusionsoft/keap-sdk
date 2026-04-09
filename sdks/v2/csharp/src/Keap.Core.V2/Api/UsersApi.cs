@@ -136,7 +136,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>User</returns>
-        User UpdateUser(string userId, UpdateUserRequest updateUserRequest, string? updateMask = default, int operationIndex = 0);
+        User UpdateUser(string userId, UpdateUserRequest updateUserRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update User
@@ -150,7 +150,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of User</returns>
-        ApiResponse<User> UpdateUserWithHttpInfo(string userId, UpdateUserRequest updateUserRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<User> UpdateUserWithHttpInfo(string userId, UpdateUserRequest updateUserRequest, Object? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -277,7 +277,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of User</returns>
-        System.Threading.Tasks.Task<User> UpdateUserAsync(string userId, UpdateUserRequest updateUserRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<User> UpdateUserAsync(string userId, UpdateUserRequest updateUserRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update User
@@ -292,7 +292,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (User)</returns>
-        System.Threading.Tasks.Task<ApiResponse<User>> UpdateUserWithHttpInfoAsync(string userId, UpdateUserRequest updateUserRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<User>> UpdateUserWithHttpInfoAsync(string userId, UpdateUserRequest updateUserRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -1142,7 +1142,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>User</returns>
-        public User UpdateUser(string userId, UpdateUserRequest updateUserRequest, string? updateMask = default, int operationIndex = 0)
+        public User UpdateUser(string userId, UpdateUserRequest updateUserRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<User> localVarResponse = UpdateUserWithHttpInfo(userId, updateUserRequest, updateMask);
             return localVarResponse.Data;
@@ -1157,7 +1157,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of User</returns>
-        public Keap.Core.V2.Client.ApiResponse<User> UpdateUserWithHttpInfo(string userId, UpdateUserRequest updateUserRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<User> UpdateUserWithHttpInfo(string userId, UpdateUserRequest updateUserRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'userId' is set
             if (userId == null)
@@ -1246,7 +1246,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of User</returns>
-        public async System.Threading.Tasks.Task<User> UpdateUserAsync(string userId, UpdateUserRequest updateUserRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<User> UpdateUserAsync(string userId, UpdateUserRequest updateUserRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<User> localVarResponse = await UpdateUserWithHttpInfoAsync(userId, updateUserRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1262,7 +1262,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (User)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<User>> UpdateUserWithHttpInfoAsync(string userId, UpdateUserRequest updateUserRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<User>> UpdateUserWithHttpInfoAsync(string userId, UpdateUserRequest updateUserRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'userId' is set
             if (userId == null)

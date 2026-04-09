@@ -42,7 +42,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.SettingsApi(api_client)
-    fields = ['fields_example'] # List[str] | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)
+    fields = None # object | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)
 
     try:
         # Get Application Configuration
@@ -59,7 +59,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fields** | [**List[str]**](str.md)| By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | [optional] 
+ **fields** | [**object**](.md)| By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | [optional] 
 
 ### Return type
 

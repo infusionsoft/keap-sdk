@@ -380,7 +380,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     product_id = 'product_id_example' # str | product_id
     subscription_plan_id = 'subscription_plan_id_example' # str | subscription_plan_id
     update_subscription_plan_request = keap_core_v2_client.UpdateSubscriptionPlanRequest() # UpdateSubscriptionPlanRequest | 
-    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update Subscription Plan
@@ -400,7 +400,7 @@ Name | Type | Description  | Notes
  **product_id** | **str**| product_id | 
  **subscription_plan_id** | **str**| subscription_plan_id | 
  **update_subscription_plan_request** | [**UpdateSubscriptionPlanRequest**](UpdateSubscriptionPlanRequest.md)|  | 
- **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

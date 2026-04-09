@@ -233,7 +233,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.OrderTotalDiscountsApi();
 let discountId = "discountId_example"; // String | 
 let updateOrderTotalDiscountRequest = new KeapCoreServiceV2Sdk.UpdateOrderTotalDiscountRequest(); // UpdateOrderTotalDiscountRequest | 
 let opts = {
-  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateOrderTotalDiscount(discountId, updateOrderTotalDiscountRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **discountId** | **String**|  | 
  **updateOrderTotalDiscountRequest** | [**UpdateOrderTotalDiscountRequest**](UpdateOrderTotalDiscountRequest.md)|  | 
- **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

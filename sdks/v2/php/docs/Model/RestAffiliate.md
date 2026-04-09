@@ -15,5 +15,6 @@ Name | Type | Description | Notes
 **notify_on_sale** | **bool** | Whether to notify on sale events | [optional]
 **notify_on_lead** | **bool** | Whether to notify on lead events | [optional]
 **track_leads_days** | **int** | Number of days to track leads | [optional]
+**custom_fields** | [**\Keap\Core\V2\Model\CustomFieldValue[]**](CustomFieldValue.md) | List of custom field values applied to this affiliate | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -21,8 +21,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.keap.core.sdk.model.CustomFieldValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.validation.constraints.*;
@@ -41,14 +44,15 @@ import jakarta.validation.Valid;
   UpdateAffiliateRequest.JSON_PROPERTY_NOTIFY_ON_SALE,
   UpdateAffiliateRequest.JSON_PROPERTY_NOTIFY_ON_LEAD,
   UpdateAffiliateRequest.JSON_PROPERTY_TRACK_LEADS_DAYS,
-  UpdateAffiliateRequest.JSON_PROPERTY_PASSWORD
+  UpdateAffiliateRequest.JSON_PROPERTY_PASSWORD,
+  UpdateAffiliateRequest.JSON_PROPERTY_CUSTOM_FIELDS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateAffiliateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
   public static final String JSON_PROPERTY_CODE = "code";
-  @jakarta.annotation.Nonnull  private String code;
+  @jakarta.annotation.Nullable  private String code;
 
   public static final String JSON_PROPERTY_NAME = "name";
   @jakarta.annotation.Nullable  private String name;
@@ -93,7 +97,7 @@ public class UpdateAffiliateRequest implements Serializable {
   @jakarta.annotation.Nullable  private StatusEnum status;
 
   public static final String JSON_PROPERTY_CONTACT_ID = "contact_id";
-  @jakarta.annotation.Nonnull  private String contactId;
+  @jakarta.annotation.Nullable  private String contactId;
 
   public static final String JSON_PROPERTY_PARENT_AFFILIATE_ID = "parent_affiliate_id";
   @jakarta.annotation.Nullable  private String parentAffiliateId;
@@ -110,30 +114,32 @@ public class UpdateAffiliateRequest implements Serializable {
   public static final String JSON_PROPERTY_PASSWORD = "password";
   @jakarta.annotation.Nullable  private String password;
 
+  public static final String JSON_PROPERTY_CUSTOM_FIELDS = "custom_fields";
+  @jakarta.annotation.Nullable  private List<@Valid CustomFieldValue> customFields = new ArrayList<>();
+
   public UpdateAffiliateRequest() { 
   }
 
-  public UpdateAffiliateRequest code(@jakarta.annotation.Nonnull String code) {
+  public UpdateAffiliateRequest code(@jakarta.annotation.Nullable String code) {
     this.code = code;
     return this;
   }
 
   /**
-   * The Affiliate code which have some validations. 1. The code should not have white spaces 2. The code should starts with letters 3. The code minimum 4 characters length
+   * The Affiliate code which have some validations. 1. The code should not have white spaces 2. The code should starts with letters 3. The code minimum 2 characters length
    * @return code
    */
-  @jakarta.annotation.Nonnull  @NotNull
-  @Schema(example = "M123", requiredMode = Schema.RequiredMode.REQUIRED, description = "The Affiliate code which have some validations. 1. The code should not have white spaces 2. The code should starts with letters 3. The code minimum 4 characters length")
+  @jakarta.annotation.Nullable  @Schema(example = "M123", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The Affiliate code which have some validations. 1. The code should not have white spaces 2. The code should starts with letters 3. The code minimum 2 characters length")
   @JsonProperty(JSON_PROPERTY_CODE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCode() {
     return code;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CODE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCode(@jakarta.annotation.Nonnull String code) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCode(@jakarta.annotation.Nullable String code) {
     this.code = code;
   }
 
@@ -144,10 +150,10 @@ public class UpdateAffiliateRequest implements Serializable {
   }
 
   /**
-   * The Affiliate name will be derived from the Contact, when not explicitly provided
+   * The Affiliate name.
    * @return name
    */
-  @jakarta.annotation.Nullable  @Schema(example = "John Smith", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The Affiliate name will be derived from the Contact, when not explicitly provided")
+  @jakarta.annotation.Nullable  @Schema(example = "John Smith", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The Affiliate name.")
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -186,27 +192,26 @@ public class UpdateAffiliateRequest implements Serializable {
   }
 
 
-  public UpdateAffiliateRequest contactId(@jakarta.annotation.Nonnull String contactId) {
+  public UpdateAffiliateRequest contactId(@jakarta.annotation.Nullable String contactId) {
     this.contactId = contactId;
     return this;
   }
 
   /**
-   * The contactId identifier , Must be a positive number
+   * The contactId identifier. Must be a positive number
    * @return contactId
    */
-  @jakarta.annotation.Nonnull  @NotNull
-  @Schema(example = "1", requiredMode = Schema.RequiredMode.REQUIRED, description = "The contactId identifier , Must be a positive number")
+  @jakarta.annotation.Nullable  @Schema(example = "1", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The contactId identifier. Must be a positive number")
   @JsonProperty(JSON_PROPERTY_CONTACT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getContactId() {
     return contactId;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CONTACT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setContactId(@jakarta.annotation.Nonnull String contactId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setContactId(@jakarta.annotation.Nullable String contactId) {
     this.contactId = contactId;
   }
 
@@ -330,6 +335,39 @@ public class UpdateAffiliateRequest implements Serializable {
     this.password = password;
   }
 
+
+  public UpdateAffiliateRequest customFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValue> customFields) {
+    this.customFields = customFields;
+    return this;
+  }
+
+  public UpdateAffiliateRequest addCustomFieldsItem(CustomFieldValue customFieldsItem) {
+    if (this.customFields == null) {
+      this.customFields = new ArrayList<>();
+    }
+    this.customFields.add(customFieldsItem);
+    return this;
+  }
+
+  /**
+   * List of custom field values to apply to this affiliate
+   * @return customFields
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "[{id=1, content=VIP}, {id=2, content=Preferred}]", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "List of custom field values to apply to this affiliate")
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<@Valid CustomFieldValue> getCustomFields() {
+    return customFields;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValue> customFields) {
+    this.customFields = customFields;
+  }
+
   /**
    * Return true if this UpdateAffiliateRequest object is equal to o.
    */
@@ -350,12 +388,13 @@ public class UpdateAffiliateRequest implements Serializable {
         Objects.equals(this.notifyOnSale, updateAffiliateRequest.notifyOnSale) &&
         Objects.equals(this.notifyOnLead, updateAffiliateRequest.notifyOnLead) &&
         Objects.equals(this.trackLeadsDays, updateAffiliateRequest.trackLeadsDays) &&
-        Objects.equals(this.password, updateAffiliateRequest.password);
+        Objects.equals(this.password, updateAffiliateRequest.password) &&
+        Objects.equals(this.customFields, updateAffiliateRequest.customFields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, name, status, contactId, parentAffiliateId, notifyOnSale, notifyOnLead, trackLeadsDays, password);
+    return Objects.hash(code, name, status, contactId, parentAffiliateId, notifyOnSale, notifyOnLead, trackLeadsDays, password, customFields);
   }
 
   @Override
@@ -371,6 +410,7 @@ public class UpdateAffiliateRequest implements Serializable {
     sb.append("    notifyOnLead: ").append(toIndentedString(notifyOnLead)).append("\n");
     sb.append("    trackLeadsDays: ").append(toIndentedString(trackLeadsDays)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -434,6 +474,10 @@ public class UpdateAffiliateRequest implements Serializable {
               this.instance.password = password;
           return this;
         }
+            public UpdateAffiliateRequest.Builder customFields(List<CustomFieldValue> customFields) {
+              this.instance.customFields = customFields;
+          return this;
+        }
         
     
         /**
@@ -476,7 +520,8 @@ public class UpdateAffiliateRequest implements Serializable {
           .notifyOnSale(getNotifyOnSale())
           .notifyOnLead(getNotifyOnLead())
           .trackLeadsDays(getTrackLeadsDays())
-          .password(getPassword());
+          .password(getPassword())
+          .customFields(getCustomFields());
       }
 }
 

@@ -261,7 +261,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RestV2Opportunity</returns>
-        RestV2Opportunity UpdateOpportunity(string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, string? updateMask = default, int operationIndex = 0);
+        RestV2Opportunity UpdateOpportunity(string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update an opportunity
@@ -275,7 +275,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RestV2Opportunity</returns>
-        ApiResponse<RestV2Opportunity> UpdateOpportunityWithHttpInfo(string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<RestV2Opportunity> UpdateOpportunityWithHttpInfo(string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Object? updateMask = default, int operationIndex = 0);
         /// <summary>
         /// Update a Opportunity&#39;s Custom Field
         /// </summary>
@@ -288,7 +288,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CustomFieldMetaData</returns>
-        CustomFieldMetaData UpdateOpportunityCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0);
+        CustomFieldMetaData UpdateOpportunityCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Opportunity&#39;s Custom Field
@@ -302,7 +302,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomFieldMetaData</returns>
-        ApiResponse<CustomFieldMetaData> UpdateOpportunityCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<CustomFieldMetaData> UpdateOpportunityCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0);
         /// <summary>
         /// Update an Opportunity Stage
         /// </summary>
@@ -315,7 +315,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RestOpportunityStage</returns>
-        RestOpportunityStage UpdateOpportunityStage(string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, string? updateMask = default, int operationIndex = 0);
+        RestOpportunityStage UpdateOpportunityStage(string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update an Opportunity Stage
@@ -329,7 +329,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RestOpportunityStage</returns>
-        ApiResponse<RestOpportunityStage> UpdateOpportunityStageWithHttpInfo(string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<RestOpportunityStage> UpdateOpportunityStageWithHttpInfo(string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Object? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -591,7 +591,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RestV2Opportunity</returns>
-        System.Threading.Tasks.Task<RestV2Opportunity> UpdateOpportunityAsync(string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<RestV2Opportunity> UpdateOpportunityAsync(string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update an opportunity
@@ -606,7 +606,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RestV2Opportunity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<RestV2Opportunity>> UpdateOpportunityWithHttpInfoAsync(string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<RestV2Opportunity>> UpdateOpportunityWithHttpInfoAsync(string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update a Opportunity&#39;s Custom Field
         /// </summary>
@@ -620,7 +620,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CustomFieldMetaData</returns>
-        System.Threading.Tasks.Task<CustomFieldMetaData> UpdateOpportunityCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CustomFieldMetaData> UpdateOpportunityCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Opportunity&#39;s Custom Field
@@ -635,7 +635,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CustomFieldMetaData)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CustomFieldMetaData>> UpdateOpportunityCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CustomFieldMetaData>> UpdateOpportunityCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update an Opportunity Stage
         /// </summary>
@@ -649,7 +649,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RestOpportunityStage</returns>
-        System.Threading.Tasks.Task<RestOpportunityStage> UpdateOpportunityStageAsync(string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<RestOpportunityStage> UpdateOpportunityStageAsync(string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update an Opportunity Stage
@@ -664,7 +664,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RestOpportunityStage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<RestOpportunityStage>> UpdateOpportunityStageWithHttpInfoAsync(string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<RestOpportunityStage>> UpdateOpportunityStageWithHttpInfoAsync(string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -2461,7 +2461,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RestV2Opportunity</returns>
-        public RestV2Opportunity UpdateOpportunity(string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, string? updateMask = default, int operationIndex = 0)
+        public RestV2Opportunity UpdateOpportunity(string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<RestV2Opportunity> localVarResponse = UpdateOpportunityWithHttpInfo(opportunityId, updateOpportunityRequestV2, updateMask);
             return localVarResponse.Data;
@@ -2476,7 +2476,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RestV2Opportunity</returns>
-        public Keap.Core.V2.Client.ApiResponse<RestV2Opportunity> UpdateOpportunityWithHttpInfo(string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<RestV2Opportunity> UpdateOpportunityWithHttpInfo(string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'opportunityId' is set
             if (opportunityId == null)
@@ -2565,7 +2565,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RestV2Opportunity</returns>
-        public async System.Threading.Tasks.Task<RestV2Opportunity> UpdateOpportunityAsync(string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<RestV2Opportunity> UpdateOpportunityAsync(string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<RestV2Opportunity> localVarResponse = await UpdateOpportunityWithHttpInfoAsync(opportunityId, updateOpportunityRequestV2, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2581,7 +2581,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RestV2Opportunity)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<RestV2Opportunity>> UpdateOpportunityWithHttpInfoAsync(string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<RestV2Opportunity>> UpdateOpportunityWithHttpInfoAsync(string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'opportunityId' is set
             if (opportunityId == null)
@@ -2670,7 +2670,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CustomFieldMetaData</returns>
-        public CustomFieldMetaData UpdateOpportunityCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0)
+        public CustomFieldMetaData UpdateOpportunityCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> localVarResponse = UpdateOpportunityCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             return localVarResponse.Data;
@@ -2685,7 +2685,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomFieldMetaData</returns>
-        public Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> UpdateOpportunityCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> UpdateOpportunityCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'customFieldId' is set
             if (customFieldId == null)
@@ -2774,7 +2774,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CustomFieldMetaData</returns>
-        public async System.Threading.Tasks.Task<CustomFieldMetaData> UpdateOpportunityCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CustomFieldMetaData> UpdateOpportunityCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> localVarResponse = await UpdateOpportunityCustomFieldWithHttpInfoAsync(customFieldId, updateCustomFieldMetaDataRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2790,7 +2790,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CustomFieldMetaData)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData>> UpdateOpportunityCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData>> UpdateOpportunityCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'customFieldId' is set
             if (customFieldId == null)
@@ -2879,7 +2879,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RestOpportunityStage</returns>
-        public RestOpportunityStage UpdateOpportunityStage(string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, string? updateMask = default, int operationIndex = 0)
+        public RestOpportunityStage UpdateOpportunityStage(string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<RestOpportunityStage> localVarResponse = UpdateOpportunityStageWithHttpInfo(stageId, updateOpportunityStageRequest, updateMask);
             return localVarResponse.Data;
@@ -2894,7 +2894,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RestOpportunityStage</returns>
-        public Keap.Core.V2.Client.ApiResponse<RestOpportunityStage> UpdateOpportunityStageWithHttpInfo(string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<RestOpportunityStage> UpdateOpportunityStageWithHttpInfo(string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'stageId' is set
             if (stageId == null)
@@ -2983,7 +2983,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RestOpportunityStage</returns>
-        public async System.Threading.Tasks.Task<RestOpportunityStage> UpdateOpportunityStageAsync(string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<RestOpportunityStage> UpdateOpportunityStageAsync(string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<RestOpportunityStage> localVarResponse = await UpdateOpportunityStageWithHttpInfoAsync(stageId, updateOpportunityStageRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2999,7 +2999,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RestOpportunityStage)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<RestOpportunityStage>> UpdateOpportunityStageWithHttpInfoAsync(string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<RestOpportunityStage>> UpdateOpportunityStageWithHttpInfoAsync(string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'stageId' is set
             if (stageId == null)

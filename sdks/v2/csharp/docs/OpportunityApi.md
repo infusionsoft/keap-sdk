@@ -934,7 +934,7 @@ catch (ApiException e)
 
 <a id="updateopportunity"></a>
 # **UpdateOpportunity**
-> RestV2Opportunity UpdateOpportunity (string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, string? updateMask = null)
+> RestV2Opportunity UpdateOpportunity (string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Object? updateMask = null)
 
 Update an opportunity
 
@@ -962,7 +962,7 @@ namespace Example
             var apiInstance = new OpportunityApi(config);
             var opportunityId = "opportunityId_example";  // string | 
             var updateOpportunityRequestV2 = new UpdateOpportunityRequestV2(); // UpdateOpportunityRequestV2 | 
-            var updateMask = "opportunity_title,next_action_time,next_action_notes,opportunity_notes, estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high, contact_id,stage_id,user_id,custom_fields,affiliate_id";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -1007,7 +1007,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **opportunityId** | **string** |  |  |
 | **updateOpportunityRequestV2** | [**UpdateOpportunityRequestV2**](UpdateOpportunityRequestV2.md) |  |  |
-| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -1039,7 +1039,7 @@ catch (ApiException e)
 
 <a id="updateopportunitycustomfield"></a>
 # **UpdateOpportunityCustomField**
-> CustomFieldMetaData UpdateOpportunityCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = null)
+> CustomFieldMetaData UpdateOpportunityCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = null)
 
 Update a Opportunity's Custom Field
 
@@ -1067,7 +1067,7 @@ namespace Example
             var apiInstance = new OpportunityApi(config);
             var customFieldId = "customFieldId_example";  // string | 
             var updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-            var updateMask = "group_id,label,options";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -1112,7 +1112,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **customFieldId** | **string** |  |  |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md) |  |  |
-| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -1144,7 +1144,7 @@ catch (ApiException e)
 
 <a id="updateopportunitystage"></a>
 # **UpdateOpportunityStage**
-> RestOpportunityStage UpdateOpportunityStage (string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, string? updateMask = null)
+> RestOpportunityStage UpdateOpportunityStage (string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Object? updateMask = null)
 
 Update an Opportunity Stage
 
@@ -1172,7 +1172,7 @@ namespace Example
             var apiInstance = new OpportunityApi(config);
             var stageId = "stageId_example";  // string | 
             var updateOpportunityStageRequest = new UpdateOpportunityStageRequest(); // UpdateOpportunityStageRequest | 
-            var updateMask = "name,order,target_number_days,probability,checklist_items";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -1217,7 +1217,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **stageId** | **string** |  |  |
 | **updateOpportunityStageRequest** | [**UpdateOpportunityStageRequest**](UpdateOpportunityStageRequest.md) |  |  |
-| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

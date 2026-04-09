@@ -73,7 +73,12 @@ class UpdateProductRequestDetail implements ModelInterface, ArrayAccess, \JsonSe
         'city_taxable' => 'bool',
         'inventory_limit' => 'int',
         'out_of_stock_enabled' => 'bool',
-        'email_for_inventory_notifications' => 'string'
+        'email_for_inventory_notifications' => 'string',
+        'top_html' => 'string',
+        'bottom_html' => 'string',
+        'is_package' => 'bool',
+        'needs_digital_delivery' => 'bool',
+        'delivery_description' => 'string'
     ];
 
     /**
@@ -100,7 +105,12 @@ class UpdateProductRequestDetail implements ModelInterface, ArrayAccess, \JsonSe
         'city_taxable' => null,
         'inventory_limit' => 'int32',
         'out_of_stock_enabled' => null,
-        'email_for_inventory_notifications' => null
+        'email_for_inventory_notifications' => null,
+        'top_html' => null,
+        'bottom_html' => null,
+        'is_package' => null,
+        'needs_digital_delivery' => null,
+        'delivery_description' => null
     ];
 
     /**
@@ -125,7 +135,12 @@ class UpdateProductRequestDetail implements ModelInterface, ArrayAccess, \JsonSe
         'city_taxable' => false,
         'inventory_limit' => false,
         'out_of_stock_enabled' => false,
-        'email_for_inventory_notifications' => false
+        'email_for_inventory_notifications' => false,
+        'top_html' => false,
+        'bottom_html' => false,
+        'is_package' => false,
+        'needs_digital_delivery' => false,
+        'delivery_description' => false
     ];
 
     /**
@@ -230,7 +245,12 @@ class UpdateProductRequestDetail implements ModelInterface, ArrayAccess, \JsonSe
         'city_taxable' => 'city_taxable',
         'inventory_limit' => 'inventory_limit',
         'out_of_stock_enabled' => 'out_of_stock_enabled',
-        'email_for_inventory_notifications' => 'email_for_inventory_notifications'
+        'email_for_inventory_notifications' => 'email_for_inventory_notifications',
+        'top_html' => 'top_html',
+        'bottom_html' => 'bottom_html',
+        'is_package' => 'is_package',
+        'needs_digital_delivery' => 'needs_digital_delivery',
+        'delivery_description' => 'delivery_description'
     ];
 
     /**
@@ -255,7 +275,12 @@ class UpdateProductRequestDetail implements ModelInterface, ArrayAccess, \JsonSe
         'city_taxable' => 'setCityTaxable',
         'inventory_limit' => 'setInventoryLimit',
         'out_of_stock_enabled' => 'setOutOfStockEnabled',
-        'email_for_inventory_notifications' => 'setEmailForInventoryNotifications'
+        'email_for_inventory_notifications' => 'setEmailForInventoryNotifications',
+        'top_html' => 'setTopHtml',
+        'bottom_html' => 'setBottomHtml',
+        'is_package' => 'setIsPackage',
+        'needs_digital_delivery' => 'setNeedsDigitalDelivery',
+        'delivery_description' => 'setDeliveryDescription'
     ];
 
     /**
@@ -280,7 +305,12 @@ class UpdateProductRequestDetail implements ModelInterface, ArrayAccess, \JsonSe
         'city_taxable' => 'getCityTaxable',
         'inventory_limit' => 'getInventoryLimit',
         'out_of_stock_enabled' => 'getOutOfStockEnabled',
-        'email_for_inventory_notifications' => 'getEmailForInventoryNotifications'
+        'email_for_inventory_notifications' => 'getEmailForInventoryNotifications',
+        'top_html' => 'getTopHtml',
+        'bottom_html' => 'getBottomHtml',
+        'is_package' => 'getIsPackage',
+        'needs_digital_delivery' => 'getNeedsDigitalDelivery',
+        'delivery_description' => 'getDeliveryDescription'
     ];
 
     /**
@@ -357,6 +387,11 @@ class UpdateProductRequestDetail implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('inventory_limit', $data ?? [], null);
         $this->setIfExists('out_of_stock_enabled', $data ?? [], null);
         $this->setIfExists('email_for_inventory_notifications', $data ?? [], null);
+        $this->setIfExists('top_html', $data ?? [], null);
+        $this->setIfExists('bottom_html', $data ?? [], null);
+        $this->setIfExists('is_package', $data ?? [], null);
+        $this->setIfExists('needs_digital_delivery', $data ?? [], null);
+        $this->setIfExists('delivery_description', $data ?? [], null);
     }
 
     /**
@@ -856,6 +891,141 @@ class UpdateProductRequestDetail implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable email_for_inventory_notifications cannot be null');
         }
         $this->container['email_for_inventory_notifications'] = $email_for_inventory_notifications;
+
+        return $this;
+    }
+
+    /**
+     * Gets top_html
+     *
+     * @return string|null
+     */
+    public function getTopHtml()
+    {
+        return $this->container['top_html'];
+    }
+
+    /**
+     * Sets top_html
+     *
+     * @param string|null $top_html top_html
+     *
+     * @return self
+     */
+    public function setTopHtml($top_html)
+    {
+        if (is_null($top_html)) {
+            throw new \InvalidArgumentException('non-nullable top_html cannot be null');
+        }
+        $this->container['top_html'] = $top_html;
+
+        return $this;
+    }
+
+    /**
+     * Gets bottom_html
+     *
+     * @return string|null
+     */
+    public function getBottomHtml()
+    {
+        return $this->container['bottom_html'];
+    }
+
+    /**
+     * Sets bottom_html
+     *
+     * @param string|null $bottom_html bottom_html
+     *
+     * @return self
+     */
+    public function setBottomHtml($bottom_html)
+    {
+        if (is_null($bottom_html)) {
+            throw new \InvalidArgumentException('non-nullable bottom_html cannot be null');
+        }
+        $this->container['bottom_html'] = $bottom_html;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_package
+     *
+     * @return bool|null
+     */
+    public function getIsPackage()
+    {
+        return $this->container['is_package'];
+    }
+
+    /**
+     * Sets is_package
+     *
+     * @param bool|null $is_package is_package
+     *
+     * @return self
+     */
+    public function setIsPackage($is_package)
+    {
+        if (is_null($is_package)) {
+            throw new \InvalidArgumentException('non-nullable is_package cannot be null');
+        }
+        $this->container['is_package'] = $is_package;
+
+        return $this;
+    }
+
+    /**
+     * Gets needs_digital_delivery
+     *
+     * @return bool|null
+     */
+    public function getNeedsDigitalDelivery()
+    {
+        return $this->container['needs_digital_delivery'];
+    }
+
+    /**
+     * Sets needs_digital_delivery
+     *
+     * @param bool|null $needs_digital_delivery needs_digital_delivery
+     *
+     * @return self
+     */
+    public function setNeedsDigitalDelivery($needs_digital_delivery)
+    {
+        if (is_null($needs_digital_delivery)) {
+            throw new \InvalidArgumentException('non-nullable needs_digital_delivery cannot be null');
+        }
+        $this->container['needs_digital_delivery'] = $needs_digital_delivery;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_description
+     *
+     * @return string|null
+     */
+    public function getDeliveryDescription()
+    {
+        return $this->container['delivery_description'];
+    }
+
+    /**
+     * Sets delivery_description
+     *
+     * @param string|null $delivery_description delivery_description
+     *
+     * @return self
+     */
+    public function setDeliveryDescription($delivery_description)
+    {
+        if (is_null($delivery_description)) {
+            throw new \InvalidArgumentException('non-nullable delivery_description cannot be null');
+        }
+        $this->container['delivery_description'] = $delivery_description;
 
         return $this;
     }

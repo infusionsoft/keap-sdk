@@ -325,7 +325,7 @@ const request: FreeTrialDiscountsApiUpdateFreeTrialDiscountRequest = {
     subscriptionPlanId: "789",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: "name,description,free_trial_days,hide_price,subscription_plan_id,criteria",
+  updateMask: null,
 };
 
 const data = await apiInstance.updateFreeTrialDiscount(request);
@@ -339,7 +339,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateFreeTrialDiscountRequest** | **UpdateFreeTrialDiscountRequest**|  |
  **discountId** | [**string**] |  | defaults to undefined
- **updateMask** | [**&#39;name,description,free_trial_days,hide_price,subscription_plan_id,criteria&#39;**]**Array<&#39;name,description,free_trial_days,hide_price,subscription_plan_id,criteria&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

@@ -716,7 +716,7 @@ This endpoint does not need any parameter.
 
 <a id="updatetask"></a>
 # **UpdateTask**
-> UpdateTaskResponse UpdateTask (string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, string? updateMask = null)
+> UpdateTaskResponse UpdateTask (string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = null)
 
 Update a Task
 
@@ -744,7 +744,7 @@ namespace Example
             var apiInstance = new TaskApi(config);
             var taskId = "taskId_example";  // string | 
             var createUpdateTaskRequest = new CreateUpdateTaskRequest(); // CreateUpdateTaskRequest | 
-            var updateMask = "id,title,description,type,priority,completion_time, due_time,remind_time_mins,assigned_to_user_id,contact_id,completed";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -789,7 +789,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **taskId** | **string** |  |  |
 | **createUpdateTaskRequest** | [**CreateUpdateTaskRequest**](CreateUpdateTaskRequest.md) |  |  |
-| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -821,7 +821,7 @@ catch (ApiException e)
 
 <a id="updatetaskcustomfield"></a>
 # **UpdateTaskCustomField**
-> CustomFieldMetaData UpdateTaskCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = null)
+> CustomFieldMetaData UpdateTaskCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = null)
 
 Update a Task's Custom Field
 
@@ -849,7 +849,7 @@ namespace Example
             var apiInstance = new TaskApi(config);
             var customFieldId = "customFieldId_example";  // string | 
             var updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-            var updateMask = "group_id,label,options";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -894,7 +894,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **customFieldId** | **string** |  |  |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md) |  |  |
-| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

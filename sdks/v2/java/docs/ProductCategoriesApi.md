@@ -1172,7 +1172,7 @@ public class Example {
         ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
         String categoryId = "categoryId_example"; // String | 
         UpdateProductCategoryRequest updateProductCategoryRequest = new UpdateProductCategoryRequest(); // UpdateProductCategoryRequest | 
-        String updateMask = "name,display_order_index,parent_category_id"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ProductCategory result = apiInstance.updateProductCategory(categoryId, updateProductCategoryRequest, updateMask);
             System.out.println(result);
@@ -1194,7 +1194,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **categoryId** | **String**|  | |
 | **updateProductCategoryRequest** | [**UpdateProductCategoryRequest**](UpdateProductCategoryRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,display_order_index,parent_category_id] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1254,7 +1254,7 @@ public class Example {
         ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
         String categoryId = "categoryId_example"; // String | 
         UpdateProductCategoryRequest updateProductCategoryRequest = new UpdateProductCategoryRequest(); // UpdateProductCategoryRequest | 
-        String updateMask = "name,display_order_index,parent_category_id"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<ProductCategory> response = apiInstance.updateProductCategoryWithHttpInfo(categoryId, updateProductCategoryRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1278,7 +1278,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **categoryId** | **String**|  | |
 | **updateProductCategoryRequest** | [**UpdateProductCategoryRequest**](UpdateProductCategoryRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,display_order_index,parent_category_id] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

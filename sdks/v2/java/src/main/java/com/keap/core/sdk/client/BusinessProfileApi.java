@@ -181,7 +181,7 @@ import io.github.resilience4j.retry.Retry;
    * @return GetBusinessProfileResponse
    * @throws ApiException if fails to make API call
    */
-  public GetBusinessProfileResponse updateBusinessProfile(UpdateBusinessProfileRequest updateBusinessProfileRequest, String updateMask) throws ApiException {
+  public GetBusinessProfileResponse updateBusinessProfile(UpdateBusinessProfileRequest updateBusinessProfileRequest, Object updateMask) throws ApiException {
     ApiResponse<GetBusinessProfileResponse> localVarResponse = updateBusinessProfileWithHttpInfo(updateBusinessProfileRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -194,7 +194,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;GetBusinessProfileResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<GetBusinessProfileResponse> updateBusinessProfileWithHttpInfo(UpdateBusinessProfileRequest updateBusinessProfileRequest, String updateMask) throws ApiException {
+  public ApiResponse<GetBusinessProfileResponse> updateBusinessProfileWithHttpInfo(UpdateBusinessProfileRequest updateBusinessProfileRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateBusinessProfileRequestBuilder(updateBusinessProfileRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -235,7 +235,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateBusinessProfileRequestBuilder(UpdateBusinessProfileRequest updateBusinessProfileRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateBusinessProfileRequestBuilder(UpdateBusinessProfileRequest updateBusinessProfileRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'updateBusinessProfileRequest' is set
     if (updateBusinessProfileRequest == null) {
       throw new ApiException(400, "Missing the required parameter 'updateBusinessProfileRequest' when calling updateBusinessProfile");

@@ -53,6 +53,7 @@ import jakarta.validation.Valid;
   Contact.JSON_PROPERTY_PREFIX,
   Contact.JSON_PROPERTY_SUFFIX,
   Contact.JSON_PROPERTY_WEBSITE,
+  Contact.JSON_PROPERTY_GROUPS,
   Contact.JSON_PROPERTY_UPDATE_TIME,
   Contact.JSON_PROPERTY_CREATE_TIME,
   Contact.JSON_PROPERTY_SCORE_VALUE,
@@ -77,7 +78,13 @@ import jakarta.validation.Valid;
   Contact.JSON_PROPERTY_SOURCE_TYPE,
   Contact.JSON_PROPERTY_SPOUSE_NAME,
   Contact.JSON_PROPERTY_TIME_ZONE,
-  Contact.JSON_PROPERTY_UTM_PARAMETERS
+  Contact.JSON_PROPERTY_UTM_PARAMETERS,
+  Contact.JSON_PROPERTY_ACCOUNT_ID,
+  Contact.JSON_PROPERTY_ASSISTANT_NAME,
+  Contact.JSON_PROPERTY_ASSISTANT_PHONE,
+  Contact.JSON_PROPERTY_BILLING_INFORMATION,
+  Contact.JSON_PROPERTY_CREATED_BY,
+  Contact.JSON_PROPERTY_LAST_UPDATED_BY
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class Contact implements Serializable {
@@ -106,6 +113,9 @@ public class Contact implements Serializable {
 
   public static final String JSON_PROPERTY_WEBSITE = "website";
   @jakarta.annotation.Nullable  private String website;
+
+  public static final String JSON_PROPERTY_GROUPS = "groups";
+  @jakarta.annotation.Nullable  private String groups;
 
   public static final String JSON_PROPERTY_UPDATE_TIME = "update_time";
   @jakarta.annotation.Nullable  private String updateTime;
@@ -237,6 +247,24 @@ public class Contact implements Serializable {
 
   public static final String JSON_PROPERTY_UTM_PARAMETERS = "utm_parameters";
   @jakarta.annotation.Nullable  private List<@Valid ContactUtmResponse> utmParameters = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ACCOUNT_ID = "account_id";
+  @jakarta.annotation.Nullable  private String accountId;
+
+  public static final String JSON_PROPERTY_ASSISTANT_NAME = "assistant_name";
+  @jakarta.annotation.Nullable  private String assistantName;
+
+  public static final String JSON_PROPERTY_ASSISTANT_PHONE = "assistant_phone";
+  @jakarta.annotation.Nullable  private String assistantPhone;
+
+  public static final String JSON_PROPERTY_BILLING_INFORMATION = "billing_information";
+  @jakarta.annotation.Nullable  private String billingInformation;
+
+  public static final String JSON_PROPERTY_CREATED_BY = "created_by";
+  @jakarta.annotation.Nullable  private String createdBy;
+
+  public static final String JSON_PROPERTY_LAST_UPDATED_BY = "last_updated_by";
+  @jakarta.annotation.Nullable  private String lastUpdatedBy;
 
   public Contact() { 
   }
@@ -450,6 +478,30 @@ public class Contact implements Serializable {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setWebsite(@jakarta.annotation.Nullable String website) {
     this.website = website;
+  }
+
+
+  public Contact groups(@jakarta.annotation.Nullable String groups) {
+    this.groups = groups;
+    return this;
+  }
+
+  /**
+   * Get groups
+   * @return groups
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_GROUPS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getGroups() {
+    return groups;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_GROUPS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setGroups(@jakarta.annotation.Nullable String groups) {
+    this.groups = groups;
   }
 
 
@@ -1114,6 +1166,150 @@ public class Contact implements Serializable {
     this.utmParameters = utmParameters;
   }
 
+
+  public Contact accountId(@jakarta.annotation.Nullable String accountId) {
+    this.accountId = accountId;
+    return this;
+  }
+
+  /**
+   * Get accountId
+   * @return accountId
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_ACCOUNT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getAccountId() {
+    return accountId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ACCOUNT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAccountId(@jakarta.annotation.Nullable String accountId) {
+    this.accountId = accountId;
+  }
+
+
+  public Contact assistantName(@jakarta.annotation.Nullable String assistantName) {
+    this.assistantName = assistantName;
+    return this;
+  }
+
+  /**
+   * Get assistantName
+   * @return assistantName
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_ASSISTANT_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getAssistantName() {
+    return assistantName;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ASSISTANT_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAssistantName(@jakarta.annotation.Nullable String assistantName) {
+    this.assistantName = assistantName;
+  }
+
+
+  public Contact assistantPhone(@jakarta.annotation.Nullable String assistantPhone) {
+    this.assistantPhone = assistantPhone;
+    return this;
+  }
+
+  /**
+   * Get assistantPhone
+   * @return assistantPhone
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_ASSISTANT_PHONE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getAssistantPhone() {
+    return assistantPhone;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ASSISTANT_PHONE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAssistantPhone(@jakarta.annotation.Nullable String assistantPhone) {
+    this.assistantPhone = assistantPhone;
+  }
+
+
+  public Contact billingInformation(@jakarta.annotation.Nullable String billingInformation) {
+    this.billingInformation = billingInformation;
+    return this;
+  }
+
+  /**
+   * Get billingInformation
+   * @return billingInformation
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_BILLING_INFORMATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getBillingInformation() {
+    return billingInformation;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BILLING_INFORMATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBillingInformation(@jakarta.annotation.Nullable String billingInformation) {
+    this.billingInformation = billingInformation;
+  }
+
+
+  public Contact createdBy(@jakarta.annotation.Nullable String createdBy) {
+    this.createdBy = createdBy;
+    return this;
+  }
+
+  /**
+   * Get createdBy
+   * @return createdBy
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getCreatedBy() {
+    return createdBy;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCreatedBy(@jakarta.annotation.Nullable String createdBy) {
+    this.createdBy = createdBy;
+  }
+
+
+  public Contact lastUpdatedBy(@jakarta.annotation.Nullable String lastUpdatedBy) {
+    this.lastUpdatedBy = lastUpdatedBy;
+    return this;
+  }
+
+  /**
+   * Get lastUpdatedBy
+   * @return lastUpdatedBy
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_LAST_UPDATED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getLastUpdatedBy() {
+    return lastUpdatedBy;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LAST_UPDATED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLastUpdatedBy(@jakarta.annotation.Nullable String lastUpdatedBy) {
+    this.lastUpdatedBy = lastUpdatedBy;
+  }
+
   /**
    * Return true if this Contact object is equal to o.
    */
@@ -1134,6 +1330,7 @@ public class Contact implements Serializable {
         Objects.equals(this.prefix, contact.prefix) &&
         Objects.equals(this.suffix, contact.suffix) &&
         Objects.equals(this.website, contact.website) &&
+        Objects.equals(this.groups, contact.groups) &&
         Objects.equals(this.updateTime, contact.updateTime) &&
         Objects.equals(this.createTime, contact.createTime) &&
         Objects.equals(this.scoreValue, contact.scoreValue) &&
@@ -1158,12 +1355,18 @@ public class Contact implements Serializable {
         Objects.equals(this.sourceType, contact.sourceType) &&
         Objects.equals(this.spouseName, contact.spouseName) &&
         Objects.equals(this.timeZone, contact.timeZone) &&
-        Objects.equals(this.utmParameters, contact.utmParameters);
+        Objects.equals(this.utmParameters, contact.utmParameters) &&
+        Objects.equals(this.accountId, contact.accountId) &&
+        Objects.equals(this.assistantName, contact.assistantName) &&
+        Objects.equals(this.assistantPhone, contact.assistantPhone) &&
+        Objects.equals(this.billingInformation, contact.billingInformation) &&
+        Objects.equals(this.createdBy, contact.createdBy) &&
+        Objects.equals(this.lastUpdatedBy, contact.lastUpdatedBy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, links, addresses, company, origin, prefix, suffix, website, updateTime, createTime, scoreValue, tagIds, anniversaryDate, birthDate, contactType, customFields, emailAddresses, familyName, faxNumbers, givenName, jobTitle, leadsourceId, middleName, ownerId, phoneNumbers, preferredLocale, preferredName, referralCode, socialAccounts, sourceType, spouseName, timeZone, utmParameters);
+    return Objects.hash(id, links, addresses, company, origin, prefix, suffix, website, groups, updateTime, createTime, scoreValue, tagIds, anniversaryDate, birthDate, contactType, customFields, emailAddresses, familyName, faxNumbers, givenName, jobTitle, leadsourceId, middleName, ownerId, phoneNumbers, preferredLocale, preferredName, referralCode, socialAccounts, sourceType, spouseName, timeZone, utmParameters, accountId, assistantName, assistantPhone, billingInformation, createdBy, lastUpdatedBy);
   }
 
   @Override
@@ -1178,6 +1381,7 @@ public class Contact implements Serializable {
     sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    suffix: ").append(toIndentedString(suffix)).append("\n");
     sb.append("    website: ").append(toIndentedString(website)).append("\n");
+    sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
     sb.append("    updateTime: ").append(toIndentedString(updateTime)).append("\n");
     sb.append("    createTime: ").append(toIndentedString(createTime)).append("\n");
     sb.append("    scoreValue: ").append(toIndentedString(scoreValue)).append("\n");
@@ -1203,6 +1407,12 @@ public class Contact implements Serializable {
     sb.append("    spouseName: ").append(toIndentedString(spouseName)).append("\n");
     sb.append("    timeZone: ").append(toIndentedString(timeZone)).append("\n");
     sb.append("    utmParameters: ").append(toIndentedString(utmParameters)).append("\n");
+    sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
+    sb.append("    assistantName: ").append(toIndentedString(assistantName)).append("\n");
+    sb.append("    assistantPhone: ").append(toIndentedString(assistantPhone)).append("\n");
+    sb.append("    billingInformation: ").append(toIndentedString(billingInformation)).append("\n");
+    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
+    sb.append("    lastUpdatedBy: ").append(toIndentedString(lastUpdatedBy)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1260,6 +1470,10 @@ public class Contact implements Serializable {
         }
             public Contact.Builder website(String website) {
               this.instance.website = website;
+          return this;
+        }
+            public Contact.Builder groups(String groups) {
+              this.instance.groups = groups;
           return this;
         }
             public Contact.Builder updateTime(String updateTime) {
@@ -1362,6 +1576,30 @@ public class Contact implements Serializable {
               this.instance.utmParameters = utmParameters;
           return this;
         }
+            public Contact.Builder accountId(String accountId) {
+              this.instance.accountId = accountId;
+          return this;
+        }
+            public Contact.Builder assistantName(String assistantName) {
+              this.instance.assistantName = assistantName;
+          return this;
+        }
+            public Contact.Builder assistantPhone(String assistantPhone) {
+              this.instance.assistantPhone = assistantPhone;
+          return this;
+        }
+            public Contact.Builder billingInformation(String billingInformation) {
+              this.instance.billingInformation = billingInformation;
+          return this;
+        }
+            public Contact.Builder createdBy(String createdBy) {
+              this.instance.createdBy = createdBy;
+          return this;
+        }
+            public Contact.Builder lastUpdatedBy(String lastUpdatedBy) {
+              this.instance.lastUpdatedBy = lastUpdatedBy;
+          return this;
+        }
         
     
         /**
@@ -1404,6 +1642,7 @@ public class Contact implements Serializable {
           .prefix(getPrefix())
           .suffix(getSuffix())
           .website(getWebsite())
+          .groups(getGroups())
           .updateTime(getUpdateTime())
           .createTime(getCreateTime())
           .scoreValue(getScoreValue())
@@ -1428,7 +1667,13 @@ public class Contact implements Serializable {
           .sourceType(getSourceType())
           .spouseName(getSpouseName())
           .timeZone(getTimeZone())
-          .utmParameters(getUtmParameters());
+          .utmParameters(getUtmParameters())
+          .accountId(getAccountId())
+          .assistantName(getAssistantName())
+          .assistantPhone(getAssistantPhone())
+          .billingInformation(getBillingInformation())
+          .createdBy(getCreatedBy())
+          .lastUpdatedBy(getLastUpdatedBy());
       }
 }
 

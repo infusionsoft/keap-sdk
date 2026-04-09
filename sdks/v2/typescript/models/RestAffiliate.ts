@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 
+import { CustomFieldValue } from '../models/CustomFieldValue';
 import { HttpFile } from '../http/http';
 
 export class RestAffiliate {
@@ -57,6 +58,10 @@ export class RestAffiliate {
     * Number of days to track leads
     */
     'trackLeadsDays'?: number;
+    /**
+    * List of custom field values applied to this affiliate
+    */
+    'customFields'?: Array<CustomFieldValue>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -128,6 +133,12 @@ export class RestAffiliate {
             "baseName": "track_leads_days",
             "type": "number",
             "format": "int32"
+        },
+        {
+            "name": "customFields",
+            "baseName": "custom_fields",
+            "type": "Array<CustomFieldValue>",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {

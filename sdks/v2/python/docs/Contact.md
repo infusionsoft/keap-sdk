@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **prefix** | **str** | Name prefix | [optional] 
 **suffix** | **str** | Name suffix | [optional] 
 **website** | **str** | Personal website URL | [optional] 
+**groups** | **str** |  | [optional] 
 **update_time** | **str** | Last update timestamp (ISO-8601) | [optional] 
 **create_time** | **str** | Creation timestamp (ISO-8601) | [optional] 
 **score_value** | **str** | Contact score value | [optional] 
@@ -38,6 +39,12 @@ Name | Type | Description | Notes
 **spouse_name** | **str** | Spouse&#39;s name | [optional] 
 **time_zone** | **str** | Contact&#39;s timezone | [optional] 
 **utm_parameters** | [**List[ContactUtmResponse]**](ContactUtmResponse.md) |  | [optional] 
+**account_id** | **str** |  | [optional] 
+**assistant_name** | **str** |  | [optional] 
+**assistant_phone** | **str** |  | [optional] 
+**billing_information** | **str** |  | [optional] 
+**created_by** | **str** |  | [optional] 
+**last_updated_by** | **str** |  | [optional] 
 
 ## Example
 

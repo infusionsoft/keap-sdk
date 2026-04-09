@@ -4914,7 +4914,7 @@ class OrdersApi
      *
      * List orders
      *
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_city&#x60; - (String) &#x60;shipping_region&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_city%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region%3D%3DAZ&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DUS&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -4935,7 +4935,7 @@ class OrdersApi
      *
      * List orders
      *
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_city&#x60; - (String) &#x60;shipping_region&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_city%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region%3D%3DAZ&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DUS&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -5121,7 +5121,7 @@ class OrdersApi
      *
      * List orders
      *
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_city&#x60; - (String) &#x60;shipping_region&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_city%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region%3D%3DAZ&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DUS&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -5145,7 +5145,7 @@ class OrdersApi
      *
      * List orders
      *
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_city&#x60; - (String) &#x60;shipping_region&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_city%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region%3D%3DAZ&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DUS&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -5198,7 +5198,7 @@ class OrdersApi
     /**
      * Create request for operation 'listOrders'
      *
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_city&#x60; - (String) &#x60;shipping_region&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_city%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region%3D%3DAZ&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DUS&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -5682,7 +5682,7 @@ class OrdersApi
      *
      * @param  string $order_id order_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderRequest $update_order_request update_order_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5702,7 +5702,7 @@ class OrdersApi
      *
      * @param  string $order_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderRequest $update_order_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5887,7 +5887,7 @@ class OrdersApi
      *
      * @param  string $order_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderRequest $update_order_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5910,7 +5910,7 @@ class OrdersApi
      *
      * @param  string $order_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderRequest $update_order_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5962,7 +5962,7 @@ class OrdersApi
      *
      * @param  string $order_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderRequest $update_order_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5998,7 +5998,7 @@ class OrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'string', // openApiType
+            'mixed', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -6086,7 +6086,7 @@ class OrdersApi
      *
      * @param  string $custom_field_id custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request update_custom_field_meta_data_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderCustomField'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6106,7 +6106,7 @@ class OrdersApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderCustomField'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6291,7 +6291,7 @@ class OrdersApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6314,7 +6314,7 @@ class OrdersApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6366,7 +6366,7 @@ class OrdersApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6402,7 +6402,7 @@ class OrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'string', // openApiType
+            'mixed', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -6491,7 +6491,7 @@ class OrdersApi
      * @param  string $order_id order_id (required)
      * @param  string $order_item_id order_item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderItemRequest $update_order_item_request update_order_item_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderItem'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6512,7 +6512,7 @@ class OrdersApi
      * @param  string $order_id (required)
      * @param  string $order_item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderItemRequest $update_order_item_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderItem'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6698,7 +6698,7 @@ class OrdersApi
      * @param  string $order_id (required)
      * @param  string $order_item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderItemRequest $update_order_item_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6722,7 +6722,7 @@ class OrdersApi
      * @param  string $order_id (required)
      * @param  string $order_item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderItemRequest $update_order_item_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6775,7 +6775,7 @@ class OrdersApi
      * @param  string $order_id (required)
      * @param  string $order_item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderItemRequest $update_order_item_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6818,7 +6818,7 @@ class OrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'string', // openApiType
+            'mixed', // openApiType
             'form', // style
             true, // explode
             false // required

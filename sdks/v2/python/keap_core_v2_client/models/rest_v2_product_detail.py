@@ -49,8 +49,16 @@ class RestV2ProductDetail(BaseModel):
     state_taxable: Optional[StrictBool] = Field(default=None, description="If state-based taxes should be applied to this product")
     city_taxable: Optional[StrictBool] = Field(default=None, description="If city-based taxes should be applied to this product")
     subscription_plans: Optional[List[SubscriptionPlanDetail]] = Field(default=None, description="List of subscription plans associated with the product. Can be empty.")
+    top_html: Optional[StrictStr] = None
+    bottom_html: Optional[StrictStr] = None
+    is_package: Optional[StrictBool] = None
+    needs_digital_delivery: Optional[StrictBool] = None
+    has_legacy_image: Optional[StrictBool] = None
+    delivery_description: Optional[StrictStr] = None
+    create_time: Optional[StrictStr] = None
+    update_time: Optional[StrictStr] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "name", "price", "active", "description", "sku", "shippable", "weight", "taxable", "categories", "options", "inventory", "short_description", "subscription_only", "storefront_hidden", "country_taxable", "state_taxable", "city_taxable", "subscription_plans"]
+    __properties: ClassVar[List[str]] = ["id", "name", "price", "active", "description", "sku", "shippable", "weight", "taxable", "categories", "options", "inventory", "short_description", "subscription_only", "storefront_hidden", "country_taxable", "state_taxable", "city_taxable", "subscription_plans", "top_html", "bottom_html", "is_package", "needs_digital_delivery", "has_legacy_image", "delivery_description", "create_time", "update_time"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -148,7 +156,15 @@ class RestV2ProductDetail(BaseModel):
             "country_taxable": obj.get("country_taxable"),
             "state_taxable": obj.get("state_taxable"),
             "city_taxable": obj.get("city_taxable"),
-            "subscription_plans": [SubscriptionPlanDetail.from_dict(_item) for _item in obj["subscription_plans"]] if obj.get("subscription_plans") is not None else None
+            "subscription_plans": [SubscriptionPlanDetail.from_dict(_item) for _item in obj["subscription_plans"]] if obj.get("subscription_plans") is not None else None,
+            "top_html": obj.get("top_html"),
+            "bottom_html": obj.get("bottom_html"),
+            "is_package": obj.get("is_package"),
+            "needs_digital_delivery": obj.get("needs_digital_delivery"),
+            "has_legacy_image": obj.get("has_legacy_image"),
+            "delivery_description": obj.get("delivery_description"),
+            "create_time": obj.get("create_time"),
+            "update_time": obj.get("update_time")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

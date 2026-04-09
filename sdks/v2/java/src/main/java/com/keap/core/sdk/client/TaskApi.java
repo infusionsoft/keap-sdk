@@ -750,7 +750,7 @@ import io.github.resilience4j.retry.Retry;
    * @return UpdateTaskResponse
    * @throws ApiException if fails to make API call
    */
-  public UpdateTaskResponse updateTask(String taskId, CreateUpdateTaskRequest createUpdateTaskRequest, String updateMask) throws ApiException {
+  public UpdateTaskResponse updateTask(String taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object updateMask) throws ApiException {
     ApiResponse<UpdateTaskResponse> localVarResponse = updateTaskWithHttpInfo(taskId, createUpdateTaskRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -764,7 +764,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;UpdateTaskResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<UpdateTaskResponse> updateTaskWithHttpInfo(String taskId, CreateUpdateTaskRequest createUpdateTaskRequest, String updateMask) throws ApiException {
+  public ApiResponse<UpdateTaskResponse> updateTaskWithHttpInfo(String taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateTaskRequestBuilder(taskId, createUpdateTaskRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -805,7 +805,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateTaskRequestBuilder(String taskId, CreateUpdateTaskRequest createUpdateTaskRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateTaskRequestBuilder(String taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'taskId' is set
     if (taskId == null) {
       throw new ApiException(400, "Missing the required parameter 'taskId' when calling updateTask");
@@ -865,7 +865,7 @@ import io.github.resilience4j.retry.Retry;
    * @return CustomFieldMetaData
    * @throws ApiException if fails to make API call
    */
-  public CustomFieldMetaData updateTaskCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, String updateMask) throws ApiException {
+  public CustomFieldMetaData updateTaskCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
     ApiResponse<CustomFieldMetaData> localVarResponse = updateTaskCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -879,7 +879,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;CustomFieldMetaData&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CustomFieldMetaData> updateTaskCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, String updateMask) throws ApiException {
+  public ApiResponse<CustomFieldMetaData> updateTaskCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateTaskCustomFieldRequestBuilder(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -920,7 +920,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateTaskCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateTaskCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'customFieldId' is set
     if (customFieldId == null) {
       throw new ApiException(400, "Missing the required parameter 'customFieldId' when calling updateTaskCustomField");

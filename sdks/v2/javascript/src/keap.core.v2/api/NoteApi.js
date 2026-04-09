@@ -423,7 +423,7 @@ export default class NoteApi {
      * @param {String} noteId 
      * @param {module:keap.core.v2/model/UpdateNoteRequest} updateNoteRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/UpdateNoteResponse} and HTTP response
      */
     updateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, opts) {
@@ -472,7 +472,7 @@ export default class NoteApi {
      * @param {String} noteId 
      * @param {module:keap.core.v2/model/UpdateNoteRequest} updateNoteRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/UpdateNoteResponse}
      */
     updateNote(contactId, noteId, updateNoteRequest, opts) {
@@ -489,7 +489,7 @@ export default class NoteApi {
      * @param {String} customFieldId 
      * @param {module:keap.core.v2/model/UpdateCustomFieldMetaDataRequest} updateCustomFieldMetaDataRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldMetaData} and HTTP response
      */
     updateNotesCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, opts) {
@@ -532,7 +532,7 @@ export default class NoteApi {
      * @param {String} customFieldId 
      * @param {module:keap.core.v2/model/UpdateCustomFieldMetaDataRequest} updateCustomFieldMetaDataRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldMetaData}
      */
     updateNotesCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts) {

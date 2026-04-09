@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**deleteProductImage**](ProductsApi.md#deleteProductImage) | **DELETE** /rest/v2/products/{product_id}/images | Delete the Product Image
 [**deleteProductOption**](ProductsApi.md#deleteProductOption) | **DELETE** /rest/v2/products/{product_id}/options/{product_option_id} | Delete a Product Option
 [**deleteProductOptionListOptionValue**](ProductsApi.md#deleteProductOptionListOptionValue) | **DELETE** /rest/v2/products/{product_id}/options/{product_option_id}/listItems/{item_id} | Delete a Product Option List Item
+[**getFileData**](ProductsApi.md#getFileData) | **GET** /rest/v2/products/{product_id}/images/legacyImageData | Retrieve Product Legacy Image Data
 [**getProduct**](ProductsApi.md#getProduct) | **GET** /rest/v2/products/{product_id} | Get a Product
 [**getProductOption**](ProductsApi.md#getProductOption) | **GET** /rest/v2/products/{product_id}/options/{product_option_id} | Get Product Option
 [**listProductOptions**](ProductsApi.md#listProductOptions) | **GET** /rest/v2/products/{product_id}/options | List Product Options
@@ -199,6 +200,11 @@ const request: ProductsApiCreateProductRequest = {
     countryTaxable: false,
     stateTaxable: true,
     cityTaxable: false,
+    topHtml: "topHtml_example",
+    bottomHtml: "bottomHtml_example",
+    isPackage: true,
+    needsDigitalDelivery: true,
+    deliveryDescription: "deliveryDescription_example",
   },
 };
 
@@ -258,10 +264,12 @@ const configuration = createConfiguration();
 const apiInstance = new ProductsApi(configuration);
 
 const request: ProductsApiCreateProductImageRequest = {
-    // product_id
+    // The product ID
   productId: "product_id_example",
-    // File to upload
+    // The image file to upload
   file: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
+    // Set to \'true\' if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. (optional)
+  legacy: true,
 };
 
 const data = await apiInstance.createProductImage(request);
@@ -273,8 +281,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **productId** | [**string**] | product_id | defaults to undefined
- **file** | [**HttpFile**] | File to upload | defaults to undefined
+ **productId** | [**string**] | The product ID | defaults to undefined
+ **file** | [**HttpFile**] | The image file to upload | defaults to undefined
+ **legacy** | [**boolean**] | Set to \&#39;true\&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. | (optional) defaults to undefined
 
 
 ### Return type
@@ -639,6 +648,66 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getFileData**
+> string getFileData()
+
+Retrieves the product\'s legacy image
+
+### Example
+
+
+```typescript
+import { createConfiguration, ProductsApi } from '';
+import type { ProductsApiGetFileDataRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new ProductsApi(configuration);
+
+const request: ProductsApiGetFileDataRequest = {
+    // product_id
+  productId: "product_id_example",
+};
+
+const data = await apiInstance.getFileData(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **productId** | [**string**] | product_id | defaults to undefined
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **getProduct**
 > RestV2ProductDetail getProduct()
 
@@ -928,11 +997,14 @@ const request: ProductsApiUpdateProductRequest = {
     inventoryLimit: 100,
     outOfStockEnabled: false,
     emailForInventoryNotifications: "notify@example.com",
+    topHtml: "topHtml_example",
+    bottomHtml: "bottomHtml_example",
+    isPackage: true,
+    needsDigitalDelivery: true,
+    deliveryDescription: "deliveryDescription_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: `active,name,description,price,sku,shippable,short_description,subscription_only,
-storefront_hidden,weight,taxable,country_taxable,city_taxable,state_taxable,
-inventory_limit,out_of_stock_enabled,email_for_inventory_notifications`,
+  updateMask: null,
 };
 
 const data = await apiInstance.updateProduct(request);
@@ -946,7 +1018,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateProductRequestDetail** | **UpdateProductRequestDetail**|  |
  **productId** | [**string**] | product_id | defaults to undefined
- **updateMask** | [**&#39;active,name,description,price,sku,shippable,short_description,subscription_only, storefront_hidden,weight,taxable,country_taxable,city_taxable,state_taxable, inventory_limit,out_of_stock_enabled,email_for_inventory_notifications&#39;**]**Array<&#39;active,name,description,price,sku,shippable,short_description,subscription_only, storefront_hidden,weight,taxable,country_taxable,city_taxable,state_taxable, inventory_limit,out_of_stock_enabled,email_for_inventory_notifications&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -1011,8 +1083,7 @@ const request: ProductsApiUpdateProductOptionRequest = {
     errorMessage: "errorMessage_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: `option_label,display_order,required,minimum_characters,maximum_characters,allow_spaces,
-only_starts_with,only_ends_with,only_contains,error_message`,
+  updateMask: null,
 };
 
 const data = await apiInstance.updateProductOption(request);
@@ -1027,7 +1098,7 @@ Name | Type | Description  | Notes
  **updateProductOptionRequest** | **UpdateProductOptionRequest**|  |
  **productId** | [**string**] | product_id | defaults to undefined
  **productOptionId** | [**string**] | product_option_id | defaults to undefined
- **updateMask** | [**&#39;option_label,display_order,required,minimum_characters,maximum_characters,allow_spaces, only_starts_with,only_ends_with,only_contains,error_message&#39;**]**Array<&#39;option_label,display_order,required,minimum_characters,maximum_characters,allow_spaces, only_starts_with,only_ends_with,only_contains,error_message&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -1088,8 +1159,7 @@ const request: ProductsApiUpdateProductOptionListOptionValueRequest = {
     priceAdjustment: 3.14,
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: `item_label,item_code,item_display_order,price_adjustment
-`,
+  updateMask: null,
 };
 
 const data = await apiInstance.updateProductOptionListOptionValue(request);
@@ -1105,7 +1175,7 @@ Name | Type | Description  | Notes
  **productId** | [**string**] | product_id | defaults to undefined
  **productOptionId** | [**string**] | product_option_id | defaults to undefined
  **itemId** | [**string**] | item_id | defaults to undefined
- **updateMask** | [**&#39;item_label,item_code,item_display_order,price_adjustment &#39;**]**Array<&#39;item_label,item_code,item_display_order,price_adjustment &#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

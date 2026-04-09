@@ -482,7 +482,7 @@ const request: ProductCategoriesApiUpdateProductCategoryRequest = {
     parentCategoryId: "2",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: "name,display_order_index,parent_category_id",
+  updateMask: null,
 };
 
 const data = await apiInstance.updateProductCategory(request);
@@ -496,7 +496,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateProductCategoryRequest** | **UpdateProductCategoryRequest**|  |
  **categoryId** | [**string**] |  | defaults to undefined
- **updateMask** | [**&#39;name,display_order_index,parent_category_id&#39;**]**Array<&#39;name,display_order_index,parent_category_id&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

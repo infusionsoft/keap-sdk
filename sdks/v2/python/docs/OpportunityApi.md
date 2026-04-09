@@ -785,7 +785,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.OpportunityApi(api_client)
     opportunity_id = 'opportunity_id_example' # str | 
     update_opportunity_request_v2 = keap_core_v2_client.UpdateOpportunityRequestV2() # UpdateOpportunityRequestV2 | 
-    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update an opportunity
@@ -804,7 +804,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **opportunity_id** | **str**|  | 
  **update_opportunity_request_v2** | [**UpdateOpportunityRequestV2**](UpdateOpportunityRequestV2.md)|  | 
- **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -870,7 +870,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.OpportunityApi(api_client)
     custom_field_id = 'custom_field_id_example' # str | 
     update_custom_field_meta_data_request = keap_core_v2_client.UpdateCustomFieldMetaDataRequest() # UpdateCustomFieldMetaDataRequest | 
-    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Opportunity's Custom Field
@@ -889,7 +889,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **custom_field_id** | **str**|  | 
  **update_custom_field_meta_data_request** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | 
- **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -955,7 +955,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.OpportunityApi(api_client)
     stage_id = 'stage_id_example' # str | 
     update_opportunity_stage_request = keap_core_v2_client.UpdateOpportunityStageRequest() # UpdateOpportunityStageRequest | 
-    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update an Opportunity Stage
@@ -974,7 +974,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **stage_id** | **str**|  | 
  **update_opportunity_stage_request** | [**UpdateOpportunityStageRequest**](UpdateOpportunityStageRequest.md)|  | 
- **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

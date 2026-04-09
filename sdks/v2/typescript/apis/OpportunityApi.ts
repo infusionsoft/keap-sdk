@@ -454,7 +454,7 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateOpportunityRequestV2 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateOpportunity(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: 'opportunity_title,next_action_time,next_action_notes,opportunity_notes, estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high, contact_id,stage_id,user_id,custom_fields,affiliate_id', _options?: Configuration): Promise<RequestContext> {
+    public async updateOpportunity(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'opportunityId' is not null or undefined
@@ -480,7 +480,10 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'opportunity_title,next_action_time,next_action_notes,opportunity_notes, estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high, contact_id,stage_id,user_id,custom_fields,affiliate_id'", ""));
+            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
+            }
         }
 
 
@@ -517,7 +520,7 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateCustomFieldMetaDataRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateOpportunityCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: 'group_id,label,options', _options?: Configuration): Promise<RequestContext> {
+    public async updateOpportunityCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'customFieldId' is not null or undefined
@@ -543,7 +546,10 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'group_id,label,options'", ""));
+            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
+            }
         }
 
 
@@ -580,7 +586,7 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateOpportunityStageRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateOpportunityStage(stageId: string, updateOpportunityStageRequest: UpdateOpportunityStageRequest, updateMask?: 'name,order,target_number_days,probability,checklist_items', _options?: Configuration): Promise<RequestContext> {
+    public async updateOpportunityStage(stageId: string, updateOpportunityStageRequest: UpdateOpportunityStageRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'stageId' is not null or undefined
@@ -606,7 +612,10 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'name,order,target_number_days,probability,checklist_items'", ""));
+            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
+            }
         }
 
 

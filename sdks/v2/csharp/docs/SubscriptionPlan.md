@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **DisplayOrderIndex** | **int** | The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list. | [optional] 
 **TotalCycles** | **int** | Total number of cycles the plan will run before ending. Value of 0 indicates plan will never end. | [optional] 
 **PlanPrice** | [**CurrencyValue**](CurrencyValue.md) | The price of the subscription plan. | [optional] 
+**PreauthorizeAmount** | **double** | The pre-authorize amount for the subscription plan. If null, this field is omitted from the response. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

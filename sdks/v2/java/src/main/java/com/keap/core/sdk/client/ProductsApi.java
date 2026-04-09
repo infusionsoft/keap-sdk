@@ -407,24 +407,26 @@ import io.github.resilience4j.retry.Retry;
   /**
    * Create the Product Image
    * Creates the Product Image file and uploads it to the specified Product
-   * @param productId product_id (required)
-   * @param _file File to upload (required)
+   * @param productId The product ID (required)
+   * @param _file The image file to upload (required)
+   * @param legacy Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. (optional)
    * @throws ApiException if fails to make API call
    */
-  public void createProductImage(String productId, File _file) throws ApiException {
-    createProductImageWithHttpInfo(productId, _file);
+  public void createProductImage(String productId, File _file, Boolean legacy) throws ApiException {
+    createProductImageWithHttpInfo(productId, _file, legacy);
   }
 
   /**
    * Create the Product Image
    * Creates the Product Image file and uploads it to the specified Product
-   * @param productId product_id (required)
-   * @param _file File to upload (required)
+   * @param productId The product ID (required)
+   * @param _file The image file to upload (required)
+   * @param legacy Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. (optional)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> createProductImageWithHttpInfo(String productId, File _file) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = createProductImageRequestBuilder(productId, _file);
+  public ApiResponse<Void> createProductImageWithHttpInfo(String productId, File _file, Boolean legacy) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createProductImageRequestBuilder(productId, _file, legacy);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -469,7 +471,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder createProductImageRequestBuilder(String productId, File _file) throws ApiException {
+  private HttpRequest.Builder createProductImageRequestBuilder(String productId, File _file, Boolean legacy) throws ApiException {
     // verify the required parameter 'productId' is set
     if (productId == null) {
       throw new ApiException(400, "Missing the required parameter 'productId' when calling createProductImage");
@@ -484,7 +486,22 @@ import io.github.resilience4j.retry.Retry;
     String localVarPath = "/rest/v2/products/{product_id}/images"
         .replace("{product_id}", ApiClient.urlEncode(productId.toString()));
 
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "legacy";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("legacy", legacy));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
 
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
@@ -1008,6 +1025,92 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Retrieve Product Legacy Image Data
+   * Retrieves the product&#39;s legacy image
+   * @param productId product_id (required)
+   * @return byte[]
+   * @throws ApiException if fails to make API call
+   */
+  public byte[] getFileData(String productId) throws ApiException {
+    ApiResponse<byte[]> localVarResponse = getFileDataWithHttpInfo(productId);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Retrieve Product Legacy Image Data
+   * Retrieves the product&#39;s legacy image
+   * @param productId product_id (required)
+   * @return ApiResponse&lt;byte[]&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<byte[]> getFileDataWithHttpInfo(String productId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getFileDataRequestBuilder(productId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getFileData", localVarResponse);
+        }
+        return new ApiResponse<byte[]>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<byte[]>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getFileDataRequestBuilder(String productId) throws ApiException {
+    // verify the required parameter 'productId' is set
+    if (productId == null) {
+      throw new ApiException(400, "Missing the required parameter 'productId' when calling getFileData");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/products/{product_id}/images/legacyImageData"
+        .replace("{product_id}", ApiClient.urlEncode(productId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Get a Product
    * Gets a single Product
    * @param productId product_id (required)
@@ -1389,7 +1492,7 @@ import io.github.resilience4j.retry.Retry;
    * @return RestV2ProductDetail
    * @throws ApiException if fails to make API call
    */
-  public RestV2ProductDetail updateProduct(String productId, UpdateProductRequestDetail updateProductRequestDetail, String updateMask) throws ApiException {
+  public RestV2ProductDetail updateProduct(String productId, UpdateProductRequestDetail updateProductRequestDetail, Object updateMask) throws ApiException {
     ApiResponse<RestV2ProductDetail> localVarResponse = updateProductWithHttpInfo(productId, updateProductRequestDetail, updateMask);
     return localVarResponse.getData();
   }
@@ -1403,7 +1506,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;RestV2ProductDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RestV2ProductDetail> updateProductWithHttpInfo(String productId, UpdateProductRequestDetail updateProductRequestDetail, String updateMask) throws ApiException {
+  public ApiResponse<RestV2ProductDetail> updateProductWithHttpInfo(String productId, UpdateProductRequestDetail updateProductRequestDetail, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateProductRequestBuilder(productId, updateProductRequestDetail, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1444,7 +1547,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateProductRequestBuilder(String productId, UpdateProductRequestDetail updateProductRequestDetail, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateProductRequestBuilder(String productId, UpdateProductRequestDetail updateProductRequestDetail, Object updateMask) throws ApiException {
     // verify the required parameter 'productId' is set
     if (productId == null) {
       throw new ApiException(400, "Missing the required parameter 'productId' when calling updateProduct");
@@ -1505,7 +1608,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ProductOption
    * @throws ApiException if fails to make API call
    */
-  public ProductOption updateProductOption(String productId, String productOptionId, UpdateProductOptionRequest updateProductOptionRequest, String updateMask) throws ApiException {
+  public ProductOption updateProductOption(String productId, String productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object updateMask) throws ApiException {
     ApiResponse<ProductOption> localVarResponse = updateProductOptionWithHttpInfo(productId, productOptionId, updateProductOptionRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -1520,7 +1623,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;ProductOption&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ProductOption> updateProductOptionWithHttpInfo(String productId, String productOptionId, UpdateProductOptionRequest updateProductOptionRequest, String updateMask) throws ApiException {
+  public ApiResponse<ProductOption> updateProductOptionWithHttpInfo(String productId, String productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateProductOptionRequestBuilder(productId, productOptionId, updateProductOptionRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1561,7 +1664,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateProductOptionRequestBuilder(String productId, String productOptionId, UpdateProductOptionRequest updateProductOptionRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateProductOptionRequestBuilder(String productId, String productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'productId' is set
     if (productId == null) {
       throw new ApiException(400, "Missing the required parameter 'productId' when calling updateProductOption");
@@ -1628,7 +1731,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ProductOption
    * @throws ApiException if fails to make API call
    */
-  public ProductOption updateProductOptionListOptionValue(String productId, String productOptionId, String itemId, UpdateProductOptionListOption updateProductOptionListOption, String updateMask) throws ApiException {
+  public ProductOption updateProductOptionListOptionValue(String productId, String productOptionId, String itemId, UpdateProductOptionListOption updateProductOptionListOption, Object updateMask) throws ApiException {
     ApiResponse<ProductOption> localVarResponse = updateProductOptionListOptionValueWithHttpInfo(productId, productOptionId, itemId, updateProductOptionListOption, updateMask);
     return localVarResponse.getData();
   }
@@ -1644,7 +1747,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;ProductOption&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ProductOption> updateProductOptionListOptionValueWithHttpInfo(String productId, String productOptionId, String itemId, UpdateProductOptionListOption updateProductOptionListOption, String updateMask) throws ApiException {
+  public ApiResponse<ProductOption> updateProductOptionListOptionValueWithHttpInfo(String productId, String productOptionId, String itemId, UpdateProductOptionListOption updateProductOptionListOption, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateProductOptionListOptionValueRequestBuilder(productId, productOptionId, itemId, updateProductOptionListOption, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1685,7 +1788,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateProductOptionListOptionValueRequestBuilder(String productId, String productOptionId, String itemId, UpdateProductOptionListOption updateProductOptionListOption, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateProductOptionListOptionValueRequestBuilder(String productId, String productOptionId, String itemId, UpdateProductOptionListOption updateProductOptionListOption, Object updateMask) throws ApiException {
     // verify the required parameter 'productId' is set
     if (productId == null) {
       throw new ApiException(400, "Missing the required parameter 'productId' when calling updateProductOptionListOptionValue");

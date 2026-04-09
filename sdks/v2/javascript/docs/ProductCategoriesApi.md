@@ -384,7 +384,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.ProductCategoriesApi();
 let categoryId = "categoryId_example"; // String | 
 let updateProductCategoryRequest = new KeapCoreServiceV2Sdk.UpdateProductCategoryRequest(); // UpdateProductCategoryRequest | 
 let opts = {
-  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateProductCategory(categoryId, updateProductCategoryRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -401,7 +401,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **categoryId** | **String**|  | 
  **updateProductCategoryRequest** | [**UpdateProductCategoryRequest**](UpdateProductCategoryRequest.md)|  | 
- **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

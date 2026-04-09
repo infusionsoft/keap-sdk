@@ -81,6 +81,11 @@ export class UpdateProductRequestDetail {
     * The email address for notifications about inventory
     */
     'emailForInventoryNotifications'?: string;
+    'topHtml'?: string;
+    'bottomHtml'?: string;
+    'isPackage'?: boolean;
+    'needsDigitalDelivery'?: boolean;
+    'deliveryDescription'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -186,6 +191,36 @@ export class UpdateProductRequestDetail {
         {
             "name": "emailForInventoryNotifications",
             "baseName": "email_for_inventory_notifications",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "topHtml",
+            "baseName": "top_html",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "bottomHtml",
+            "baseName": "bottom_html",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "isPackage",
+            "baseName": "is_package",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "needsDigitalDelivery",
+            "baseName": "needs_digital_delivery",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "deliveryDescription",
+            "baseName": "delivery_description",
             "type": "string",
             "format": ""
         }    ];

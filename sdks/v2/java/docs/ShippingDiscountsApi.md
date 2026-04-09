@@ -690,7 +690,7 @@ public class Example {
         ShippingDiscountsApi apiInstance = new ShippingDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | 
         UpdateShippingDiscountRequest updateShippingDiscountRequest = new UpdateShippingDiscountRequest(); // UpdateShippingDiscountRequest | 
-        String updateMask = "name,description,discount_type,discount_value,criteria"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ShippingDiscount result = apiInstance.updateShippingDiscount(discountId, updateShippingDiscountRequest, updateMask);
             System.out.println(result);
@@ -712,7 +712,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **discountId** | **String**|  | |
 | **updateShippingDiscountRequest** | [**UpdateShippingDiscountRequest**](UpdateShippingDiscountRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,description,discount_type,discount_value,criteria] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -772,7 +772,7 @@ public class Example {
         ShippingDiscountsApi apiInstance = new ShippingDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | 
         UpdateShippingDiscountRequest updateShippingDiscountRequest = new UpdateShippingDiscountRequest(); // UpdateShippingDiscountRequest | 
-        String updateMask = "name,description,discount_type,discount_value,criteria"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<ShippingDiscount> response = apiInstance.updateShippingDiscountWithHttpInfo(discountId, updateShippingDiscountRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -796,7 +796,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **discountId** | **String**|  | |
 | **updateShippingDiscountRequest** | [**UpdateShippingDiscountRequest**](UpdateShippingDiscountRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,description,discount_type,discount_value,criteria] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

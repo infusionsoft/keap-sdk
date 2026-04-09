@@ -484,7 +484,7 @@ import io.github.resilience4j.retry.Retry;
    * @return LeadSourceCategory
    * @throws ApiException if fails to make API call
    */
-  public LeadSourceCategory updateLeadSourceCategory(String leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, String updateMask) throws ApiException {
+  public LeadSourceCategory updateLeadSourceCategory(String leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, Object updateMask) throws ApiException {
     ApiResponse<LeadSourceCategory> localVarResponse = updateLeadSourceCategoryWithHttpInfo(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -498,7 +498,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;LeadSourceCategory&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LeadSourceCategory> updateLeadSourceCategoryWithHttpInfo(String leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, String updateMask) throws ApiException {
+  public ApiResponse<LeadSourceCategory> updateLeadSourceCategoryWithHttpInfo(String leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateLeadSourceCategoryRequestBuilder(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -539,7 +539,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateLeadSourceCategoryRequestBuilder(String leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateLeadSourceCategoryRequestBuilder(String leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'leadSourceCategoryId' is set
     if (leadSourceCategoryId == null) {
       throw new ApiException(400, "Missing the required parameter 'leadSourceCategoryId' when calling updateLeadSourceCategory");

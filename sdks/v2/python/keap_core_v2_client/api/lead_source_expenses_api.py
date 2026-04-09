@@ -16,8 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr, field_validator
-from typing import Optional
+from pydantic import Field, StrictStr
+from typing import Any, Optional
 from typing_extensions import Annotated
 from keap_core_v2_client.models.create_lead_source_expense_request import CreateLeadSourceExpenseRequest
 from keap_core_v2_client.models.lead_source_expense import LeadSourceExpense
@@ -949,7 +949,7 @@ class LeadSourceExpensesApi:
     @validate_call
     def list_lead_source_expenses(
         self,
-        lead_source_id: Annotated[StrictStr, Field(description="The ID of the lead source this expense belongs to")],
+        lead_source_id: Annotated[StrictStr, Field(description="The ID of the lead source this expense belongs to. Use '-' as a wildcard (e.g. /v2/leadSources/-/expenses).")],
         filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are:  - (String) `title` - (Long) `amount` - (String) `incurred_time` - (String) `create_time` - (String) `update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=amount%3D%3D2500` - `filter=incurred_time%3D%3D2024-12-22T01:00:00.000Z`")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields:  - `title` - `amount` - `incurred_time` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
@@ -971,7 +971,7 @@ class LeadSourceExpensesApi:
 
         Retrieves a list of lead source expenses
 
-        :param lead_source_id: The ID of the lead source this expense belongs to (required)
+        :param lead_source_id: The ID of the lead source this expense belongs to. Use '-' as a wildcard (e.g. /v2/leadSources/-/expenses). (required)
         :type lead_source_id: str
         :param filter: Filter to apply, allowed fields are:  - (String) `title` - (Long) `amount` - (String) `incurred_time` - (String) `create_time` - (String) `update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=amount%3D%3D2500` - `filter=incurred_time%3D%3D2024-12-22T01:00:00.000Z`
         :type filter: str
@@ -1039,7 +1039,7 @@ class LeadSourceExpensesApi:
     @validate_call
     def list_lead_source_expenses_with_http_info(
         self,
-        lead_source_id: Annotated[StrictStr, Field(description="The ID of the lead source this expense belongs to")],
+        lead_source_id: Annotated[StrictStr, Field(description="The ID of the lead source this expense belongs to. Use '-' as a wildcard (e.g. /v2/leadSources/-/expenses).")],
         filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are:  - (String) `title` - (Long) `amount` - (String) `incurred_time` - (String) `create_time` - (String) `update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=amount%3D%3D2500` - `filter=incurred_time%3D%3D2024-12-22T01:00:00.000Z`")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields:  - `title` - `amount` - `incurred_time` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
@@ -1061,7 +1061,7 @@ class LeadSourceExpensesApi:
 
         Retrieves a list of lead source expenses
 
-        :param lead_source_id: The ID of the lead source this expense belongs to (required)
+        :param lead_source_id: The ID of the lead source this expense belongs to. Use '-' as a wildcard (e.g. /v2/leadSources/-/expenses). (required)
         :type lead_source_id: str
         :param filter: Filter to apply, allowed fields are:  - (String) `title` - (Long) `amount` - (String) `incurred_time` - (String) `create_time` - (String) `update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=amount%3D%3D2500` - `filter=incurred_time%3D%3D2024-12-22T01:00:00.000Z`
         :type filter: str
@@ -1129,7 +1129,7 @@ class LeadSourceExpensesApi:
     @validate_call
     def list_lead_source_expenses_without_preload_content(
         self,
-        lead_source_id: Annotated[StrictStr, Field(description="The ID of the lead source this expense belongs to")],
+        lead_source_id: Annotated[StrictStr, Field(description="The ID of the lead source this expense belongs to. Use '-' as a wildcard (e.g. /v2/leadSources/-/expenses).")],
         filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are:  - (String) `title` - (Long) `amount` - (String) `incurred_time` - (String) `create_time` - (String) `update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=amount%3D%3D2500` - `filter=incurred_time%3D%3D2024-12-22T01:00:00.000Z`")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields:  - `title` - `amount` - `incurred_time` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
@@ -1151,7 +1151,7 @@ class LeadSourceExpensesApi:
 
         Retrieves a list of lead source expenses
 
-        :param lead_source_id: The ID of the lead source this expense belongs to (required)
+        :param lead_source_id: The ID of the lead source this expense belongs to. Use '-' as a wildcard (e.g. /v2/leadSources/-/expenses). (required)
         :type lead_source_id: str
         :param filter: Filter to apply, allowed fields are:  - (String) `title` - (Long) `amount` - (String) `incurred_time` - (String) `create_time` - (String) `update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=amount%3D%3D2500` - `filter=incurred_time%3D%3D2024-12-22T01:00:00.000Z`
         :type filter: str
@@ -1302,7 +1302,7 @@ class LeadSourceExpensesApi:
         lead_source_expense_id: Annotated[StrictStr, Field(description="The ID of a lead source expense")],
         lead_source_id: Annotated[StrictStr, Field(description="The ID of the lead source this expense belongs to")],
         update_lead_source_expense_request: UpdateLeadSourceExpenseRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1327,7 +1327,7 @@ class LeadSourceExpensesApi:
         :param update_lead_source_expense_request: (required)
         :type update_lead_source_expense_request: UpdateLeadSourceExpenseRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1388,7 +1388,7 @@ class LeadSourceExpensesApi:
         lead_source_expense_id: Annotated[StrictStr, Field(description="The ID of a lead source expense")],
         lead_source_id: Annotated[StrictStr, Field(description="The ID of the lead source this expense belongs to")],
         update_lead_source_expense_request: UpdateLeadSourceExpenseRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1413,7 +1413,7 @@ class LeadSourceExpensesApi:
         :param update_lead_source_expense_request: (required)
         :type update_lead_source_expense_request: UpdateLeadSourceExpenseRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1474,7 +1474,7 @@ class LeadSourceExpensesApi:
         lead_source_expense_id: Annotated[StrictStr, Field(description="The ID of a lead source expense")],
         lead_source_id: Annotated[StrictStr, Field(description="The ID of the lead source this expense belongs to")],
         update_lead_source_expense_request: UpdateLeadSourceExpenseRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1499,7 +1499,7 @@ class LeadSourceExpensesApi:
         :param update_lead_source_expense_request: (required)
         :type update_lead_source_expense_request: UpdateLeadSourceExpenseRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of

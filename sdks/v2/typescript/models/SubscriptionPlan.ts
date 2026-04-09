@@ -50,6 +50,10 @@ export class SubscriptionPlan {
     * The price of the subscription plan.
     */
     'planPrice'?: CurrencyValue;
+    /**
+    * The pre-authorize amount for the subscription plan. If null, this field is omitted from the response.
+    */
+    'preauthorizeAmount'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -109,6 +113,12 @@ export class SubscriptionPlan {
             "baseName": "plan_price",
             "type": "CurrencyValue",
             "format": ""
+        },
+        {
+            "name": "preauthorizeAmount",
+            "baseName": "preauthorize_amount",
+            "type": "number",
+            "format": "double"
         }    ];
 
     static getAttributeTypeMap() {

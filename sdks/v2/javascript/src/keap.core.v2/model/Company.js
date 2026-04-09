@@ -63,6 +63,15 @@ class Company {
             if (data.hasOwnProperty('website')) {
                 obj['website'] = ApiClient.convertToType(data['website'], 'String');
             }
+            if (data.hasOwnProperty('suffix')) {
+                obj['suffix'] = ApiClient.convertToType(data['suffix'], 'String');
+            }
+            if (data.hasOwnProperty('title')) {
+                obj['title'] = ApiClient.convertToType(data['title'], 'String');
+            }
+            if (data.hasOwnProperty('groups')) {
+                obj['groups'] = ApiClient.convertToType(data['groups'], 'String');
+            }
             if (data.hasOwnProperty('company_name')) {
                 obj['company_name'] = ApiClient.convertToType(data['company_name'], 'String');
             }
@@ -83,6 +92,57 @@ class Company {
             }
             if (data.hasOwnProperty('create_time')) {
                 obj['create_time'] = ApiClient.convertToType(data['create_time'], 'String');
+            }
+            if (data.hasOwnProperty('anniversary_date')) {
+                obj['anniversary_date'] = ApiClient.convertToType(data['anniversary_date'], 'String');
+            }
+            if (data.hasOwnProperty('assistant_name')) {
+                obj['assistant_name'] = ApiClient.convertToType(data['assistant_name'], 'String');
+            }
+            if (data.hasOwnProperty('assistant_phone')) {
+                obj['assistant_phone'] = ApiClient.convertToType(data['assistant_phone'], 'String');
+            }
+            if (data.hasOwnProperty('billing_information')) {
+                obj['billing_information'] = ApiClient.convertToType(data['billing_information'], 'String');
+            }
+            if (data.hasOwnProperty('birth_date')) {
+                obj['birth_date'] = ApiClient.convertToType(data['birth_date'], 'String');
+            }
+            if (data.hasOwnProperty('contact_type')) {
+                obj['contact_type'] = ApiClient.convertToType(data['contact_type'], 'String');
+            }
+            if (data.hasOwnProperty('first_name')) {
+                obj['first_name'] = ApiClient.convertToType(data['first_name'], 'String');
+            }
+            if (data.hasOwnProperty('job_title')) {
+                obj['job_title'] = ApiClient.convertToType(data['job_title'], 'String');
+            }
+            if (data.hasOwnProperty('last_name')) {
+                obj['last_name'] = ApiClient.convertToType(data['last_name'], 'String');
+            }
+            if (data.hasOwnProperty('middle_name')) {
+                obj['middle_name'] = ApiClient.convertToType(data['middle_name'], 'String');
+            }
+            if (data.hasOwnProperty('preferred_name')) {
+                obj['preferred_name'] = ApiClient.convertToType(data['preferred_name'], 'String');
+            }
+            if (data.hasOwnProperty('owner_id')) {
+                obj['owner_id'] = ApiClient.convertToType(data['owner_id'], 'String');
+            }
+            if (data.hasOwnProperty('referral_code')) {
+                obj['referral_code'] = ApiClient.convertToType(data['referral_code'], 'String');
+            }
+            if (data.hasOwnProperty('spouse_name')) {
+                obj['spouse_name'] = ApiClient.convertToType(data['spouse_name'], 'String');
+            }
+            if (data.hasOwnProperty('account_id')) {
+                obj['account_id'] = ApiClient.convertToType(data['account_id'], 'String');
+            }
+            if (data.hasOwnProperty('created_by')) {
+                obj['created_by'] = ApiClient.convertToType(data['created_by'], 'String');
+            }
+            if (data.hasOwnProperty('last_updated_by')) {
+                obj['last_updated_by'] = ApiClient.convertToType(data['last_updated_by'], 'String');
             }
         }
         return obj;
@@ -109,6 +169,18 @@ class Company {
         // ensure the json data is a string
         if (data['website'] && !(typeof data['website'] === 'string' || data['website'] instanceof String)) {
             throw new Error("Expected the field `website` to be a primitive type in the JSON string but got " + data['website']);
+        }
+        // ensure the json data is a string
+        if (data['suffix'] && !(typeof data['suffix'] === 'string' || data['suffix'] instanceof String)) {
+            throw new Error("Expected the field `suffix` to be a primitive type in the JSON string but got " + data['suffix']);
+        }
+        // ensure the json data is a string
+        if (data['title'] && !(typeof data['title'] === 'string' || data['title'] instanceof String)) {
+            throw new Error("Expected the field `title` to be a primitive type in the JSON string but got " + data['title']);
+        }
+        // ensure the json data is a string
+        if (data['groups'] && !(typeof data['groups'] === 'string' || data['groups'] instanceof String)) {
+            throw new Error("Expected the field `groups` to be a primitive type in the JSON string but got " + data['groups']);
         }
         // ensure the json data is a string
         if (data['company_name'] && !(typeof data['company_name'] === 'string' || data['company_name'] instanceof String)) {
@@ -144,6 +216,74 @@ class Company {
         if (data['create_time'] && !(typeof data['create_time'] === 'string' || data['create_time'] instanceof String)) {
             throw new Error("Expected the field `create_time` to be a primitive type in the JSON string but got " + data['create_time']);
         }
+        // ensure the json data is a string
+        if (data['anniversary_date'] && !(typeof data['anniversary_date'] === 'string' || data['anniversary_date'] instanceof String)) {
+            throw new Error("Expected the field `anniversary_date` to be a primitive type in the JSON string but got " + data['anniversary_date']);
+        }
+        // ensure the json data is a string
+        if (data['assistant_name'] && !(typeof data['assistant_name'] === 'string' || data['assistant_name'] instanceof String)) {
+            throw new Error("Expected the field `assistant_name` to be a primitive type in the JSON string but got " + data['assistant_name']);
+        }
+        // ensure the json data is a string
+        if (data['assistant_phone'] && !(typeof data['assistant_phone'] === 'string' || data['assistant_phone'] instanceof String)) {
+            throw new Error("Expected the field `assistant_phone` to be a primitive type in the JSON string but got " + data['assistant_phone']);
+        }
+        // ensure the json data is a string
+        if (data['billing_information'] && !(typeof data['billing_information'] === 'string' || data['billing_information'] instanceof String)) {
+            throw new Error("Expected the field `billing_information` to be a primitive type in the JSON string but got " + data['billing_information']);
+        }
+        // ensure the json data is a string
+        if (data['birth_date'] && !(typeof data['birth_date'] === 'string' || data['birth_date'] instanceof String)) {
+            throw new Error("Expected the field `birth_date` to be a primitive type in the JSON string but got " + data['birth_date']);
+        }
+        // ensure the json data is a string
+        if (data['contact_type'] && !(typeof data['contact_type'] === 'string' || data['contact_type'] instanceof String)) {
+            throw new Error("Expected the field `contact_type` to be a primitive type in the JSON string but got " + data['contact_type']);
+        }
+        // ensure the json data is a string
+        if (data['first_name'] && !(typeof data['first_name'] === 'string' || data['first_name'] instanceof String)) {
+            throw new Error("Expected the field `first_name` to be a primitive type in the JSON string but got " + data['first_name']);
+        }
+        // ensure the json data is a string
+        if (data['job_title'] && !(typeof data['job_title'] === 'string' || data['job_title'] instanceof String)) {
+            throw new Error("Expected the field `job_title` to be a primitive type in the JSON string but got " + data['job_title']);
+        }
+        // ensure the json data is a string
+        if (data['last_name'] && !(typeof data['last_name'] === 'string' || data['last_name'] instanceof String)) {
+            throw new Error("Expected the field `last_name` to be a primitive type in the JSON string but got " + data['last_name']);
+        }
+        // ensure the json data is a string
+        if (data['middle_name'] && !(typeof data['middle_name'] === 'string' || data['middle_name'] instanceof String)) {
+            throw new Error("Expected the field `middle_name` to be a primitive type in the JSON string but got " + data['middle_name']);
+        }
+        // ensure the json data is a string
+        if (data['preferred_name'] && !(typeof data['preferred_name'] === 'string' || data['preferred_name'] instanceof String)) {
+            throw new Error("Expected the field `preferred_name` to be a primitive type in the JSON string but got " + data['preferred_name']);
+        }
+        // ensure the json data is a string
+        if (data['owner_id'] && !(typeof data['owner_id'] === 'string' || data['owner_id'] instanceof String)) {
+            throw new Error("Expected the field `owner_id` to be a primitive type in the JSON string but got " + data['owner_id']);
+        }
+        // ensure the json data is a string
+        if (data['referral_code'] && !(typeof data['referral_code'] === 'string' || data['referral_code'] instanceof String)) {
+            throw new Error("Expected the field `referral_code` to be a primitive type in the JSON string but got " + data['referral_code']);
+        }
+        // ensure the json data is a string
+        if (data['spouse_name'] && !(typeof data['spouse_name'] === 'string' || data['spouse_name'] instanceof String)) {
+            throw new Error("Expected the field `spouse_name` to be a primitive type in the JSON string but got " + data['spouse_name']);
+        }
+        // ensure the json data is a string
+        if (data['account_id'] && !(typeof data['account_id'] === 'string' || data['account_id'] instanceof String)) {
+            throw new Error("Expected the field `account_id` to be a primitive type in the JSON string but got " + data['account_id']);
+        }
+        // ensure the json data is a string
+        if (data['created_by'] && !(typeof data['created_by'] === 'string' || data['created_by'] instanceof String)) {
+            throw new Error("Expected the field `created_by` to be a primitive type in the JSON string but got " + data['created_by']);
+        }
+        // ensure the json data is a string
+        if (data['last_updated_by'] && !(typeof data['last_updated_by'] === 'string' || data['last_updated_by'] instanceof String)) {
+            throw new Error("Expected the field `last_updated_by` to be a primitive type in the JSON string but got " + data['last_updated_by']);
+        }
 
         return true;
     }
@@ -176,6 +316,24 @@ Company.prototype['notes'] = undefined;
  * @member {String} website
  */
 Company.prototype['website'] = undefined;
+
+/**
+ * Name suffix
+ * @member {String} suffix
+ */
+Company.prototype['suffix'] = undefined;
+
+/**
+ * Name prefix or salutation
+ * @member {String} title
+ */
+Company.prototype['title'] = undefined;
+
+/**
+ * Comma-delimited list of tag IDs applied to this company
+ * @member {String} groups
+ */
+Company.prototype['groups'] = undefined;
 
 /**
  * The name of the company
@@ -214,6 +372,108 @@ Company.prototype['update_time'] = undefined;
  * @member {String} create_time
  */
 Company.prototype['create_time'] = undefined;
+
+/**
+ * The anniversary date
+ * @member {String} anniversary_date
+ */
+Company.prototype['anniversary_date'] = undefined;
+
+/**
+ * The name of the company contact's assistant
+ * @member {String} assistant_name
+ */
+Company.prototype['assistant_name'] = undefined;
+
+/**
+ * The phone number of the company contact's assistant
+ * @member {String} assistant_phone
+ */
+Company.prototype['assistant_phone'] = undefined;
+
+/**
+ * Billing information for the company
+ * @member {String} billing_information
+ */
+Company.prototype['billing_information'] = undefined;
+
+/**
+ * The birth date
+ * @member {String} birth_date
+ */
+Company.prototype['birth_date'] = undefined;
+
+/**
+ * Type of contact
+ * @member {String} contact_type
+ */
+Company.prototype['contact_type'] = undefined;
+
+/**
+ * First name of the company contact
+ * @member {String} first_name
+ */
+Company.prototype['first_name'] = undefined;
+
+/**
+ * Job title of the company contact
+ * @member {String} job_title
+ */
+Company.prototype['job_title'] = undefined;
+
+/**
+ * Last name of the company contact
+ * @member {String} last_name
+ */
+Company.prototype['last_name'] = undefined;
+
+/**
+ * Middle name of the company contact
+ * @member {String} middle_name
+ */
+Company.prototype['middle_name'] = undefined;
+
+/**
+ * Preferred name or nickname of the company contact
+ * @member {String} preferred_name
+ */
+Company.prototype['preferred_name'] = undefined;
+
+/**
+ * ID of the user who owns this company
+ * @member {String} owner_id
+ */
+Company.prototype['owner_id'] = undefined;
+
+/**
+ * Referral code
+ * @member {String} referral_code
+ */
+Company.prototype['referral_code'] = undefined;
+
+/**
+ * Spouse's name
+ * @member {String} spouse_name
+ */
+Company.prototype['spouse_name'] = undefined;
+
+/**
+ * The company's account ID
+ * @member {String} account_id
+ */
+Company.prototype['account_id'] = undefined;
+
+/**
+ * ID of the user who created this company
+ * @member {String} created_by
+ */
+Company.prototype['created_by'] = undefined;
+
+/**
+ * ID of the user who last updated this company
+ * @member {String} last_updated_by
+ */
+Company.prototype['last_updated_by'] = undefined;
 
 
 

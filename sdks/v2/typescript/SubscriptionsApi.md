@@ -529,9 +529,7 @@ const request: SubscriptionsApiUpdateSubscriptionRequest = {
     reasonStopped: "Customer requested cancellation",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: `contact_id,subscription_plan_id,quantity,billing_amount,auto_charge,max_charge_attempts,days_between_retries,
-active,billing_frequency,billing_cycle,next_bill_date,end_date,payment_method_id,allow_tax,lead_affiliate_id,
-sale_affiliate_id,promo_code,shipping_option_id,reason_stopped,shipping_address`,
+  updateMask: null,
 };
 
 const data = await apiInstance.updateSubscription(request);
@@ -545,7 +543,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateSubscriptionRequestDetail** | **UpdateSubscriptionRequestDetail**|  |
  **subscriptionId** | [**string**] |  | defaults to undefined
- **updateMask** | [**&#39;contact_id,subscription_plan_id,quantity,billing_amount,auto_charge,max_charge_attempts,days_between_retries, active,billing_frequency,billing_cycle,next_bill_date,end_date,payment_method_id,allow_tax,lead_affiliate_id, sale_affiliate_id,promo_code,shipping_option_id,reason_stopped,shipping_address&#39;**]**Array<&#39;contact_id,subscription_plan_id,quantity,billing_amount,auto_charge,max_charge_attempts,days_between_retries, active,billing_frequency,billing_cycle,next_bill_date,end_date,payment_method_id,allow_tax,lead_affiliate_id, sale_affiliate_id,promo_code,shipping_option_id,reason_stopped,shipping_address&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -606,7 +604,7 @@ const request: SubscriptionsApiUpdateSubscriptionCustomFieldRequest = {
     groupId: "groupId_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: "group_id,label,options",
+  updateMask: null,
 };
 
 const data = await apiInstance.updateSubscriptionCustomField(request);
@@ -620,7 +618,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**|  |
  **customFieldId** | [**string**] |  | defaults to undefined
- **updateMask** | [**&#39;group_id,label,options&#39;**]**Array<&#39;group_id,label,options&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

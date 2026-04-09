@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from keap_core_v2_client.models.custom_field_value import CustomFieldValue
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,17 +27,18 @@ class UpdateAffiliateRequest(BaseModel):
     """
     UpdateAffiliateRequest
     """ # noqa: E501
-    code: StrictStr = Field(description="The Affiliate code which have some validations. 1. The code should not have white spaces 2. The code should starts with letters 3. The code minimum 4 characters length")
-    name: Optional[StrictStr] = Field(default=None, description="The Affiliate name will be derived from the Contact, when not explicitly provided")
+    code: Optional[StrictStr] = Field(default=None, description="The Affiliate code which have some validations. 1. The code should not have white spaces 2. The code should starts with letters 3. The code minimum 2 characters length")
+    name: Optional[StrictStr] = Field(default=None, description="The Affiliate name.")
     status: Optional[StrictStr] = Field(default=None, description="The Affiliate Status")
-    contact_id: StrictStr = Field(description="The contactId identifier , Must be a positive number")
+    contact_id: Optional[StrictStr] = Field(default=None, description="The contactId identifier. Must be a positive number")
     parent_affiliate_id: Optional[StrictStr] = Field(default=None, description="The Parent Affiliate Id")
     notify_on_sale: Optional[StrictBool] = Field(default=None, description="Whether to notify on sale events")
     notify_on_lead: Optional[StrictBool] = Field(default=None, description="Whether to notify on lead events")
     track_leads_days: Optional[StrictInt] = Field(default=None, description="Number of days to track leads")
     password: Optional[StrictStr] = Field(default=None, description="Affiliate portal password.")
+    custom_fields: Optional[List[CustomFieldValue]] = Field(default=None, description="List of custom field values to apply to this affiliate")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["code", "name", "status", "contact_id", "parent_affiliate_id", "notify_on_sale", "notify_on_lead", "track_leads_days", "password"]
+    __properties: ClassVar[List[str]] = ["code", "name", "status", "contact_id", "parent_affiliate_id", "notify_on_sale", "notify_on_lead", "track_leads_days", "password", "custom_fields"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -89,6 +91,13 @@ class UpdateAffiliateRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in custom_fields (list)
+        _items = []
+        if self.custom_fields:
+            for _item_custom_fields in self.custom_fields:
+                if _item_custom_fields:
+                    _items.append(_item_custom_fields.to_dict())
+            _dict['custom_fields'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -114,7 +123,8 @@ class UpdateAffiliateRequest(BaseModel):
             "notify_on_sale": obj.get("notify_on_sale"),
             "notify_on_lead": obj.get("notify_on_lead"),
             "track_leads_days": obj.get("track_leads_days"),
-            "password": obj.get("password")
+            "password": obj.get("password"),
+            "custom_fields": [CustomFieldValue.from_dict(_item) for _item in obj["custom_fields"]] if obj.get("custom_fields") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

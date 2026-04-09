@@ -287,7 +287,7 @@ const request: LeadSourceCategoriesApiUpdateLeadSourceCategoryRequest = {
     description: "All paid marketing channels",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: "name,description",
+  updateMask: null,
 };
 
 const data = await apiInstance.updateLeadSourceCategory(request);
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createUpdateLeadSourceCategoryRequest** | **CreateUpdateLeadSourceCategoryRequest**|  |
  **leadSourceCategoryId** | [**string**] | The ID of a lead source category | defaults to undefined
- **updateMask** | [**&#39;name,description&#39;**]**Array<&#39;name,description&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

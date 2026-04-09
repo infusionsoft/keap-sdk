@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 
+import { CustomFieldValue } from '../models/CustomFieldValue';
 import { HttpFile } from '../http/http';
 
 export class CreateAffiliateRequest {
@@ -49,6 +50,10 @@ export class CreateAffiliateRequest {
     * Affiliate portal password
     */
     'password'?: string;
+    /**
+    * List of custom field values to apply to this affiliate
+    */
+    'customFields'?: Array<CustomFieldValue>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -107,6 +112,12 @@ export class CreateAffiliateRequest {
             "name": "password",
             "baseName": "password",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "customFields",
+            "baseName": "custom_fields",
+            "type": "Array<CustomFieldValue>",
             "format": ""
         }    ];
 

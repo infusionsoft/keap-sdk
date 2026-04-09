@@ -761,7 +761,7 @@ import io.github.resilience4j.retry.Retry;
    * @return SubscriptionDetail
    * @throws ApiException if fails to make API call
    */
-  public SubscriptionDetail updateSubscription(String subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, String updateMask) throws ApiException {
+  public SubscriptionDetail updateSubscription(String subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object updateMask) throws ApiException {
     ApiResponse<SubscriptionDetail> localVarResponse = updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequestDetail, updateMask);
     return localVarResponse.getData();
   }
@@ -775,7 +775,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;SubscriptionDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<SubscriptionDetail> updateSubscriptionWithHttpInfo(String subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, String updateMask) throws ApiException {
+  public ApiResponse<SubscriptionDetail> updateSubscriptionWithHttpInfo(String subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateSubscriptionRequestBuilder(subscriptionId, updateSubscriptionRequestDetail, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -816,7 +816,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateSubscriptionRequestBuilder(String subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateSubscriptionRequestBuilder(String subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object updateMask) throws ApiException {
     // verify the required parameter 'subscriptionId' is set
     if (subscriptionId == null) {
       throw new ApiException(400, "Missing the required parameter 'subscriptionId' when calling updateSubscription");
@@ -876,7 +876,7 @@ import io.github.resilience4j.retry.Retry;
    * @return CustomFieldMetaData
    * @throws ApiException if fails to make API call
    */
-  public CustomFieldMetaData updateSubscriptionCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, String updateMask) throws ApiException {
+  public CustomFieldMetaData updateSubscriptionCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
     ApiResponse<CustomFieldMetaData> localVarResponse = updateSubscriptionCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -890,7 +890,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;CustomFieldMetaData&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CustomFieldMetaData> updateSubscriptionCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, String updateMask) throws ApiException {
+  public ApiResponse<CustomFieldMetaData> updateSubscriptionCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateSubscriptionCustomFieldRequestBuilder(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -931,7 +931,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateSubscriptionCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateSubscriptionCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'customFieldId' is set
     if (customFieldId == null) {
       throw new ApiException(400, "Missing the required parameter 'customFieldId' when calling updateSubscriptionCustomField");

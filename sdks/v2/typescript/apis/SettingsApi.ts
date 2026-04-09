@@ -22,7 +22,7 @@ export class SettingsApiRequestFactory extends BaseAPIRequestFactory {
      * Get Application Configuration
      * @param fields By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
      */
-    public async getApplicationConfigurations(fields?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async getApplicationConfigurations(fields?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -35,7 +35,10 @@ export class SettingsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (fields !== undefined) {
-            requestContext.setQueryParam("fields", ObjectSerializer.serialize(fields, "Array<string>", ""));
+            const serializedParams = ObjectSerializer.serialize(fields, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
+            }
         }
 
 

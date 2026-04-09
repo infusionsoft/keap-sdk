@@ -538,7 +538,7 @@ catch (ApiException e)
 
 <a id="updatefile"></a>
 # **UpdateFile**
-> FileMetadata UpdateFile (string fileId, string? updateMask = null, System.IO.Stream? file = null, string? fileName = null, bool? isPublic = null, System.IO.Stream? file2 = null, string? fileName2 = null, bool? isPublic2 = null)
+> FileMetadata UpdateFile (string fileId, Object? updateMask = null, System.IO.Stream? file = null, string? fileName = null, bool? isPublic = null, System.IO.Stream? file2 = null, string? fileName2 = null, bool? isPublic2 = null)
 
 Update a file
 
@@ -565,7 +565,7 @@ namespace Example
 
             var apiInstance = new FilesApi(config);
             var fileId = "fileId_example";  // string | 
-            var updateMask = "updateMask_example";  // string? | Update Mask (optional) 
+            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
             var file = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream? | File to upload. This is a file sent as multi-part (not a string) (optional) 
             var fileName = "fileName_example";  // string? | File name (optional) 
             var isPublic = true;  // bool? | Is public (optional) 
@@ -615,7 +615,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **fileId** | **string** |  |  |
-| **updateMask** | **string?** | Update Mask | [optional]  |
+| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 | **file** | **System.IO.Stream?****System.IO.Stream?** | File to upload. This is a file sent as multi-part (not a string) | [optional]  |
 | **fileName** | **string?** | File name | [optional]  |
 | **isPublic** | **bool?** | Is public | [optional]  |

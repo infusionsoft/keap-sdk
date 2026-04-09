@@ -1019,7 +1019,7 @@ public class Example {
         String id = "id_example"; // String | 
         String interestId = "interestId_example"; // String | 
         UpdateProductInterestRequest updateProductInterestRequest = new UpdateProductInterestRequest(); // UpdateProductInterestRequest | 
-        String updateMask = "quantity,price,discount_percent"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ProductInterest result = apiInstance.updateProductInterest(id, interestId, updateProductInterestRequest, updateMask);
             System.out.println(result);
@@ -1042,7 +1042,7 @@ public class Example {
 | **id** | **String**|  | |
 | **interestId** | **String**|  | |
 | **updateProductInterestRequest** | [**UpdateProductInterestRequest**](UpdateProductInterestRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: quantity,price,discount_percent] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1103,7 +1103,7 @@ public class Example {
         String id = "id_example"; // String | 
         String interestId = "interestId_example"; // String | 
         UpdateProductInterestRequest updateProductInterestRequest = new UpdateProductInterestRequest(); // UpdateProductInterestRequest | 
-        String updateMask = "quantity,price,discount_percent"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<ProductInterest> response = apiInstance.updateProductInterestWithHttpInfo(id, interestId, updateProductInterestRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1128,7 +1128,7 @@ public class Example {
 | **id** | **String**|  | |
 | **interestId** | **String**|  | |
 | **updateProductInterestRequest** | [**UpdateProductInterestRequest**](UpdateProductInterestRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: quantity,price,discount_percent] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1188,7 +1188,7 @@ public class Example {
         ProductInterestBundlesApi apiInstance = new ProductInterestBundlesApi(defaultClient);
         String id = "id_example"; // String | 
         UpdateProductInterestBundleRequest updateProductInterestBundleRequest = new UpdateProductInterestBundleRequest(); // UpdateProductInterestBundleRequest | 
-        String updateMask = "name,description"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ProductInterestBundle result = apiInstance.updateProductInterestBundle(id, updateProductInterestBundleRequest, updateMask);
             System.out.println(result);
@@ -1210,7 +1210,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**|  | |
 | **updateProductInterestBundleRequest** | [**UpdateProductInterestBundleRequest**](UpdateProductInterestBundleRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,description] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1270,7 +1270,7 @@ public class Example {
         ProductInterestBundlesApi apiInstance = new ProductInterestBundlesApi(defaultClient);
         String id = "id_example"; // String | 
         UpdateProductInterestBundleRequest updateProductInterestBundleRequest = new UpdateProductInterestBundleRequest(); // UpdateProductInterestBundleRequest | 
-        String updateMask = "name,description"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<ProductInterestBundle> response = apiInstance.updateProductInterestBundleWithHttpInfo(id, updateProductInterestBundleRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1294,7 +1294,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**|  | |
 | **updateProductInterestBundleRequest** | [**UpdateProductInterestBundleRequest**](UpdateProductInterestBundleRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,description] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

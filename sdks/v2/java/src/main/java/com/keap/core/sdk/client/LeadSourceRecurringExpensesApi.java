@@ -637,7 +637,7 @@ import io.github.resilience4j.retry.Retry;
    * @return LeadSourceRecurringExpense
    * @throws ApiException if fails to make API call
    */
-  public LeadSourceRecurringExpense updateLeadSourceRecurringExpense(String leadSourceId, String leadSourceRecurringExpenseId, LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest, String updateMask) throws ApiException {
+  public LeadSourceRecurringExpense updateLeadSourceRecurringExpense(String leadSourceId, String leadSourceRecurringExpenseId, LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest, Object updateMask) throws ApiException {
     ApiResponse<LeadSourceRecurringExpense> localVarResponse = updateLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -652,7 +652,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;LeadSourceRecurringExpense&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LeadSourceRecurringExpense> updateLeadSourceRecurringExpenseWithHttpInfo(String leadSourceId, String leadSourceRecurringExpenseId, LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest, String updateMask) throws ApiException {
+  public ApiResponse<LeadSourceRecurringExpense> updateLeadSourceRecurringExpenseWithHttpInfo(String leadSourceId, String leadSourceRecurringExpenseId, LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateLeadSourceRecurringExpenseRequestBuilder(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -693,7 +693,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateLeadSourceRecurringExpenseRequestBuilder(String leadSourceId, String leadSourceRecurringExpenseId, LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateLeadSourceRecurringExpenseRequestBuilder(String leadSourceId, String leadSourceRecurringExpenseId, LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'leadSourceId' is set
     if (leadSourceId == null) {
       throw new ApiException(400, "Missing the required parameter 'leadSourceId' when calling updateLeadSourceRecurringExpense");

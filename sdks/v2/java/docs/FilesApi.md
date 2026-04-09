@@ -885,7 +885,7 @@ public class Example {
 
         FilesApi apiInstance = new FilesApi(defaultClient);
         String fileId = "fileId_example"; // String | 
-        String updateMask = "updateMask_example"; // String | Update Mask
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         File _file = new File("/path/to/file"); // File | File to upload. This is a file sent as multi-part (not a string)
         String fileName = "fileName_example"; // String | File name
         Boolean isPublic = true; // Boolean | Is public
@@ -912,7 +912,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **fileId** | **String**|  | |
-| **updateMask** | **String**| Update Mask | [optional] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 | **_file** | **File**| File to upload. This is a file sent as multi-part (not a string) | [optional] |
 | **fileName** | **String**| File name | [optional] |
 | **isPublic** | **Boolean**| Is public | [optional] |
@@ -977,7 +977,7 @@ public class Example {
 
         FilesApi apiInstance = new FilesApi(defaultClient);
         String fileId = "fileId_example"; // String | 
-        String updateMask = "updateMask_example"; // String | Update Mask
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         File _file = new File("/path/to/file"); // File | File to upload. This is a file sent as multi-part (not a string)
         String fileName = "fileName_example"; // String | File name
         Boolean isPublic = true; // Boolean | Is public
@@ -1006,7 +1006,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **fileId** | **String**|  | |
-| **updateMask** | **String**| Update Mask | [optional] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 | **_file** | **File**| File to upload. This is a file sent as multi-part (not a string) | [optional] |
 | **fileName** | **String**| File name | [optional] |
 | **isPublic** | **Boolean**| Is public | [optional] |

@@ -589,7 +589,7 @@ $apiInstance = new Keap\Core\V2\Api\OpportunityApi(
 );
 $opportunity_id = 'opportunity_id_example'; // string
 $update_opportunity_request_v2 = new \Keap\Core\V2\Model\UpdateOpportunityRequestV2(); // \Keap\Core\V2\Model\UpdateOpportunityRequestV2
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateOpportunity($opportunity_id, $update_opportunity_request_v2, $update_mask);
@@ -605,7 +605,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **opportunity_id** | **string**|  | |
 | **update_opportunity_request_v2** | [**\Keap\Core\V2\Model\UpdateOpportunityRequestV2**](../Model/UpdateOpportunityRequestV2.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -652,7 +652,7 @@ $apiInstance = new Keap\Core\V2\Api\OpportunityApi(
 );
 $custom_field_id = 'custom_field_id_example'; // string
 $update_custom_field_meta_data_request = new \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest(); // \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateOpportunityCustomField($custom_field_id, $update_custom_field_meta_data_request, $update_mask);
@@ -668,7 +668,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **custom_field_id** | **string**|  | |
 | **update_custom_field_meta_data_request** | [**\Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest**](../Model/UpdateCustomFieldMetaDataRequest.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -715,7 +715,7 @@ $apiInstance = new Keap\Core\V2\Api\OpportunityApi(
 );
 $stage_id = 'stage_id_example'; // string
 $update_opportunity_stage_request = new \Keap\Core\V2\Model\UpdateOpportunityStageRequest(); // \Keap\Core\V2\Model\UpdateOpportunityStageRequest
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateOpportunityStage($stage_id, $update_opportunity_stage_request, $update_mask);
@@ -731,7 +731,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **stage_id** | **string**|  | |
 | **update_opportunity_stage_request** | [**\Keap\Core\V2\Model\UpdateOpportunityStageRequest**](../Model/UpdateOpportunityStageRequest.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

@@ -830,6 +830,13 @@ export interface AffiliateApiUpdateAffiliateRequest {
      * @memberof AffiliateApiupdateAffiliate
      */
     updateAffiliateRequest: UpdateAffiliateRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type any
+     * @memberof AffiliateApiupdateAffiliate
+     */
+    updateMask?: any
 }
 
 export interface AffiliateApiUpdateAffiliateCustomFieldRequest {
@@ -849,10 +856,10 @@ export interface AffiliateApiUpdateAffiliateCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;group_id,label,options&#39;
+     * @type any
      * @memberof AffiliateApiupdateAffiliateCustomField
      */
-    updateMask?: 'group_id,label,options'
+    updateMask?: any
 }
 
 export interface AffiliateApiUpdateCommissionProgramRequest {
@@ -872,10 +879,10 @@ export interface AffiliateApiUpdateCommissionProgramRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;name,notes,priority&#39;
+     * @type any
      * @memberof AffiliateApiupdateCommissionProgram
      */
-    updateMask?: 'name,notes,priority'
+    updateMask?: any
 }
 
 export interface AffiliateApiUpdateDefaultCommissionProgramRequest {
@@ -1480,7 +1487,7 @@ export class ObjectAffiliateApi {
      * @param param the request object
      */
     public updateAffiliateWithHttpInfo(param: AffiliateApiUpdateAffiliateRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestAffiliate>> {
-        return this.api.updateAffiliateWithHttpInfo(param.id, param.updateAffiliateRequest,  options).toPromise();
+        return this.api.updateAffiliateWithHttpInfo(param.id, param.updateAffiliateRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -1489,7 +1496,7 @@ export class ObjectAffiliateApi {
      * @param param the request object
      */
     public updateAffiliate(param: AffiliateApiUpdateAffiliateRequest, options?: ConfigurationOptions): Promise<RestAffiliate> {
-        return this.api.updateAffiliate(param.id, param.updateAffiliateRequest,  options).toPromise();
+        return this.api.updateAffiliate(param.id, param.updateAffiliateRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -2066,10 +2073,10 @@ export interface BusinessProfileApiUpdateBusinessProfileRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;name,email,website,phone,address,currency_code,business_goals,business_primary_color, business_secondary_color&#39;
+     * @type any
      * @memberof BusinessProfileApiupdateBusinessProfile
      */
-    updateMask?: 'name,email,website,phone,address,currency_code,business_goals,business_primary_color, business_secondary_color'
+    updateMask?: any
 }
 
 export class ObjectBusinessProfileApi {
@@ -2428,10 +2435,10 @@ export interface CategoryDiscountsApiUpdateCategoryDiscountRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;name,description,discount_percent,apply_to_commissions,criteria,product_category_ids&#39;
+     * @type any
      * @memberof CategoryDiscountsApiupdateCategoryDiscount
      */
-    updateMask?: 'name,description,discount_percent,apply_to_commissions,criteria,product_category_ids'
+    updateMask?: any
 }
 
 export class ObjectCategoryDiscountsApi {
@@ -2641,10 +2648,10 @@ export interface CompanyApiUpdateCompanyRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;id,company_name,address,phone_number,fax_number,email_address, notes,website,custom_fields,create_time,update_time&#39;
+     * @type any
      * @memberof CompanyApiupdateCompany
      */
-    updateMask?: 'id,company_name,address,phone_number,fax_number,email_address, notes,website,custom_fields,create_time,update_time'
+    updateMask?: any
 }
 
 export interface CompanyApiUpdateCompanyCustomFieldRequest {
@@ -2664,10 +2671,10 @@ export interface CompanyApiUpdateCompanyCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;group_id,label,options&#39;
+     * @type any
      * @memberof CompanyApiupdateCompanyCustomField
      */
-    updateMask?: 'group_id,label,options'
+    updateMask?: any
 }
 
 export class ObjectCompanyApi {
@@ -2834,7 +2841,7 @@ export interface ContactApiCreateContactRequest {
      */
     createUpdateContactRequest: CreateUpdateContactRequest
     /**
-     * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+     * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      * Defaults to: undefined
      * @type Array&lt;string&gt;
      * @memberof ContactApicreateContact
@@ -2886,7 +2893,7 @@ export interface ContactApiGetContactRequest {
      */
     contactId: string
     /**
-     * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+     * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      * Defaults to: undefined
      * @type Array&lt;string&gt;
      * @memberof ContactApigetContact
@@ -2948,7 +2955,7 @@ export interface ContactApiListContactLinksRequest {
 
 export interface ContactApiListContactsRequest {
     /**
-     * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+     * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      * Defaults to: undefined
      * @type Array&lt;string&gt;
      * @memberof ContactApilistContacts
@@ -3055,12 +3062,12 @@ export interface ContactApiUpdateContactRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website&#39;
+     * @type any
      * @memberof ContactApiupdateContact
      */
-    updateMask?: 'addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website'
+    updateMask?: any
     /**
-     * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+     * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      * Defaults to: undefined
      * @type Array&lt;string&gt;
      * @memberof ContactApiupdateContact
@@ -3815,12 +3822,12 @@ export interface FilesApiUpdateFileRequest {
      */
     fileId: string
     /**
-     * Update Mask
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type string
+     * @type any
      * @memberof FilesApiupdateFile
      */
-    updateMask?: string
+    updateMask?: any
     /**
      * File to upload. This is a file sent as multi-part (not a string)
      * Defaults to: undefined
@@ -4064,10 +4071,10 @@ export interface FreeTrialDiscountsApiUpdateFreeTrialDiscountRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;name,description,free_trial_days,hide_price,subscription_plan_id,criteria&#39;
+     * @type any
      * @memberof FreeTrialDiscountsApiupdateFreeTrialDiscount
      */
-    updateMask?: 'name,description,free_trial_days,hide_price,subscription_plan_id,criteria'
+    updateMask?: any
 }
 
 export class ObjectFreeTrialDiscountsApi {
@@ -4358,10 +4365,10 @@ export interface LeadSourceCategoriesApiUpdateLeadSourceCategoryRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;name,description&#39;
+     * @type any
      * @memberof LeadSourceCategoriesApiupdateLeadSourceCategory
      */
-    updateMask?: 'name,description'
+    updateMask?: any
 }
 
 export class ObjectLeadSourceCategoriesApi {
@@ -4518,7 +4525,7 @@ export interface LeadSourceExpensesApiGetLeadSourceExpenseRequest {
 
 export interface LeadSourceExpensesApiListLeadSourceExpensesRequest {
     /**
-     * The ID of the lead source this expense belongs to
+     * The ID of the lead source this expense belongs to. Use \&#39;-\&#39; as a wildcard (e.g. /v2/leadSources/-/expenses).
      * Defaults to: undefined
      * @type string
      * @memberof LeadSourceExpensesApilistLeadSourceExpenses
@@ -4580,10 +4587,10 @@ export interface LeadSourceExpensesApiUpdateLeadSourceExpenseRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;title,notes,amount,incurred_time&#39;
+     * @type any
      * @memberof LeadSourceExpensesApiupdateLeadSourceExpense
      */
-    updateMask?: 'title,notes,amount,incurred_time'
+    updateMask?: any
 }
 
 export class ObjectLeadSourceExpensesApi {
@@ -4849,10 +4856,10 @@ export interface LeadSourceRecurringExpensesApiUpdateLeadSourceRecurringExpenseR
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;title,notes,amount,start_time,end_time&#39;
+     * @type any
      * @memberof LeadSourceRecurringExpensesApiupdateLeadSourceRecurringExpense
      */
-    updateMask?: 'title,notes,amount,start_time,end_time'
+    updateMask?: any
 }
 
 export class ObjectLeadSourceRecurringExpensesApi {
@@ -5054,10 +5061,10 @@ export interface LeadSourcesApiUpdateLeadSourceRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;name,description,vendor,medium,message,start_time,end_time,status,lead_source_category_id&#39;
+     * @type any
      * @memberof LeadSourcesApiupdateLeadSource
      */
-    updateMask?: 'name,description,vendor,medium,message,start_time,end_time,status,lead_source_category_id'
+    updateMask?: any
 }
 
 export class ObjectLeadSourcesApi {
@@ -5508,10 +5515,10 @@ export interface NoteApiUpdateNoteRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;contact_id, text, title, type, user_id&#39;
+     * @type any
      * @memberof NoteApiupdateNote
      */
-    updateMask?: 'contact_id, text, title, type, user_id'
+    updateMask?: any
 }
 
 export interface NoteApiUpdateNotesCustomFieldRequest {
@@ -5531,10 +5538,10 @@ export interface NoteApiUpdateNotesCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;group_id,label,options&#39;
+     * @type any
      * @memberof NoteApiupdateNotesCustomField
      */
-    updateMask?: 'group_id,label,options'
+    updateMask?: any
 }
 
 export class ObjectNoteApi {
@@ -5868,10 +5875,10 @@ export interface OpportunityApiUpdateOpportunityRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;opportunity_title,next_action_time,next_action_notes,opportunity_notes, estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high, contact_id,stage_id,user_id,custom_fields,affiliate_id&#39;
+     * @type any
      * @memberof OpportunityApiupdateOpportunity
      */
-    updateMask?: 'opportunity_title,next_action_time,next_action_notes,opportunity_notes, estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high, contact_id,stage_id,user_id,custom_fields,affiliate_id'
+    updateMask?: any
 }
 
 export interface OpportunityApiUpdateOpportunityCustomFieldRequest {
@@ -5891,10 +5898,10 @@ export interface OpportunityApiUpdateOpportunityCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;group_id,label,options&#39;
+     * @type any
      * @memberof OpportunityApiupdateOpportunityCustomField
      */
-    updateMask?: 'group_id,label,options'
+    updateMask?: any
 }
 
 export interface OpportunityApiUpdateOpportunityStageRequest {
@@ -5914,10 +5921,10 @@ export interface OpportunityApiUpdateOpportunityStageRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;name,order,target_number_days,probability,checklist_items&#39;
+     * @type any
      * @memberof OpportunityApiupdateOpportunityStage
      */
-    updateMask?: 'name,order,target_number_days,probability,checklist_items'
+    updateMask?: any
 }
 
 export class ObjectOpportunityApi {
@@ -6227,10 +6234,10 @@ export interface OrderTotalDiscountsApiUpdateOrderTotalDiscountRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;name,description,apply_to_commissions,discount_type,discount_value,discount_strategy,criteria&#39;
+     * @type any
      * @memberof OrderTotalDiscountsApiupdateOrderTotalDiscount
      */
-    updateMask?: 'name,description,apply_to_commissions,discount_type,discount_value,discount_strategy,criteria'
+    updateMask?: any
 }
 
 export class ObjectOrderTotalDiscountsApi {
@@ -6539,7 +6546,7 @@ export interface OrdersApiListOrderPaymentsRequest {
 
 export interface OrdersApiListOrdersRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_city&#x60; - (String) &#x60;shipping_region&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_city%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region%3D%3DAZ&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DUS&#x60;
+     * Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApilistOrders
@@ -6590,10 +6597,10 @@ export interface OrdersApiUpdateOrderRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;contact_id,order_items,order_title,order_time,order_type,promo_codes, lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan, custom_fields&#39;
+     * @type any
      * @memberof OrdersApiupdateOrder
      */
-    updateMask?: 'contact_id,order_items,order_title,order_time,order_type,promo_codes, lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan, custom_fields'
+    updateMask?: any
 }
 
 export interface OrdersApiUpdateOrderCustomFieldRequest {
@@ -6613,10 +6620,10 @@ export interface OrdersApiUpdateOrderCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;group_id,label,options&#39;
+     * @type any
      * @memberof OrdersApiupdateOrderCustomField
      */
-    updateMask?: 'group_id,label,options'
+    updateMask?: any
 }
 
 export interface OrdersApiUpdateOrderItemRequest {
@@ -6643,10 +6650,10 @@ export interface OrdersApiUpdateOrderItemRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;name,description,notes,quantity,price_per_unit,cost_per_unit, product_id,subscription_plan_id,subscription_plan_description&#39;
+     * @type any
      * @memberof OrdersApiupdateOrderItem
      */
-    updateMask?: 'name,description,notes,quantity,price_per_unit,cost_per_unit, product_id,subscription_plan_id,subscription_plan_description'
+    updateMask?: any
 }
 
 export class ObjectOrdersApi {
@@ -7286,10 +7293,10 @@ export interface ProductCategoriesApiUpdateProductCategoryRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;name,display_order_index,parent_category_id&#39;
+     * @type any
      * @memberof ProductCategoriesApiupdateProductCategory
      */
-    updateMask?: 'name,display_order_index,parent_category_id'
+    updateMask?: any
 }
 
 export class ObjectProductCategoriesApi {
@@ -7527,10 +7534,10 @@ export interface ProductDiscountsApiUpdateProductDiscountRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;name,description,apply_to_commissions,discount_type,discount_value,product_id,criteria&#39;
+     * @type any
      * @memberof ProductDiscountsApiupdateProductDiscount
      */
-    updateMask?: 'name,description,apply_to_commissions,discount_type,discount_value,product_id,criteria'
+    updateMask?: any
 }
 
 export class ObjectProductDiscountsApi {
@@ -7754,10 +7761,10 @@ export interface ProductInterestBundlesApiUpdateProductInterestRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;quantity,price,discount_percent&#39;
+     * @type any
      * @memberof ProductInterestBundlesApiupdateProductInterest
      */
-    updateMask?: 'quantity,price,discount_percent'
+    updateMask?: any
 }
 
 export interface ProductInterestBundlesApiUpdateProductInterestBundleRequest {
@@ -7777,10 +7784,10 @@ export interface ProductInterestBundlesApiUpdateProductInterestBundleRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;name,description&#39;
+     * @type any
      * @memberof ProductInterestBundlesApiupdateProductInterestBundle
      */
-    updateMask?: 'name,description'
+    updateMask?: any
 }
 
 export class ObjectProductInterestBundlesApi {
@@ -7989,19 +7996,26 @@ export interface ProductsApiCreateProductRequest {
 
 export interface ProductsApiCreateProductImageRequest {
     /**
-     * product_id
+     * The product ID
      * Defaults to: undefined
      * @type string
      * @memberof ProductsApicreateProductImage
      */
     productId: string
     /**
-     * File to upload
+     * The image file to upload
      * Defaults to: undefined
      * @type HttpFile
      * @memberof ProductsApicreateProductImage
      */
     file: HttpFile
+    /**
+     * Set to \&#39;true\&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image.
+     * Defaults to: undefined
+     * @type boolean
+     * @memberof ProductsApicreateProductImage
+     */
+    legacy?: boolean
 }
 
 export interface ProductsApiCreateProductOptionRequest {
@@ -8079,6 +8093,16 @@ export interface ProductsApiDeleteProductOptionListOptionValueRequest {
      * @memberof ProductsApideleteProductOptionListOptionValue
      */
     itemId: string
+}
+
+export interface ProductsApiGetFileDataRequest {
+    /**
+     * product_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApigetFileData
+     */
+    productId: string
 }
 
 export interface ProductsApiGetProductRequest {
@@ -8168,10 +8192,10 @@ export interface ProductsApiUpdateProductRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;active,name,description,price,sku,shippable,short_description,subscription_only, storefront_hidden,weight,taxable,country_taxable,city_taxable,state_taxable, inventory_limit,out_of_stock_enabled,email_for_inventory_notifications&#39;
+     * @type any
      * @memberof ProductsApiupdateProduct
      */
-    updateMask?: 'active,name,description,price,sku,shippable,short_description,subscription_only, storefront_hidden,weight,taxable,country_taxable,city_taxable,state_taxable, inventory_limit,out_of_stock_enabled,email_for_inventory_notifications'
+    updateMask?: any
 }
 
 export interface ProductsApiUpdateProductOptionRequest {
@@ -8198,10 +8222,10 @@ export interface ProductsApiUpdateProductOptionRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;option_label,display_order,required,minimum_characters,maximum_characters,allow_spaces, only_starts_with,only_ends_with,only_contains,error_message&#39;
+     * @type any
      * @memberof ProductsApiupdateProductOption
      */
-    updateMask?: 'option_label,display_order,required,minimum_characters,maximum_characters,allow_spaces, only_starts_with,only_ends_with,only_contains,error_message'
+    updateMask?: any
 }
 
 export interface ProductsApiUpdateProductOptionListOptionValueRequest {
@@ -8235,10 +8259,10 @@ export interface ProductsApiUpdateProductOptionListOptionValueRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;item_label,item_code,item_display_order,price_adjustment &#39;
+     * @type any
      * @memberof ProductsApiupdateProductOptionListOptionValue
      */
-    updateMask?: 'item_label,item_code,item_display_order,price_adjustment '
+    updateMask?: any
 }
 
 export class ObjectProductsApi {
@@ -8308,7 +8332,7 @@ export class ObjectProductsApi {
      * @param param the request object
      */
     public createProductImageWithHttpInfo(param: ProductsApiCreateProductImageRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.createProductImageWithHttpInfo(param.productId, param.file,  options).toPromise();
+        return this.api.createProductImageWithHttpInfo(param.productId, param.file, param.legacy,  options).toPromise();
     }
 
     /**
@@ -8317,7 +8341,7 @@ export class ObjectProductsApi {
      * @param param the request object
      */
     public createProductImage(param: ProductsApiCreateProductImageRequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.createProductImage(param.productId, param.file,  options).toPromise();
+        return this.api.createProductImage(param.productId, param.file, param.legacy,  options).toPromise();
     }
 
     /**
@@ -8408,6 +8432,24 @@ export class ObjectProductsApi {
      */
     public deleteProductOptionListOptionValue(param: ProductsApiDeleteProductOptionListOptionValueRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.deleteProductOptionListOptionValue(param.productId, param.productOptionId, param.itemId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves the product\'s legacy image
+     * Retrieve Product Legacy Image Data
+     * @param param the request object
+     */
+    public getFileDataWithHttpInfo(param: ProductsApiGetFileDataRequest, options?: ConfigurationOptions): Promise<HttpInfo<string>> {
+        return this.api.getFileDataWithHttpInfo(param.productId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves the product\'s legacy image
+     * Retrieve Product Legacy Image Data
+     * @param param the request object
+     */
+    public getFileData(param: ProductsApiGetFileDataRequest, options?: ConfigurationOptions): Promise<string> {
+        return this.api.getFileData(param.productId,  options).toPromise();
     }
 
     /**
@@ -8852,10 +8894,10 @@ export interface SettingsApiGetApplicationConfigurationsRequest {
     /**
      * By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type any
      * @memberof SettingsApigetApplicationConfigurations
      */
-    fields?: Array<string>
+    fields?: any
 }
 
 export interface SettingsApiGetContactOptionTypesRequest {
@@ -9042,10 +9084,10 @@ export interface ShippingDiscountsApiUpdateShippingDiscountRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;name,description,discount_type,discount_value,criteria&#39;
+     * @type any
      * @memberof ShippingDiscountsApiupdateShippingDiscount
      */
-    updateMask?: 'name,description,discount_type,discount_value,criteria'
+    updateMask?: any
 }
 
 export class ObjectShippingDiscountsApi {
@@ -9264,10 +9306,10 @@ export interface SubscriptionPlansApiUpdateSubscriptionPlanRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;active,allow_prorating,cycle_type,display_order_index,frequency,plan_price,total_cycles&#39;
+     * @type any
      * @memberof SubscriptionPlansApiupdateSubscriptionPlan
      */
-    updateMask?: 'active,allow_prorating,cycle_type,display_order_index,frequency,plan_price,total_cycles'
+    updateMask?: any
 }
 
 export class ObjectSubscriptionPlansApi {
@@ -9479,10 +9521,10 @@ export interface SubscriptionsApiUpdateSubscriptionRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;contact_id,subscription_plan_id,quantity,billing_amount,auto_charge,max_charge_attempts,days_between_retries, active,billing_frequency,billing_cycle,next_bill_date,end_date,payment_method_id,allow_tax,lead_affiliate_id, sale_affiliate_id,promo_code,shipping_option_id,reason_stopped,shipping_address&#39;
+     * @type any
      * @memberof SubscriptionsApiupdateSubscription
      */
-    updateMask?: 'contact_id,subscription_plan_id,quantity,billing_amount,auto_charge,max_charge_attempts,days_between_retries, active,billing_frequency,billing_cycle,next_bill_date,end_date,payment_method_id,allow_tax,lead_affiliate_id, sale_affiliate_id,promo_code,shipping_option_id,reason_stopped,shipping_address'
+    updateMask?: any
 }
 
 export interface SubscriptionsApiUpdateSubscriptionCustomFieldRequest {
@@ -9502,10 +9544,10 @@ export interface SubscriptionsApiUpdateSubscriptionCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;group_id,label,options&#39;
+     * @type any
      * @memberof SubscriptionsApiupdateSubscriptionCustomField
      */
-    updateMask?: 'group_id,label,options'
+    updateMask?: any
 }
 
 export class ObjectSubscriptionsApi {
@@ -9935,10 +9977,10 @@ export interface TagsApiUpdateTagRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;name,description,category&#39;
+     * @type any
      * @memberof TagsApiupdateTag
      */
-    updateMask?: 'name,description,category'
+    updateMask?: any
 }
 
 export interface TagsApiUpdateTagCategoryRequest {
@@ -9958,10 +10000,10 @@ export interface TagsApiUpdateTagCategoryRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;name,description&#39;
+     * @type any
      * @memberof TagsApiupdateTagCategory
      */
-    updateMask?: 'name,description'
+    updateMask?: any
 }
 
 export class ObjectTagsApi {
@@ -10329,10 +10371,10 @@ export interface TaskApiUpdateTaskRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;id,title,description,type,priority,completion_time, due_time,remind_time_mins,assigned_to_user_id,contact_id,completed&#39;
+     * @type any
      * @memberof TaskApiupdateTask
      */
-    updateMask?: 'id,title,description,type,priority,completion_time, due_time,remind_time_mins,assigned_to_user_id,contact_id,completed'
+    updateMask?: any
 }
 
 export interface TaskApiUpdateTaskCustomFieldRequest {
@@ -10352,10 +10394,10 @@ export interface TaskApiUpdateTaskCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;group_id,label,options&#39;
+     * @type any
      * @memberof TaskApiupdateTaskCustomField
      */
-    updateMask?: 'group_id,label,options'
+    updateMask?: any
 }
 
 export class ObjectTaskApi {
@@ -10666,10 +10708,10 @@ export interface UsersApiUpdateUserRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;address,company_name,email_address,family_name,fax_numbers,given_name,job_title,phone_numbers,time_zone,website&#39;
+     * @type any
      * @memberof UsersApiupdateUser
      */
-    updateMask?: 'address,company_name,email_address,family_name,fax_numbers,given_name,job_title,phone_numbers,time_zone,website'
+    updateMask?: any
 }
 
 export class ObjectUsersApi {

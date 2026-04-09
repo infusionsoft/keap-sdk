@@ -504,7 +504,7 @@ const request: NoteApiUpdateNoteRequest = {
     contactId: "1001",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: "contact_id, text, title, type, user_id",
+  updateMask: null,
 };
 
 const data = await apiInstance.updateNote(request);
@@ -519,7 +519,7 @@ Name | Type | Description  | Notes
  **updateNoteRequest** | **UpdateNoteRequest**|  |
  **contactId** | [**string**] |  | defaults to undefined
  **noteId** | [**string**] |  | defaults to undefined
- **updateMask** | [**&#39;contact_id, text, title, type, user_id&#39;**]**Array<&#39;contact_id, text, title, type, user_id&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -580,7 +580,7 @@ const request: NoteApiUpdateNotesCustomFieldRequest = {
     groupId: "groupId_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: "group_id,label,options",
+  updateMask: null,
 };
 
 const data = await apiInstance.updateNotesCustomField(request);
@@ -594,7 +594,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**|  |
  **customFieldId** | [**string**] |  | defaults to undefined
- **updateMask** | [**&#39;group_id,label,options&#39;**]**Array<&#39;group_id,label,options&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

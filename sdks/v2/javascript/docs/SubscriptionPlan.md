@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **displayOrderIndex** | **Number** | The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list. | [optional] 
 **totalCycles** | **Number** | Total number of cycles the plan will run before ending. Value of 0 indicates plan will never end. | [optional] 
 **planPrice** | [**CurrencyValue**](CurrencyValue.md) | The price of the subscription plan. | [optional] 
+**preauthorizeAmount** | **Number** | The pre-authorize amount for the subscription plan. If null, this field is omitted from the response. | [optional] 
 
 
 

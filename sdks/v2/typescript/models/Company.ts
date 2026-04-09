@@ -35,6 +35,18 @@ export class Company {
     */
     'website'?: string;
     /**
+    * Name suffix
+    */
+    'suffix'?: string;
+    /**
+    * Name prefix or salutation
+    */
+    'title'?: string;
+    /**
+    * Comma-delimited list of tag IDs applied to this company
+    */
+    'groups'?: string;
+    /**
     * The name of the company
     */
     'companyName'?: string;
@@ -50,6 +62,74 @@ export class Company {
     * Creation timestamp (ISO-8601)
     */
     'createTime'?: string;
+    /**
+    * The anniversary date
+    */
+    'anniversaryDate'?: string;
+    /**
+    * The name of the company contact\'s assistant
+    */
+    'assistantName'?: string;
+    /**
+    * The phone number of the company contact\'s assistant
+    */
+    'assistantPhone'?: string;
+    /**
+    * Billing information for the company
+    */
+    'billingInformation'?: string;
+    /**
+    * The birth date
+    */
+    'birthDate'?: string;
+    /**
+    * Type of contact
+    */
+    'contactType'?: string;
+    /**
+    * First name of the company contact
+    */
+    'firstName'?: string;
+    /**
+    * Job title of the company contact
+    */
+    'jobTitle'?: string;
+    /**
+    * Last name of the company contact
+    */
+    'lastName'?: string;
+    /**
+    * Middle name of the company contact
+    */
+    'middleName'?: string;
+    /**
+    * Preferred name or nickname of the company contact
+    */
+    'preferredName'?: string;
+    /**
+    * ID of the user who owns this company
+    */
+    'ownerId'?: string;
+    /**
+    * Referral code
+    */
+    'referralCode'?: string;
+    /**
+    * Spouse\'s name
+    */
+    'spouseName'?: string;
+    /**
+    * The company\'s account ID
+    */
+    'accountId'?: string;
+    /**
+    * ID of the user who created this company
+    */
+    'createdBy'?: string;
+    /**
+    * ID of the user who last updated this company
+    */
+    'lastUpdatedBy'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -77,6 +157,24 @@ export class Company {
         {
             "name": "website",
             "baseName": "website",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "suffix",
+            "baseName": "suffix",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "title",
+            "baseName": "title",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "groups",
+            "baseName": "groups",
             "type": "string",
             "format": ""
         },
@@ -119,6 +217,108 @@ export class Company {
         {
             "name": "createTime",
             "baseName": "create_time",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "anniversaryDate",
+            "baseName": "anniversary_date",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "assistantName",
+            "baseName": "assistant_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "assistantPhone",
+            "baseName": "assistant_phone",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "billingInformation",
+            "baseName": "billing_information",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "birthDate",
+            "baseName": "birth_date",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "contactType",
+            "baseName": "contact_type",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "firstName",
+            "baseName": "first_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "jobTitle",
+            "baseName": "job_title",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "lastName",
+            "baseName": "last_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "middleName",
+            "baseName": "middle_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "preferredName",
+            "baseName": "preferred_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "ownerId",
+            "baseName": "owner_id",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "referralCode",
+            "baseName": "referral_code",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "spouseName",
+            "baseName": "spouse_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "accountId",
+            "baseName": "account_id",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "createdBy",
+            "baseName": "created_by",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "lastUpdatedBy",
+            "baseName": "last_updated_by",
             "type": "string",
             "format": ""
         }    ];

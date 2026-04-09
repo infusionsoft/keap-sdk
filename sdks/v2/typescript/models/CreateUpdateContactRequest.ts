@@ -121,6 +121,9 @@ export class CreateUpdateContactRequest {
     */
     'timeZone'?: string;
     'utmParameters'?: CreateContactUtmPropertiesRequest;
+    'assistantName'?: string;
+    'assistantPhone'?: string;
+    'billingInformation'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -287,6 +290,24 @@ export class CreateUpdateContactRequest {
             "name": "utmParameters",
             "baseName": "utm_parameters",
             "type": "CreateContactUtmPropertiesRequest",
+            "format": ""
+        },
+        {
+            "name": "assistantName",
+            "baseName": "assistant_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "assistantPhone",
+            "baseName": "assistant_phone",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "billingInformation",
+            "baseName": "billing_information",
+            "type": "string",
             "format": ""
         }    ];
 

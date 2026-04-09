@@ -137,6 +137,15 @@ class CreateUpdateContactRequest {
             if (data.hasOwnProperty('utm_parameters')) {
                 obj['utm_parameters'] = CreateContactUtmPropertiesRequest.constructFromObject(data['utm_parameters']);
             }
+            if (data.hasOwnProperty('assistant_name')) {
+                obj['assistant_name'] = ApiClient.convertToType(data['assistant_name'], 'String');
+            }
+            if (data.hasOwnProperty('assistant_phone')) {
+                obj['assistant_phone'] = ApiClient.convertToType(data['assistant_phone'], 'String');
+            }
+            if (data.hasOwnProperty('billing_information')) {
+                obj['billing_information'] = ApiClient.convertToType(data['billing_information'], 'String');
+            }
         }
         return obj;
     }
@@ -290,6 +299,18 @@ class CreateUpdateContactRequest {
         // validate the optional field `utm_parameters`
         if (data['utm_parameters']) { // data not null
           CreateContactUtmPropertiesRequest.validateJSON(data['utm_parameters']);
+        }
+        // ensure the json data is a string
+        if (data['assistant_name'] && !(typeof data['assistant_name'] === 'string' || data['assistant_name'] instanceof String)) {
+            throw new Error("Expected the field `assistant_name` to be a primitive type in the JSON string but got " + data['assistant_name']);
+        }
+        // ensure the json data is a string
+        if (data['assistant_phone'] && !(typeof data['assistant_phone'] === 'string' || data['assistant_phone'] instanceof String)) {
+            throw new Error("Expected the field `assistant_phone` to be a primitive type in the JSON string but got " + data['assistant_phone']);
+        }
+        // ensure the json data is a string
+        if (data['billing_information'] && !(typeof data['billing_information'] === 'string' || data['billing_information'] instanceof String)) {
+            throw new Error("Expected the field `billing_information` to be a primitive type in the JSON string but got " + data['billing_information']);
         }
 
         return true;
@@ -457,6 +478,21 @@ CreateUpdateContactRequest.prototype['time_zone'] = undefined;
  * @member {module:keap.core.v2/model/CreateContactUtmPropertiesRequest} utm_parameters
  */
 CreateUpdateContactRequest.prototype['utm_parameters'] = undefined;
+
+/**
+ * @member {String} assistant_name
+ */
+CreateUpdateContactRequest.prototype['assistant_name'] = undefined;
+
+/**
+ * @member {String} assistant_phone
+ */
+CreateUpdateContactRequest.prototype['assistant_phone'] = undefined;
+
+/**
+ * @member {String} billing_information
+ */
+CreateUpdateContactRequest.prototype['billing_information'] = undefined;
 
 
 

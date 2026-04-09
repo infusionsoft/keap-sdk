@@ -662,9 +662,7 @@ const request: OpportunityApiUpdateOpportunityRequest = {
     affiliateId: "789",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: `opportunity_title,next_action_time,next_action_notes,opportunity_notes,
-estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high,
-contact_id,stage_id,user_id,custom_fields,affiliate_id`,
+  updateMask: null,
 };
 
 const data = await apiInstance.updateOpportunity(request);
@@ -678,7 +676,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateOpportunityRequestV2** | **UpdateOpportunityRequestV2**|  |
  **opportunityId** | [**string**] |  | defaults to undefined
- **updateMask** | [**&#39;opportunity_title,next_action_time,next_action_notes,opportunity_notes, estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high, contact_id,stage_id,user_id,custom_fields,affiliate_id&#39;**]**Array<&#39;opportunity_title,next_action_time,next_action_notes,opportunity_notes, estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high, contact_id,stage_id,user_id,custom_fields,affiliate_id&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -739,7 +737,7 @@ const request: OpportunityApiUpdateOpportunityCustomFieldRequest = {
     groupId: "groupId_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: "group_id,label,options",
+  updateMask: null,
 };
 
 const data = await apiInstance.updateOpportunityCustomField(request);
@@ -753,7 +751,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**|  |
  **customFieldId** | [**string**] |  | defaults to undefined
- **updateMask** | [**&#39;group_id,label,options&#39;**]**Array<&#39;group_id,label,options&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -818,7 +816,7 @@ const request: OpportunityApiUpdateOpportunityStageRequest = {
     ],
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: "name,order,target_number_days,probability,checklist_items",
+  updateMask: null,
 };
 
 const data = await apiInstance.updateOpportunityStage(request);
@@ -832,7 +830,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateOpportunityStageRequest** | **UpdateOpportunityStageRequest**|  |
  **stageId** | [**string**] |  | defaults to undefined
- **updateMask** | [**&#39;name,order,target_number_days,probability,checklist_items&#39;**]**Array<&#39;name,order,target_number_days,probability,checklist_items&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

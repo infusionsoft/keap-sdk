@@ -91,7 +91,7 @@ $apiInstance = new Keap\Core\V2\Api\BusinessProfileApi(
     $config
 );
 $update_business_profile_request = new \Keap\Core\V2\Model\UpdateBusinessProfileRequest(); // \Keap\Core\V2\Model\UpdateBusinessProfileRequest
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateBusinessProfile($update_business_profile_request, $update_mask);
@@ -106,7 +106,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **update_business_profile_request** | [**\Keap\Core\V2\Model\UpdateBusinessProfileRequest**](../Model/UpdateBusinessProfileRequest.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

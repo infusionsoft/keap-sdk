@@ -105,7 +105,7 @@ This endpoint does not need any parameter.
 
 <a id="updatebusinessprofile"></a>
 # **UpdateBusinessProfile**
-> GetBusinessProfileResponse UpdateBusinessProfile (UpdateBusinessProfileRequest updateBusinessProfileRequest, string? updateMask = null)
+> GetBusinessProfileResponse UpdateBusinessProfile (UpdateBusinessProfileRequest updateBusinessProfileRequest, Object? updateMask = null)
 
 Update Business Profile
 
@@ -132,7 +132,7 @@ namespace Example
 
             var apiInstance = new BusinessProfileApi(config);
             var updateBusinessProfileRequest = new UpdateBusinessProfileRequest(); // UpdateBusinessProfileRequest | 
-            var updateMask = "name,email,website,phone,address,currency_code,business_goals,business_primary_color, business_secondary_color";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -176,7 +176,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **updateBusinessProfileRequest** | [**UpdateBusinessProfileRequest**](UpdateBusinessProfileRequest.md) |  |  |
-| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

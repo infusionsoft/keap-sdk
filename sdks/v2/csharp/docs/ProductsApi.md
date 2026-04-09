@@ -13,6 +13,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**DeleteProductImage**](ProductsApi.md#deleteproductimage) | **DELETE** /rest/v2/products/{product_id}/images | Delete the Product Image |
 | [**DeleteProductOption**](ProductsApi.md#deleteproductoption) | **DELETE** /rest/v2/products/{product_id}/options/{product_option_id} | Delete a Product Option |
 | [**DeleteProductOptionListOptionValue**](ProductsApi.md#deleteproductoptionlistoptionvalue) | **DELETE** /rest/v2/products/{product_id}/options/{product_option_id}/listItems/{item_id} | Delete a Product Option List Item |
+| [**GetFileData**](ProductsApi.md#getfiledata) | **GET** /rest/v2/products/{product_id}/images/legacyImageData | Retrieve Product Legacy Image Data |
 | [**GetProduct**](ProductsApi.md#getproduct) | **GET** /rest/v2/products/{product_id} | Get a Product |
 | [**GetProductOption**](ProductsApi.md#getproductoption) | **GET** /rest/v2/products/{product_id}/options/{product_option_id} | Get Product Option |
 | [**ListProductOptions**](ProductsApi.md#listproductoptions) | **GET** /rest/v2/products/{product_id}/options | List Product Options |
@@ -332,7 +333,7 @@ catch (ApiException e)
 
 <a id="createproductimage"></a>
 # **CreateProductImage**
-> void CreateProductImage (string productId, System.IO.Stream file)
+> void CreateProductImage (string productId, System.IO.Stream file, bool? legacy = null)
 
 Create the Product Image
 
@@ -358,13 +359,14 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new ProductsApi(config);
-            var productId = "productId_example";  // string | product_id
-            var file = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream | File to upload
+            var productId = "productId_example";  // string | The product ID
+            var file = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream | The image file to upload
+            var legacy = true;  // bool? | Set to 'true' if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. (optional) 
 
             try
             {
                 // Create the Product Image
-                apiInstance.CreateProductImage(productId, file);
+                apiInstance.CreateProductImage(productId, file, legacy);
             }
             catch (ApiException  e)
             {
@@ -384,7 +386,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Create the Product Image
-    apiInstance.CreateProductImageWithHttpInfo(productId, file);
+    apiInstance.CreateProductImageWithHttpInfo(productId, file, legacy);
 }
 catch (ApiException e)
 {
@@ -398,8 +400,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **productId** | **string** | product_id |  |
-| **file** | **System.IO.Stream****System.IO.Stream** | File to upload |  |
+| **productId** | **string** | The product ID |  |
+| **file** | **System.IO.Stream****System.IO.Stream** | The image file to upload |  |
+| **legacy** | **bool?** | Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. | [optional]  |
 
 ### Return type
 
@@ -926,6 +929,107 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="getfiledata"></a>
+# **GetFileData**
+> byte[] GetFileData (string productId)
+
+Retrieve Product Legacy Image Data
+
+Retrieves the product's legacy image
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class GetFileDataExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ProductsApi(config);
+            var productId = "productId_example";  // string | product_id
+
+            try
+            {
+                // Retrieve Product Legacy Image Data
+                byte[] result = apiInstance.GetFileData(productId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ProductsApi.GetFileData: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetFileDataWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve Product Legacy Image Data
+    ApiResponse<byte[]> response = apiInstance.GetFileDataWithHttpInfo(productId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ProductsApi.GetFileDataWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **productId** | **string** | product_id |  |
+
+### Return type
+
+**byte[]**
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="getproduct"></a>
 # **GetProduct**
 > RestV2ProductDetail GetProduct (string productId)
@@ -1340,7 +1444,7 @@ catch (ApiException e)
 
 <a id="updateproduct"></a>
 # **UpdateProduct**
-> RestV2ProductDetail UpdateProduct (string productId, UpdateProductRequestDetail updateProductRequestDetail, string? updateMask = null)
+> RestV2ProductDetail UpdateProduct (string productId, UpdateProductRequestDetail updateProductRequestDetail, Object? updateMask = null)
 
 Update a Product
 
@@ -1368,7 +1472,7 @@ namespace Example
             var apiInstance = new ProductsApi(config);
             var productId = "productId_example";  // string | product_id
             var updateProductRequestDetail = new UpdateProductRequestDetail(); // UpdateProductRequestDetail | 
-            var updateMask = "active,name,description,price,sku,shippable,short_description,subscription_only, storefront_hidden,weight,taxable,country_taxable,city_taxable,state_taxable, inventory_limit,out_of_stock_enabled,email_for_inventory_notifications";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -1413,7 +1517,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **productId** | **string** | product_id |  |
 | **updateProductRequestDetail** | [**UpdateProductRequestDetail**](UpdateProductRequestDetail.md) |  |  |
-| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -1445,7 +1549,7 @@ catch (ApiException e)
 
 <a id="updateproductoption"></a>
 # **UpdateProductOption**
-> ProductOption UpdateProductOption (string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, string? updateMask = null)
+> ProductOption UpdateProductOption (string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object? updateMask = null)
 
 Updates a Product Option
 
@@ -1474,7 +1578,7 @@ namespace Example
             var productId = "productId_example";  // string | product_id
             var productOptionId = "productOptionId_example";  // string | product_option_id
             var updateProductOptionRequest = new UpdateProductOptionRequest(); // UpdateProductOptionRequest | 
-            var updateMask = "option_label,display_order,required,minimum_characters,maximum_characters,allow_spaces, only_starts_with,only_ends_with,only_contains,error_message";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -1520,7 +1624,7 @@ catch (ApiException e)
 | **productId** | **string** | product_id |  |
 | **productOptionId** | **string** | product_option_id |  |
 | **updateProductOptionRequest** | [**UpdateProductOptionRequest**](UpdateProductOptionRequest.md) |  |  |
-| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -1552,7 +1656,7 @@ catch (ApiException e)
 
 <a id="updateproductoptionlistoptionvalue"></a>
 # **UpdateProductOptionListOptionValue**
-> ProductOption UpdateProductOptionListOptionValue (string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, string? updateMask = null)
+> ProductOption UpdateProductOptionListOptionValue (string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, Object? updateMask = null)
 
 Updates a Product Option List Option Value
 
@@ -1582,7 +1686,7 @@ namespace Example
             var productOptionId = "productOptionId_example";  // string | product_option_id
             var itemId = "itemId_example";  // string | item_id
             var updateProductOptionListOption = new UpdateProductOptionListOption(); // UpdateProductOptionListOption | 
-            var updateMask = "item_label,item_code,item_display_order,price_adjustment ";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -1629,7 +1733,7 @@ catch (ApiException e)
 | **productOptionId** | **string** | product_option_id |  |
 | **itemId** | **string** | item_id |  |
 | **updateProductOptionListOption** | [**UpdateProductOptionListOption**](UpdateProductOptionListOption.md) |  |  |
-| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

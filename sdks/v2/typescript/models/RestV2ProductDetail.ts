@@ -93,6 +93,14 @@ export class RestV2ProductDetail {
     * List of subscription plans associated with the product. Can be empty.
     */
     'subscriptionPlans'?: Array<SubscriptionPlanDetail>;
+    'topHtml'?: string;
+    'bottomHtml'?: string;
+    'isPackage'?: boolean;
+    'needsDigitalDelivery'?: boolean;
+    'hasLegacyImage'?: boolean;
+    'deliveryDescription'?: string;
+    'createTime'?: string;
+    'updateTime'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -211,6 +219,54 @@ export class RestV2ProductDetail {
             "name": "subscriptionPlans",
             "baseName": "subscription_plans",
             "type": "Array<SubscriptionPlanDetail>",
+            "format": ""
+        },
+        {
+            "name": "topHtml",
+            "baseName": "top_html",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "bottomHtml",
+            "baseName": "bottom_html",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "isPackage",
+            "baseName": "is_package",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "needsDigitalDelivery",
+            "baseName": "needs_digital_delivery",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "hasLegacyImage",
+            "baseName": "has_legacy_image",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "deliveryDescription",
+            "baseName": "delivery_description",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "createTime",
+            "baseName": "create_time",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "updateTime",
+            "baseName": "update_time",
+            "type": "string",
             "format": ""
         }    ];
 

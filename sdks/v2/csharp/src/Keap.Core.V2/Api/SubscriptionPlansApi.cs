@@ -147,7 +147,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionPlan</returns>
-        SubscriptionPlan UpdateSubscriptionPlan(string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, string? updateMask = default, int operationIndex = 0);
+        SubscriptionPlan UpdateSubscriptionPlan(string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update Subscription Plan
@@ -162,7 +162,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionPlan</returns>
-        ApiResponse<SubscriptionPlan> UpdateSubscriptionPlanWithHttpInfo(string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<SubscriptionPlan> UpdateSubscriptionPlanWithHttpInfo(string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, Object? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -300,7 +300,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SubscriptionPlan</returns>
-        System.Threading.Tasks.Task<SubscriptionPlan> UpdateSubscriptionPlanAsync(string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<SubscriptionPlan> UpdateSubscriptionPlanAsync(string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update Subscription Plan
@@ -316,7 +316,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SubscriptionPlan)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SubscriptionPlan>> UpdateSubscriptionPlanWithHttpInfoAsync(string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<SubscriptionPlan>> UpdateSubscriptionPlanWithHttpInfoAsync(string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -1257,7 +1257,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionPlan</returns>
-        public SubscriptionPlan UpdateSubscriptionPlan(string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, string? updateMask = default, int operationIndex = 0)
+        public SubscriptionPlan UpdateSubscriptionPlan(string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<SubscriptionPlan> localVarResponse = UpdateSubscriptionPlanWithHttpInfo(productId, subscriptionPlanId, updateSubscriptionPlanRequest, updateMask);
             return localVarResponse.Data;
@@ -1273,7 +1273,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionPlan</returns>
-        public Keap.Core.V2.Client.ApiResponse<SubscriptionPlan> UpdateSubscriptionPlanWithHttpInfo(string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<SubscriptionPlan> UpdateSubscriptionPlanWithHttpInfo(string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'productId' is set
             if (productId == null)
@@ -1370,7 +1370,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SubscriptionPlan</returns>
-        public async System.Threading.Tasks.Task<SubscriptionPlan> UpdateSubscriptionPlanAsync(string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<SubscriptionPlan> UpdateSubscriptionPlanAsync(string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<SubscriptionPlan> localVarResponse = await UpdateSubscriptionPlanWithHttpInfoAsync(productId, subscriptionPlanId, updateSubscriptionPlanRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1387,7 +1387,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SubscriptionPlan)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<SubscriptionPlan>> UpdateSubscriptionPlanWithHttpInfoAsync(string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<SubscriptionPlan>> UpdateSubscriptionPlanWithHttpInfoAsync(string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'productId' is set
             if (productId == null)

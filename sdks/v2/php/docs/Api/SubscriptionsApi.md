@@ -459,7 +459,7 @@ $apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
 );
 $subscription_id = 'subscription_id_example'; // string
 $update_subscription_request_detail = new \Keap\Core\V2\Model\UpdateSubscriptionRequestDetail(); // \Keap\Core\V2\Model\UpdateSubscriptionRequestDetail
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateSubscription($subscription_id, $update_subscription_request_detail, $update_mask);
@@ -475,7 +475,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **subscription_id** | **string**|  | |
 | **update_subscription_request_detail** | [**\Keap\Core\V2\Model\UpdateSubscriptionRequestDetail**](../Model/UpdateSubscriptionRequestDetail.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -522,7 +522,7 @@ $apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
 );
 $custom_field_id = 'custom_field_id_example'; // string
 $update_custom_field_meta_data_request = new \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest(); // \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateSubscriptionCustomField($custom_field_id, $update_custom_field_meta_data_request, $update_mask);
@@ -538,7 +538,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **custom_field_id** | **string**|  | |
 | **update_custom_field_meta_data_request** | [**\Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest**](../Model/UpdateCustomFieldMetaDataRequest.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

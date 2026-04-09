@@ -175,7 +175,7 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fileId"></param>
-        /// <param name="updateMask">Update Mask (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="file">File to upload. This is a file sent as multi-part (not a string) (optional)</param>
         /// <param name="fileName">File name (optional)</param>
         /// <param name="isPublic">Is public (optional)</param>
@@ -184,7 +184,7 @@ namespace Keap.Core.V2.Api
         /// <param name="isPublic2">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>FileMetadata</returns>
-        FileMetadata UpdateFile(string fileId, string? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0);
+        FileMetadata UpdateFile(string fileId, Object? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a file
@@ -194,7 +194,7 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fileId"></param>
-        /// <param name="updateMask">Update Mask (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="file">File to upload. This is a file sent as multi-part (not a string) (optional)</param>
         /// <param name="fileName">File name (optional)</param>
         /// <param name="isPublic">Is public (optional)</param>
@@ -203,7 +203,7 @@ namespace Keap.Core.V2.Api
         /// <param name="isPublic2">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of FileMetadata</returns>
-        ApiResponse<FileMetadata> UpdateFileWithHttpInfo(string fileId, string? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0);
+        ApiResponse<FileMetadata> UpdateFileWithHttpInfo(string fileId, Object? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -370,7 +370,7 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fileId"></param>
-        /// <param name="updateMask">Update Mask (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="file">File to upload. This is a file sent as multi-part (not a string) (optional)</param>
         /// <param name="fileName">File name (optional)</param>
         /// <param name="isPublic">Is public (optional)</param>
@@ -380,7 +380,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of FileMetadata</returns>
-        System.Threading.Tasks.Task<FileMetadata> UpdateFileAsync(string fileId, string? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<FileMetadata> UpdateFileAsync(string fileId, Object? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a file
@@ -390,7 +390,7 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fileId"></param>
-        /// <param name="updateMask">Update Mask (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="file">File to upload. This is a file sent as multi-part (not a string) (optional)</param>
         /// <param name="fileName">File name (optional)</param>
         /// <param name="isPublic">Is public (optional)</param>
@@ -400,7 +400,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (FileMetadata)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileMetadata>> UpdateFileWithHttpInfoAsync(string fileId, string? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<FileMetadata>> UpdateFileWithHttpInfoAsync(string fileId, Object? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -1579,7 +1579,7 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fileId"></param>
-        /// <param name="updateMask">Update Mask (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="file">File to upload. This is a file sent as multi-part (not a string) (optional)</param>
         /// <param name="fileName">File name (optional)</param>
         /// <param name="isPublic">Is public (optional)</param>
@@ -1588,7 +1588,7 @@ namespace Keap.Core.V2.Api
         /// <param name="isPublic2">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>FileMetadata</returns>
-        public FileMetadata UpdateFile(string fileId, string? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0)
+        public FileMetadata UpdateFile(string fileId, Object? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<FileMetadata> localVarResponse = UpdateFileWithHttpInfo(fileId, updateMask, file, fileName, isPublic, file2, fileName2, isPublic2);
             return localVarResponse.Data;
@@ -1599,7 +1599,7 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fileId"></param>
-        /// <param name="updateMask">Update Mask (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="file">File to upload. This is a file sent as multi-part (not a string) (optional)</param>
         /// <param name="fileName">File name (optional)</param>
         /// <param name="isPublic">Is public (optional)</param>
@@ -1608,7 +1608,7 @@ namespace Keap.Core.V2.Api
         /// <param name="isPublic2">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of FileMetadata</returns>
-        public Keap.Core.V2.Client.ApiResponse<FileMetadata> UpdateFileWithHttpInfo(string fileId, string? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<FileMetadata> UpdateFileWithHttpInfo(string fileId, Object? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0)
         {
             // verify the required parameter 'fileId' is set
             if (fileId == null)
@@ -1709,7 +1709,7 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fileId"></param>
-        /// <param name="updateMask">Update Mask (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="file">File to upload. This is a file sent as multi-part (not a string) (optional)</param>
         /// <param name="fileName">File name (optional)</param>
         /// <param name="isPublic">Is public (optional)</param>
@@ -1719,7 +1719,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of FileMetadata</returns>
-        public async System.Threading.Tasks.Task<FileMetadata> UpdateFileAsync(string fileId, string? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<FileMetadata> UpdateFileAsync(string fileId, Object? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<FileMetadata> localVarResponse = await UpdateFileWithHttpInfoAsync(fileId, updateMask, file, fileName, isPublic, file2, fileName2, isPublic2, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1730,7 +1730,7 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fileId"></param>
-        /// <param name="updateMask">Update Mask (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="file">File to upload. This is a file sent as multi-part (not a string) (optional)</param>
         /// <param name="fileName">File name (optional)</param>
         /// <param name="isPublic">Is public (optional)</param>
@@ -1740,7 +1740,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (FileMetadata)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<FileMetadata>> UpdateFileWithHttpInfoAsync(string fileId, string? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<FileMetadata>> UpdateFileWithHttpInfoAsync(string fileId, Object? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'fileId' is set
             if (fileId == null)

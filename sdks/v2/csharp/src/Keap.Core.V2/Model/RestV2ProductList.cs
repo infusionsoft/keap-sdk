@@ -54,7 +54,15 @@ namespace Keap.Core.V2.Model
         /// <param name="stateTaxable">If state-based taxes should be applied to this product.</param>
         /// <param name="cityTaxable">If city-based taxes should be applied to this product.</param>
         /// <param name="subscriptionPlans">List of subscription plans associated with the product. Can be empty..</param>
-        public RestV2ProductList(string id = default, string name = default, CurrencyValueList price = default, bool active = default, string description = default, string sku = default, bool shippable = default, double weight = default, bool taxable = default, List<string> categories = default, List<ProductOptionsList> options = default, ProductInventoryList inventory = default, string shortDescription = default, bool subscriptionOnly = default, bool storefrontHidden = default, bool countryTaxable = default, bool stateTaxable = default, bool cityTaxable = default, List<SubscriptionPlanList> subscriptionPlans = default)
+        /// <param name="topHtml">topHtml.</param>
+        /// <param name="bottomHtml">bottomHtml.</param>
+        /// <param name="isPackage">isPackage.</param>
+        /// <param name="needsDigitalDelivery">needsDigitalDelivery.</param>
+        /// <param name="hasLegacyImage">hasLegacyImage.</param>
+        /// <param name="deliveryDescription">deliveryDescription.</param>
+        /// <param name="createTime">createTime.</param>
+        /// <param name="updateTime">updateTime.</param>
+        public RestV2ProductList(string id = default, string name = default, CurrencyValueList price = default, bool active = default, string description = default, string sku = default, bool shippable = default, double weight = default, bool taxable = default, List<string> categories = default, List<ProductOptionsList> options = default, ProductInventoryList inventory = default, string shortDescription = default, bool subscriptionOnly = default, bool storefrontHidden = default, bool countryTaxable = default, bool stateTaxable = default, bool cityTaxable = default, List<SubscriptionPlanList> subscriptionPlans = default, string topHtml = default, string bottomHtml = default, bool isPackage = default, bool needsDigitalDelivery = default, bool hasLegacyImage = default, string deliveryDescription = default, string createTime = default, string updateTime = default)
         {
             this.Id = id;
             this.Name = name;
@@ -75,6 +83,14 @@ namespace Keap.Core.V2.Model
             this.StateTaxable = stateTaxable;
             this.CityTaxable = cityTaxable;
             this.SubscriptionPlans = subscriptionPlans;
+            this.TopHtml = topHtml;
+            this.BottomHtml = bottomHtml;
+            this.IsPackage = isPackage;
+            this.NeedsDigitalDelivery = needsDigitalDelivery;
+            this.HasLegacyImage = hasLegacyImage;
+            this.DeliveryDescription = deliveryDescription;
+            this.CreateTime = createTime;
+            this.UpdateTime = updateTime;
         }
 
         /// <summary>
@@ -253,6 +269,54 @@ namespace Keap.Core.V2.Model
         public List<SubscriptionPlanList> SubscriptionPlans { get; set; }
 
         /// <summary>
+        /// Gets or Sets TopHtml
+        /// </summary>
+        [DataMember(Name = "top_html", EmitDefaultValue = false)]
+        public string TopHtml { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BottomHtml
+        /// </summary>
+        [DataMember(Name = "bottom_html", EmitDefaultValue = false)]
+        public string BottomHtml { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IsPackage
+        /// </summary>
+        [DataMember(Name = "is_package", EmitDefaultValue = true)]
+        public bool IsPackage { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NeedsDigitalDelivery
+        /// </summary>
+        [DataMember(Name = "needs_digital_delivery", EmitDefaultValue = true)]
+        public bool NeedsDigitalDelivery { get; set; }
+
+        /// <summary>
+        /// Gets or Sets HasLegacyImage
+        /// </summary>
+        [DataMember(Name = "has_legacy_image", EmitDefaultValue = true)]
+        public bool HasLegacyImage { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DeliveryDescription
+        /// </summary>
+        [DataMember(Name = "delivery_description", EmitDefaultValue = false)]
+        public string DeliveryDescription { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreateTime
+        /// </summary>
+        [DataMember(Name = "create_time", EmitDefaultValue = false)]
+        public string CreateTime { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UpdateTime
+        /// </summary>
+        [DataMember(Name = "update_time", EmitDefaultValue = false)]
+        public string UpdateTime { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -279,6 +343,14 @@ namespace Keap.Core.V2.Model
             sb.Append("  StateTaxable: ").Append(StateTaxable).Append("\n");
             sb.Append("  CityTaxable: ").Append(CityTaxable).Append("\n");
             sb.Append("  SubscriptionPlans: ").Append(SubscriptionPlans).Append("\n");
+            sb.Append("  TopHtml: ").Append(TopHtml).Append("\n");
+            sb.Append("  BottomHtml: ").Append(BottomHtml).Append("\n");
+            sb.Append("  IsPackage: ").Append(IsPackage).Append("\n");
+            sb.Append("  NeedsDigitalDelivery: ").Append(NeedsDigitalDelivery).Append("\n");
+            sb.Append("  HasLegacyImage: ").Append(HasLegacyImage).Append("\n");
+            sb.Append("  DeliveryDescription: ").Append(DeliveryDescription).Append("\n");
+            sb.Append("  CreateTime: ").Append(CreateTime).Append("\n");
+            sb.Append("  UpdateTime: ").Append(UpdateTime).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

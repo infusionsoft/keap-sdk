@@ -99,8 +99,7 @@ const request: BusinessProfileApiUpdateBusinessProfileRequest = {
     businessSecondaryColor: "businessSecondaryColor_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: `name,email,website,phone,address,currency_code,business_goals,business_primary_color,
-business_secondary_color`,
+  updateMask: null,
 };
 
 const data = await apiInstance.updateBusinessProfile(request);
@@ -113,7 +112,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateBusinessProfileRequest** | **UpdateBusinessProfileRequest**|  |
- **updateMask** | [**&#39;name,email,website,phone,address,currency_code,business_goals,business_primary_color, business_secondary_color&#39;**]**Array<&#39;name,email,website,phone,address,currency_code,business_goals,business_primary_color, business_secondary_color&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

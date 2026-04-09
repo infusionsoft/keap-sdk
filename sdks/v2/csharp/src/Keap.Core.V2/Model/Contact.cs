@@ -127,6 +127,7 @@ namespace Keap.Core.V2.Model
         /// <param name="prefix">Name prefix.</param>
         /// <param name="suffix">Name suffix.</param>
         /// <param name="website">Personal website URL.</param>
+        /// <param name="groups">groups.</param>
         /// <param name="updateTime">Last update timestamp (ISO-8601).</param>
         /// <param name="createTime">Creation timestamp (ISO-8601).</param>
         /// <param name="scoreValue">Contact score value.</param>
@@ -152,7 +153,13 @@ namespace Keap.Core.V2.Model
         /// <param name="spouseName">Spouse&#39;s name.</param>
         /// <param name="varTimeZone">Contact&#39;s timezone.</param>
         /// <param name="utmParameters">utmParameters.</param>
-        public Contact(string id = default, List<Link> links = default, List<Address> addresses = default, BasicCompany company = default, Origin origin = default, string prefix = default, string suffix = default, string website = default, string updateTime = default, string createTime = default, string scoreValue = default, List<string> tagIds = default, string anniversaryDate = default, string birthDate = default, string contactType = default, List<CustomFieldValue> customFields = default, List<EmailAddress> emailAddresses = default, string familyName = default, List<FaxNumber> faxNumbers = default, string givenName = default, string jobTitle = default, string leadsourceId = default, string middleName = default, string ownerId = default, List<PhoneNumber> phoneNumbers = default, string preferredLocale = default, string preferredName = default, string referralCode = default, List<SocialAccount> socialAccounts = default, SourceTypeEnum? sourceType = default, string spouseName = default, string varTimeZone = default, List<ContactUtmResponse> utmParameters = default)
+        /// <param name="accountId">accountId.</param>
+        /// <param name="assistantName">assistantName.</param>
+        /// <param name="assistantPhone">assistantPhone.</param>
+        /// <param name="billingInformation">billingInformation.</param>
+        /// <param name="createdBy">createdBy.</param>
+        /// <param name="lastUpdatedBy">lastUpdatedBy.</param>
+        public Contact(string id = default, List<Link> links = default, List<Address> addresses = default, BasicCompany company = default, Origin origin = default, string prefix = default, string suffix = default, string website = default, string groups = default, string updateTime = default, string createTime = default, string scoreValue = default, List<string> tagIds = default, string anniversaryDate = default, string birthDate = default, string contactType = default, List<CustomFieldValue> customFields = default, List<EmailAddress> emailAddresses = default, string familyName = default, List<FaxNumber> faxNumbers = default, string givenName = default, string jobTitle = default, string leadsourceId = default, string middleName = default, string ownerId = default, List<PhoneNumber> phoneNumbers = default, string preferredLocale = default, string preferredName = default, string referralCode = default, List<SocialAccount> socialAccounts = default, SourceTypeEnum? sourceType = default, string spouseName = default, string varTimeZone = default, List<ContactUtmResponse> utmParameters = default, string accountId = default, string assistantName = default, string assistantPhone = default, string billingInformation = default, string createdBy = default, string lastUpdatedBy = default)
         {
             this.Id = id;
             this.Links = links;
@@ -162,6 +169,7 @@ namespace Keap.Core.V2.Model
             this.Prefix = prefix;
             this.Suffix = suffix;
             this.Website = website;
+            this.Groups = groups;
             this.UpdateTime = updateTime;
             this.CreateTime = createTime;
             this.ScoreValue = scoreValue;
@@ -187,6 +195,12 @@ namespace Keap.Core.V2.Model
             this.SpouseName = spouseName;
             this.VarTimeZone = varTimeZone;
             this.UtmParameters = utmParameters;
+            this.AccountId = accountId;
+            this.AssistantName = assistantName;
+            this.AssistantPhone = assistantPhone;
+            this.BillingInformation = billingInformation;
+            this.CreatedBy = createdBy;
+            this.LastUpdatedBy = lastUpdatedBy;
         }
 
         /// <summary>
@@ -253,6 +267,12 @@ namespace Keap.Core.V2.Model
         */
         [DataMember(Name = "website", EmitDefaultValue = false)]
         public string Website { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Groups
+        /// </summary>
+        [DataMember(Name = "groups", EmitDefaultValue = false)]
+        public string Groups { get; set; }
 
         /// <summary>
         /// Last update timestamp (ISO-8601)
@@ -467,6 +487,42 @@ namespace Keap.Core.V2.Model
         public List<ContactUtmResponse> UtmParameters { get; set; }
 
         /// <summary>
+        /// Gets or Sets AccountId
+        /// </summary>
+        [DataMember(Name = "account_id", EmitDefaultValue = false)]
+        public string AccountId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AssistantName
+        /// </summary>
+        [DataMember(Name = "assistant_name", EmitDefaultValue = false)]
+        public string AssistantName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AssistantPhone
+        /// </summary>
+        [DataMember(Name = "assistant_phone", EmitDefaultValue = false)]
+        public string AssistantPhone { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BillingInformation
+        /// </summary>
+        [DataMember(Name = "billing_information", EmitDefaultValue = false)]
+        public string BillingInformation { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreatedBy
+        /// </summary>
+        [DataMember(Name = "created_by", EmitDefaultValue = false)]
+        public string CreatedBy { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LastUpdatedBy
+        /// </summary>
+        [DataMember(Name = "last_updated_by", EmitDefaultValue = false)]
+        public string LastUpdatedBy { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -482,6 +538,7 @@ namespace Keap.Core.V2.Model
             sb.Append("  Prefix: ").Append(Prefix).Append("\n");
             sb.Append("  Suffix: ").Append(Suffix).Append("\n");
             sb.Append("  Website: ").Append(Website).Append("\n");
+            sb.Append("  Groups: ").Append(Groups).Append("\n");
             sb.Append("  UpdateTime: ").Append(UpdateTime).Append("\n");
             sb.Append("  CreateTime: ").Append(CreateTime).Append("\n");
             sb.Append("  ScoreValue: ").Append(ScoreValue).Append("\n");
@@ -507,6 +564,12 @@ namespace Keap.Core.V2.Model
             sb.Append("  SpouseName: ").Append(SpouseName).Append("\n");
             sb.Append("  VarTimeZone: ").Append(VarTimeZone).Append("\n");
             sb.Append("  UtmParameters: ").Append(UtmParameters).Append("\n");
+            sb.Append("  AccountId: ").Append(AccountId).Append("\n");
+            sb.Append("  AssistantName: ").Append(AssistantName).Append("\n");
+            sb.Append("  AssistantPhone: ").Append(AssistantPhone).Append("\n");
+            sb.Append("  BillingInformation: ").Append(BillingInformation).Append("\n");
+            sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
+            sb.Append("  LastUpdatedBy: ").Append(LastUpdatedBy).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -2097,7 +2097,7 @@ class FilesApi
      * Update a file
      *
      * @param  string $file_id file_id (required)
-     * @param  string|null $update_mask Update Mask (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  \SplFileObject|null $file File to upload. This is a file sent as multi-part (not a string) (optional)
      * @param  string|null $file_name File name (optional)
      * @param  bool|null $is_public Is public (optional)
@@ -2122,7 +2122,7 @@ class FilesApi
      * Update a file
      *
      * @param  string $file_id (required)
-     * @param  string|null $update_mask Update Mask (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  \SplFileObject|null $file File to upload. This is a file sent as multi-part (not a string) (optional)
      * @param  string|null $file_name File name (optional)
      * @param  bool|null $is_public Is public (optional)
@@ -2312,7 +2312,7 @@ class FilesApi
      * Update a file
      *
      * @param  string $file_id (required)
-     * @param  string|null $update_mask Update Mask (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  \SplFileObject|null $file File to upload. This is a file sent as multi-part (not a string) (optional)
      * @param  string|null $file_name File name (optional)
      * @param  bool|null $is_public Is public (optional)
@@ -2340,7 +2340,7 @@ class FilesApi
      * Update a file
      *
      * @param  string $file_id (required)
-     * @param  string|null $update_mask Update Mask (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  \SplFileObject|null $file File to upload. This is a file sent as multi-part (not a string) (optional)
      * @param  string|null $file_name File name (optional)
      * @param  bool|null $is_public Is public (optional)
@@ -2397,7 +2397,7 @@ class FilesApi
      * Create request for operation 'updateFile'
      *
      * @param  string $file_id (required)
-     * @param  string|null $update_mask Update Mask (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  \SplFileObject|null $file File to upload. This is a file sent as multi-part (not a string) (optional)
      * @param  string|null $file_name File name (optional)
      * @param  bool|null $is_public Is public (optional)
@@ -2438,7 +2438,7 @@ class FilesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'string', // openApiType
+            'mixed', // openApiType
             'form', // style
             true, // explode
             false // required

@@ -347,7 +347,7 @@ export default class FilesApi {
      * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
      * @param {String} fileId 
      * @param {Object} opts Optional parameters
-     * @param {String} [updateMask] Update Mask
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param {File} [file] File to upload. This is a file sent as multi-part (not a string)
      * @param {String} [fileName] File name
      * @param {Boolean} [isPublic] Is public
@@ -397,7 +397,7 @@ export default class FilesApi {
      * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
      * @param {String} fileId 
      * @param {Object} opts Optional parameters
-     * @param {String} opts.updateMask Update Mask
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param {File} opts.file File to upload. This is a file sent as multi-part (not a string)
      * @param {String} opts.fileName File name
      * @param {Boolean} opts.isPublic Is public

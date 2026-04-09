@@ -371,7 +371,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.FreeTrialDiscountsApi(api_client)
     discount_id = 'discount_id_example' # str | 
     update_free_trial_discount_request = keap_core_v2_client.UpdateFreeTrialDiscountRequest() # UpdateFreeTrialDiscountRequest | 
-    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Subscription Free Trial Discount
@@ -390,7 +390,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **discount_id** | **str**|  | 
  **update_free_trial_discount_request** | [**UpdateFreeTrialDiscountRequest**](UpdateFreeTrialDiscountRequest.md)|  | 
- **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

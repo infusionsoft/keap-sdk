@@ -74,6 +74,9 @@ class SubscriptionPlan {
             if (data.hasOwnProperty('plan_price')) {
                 obj['plan_price'] = CurrencyValue.constructFromObject(data['plan_price']);
             }
+            if (data.hasOwnProperty('preauthorize_amount')) {
+                obj['preauthorize_amount'] = ApiClient.convertToType(data['preauthorize_amount'], 'Number');
+            }
         }
         return obj;
     }
@@ -162,6 +165,12 @@ SubscriptionPlan.prototype['total_cycles'] = undefined;
  * @member {module:keap.core.v2/model/CurrencyValue} plan_price
  */
 SubscriptionPlan.prototype['plan_price'] = undefined;
+
+/**
+ * The pre-authorize amount for the subscription plan. If null, this field is omitted from the response.
+ * @member {Number} preauthorize_amount
+ */
+SubscriptionPlan.prototype['preauthorize_amount'] = undefined;
 
 
 

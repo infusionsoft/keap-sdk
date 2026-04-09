@@ -485,7 +485,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ProductDiscount
    * @throws ApiException if fails to make API call
    */
-  public ProductDiscount updateProductDiscount(String discountId, UpdateProductDiscountRequest updateProductDiscountRequest, String updateMask) throws ApiException {
+  public ProductDiscount updateProductDiscount(String discountId, UpdateProductDiscountRequest updateProductDiscountRequest, Object updateMask) throws ApiException {
     ApiResponse<ProductDiscount> localVarResponse = updateProductDiscountWithHttpInfo(discountId, updateProductDiscountRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -499,7 +499,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;ProductDiscount&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ProductDiscount> updateProductDiscountWithHttpInfo(String discountId, UpdateProductDiscountRequest updateProductDiscountRequest, String updateMask) throws ApiException {
+  public ApiResponse<ProductDiscount> updateProductDiscountWithHttpInfo(String discountId, UpdateProductDiscountRequest updateProductDiscountRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateProductDiscountRequestBuilder(discountId, updateProductDiscountRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -540,7 +540,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateProductDiscountRequestBuilder(String discountId, UpdateProductDiscountRequest updateProductDiscountRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateProductDiscountRequestBuilder(String discountId, UpdateProductDiscountRequest updateProductDiscountRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'discountId' is set
     if (discountId == null) {
       throw new ApiException(400, "Missing the required parameter 'discountId' when calling updateProductDiscount");

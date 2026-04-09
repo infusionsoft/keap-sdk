@@ -1508,7 +1508,7 @@ public class Example {
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
         String opportunityId = "opportunityId_example"; // String | 
         UpdateOpportunityRequestV2 updateOpportunityRequestV2 = new UpdateOpportunityRequestV2(); // UpdateOpportunityRequestV2 | 
-        String updateMask = "opportunity_title,next_action_time,next_action_notes,opportunity_notes, estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high, contact_id,stage_id,user_id,custom_fields,affiliate_id"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             RestV2Opportunity result = apiInstance.updateOpportunity(opportunityId, updateOpportunityRequestV2, updateMask);
             System.out.println(result);
@@ -1530,9 +1530,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **opportunityId** | **String**|  | |
 | **updateOpportunityRequestV2** | [**UpdateOpportunityRequestV2**](UpdateOpportunityRequestV2.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: opportunity_title,next_action_time,next_action_notes,opportunity_notes,
-estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high,
-contact_id,stage_id,user_id,custom_fields,affiliate_id] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1592,7 +1590,7 @@ public class Example {
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
         String opportunityId = "opportunityId_example"; // String | 
         UpdateOpportunityRequestV2 updateOpportunityRequestV2 = new UpdateOpportunityRequestV2(); // UpdateOpportunityRequestV2 | 
-        String updateMask = "opportunity_title,next_action_time,next_action_notes,opportunity_notes, estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high, contact_id,stage_id,user_id,custom_fields,affiliate_id"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<RestV2Opportunity> response = apiInstance.updateOpportunityWithHttpInfo(opportunityId, updateOpportunityRequestV2, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1616,9 +1614,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **opportunityId** | **String**|  | |
 | **updateOpportunityRequestV2** | [**UpdateOpportunityRequestV2**](UpdateOpportunityRequestV2.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: opportunity_title,next_action_time,next_action_notes,opportunity_notes,
-estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high,
-contact_id,stage_id,user_id,custom_fields,affiliate_id] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1678,7 +1674,7 @@ public class Example {
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
         String customFieldId = "customFieldId_example"; // String | 
         UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-        String updateMask = "group_id,label,options"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             CustomFieldMetaData result = apiInstance.updateOpportunityCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println(result);
@@ -1700,7 +1696,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **customFieldId** | **String**|  | |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id,label,options] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1760,7 +1756,7 @@ public class Example {
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
         String customFieldId = "customFieldId_example"; // String | 
         UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-        String updateMask = "group_id,label,options"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<CustomFieldMetaData> response = apiInstance.updateOpportunityCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1784,7 +1780,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **customFieldId** | **String**|  | |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id,label,options] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1844,7 +1840,7 @@ public class Example {
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
         String stageId = "stageId_example"; // String | 
         UpdateOpportunityStageRequest updateOpportunityStageRequest = new UpdateOpportunityStageRequest(); // UpdateOpportunityStageRequest | 
-        String updateMask = "name,order,target_number_days,probability,checklist_items"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             RestOpportunityStage result = apiInstance.updateOpportunityStage(stageId, updateOpportunityStageRequest, updateMask);
             System.out.println(result);
@@ -1866,7 +1862,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **stageId** | **String**|  | |
 | **updateOpportunityStageRequest** | [**UpdateOpportunityStageRequest**](UpdateOpportunityStageRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,order,target_number_days,probability,checklist_items] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1926,7 +1922,7 @@ public class Example {
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
         String stageId = "stageId_example"; // String | 
         UpdateOpportunityStageRequest updateOpportunityStageRequest = new UpdateOpportunityStageRequest(); // UpdateOpportunityStageRequest | 
-        String updateMask = "name,order,target_number_days,probability,checklist_items"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<RestOpportunityStage> response = apiInstance.updateOpportunityStageWithHttpInfo(stageId, updateOpportunityStageRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1950,7 +1946,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **stageId** | **String**|  | |
 | **updateOpportunityStageRequest** | [**UpdateOpportunityStageRequest**](UpdateOpportunityStageRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,order,target_number_days,probability,checklist_items] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

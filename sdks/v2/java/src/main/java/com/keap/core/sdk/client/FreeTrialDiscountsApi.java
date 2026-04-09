@@ -485,7 +485,7 @@ import io.github.resilience4j.retry.Retry;
    * @return FreeTrialDiscount
    * @throws ApiException if fails to make API call
    */
-  public FreeTrialDiscount updateFreeTrialDiscount(String discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, String updateMask) throws ApiException {
+  public FreeTrialDiscount updateFreeTrialDiscount(String discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, Object updateMask) throws ApiException {
     ApiResponse<FreeTrialDiscount> localVarResponse = updateFreeTrialDiscountWithHttpInfo(discountId, updateFreeTrialDiscountRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -499,7 +499,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;FreeTrialDiscount&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<FreeTrialDiscount> updateFreeTrialDiscountWithHttpInfo(String discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, String updateMask) throws ApiException {
+  public ApiResponse<FreeTrialDiscount> updateFreeTrialDiscountWithHttpInfo(String discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateFreeTrialDiscountRequestBuilder(discountId, updateFreeTrialDiscountRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -540,7 +540,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateFreeTrialDiscountRequestBuilder(String discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateFreeTrialDiscountRequestBuilder(String discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'discountId' is set
     if (discountId == null) {
       throw new ApiException(400, "Missing the required parameter 'discountId' when calling updateFreeTrialDiscount");

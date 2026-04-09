@@ -22,6 +22,11 @@ Name | Type | Description | Notes
 **inventory_limit** | **int** | The inventory limit for this product. Must be greater than or equal to 0. | [optional] 
 **out_of_stock_enabled** | **bool** | The flag to enable out of stock inventory | [optional] 
 **email_for_inventory_notifications** | **str** | The email address for notifications about inventory | [optional] 
+**top_html** | **str** |  | [optional] 
+**bottom_html** | **str** |  | [optional] 
+**is_package** | **bool** |  | [optional] 
+**needs_digital_delivery** | **bool** |  | [optional] 
+**delivery_description** | **str** |  | [optional] 
 
 ## Example
 

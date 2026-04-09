@@ -206,7 +206,7 @@ export class LeadSourcesApiRequestFactory extends BaseAPIRequestFactory {
      * @param createLeadSourceRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateLeadSource(leadSourceId: string, createLeadSourceRequest: CreateLeadSourceRequest, updateMask?: 'name,description,vendor,medium,message,start_time,end_time,status,lead_source_category_id', _options?: Configuration): Promise<RequestContext> {
+    public async updateLeadSource(leadSourceId: string, createLeadSourceRequest: CreateLeadSourceRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceId' is not null or undefined
@@ -232,7 +232,10 @@ export class LeadSourcesApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'name,description,vendor,medium,message,start_time,end_time,status,lead_source_category_id'", ""));
+            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
+            }
         }
 
 

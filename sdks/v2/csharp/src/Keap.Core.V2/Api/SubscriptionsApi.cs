@@ -207,7 +207,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionDetail</returns>
-        SubscriptionDetail UpdateSubscription(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, string? updateMask = default, int operationIndex = 0);
+        SubscriptionDetail UpdateSubscription(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Subscription
@@ -221,7 +221,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionDetail</returns>
-        ApiResponse<SubscriptionDetail> UpdateSubscriptionWithHttpInfo(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<SubscriptionDetail> UpdateSubscriptionWithHttpInfo(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object? updateMask = default, int operationIndex = 0);
         /// <summary>
         /// Update a Subscription Custom Field
         /// </summary>
@@ -234,7 +234,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CustomFieldMetaData</returns>
-        CustomFieldMetaData UpdateSubscriptionCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0);
+        CustomFieldMetaData UpdateSubscriptionCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Subscription Custom Field
@@ -248,7 +248,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomFieldMetaData</returns>
-        ApiResponse<CustomFieldMetaData> UpdateSubscriptionCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<CustomFieldMetaData> UpdateSubscriptionCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -452,7 +452,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SubscriptionDetail</returns>
-        System.Threading.Tasks.Task<SubscriptionDetail> UpdateSubscriptionAsync(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<SubscriptionDetail> UpdateSubscriptionAsync(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Subscription
@@ -467,7 +467,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SubscriptionDetail)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SubscriptionDetail>> UpdateSubscriptionWithHttpInfoAsync(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<SubscriptionDetail>> UpdateSubscriptionWithHttpInfoAsync(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update a Subscription Custom Field
         /// </summary>
@@ -481,7 +481,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CustomFieldMetaData</returns>
-        System.Threading.Tasks.Task<CustomFieldMetaData> UpdateSubscriptionCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CustomFieldMetaData> UpdateSubscriptionCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Subscription Custom Field
@@ -496,7 +496,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CustomFieldMetaData)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CustomFieldMetaData>> UpdateSubscriptionCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CustomFieldMetaData>> UpdateSubscriptionCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -1897,7 +1897,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionDetail</returns>
-        public SubscriptionDetail UpdateSubscription(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, string? updateMask = default, int operationIndex = 0)
+        public SubscriptionDetail UpdateSubscription(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<SubscriptionDetail> localVarResponse = UpdateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequestDetail, updateMask);
             return localVarResponse.Data;
@@ -1912,7 +1912,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionDetail</returns>
-        public Keap.Core.V2.Client.ApiResponse<SubscriptionDetail> UpdateSubscriptionWithHttpInfo(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<SubscriptionDetail> UpdateSubscriptionWithHttpInfo(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'subscriptionId' is set
             if (subscriptionId == null)
@@ -2001,7 +2001,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SubscriptionDetail</returns>
-        public async System.Threading.Tasks.Task<SubscriptionDetail> UpdateSubscriptionAsync(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<SubscriptionDetail> UpdateSubscriptionAsync(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<SubscriptionDetail> localVarResponse = await UpdateSubscriptionWithHttpInfoAsync(subscriptionId, updateSubscriptionRequestDetail, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2017,7 +2017,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SubscriptionDetail)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<SubscriptionDetail>> UpdateSubscriptionWithHttpInfoAsync(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<SubscriptionDetail>> UpdateSubscriptionWithHttpInfoAsync(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'subscriptionId' is set
             if (subscriptionId == null)
@@ -2106,7 +2106,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CustomFieldMetaData</returns>
-        public CustomFieldMetaData UpdateSubscriptionCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0)
+        public CustomFieldMetaData UpdateSubscriptionCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> localVarResponse = UpdateSubscriptionCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             return localVarResponse.Data;
@@ -2121,7 +2121,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomFieldMetaData</returns>
-        public Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> UpdateSubscriptionCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> UpdateSubscriptionCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'customFieldId' is set
             if (customFieldId == null)
@@ -2210,7 +2210,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CustomFieldMetaData</returns>
-        public async System.Threading.Tasks.Task<CustomFieldMetaData> UpdateSubscriptionCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CustomFieldMetaData> UpdateSubscriptionCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> localVarResponse = await UpdateSubscriptionCustomFieldWithHttpInfoAsync(customFieldId, updateCustomFieldMetaDataRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2226,7 +2226,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CustomFieldMetaData)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData>> UpdateSubscriptionCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData>> UpdateSubscriptionCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'customFieldId' is set
             if (customFieldId == null)

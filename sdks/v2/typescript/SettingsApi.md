@@ -26,9 +26,7 @@ const apiInstance = new SettingsApi(configuration);
 
 const request: SettingsApiGetApplicationConfigurationsRequest = {
     // By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)
-  fields: [
-    "fields_example",
-  ],
+  fields: null,
 };
 
 const data = await apiInstance.getApplicationConfigurations(request);
@@ -40,7 +38,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fields** | **Array&lt;string&gt;** | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | (optional) defaults to undefined
+ **fields** | **any** | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | (optional) defaults to undefined
 
 
 ### Return type

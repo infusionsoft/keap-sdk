@@ -1511,9 +1511,12 @@ export default class AffiliateApi {
      * Updates a single Affiliate
      * @param {String} id 
      * @param {module:keap.core.v2/model/UpdateAffiliateRequest} updateAffiliateRequest 
+     * @param {Object} opts Optional parameters
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/RestAffiliate} and HTTP response
      */
-    updateAffiliateWithHttpInfo(id, updateAffiliateRequest) {
+    updateAffiliateWithHttpInfo(id, updateAffiliateRequest, opts) {
+      opts = opts || {};
       let postBody = updateAffiliateRequest;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -1528,6 +1531,7 @@ export default class AffiliateApi {
         'id': id
       };
       let queryParams = {
+        'update_mask': opts['updateMask']
       };
       let headerParams = {
       };
@@ -1550,10 +1554,12 @@ export default class AffiliateApi {
      * Updates a single Affiliate
      * @param {String} id 
      * @param {module:keap.core.v2/model/UpdateAffiliateRequest} updateAffiliateRequest 
+     * @param {Object} opts Optional parameters
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/RestAffiliate}
      */
-    updateAffiliate(id, updateAffiliateRequest) {
-      return this.updateAffiliateWithHttpInfo(id, updateAffiliateRequest)
+    updateAffiliate(id, updateAffiliateRequest, opts) {
+      return this.updateAffiliateWithHttpInfo(id, updateAffiliateRequest, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1566,7 +1572,7 @@ export default class AffiliateApi {
      * @param {String} customFieldId 
      * @param {module:keap.core.v2/model/UpdateCustomFieldMetaDataRequest} updateCustomFieldMetaDataRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldMetaData} and HTTP response
      */
     updateAffiliateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, opts) {
@@ -1609,7 +1615,7 @@ export default class AffiliateApi {
      * @param {String} customFieldId 
      * @param {module:keap.core.v2/model/UpdateCustomFieldMetaDataRequest} updateCustomFieldMetaDataRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldMetaData}
      */
     updateAffiliateCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts) {
@@ -1626,7 +1632,7 @@ export default class AffiliateApi {
      * @param {String} commissionProgramId 
      * @param {module:keap.core.v2/model/UpdateCommissionProgramRequest} updateCommissionProgramRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/AffiliateCommissionProgramResponse} and HTTP response
      */
     updateCommissionProgramWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, opts) {
@@ -1669,7 +1675,7 @@ export default class AffiliateApi {
      * @param {String} commissionProgramId 
      * @param {module:keap.core.v2/model/UpdateCommissionProgramRequest} updateCommissionProgramRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/AffiliateCommissionProgramResponse}
      */
     updateCommissionProgram(commissionProgramId, updateCommissionProgramRequest, opts) {

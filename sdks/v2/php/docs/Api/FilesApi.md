@@ -357,7 +357,7 @@ $apiInstance = new Keap\Core\V2\Api\FilesApi(
     $config
 );
 $file_id = 'file_id_example'; // string
-$update_mask = 'update_mask_example'; // string | Update Mask
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 $file = '/path/to/file.txt'; // \SplFileObject | File to upload. This is a file sent as multi-part (not a string)
 $file_name = 'file_name_example'; // string | File name
 $is_public = True; // bool | Is public
@@ -378,7 +378,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **string**|  | |
-| **update_mask** | **string**| Update Mask | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 | **file** | **\SplFileObject****\SplFileObject**| File to upload. This is a file sent as multi-part (not a string) | [optional] |
 | **file_name** | **string**| File name | [optional] |
 | **is_public** | **bool**| Is public | [optional] |

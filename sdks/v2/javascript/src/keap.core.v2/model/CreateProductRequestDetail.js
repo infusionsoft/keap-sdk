@@ -98,6 +98,21 @@ class CreateProductRequestDetail {
             if (data.hasOwnProperty('city_taxable')) {
                 obj['city_taxable'] = ApiClient.convertToType(data['city_taxable'], 'Boolean');
             }
+            if (data.hasOwnProperty('top_html')) {
+                obj['top_html'] = ApiClient.convertToType(data['top_html'], 'String');
+            }
+            if (data.hasOwnProperty('bottom_html')) {
+                obj['bottom_html'] = ApiClient.convertToType(data['bottom_html'], 'String');
+            }
+            if (data.hasOwnProperty('is_package')) {
+                obj['is_package'] = ApiClient.convertToType(data['is_package'], 'Boolean');
+            }
+            if (data.hasOwnProperty('needs_digital_delivery')) {
+                obj['needs_digital_delivery'] = ApiClient.convertToType(data['needs_digital_delivery'], 'Boolean');
+            }
+            if (data.hasOwnProperty('delivery_description')) {
+                obj['delivery_description'] = ApiClient.convertToType(data['delivery_description'], 'String');
+            }
         }
         return obj;
     }
@@ -133,6 +148,18 @@ class CreateProductRequestDetail {
         // ensure the json data is a string
         if (data['short_description'] && !(typeof data['short_description'] === 'string' || data['short_description'] instanceof String)) {
             throw new Error("Expected the field `short_description` to be a primitive type in the JSON string but got " + data['short_description']);
+        }
+        // ensure the json data is a string
+        if (data['top_html'] && !(typeof data['top_html'] === 'string' || data['top_html'] instanceof String)) {
+            throw new Error("Expected the field `top_html` to be a primitive type in the JSON string but got " + data['top_html']);
+        }
+        // ensure the json data is a string
+        if (data['bottom_html'] && !(typeof data['bottom_html'] === 'string' || data['bottom_html'] instanceof String)) {
+            throw new Error("Expected the field `bottom_html` to be a primitive type in the JSON string but got " + data['bottom_html']);
+        }
+        // ensure the json data is a string
+        if (data['delivery_description'] && !(typeof data['delivery_description'] === 'string' || data['delivery_description'] instanceof String)) {
+            throw new Error("Expected the field `delivery_description` to be a primitive type in the JSON string but got " + data['delivery_description']);
         }
 
         return true;
@@ -232,6 +259,31 @@ CreateProductRequestDetail.prototype['state_taxable'] = undefined;
  * @member {Boolean} city_taxable
  */
 CreateProductRequestDetail.prototype['city_taxable'] = undefined;
+
+/**
+ * @member {String} top_html
+ */
+CreateProductRequestDetail.prototype['top_html'] = undefined;
+
+/**
+ * @member {String} bottom_html
+ */
+CreateProductRequestDetail.prototype['bottom_html'] = undefined;
+
+/**
+ * @member {Boolean} is_package
+ */
+CreateProductRequestDetail.prototype['is_package'] = undefined;
+
+/**
+ * @member {Boolean} needs_digital_delivery
+ */
+CreateProductRequestDetail.prototype['needs_digital_delivery'] = undefined;
+
+/**
+ * @member {String} delivery_description
+ */
+CreateProductRequestDetail.prototype['delivery_description'] = undefined;
 
 
 

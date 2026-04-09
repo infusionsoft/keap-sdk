@@ -67,7 +67,8 @@ class RestAffiliate implements ModelInterface, ArrayAccess, \JsonSerializable
         'parent_affiliate_id' => 'string',
         'notify_on_sale' => 'bool',
         'notify_on_lead' => 'bool',
-        'track_leads_days' => 'int'
+        'track_leads_days' => 'int',
+        'custom_fields' => '\Keap\Core\V2\Model\CustomFieldValue[]'
     ];
 
     /**
@@ -88,7 +89,8 @@ class RestAffiliate implements ModelInterface, ArrayAccess, \JsonSerializable
         'parent_affiliate_id' => null,
         'notify_on_sale' => null,
         'notify_on_lead' => null,
-        'track_leads_days' => 'int32'
+        'track_leads_days' => 'int32',
+        'custom_fields' => null
     ];
 
     /**
@@ -107,7 +109,8 @@ class RestAffiliate implements ModelInterface, ArrayAccess, \JsonSerializable
         'parent_affiliate_id' => false,
         'notify_on_sale' => false,
         'notify_on_lead' => false,
-        'track_leads_days' => false
+        'track_leads_days' => false,
+        'custom_fields' => false
     ];
 
     /**
@@ -206,7 +209,8 @@ class RestAffiliate implements ModelInterface, ArrayAccess, \JsonSerializable
         'parent_affiliate_id' => 'parent_affiliate_id',
         'notify_on_sale' => 'notify_on_sale',
         'notify_on_lead' => 'notify_on_lead',
-        'track_leads_days' => 'track_leads_days'
+        'track_leads_days' => 'track_leads_days',
+        'custom_fields' => 'custom_fields'
     ];
 
     /**
@@ -225,7 +229,8 @@ class RestAffiliate implements ModelInterface, ArrayAccess, \JsonSerializable
         'parent_affiliate_id' => 'setParentAffiliateId',
         'notify_on_sale' => 'setNotifyOnSale',
         'notify_on_lead' => 'setNotifyOnLead',
-        'track_leads_days' => 'setTrackLeadsDays'
+        'track_leads_days' => 'setTrackLeadsDays',
+        'custom_fields' => 'setCustomFields'
     ];
 
     /**
@@ -244,7 +249,8 @@ class RestAffiliate implements ModelInterface, ArrayAccess, \JsonSerializable
         'parent_affiliate_id' => 'getParentAffiliateId',
         'notify_on_sale' => 'getNotifyOnSale',
         'notify_on_lead' => 'getNotifyOnLead',
-        'track_leads_days' => 'getTrackLeadsDays'
+        'track_leads_days' => 'getTrackLeadsDays',
+        'custom_fields' => 'getCustomFields'
     ];
 
     /**
@@ -330,6 +336,7 @@ class RestAffiliate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('notify_on_sale', $data ?? [], null);
         $this->setIfExists('notify_on_lead', $data ?? [], null);
         $this->setIfExists('track_leads_days', $data ?? [], null);
+        $this->setIfExists('custom_fields', $data ?? [], null);
     }
 
     /**
@@ -686,6 +693,33 @@ class RestAffiliate implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable track_leads_days cannot be null');
         }
         $this->container['track_leads_days'] = $track_leads_days;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_fields
+     *
+     * @return \Keap\Core\V2\Model\CustomFieldValue[]|null
+     */
+    public function getCustomFields()
+    {
+        return $this->container['custom_fields'];
+    }
+
+    /**
+     * Sets custom_fields
+     *
+     * @param \Keap\Core\V2\Model\CustomFieldValue[]|null $custom_fields List of custom field values applied to this affiliate
+     *
+     * @return self
+     */
+    public function setCustomFields($custom_fields)
+    {
+        if (is_null($custom_fields)) {
+            throw new \InvalidArgumentException('non-nullable custom_fields cannot be null');
+        }
+        $this->container['custom_fields'] = $custom_fields;
 
         return $this;
     }

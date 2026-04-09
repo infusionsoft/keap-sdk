@@ -499,7 +499,7 @@ export default class OpportunityApi {
      * @param {String} opportunityId 
      * @param {module:keap.core.v2/model/UpdateOpportunityRequestV2} updateOpportunityRequestV2 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/RestV2Opportunity} and HTTP response
      */
     updateOpportunityWithHttpInfo(opportunityId, updateOpportunityRequestV2, opts) {
@@ -542,7 +542,7 @@ export default class OpportunityApi {
      * @param {String} opportunityId 
      * @param {module:keap.core.v2/model/UpdateOpportunityRequestV2} updateOpportunityRequestV2 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/RestV2Opportunity}
      */
     updateOpportunity(opportunityId, updateOpportunityRequestV2, opts) {
@@ -559,7 +559,7 @@ export default class OpportunityApi {
      * @param {String} customFieldId 
      * @param {module:keap.core.v2/model/UpdateCustomFieldMetaDataRequest} updateCustomFieldMetaDataRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldMetaData} and HTTP response
      */
     updateOpportunityCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, opts) {
@@ -602,7 +602,7 @@ export default class OpportunityApi {
      * @param {String} customFieldId 
      * @param {module:keap.core.v2/model/UpdateCustomFieldMetaDataRequest} updateCustomFieldMetaDataRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldMetaData}
      */
     updateOpportunityCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts) {
@@ -619,7 +619,7 @@ export default class OpportunityApi {
      * @param {String} stageId 
      * @param {module:keap.core.v2/model/UpdateOpportunityStageRequest} updateOpportunityStageRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/RestOpportunityStage} and HTTP response
      */
     updateOpportunityStageWithHttpInfo(stageId, updateOpportunityStageRequest, opts) {
@@ -662,7 +662,7 @@ export default class OpportunityApi {
      * @param {String} stageId 
      * @param {module:keap.core.v2/model/UpdateOpportunityStageRequest} updateOpportunityStageRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/RestOpportunityStage}
      */
     updateOpportunityStage(stageId, updateOpportunityStageRequest, opts) {

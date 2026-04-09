@@ -38,21 +38,53 @@ namespace Keap.Core.V2.Model
         /// <param name="address">The company&#39;s address.</param>
         /// <param name="notes">Notes about the company.</param>
         /// <param name="website">The company&#39;s website URL.</param>
+        /// <param name="suffix">Name suffix.</param>
+        /// <param name="title">Name prefix or salutation.</param>
         /// <param name="companyName">The name of the company.</param>
         /// <param name="customFields">customFields.</param>
         /// <param name="emailAddress">emailAddress.</param>
         /// <param name="faxNumber">faxNumber.</param>
         /// <param name="phoneNumber">phoneNumber.</param>
-        public CreateCompanyRequest(Address address = default, string notes = default, string website = default, string companyName = default, List<CustomFieldValue> customFields = default, EmailAddress emailAddress = default, FaxNumber faxNumber = default, PhoneNumber phoneNumber = default)
+        /// <param name="anniversaryDate">The anniversary date.</param>
+        /// <param name="assistantName">The name of the company contact&#39;s assistant.</param>
+        /// <param name="assistantPhone">The phone number of the company contact&#39;s assistant.</param>
+        /// <param name="billingInformation">Billing information for the company.</param>
+        /// <param name="birthDate">The birth date.</param>
+        /// <param name="contactType">Type of contact.</param>
+        /// <param name="firstName">First name of the company contact.</param>
+        /// <param name="jobTitle">Job title of the company contact.</param>
+        /// <param name="lastName">Last name of the company contact.</param>
+        /// <param name="middleName">Middle name of the company contact.</param>
+        /// <param name="preferredName">Preferred name or nickname of the company contact.</param>
+        /// <param name="ownerId">ID of the user who owns this company.</param>
+        /// <param name="referralCode">Referral code.</param>
+        /// <param name="spouseName">Spouse&#39;s name.</param>
+        public CreateCompanyRequest(Address address = default, string notes = default, string website = default, string suffix = default, string title = default, string companyName = default, List<CustomFieldValue> customFields = default, EmailAddress emailAddress = default, FaxNumber faxNumber = default, PhoneNumber phoneNumber = default, string anniversaryDate = default, string assistantName = default, string assistantPhone = default, string billingInformation = default, string birthDate = default, string contactType = default, string firstName = default, string jobTitle = default, string lastName = default, string middleName = default, string preferredName = default, string ownerId = default, string referralCode = default, string spouseName = default)
         {
             this.Address = address;
             this.Notes = notes;
             this.Website = website;
+            this.Suffix = suffix;
+            this.Title = title;
             this.CompanyName = companyName;
             this.CustomFields = customFields;
             this.EmailAddress = emailAddress;
             this.FaxNumber = faxNumber;
             this.PhoneNumber = phoneNumber;
+            this.AnniversaryDate = anniversaryDate;
+            this.AssistantName = assistantName;
+            this.AssistantPhone = assistantPhone;
+            this.BillingInformation = billingInformation;
+            this.BirthDate = birthDate;
+            this.ContactType = contactType;
+            this.FirstName = firstName;
+            this.JobTitle = jobTitle;
+            this.LastName = lastName;
+            this.MiddleName = middleName;
+            this.PreferredName = preferredName;
+            this.OwnerId = ownerId;
+            this.ReferralCode = referralCode;
+            this.SpouseName = spouseName;
         }
 
         /// <summary>
@@ -81,6 +113,26 @@ namespace Keap.Core.V2.Model
         */
         [DataMember(Name = "website", EmitDefaultValue = false)]
         public string Website { get; set; }
+
+        /// <summary>
+        /// Name suffix
+        /// </summary>
+        /// <value>Name suffix</value>
+        /*
+        <example>Jr</example>
+        */
+        [DataMember(Name = "suffix", EmitDefaultValue = false)]
+        public string Suffix { get; set; }
+
+        /// <summary>
+        /// Name prefix or salutation
+        /// </summary>
+        /// <value>Name prefix or salutation</value>
+        /*
+        <example>Dr.</example>
+        */
+        [DataMember(Name = "title", EmitDefaultValue = false)]
+        public string Title { get; set; }
 
         /// <summary>
         /// The name of the company
@@ -117,6 +169,146 @@ namespace Keap.Core.V2.Model
         public PhoneNumber PhoneNumber { get; set; }
 
         /// <summary>
+        /// The anniversary date
+        /// </summary>
+        /// <value>The anniversary date</value>
+        /*
+        <example>2015-06-20</example>
+        */
+        [DataMember(Name = "anniversary_date", EmitDefaultValue = false)]
+        public string AnniversaryDate { get; set; }
+
+        /// <summary>
+        /// The name of the company contact&#39;s assistant
+        /// </summary>
+        /// <value>The name of the company contact&#39;s assistant</value>
+        /*
+        <example>Jane Doe</example>
+        */
+        [DataMember(Name = "assistant_name", EmitDefaultValue = false)]
+        public string AssistantName { get; set; }
+
+        /// <summary>
+        /// The phone number of the company contact&#39;s assistant
+        /// </summary>
+        /// <value>The phone number of the company contact&#39;s assistant</value>
+        /*
+        <example>555-123-4567</example>
+        */
+        [DataMember(Name = "assistant_phone", EmitDefaultValue = false)]
+        public string AssistantPhone { get; set; }
+
+        /// <summary>
+        /// Billing information for the company
+        /// </summary>
+        /// <value>Billing information for the company</value>
+        /*
+        <example>NET 30</example>
+        */
+        [DataMember(Name = "billing_information", EmitDefaultValue = false)]
+        public string BillingInformation { get; set; }
+
+        /// <summary>
+        /// The birth date
+        /// </summary>
+        /// <value>The birth date</value>
+        /*
+        <example>1985-03-15</example>
+        */
+        [DataMember(Name = "birth_date", EmitDefaultValue = false)]
+        public string BirthDate { get; set; }
+
+        /// <summary>
+        /// Type of contact
+        /// </summary>
+        /// <value>Type of contact</value>
+        /*
+        <example>Vendor</example>
+        */
+        [DataMember(Name = "contact_type", EmitDefaultValue = false)]
+        public string ContactType { get; set; }
+
+        /// <summary>
+        /// First name of the company contact
+        /// </summary>
+        /// <value>First name of the company contact</value>
+        /*
+        <example>John</example>
+        */
+        [DataMember(Name = "first_name", EmitDefaultValue = false)]
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Job title of the company contact
+        /// </summary>
+        /// <value>Job title of the company contact</value>
+        /*
+        <example>CEO</example>
+        */
+        [DataMember(Name = "job_title", EmitDefaultValue = false)]
+        public string JobTitle { get; set; }
+
+        /// <summary>
+        /// Last name of the company contact
+        /// </summary>
+        /// <value>Last name of the company contact</value>
+        /*
+        <example>Smith</example>
+        */
+        [DataMember(Name = "last_name", EmitDefaultValue = false)]
+        public string LastName { get; set; }
+
+        /// <summary>
+        /// Middle name of the company contact
+        /// </summary>
+        /// <value>Middle name of the company contact</value>
+        /*
+        <example>Robert</example>
+        */
+        [DataMember(Name = "middle_name", EmitDefaultValue = false)]
+        public string MiddleName { get; set; }
+
+        /// <summary>
+        /// Preferred name or nickname of the company contact
+        /// </summary>
+        /// <value>Preferred name or nickname of the company contact</value>
+        /*
+        <example>Johnny</example>
+        */
+        [DataMember(Name = "preferred_name", EmitDefaultValue = false)]
+        public string PreferredName { get; set; }
+
+        /// <summary>
+        /// ID of the user who owns this company
+        /// </summary>
+        /// <value>ID of the user who owns this company</value>
+        /*
+        <example>45</example>
+        */
+        [DataMember(Name = "owner_id", EmitDefaultValue = false)]
+        public string OwnerId { get; set; }
+
+        /// <summary>
+        /// Referral code
+        /// </summary>
+        /// <value>Referral code</value>
+        /*
+        <example>REF2024ABC</example>
+        */
+        [DataMember(Name = "referral_code", EmitDefaultValue = false)]
+        public string ReferralCode { get; set; }
+
+        /// <summary>
+        /// Spouse&#39;s name
+        /// </summary>
+        /// <value>Spouse&#39;s name</value>
+        /*
+        <example>Jane Smith</example>
+        */
+        [DataMember(Name = "spouse_name", EmitDefaultValue = false)]
+        public string SpouseName { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -127,11 +319,27 @@ namespace Keap.Core.V2.Model
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  Notes: ").Append(Notes).Append("\n");
             sb.Append("  Website: ").Append(Website).Append("\n");
+            sb.Append("  Suffix: ").Append(Suffix).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  CompanyName: ").Append(CompanyName).Append("\n");
             sb.Append("  CustomFields: ").Append(CustomFields).Append("\n");
             sb.Append("  EmailAddress: ").Append(EmailAddress).Append("\n");
             sb.Append("  FaxNumber: ").Append(FaxNumber).Append("\n");
             sb.Append("  PhoneNumber: ").Append(PhoneNumber).Append("\n");
+            sb.Append("  AnniversaryDate: ").Append(AnniversaryDate).Append("\n");
+            sb.Append("  AssistantName: ").Append(AssistantName).Append("\n");
+            sb.Append("  AssistantPhone: ").Append(AssistantPhone).Append("\n");
+            sb.Append("  BillingInformation: ").Append(BillingInformation).Append("\n");
+            sb.Append("  BirthDate: ").Append(BirthDate).Append("\n");
+            sb.Append("  ContactType: ").Append(ContactType).Append("\n");
+            sb.Append("  FirstName: ").Append(FirstName).Append("\n");
+            sb.Append("  JobTitle: ").Append(JobTitle).Append("\n");
+            sb.Append("  LastName: ").Append(LastName).Append("\n");
+            sb.Append("  MiddleName: ").Append(MiddleName).Append("\n");
+            sb.Append("  PreferredName: ").Append(PreferredName).Append("\n");
+            sb.Append("  OwnerId: ").Append(OwnerId).Append("\n");
+            sb.Append("  ReferralCode: ").Append(ReferralCode).Append("\n");
+            sb.Append("  SpouseName: ").Append(SpouseName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

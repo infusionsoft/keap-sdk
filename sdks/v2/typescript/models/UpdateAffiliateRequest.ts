@@ -10,15 +10,16 @@
  * Do not edit the class manually.
  */
 
+import { CustomFieldValue } from '../models/CustomFieldValue';
 import { HttpFile } from '../http/http';
 
 export class UpdateAffiliateRequest {
     /**
-    * The Affiliate code which have some validations. 1. The code should not have white spaces 2. The code should starts with letters 3. The code minimum 4 characters length
+    * The Affiliate code which have some validations. 1. The code should not have white spaces 2. The code should starts with letters 3. The code minimum 2 characters length
     */
-    'code': string;
+    'code'?: string;
     /**
-    * The Affiliate name will be derived from the Contact, when not explicitly provided
+    * The Affiliate name.
     */
     'name'?: string;
     /**
@@ -26,9 +27,9 @@ export class UpdateAffiliateRequest {
     */
     'status'?: UpdateAffiliateRequestStatusEnum;
     /**
-    * The contactId identifier , Must be a positive number
+    * The contactId identifier. Must be a positive number
     */
-    'contactId': string;
+    'contactId'?: string;
     /**
     * The Parent Affiliate Id
     */
@@ -49,6 +50,10 @@ export class UpdateAffiliateRequest {
     * Affiliate portal password.
     */
     'password'?: string;
+    /**
+    * List of custom field values to apply to this affiliate
+    */
+    'customFields'?: Array<CustomFieldValue>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -107,6 +112,12 @@ export class UpdateAffiliateRequest {
             "name": "password",
             "baseName": "password",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "customFields",
+            "baseName": "custom_fields",
+            "type": "Array<CustomFieldValue>",
             "format": ""
         }    ];
 

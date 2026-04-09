@@ -206,7 +206,7 @@ export class LeadSourceCategoriesApiRequestFactory extends BaseAPIRequestFactory
      * @param createUpdateLeadSourceCategoryRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateLeadSourceCategory(leadSourceCategoryId: string, createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, updateMask?: 'name,description', _options?: Configuration): Promise<RequestContext> {
+    public async updateLeadSourceCategory(leadSourceCategoryId: string, createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceCategoryId' is not null or undefined
@@ -232,7 +232,10 @@ export class LeadSourceCategoriesApiRequestFactory extends BaseAPIRequestFactory
 
         // Query Params
         if (updateMask !== undefined) {
-            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'name,description'", ""));
+            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
+            }
         }
 
 

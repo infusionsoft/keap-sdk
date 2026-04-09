@@ -68,6 +68,12 @@ const request: AffiliateApiAddAffiliateRequest = {
     notifyOnLead: true,
     trackLeadsDays: 30,
     password: "password_example",
+    customFields: [
+      {
+        id: "id_example",
+        content: null,
+      },
+    ],
   },
 };
 
@@ -1874,7 +1880,15 @@ const request: AffiliateApiUpdateAffiliateRequest = {
     notifyOnLead: true,
     trackLeadsDays: 30,
     password: "password_example",
+    customFields: [
+      {
+        id: "id_example",
+        content: null,
+      },
+    ],
   },
+    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+  updateMask: null,
 };
 
 const data = await apiInstance.updateAffiliate(request);
@@ -1888,6 +1902,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateAffiliateRequest** | **UpdateAffiliateRequest**|  |
  **id** | [**string**] |  | defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -1948,7 +1963,7 @@ const request: AffiliateApiUpdateAffiliateCustomFieldRequest = {
     groupId: "groupId_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: "group_id,label,options",
+  updateMask: null,
 };
 
 const data = await apiInstance.updateAffiliateCustomField(request);
@@ -1962,7 +1977,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**|  |
  **customFieldId** | [**string**] |  | defaults to undefined
- **updateMask** | [**&#39;group_id,label,options&#39;**]**Array<&#39;group_id,label,options&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -2018,7 +2033,7 @@ const request: AffiliateApiUpdateCommissionProgramRequest = {
     priority: 1,
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: "name,notes,priority",
+  updateMask: null,
 };
 
 const data = await apiInstance.updateCommissionProgram(request);
@@ -2032,7 +2047,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateCommissionProgramRequest** | **UpdateCommissionProgramRequest**|  |
  **commissionProgramId** | [**string**] |  | defaults to undefined
- **updateMask** | [**&#39;name,notes,priority&#39;**]**Array<&#39;name,notes,priority&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

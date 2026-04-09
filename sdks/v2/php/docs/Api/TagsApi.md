@@ -785,7 +785,7 @@ $apiInstance = new Keap\Core\V2\Api\TagsApi(
 );
 $tag_id = 'tag_id_example'; // string
 $create_update_tag_request = new \Keap\Core\V2\Model\CreateUpdateTagRequest(); // \Keap\Core\V2\Model\CreateUpdateTagRequest
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateTag($tag_id, $create_update_tag_request, $update_mask);
@@ -801,7 +801,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **tag_id** | **string**|  | |
 | **create_update_tag_request** | [**\Keap\Core\V2\Model\CreateUpdateTagRequest**](../Model/CreateUpdateTagRequest.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -848,7 +848,7 @@ $apiInstance = new Keap\Core\V2\Api\TagsApi(
 );
 $tag_category_id = 'tag_category_id_example'; // string
 $create_update_tag_category_request = new \Keap\Core\V2\Model\CreateUpdateTagCategoryRequest(); // \Keap\Core\V2\Model\CreateUpdateTagCategoryRequest
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateTagCategory($tag_category_id, $create_update_tag_category_request, $update_mask);
@@ -864,7 +864,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **tag_category_id** | **string**|  | |
 | **create_update_tag_category_request** | [**\Keap\Core\V2\Model\CreateUpdateTagCategoryRequest**](../Model/CreateUpdateTagCategoryRequest.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

@@ -514,7 +514,7 @@ import io.github.resilience4j.retry.Retry;
    * @return SubscriptionPlan
    * @throws ApiException if fails to make API call
    */
-  public SubscriptionPlan updateSubscriptionPlan(String productId, String subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, String updateMask) throws ApiException {
+  public SubscriptionPlan updateSubscriptionPlan(String productId, String subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, Object updateMask) throws ApiException {
     ApiResponse<SubscriptionPlan> localVarResponse = updateSubscriptionPlanWithHttpInfo(productId, subscriptionPlanId, updateSubscriptionPlanRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -529,7 +529,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;SubscriptionPlan&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<SubscriptionPlan> updateSubscriptionPlanWithHttpInfo(String productId, String subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, String updateMask) throws ApiException {
+  public ApiResponse<SubscriptionPlan> updateSubscriptionPlanWithHttpInfo(String productId, String subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateSubscriptionPlanRequestBuilder(productId, subscriptionPlanId, updateSubscriptionPlanRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -570,7 +570,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateSubscriptionPlanRequestBuilder(String productId, String subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateSubscriptionPlanRequestBuilder(String productId, String subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'productId' is set
     if (productId == null) {
       throw new ApiException(400, "Missing the required parameter 'productId' when calling updateSubscriptionPlan");

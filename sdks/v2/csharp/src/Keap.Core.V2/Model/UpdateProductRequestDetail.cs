@@ -52,7 +52,12 @@ namespace Keap.Core.V2.Model
         /// <param name="inventoryLimit">The inventory limit for this product. Must be greater than or equal to 0..</param>
         /// <param name="outOfStockEnabled">The flag to enable out of stock inventory.</param>
         /// <param name="emailForInventoryNotifications">The email address for notifications about inventory.</param>
-        public UpdateProductRequestDetail(string name = default, string sku = default, long price = default, bool active = default, string description = default, bool shippable = default, double weight = default, bool taxable = default, string shortDescription = default, bool subscriptionOnly = default, bool storefrontHidden = default, bool countryTaxable = default, bool stateTaxable = default, bool cityTaxable = default, int inventoryLimit = default, bool outOfStockEnabled = default, string emailForInventoryNotifications = default)
+        /// <param name="topHtml">topHtml.</param>
+        /// <param name="bottomHtml">bottomHtml.</param>
+        /// <param name="isPackage">isPackage.</param>
+        /// <param name="needsDigitalDelivery">needsDigitalDelivery.</param>
+        /// <param name="deliveryDescription">deliveryDescription.</param>
+        public UpdateProductRequestDetail(string name = default, string sku = default, long price = default, bool active = default, string description = default, bool shippable = default, double weight = default, bool taxable = default, string shortDescription = default, bool subscriptionOnly = default, bool storefrontHidden = default, bool countryTaxable = default, bool stateTaxable = default, bool cityTaxable = default, int inventoryLimit = default, bool outOfStockEnabled = default, string emailForInventoryNotifications = default, string topHtml = default, string bottomHtml = default, bool isPackage = default, bool needsDigitalDelivery = default, string deliveryDescription = default)
         {
             this.Name = name;
             this.Sku = sku;
@@ -71,6 +76,11 @@ namespace Keap.Core.V2.Model
             this.InventoryLimit = inventoryLimit;
             this.OutOfStockEnabled = outOfStockEnabled;
             this.EmailForInventoryNotifications = emailForInventoryNotifications;
+            this.TopHtml = topHtml;
+            this.BottomHtml = bottomHtml;
+            this.IsPackage = isPackage;
+            this.NeedsDigitalDelivery = needsDigitalDelivery;
+            this.DeliveryDescription = deliveryDescription;
         }
 
         /// <summary>
@@ -244,6 +254,36 @@ namespace Keap.Core.V2.Model
         public string EmailForInventoryNotifications { get; set; }
 
         /// <summary>
+        /// Gets or Sets TopHtml
+        /// </summary>
+        [DataMember(Name = "top_html", EmitDefaultValue = false)]
+        public string TopHtml { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BottomHtml
+        /// </summary>
+        [DataMember(Name = "bottom_html", EmitDefaultValue = false)]
+        public string BottomHtml { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IsPackage
+        /// </summary>
+        [DataMember(Name = "is_package", EmitDefaultValue = true)]
+        public bool IsPackage { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NeedsDigitalDelivery
+        /// </summary>
+        [DataMember(Name = "needs_digital_delivery", EmitDefaultValue = true)]
+        public bool NeedsDigitalDelivery { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DeliveryDescription
+        /// </summary>
+        [DataMember(Name = "delivery_description", EmitDefaultValue = false)]
+        public string DeliveryDescription { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -268,6 +308,11 @@ namespace Keap.Core.V2.Model
             sb.Append("  InventoryLimit: ").Append(InventoryLimit).Append("\n");
             sb.Append("  OutOfStockEnabled: ").Append(OutOfStockEnabled).Append("\n");
             sb.Append("  EmailForInventoryNotifications: ").Append(EmailForInventoryNotifications).Append("\n");
+            sb.Append("  TopHtml: ").Append(TopHtml).Append("\n");
+            sb.Append("  BottomHtml: ").Append(BottomHtml).Append("\n");
+            sb.Append("  IsPackage: ").Append(IsPackage).Append("\n");
+            sb.Append("  NeedsDigitalDelivery: ").Append(NeedsDigitalDelivery).Append("\n");
+            sb.Append("  DeliveryDescription: ").Append(DeliveryDescription).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -470,7 +470,7 @@ import io.github.resilience4j.retry.Retry;
    * @return User
    * @throws ApiException if fails to make API call
    */
-  public User updateUser(String userId, UpdateUserRequest updateUserRequest, String updateMask) throws ApiException {
+  public User updateUser(String userId, UpdateUserRequest updateUserRequest, Object updateMask) throws ApiException {
     ApiResponse<User> localVarResponse = updateUserWithHttpInfo(userId, updateUserRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -484,7 +484,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;User&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<User> updateUserWithHttpInfo(String userId, UpdateUserRequest updateUserRequest, String updateMask) throws ApiException {
+  public ApiResponse<User> updateUserWithHttpInfo(String userId, UpdateUserRequest updateUserRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateUserRequestBuilder(userId, updateUserRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -525,7 +525,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateUserRequestBuilder(String userId, UpdateUserRequest updateUserRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateUserRequestBuilder(String userId, UpdateUserRequest updateUserRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'userId' is set
     if (userId == null) {
       throw new ApiException(400, "Missing the required parameter 'userId' when calling updateUser");

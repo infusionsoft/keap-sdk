@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **display_order_index** | **int** | The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list. | [optional] 
 **total_cycles** | **int** | Total number of cycles the plan will run before ending. Value of 0 indicates plan will never end. | [optional] 
 **plan_price** | [**CurrencyValue**](CurrencyValue.md) | The price of the subscription plan. | [optional] 
+**preauthorize_amount** | **float** | The pre-authorize amount for the subscription plan. If null, this field is omitted from the response. | [optional] 
 
 ## Example
 

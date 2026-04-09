@@ -20,6 +20,11 @@ Name | Type | Description | Notes
 **country_taxable** | **bool** | If country-based taxes should be applied to this product | [optional] 
 **state_taxable** | **bool** | If state-based taxes should be applied to this product | [optional] 
 **city_taxable** | **bool** | If city-based taxes should be applied to this product | [optional] 
+**top_html** | **str** |  | [optional] 
+**bottom_html** | **str** |  | [optional] 
+**is_package** | **bool** |  | [optional] 
+**needs_digital_delivery** | **bool** |  | [optional] 
+**delivery_description** | **str** |  | [optional] 
 
 ## Example
 

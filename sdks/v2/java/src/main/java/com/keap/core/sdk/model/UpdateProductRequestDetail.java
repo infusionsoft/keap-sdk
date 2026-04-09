@@ -49,7 +49,12 @@ import jakarta.validation.Valid;
   UpdateProductRequestDetail.JSON_PROPERTY_CITY_TAXABLE,
   UpdateProductRequestDetail.JSON_PROPERTY_INVENTORY_LIMIT,
   UpdateProductRequestDetail.JSON_PROPERTY_OUT_OF_STOCK_ENABLED,
-  UpdateProductRequestDetail.JSON_PROPERTY_EMAIL_FOR_INVENTORY_NOTIFICATIONS
+  UpdateProductRequestDetail.JSON_PROPERTY_EMAIL_FOR_INVENTORY_NOTIFICATIONS,
+  UpdateProductRequestDetail.JSON_PROPERTY_TOP_HTML,
+  UpdateProductRequestDetail.JSON_PROPERTY_BOTTOM_HTML,
+  UpdateProductRequestDetail.JSON_PROPERTY_IS_PACKAGE,
+  UpdateProductRequestDetail.JSON_PROPERTY_NEEDS_DIGITAL_DELIVERY,
+  UpdateProductRequestDetail.JSON_PROPERTY_DELIVERY_DESCRIPTION
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateProductRequestDetail implements Serializable {
@@ -105,6 +110,21 @@ public class UpdateProductRequestDetail implements Serializable {
 
   public static final String JSON_PROPERTY_EMAIL_FOR_INVENTORY_NOTIFICATIONS = "email_for_inventory_notifications";
   @jakarta.annotation.Nullable  private String emailForInventoryNotifications;
+
+  public static final String JSON_PROPERTY_TOP_HTML = "top_html";
+  @jakarta.annotation.Nullable  private String topHtml;
+
+  public static final String JSON_PROPERTY_BOTTOM_HTML = "bottom_html";
+  @jakarta.annotation.Nullable  private String bottomHtml;
+
+  public static final String JSON_PROPERTY_IS_PACKAGE = "is_package";
+  @jakarta.annotation.Nullable  private Boolean isPackage;
+
+  public static final String JSON_PROPERTY_NEEDS_DIGITAL_DELIVERY = "needs_digital_delivery";
+  @jakarta.annotation.Nullable  private Boolean needsDigitalDelivery;
+
+  public static final String JSON_PROPERTY_DELIVERY_DESCRIPTION = "delivery_description";
+  @jakarta.annotation.Nullable  private String deliveryDescription;
 
   public UpdateProductRequestDetail() { 
   }
@@ -516,6 +536,126 @@ public class UpdateProductRequestDetail implements Serializable {
     this.emailForInventoryNotifications = emailForInventoryNotifications;
   }
 
+
+  public UpdateProductRequestDetail topHtml(@jakarta.annotation.Nullable String topHtml) {
+    this.topHtml = topHtml;
+    return this;
+  }
+
+  /**
+   * Get topHtml
+   * @return topHtml
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_TOP_HTML)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getTopHtml() {
+    return topHtml;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TOP_HTML)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTopHtml(@jakarta.annotation.Nullable String topHtml) {
+    this.topHtml = topHtml;
+  }
+
+
+  public UpdateProductRequestDetail bottomHtml(@jakarta.annotation.Nullable String bottomHtml) {
+    this.bottomHtml = bottomHtml;
+    return this;
+  }
+
+  /**
+   * Get bottomHtml
+   * @return bottomHtml
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_BOTTOM_HTML)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getBottomHtml() {
+    return bottomHtml;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BOTTOM_HTML)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBottomHtml(@jakarta.annotation.Nullable String bottomHtml) {
+    this.bottomHtml = bottomHtml;
+  }
+
+
+  public UpdateProductRequestDetail isPackage(@jakarta.annotation.Nullable Boolean isPackage) {
+    this.isPackage = isPackage;
+    return this;
+  }
+
+  /**
+   * Get isPackage
+   * @return isPackage
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_IS_PACKAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getIsPackage() {
+    return isPackage;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IS_PACKAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIsPackage(@jakarta.annotation.Nullable Boolean isPackage) {
+    this.isPackage = isPackage;
+  }
+
+
+  public UpdateProductRequestDetail needsDigitalDelivery(@jakarta.annotation.Nullable Boolean needsDigitalDelivery) {
+    this.needsDigitalDelivery = needsDigitalDelivery;
+    return this;
+  }
+
+  /**
+   * Get needsDigitalDelivery
+   * @return needsDigitalDelivery
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_NEEDS_DIGITAL_DELIVERY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getNeedsDigitalDelivery() {
+    return needsDigitalDelivery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NEEDS_DIGITAL_DELIVERY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNeedsDigitalDelivery(@jakarta.annotation.Nullable Boolean needsDigitalDelivery) {
+    this.needsDigitalDelivery = needsDigitalDelivery;
+  }
+
+
+  public UpdateProductRequestDetail deliveryDescription(@jakarta.annotation.Nullable String deliveryDescription) {
+    this.deliveryDescription = deliveryDescription;
+    return this;
+  }
+
+  /**
+   * Get deliveryDescription
+   * @return deliveryDescription
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_DELIVERY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getDeliveryDescription() {
+    return deliveryDescription;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DELIVERY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDeliveryDescription(@jakarta.annotation.Nullable String deliveryDescription) {
+    this.deliveryDescription = deliveryDescription;
+  }
+
   /**
    * Return true if this UpdateProductRequest_Detail object is equal to o.
    */
@@ -544,12 +684,17 @@ public class UpdateProductRequestDetail implements Serializable {
         Objects.equals(this.cityTaxable, updateProductRequestDetail.cityTaxable) &&
         Objects.equals(this.inventoryLimit, updateProductRequestDetail.inventoryLimit) &&
         Objects.equals(this.outOfStockEnabled, updateProductRequestDetail.outOfStockEnabled) &&
-        Objects.equals(this.emailForInventoryNotifications, updateProductRequestDetail.emailForInventoryNotifications);
+        Objects.equals(this.emailForInventoryNotifications, updateProductRequestDetail.emailForInventoryNotifications) &&
+        Objects.equals(this.topHtml, updateProductRequestDetail.topHtml) &&
+        Objects.equals(this.bottomHtml, updateProductRequestDetail.bottomHtml) &&
+        Objects.equals(this.isPackage, updateProductRequestDetail.isPackage) &&
+        Objects.equals(this.needsDigitalDelivery, updateProductRequestDetail.needsDigitalDelivery) &&
+        Objects.equals(this.deliveryDescription, updateProductRequestDetail.deliveryDescription);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, sku, price, active, description, shippable, weight, taxable, shortDescription, subscriptionOnly, storefrontHidden, countryTaxable, stateTaxable, cityTaxable, inventoryLimit, outOfStockEnabled, emailForInventoryNotifications);
+    return Objects.hash(name, sku, price, active, description, shippable, weight, taxable, shortDescription, subscriptionOnly, storefrontHidden, countryTaxable, stateTaxable, cityTaxable, inventoryLimit, outOfStockEnabled, emailForInventoryNotifications, topHtml, bottomHtml, isPackage, needsDigitalDelivery, deliveryDescription);
   }
 
   @Override
@@ -573,6 +718,11 @@ public class UpdateProductRequestDetail implements Serializable {
     sb.append("    inventoryLimit: ").append(toIndentedString(inventoryLimit)).append("\n");
     sb.append("    outOfStockEnabled: ").append(toIndentedString(outOfStockEnabled)).append("\n");
     sb.append("    emailForInventoryNotifications: ").append(toIndentedString(emailForInventoryNotifications)).append("\n");
+    sb.append("    topHtml: ").append(toIndentedString(topHtml)).append("\n");
+    sb.append("    bottomHtml: ").append(toIndentedString(bottomHtml)).append("\n");
+    sb.append("    isPackage: ").append(toIndentedString(isPackage)).append("\n");
+    sb.append("    needsDigitalDelivery: ").append(toIndentedString(needsDigitalDelivery)).append("\n");
+    sb.append("    deliveryDescription: ").append(toIndentedString(deliveryDescription)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -668,6 +818,26 @@ public class UpdateProductRequestDetail implements Serializable {
               this.instance.emailForInventoryNotifications = emailForInventoryNotifications;
           return this;
         }
+            public UpdateProductRequestDetail.Builder topHtml(String topHtml) {
+              this.instance.topHtml = topHtml;
+          return this;
+        }
+            public UpdateProductRequestDetail.Builder bottomHtml(String bottomHtml) {
+              this.instance.bottomHtml = bottomHtml;
+          return this;
+        }
+            public UpdateProductRequestDetail.Builder isPackage(Boolean isPackage) {
+              this.instance.isPackage = isPackage;
+          return this;
+        }
+            public UpdateProductRequestDetail.Builder needsDigitalDelivery(Boolean needsDigitalDelivery) {
+              this.instance.needsDigitalDelivery = needsDigitalDelivery;
+          return this;
+        }
+            public UpdateProductRequestDetail.Builder deliveryDescription(String deliveryDescription) {
+              this.instance.deliveryDescription = deliveryDescription;
+          return this;
+        }
         
     
         /**
@@ -718,7 +888,12 @@ public class UpdateProductRequestDetail implements Serializable {
           .cityTaxable(getCityTaxable())
           .inventoryLimit(getInventoryLimit())
           .outOfStockEnabled(getOutOfStockEnabled())
-          .emailForInventoryNotifications(getEmailForInventoryNotifications());
+          .emailForInventoryNotifications(getEmailForInventoryNotifications())
+          .topHtml(getTopHtml())
+          .bottomHtml(getBottomHtml())
+          .isPackage(getIsPackage())
+          .needsDigitalDelivery(getNeedsDigitalDelivery())
+          .deliveryDescription(getDeliveryDescription());
       }
 }
 

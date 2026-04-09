@@ -19,5 +19,10 @@ Name | Type | Description | Notes
 **country_taxable** | **bool** | If country-based taxes should be applied to this product | [optional]
 **state_taxable** | **bool** | If state-based taxes should be applied to this product | [optional]
 **city_taxable** | **bool** | If city-based taxes should be applied to this product | [optional]
+**top_html** | **string** |  | [optional]
+**bottom_html** | **string** |  | [optional]
+**is_package** | **bool** |  | [optional]
+**needs_digital_delivery** | **bool** |  | [optional]
+**delivery_description** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -84,7 +84,10 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
         'source_type' => 'string',
         'spouse_name' => 'string',
         'time_zone' => 'string',
-        'utm_parameters' => '\Keap\Core\V2\Model\CreateContactUtmPropertiesRequest'
+        'utm_parameters' => '\Keap\Core\V2\Model\CreateContactUtmPropertiesRequest',
+        'assistant_name' => 'string',
+        'assistant_phone' => 'string',
+        'billing_information' => 'string'
     ];
 
     /**
@@ -121,7 +124,10 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
         'source_type' => null,
         'spouse_name' => null,
         'time_zone' => null,
-        'utm_parameters' => null
+        'utm_parameters' => null,
+        'assistant_name' => null,
+        'assistant_phone' => null,
+        'billing_information' => null
     ];
 
     /**
@@ -156,7 +162,10 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
         'source_type' => false,
         'spouse_name' => false,
         'time_zone' => false,
-        'utm_parameters' => false
+        'utm_parameters' => false,
+        'assistant_name' => false,
+        'assistant_phone' => false,
+        'billing_information' => false
     ];
 
     /**
@@ -271,7 +280,10 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
         'source_type' => 'source_type',
         'spouse_name' => 'spouse_name',
         'time_zone' => 'time_zone',
-        'utm_parameters' => 'utm_parameters'
+        'utm_parameters' => 'utm_parameters',
+        'assistant_name' => 'assistant_name',
+        'assistant_phone' => 'assistant_phone',
+        'billing_information' => 'billing_information'
     ];
 
     /**
@@ -306,7 +318,10 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
         'source_type' => 'setSourceType',
         'spouse_name' => 'setSpouseName',
         'time_zone' => 'setTimeZone',
-        'utm_parameters' => 'setUtmParameters'
+        'utm_parameters' => 'setUtmParameters',
+        'assistant_name' => 'setAssistantName',
+        'assistant_phone' => 'setAssistantPhone',
+        'billing_information' => 'setBillingInformation'
     ];
 
     /**
@@ -341,7 +356,10 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
         'source_type' => 'getSourceType',
         'spouse_name' => 'getSpouseName',
         'time_zone' => 'getTimeZone',
-        'utm_parameters' => 'getUtmParameters'
+        'utm_parameters' => 'getUtmParameters',
+        'assistant_name' => 'getAssistantName',
+        'assistant_phone' => 'getAssistantPhone',
+        'billing_information' => 'getBillingInformation'
     ];
 
     /**
@@ -463,6 +481,9 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('spouse_name', $data ?? [], null);
         $this->setIfExists('time_zone', $data ?? [], null);
         $this->setIfExists('utm_parameters', $data ?? [], null);
+        $this->setIfExists('assistant_name', $data ?? [], null);
+        $this->setIfExists('assistant_phone', $data ?? [], null);
+        $this->setIfExists('billing_information', $data ?? [], null);
     }
 
     /**
@@ -1251,6 +1272,87 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable utm_parameters cannot be null');
         }
         $this->container['utm_parameters'] = $utm_parameters;
+
+        return $this;
+    }
+
+    /**
+     * Gets assistant_name
+     *
+     * @return string|null
+     */
+    public function getAssistantName()
+    {
+        return $this->container['assistant_name'];
+    }
+
+    /**
+     * Sets assistant_name
+     *
+     * @param string|null $assistant_name assistant_name
+     *
+     * @return self
+     */
+    public function setAssistantName($assistant_name)
+    {
+        if (is_null($assistant_name)) {
+            throw new \InvalidArgumentException('non-nullable assistant_name cannot be null');
+        }
+        $this->container['assistant_name'] = $assistant_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets assistant_phone
+     *
+     * @return string|null
+     */
+    public function getAssistantPhone()
+    {
+        return $this->container['assistant_phone'];
+    }
+
+    /**
+     * Sets assistant_phone
+     *
+     * @param string|null $assistant_phone assistant_phone
+     *
+     * @return self
+     */
+    public function setAssistantPhone($assistant_phone)
+    {
+        if (is_null($assistant_phone)) {
+            throw new \InvalidArgumentException('non-nullable assistant_phone cannot be null');
+        }
+        $this->container['assistant_phone'] = $assistant_phone;
+
+        return $this;
+    }
+
+    /**
+     * Gets billing_information
+     *
+     * @return string|null
+     */
+    public function getBillingInformation()
+    {
+        return $this->container['billing_information'];
+    }
+
+    /**
+     * Sets billing_information
+     *
+     * @param string|null $billing_information billing_information
+     *
+     * @return self
+     */
+    public function setBillingInformation($billing_information)
+    {
+        if (is_null($billing_information)) {
+            throw new \InvalidArgumentException('non-nullable billing_information cannot be null');
+        }
+        $this->container['billing_information'] = $billing_information;
 
         return $this;
     }

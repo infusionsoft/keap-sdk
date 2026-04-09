@@ -138,7 +138,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>FreeTrialDiscount</returns>
-        FreeTrialDiscount UpdateFreeTrialDiscount(string discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, string? updateMask = default, int operationIndex = 0);
+        FreeTrialDiscount UpdateFreeTrialDiscount(string discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Subscription Free Trial Discount
@@ -152,7 +152,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of FreeTrialDiscount</returns>
-        ApiResponse<FreeTrialDiscount> UpdateFreeTrialDiscountWithHttpInfo(string discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<FreeTrialDiscount> UpdateFreeTrialDiscountWithHttpInfo(string discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, Object? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -281,7 +281,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of FreeTrialDiscount</returns>
-        System.Threading.Tasks.Task<FreeTrialDiscount> UpdateFreeTrialDiscountAsync(string discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<FreeTrialDiscount> UpdateFreeTrialDiscountAsync(string discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Subscription Free Trial Discount
@@ -296,7 +296,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (FreeTrialDiscount)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FreeTrialDiscount>> UpdateFreeTrialDiscountWithHttpInfoAsync(string discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<FreeTrialDiscount>> UpdateFreeTrialDiscountWithHttpInfoAsync(string discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -1164,7 +1164,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>FreeTrialDiscount</returns>
-        public FreeTrialDiscount UpdateFreeTrialDiscount(string discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, string? updateMask = default, int operationIndex = 0)
+        public FreeTrialDiscount UpdateFreeTrialDiscount(string discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<FreeTrialDiscount> localVarResponse = UpdateFreeTrialDiscountWithHttpInfo(discountId, updateFreeTrialDiscountRequest, updateMask);
             return localVarResponse.Data;
@@ -1179,7 +1179,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of FreeTrialDiscount</returns>
-        public Keap.Core.V2.Client.ApiResponse<FreeTrialDiscount> UpdateFreeTrialDiscountWithHttpInfo(string discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<FreeTrialDiscount> UpdateFreeTrialDiscountWithHttpInfo(string discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'discountId' is set
             if (discountId == null)
@@ -1268,7 +1268,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of FreeTrialDiscount</returns>
-        public async System.Threading.Tasks.Task<FreeTrialDiscount> UpdateFreeTrialDiscountAsync(string discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<FreeTrialDiscount> UpdateFreeTrialDiscountAsync(string discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<FreeTrialDiscount> localVarResponse = await UpdateFreeTrialDiscountWithHttpInfoAsync(discountId, updateFreeTrialDiscountRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1284,7 +1284,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (FreeTrialDiscount)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<FreeTrialDiscount>> UpdateFreeTrialDiscountWithHttpInfoAsync(string discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<FreeTrialDiscount>> UpdateFreeTrialDiscountWithHttpInfoAsync(string discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'discountId' is set
             if (discountId == null)

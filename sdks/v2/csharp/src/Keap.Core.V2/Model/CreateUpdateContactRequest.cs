@@ -146,7 +146,10 @@ namespace Keap.Core.V2.Model
         /// <param name="spouseName">Spouse&#39;s name.</param>
         /// <param name="varTimeZone">Contact&#39;s timezone.</param>
         /// <param name="utmParameters">utmParameters.</param>
-        public CreateUpdateContactRequest(List<Address> addresses = default, BasicCompany company = default, OriginRequest origin = default, string prefix = default, string suffix = default, string website = default, string anniversaryDate = default, string birthDate = default, string contactType = default, List<CustomFieldValue> customFields = default, List<EmailAddressRequest> emailAddresses = default, string familyName = default, List<FaxNumber> faxNumbers = default, string givenName = default, string jobTitle = default, string leadsourceId = default, string middleName = default, string ownerId = default, List<PhoneNumber> phoneNumbers = default, string preferredLocale = default, string preferredName = default, string referralCode = default, List<SocialAccount> socialAccounts = default, SourceTypeEnum? sourceType = default, string spouseName = default, string varTimeZone = default, CreateContactUtmPropertiesRequest utmParameters = default)
+        /// <param name="assistantName">assistantName.</param>
+        /// <param name="assistantPhone">assistantPhone.</param>
+        /// <param name="billingInformation">billingInformation.</param>
+        public CreateUpdateContactRequest(List<Address> addresses = default, BasicCompany company = default, OriginRequest origin = default, string prefix = default, string suffix = default, string website = default, string anniversaryDate = default, string birthDate = default, string contactType = default, List<CustomFieldValue> customFields = default, List<EmailAddressRequest> emailAddresses = default, string familyName = default, List<FaxNumber> faxNumbers = default, string givenName = default, string jobTitle = default, string leadsourceId = default, string middleName = default, string ownerId = default, List<PhoneNumber> phoneNumbers = default, string preferredLocale = default, string preferredName = default, string referralCode = default, List<SocialAccount> socialAccounts = default, SourceTypeEnum? sourceType = default, string spouseName = default, string varTimeZone = default, CreateContactUtmPropertiesRequest utmParameters = default, string assistantName = default, string assistantPhone = default, string billingInformation = default)
         {
             this.Addresses = addresses;
             this.Company = company;
@@ -175,6 +178,9 @@ namespace Keap.Core.V2.Model
             this.SpouseName = spouseName;
             this.VarTimeZone = varTimeZone;
             this.UtmParameters = utmParameters;
+            this.AssistantName = assistantName;
+            this.AssistantPhone = assistantPhone;
+            this.BillingInformation = billingInformation;
         }
 
         /// <summary>
@@ -408,6 +414,24 @@ namespace Keap.Core.V2.Model
         public CreateContactUtmPropertiesRequest UtmParameters { get; set; }
 
         /// <summary>
+        /// Gets or Sets AssistantName
+        /// </summary>
+        [DataMember(Name = "assistant_name", EmitDefaultValue = false)]
+        public string AssistantName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AssistantPhone
+        /// </summary>
+        [DataMember(Name = "assistant_phone", EmitDefaultValue = false)]
+        public string AssistantPhone { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BillingInformation
+        /// </summary>
+        [DataMember(Name = "billing_information", EmitDefaultValue = false)]
+        public string BillingInformation { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -442,6 +466,9 @@ namespace Keap.Core.V2.Model
             sb.Append("  SpouseName: ").Append(SpouseName).Append("\n");
             sb.Append("  VarTimeZone: ").Append(VarTimeZone).Append("\n");
             sb.Append("  UtmParameters: ").Append(UtmParameters).Append("\n");
+            sb.Append("  AssistantName: ").Append(AssistantName).Append("\n");
+            sb.Append("  AssistantPhone: ").Append(AssistantPhone).Append("\n");
+            sb.Append("  BillingInformation: ").Append(BillingInformation).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

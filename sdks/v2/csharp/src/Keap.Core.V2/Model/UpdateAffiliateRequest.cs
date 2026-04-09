@@ -64,57 +64,44 @@ namespace Keap.Core.V2.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateAffiliateRequest" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected UpdateAffiliateRequest() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateAffiliateRequest" /> class.
-        /// </summary>
-        /// <param name="code">The Affiliate code which have some validations. 1. The code should not have white spaces 2. The code should starts with letters 3. The code minimum 4 characters length (required).</param>
-        /// <param name="name">The Affiliate name will be derived from the Contact, when not explicitly provided.</param>
+        /// <param name="code">The Affiliate code which have some validations. 1. The code should not have white spaces 2. The code should starts with letters 3. The code minimum 2 characters length.</param>
+        /// <param name="name">The Affiliate name..</param>
         /// <param name="status">The Affiliate Status.</param>
-        /// <param name="contactId">The contactId identifier , Must be a positive number (required).</param>
+        /// <param name="contactId">The contactId identifier. Must be a positive number.</param>
         /// <param name="parentAffiliateId">The Parent Affiliate Id.</param>
         /// <param name="notifyOnSale">Whether to notify on sale events.</param>
         /// <param name="notifyOnLead">Whether to notify on lead events.</param>
         /// <param name="trackLeadsDays">Number of days to track leads.</param>
         /// <param name="password">Affiliate portal password..</param>
-        public UpdateAffiliateRequest(string code = default, string name = default, StatusEnum? status = default, string contactId = default, string parentAffiliateId = default, bool notifyOnSale = default, bool notifyOnLead = default, int trackLeadsDays = default, string password = default)
+        /// <param name="customFields">List of custom field values to apply to this affiliate.</param>
+        public UpdateAffiliateRequest(string code = default, string name = default, StatusEnum? status = default, string contactId = default, string parentAffiliateId = default, bool notifyOnSale = default, bool notifyOnLead = default, int trackLeadsDays = default, string password = default, List<CustomFieldValue> customFields = default)
         {
-            // to ensure "code" is required (not null)
-            if (code == null)
-            {
-                throw new ArgumentNullException("code is a required property for UpdateAffiliateRequest and cannot be null");
-            }
             this.Code = code;
-            // to ensure "contactId" is required (not null)
-            if (contactId == null)
-            {
-                throw new ArgumentNullException("contactId is a required property for UpdateAffiliateRequest and cannot be null");
-            }
-            this.ContactId = contactId;
             this.Name = name;
             this.Status = status;
+            this.ContactId = contactId;
             this.ParentAffiliateId = parentAffiliateId;
             this.NotifyOnSale = notifyOnSale;
             this.NotifyOnLead = notifyOnLead;
             this.TrackLeadsDays = trackLeadsDays;
             this.Password = password;
+            this.CustomFields = customFields;
         }
 
         /// <summary>
-        /// The Affiliate code which have some validations. 1. The code should not have white spaces 2. The code should starts with letters 3. The code minimum 4 characters length
+        /// The Affiliate code which have some validations. 1. The code should not have white spaces 2. The code should starts with letters 3. The code minimum 2 characters length
         /// </summary>
-        /// <value>The Affiliate code which have some validations. 1. The code should not have white spaces 2. The code should starts with letters 3. The code minimum 4 characters length</value>
+        /// <value>The Affiliate code which have some validations. 1. The code should not have white spaces 2. The code should starts with letters 3. The code minimum 2 characters length</value>
         /*
         <example>M123</example>
         */
-        [DataMember(Name = "code", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "code", EmitDefaultValue = false)]
         public string Code { get; set; }
 
         /// <summary>
-        /// The Affiliate name will be derived from the Contact, when not explicitly provided
+        /// The Affiliate name.
         /// </summary>
-        /// <value>The Affiliate name will be derived from the Contact, when not explicitly provided</value>
+        /// <value>The Affiliate name.</value>
         /*
         <example>John Smith</example>
         */
@@ -122,13 +109,13 @@ namespace Keap.Core.V2.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// The contactId identifier , Must be a positive number
+        /// The contactId identifier. Must be a positive number
         /// </summary>
-        /// <value>The contactId identifier , Must be a positive number</value>
+        /// <value>The contactId identifier. Must be a positive number</value>
         /*
         <example>1</example>
         */
-        [DataMember(Name = "contact_id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "contact_id", EmitDefaultValue = false)]
         public string ContactId { get; set; }
 
         /// <summary>
@@ -179,6 +166,16 @@ namespace Keap.Core.V2.Model
         public string Password { get; set; }
 
         /// <summary>
+        /// List of custom field values to apply to this affiliate
+        /// </summary>
+        /// <value>List of custom field values to apply to this affiliate</value>
+        /*
+        <example>[{id&#x3D;1, content&#x3D;VIP}, {id&#x3D;2, content&#x3D;Preferred}]</example>
+        */
+        [DataMember(Name = "custom_fields", EmitDefaultValue = false)]
+        public List<CustomFieldValue> CustomFields { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -195,6 +192,7 @@ namespace Keap.Core.V2.Model
             sb.Append("  NotifyOnLead: ").Append(NotifyOnLead).Append("\n");
             sb.Append("  TrackLeadsDays: ").Append(TrackLeadsDays).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
+            sb.Append("  CustomFields: ").Append(CustomFields).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

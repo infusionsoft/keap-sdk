@@ -1012,7 +1012,7 @@ public class Example {
         CompanyApi apiInstance = new CompanyApi(defaultClient);
         String companyId = "companyId_example"; // String | 
         UpdateCompanyRequest updateCompanyRequest = new UpdateCompanyRequest(); // UpdateCompanyRequest | 
-        String updateMask = "id,company_name,address,phone_number,fax_number,email_address, notes,website,custom_fields,create_time,update_time"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             Company result = apiInstance.updateCompany(companyId, updateCompanyRequest, updateMask);
             System.out.println(result);
@@ -1034,8 +1034,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **companyId** | **String**|  | |
 | **updateCompanyRequest** | [**UpdateCompanyRequest**](UpdateCompanyRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: id,company_name,address,phone_number,fax_number,email_address,
-notes,website,custom_fields,create_time,update_time] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1095,7 +1094,7 @@ public class Example {
         CompanyApi apiInstance = new CompanyApi(defaultClient);
         String companyId = "companyId_example"; // String | 
         UpdateCompanyRequest updateCompanyRequest = new UpdateCompanyRequest(); // UpdateCompanyRequest | 
-        String updateMask = "id,company_name,address,phone_number,fax_number,email_address, notes,website,custom_fields,create_time,update_time"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<Company> response = apiInstance.updateCompanyWithHttpInfo(companyId, updateCompanyRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1119,8 +1118,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **companyId** | **String**|  | |
 | **updateCompanyRequest** | [**UpdateCompanyRequest**](UpdateCompanyRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: id,company_name,address,phone_number,fax_number,email_address,
-notes,website,custom_fields,create_time,update_time] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1180,7 +1178,7 @@ public class Example {
         CompanyApi apiInstance = new CompanyApi(defaultClient);
         String customFieldId = "customFieldId_example"; // String | 
         UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-        String updateMask = "group_id,label,options"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             CustomFieldMetaData result = apiInstance.updateCompanyCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println(result);
@@ -1202,7 +1200,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **customFieldId** | **String**|  | |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id,label,options] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1262,7 +1260,7 @@ public class Example {
         CompanyApi apiInstance = new CompanyApi(defaultClient);
         String customFieldId = "customFieldId_example"; // String | 
         UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-        String updateMask = "group_id,label,options"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<CustomFieldMetaData> response = apiInstance.updateCompanyCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1286,7 +1284,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **customFieldId** | **String**|  | |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id,label,options] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

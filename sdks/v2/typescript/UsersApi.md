@@ -315,7 +315,7 @@ const request: UsersApiUpdateUserRequest = {
     timeZone: "America/New_York",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: "address,company_name,email_address,family_name,fax_numbers,given_name,job_title,phone_numbers,time_zone,website",
+  updateMask: null,
 };
 
 const data = await apiInstance.updateUser(request);
@@ -329,7 +329,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateUserRequest** | **UpdateUserRequest**|  |
  **userId** | [**string**] |  | defaults to undefined
- **updateMask** | [**&#39;address,company_name,email_address,family_name,fax_numbers,given_name,job_title,phone_numbers,time_zone,website&#39;**]**Array<&#39;address,company_name,email_address,family_name,fax_numbers,given_name,job_title,phone_numbers,time_zone,website&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

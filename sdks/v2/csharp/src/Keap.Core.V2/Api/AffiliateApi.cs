@@ -733,9 +733,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="updateAffiliateRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RestAffiliate</returns>
-        RestAffiliate UpdateAffiliate(string id, UpdateAffiliateRequest updateAffiliateRequest, int operationIndex = 0);
+        RestAffiliate UpdateAffiliate(string id, UpdateAffiliateRequest updateAffiliateRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update an Affiliate
@@ -746,9 +747,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="updateAffiliateRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RestAffiliate</returns>
-        ApiResponse<RestAffiliate> UpdateAffiliateWithHttpInfo(string id, UpdateAffiliateRequest updateAffiliateRequest, int operationIndex = 0);
+        ApiResponse<RestAffiliate> UpdateAffiliateWithHttpInfo(string id, UpdateAffiliateRequest updateAffiliateRequest, Object? updateMask = default, int operationIndex = 0);
         /// <summary>
         /// Update a Custom Field
         /// </summary>
@@ -761,7 +763,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CustomFieldMetaData</returns>
-        CustomFieldMetaData UpdateAffiliateCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0);
+        CustomFieldMetaData UpdateAffiliateCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Custom Field
@@ -775,7 +777,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomFieldMetaData</returns>
-        ApiResponse<CustomFieldMetaData> UpdateAffiliateCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<CustomFieldMetaData> UpdateAffiliateCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0);
         /// <summary>
         /// Update an Affiliate Commission Program
         /// </summary>
@@ -788,7 +790,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AffiliateCommissionProgramResponse</returns>
-        AffiliateCommissionProgramResponse UpdateCommissionProgram(string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, string? updateMask = default, int operationIndex = 0);
+        AffiliateCommissionProgramResponse UpdateCommissionProgram(string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update an Affiliate Commission Program
@@ -802,7 +804,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AffiliateCommissionProgramResponse</returns>
-        ApiResponse<AffiliateCommissionProgramResponse> UpdateCommissionProgramWithHttpInfo(string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<AffiliateCommissionProgramResponse> UpdateCommissionProgramWithHttpInfo(string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0);
         /// <summary>
         /// Update a Default Commission Program
         /// </summary>
@@ -1679,10 +1681,11 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="updateAffiliateRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RestAffiliate</returns>
-        System.Threading.Tasks.Task<RestAffiliate> UpdateAffiliateAsync(string id, UpdateAffiliateRequest updateAffiliateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<RestAffiliate> UpdateAffiliateAsync(string id, UpdateAffiliateRequest updateAffiliateRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update an Affiliate
@@ -1693,10 +1696,11 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="updateAffiliateRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RestAffiliate)</returns>
-        System.Threading.Tasks.Task<ApiResponse<RestAffiliate>> UpdateAffiliateWithHttpInfoAsync(string id, UpdateAffiliateRequest updateAffiliateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<RestAffiliate>> UpdateAffiliateWithHttpInfoAsync(string id, UpdateAffiliateRequest updateAffiliateRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update a Custom Field
         /// </summary>
@@ -1710,7 +1714,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CustomFieldMetaData</returns>
-        System.Threading.Tasks.Task<CustomFieldMetaData> UpdateAffiliateCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CustomFieldMetaData> UpdateAffiliateCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Custom Field
@@ -1725,7 +1729,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CustomFieldMetaData)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CustomFieldMetaData>> UpdateAffiliateCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CustomFieldMetaData>> UpdateAffiliateCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update an Affiliate Commission Program
         /// </summary>
@@ -1739,7 +1743,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AffiliateCommissionProgramResponse</returns>
-        System.Threading.Tasks.Task<AffiliateCommissionProgramResponse> UpdateCommissionProgramAsync(string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<AffiliateCommissionProgramResponse> UpdateCommissionProgramAsync(string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update an Affiliate Commission Program
@@ -1754,7 +1758,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AffiliateCommissionProgramResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AffiliateCommissionProgramResponse>> UpdateCommissionProgramWithHttpInfoAsync(string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<AffiliateCommissionProgramResponse>> UpdateCommissionProgramWithHttpInfoAsync(string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update a Default Commission Program
         /// </summary>
@@ -7281,11 +7285,12 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="updateAffiliateRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RestAffiliate</returns>
-        public RestAffiliate UpdateAffiliate(string id, UpdateAffiliateRequest updateAffiliateRequest, int operationIndex = 0)
+        public RestAffiliate UpdateAffiliate(string id, UpdateAffiliateRequest updateAffiliateRequest, Object? updateMask = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<RestAffiliate> localVarResponse = UpdateAffiliateWithHttpInfo(id, updateAffiliateRequest);
+            Keap.Core.V2.Client.ApiResponse<RestAffiliate> localVarResponse = UpdateAffiliateWithHttpInfo(id, updateAffiliateRequest, updateMask);
             return localVarResponse.Data;
         }
 
@@ -7295,9 +7300,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="updateAffiliateRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RestAffiliate</returns>
-        public Keap.Core.V2.Client.ApiResponse<RestAffiliate> UpdateAffiliateWithHttpInfo(string id, UpdateAffiliateRequest updateAffiliateRequest, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<RestAffiliate> UpdateAffiliateWithHttpInfo(string id, UpdateAffiliateRequest updateAffiliateRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -7336,6 +7342,10 @@ namespace Keap.Core.V2.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", Keap.Core.V2.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (updateMask != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+            }
             localVarRequestOptions.Data = updateAffiliateRequest;
 
             localVarRequestOptions.Operation = "AffiliateApi.UpdateAffiliate";
@@ -7378,12 +7388,13 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="updateAffiliateRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RestAffiliate</returns>
-        public async System.Threading.Tasks.Task<RestAffiliate> UpdateAffiliateAsync(string id, UpdateAffiliateRequest updateAffiliateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<RestAffiliate> UpdateAffiliateAsync(string id, UpdateAffiliateRequest updateAffiliateRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<RestAffiliate> localVarResponse = await UpdateAffiliateWithHttpInfoAsync(id, updateAffiliateRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<RestAffiliate> localVarResponse = await UpdateAffiliateWithHttpInfoAsync(id, updateAffiliateRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -7393,10 +7404,11 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="updateAffiliateRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RestAffiliate)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<RestAffiliate>> UpdateAffiliateWithHttpInfoAsync(string id, UpdateAffiliateRequest updateAffiliateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<RestAffiliate>> UpdateAffiliateWithHttpInfoAsync(string id, UpdateAffiliateRequest updateAffiliateRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -7435,6 +7447,10 @@ namespace Keap.Core.V2.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", Keap.Core.V2.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (updateMask != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+            }
             localVarRequestOptions.Data = updateAffiliateRequest;
 
             localVarRequestOptions.Operation = "AffiliateApi.UpdateAffiliate";
@@ -7481,7 +7497,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CustomFieldMetaData</returns>
-        public CustomFieldMetaData UpdateAffiliateCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0)
+        public CustomFieldMetaData UpdateAffiliateCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> localVarResponse = UpdateAffiliateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             return localVarResponse.Data;
@@ -7496,7 +7512,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomFieldMetaData</returns>
-        public Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> UpdateAffiliateCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> UpdateAffiliateCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'customFieldId' is set
             if (customFieldId == null)
@@ -7585,7 +7601,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CustomFieldMetaData</returns>
-        public async System.Threading.Tasks.Task<CustomFieldMetaData> UpdateAffiliateCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CustomFieldMetaData> UpdateAffiliateCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> localVarResponse = await UpdateAffiliateCustomFieldWithHttpInfoAsync(customFieldId, updateCustomFieldMetaDataRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -7601,7 +7617,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CustomFieldMetaData)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData>> UpdateAffiliateCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData>> UpdateAffiliateCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'customFieldId' is set
             if (customFieldId == null)
@@ -7690,7 +7706,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AffiliateCommissionProgramResponse</returns>
-        public AffiliateCommissionProgramResponse UpdateCommissionProgram(string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, string? updateMask = default, int operationIndex = 0)
+        public AffiliateCommissionProgramResponse UpdateCommissionProgram(string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<AffiliateCommissionProgramResponse> localVarResponse = UpdateCommissionProgramWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, updateMask);
             return localVarResponse.Data;
@@ -7705,7 +7721,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AffiliateCommissionProgramResponse</returns>
-        public Keap.Core.V2.Client.ApiResponse<AffiliateCommissionProgramResponse> UpdateCommissionProgramWithHttpInfo(string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<AffiliateCommissionProgramResponse> UpdateCommissionProgramWithHttpInfo(string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'commissionProgramId' is set
             if (commissionProgramId == null)
@@ -7794,7 +7810,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AffiliateCommissionProgramResponse</returns>
-        public async System.Threading.Tasks.Task<AffiliateCommissionProgramResponse> UpdateCommissionProgramAsync(string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<AffiliateCommissionProgramResponse> UpdateCommissionProgramAsync(string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<AffiliateCommissionProgramResponse> localVarResponse = await UpdateCommissionProgramWithHttpInfoAsync(commissionProgramId, updateCommissionProgramRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -7810,7 +7826,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AffiliateCommissionProgramResponse)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<AffiliateCommissionProgramResponse>> UpdateCommissionProgramWithHttpInfoAsync(string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<AffiliateCommissionProgramResponse>> UpdateCommissionProgramWithHttpInfoAsync(string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'commissionProgramId' is set
             if (commissionProgramId == null)

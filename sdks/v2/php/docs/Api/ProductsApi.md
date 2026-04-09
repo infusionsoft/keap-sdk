@@ -13,6 +13,7 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**deleteProductImage()**](ProductsApi.md#deleteProductImage) | **DELETE** /rest/v2/products/{product_id}/images | Delete the Product Image |
 | [**deleteProductOption()**](ProductsApi.md#deleteProductOption) | **DELETE** /rest/v2/products/{product_id}/options/{product_option_id} | Delete a Product Option |
 | [**deleteProductOptionListOptionValue()**](ProductsApi.md#deleteProductOptionListOptionValue) | **DELETE** /rest/v2/products/{product_id}/options/{product_option_id}/listItems/{item_id} | Delete a Product Option List Item |
+| [**getFileData()**](ProductsApi.md#getFileData) | **GET** /rest/v2/products/{product_id}/images/legacyImageData | Retrieve Product Legacy Image Data |
 | [**getProduct()**](ProductsApi.md#getProduct) | **GET** /rest/v2/products/{product_id} | Get a Product |
 | [**getProductOption()**](ProductsApi.md#getProductOption) | **GET** /rest/v2/products/{product_id}/options/{product_option_id} | Get Product Option |
 | [**listProductOptions()**](ProductsApi.md#listProductOptions) | **GET** /rest/v2/products/{product_id}/options | List Product Options |
@@ -208,7 +209,7 @@ try {
 ## `createProductImage()`
 
 ```php
-createProductImage($product_id, $file)
+createProductImage($product_id, $file, $legacy)
 ```
 
 Create the Product Image
@@ -231,11 +232,12 @@ $apiInstance = new Keap\Core\V2\Api\ProductsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | product_id
-$file = '/path/to/file.txt'; // \SplFileObject | File to upload
+$product_id = 'product_id_example'; // string | The product ID
+$file = '/path/to/file.txt'; // \SplFileObject | The image file to upload
+$legacy = True; // bool | Set to 'true' if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image.
 
 try {
-    $apiInstance->createProductImage($product_id, $file);
+    $apiInstance->createProductImage($product_id, $file, $legacy);
 } catch (Exception $e) {
     echo 'Exception when calling ProductsApi->createProductImage: ', $e->getMessage(), PHP_EOL;
 }
@@ -245,8 +247,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| product_id | |
-| **file** | **\SplFileObject****\SplFileObject**| File to upload | |
+| **product_id** | **string**| The product ID | |
+| **file** | **\SplFileObject****\SplFileObject**| The image file to upload | |
+| **legacy** | **bool**| Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. | [optional] |
 
 ### Return type
 
@@ -564,6 +567,65 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getFileData()`
+
+```php
+getFileData($product_id): string
+```
+
+Retrieve Product Legacy Image Data
+
+Retrieves the product's legacy image
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\ProductsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$product_id = 'product_id_example'; // string | product_id
+
+try {
+    $result = $apiInstance->getFileData($product_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ProductsApi->getFileData: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **product_id** | **string**| product_id | |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getProduct()`
 
 ```php
@@ -836,7 +898,7 @@ $apiInstance = new Keap\Core\V2\Api\ProductsApi(
 );
 $product_id = 'product_id_example'; // string | product_id
 $update_product_request_detail = new \Keap\Core\V2\Model\UpdateProductRequestDetail(); // \Keap\Core\V2\Model\UpdateProductRequestDetail
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateProduct($product_id, $update_product_request_detail, $update_mask);
@@ -852,7 +914,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **product_id** | **string**| product_id | |
 | **update_product_request_detail** | [**\Keap\Core\V2\Model\UpdateProductRequestDetail**](../Model/UpdateProductRequestDetail.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -900,7 +962,7 @@ $apiInstance = new Keap\Core\V2\Api\ProductsApi(
 $product_id = 'product_id_example'; // string | product_id
 $product_option_id = 'product_option_id_example'; // string | product_option_id
 $update_product_option_request = new \Keap\Core\V2\Model\UpdateProductOptionRequest(); // \Keap\Core\V2\Model\UpdateProductOptionRequest
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateProductOption($product_id, $product_option_id, $update_product_option_request, $update_mask);
@@ -917,7 +979,7 @@ try {
 | **product_id** | **string**| product_id | |
 | **product_option_id** | **string**| product_option_id | |
 | **update_product_option_request** | [**\Keap\Core\V2\Model\UpdateProductOptionRequest**](../Model/UpdateProductOptionRequest.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -966,7 +1028,7 @@ $product_id = 'product_id_example'; // string | product_id
 $product_option_id = 'product_option_id_example'; // string | product_option_id
 $item_id = 'item_id_example'; // string | item_id
 $update_product_option_list_option = new \Keap\Core\V2\Model\UpdateProductOptionListOption(); // \Keap\Core\V2\Model\UpdateProductOptionListOption
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateProductOptionListOptionValue($product_id, $product_option_id, $item_id, $update_product_option_list_option, $update_mask);
@@ -984,7 +1046,7 @@ try {
 | **product_option_id** | **string**| product_option_id | |
 | **item_id** | **string**| item_id | |
 | **update_product_option_list_option** | [**\Keap\Core\V2\Model\UpdateProductOptionListOption**](../Model/UpdateProductOptionListOption.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

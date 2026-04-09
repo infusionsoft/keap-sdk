@@ -2808,11 +2808,12 @@ import io.github.resilience4j.retry.Retry;
    * Updates a single Affiliate
    * @param id  (required)
    * @param updateAffiliateRequest  (required)
+   * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
    * @return RestAffiliate
    * @throws ApiException if fails to make API call
    */
-  public RestAffiliate updateAffiliate(String id, UpdateAffiliateRequest updateAffiliateRequest) throws ApiException {
-    ApiResponse<RestAffiliate> localVarResponse = updateAffiliateWithHttpInfo(id, updateAffiliateRequest);
+  public RestAffiliate updateAffiliate(String id, UpdateAffiliateRequest updateAffiliateRequest, Object updateMask) throws ApiException {
+    ApiResponse<RestAffiliate> localVarResponse = updateAffiliateWithHttpInfo(id, updateAffiliateRequest, updateMask);
     return localVarResponse.getData();
   }
 
@@ -2821,11 +2822,12 @@ import io.github.resilience4j.retry.Retry;
    * Updates a single Affiliate
    * @param id  (required)
    * @param updateAffiliateRequest  (required)
+   * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
    * @return ApiResponse&lt;RestAffiliate&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RestAffiliate> updateAffiliateWithHttpInfo(String id, UpdateAffiliateRequest updateAffiliateRequest) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = updateAffiliateRequestBuilder(id, updateAffiliateRequest);
+  public ApiResponse<RestAffiliate> updateAffiliateWithHttpInfo(String id, UpdateAffiliateRequest updateAffiliateRequest, Object updateMask) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateAffiliateRequestBuilder(id, updateAffiliateRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -2865,7 +2867,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateAffiliateRequestBuilder(String id, UpdateAffiliateRequest updateAffiliateRequest) throws ApiException {
+  private HttpRequest.Builder updateAffiliateRequestBuilder(String id, UpdateAffiliateRequest updateAffiliateRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling updateAffiliate");
@@ -2880,7 +2882,22 @@ import io.github.resilience4j.retry.Retry;
     String localVarPath = "/rest/v2/affiliates/{id}"
         .replace("{id}", ApiClient.urlEncode(id.toString()));
 
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "update_mask";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
 
     localVarRequestBuilder.header("Content-Type", "application/json");
     localVarRequestBuilder.header("Accept", "application/json");
@@ -2910,7 +2927,7 @@ import io.github.resilience4j.retry.Retry;
    * @return CustomFieldMetaData
    * @throws ApiException if fails to make API call
    */
-  public CustomFieldMetaData updateAffiliateCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, String updateMask) throws ApiException {
+  public CustomFieldMetaData updateAffiliateCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
     ApiResponse<CustomFieldMetaData> localVarResponse = updateAffiliateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -2924,7 +2941,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;CustomFieldMetaData&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CustomFieldMetaData> updateAffiliateCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, String updateMask) throws ApiException {
+  public ApiResponse<CustomFieldMetaData> updateAffiliateCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateAffiliateCustomFieldRequestBuilder(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -2965,7 +2982,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateAffiliateCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateAffiliateCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'customFieldId' is set
     if (customFieldId == null) {
       throw new ApiException(400, "Missing the required parameter 'customFieldId' when calling updateAffiliateCustomField");
@@ -3025,7 +3042,7 @@ import io.github.resilience4j.retry.Retry;
    * @return AffiliateCommissionProgramResponse
    * @throws ApiException if fails to make API call
    */
-  public AffiliateCommissionProgramResponse updateCommissionProgram(String commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, String updateMask) throws ApiException {
+  public AffiliateCommissionProgramResponse updateCommissionProgram(String commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Object updateMask) throws ApiException {
     ApiResponse<AffiliateCommissionProgramResponse> localVarResponse = updateCommissionProgramWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -3039,7 +3056,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;AffiliateCommissionProgramResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AffiliateCommissionProgramResponse> updateCommissionProgramWithHttpInfo(String commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, String updateMask) throws ApiException {
+  public ApiResponse<AffiliateCommissionProgramResponse> updateCommissionProgramWithHttpInfo(String commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateCommissionProgramRequestBuilder(commissionProgramId, updateCommissionProgramRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -3080,7 +3097,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateCommissionProgramRequestBuilder(String commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateCommissionProgramRequestBuilder(String commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'commissionProgramId' is set
     if (commissionProgramId == null) {
       throw new ApiException(400, "Missing the required parameter 'commissionProgramId' when calling updateCommissionProgram");

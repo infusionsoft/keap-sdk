@@ -366,8 +366,8 @@ const apiInstance = new FilesApi(configuration);
 const request: FilesApiUpdateFileRequest = {
   
   fileId: "file_id_example",
-    // Update Mask (optional)
-  updateMask: "update_mask_example",
+    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+  updateMask: null,
     // File to upload. This is a file sent as multi-part (not a string) (optional)
   file: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
     // File name (optional)
@@ -392,7 +392,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fileId** | [**string**] |  | defaults to undefined
- **updateMask** | [**string**] | Update Mask | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
  **file** | [**HttpFile**] | File to upload. This is a file sent as multi-part (not a string) | (optional) defaults to undefined
  **fileName** | [**string**] | File name | (optional) defaults to undefined
  **isPublic** | [**boolean**] | Is public | (optional) defaults to undefined

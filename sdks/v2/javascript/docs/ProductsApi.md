@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**deleteProductImage**](ProductsApi.md#deleteProductImage) | **DELETE** /rest/v2/products/{product_id}/images | Delete the Product Image
 [**deleteProductOption**](ProductsApi.md#deleteProductOption) | **DELETE** /rest/v2/products/{product_id}/options/{product_option_id} | Delete a Product Option
 [**deleteProductOptionListOptionValue**](ProductsApi.md#deleteProductOptionListOptionValue) | **DELETE** /rest/v2/products/{product_id}/options/{product_option_id}/listItems/{item_id} | Delete a Product Option List Item
+[**getFileData**](ProductsApi.md#getFileData) | **GET** /rest/v2/products/{product_id}/images/legacyImageData | Retrieve Product Legacy Image Data
 [**getProduct**](ProductsApi.md#getProduct) | **GET** /rest/v2/products/{product_id} | Get a Product
 [**getProductOption**](ProductsApi.md#getProductOption) | **GET** /rest/v2/products/{product_id}/options/{product_option_id} | Get Product Option
 [**listProductOptions**](ProductsApi.md#listProductOptions) | **GET** /rest/v2/products/{product_id}/options | List Product Options
@@ -175,7 +176,7 @@ Name | Type | Description  | Notes
 
 ## createProductImage
 
-> createProductImage(productId, file)
+> createProductImage(productId, file, opts)
 
 Create the Product Image
 
@@ -191,9 +192,12 @@ let oauth2 = defaultClient.authentications['oauth2'];
 oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ProductsApi();
-let productId = "productId_example"; // String | product_id
-let file = "/path/to/file"; // File | File to upload
-apiInstance.createProductImage(productId, file).then(() => {
+let productId = "productId_example"; // String | The product ID
+let file = "/path/to/file"; // File | The image file to upload
+let opts = {
+  'legacy': true // Boolean | Set to 'true' if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image.
+};
+apiInstance.createProductImage(productId, file, opts).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -206,8 +210,9 @@ apiInstance.createProductImage(productId, file).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **productId** | **String**| product_id | 
- **file** | **File**| File to upload | 
+ **productId** | **String**| The product ID | 
+ **file** | **File**| The image file to upload | 
+ **legacy** | **Boolean**| Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. | [optional] 
 
 ### Return type
 
@@ -471,6 +476,54 @@ null (empty response body)
 - **Accept**: application/json
 
 
+## getFileData
+
+> Blob getFileData(productId)
+
+Retrieve Product Legacy Image Data
+
+Retrieves the product&#39;s legacy image
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.ProductsApi();
+let productId = "productId_example"; // String | product_id
+apiInstance.getFileData(productId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **productId** | **String**| product_id | 
+
+### Return type
+
+**Blob**
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## getProduct
 
 > RestV2ProductDetail getProduct(productId)
@@ -694,7 +747,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.ProductsApi();
 let productId = "productId_example"; // String | product_id
 let updateProductRequestDetail = new KeapCoreServiceV2Sdk.UpdateProductRequestDetail(); // UpdateProductRequestDetail | 
 let opts = {
-  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateProduct(productId, updateProductRequestDetail, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -711,7 +764,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **productId** | **String**| product_id | 
  **updateProductRequestDetail** | [**UpdateProductRequestDetail**](UpdateProductRequestDetail.md)|  | 
- **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -749,7 +802,7 @@ let productId = "productId_example"; // String | product_id
 let productOptionId = "productOptionId_example"; // String | product_option_id
 let updateProductOptionRequest = new KeapCoreServiceV2Sdk.UpdateProductOptionRequest(); // UpdateProductOptionRequest | 
 let opts = {
-  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateProductOption(productId, productOptionId, updateProductOptionRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -767,7 +820,7 @@ Name | Type | Description  | Notes
  **productId** | **String**| product_id | 
  **productOptionId** | **String**| product_option_id | 
  **updateProductOptionRequest** | [**UpdateProductOptionRequest**](UpdateProductOptionRequest.md)|  | 
- **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -806,7 +859,7 @@ let productOptionId = "productOptionId_example"; // String | product_option_id
 let itemId = "itemId_example"; // String | item_id
 let updateProductOptionListOption = new KeapCoreServiceV2Sdk.UpdateProductOptionListOption(); // UpdateProductOptionListOption | 
 let opts = {
-  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateProductOptionListOptionValue(productId, productOptionId, itemId, updateProductOptionListOption, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -825,7 +878,7 @@ Name | Type | Description  | Notes
  **productOptionId** | **String**| product_option_id | 
  **itemId** | **String**| item_id | 
  **updateProductOptionListOption** | [**UpdateProductOptionListOption**](UpdateProductOptionListOption.md)|  | 
- **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

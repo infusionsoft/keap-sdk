@@ -31,5 +31,8 @@ Name | Type | Description | Notes
 **spouse_name** | **string** | Spouse&#39;s name | [optional]
 **time_zone** | **string** | Contact&#39;s timezone | [optional]
 **utm_parameters** | [**\Keap\Core\V2\Model\CreateContactUtmPropertiesRequest**](CreateContactUtmPropertiesRequest.md) |  | [optional]
+**assistant_name** | **string** |  | [optional]
+**assistant_phone** | **string** |  | [optional]
+**billing_information** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

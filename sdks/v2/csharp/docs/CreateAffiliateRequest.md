@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **NotifyOnLead** | **bool** | Whether to notify on lead events | [optional] 
 **TrackLeadsDays** | **int** | Number of days to track leads | [optional] 
 **Password** | **string** | Affiliate portal password | [optional] 
+**CustomFields** | [**List&lt;CustomFieldValue&gt;**](CustomFieldValue.md) | List of custom field values to apply to this affiliate | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

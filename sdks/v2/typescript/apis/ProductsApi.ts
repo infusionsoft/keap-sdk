@@ -196,10 +196,11 @@ export class ProductsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Creates the Product Image file and uploads it to the specified Product
      * Create the Product Image
-     * @param productId product_id
-     * @param file File to upload
+     * @param productId The product ID
+     * @param file The image file to upload
+     * @param legacy Set to \&#39;true\&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image.
      */
-    public async createProductImage(productId: string, file: HttpFile, _options?: Configuration): Promise<RequestContext> {
+    public async createProductImage(productId: string, file: HttpFile, legacy?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'productId' is not null or undefined
@@ -214,6 +215,7 @@ export class ProductsApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+
         // Path Params
         const localVarPath = '/rest/v2/products/{product_id}/images'
             .replace('{' + 'product_id' + '}', encodeURIComponent(String(productId)));
@@ -221,6 +223,11 @@ export class ProductsApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (legacy !== undefined) {
+            requestContext.setQueryParam("legacy", ObjectSerializer.serialize(legacy, "boolean", ""));
+        }
 
         // Form Params
         const useForm = canConsumeForm([
@@ -498,6 +505,44 @@ export class ProductsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Retrieves the product\'s legacy image
+     * Retrieve Product Legacy Image Data
+     * @param productId product_id
+     */
+    public async getFileData(productId: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'productId' is not null or undefined
+        if (productId === null || productId === undefined) {
+            throw new RequiredError("ProductsApi", "getFileData", "productId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/rest/v2/products/{product_id}/images/legacyImageData'
+            .replace('{' + 'product_id' + '}', encodeURIComponent(String(productId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Gets a single Product
      * Get a Product
      * @param productId product_id
@@ -684,7 +729,7 @@ export class ProductsApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateProductRequestDetail 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateProduct(productId: string, updateProductRequestDetail: UpdateProductRequestDetail, updateMask?: 'active,name,description,price,sku,shippable,short_description,subscription_only, storefront_hidden,weight,taxable,country_taxable,city_taxable,state_taxable, inventory_limit,out_of_stock_enabled,email_for_inventory_notifications', _options?: Configuration): Promise<RequestContext> {
+    public async updateProduct(productId: string, updateProductRequestDetail: UpdateProductRequestDetail, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'productId' is not null or undefined
@@ -710,7 +755,10 @@ export class ProductsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'active,name,description,price,sku,shippable,short_description,subscription_only, storefront_hidden,weight,taxable,country_taxable,city_taxable,state_taxable, inventory_limit,out_of_stock_enabled,email_for_inventory_notifications'", ""));
+            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
+            }
         }
 
 
@@ -748,7 +796,7 @@ export class ProductsApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateProductOptionRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateProductOption(productId: string, productOptionId: string, updateProductOptionRequest: UpdateProductOptionRequest, updateMask?: 'option_label,display_order,required,minimum_characters,maximum_characters,allow_spaces, only_starts_with,only_ends_with,only_contains,error_message', _options?: Configuration): Promise<RequestContext> {
+    public async updateProductOption(productId: string, productOptionId: string, updateProductOptionRequest: UpdateProductOptionRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'productId' is not null or undefined
@@ -781,7 +829,10 @@ export class ProductsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'option_label,display_order,required,minimum_characters,maximum_characters,allow_spaces, only_starts_with,only_ends_with,only_contains,error_message'", ""));
+            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
+            }
         }
 
 
@@ -820,7 +871,7 @@ export class ProductsApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateProductOptionListOption 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateProductOptionListOptionValue(productId: string, productOptionId: string, itemId: string, updateProductOptionListOption: UpdateProductOptionListOption, updateMask?: 'item_label,item_code,item_display_order,price_adjustment ', _options?: Configuration): Promise<RequestContext> {
+    public async updateProductOptionListOptionValue(productId: string, productOptionId: string, itemId: string, updateProductOptionListOption: UpdateProductOptionListOption, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'productId' is not null or undefined
@@ -860,7 +911,10 @@ export class ProductsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'item_label,item_code,item_display_order,price_adjustment '", ""));
+            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
+            }
         }
 
 
@@ -1570,6 +1624,84 @@ export class ProductsApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "void", ""
             ) as void;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to getFileData
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getFileDataWithHttpInfo(response: ResponseContext): Promise<HttpInfo<string >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", "byte"
+            ) as string;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", "byte"
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", "byte"
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", "byte"
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", "byte"
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", "byte"
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", "byte"
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", "byte"
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", "byte"
+            ) as string;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

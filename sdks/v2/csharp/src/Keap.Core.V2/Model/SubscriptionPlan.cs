@@ -85,7 +85,8 @@ namespace Keap.Core.V2.Model
         /// <param name="displayOrderIndex">The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list..</param>
         /// <param name="totalCycles">Total number of cycles the plan will run before ending. Value of 0 indicates plan will never end..</param>
         /// <param name="planPrice">The price of the subscription plan..</param>
-        public SubscriptionPlan(string id = default, bool active = default, int frequency = default, bool allowProrating = default, string productId = default, CycleTypeEnum? cycleType = default, int displayOrderIndex = default, int totalCycles = default, CurrencyValue planPrice = default)
+        /// <param name="preauthorizeAmount">The pre-authorize amount for the subscription plan. If null, this field is omitted from the response..</param>
+        public SubscriptionPlan(string id = default, bool active = default, int frequency = default, bool allowProrating = default, string productId = default, CycleTypeEnum? cycleType = default, int displayOrderIndex = default, int totalCycles = default, CurrencyValue planPrice = default, double preauthorizeAmount = default)
         {
             this.Id = id;
             this.Active = active;
@@ -96,6 +97,7 @@ namespace Keap.Core.V2.Model
             this.DisplayOrderIndex = displayOrderIndex;
             this.TotalCycles = totalCycles;
             this.PlanPrice = planPrice;
+            this.PreauthorizeAmount = preauthorizeAmount;
         }
 
         /// <summary>
@@ -176,6 +178,16 @@ namespace Keap.Core.V2.Model
         public CurrencyValue PlanPrice { get; set; }
 
         /// <summary>
+        /// The pre-authorize amount for the subscription plan. If null, this field is omitted from the response.
+        /// </summary>
+        /// <value>The pre-authorize amount for the subscription plan. If null, this field is omitted from the response.</value>
+        /*
+        <example>13</example>
+        */
+        [DataMember(Name = "preauthorize_amount", EmitDefaultValue = false)]
+        public double PreauthorizeAmount { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -192,6 +204,7 @@ namespace Keap.Core.V2.Model
             sb.Append("  DisplayOrderIndex: ").Append(DisplayOrderIndex).Append("\n");
             sb.Append("  TotalCycles: ").Append(TotalCycles).Append("\n");
             sb.Append("  PlanPrice: ").Append(PlanPrice).Append("\n");
+            sb.Append("  PreauthorizeAmount: ").Append(PreauthorizeAmount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

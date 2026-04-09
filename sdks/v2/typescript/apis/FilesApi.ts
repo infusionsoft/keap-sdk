@@ -350,7 +350,7 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
      * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
      * Update a file
      * @param fileId 
-     * @param updateMask Update Mask
+     * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param file File to upload. This is a file sent as multi-part (not a string)
      * @param fileName File name
      * @param isPublic Is public
@@ -358,7 +358,7 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
      * @param fileName2 File name
      * @param isPublic2 Is public
      */
-    public async updateFile(fileId: string, updateMask?: string, file?: HttpFile, fileName?: string, isPublic?: boolean, file2?: HttpFile, fileName2?: string, isPublic2?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async updateFile(fileId: string, updateMask?: any, file?: HttpFile, fileName?: string, isPublic?: boolean, file2?: HttpFile, fileName2?: string, isPublic2?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'fileId' is not null or undefined
@@ -384,7 +384,10 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "string", ""));
+            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
+            }
         }
 
         // Query Params

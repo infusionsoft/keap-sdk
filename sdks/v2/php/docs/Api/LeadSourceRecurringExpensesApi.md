@@ -359,7 +359,7 @@ $apiInstance = new Keap\Core\V2\Api\LeadSourceRecurringExpensesApi(
 $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead source this recurring expense belongs to
 $lead_source_recurring_expense_id = 'lead_source_recurring_expense_id_example'; // string | The ID of a lead source recurring expense
 $lead_source_recurring_expense_update_request = new \Keap\Core\V2\Model\LeadSourceRecurringExpenseUpdateRequest(); // \Keap\Core\V2\Model\LeadSourceRecurringExpenseUpdateRequest
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateLeadSourceRecurringExpense($lead_source_id, $lead_source_recurring_expense_id, $lead_source_recurring_expense_update_request, $update_mask);
@@ -376,7 +376,7 @@ try {
 | **lead_source_id** | **string**| The ID of the lead source this recurring expense belongs to | |
 | **lead_source_recurring_expense_id** | **string**| The ID of a lead source recurring expense | |
 | **lead_source_recurring_expense_update_request** | [**\Keap\Core\V2\Model\LeadSourceRecurringExpenseUpdateRequest**](../Model/LeadSourceRecurringExpenseUpdateRequest.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

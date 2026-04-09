@@ -311,7 +311,7 @@ const request: SubscriptionPlansApiUpdateSubscriptionPlanRequest = {
     totalCycles: 12,
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: "active,allow_prorating,cycle_type,display_order_index,frequency,plan_price,total_cycles",
+  updateMask: null,
 };
 
 const data = await apiInstance.updateSubscriptionPlan(request);
@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
  **updateSubscriptionPlanRequest** | **UpdateSubscriptionPlanRequest**|  |
  **productId** | [**string**] | product_id | defaults to undefined
  **subscriptionPlanId** | [**string**] | subscription_plan_id | defaults to undefined
- **updateMask** | [**&#39;active,allow_prorating,cycle_type,display_order_index,frequency,plan_price,total_cycles&#39;**]**Array<&#39;active,allow_prorating,cycle_type,display_order_index,frequency,plan_price,total_cycles&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

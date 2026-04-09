@@ -75,7 +75,15 @@ class RestV2ProductDetail implements ModelInterface, ArrayAccess, \JsonSerializa
         'country_taxable' => 'bool',
         'state_taxable' => 'bool',
         'city_taxable' => 'bool',
-        'subscription_plans' => '\Keap\Core\V2\Model\SubscriptionPlanDetail[]'
+        'subscription_plans' => '\Keap\Core\V2\Model\SubscriptionPlanDetail[]',
+        'top_html' => 'string',
+        'bottom_html' => 'string',
+        'is_package' => 'bool',
+        'needs_digital_delivery' => 'bool',
+        'has_legacy_image' => 'bool',
+        'delivery_description' => 'string',
+        'create_time' => 'string',
+        'update_time' => 'string'
     ];
 
     /**
@@ -104,7 +112,15 @@ class RestV2ProductDetail implements ModelInterface, ArrayAccess, \JsonSerializa
         'country_taxable' => null,
         'state_taxable' => null,
         'city_taxable' => null,
-        'subscription_plans' => null
+        'subscription_plans' => null,
+        'top_html' => null,
+        'bottom_html' => null,
+        'is_package' => null,
+        'needs_digital_delivery' => null,
+        'has_legacy_image' => null,
+        'delivery_description' => null,
+        'create_time' => null,
+        'update_time' => null
     ];
 
     /**
@@ -131,7 +147,15 @@ class RestV2ProductDetail implements ModelInterface, ArrayAccess, \JsonSerializa
         'country_taxable' => false,
         'state_taxable' => false,
         'city_taxable' => false,
-        'subscription_plans' => false
+        'subscription_plans' => false,
+        'top_html' => false,
+        'bottom_html' => false,
+        'is_package' => false,
+        'needs_digital_delivery' => false,
+        'has_legacy_image' => false,
+        'delivery_description' => false,
+        'create_time' => false,
+        'update_time' => false
     ];
 
     /**
@@ -238,7 +262,15 @@ class RestV2ProductDetail implements ModelInterface, ArrayAccess, \JsonSerializa
         'country_taxable' => 'country_taxable',
         'state_taxable' => 'state_taxable',
         'city_taxable' => 'city_taxable',
-        'subscription_plans' => 'subscription_plans'
+        'subscription_plans' => 'subscription_plans',
+        'top_html' => 'top_html',
+        'bottom_html' => 'bottom_html',
+        'is_package' => 'is_package',
+        'needs_digital_delivery' => 'needs_digital_delivery',
+        'has_legacy_image' => 'has_legacy_image',
+        'delivery_description' => 'delivery_description',
+        'create_time' => 'create_time',
+        'update_time' => 'update_time'
     ];
 
     /**
@@ -265,7 +297,15 @@ class RestV2ProductDetail implements ModelInterface, ArrayAccess, \JsonSerializa
         'country_taxable' => 'setCountryTaxable',
         'state_taxable' => 'setStateTaxable',
         'city_taxable' => 'setCityTaxable',
-        'subscription_plans' => 'setSubscriptionPlans'
+        'subscription_plans' => 'setSubscriptionPlans',
+        'top_html' => 'setTopHtml',
+        'bottom_html' => 'setBottomHtml',
+        'is_package' => 'setIsPackage',
+        'needs_digital_delivery' => 'setNeedsDigitalDelivery',
+        'has_legacy_image' => 'setHasLegacyImage',
+        'delivery_description' => 'setDeliveryDescription',
+        'create_time' => 'setCreateTime',
+        'update_time' => 'setUpdateTime'
     ];
 
     /**
@@ -292,7 +332,15 @@ class RestV2ProductDetail implements ModelInterface, ArrayAccess, \JsonSerializa
         'country_taxable' => 'getCountryTaxable',
         'state_taxable' => 'getStateTaxable',
         'city_taxable' => 'getCityTaxable',
-        'subscription_plans' => 'getSubscriptionPlans'
+        'subscription_plans' => 'getSubscriptionPlans',
+        'top_html' => 'getTopHtml',
+        'bottom_html' => 'getBottomHtml',
+        'is_package' => 'getIsPackage',
+        'needs_digital_delivery' => 'getNeedsDigitalDelivery',
+        'has_legacy_image' => 'getHasLegacyImage',
+        'delivery_description' => 'getDeliveryDescription',
+        'create_time' => 'getCreateTime',
+        'update_time' => 'getUpdateTime'
     ];
 
     /**
@@ -371,6 +419,14 @@ class RestV2ProductDetail implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('state_taxable', $data ?? [], null);
         $this->setIfExists('city_taxable', $data ?? [], null);
         $this->setIfExists('subscription_plans', $data ?? [], null);
+        $this->setIfExists('top_html', $data ?? [], null);
+        $this->setIfExists('bottom_html', $data ?? [], null);
+        $this->setIfExists('is_package', $data ?? [], null);
+        $this->setIfExists('needs_digital_delivery', $data ?? [], null);
+        $this->setIfExists('has_legacy_image', $data ?? [], null);
+        $this->setIfExists('delivery_description', $data ?? [], null);
+        $this->setIfExists('create_time', $data ?? [], null);
+        $this->setIfExists('update_time', $data ?? [], null);
     }
 
     /**
@@ -924,6 +980,222 @@ class RestV2ProductDetail implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable subscription_plans cannot be null');
         }
         $this->container['subscription_plans'] = $subscription_plans;
+
+        return $this;
+    }
+
+    /**
+     * Gets top_html
+     *
+     * @return string|null
+     */
+    public function getTopHtml()
+    {
+        return $this->container['top_html'];
+    }
+
+    /**
+     * Sets top_html
+     *
+     * @param string|null $top_html top_html
+     *
+     * @return self
+     */
+    public function setTopHtml($top_html)
+    {
+        if (is_null($top_html)) {
+            throw new \InvalidArgumentException('non-nullable top_html cannot be null');
+        }
+        $this->container['top_html'] = $top_html;
+
+        return $this;
+    }
+
+    /**
+     * Gets bottom_html
+     *
+     * @return string|null
+     */
+    public function getBottomHtml()
+    {
+        return $this->container['bottom_html'];
+    }
+
+    /**
+     * Sets bottom_html
+     *
+     * @param string|null $bottom_html bottom_html
+     *
+     * @return self
+     */
+    public function setBottomHtml($bottom_html)
+    {
+        if (is_null($bottom_html)) {
+            throw new \InvalidArgumentException('non-nullable bottom_html cannot be null');
+        }
+        $this->container['bottom_html'] = $bottom_html;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_package
+     *
+     * @return bool|null
+     */
+    public function getIsPackage()
+    {
+        return $this->container['is_package'];
+    }
+
+    /**
+     * Sets is_package
+     *
+     * @param bool|null $is_package is_package
+     *
+     * @return self
+     */
+    public function setIsPackage($is_package)
+    {
+        if (is_null($is_package)) {
+            throw new \InvalidArgumentException('non-nullable is_package cannot be null');
+        }
+        $this->container['is_package'] = $is_package;
+
+        return $this;
+    }
+
+    /**
+     * Gets needs_digital_delivery
+     *
+     * @return bool|null
+     */
+    public function getNeedsDigitalDelivery()
+    {
+        return $this->container['needs_digital_delivery'];
+    }
+
+    /**
+     * Sets needs_digital_delivery
+     *
+     * @param bool|null $needs_digital_delivery needs_digital_delivery
+     *
+     * @return self
+     */
+    public function setNeedsDigitalDelivery($needs_digital_delivery)
+    {
+        if (is_null($needs_digital_delivery)) {
+            throw new \InvalidArgumentException('non-nullable needs_digital_delivery cannot be null');
+        }
+        $this->container['needs_digital_delivery'] = $needs_digital_delivery;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_legacy_image
+     *
+     * @return bool|null
+     */
+    public function getHasLegacyImage()
+    {
+        return $this->container['has_legacy_image'];
+    }
+
+    /**
+     * Sets has_legacy_image
+     *
+     * @param bool|null $has_legacy_image has_legacy_image
+     *
+     * @return self
+     */
+    public function setHasLegacyImage($has_legacy_image)
+    {
+        if (is_null($has_legacy_image)) {
+            throw new \InvalidArgumentException('non-nullable has_legacy_image cannot be null');
+        }
+        $this->container['has_legacy_image'] = $has_legacy_image;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_description
+     *
+     * @return string|null
+     */
+    public function getDeliveryDescription()
+    {
+        return $this->container['delivery_description'];
+    }
+
+    /**
+     * Sets delivery_description
+     *
+     * @param string|null $delivery_description delivery_description
+     *
+     * @return self
+     */
+    public function setDeliveryDescription($delivery_description)
+    {
+        if (is_null($delivery_description)) {
+            throw new \InvalidArgumentException('non-nullable delivery_description cannot be null');
+        }
+        $this->container['delivery_description'] = $delivery_description;
+
+        return $this;
+    }
+
+    /**
+     * Gets create_time
+     *
+     * @return string|null
+     */
+    public function getCreateTime()
+    {
+        return $this->container['create_time'];
+    }
+
+    /**
+     * Sets create_time
+     *
+     * @param string|null $create_time create_time
+     *
+     * @return self
+     */
+    public function setCreateTime($create_time)
+    {
+        if (is_null($create_time)) {
+            throw new \InvalidArgumentException('non-nullable create_time cannot be null');
+        }
+        $this->container['create_time'] = $create_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets update_time
+     *
+     * @return string|null
+     */
+    public function getUpdateTime()
+    {
+        return $this->container['update_time'];
+    }
+
+    /**
+     * Sets update_time
+     *
+     * @param string|null $update_time update_time
+     *
+     * @return self
+     */
+    public function setUpdateTime($update_time)
+    {
+        if (is_null($update_time)) {
+            throw new \InvalidArgumentException('non-nullable update_time cannot be null');
+        }
+        $this->container['update_time'] = $update_time;
 
         return $this;
     }

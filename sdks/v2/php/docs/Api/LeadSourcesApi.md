@@ -280,7 +280,7 @@ $apiInstance = new Keap\Core\V2\Api\LeadSourcesApi(
 );
 $lead_source_id = 'lead_source_id_example'; // string | The ID of a lead source
 $create_lead_source_request = new \Keap\Core\V2\Model\CreateLeadSourceRequest(); // \Keap\Core\V2\Model\CreateLeadSourceRequest
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateLeadSource($lead_source_id, $create_lead_source_request, $update_mask);
@@ -296,7 +296,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **lead_source_id** | **string**| The ID of a lead source | |
 | **create_lead_source_request** | [**\Keap\Core\V2\Model\CreateLeadSourceRequest**](../Model/CreateLeadSourceRequest.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

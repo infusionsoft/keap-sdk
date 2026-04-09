@@ -65,6 +65,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'prefix' => 'string',
         'suffix' => 'string',
         'website' => 'string',
+        'groups' => 'string',
         'update_time' => 'string',
         'create_time' => 'string',
         'score_value' => 'string',
@@ -89,7 +90,13 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'source_type' => 'string',
         'spouse_name' => 'string',
         'time_zone' => 'string',
-        'utm_parameters' => '\Keap\Core\V2\Model\ContactUtmResponse[]'
+        'utm_parameters' => '\Keap\Core\V2\Model\ContactUtmResponse[]',
+        'account_id' => 'string',
+        'assistant_name' => 'string',
+        'assistant_phone' => 'string',
+        'billing_information' => 'string',
+        'created_by' => 'string',
+        'last_updated_by' => 'string'
     ];
 
     /**
@@ -108,6 +115,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'prefix' => null,
         'suffix' => null,
         'website' => null,
+        'groups' => null,
         'update_time' => null,
         'create_time' => null,
         'score_value' => null,
@@ -132,7 +140,13 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'source_type' => null,
         'spouse_name' => null,
         'time_zone' => null,
-        'utm_parameters' => null
+        'utm_parameters' => null,
+        'account_id' => null,
+        'assistant_name' => null,
+        'assistant_phone' => null,
+        'billing_information' => null,
+        'created_by' => null,
+        'last_updated_by' => null
     ];
 
     /**
@@ -149,6 +163,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'prefix' => false,
         'suffix' => false,
         'website' => false,
+        'groups' => false,
         'update_time' => false,
         'create_time' => false,
         'score_value' => false,
@@ -173,7 +188,13 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'source_type' => false,
         'spouse_name' => false,
         'time_zone' => false,
-        'utm_parameters' => false
+        'utm_parameters' => false,
+        'account_id' => false,
+        'assistant_name' => false,
+        'assistant_phone' => false,
+        'billing_information' => false,
+        'created_by' => false,
+        'last_updated_by' => false
     ];
 
     /**
@@ -270,6 +291,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'prefix' => 'prefix',
         'suffix' => 'suffix',
         'website' => 'website',
+        'groups' => 'groups',
         'update_time' => 'update_time',
         'create_time' => 'create_time',
         'score_value' => 'score_value',
@@ -294,7 +316,13 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'source_type' => 'source_type',
         'spouse_name' => 'spouse_name',
         'time_zone' => 'time_zone',
-        'utm_parameters' => 'utm_parameters'
+        'utm_parameters' => 'utm_parameters',
+        'account_id' => 'account_id',
+        'assistant_name' => 'assistant_name',
+        'assistant_phone' => 'assistant_phone',
+        'billing_information' => 'billing_information',
+        'created_by' => 'created_by',
+        'last_updated_by' => 'last_updated_by'
     ];
 
     /**
@@ -311,6 +339,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'prefix' => 'setPrefix',
         'suffix' => 'setSuffix',
         'website' => 'setWebsite',
+        'groups' => 'setGroups',
         'update_time' => 'setUpdateTime',
         'create_time' => 'setCreateTime',
         'score_value' => 'setScoreValue',
@@ -335,7 +364,13 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'source_type' => 'setSourceType',
         'spouse_name' => 'setSpouseName',
         'time_zone' => 'setTimeZone',
-        'utm_parameters' => 'setUtmParameters'
+        'utm_parameters' => 'setUtmParameters',
+        'account_id' => 'setAccountId',
+        'assistant_name' => 'setAssistantName',
+        'assistant_phone' => 'setAssistantPhone',
+        'billing_information' => 'setBillingInformation',
+        'created_by' => 'setCreatedBy',
+        'last_updated_by' => 'setLastUpdatedBy'
     ];
 
     /**
@@ -352,6 +387,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'prefix' => 'getPrefix',
         'suffix' => 'getSuffix',
         'website' => 'getWebsite',
+        'groups' => 'getGroups',
         'update_time' => 'getUpdateTime',
         'create_time' => 'getCreateTime',
         'score_value' => 'getScoreValue',
@@ -376,7 +412,13 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'source_type' => 'getSourceType',
         'spouse_name' => 'getSpouseName',
         'time_zone' => 'getTimeZone',
-        'utm_parameters' => 'getUtmParameters'
+        'utm_parameters' => 'getUtmParameters',
+        'account_id' => 'getAccountId',
+        'assistant_name' => 'getAssistantName',
+        'assistant_phone' => 'getAssistantPhone',
+        'billing_information' => 'getBillingInformation',
+        'created_by' => 'getCreatedBy',
+        'last_updated_by' => 'getLastUpdatedBy'
     ];
 
     /**
@@ -479,6 +521,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('prefix', $data ?? [], null);
         $this->setIfExists('suffix', $data ?? [], null);
         $this->setIfExists('website', $data ?? [], null);
+        $this->setIfExists('groups', $data ?? [], null);
         $this->setIfExists('update_time', $data ?? [], null);
         $this->setIfExists('create_time', $data ?? [], null);
         $this->setIfExists('score_value', $data ?? [], null);
@@ -504,6 +547,12 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('spouse_name', $data ?? [], null);
         $this->setIfExists('time_zone', $data ?? [], null);
         $this->setIfExists('utm_parameters', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('assistant_name', $data ?? [], null);
+        $this->setIfExists('assistant_phone', $data ?? [], null);
+        $this->setIfExists('billing_information', $data ?? [], null);
+        $this->setIfExists('created_by', $data ?? [], null);
+        $this->setIfExists('last_updated_by', $data ?? [], null);
     }
 
     /**
@@ -769,6 +818,33 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable website cannot be null');
         }
         $this->container['website'] = $website;
+
+        return $this;
+    }
+
+    /**
+     * Gets groups
+     *
+     * @return string|null
+     */
+    public function getGroups()
+    {
+        return $this->container['groups'];
+    }
+
+    /**
+     * Sets groups
+     *
+     * @param string|null $groups groups
+     *
+     * @return self
+     */
+    public function setGroups($groups)
+    {
+        if (is_null($groups)) {
+            throw new \InvalidArgumentException('non-nullable groups cannot be null');
+        }
+        $this->container['groups'] = $groups;
 
         return $this;
     }
@@ -1454,6 +1530,168 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable utm_parameters cannot be null');
         }
         $this->container['utm_parameters'] = $utm_parameters;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id account_id
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets assistant_name
+     *
+     * @return string|null
+     */
+    public function getAssistantName()
+    {
+        return $this->container['assistant_name'];
+    }
+
+    /**
+     * Sets assistant_name
+     *
+     * @param string|null $assistant_name assistant_name
+     *
+     * @return self
+     */
+    public function setAssistantName($assistant_name)
+    {
+        if (is_null($assistant_name)) {
+            throw new \InvalidArgumentException('non-nullable assistant_name cannot be null');
+        }
+        $this->container['assistant_name'] = $assistant_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets assistant_phone
+     *
+     * @return string|null
+     */
+    public function getAssistantPhone()
+    {
+        return $this->container['assistant_phone'];
+    }
+
+    /**
+     * Sets assistant_phone
+     *
+     * @param string|null $assistant_phone assistant_phone
+     *
+     * @return self
+     */
+    public function setAssistantPhone($assistant_phone)
+    {
+        if (is_null($assistant_phone)) {
+            throw new \InvalidArgumentException('non-nullable assistant_phone cannot be null');
+        }
+        $this->container['assistant_phone'] = $assistant_phone;
+
+        return $this;
+    }
+
+    /**
+     * Gets billing_information
+     *
+     * @return string|null
+     */
+    public function getBillingInformation()
+    {
+        return $this->container['billing_information'];
+    }
+
+    /**
+     * Sets billing_information
+     *
+     * @param string|null $billing_information billing_information
+     *
+     * @return self
+     */
+    public function setBillingInformation($billing_information)
+    {
+        if (is_null($billing_information)) {
+            throw new \InvalidArgumentException('non-nullable billing_information cannot be null');
+        }
+        $this->container['billing_information'] = $billing_information;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_by
+     *
+     * @return string|null
+     */
+    public function getCreatedBy()
+    {
+        return $this->container['created_by'];
+    }
+
+    /**
+     * Sets created_by
+     *
+     * @param string|null $created_by created_by
+     *
+     * @return self
+     */
+    public function setCreatedBy($created_by)
+    {
+        if (is_null($created_by)) {
+            throw new \InvalidArgumentException('non-nullable created_by cannot be null');
+        }
+        $this->container['created_by'] = $created_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_updated_by
+     *
+     * @return string|null
+     */
+    public function getLastUpdatedBy()
+    {
+        return $this->container['last_updated_by'];
+    }
+
+    /**
+     * Sets last_updated_by
+     *
+     * @param string|null $last_updated_by last_updated_by
+     *
+     * @return self
+     */
+    public function setLastUpdatedBy($last_updated_by)
+    {
+        if (is_null($last_updated_by)) {
+            throw new \InvalidArgumentException('non-nullable last_updated_by cannot be null');
+        }
+        $this->container['last_updated_by'] = $last_updated_by;
 
         return $this;
     }

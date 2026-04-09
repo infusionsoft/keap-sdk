@@ -32,6 +32,9 @@ Name | Type | Description | Notes
 **SpouseName** | **string** | Spouse&#39;s name | [optional] 
 **VarTimeZone** | **string** | Contact&#39;s timezone | [optional] 
 **UtmParameters** | [**CreateContactUtmPropertiesRequest**](CreateContactUtmPropertiesRequest.md) |  | [optional] 
+**AssistantName** | **string** |  | [optional] 
+**AssistantPhone** | **string** |  | [optional] 
+**BillingInformation** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.4</version>
+  <version>2.0.5</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.4"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.5"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.4.jar`
+- `target/core-service-v2-java-sdk-2.0.5.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -530,6 +530,8 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**deleteProductOptionWithHttpInfo**](docs/ProductsApi.md#deleteProductOptionWithHttpInfo) | **DELETE** /rest/v2/products/{product_id}/options/{product_option_id} | Delete a Product Option
 *ProductsApi* | [**deleteProductOptionListOptionValue**](docs/ProductsApi.md#deleteProductOptionListOptionValue) | **DELETE** /rest/v2/products/{product_id}/options/{product_option_id}/listItems/{item_id} | Delete a Product Option List Item
 *ProductsApi* | [**deleteProductOptionListOptionValueWithHttpInfo**](docs/ProductsApi.md#deleteProductOptionListOptionValueWithHttpInfo) | **DELETE** /rest/v2/products/{product_id}/options/{product_option_id}/listItems/{item_id} | Delete a Product Option List Item
+*ProductsApi* | [**getFileData**](docs/ProductsApi.md#getFileData) | **GET** /rest/v2/products/{product_id}/images/legacyImageData | Retrieve Product Legacy Image Data
+*ProductsApi* | [**getFileDataWithHttpInfo**](docs/ProductsApi.md#getFileDataWithHttpInfo) | **GET** /rest/v2/products/{product_id}/images/legacyImageData | Retrieve Product Legacy Image Data
 *ProductsApi* | [**getProduct**](docs/ProductsApi.md#getProduct) | **GET** /rest/v2/products/{product_id} | Get a Product
 *ProductsApi* | [**getProductWithHttpInfo**](docs/ProductsApi.md#getProductWithHttpInfo) | **GET** /rest/v2/products/{product_id} | Get a Product
 *ProductsApi* | [**getProductOption**](docs/ProductsApi.md#getProductOption) | **GET** /rest/v2/products/{product_id}/options/{product_option_id} | Get Product Option

@@ -60,7 +60,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetBusinessProfileResponse</returns>
-        GetBusinessProfileResponse UpdateBusinessProfile(UpdateBusinessProfileRequest updateBusinessProfileRequest, string? updateMask = default, int operationIndex = 0);
+        GetBusinessProfileResponse UpdateBusinessProfile(UpdateBusinessProfileRequest updateBusinessProfileRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update Business Profile
@@ -73,7 +73,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetBusinessProfileResponse</returns>
-        ApiResponse<GetBusinessProfileResponse> UpdateBusinessProfileWithHttpInfo(UpdateBusinessProfileRequest updateBusinessProfileRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<GetBusinessProfileResponse> UpdateBusinessProfileWithHttpInfo(UpdateBusinessProfileRequest updateBusinessProfileRequest, Object? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -118,7 +118,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBusinessProfileResponse</returns>
-        System.Threading.Tasks.Task<GetBusinessProfileResponse> UpdateBusinessProfileAsync(UpdateBusinessProfileRequest updateBusinessProfileRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<GetBusinessProfileResponse> UpdateBusinessProfileAsync(UpdateBusinessProfileRequest updateBusinessProfileRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update Business Profile
@@ -132,7 +132,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBusinessProfileResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetBusinessProfileResponse>> UpdateBusinessProfileWithHttpInfoAsync(UpdateBusinessProfileRequest updateBusinessProfileRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<GetBusinessProfileResponse>> UpdateBusinessProfileWithHttpInfoAsync(UpdateBusinessProfileRequest updateBusinessProfileRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -420,7 +420,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetBusinessProfileResponse</returns>
-        public GetBusinessProfileResponse UpdateBusinessProfile(UpdateBusinessProfileRequest updateBusinessProfileRequest, string? updateMask = default, int operationIndex = 0)
+        public GetBusinessProfileResponse UpdateBusinessProfile(UpdateBusinessProfileRequest updateBusinessProfileRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<GetBusinessProfileResponse> localVarResponse = UpdateBusinessProfileWithHttpInfo(updateBusinessProfileRequest, updateMask);
             return localVarResponse.Data;
@@ -434,7 +434,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetBusinessProfileResponse</returns>
-        public Keap.Core.V2.Client.ApiResponse<GetBusinessProfileResponse> UpdateBusinessProfileWithHttpInfo(UpdateBusinessProfileRequest updateBusinessProfileRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<GetBusinessProfileResponse> UpdateBusinessProfileWithHttpInfo(UpdateBusinessProfileRequest updateBusinessProfileRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'updateBusinessProfileRequest' is set
             if (updateBusinessProfileRequest == null)
@@ -515,7 +515,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBusinessProfileResponse</returns>
-        public async System.Threading.Tasks.Task<GetBusinessProfileResponse> UpdateBusinessProfileAsync(UpdateBusinessProfileRequest updateBusinessProfileRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<GetBusinessProfileResponse> UpdateBusinessProfileAsync(UpdateBusinessProfileRequest updateBusinessProfileRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<GetBusinessProfileResponse> localVarResponse = await UpdateBusinessProfileWithHttpInfoAsync(updateBusinessProfileRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -530,7 +530,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBusinessProfileResponse)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<GetBusinessProfileResponse>> UpdateBusinessProfileWithHttpInfoAsync(UpdateBusinessProfileRequest updateBusinessProfileRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<GetBusinessProfileResponse>> UpdateBusinessProfileWithHttpInfoAsync(UpdateBusinessProfileRequest updateBusinessProfileRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'updateBusinessProfileRequest' is set
             if (updateBusinessProfileRequest == null)

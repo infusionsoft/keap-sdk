@@ -734,7 +734,7 @@ This endpoint does not need any parameter.
 
 <a id="updatenote"></a>
 # **UpdateNote**
-> UpdateNoteResponse UpdateNote (string contactId, string noteId, UpdateNoteRequest updateNoteRequest, string? updateMask = null)
+> UpdateNoteResponse UpdateNote (string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = null)
 
 Update a Note
 
@@ -763,7 +763,7 @@ namespace Example
             var contactId = "contactId_example";  // string | 
             var noteId = "noteId_example";  // string | 
             var updateNoteRequest = new UpdateNoteRequest(); // UpdateNoteRequest | 
-            var updateMask = "contact_id, text, title, type, user_id";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -809,7 +809,7 @@ catch (ApiException e)
 | **contactId** | **string** |  |  |
 | **noteId** | **string** |  |  |
 | **updateNoteRequest** | [**UpdateNoteRequest**](UpdateNoteRequest.md) |  |  |
-| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -841,7 +841,7 @@ catch (ApiException e)
 
 <a id="updatenotescustomfield"></a>
 # **UpdateNotesCustomField**
-> CustomFieldMetaData UpdateNotesCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = null)
+> CustomFieldMetaData UpdateNotesCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = null)
 
 Update a Custom Field
 
@@ -869,7 +869,7 @@ namespace Example
             var apiInstance = new NoteApi(config);
             var customFieldId = "customFieldId_example";  // string | 
             var updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-            var updateMask = "group_id,label,options";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -914,7 +914,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **customFieldId** | **string** |  |  |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md) |  |  |
-| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

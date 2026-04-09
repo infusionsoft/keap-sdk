@@ -1219,7 +1219,7 @@ class LeadSourceExpensesApi
      *
      * List Lead Source Expenses
      *
-     * @param  string $lead_source_id The ID of the lead source this expense belongs to (required)
+     * @param  string $lead_source_id The ID of the lead source this expense belongs to. Use &#39;-&#39; as a wildcard (e.g. /v2/leadSources/-/expenses). (required)
      * @param  string|null $filter Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
@@ -1241,7 +1241,7 @@ class LeadSourceExpensesApi
      *
      * List Lead Source Expenses
      *
-     * @param  string $lead_source_id The ID of the lead source this expense belongs to (required)
+     * @param  string $lead_source_id The ID of the lead source this expense belongs to. Use &#39;-&#39; as a wildcard (e.g. /v2/leadSources/-/expenses). (required)
      * @param  string|null $filter Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
@@ -1428,7 +1428,7 @@ class LeadSourceExpensesApi
      *
      * List Lead Source Expenses
      *
-     * @param  string $lead_source_id The ID of the lead source this expense belongs to (required)
+     * @param  string $lead_source_id The ID of the lead source this expense belongs to. Use &#39;-&#39; as a wildcard (e.g. /v2/leadSources/-/expenses). (required)
      * @param  string|null $filter Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
@@ -1453,7 +1453,7 @@ class LeadSourceExpensesApi
      *
      * List Lead Source Expenses
      *
-     * @param  string $lead_source_id The ID of the lead source this expense belongs to (required)
+     * @param  string $lead_source_id The ID of the lead source this expense belongs to. Use &#39;-&#39; as a wildcard (e.g. /v2/leadSources/-/expenses). (required)
      * @param  string|null $filter Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
@@ -1507,7 +1507,7 @@ class LeadSourceExpensesApi
     /**
      * Create request for operation 'listLeadSourceExpenses'
      *
-     * @param  string $lead_source_id The ID of the lead source this expense belongs to (required)
+     * @param  string $lead_source_id The ID of the lead source this expense belongs to. Use &#39;-&#39; as a wildcard (e.g. /v2/leadSources/-/expenses). (required)
      * @param  string|null $filter Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
@@ -1658,7 +1658,7 @@ class LeadSourceExpensesApi
      * @param  string $lead_source_expense_id The ID of a lead source expense (required)
      * @param  string $lead_source_id The ID of the lead source this expense belongs to (required)
      * @param  \Keap\Core\V2\Model\UpdateLeadSourceExpenseRequest $update_lead_source_expense_request update_lead_source_expense_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLeadSourceExpense'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1679,7 +1679,7 @@ class LeadSourceExpensesApi
      * @param  string $lead_source_expense_id The ID of a lead source expense (required)
      * @param  string $lead_source_id The ID of the lead source this expense belongs to (required)
      * @param  \Keap\Core\V2\Model\UpdateLeadSourceExpenseRequest $update_lead_source_expense_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLeadSourceExpense'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1865,7 +1865,7 @@ class LeadSourceExpensesApi
      * @param  string $lead_source_expense_id The ID of a lead source expense (required)
      * @param  string $lead_source_id The ID of the lead source this expense belongs to (required)
      * @param  \Keap\Core\V2\Model\UpdateLeadSourceExpenseRequest $update_lead_source_expense_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLeadSourceExpense'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1889,7 +1889,7 @@ class LeadSourceExpensesApi
      * @param  string $lead_source_expense_id The ID of a lead source expense (required)
      * @param  string $lead_source_id The ID of the lead source this expense belongs to (required)
      * @param  \Keap\Core\V2\Model\UpdateLeadSourceExpenseRequest $update_lead_source_expense_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLeadSourceExpense'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1942,7 +1942,7 @@ class LeadSourceExpensesApi
      * @param  string $lead_source_expense_id The ID of a lead source expense (required)
      * @param  string $lead_source_id The ID of the lead source this expense belongs to (required)
      * @param  \Keap\Core\V2\Model\UpdateLeadSourceExpenseRequest $update_lead_source_expense_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLeadSourceExpense'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1985,7 +1985,7 @@ class LeadSourceExpensesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'string', // openApiType
+            'mixed', // openApiType
             'form', // style
             true, // explode
             false // required

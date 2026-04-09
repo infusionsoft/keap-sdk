@@ -16,8 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr, field_validator
-from typing import Optional
+from pydantic import Field, StrictStr
+from typing import Any, Optional
 from typing_extensions import Annotated
 from keap_core_v2_client.models.apply_remove_tag_request import ApplyRemoveTagRequest
 from keap_core_v2_client.models.apply_tags_response import ApplyTagsResponse
@@ -3764,7 +3764,7 @@ class TagsApi:
         self,
         tag_id: StrictStr,
         create_update_tag_request: CreateUpdateTagRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3787,7 +3787,7 @@ class TagsApi:
         :param create_update_tag_request: (required)
         :type create_update_tag_request: CreateUpdateTagRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3846,7 +3846,7 @@ class TagsApi:
         self,
         tag_id: StrictStr,
         create_update_tag_request: CreateUpdateTagRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3869,7 +3869,7 @@ class TagsApi:
         :param create_update_tag_request: (required)
         :type create_update_tag_request: CreateUpdateTagRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3928,7 +3928,7 @@ class TagsApi:
         self,
         tag_id: StrictStr,
         create_update_tag_request: CreateUpdateTagRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3951,7 +3951,7 @@ class TagsApi:
         :param create_update_tag_request: (required)
         :type create_update_tag_request: CreateUpdateTagRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4091,7 +4091,7 @@ class TagsApi:
         self,
         tag_category_id: StrictStr,
         create_update_tag_category_request: CreateUpdateTagCategoryRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4114,7 +4114,7 @@ class TagsApi:
         :param create_update_tag_category_request: (required)
         :type create_update_tag_category_request: CreateUpdateTagCategoryRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4173,7 +4173,7 @@ class TagsApi:
         self,
         tag_category_id: StrictStr,
         create_update_tag_category_request: CreateUpdateTagCategoryRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4196,7 +4196,7 @@ class TagsApi:
         :param create_update_tag_category_request: (required)
         :type create_update_tag_category_request: CreateUpdateTagCategoryRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4255,7 +4255,7 @@ class TagsApi:
         self,
         tag_category_id: StrictStr,
         create_update_tag_category_request: CreateUpdateTagCategoryRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4278,7 +4278,7 @@ class TagsApi:
         :param create_update_tag_category_request: (required)
         :type create_update_tag_category_request: CreateUpdateTagCategoryRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of

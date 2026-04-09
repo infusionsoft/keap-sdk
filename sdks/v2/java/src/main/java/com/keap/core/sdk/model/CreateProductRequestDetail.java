@@ -48,7 +48,12 @@ import jakarta.validation.Valid;
   CreateProductRequestDetail.JSON_PROPERTY_STOREFRONT_HIDDEN,
   CreateProductRequestDetail.JSON_PROPERTY_COUNTRY_TAXABLE,
   CreateProductRequestDetail.JSON_PROPERTY_STATE_TAXABLE,
-  CreateProductRequestDetail.JSON_PROPERTY_CITY_TAXABLE
+  CreateProductRequestDetail.JSON_PROPERTY_CITY_TAXABLE,
+  CreateProductRequestDetail.JSON_PROPERTY_TOP_HTML,
+  CreateProductRequestDetail.JSON_PROPERTY_BOTTOM_HTML,
+  CreateProductRequestDetail.JSON_PROPERTY_IS_PACKAGE,
+  CreateProductRequestDetail.JSON_PROPERTY_NEEDS_DIGITAL_DELIVERY,
+  CreateProductRequestDetail.JSON_PROPERTY_DELIVERY_DESCRIPTION
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CreateProductRequestDetail implements Serializable {
@@ -98,6 +103,21 @@ public class CreateProductRequestDetail implements Serializable {
 
   public static final String JSON_PROPERTY_CITY_TAXABLE = "city_taxable";
   @jakarta.annotation.Nullable  private Boolean cityTaxable;
+
+  public static final String JSON_PROPERTY_TOP_HTML = "top_html";
+  @jakarta.annotation.Nullable  private String topHtml;
+
+  public static final String JSON_PROPERTY_BOTTOM_HTML = "bottom_html";
+  @jakarta.annotation.Nullable  private String bottomHtml;
+
+  public static final String JSON_PROPERTY_IS_PACKAGE = "is_package";
+  @jakarta.annotation.Nullable  private Boolean isPackage;
+
+  public static final String JSON_PROPERTY_NEEDS_DIGITAL_DELIVERY = "needs_digital_delivery";
+  @jakarta.annotation.Nullable  private Boolean needsDigitalDelivery;
+
+  public static final String JSON_PROPERTY_DELIVERY_DESCRIPTION = "delivery_description";
+  @jakarta.annotation.Nullable  private String deliveryDescription;
 
   public CreateProductRequestDetail() { 
   }
@@ -465,6 +485,126 @@ public class CreateProductRequestDetail implements Serializable {
     this.cityTaxable = cityTaxable;
   }
 
+
+  public CreateProductRequestDetail topHtml(@jakarta.annotation.Nullable String topHtml) {
+    this.topHtml = topHtml;
+    return this;
+  }
+
+  /**
+   * Get topHtml
+   * @return topHtml
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_TOP_HTML)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getTopHtml() {
+    return topHtml;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TOP_HTML)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTopHtml(@jakarta.annotation.Nullable String topHtml) {
+    this.topHtml = topHtml;
+  }
+
+
+  public CreateProductRequestDetail bottomHtml(@jakarta.annotation.Nullable String bottomHtml) {
+    this.bottomHtml = bottomHtml;
+    return this;
+  }
+
+  /**
+   * Get bottomHtml
+   * @return bottomHtml
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_BOTTOM_HTML)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getBottomHtml() {
+    return bottomHtml;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BOTTOM_HTML)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBottomHtml(@jakarta.annotation.Nullable String bottomHtml) {
+    this.bottomHtml = bottomHtml;
+  }
+
+
+  public CreateProductRequestDetail isPackage(@jakarta.annotation.Nullable Boolean isPackage) {
+    this.isPackage = isPackage;
+    return this;
+  }
+
+  /**
+   * Get isPackage
+   * @return isPackage
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_IS_PACKAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getIsPackage() {
+    return isPackage;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IS_PACKAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIsPackage(@jakarta.annotation.Nullable Boolean isPackage) {
+    this.isPackage = isPackage;
+  }
+
+
+  public CreateProductRequestDetail needsDigitalDelivery(@jakarta.annotation.Nullable Boolean needsDigitalDelivery) {
+    this.needsDigitalDelivery = needsDigitalDelivery;
+    return this;
+  }
+
+  /**
+   * Get needsDigitalDelivery
+   * @return needsDigitalDelivery
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_NEEDS_DIGITAL_DELIVERY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getNeedsDigitalDelivery() {
+    return needsDigitalDelivery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NEEDS_DIGITAL_DELIVERY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNeedsDigitalDelivery(@jakarta.annotation.Nullable Boolean needsDigitalDelivery) {
+    this.needsDigitalDelivery = needsDigitalDelivery;
+  }
+
+
+  public CreateProductRequestDetail deliveryDescription(@jakarta.annotation.Nullable String deliveryDescription) {
+    this.deliveryDescription = deliveryDescription;
+    return this;
+  }
+
+  /**
+   * Get deliveryDescription
+   * @return deliveryDescription
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_DELIVERY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getDeliveryDescription() {
+    return deliveryDescription;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DELIVERY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDeliveryDescription(@jakarta.annotation.Nullable String deliveryDescription) {
+    this.deliveryDescription = deliveryDescription;
+  }
+
   /**
    * Return true if this CreateProductRequest_Detail object is equal to o.
    */
@@ -491,12 +631,17 @@ public class CreateProductRequestDetail implements Serializable {
         Objects.equals(this.storefrontHidden, createProductRequestDetail.storefrontHidden) &&
         Objects.equals(this.countryTaxable, createProductRequestDetail.countryTaxable) &&
         Objects.equals(this.stateTaxable, createProductRequestDetail.stateTaxable) &&
-        Objects.equals(this.cityTaxable, createProductRequestDetail.cityTaxable);
+        Objects.equals(this.cityTaxable, createProductRequestDetail.cityTaxable) &&
+        Objects.equals(this.topHtml, createProductRequestDetail.topHtml) &&
+        Objects.equals(this.bottomHtml, createProductRequestDetail.bottomHtml) &&
+        Objects.equals(this.isPackage, createProductRequestDetail.isPackage) &&
+        Objects.equals(this.needsDigitalDelivery, createProductRequestDetail.needsDigitalDelivery) &&
+        Objects.equals(this.deliveryDescription, createProductRequestDetail.deliveryDescription);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, sku, price, active, description, shippable, weight, taxable, inventory, shortDescription, subscriptionOnly, storefrontHidden, countryTaxable, stateTaxable, cityTaxable);
+    return Objects.hash(name, sku, price, active, description, shippable, weight, taxable, inventory, shortDescription, subscriptionOnly, storefrontHidden, countryTaxable, stateTaxable, cityTaxable, topHtml, bottomHtml, isPackage, needsDigitalDelivery, deliveryDescription);
   }
 
   @Override
@@ -518,6 +663,11 @@ public class CreateProductRequestDetail implements Serializable {
     sb.append("    countryTaxable: ").append(toIndentedString(countryTaxable)).append("\n");
     sb.append("    stateTaxable: ").append(toIndentedString(stateTaxable)).append("\n");
     sb.append("    cityTaxable: ").append(toIndentedString(cityTaxable)).append("\n");
+    sb.append("    topHtml: ").append(toIndentedString(topHtml)).append("\n");
+    sb.append("    bottomHtml: ").append(toIndentedString(bottomHtml)).append("\n");
+    sb.append("    isPackage: ").append(toIndentedString(isPackage)).append("\n");
+    sb.append("    needsDigitalDelivery: ").append(toIndentedString(needsDigitalDelivery)).append("\n");
+    sb.append("    deliveryDescription: ").append(toIndentedString(deliveryDescription)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -605,6 +755,26 @@ public class CreateProductRequestDetail implements Serializable {
               this.instance.cityTaxable = cityTaxable;
           return this;
         }
+            public CreateProductRequestDetail.Builder topHtml(String topHtml) {
+              this.instance.topHtml = topHtml;
+          return this;
+        }
+            public CreateProductRequestDetail.Builder bottomHtml(String bottomHtml) {
+              this.instance.bottomHtml = bottomHtml;
+          return this;
+        }
+            public CreateProductRequestDetail.Builder isPackage(Boolean isPackage) {
+              this.instance.isPackage = isPackage;
+          return this;
+        }
+            public CreateProductRequestDetail.Builder needsDigitalDelivery(Boolean needsDigitalDelivery) {
+              this.instance.needsDigitalDelivery = needsDigitalDelivery;
+          return this;
+        }
+            public CreateProductRequestDetail.Builder deliveryDescription(String deliveryDescription) {
+              this.instance.deliveryDescription = deliveryDescription;
+          return this;
+        }
         
     
         /**
@@ -653,7 +823,12 @@ public class CreateProductRequestDetail implements Serializable {
           .storefrontHidden(getStorefrontHidden())
           .countryTaxable(getCountryTaxable())
           .stateTaxable(getStateTaxable())
-          .cityTaxable(getCityTaxable());
+          .cityTaxable(getCityTaxable())
+          .topHtml(getTopHtml())
+          .bottomHtml(getBottomHtml())
+          .isPackage(getIsPackage())
+          .needsDigitalDelivery(getNeedsDigitalDelivery())
+          .deliveryDescription(getDeliveryDescription());
       }
 }
 

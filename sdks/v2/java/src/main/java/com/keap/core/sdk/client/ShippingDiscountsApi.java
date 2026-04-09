@@ -485,7 +485,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ShippingDiscount
    * @throws ApiException if fails to make API call
    */
-  public ShippingDiscount updateShippingDiscount(String discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, String updateMask) throws ApiException {
+  public ShippingDiscount updateShippingDiscount(String discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, Object updateMask) throws ApiException {
     ApiResponse<ShippingDiscount> localVarResponse = updateShippingDiscountWithHttpInfo(discountId, updateShippingDiscountRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -499,7 +499,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;ShippingDiscount&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ShippingDiscount> updateShippingDiscountWithHttpInfo(String discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, String updateMask) throws ApiException {
+  public ApiResponse<ShippingDiscount> updateShippingDiscountWithHttpInfo(String discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateShippingDiscountRequestBuilder(discountId, updateShippingDiscountRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -540,7 +540,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateShippingDiscountRequestBuilder(String discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateShippingDiscountRequestBuilder(String discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'discountId' is set
     if (discountId == null) {
       throw new ApiException(400, "Missing the required parameter 'discountId' when calling updateShippingDiscount");

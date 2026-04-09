@@ -189,7 +189,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductInterest</returns>
-        ProductInterest UpdateProductInterest(string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, string? updateMask = default, int operationIndex = 0);
+        ProductInterest UpdateProductInterest(string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Product Interest in an existing Bundle
@@ -204,7 +204,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductInterest</returns>
-        ApiResponse<ProductInterest> UpdateProductInterestWithHttpInfo(string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<ProductInterest> UpdateProductInterestWithHttpInfo(string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, Object? updateMask = default, int operationIndex = 0);
         /// <summary>
         /// Update a Product Interest Bundle
         /// </summary>
@@ -217,7 +217,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductInterestBundle</returns>
-        ProductInterestBundle UpdateProductInterestBundle(string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, string? updateMask = default, int operationIndex = 0);
+        ProductInterestBundle UpdateProductInterestBundle(string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Product Interest Bundle
@@ -231,7 +231,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductInterestBundle</returns>
-        ApiResponse<ProductInterestBundle> UpdateProductInterestBundleWithHttpInfo(string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<ProductInterestBundle> UpdateProductInterestBundleWithHttpInfo(string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, Object? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -415,7 +415,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ProductInterest</returns>
-        System.Threading.Tasks.Task<ProductInterest> UpdateProductInterestAsync(string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ProductInterest> UpdateProductInterestAsync(string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Product Interest in an existing Bundle
@@ -431,7 +431,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ProductInterest)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ProductInterest>> UpdateProductInterestWithHttpInfoAsync(string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ProductInterest>> UpdateProductInterestWithHttpInfoAsync(string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update a Product Interest Bundle
         /// </summary>
@@ -445,7 +445,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ProductInterestBundle</returns>
-        System.Threading.Tasks.Task<ProductInterestBundle> UpdateProductInterestBundleAsync(string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ProductInterestBundle> UpdateProductInterestBundleAsync(string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Product Interest Bundle
@@ -460,7 +460,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ProductInterestBundle)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ProductInterestBundle>> UpdateProductInterestBundleWithHttpInfoAsync(string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ProductInterestBundle>> UpdateProductInterestBundleWithHttpInfoAsync(string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -1719,7 +1719,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductInterest</returns>
-        public ProductInterest UpdateProductInterest(string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, string? updateMask = default, int operationIndex = 0)
+        public ProductInterest UpdateProductInterest(string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<ProductInterest> localVarResponse = UpdateProductInterestWithHttpInfo(id, interestId, updateProductInterestRequest, updateMask);
             return localVarResponse.Data;
@@ -1735,7 +1735,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductInterest</returns>
-        public Keap.Core.V2.Client.ApiResponse<ProductInterest> UpdateProductInterestWithHttpInfo(string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<ProductInterest> UpdateProductInterestWithHttpInfo(string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1832,7 +1832,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ProductInterest</returns>
-        public async System.Threading.Tasks.Task<ProductInterest> UpdateProductInterestAsync(string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ProductInterest> UpdateProductInterestAsync(string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<ProductInterest> localVarResponse = await UpdateProductInterestWithHttpInfoAsync(id, interestId, updateProductInterestRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1849,7 +1849,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ProductInterest)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ProductInterest>> UpdateProductInterestWithHttpInfoAsync(string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ProductInterest>> UpdateProductInterestWithHttpInfoAsync(string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1945,7 +1945,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductInterestBundle</returns>
-        public ProductInterestBundle UpdateProductInterestBundle(string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, string? updateMask = default, int operationIndex = 0)
+        public ProductInterestBundle UpdateProductInterestBundle(string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<ProductInterestBundle> localVarResponse = UpdateProductInterestBundleWithHttpInfo(id, updateProductInterestBundleRequest, updateMask);
             return localVarResponse.Data;
@@ -1960,7 +1960,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductInterestBundle</returns>
-        public Keap.Core.V2.Client.ApiResponse<ProductInterestBundle> UpdateProductInterestBundleWithHttpInfo(string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<ProductInterestBundle> UpdateProductInterestBundleWithHttpInfo(string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2049,7 +2049,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ProductInterestBundle</returns>
-        public async System.Threading.Tasks.Task<ProductInterestBundle> UpdateProductInterestBundleAsync(string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ProductInterestBundle> UpdateProductInterestBundleAsync(string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<ProductInterestBundle> localVarResponse = await UpdateProductInterestBundleWithHttpInfoAsync(id, updateProductInterestBundleRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2065,7 +2065,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ProductInterestBundle)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ProductInterestBundle>> UpdateProductInterestBundleWithHttpInfoAsync(string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ProductInterestBundle>> UpdateProductInterestBundleWithHttpInfoAsync(string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)

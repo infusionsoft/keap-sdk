@@ -189,7 +189,7 @@ export class UsersApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateUserRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateUser(userId: string, updateUserRequest: UpdateUserRequest, updateMask?: 'address,company_name,email_address,family_name,fax_numbers,given_name,job_title,phone_numbers,time_zone,website', _options?: Configuration): Promise<RequestContext> {
+    public async updateUser(userId: string, updateUserRequest: UpdateUserRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'userId' is not null or undefined
@@ -215,7 +215,10 @@ export class UsersApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'address,company_name,email_address,family_name,fax_numbers,given_name,job_title,phone_numbers,time_zone,website'", ""));
+            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
+            }
         }
 
 

@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CustomFieldValue from './CustomFieldValue';
 
 /**
  * The RestAffiliate model module.
@@ -79,6 +80,9 @@ class RestAffiliate {
             if (data.hasOwnProperty('track_leads_days')) {
                 obj['track_leads_days'] = ApiClient.convertToType(data['track_leads_days'], 'Number');
             }
+            if (data.hasOwnProperty('custom_fields')) {
+                obj['custom_fields'] = ApiClient.convertToType(data['custom_fields'], [CustomFieldValue]);
+            }
         }
         return obj;
     }
@@ -120,6 +124,16 @@ class RestAffiliate {
         // ensure the json data is a string
         if (data['parent_affiliate_id'] && !(typeof data['parent_affiliate_id'] === 'string' || data['parent_affiliate_id'] instanceof String)) {
             throw new Error("Expected the field `parent_affiliate_id` to be a primitive type in the JSON string but got " + data['parent_affiliate_id']);
+        }
+        if (data['custom_fields']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['custom_fields'])) {
+                throw new Error("Expected the field `custom_fields` to be an array in the JSON data but got " + data['custom_fields']);
+            }
+            // validate the optional field `custom_fields` (array)
+            for (const item of data['custom_fields']) {
+                CustomFieldValue.validateJSON(item);
+            };
         }
 
         return true;
@@ -195,6 +209,12 @@ RestAffiliate.prototype['notify_on_lead'] = undefined;
  * @member {Number} track_leads_days
  */
 RestAffiliate.prototype['track_leads_days'] = undefined;
+
+/**
+ * List of custom field values applied to this affiliate
+ * @member {Array.<module:keap.core.v2/model/CustomFieldValue>} custom_fields
+ */
+RestAffiliate.prototype['custom_fields'] = undefined;
 
 
 

@@ -16,8 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBytes, StrictStr, field_validator
-from typing import List, Optional, Tuple, Union
+from pydantic import Field, StrictBool, StrictBytes, StrictStr
+from typing import Any, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from keap_core_v2_client.models.create_product_option_list_option import CreateProductOptionListOption
 from keap_core_v2_client.models.create_product_option_request import CreateProductOptionRequest
@@ -983,8 +983,9 @@ class ProductsApi:
     @validate_call
     def create_product_image(
         self,
-        product_id: Annotated[StrictStr, Field(description="product_id")],
-        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="File to upload")],
+        product_id: Annotated[StrictStr, Field(description="The product ID")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="The image file to upload")],
+        legacy: Annotated[Optional[StrictBool], Field(description="Set to 'true' if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1002,10 +1003,12 @@ class ProductsApi:
 
         Creates the Product Image file and uploads it to the specified Product
 
-        :param product_id: product_id (required)
+        :param product_id: The product ID (required)
         :type product_id: str
-        :param file: File to upload (required)
+        :param file: The image file to upload (required)
         :type file: bytearray
+        :param legacy: Set to 'true' if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image.
+        :type legacy: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1031,6 +1034,7 @@ class ProductsApi:
         _param = self._create_product_image_serialize(
             product_id=product_id,
             file=file,
+            legacy=legacy,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1061,8 +1065,9 @@ class ProductsApi:
     @validate_call
     def create_product_image_with_http_info(
         self,
-        product_id: Annotated[StrictStr, Field(description="product_id")],
-        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="File to upload")],
+        product_id: Annotated[StrictStr, Field(description="The product ID")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="The image file to upload")],
+        legacy: Annotated[Optional[StrictBool], Field(description="Set to 'true' if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1080,10 +1085,12 @@ class ProductsApi:
 
         Creates the Product Image file and uploads it to the specified Product
 
-        :param product_id: product_id (required)
+        :param product_id: The product ID (required)
         :type product_id: str
-        :param file: File to upload (required)
+        :param file: The image file to upload (required)
         :type file: bytearray
+        :param legacy: Set to 'true' if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image.
+        :type legacy: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1109,6 +1116,7 @@ class ProductsApi:
         _param = self._create_product_image_serialize(
             product_id=product_id,
             file=file,
+            legacy=legacy,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1139,8 +1147,9 @@ class ProductsApi:
     @validate_call
     def create_product_image_without_preload_content(
         self,
-        product_id: Annotated[StrictStr, Field(description="product_id")],
-        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="File to upload")],
+        product_id: Annotated[StrictStr, Field(description="The product ID")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="The image file to upload")],
+        legacy: Annotated[Optional[StrictBool], Field(description="Set to 'true' if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1158,10 +1167,12 @@ class ProductsApi:
 
         Creates the Product Image file and uploads it to the specified Product
 
-        :param product_id: product_id (required)
+        :param product_id: The product ID (required)
         :type product_id: str
-        :param file: File to upload (required)
+        :param file: The image file to upload (required)
         :type file: bytearray
+        :param legacy: Set to 'true' if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image.
+        :type legacy: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1187,6 +1198,7 @@ class ProductsApi:
         _param = self._create_product_image_serialize(
             product_id=product_id,
             file=file,
+            legacy=legacy,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1214,6 +1226,7 @@ class ProductsApi:
         self,
         product_id,
         file,
+        legacy,
         _request_auth,
         _content_type,
         _headers,
@@ -1238,6 +1251,10 @@ class ProductsApi:
         if product_id is not None:
             _path_params['product_id'] = product_id
         # process the query parameters
+        if legacy is not None:
+            
+            _query_params.append(('legacy', legacy))
+            
         # process the header parameters
         # process the form parameters
         if file is not None:
@@ -2774,6 +2791,288 @@ class ProductsApi:
 
 
     @validate_call
+    def get_file_data(
+        self,
+        product_id: Annotated[StrictStr, Field(description="product_id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> bytearray:
+        """Retrieve Product Legacy Image Data
+
+        Retrieves the product's legacy image
+
+        :param product_id: product_id (required)
+        :type product_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_file_data_serialize(
+            product_id=product_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "bytearray",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_file_data_with_http_info(
+        self,
+        product_id: Annotated[StrictStr, Field(description="product_id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[bytearray]:
+        """Retrieve Product Legacy Image Data
+
+        Retrieves the product's legacy image
+
+        :param product_id: product_id (required)
+        :type product_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_file_data_serialize(
+            product_id=product_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "bytearray",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_file_data_without_preload_content(
+        self,
+        product_id: Annotated[StrictStr, Field(description="product_id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Retrieve Product Legacy Image Data
+
+        Retrieves the product's legacy image
+
+        :param product_id: product_id (required)
+        :type product_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_file_data_serialize(
+            product_id=product_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "bytearray",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_file_data_serialize(
+        self,
+        product_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if product_id is not None:
+            _path_params['product_id'] = product_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/rest/v2/products/{product_id}/images/legacyImageData',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def get_product(
         self,
         product_id: Annotated[StrictStr, Field(description="product_id")],
@@ -3974,7 +4273,7 @@ class ProductsApi:
         self,
         product_id: Annotated[StrictStr, Field(description="product_id")],
         update_product_request_detail: UpdateProductRequestDetail,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3997,7 +4296,7 @@ class ProductsApi:
         :param update_product_request_detail: (required)
         :type update_product_request_detail: UpdateProductRequestDetail
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4056,7 +4355,7 @@ class ProductsApi:
         self,
         product_id: Annotated[StrictStr, Field(description="product_id")],
         update_product_request_detail: UpdateProductRequestDetail,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4079,7 +4378,7 @@ class ProductsApi:
         :param update_product_request_detail: (required)
         :type update_product_request_detail: UpdateProductRequestDetail
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4138,7 +4437,7 @@ class ProductsApi:
         self,
         product_id: Annotated[StrictStr, Field(description="product_id")],
         update_product_request_detail: UpdateProductRequestDetail,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4161,7 +4460,7 @@ class ProductsApi:
         :param update_product_request_detail: (required)
         :type update_product_request_detail: UpdateProductRequestDetail
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4302,7 +4601,7 @@ class ProductsApi:
         product_id: Annotated[StrictStr, Field(description="product_id")],
         product_option_id: Annotated[StrictStr, Field(description="product_option_id")],
         update_product_option_request: UpdateProductOptionRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4327,7 +4626,7 @@ class ProductsApi:
         :param update_product_option_request: (required)
         :type update_product_option_request: UpdateProductOptionRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4388,7 +4687,7 @@ class ProductsApi:
         product_id: Annotated[StrictStr, Field(description="product_id")],
         product_option_id: Annotated[StrictStr, Field(description="product_option_id")],
         update_product_option_request: UpdateProductOptionRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4413,7 +4712,7 @@ class ProductsApi:
         :param update_product_option_request: (required)
         :type update_product_option_request: UpdateProductOptionRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4474,7 +4773,7 @@ class ProductsApi:
         product_id: Annotated[StrictStr, Field(description="product_id")],
         product_option_id: Annotated[StrictStr, Field(description="product_option_id")],
         update_product_option_request: UpdateProductOptionRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4499,7 +4798,7 @@ class ProductsApi:
         :param update_product_option_request: (required)
         :type update_product_option_request: UpdateProductOptionRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4645,7 +4944,7 @@ class ProductsApi:
         product_option_id: Annotated[StrictStr, Field(description="product_option_id")],
         item_id: Annotated[StrictStr, Field(description="item_id")],
         update_product_option_list_option: UpdateProductOptionListOption,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4672,7 +4971,7 @@ class ProductsApi:
         :param update_product_option_list_option: (required)
         :type update_product_option_list_option: UpdateProductOptionListOption
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4735,7 +5034,7 @@ class ProductsApi:
         product_option_id: Annotated[StrictStr, Field(description="product_option_id")],
         item_id: Annotated[StrictStr, Field(description="item_id")],
         update_product_option_list_option: UpdateProductOptionListOption,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4762,7 +5061,7 @@ class ProductsApi:
         :param update_product_option_list_option: (required)
         :type update_product_option_list_option: UpdateProductOptionListOption
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4825,7 +5124,7 @@ class ProductsApi:
         product_option_id: Annotated[StrictStr, Field(description="product_option_id")],
         item_id: Annotated[StrictStr, Field(description="item_id")],
         update_product_option_list_option: UpdateProductOptionListOption,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4852,7 +5151,7 @@ class ProductsApi:
         :param update_product_option_list_option: (required)
         :type update_product_option_list_option: UpdateProductOptionListOption
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of

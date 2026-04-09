@@ -22,6 +22,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**deleteProductOptionWithHttpInfo**](ProductsApi.md#deleteProductOptionWithHttpInfo) | **DELETE** /rest/v2/products/{product_id}/options/{product_option_id} | Delete a Product Option |
 | [**deleteProductOptionListOptionValue**](ProductsApi.md#deleteProductOptionListOptionValue) | **DELETE** /rest/v2/products/{product_id}/options/{product_option_id}/listItems/{item_id} | Delete a Product Option List Item |
 | [**deleteProductOptionListOptionValueWithHttpInfo**](ProductsApi.md#deleteProductOptionListOptionValueWithHttpInfo) | **DELETE** /rest/v2/products/{product_id}/options/{product_option_id}/listItems/{item_id} | Delete a Product Option List Item |
+| [**getFileData**](ProductsApi.md#getFileData) | **GET** /rest/v2/products/{product_id}/images/legacyImageData | Retrieve Product Legacy Image Data |
+| [**getFileDataWithHttpInfo**](ProductsApi.md#getFileDataWithHttpInfo) | **GET** /rest/v2/products/{product_id}/images/legacyImageData | Retrieve Product Legacy Image Data |
 | [**getProduct**](ProductsApi.md#getProduct) | **GET** /rest/v2/products/{product_id} | Get a Product |
 | [**getProductWithHttpInfo**](ProductsApi.md#getProductWithHttpInfo) | **GET** /rest/v2/products/{product_id} | Get a Product |
 | [**getProductOption**](ProductsApi.md#getProductOption) | **GET** /rest/v2/products/{product_id}/options/{product_option_id} | Get Product Option |
@@ -527,7 +529,7 @@ ApiResponse<[**RestV2ProductDetail**](RestV2ProductDetail.md)>
 
 ## createProductImage
 
-> void createProductImage(productId, _file)
+> void createProductImage(productId, _file, legacy)
 
 Create the Product Image
 
@@ -554,10 +556,11 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductsApi apiInstance = new ProductsApi(defaultClient);
-        String productId = "productId_example"; // String | product_id
-        File _file = new File("/path/to/file"); // File | File to upload
+        String productId = "productId_example"; // String | The product ID
+        File _file = new File("/path/to/file"); // File | The image file to upload
+        Boolean legacy = true; // Boolean | Set to 'true' if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image.
         try {
-            apiInstance.createProductImage(productId, _file);
+            apiInstance.createProductImage(productId, _file, legacy);
         } catch (ApiException e) {
             System.err.println("Exception when calling ProductsApi#createProductImage");
             System.err.println("Status code: " + e.getCode());
@@ -574,8 +577,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **productId** | **String**| product_id | |
-| **_file** | **File**| File to upload | |
+| **productId** | **String**| The product ID | |
+| **_file** | **File**| The image file to upload | |
+| **legacy** | **Boolean**| Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. | [optional] |
 
 ### Return type
 
@@ -605,7 +609,7 @@ null (empty response body)
 
 ## createProductImageWithHttpInfo
 
-> ApiResponse<Void> createProductImage createProductImageWithHttpInfo(productId, _file)
+> ApiResponse<Void> createProductImage createProductImageWithHttpInfo(productId, _file, legacy)
 
 Create the Product Image
 
@@ -633,10 +637,11 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductsApi apiInstance = new ProductsApi(defaultClient);
-        String productId = "productId_example"; // String | product_id
-        File _file = new File("/path/to/file"); // File | File to upload
+        String productId = "productId_example"; // String | The product ID
+        File _file = new File("/path/to/file"); // File | The image file to upload
+        Boolean legacy = true; // Boolean | Set to 'true' if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image.
         try {
-            ApiResponse<Void> response = apiInstance.createProductImageWithHttpInfo(productId, _file);
+            ApiResponse<Void> response = apiInstance.createProductImageWithHttpInfo(productId, _file, legacy);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -655,8 +660,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **productId** | **String**| product_id | |
-| **_file** | **File**| File to upload | |
+| **productId** | **String**| The product ID | |
+| **_file** | **File**| The image file to upload | |
+| **legacy** | **Boolean**| Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. | [optional] |
 
 ### Return type
 
@@ -1483,6 +1489,164 @@ ApiResponse<Void>
 | **501** | Method Not Implemented |  -  |
 
 
+## getFileData
+
+> byte[] getFileData(productId)
+
+Retrieve Product Legacy Image Data
+
+Retrieves the product&#39;s legacy image
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ProductsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ProductsApi apiInstance = new ProductsApi(defaultClient);
+        String productId = "productId_example"; // String | product_id
+        try {
+            byte[] result = apiInstance.getFileData(productId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ProductsApi#getFileData");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **productId** | **String**| product_id | |
+
+### Return type
+
+**byte[]**
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## getFileDataWithHttpInfo
+
+> ApiResponse<byte[]> getFileData getFileDataWithHttpInfo(productId)
+
+Retrieve Product Legacy Image Data
+
+Retrieves the product&#39;s legacy image
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ProductsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ProductsApi apiInstance = new ProductsApi(defaultClient);
+        String productId = "productId_example"; // String | product_id
+        try {
+            ApiResponse<byte[]> response = apiInstance.getFileDataWithHttpInfo(productId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ProductsApi#getFileData");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **productId** | **String**| product_id | |
+
+### Return type
+
+ApiResponse<**byte[]**>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## getProduct
 
 > RestV2ProductDetail getProduct(productId)
@@ -2162,7 +2326,7 @@ public class Example {
         ProductsApi apiInstance = new ProductsApi(defaultClient);
         String productId = "productId_example"; // String | product_id
         UpdateProductRequestDetail updateProductRequestDetail = new UpdateProductRequestDetail(); // UpdateProductRequestDetail | 
-        String updateMask = "active,name,description,price,sku,shippable,short_description,subscription_only, storefront_hidden,weight,taxable,country_taxable,city_taxable,state_taxable, inventory_limit,out_of_stock_enabled,email_for_inventory_notifications"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             RestV2ProductDetail result = apiInstance.updateProduct(productId, updateProductRequestDetail, updateMask);
             System.out.println(result);
@@ -2184,9 +2348,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **productId** | **String**| product_id | |
 | **updateProductRequestDetail** | [**UpdateProductRequestDetail**](UpdateProductRequestDetail.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: active,name,description,price,sku,shippable,short_description,subscription_only,
-storefront_hidden,weight,taxable,country_taxable,city_taxable,state_taxable,
-inventory_limit,out_of_stock_enabled,email_for_inventory_notifications] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -2246,7 +2408,7 @@ public class Example {
         ProductsApi apiInstance = new ProductsApi(defaultClient);
         String productId = "productId_example"; // String | product_id
         UpdateProductRequestDetail updateProductRequestDetail = new UpdateProductRequestDetail(); // UpdateProductRequestDetail | 
-        String updateMask = "active,name,description,price,sku,shippable,short_description,subscription_only, storefront_hidden,weight,taxable,country_taxable,city_taxable,state_taxable, inventory_limit,out_of_stock_enabled,email_for_inventory_notifications"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<RestV2ProductDetail> response = apiInstance.updateProductWithHttpInfo(productId, updateProductRequestDetail, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -2270,9 +2432,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **productId** | **String**| product_id | |
 | **updateProductRequestDetail** | [**UpdateProductRequestDetail**](UpdateProductRequestDetail.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: active,name,description,price,sku,shippable,short_description,subscription_only,
-storefront_hidden,weight,taxable,country_taxable,city_taxable,state_taxable,
-inventory_limit,out_of_stock_enabled,email_for_inventory_notifications] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -2333,7 +2493,7 @@ public class Example {
         String productId = "productId_example"; // String | product_id
         String productOptionId = "productOptionId_example"; // String | product_option_id
         UpdateProductOptionRequest updateProductOptionRequest = new UpdateProductOptionRequest(); // UpdateProductOptionRequest | 
-        String updateMask = "option_label,display_order,required,minimum_characters,maximum_characters,allow_spaces, only_starts_with,only_ends_with,only_contains,error_message"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ProductOption result = apiInstance.updateProductOption(productId, productOptionId, updateProductOptionRequest, updateMask);
             System.out.println(result);
@@ -2356,8 +2516,7 @@ public class Example {
 | **productId** | **String**| product_id | |
 | **productOptionId** | **String**| product_option_id | |
 | **updateProductOptionRequest** | [**UpdateProductOptionRequest**](UpdateProductOptionRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: option_label,display_order,required,minimum_characters,maximum_characters,allow_spaces,
-only_starts_with,only_ends_with,only_contains,error_message] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -2418,7 +2577,7 @@ public class Example {
         String productId = "productId_example"; // String | product_id
         String productOptionId = "productOptionId_example"; // String | product_option_id
         UpdateProductOptionRequest updateProductOptionRequest = new UpdateProductOptionRequest(); // UpdateProductOptionRequest | 
-        String updateMask = "option_label,display_order,required,minimum_characters,maximum_characters,allow_spaces, only_starts_with,only_ends_with,only_contains,error_message"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<ProductOption> response = apiInstance.updateProductOptionWithHttpInfo(productId, productOptionId, updateProductOptionRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -2443,8 +2602,7 @@ public class Example {
 | **productId** | **String**| product_id | |
 | **productOptionId** | **String**| product_option_id | |
 | **updateProductOptionRequest** | [**UpdateProductOptionRequest**](UpdateProductOptionRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: option_label,display_order,required,minimum_characters,maximum_characters,allow_spaces,
-only_starts_with,only_ends_with,only_contains,error_message] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -2506,7 +2664,7 @@ public class Example {
         String productOptionId = "productOptionId_example"; // String | product_option_id
         String itemId = "itemId_example"; // String | item_id
         UpdateProductOptionListOption updateProductOptionListOption = new UpdateProductOptionListOption(); // UpdateProductOptionListOption | 
-        String updateMask = "item_label,item_code,item_display_order,price_adjustment "; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ProductOption result = apiInstance.updateProductOptionListOptionValue(productId, productOptionId, itemId, updateProductOptionListOption, updateMask);
             System.out.println(result);
@@ -2530,8 +2688,7 @@ public class Example {
 | **productOptionId** | **String**| product_option_id | |
 | **itemId** | **String**| item_id | |
 | **updateProductOptionListOption** | [**UpdateProductOptionListOption**](UpdateProductOptionListOption.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: item_label,item_code,item_display_order,price_adjustment
-] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -2593,7 +2750,7 @@ public class Example {
         String productOptionId = "productOptionId_example"; // String | product_option_id
         String itemId = "itemId_example"; // String | item_id
         UpdateProductOptionListOption updateProductOptionListOption = new UpdateProductOptionListOption(); // UpdateProductOptionListOption | 
-        String updateMask = "item_label,item_code,item_display_order,price_adjustment "; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<ProductOption> response = apiInstance.updateProductOptionListOptionValueWithHttpInfo(productId, productOptionId, itemId, updateProductOptionListOption, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -2619,8 +2776,7 @@ public class Example {
 | **productOptionId** | **String**| product_option_id | |
 | **itemId** | **String**| item_id | |
 | **updateProductOptionListOption** | [**UpdateProductOptionListOption**](UpdateProductOptionListOption.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: item_label,item_code,item_display_order,price_adjustment
-] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

@@ -55,7 +55,12 @@ namespace Keap.Core.V2.Model
         /// <param name="countryTaxable">If country-based taxes should be applied to this product.</param>
         /// <param name="stateTaxable">If state-based taxes should be applied to this product.</param>
         /// <param name="cityTaxable">If city-based taxes should be applied to this product.</param>
-        public CreateProductRequestDetail(string name = default, string sku = default, long price = default, bool active = default, string description = default, bool shippable = default, double weight = default, bool taxable = default, ProductInventoryDetail inventory = default, string shortDescription = default, bool subscriptionOnly = default, bool storefrontHidden = default, bool countryTaxable = default, bool stateTaxable = default, bool cityTaxable = default)
+        /// <param name="topHtml">topHtml.</param>
+        /// <param name="bottomHtml">bottomHtml.</param>
+        /// <param name="isPackage">isPackage.</param>
+        /// <param name="needsDigitalDelivery">needsDigitalDelivery.</param>
+        /// <param name="deliveryDescription">deliveryDescription.</param>
+        public CreateProductRequestDetail(string name = default, string sku = default, long price = default, bool active = default, string description = default, bool shippable = default, double weight = default, bool taxable = default, ProductInventoryDetail inventory = default, string shortDescription = default, bool subscriptionOnly = default, bool storefrontHidden = default, bool countryTaxable = default, bool stateTaxable = default, bool cityTaxable = default, string topHtml = default, string bottomHtml = default, bool isPackage = default, bool needsDigitalDelivery = default, string deliveryDescription = default)
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -82,6 +87,11 @@ namespace Keap.Core.V2.Model
             this.CountryTaxable = countryTaxable;
             this.StateTaxable = stateTaxable;
             this.CityTaxable = cityTaxable;
+            this.TopHtml = topHtml;
+            this.BottomHtml = bottomHtml;
+            this.IsPackage = isPackage;
+            this.NeedsDigitalDelivery = needsDigitalDelivery;
+            this.DeliveryDescription = deliveryDescription;
         }
 
         /// <summary>
@@ -232,6 +242,36 @@ namespace Keap.Core.V2.Model
         public bool CityTaxable { get; set; }
 
         /// <summary>
+        /// Gets or Sets TopHtml
+        /// </summary>
+        [DataMember(Name = "top_html", EmitDefaultValue = false)]
+        public string TopHtml { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BottomHtml
+        /// </summary>
+        [DataMember(Name = "bottom_html", EmitDefaultValue = false)]
+        public string BottomHtml { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IsPackage
+        /// </summary>
+        [DataMember(Name = "is_package", EmitDefaultValue = true)]
+        public bool IsPackage { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NeedsDigitalDelivery
+        /// </summary>
+        [DataMember(Name = "needs_digital_delivery", EmitDefaultValue = true)]
+        public bool NeedsDigitalDelivery { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DeliveryDescription
+        /// </summary>
+        [DataMember(Name = "delivery_description", EmitDefaultValue = false)]
+        public string DeliveryDescription { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -254,6 +294,11 @@ namespace Keap.Core.V2.Model
             sb.Append("  CountryTaxable: ").Append(CountryTaxable).Append("\n");
             sb.Append("  StateTaxable: ").Append(StateTaxable).Append("\n");
             sb.Append("  CityTaxable: ").Append(CityTaxable).Append("\n");
+            sb.Append("  TopHtml: ").Append(TopHtml).Append("\n");
+            sb.Append("  BottomHtml: ").Append(BottomHtml).Append("\n");
+            sb.Append("  IsPackage: ").Append(IsPackage).Append("\n");
+            sb.Append("  NeedsDigitalDelivery: ").Append(NeedsDigitalDelivery).Append("\n");
+            sb.Append("  DeliveryDescription: ").Append(DeliveryDescription).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

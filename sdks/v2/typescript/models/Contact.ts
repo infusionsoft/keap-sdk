@@ -46,6 +46,7 @@ export class Contact {
     * Personal website URL
     */
     'website'?: string;
+    'groups'?: string;
     /**
     * Last update timestamp (ISO-8601)
     */
@@ -122,6 +123,12 @@ export class Contact {
     */
     'timeZone'?: string;
     'utmParameters'?: Array<ContactUtmResponse>;
+    'accountId'?: string;
+    'assistantName'?: string;
+    'assistantPhone'?: string;
+    'billingInformation'?: string;
+    'createdBy'?: string;
+    'lastUpdatedBy'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -173,6 +180,12 @@ export class Contact {
         {
             "name": "website",
             "baseName": "website",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "groups",
+            "baseName": "groups",
             "type": "string",
             "format": ""
         },
@@ -324,6 +337,42 @@ export class Contact {
             "name": "utmParameters",
             "baseName": "utm_parameters",
             "type": "Array<ContactUtmResponse>",
+            "format": ""
+        },
+        {
+            "name": "accountId",
+            "baseName": "account_id",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "assistantName",
+            "baseName": "assistant_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "assistantPhone",
+            "baseName": "assistant_phone",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "billingInformation",
+            "baseName": "billing_information",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "createdBy",
+            "baseName": "created_by",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "lastUpdatedBy",
+            "baseName": "last_updated_by",
+            "type": "string",
             "format": ""
         }    ];
 

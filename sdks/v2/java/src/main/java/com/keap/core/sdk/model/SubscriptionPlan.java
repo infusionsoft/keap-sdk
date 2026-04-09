@@ -42,7 +42,8 @@ import jakarta.validation.Valid;
   SubscriptionPlan.JSON_PROPERTY_CYCLE_TYPE,
   SubscriptionPlan.JSON_PROPERTY_DISPLAY_ORDER_INDEX,
   SubscriptionPlan.JSON_PROPERTY_TOTAL_CYCLES,
-  SubscriptionPlan.JSON_PROPERTY_PLAN_PRICE
+  SubscriptionPlan.JSON_PROPERTY_PLAN_PRICE,
+  SubscriptionPlan.JSON_PROPERTY_PREAUTHORIZE_AMOUNT
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SubscriptionPlan implements Serializable {
@@ -114,6 +115,9 @@ public class SubscriptionPlan implements Serializable {
 
   public static final String JSON_PROPERTY_PLAN_PRICE = "plan_price";
   @jakarta.annotation.Nullable  private CurrencyValue planPrice;
+
+  public static final String JSON_PROPERTY_PREAUTHORIZE_AMOUNT = "preauthorize_amount";
+  @jakarta.annotation.Nullable  private Double preauthorizeAmount;
 
   public SubscriptionPlan() { 
   }
@@ -334,6 +338,30 @@ public class SubscriptionPlan implements Serializable {
     this.planPrice = planPrice;
   }
 
+
+  public SubscriptionPlan preauthorizeAmount(@jakarta.annotation.Nullable Double preauthorizeAmount) {
+    this.preauthorizeAmount = preauthorizeAmount;
+    return this;
+  }
+
+  /**
+   * The pre-authorize amount for the subscription plan. If null, this field is omitted from the response.
+   * @return preauthorizeAmount
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "13", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The pre-authorize amount for the subscription plan. If null, this field is omitted from the response.")
+  @JsonProperty(JSON_PROPERTY_PREAUTHORIZE_AMOUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Double getPreauthorizeAmount() {
+    return preauthorizeAmount;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PREAUTHORIZE_AMOUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPreauthorizeAmount(@jakarta.annotation.Nullable Double preauthorizeAmount) {
+    this.preauthorizeAmount = preauthorizeAmount;
+  }
+
   /**
    * Return true if this SubscriptionPlan object is equal to o.
    */
@@ -354,12 +382,13 @@ public class SubscriptionPlan implements Serializable {
         Objects.equals(this.cycleType, subscriptionPlan.cycleType) &&
         Objects.equals(this.displayOrderIndex, subscriptionPlan.displayOrderIndex) &&
         Objects.equals(this.totalCycles, subscriptionPlan.totalCycles) &&
-        Objects.equals(this.planPrice, subscriptionPlan.planPrice);
+        Objects.equals(this.planPrice, subscriptionPlan.planPrice) &&
+        Objects.equals(this.preauthorizeAmount, subscriptionPlan.preauthorizeAmount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, active, frequency, allowProrating, productId, cycleType, displayOrderIndex, totalCycles, planPrice);
+    return Objects.hash(id, active, frequency, allowProrating, productId, cycleType, displayOrderIndex, totalCycles, planPrice, preauthorizeAmount);
   }
 
   @Override
@@ -375,6 +404,7 @@ public class SubscriptionPlan implements Serializable {
     sb.append("    displayOrderIndex: ").append(toIndentedString(displayOrderIndex)).append("\n");
     sb.append("    totalCycles: ").append(toIndentedString(totalCycles)).append("\n");
     sb.append("    planPrice: ").append(toIndentedString(planPrice)).append("\n");
+    sb.append("    preauthorizeAmount: ").append(toIndentedString(preauthorizeAmount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -438,6 +468,10 @@ public class SubscriptionPlan implements Serializable {
               this.instance.planPrice = planPrice;
           return this;
         }
+            public SubscriptionPlan.Builder preauthorizeAmount(Double preauthorizeAmount) {
+              this.instance.preauthorizeAmount = preauthorizeAmount;
+          return this;
+        }
         
     
         /**
@@ -480,7 +514,8 @@ public class SubscriptionPlan implements Serializable {
           .cycleType(getCycleType())
           .displayOrderIndex(getDisplayOrderIndex())
           .totalCycles(getTotalCycles())
-          .planPrice(getPlanPrice());
+          .planPrice(getPlanPrice())
+          .preauthorizeAmount(getPreauthorizeAmount());
       }
 }
 

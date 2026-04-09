@@ -289,7 +289,7 @@ $apiInstance = new Keap\Core\V2\Api\SubscriptionPlansApi(
 $product_id = 'product_id_example'; // string | product_id
 $subscription_plan_id = 'subscription_plan_id_example'; // string | subscription_plan_id
 $update_subscription_plan_request = new \Keap\Core\V2\Model\UpdateSubscriptionPlanRequest(); // \Keap\Core\V2\Model\UpdateSubscriptionPlanRequest
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateSubscriptionPlan($product_id, $subscription_plan_id, $update_subscription_plan_request, $update_mask);
@@ -306,7 +306,7 @@ try {
 | **product_id** | **string**| product_id | |
 | **subscription_plan_id** | **string**| subscription_plan_id | |
 | **update_subscription_plan_request** | [**\Keap\Core\V2\Model\UpdateSubscriptionPlanRequest**](../Model/UpdateSubscriptionPlanRequest.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

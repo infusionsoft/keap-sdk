@@ -16,8 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr, field_validator
-from typing import List, Optional
+from pydantic import Field, StrictStr
+from typing import Any, List, Optional
 from typing_extensions import Annotated
 from keap_core_v2_client.models.affiliate_add_to_program_request import AffiliateAddToProgramRequest
 from keap_core_v2_client.models.affiliate_commission_earned import AffiliateCommissionEarned
@@ -8555,6 +8555,7 @@ class AffiliateApi:
         self,
         id: StrictStr,
         update_affiliate_request: UpdateAffiliateRequest,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8576,6 +8577,8 @@ class AffiliateApi:
         :type id: str
         :param update_affiliate_request: (required)
         :type update_affiliate_request: UpdateAffiliateRequest
+        :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8601,6 +8604,7 @@ class AffiliateApi:
         _param = self._update_affiliate_serialize(
             id=id,
             update_affiliate_request=update_affiliate_request,
+            update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8633,6 +8637,7 @@ class AffiliateApi:
         self,
         id: StrictStr,
         update_affiliate_request: UpdateAffiliateRequest,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8654,6 +8659,8 @@ class AffiliateApi:
         :type id: str
         :param update_affiliate_request: (required)
         :type update_affiliate_request: UpdateAffiliateRequest
+        :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8679,6 +8686,7 @@ class AffiliateApi:
         _param = self._update_affiliate_serialize(
             id=id,
             update_affiliate_request=update_affiliate_request,
+            update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8711,6 +8719,7 @@ class AffiliateApi:
         self,
         id: StrictStr,
         update_affiliate_request: UpdateAffiliateRequest,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8732,6 +8741,8 @@ class AffiliateApi:
         :type id: str
         :param update_affiliate_request: (required)
         :type update_affiliate_request: UpdateAffiliateRequest
+        :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8757,6 +8768,7 @@ class AffiliateApi:
         _param = self._update_affiliate_serialize(
             id=id,
             update_affiliate_request=update_affiliate_request,
+            update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8784,6 +8796,7 @@ class AffiliateApi:
         self,
         id,
         update_affiliate_request,
+        update_mask,
         _request_auth,
         _content_type,
         _headers,
@@ -8808,6 +8821,10 @@ class AffiliateApi:
         if id is not None:
             _path_params['id'] = id
         # process the query parameters
+        if update_mask is not None:
+            
+            _query_params.append(('update_mask', update_mask))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -8865,7 +8882,7 @@ class AffiliateApi:
         self,
         custom_field_id: StrictStr,
         update_custom_field_meta_data_request: UpdateCustomFieldMetaDataRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8888,7 +8905,7 @@ class AffiliateApi:
         :param update_custom_field_meta_data_request: (required)
         :type update_custom_field_meta_data_request: UpdateCustomFieldMetaDataRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8947,7 +8964,7 @@ class AffiliateApi:
         self,
         custom_field_id: StrictStr,
         update_custom_field_meta_data_request: UpdateCustomFieldMetaDataRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8970,7 +8987,7 @@ class AffiliateApi:
         :param update_custom_field_meta_data_request: (required)
         :type update_custom_field_meta_data_request: UpdateCustomFieldMetaDataRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9029,7 +9046,7 @@ class AffiliateApi:
         self,
         custom_field_id: StrictStr,
         update_custom_field_meta_data_request: UpdateCustomFieldMetaDataRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9052,7 +9069,7 @@ class AffiliateApi:
         :param update_custom_field_meta_data_request: (required)
         :type update_custom_field_meta_data_request: UpdateCustomFieldMetaDataRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9192,7 +9209,7 @@ class AffiliateApi:
         self,
         commission_program_id: StrictStr,
         update_commission_program_request: UpdateCommissionProgramRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9215,7 +9232,7 @@ class AffiliateApi:
         :param update_commission_program_request: (required)
         :type update_commission_program_request: UpdateCommissionProgramRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9274,7 +9291,7 @@ class AffiliateApi:
         self,
         commission_program_id: StrictStr,
         update_commission_program_request: UpdateCommissionProgramRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9297,7 +9314,7 @@ class AffiliateApi:
         :param update_commission_program_request: (required)
         :type update_commission_program_request: UpdateCommissionProgramRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9356,7 +9373,7 @@ class AffiliateApi:
         self,
         commission_program_id: StrictStr,
         update_commission_program_request: UpdateCommissionProgramRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9379,7 +9396,7 @@ class AffiliateApi:
         :param update_commission_program_request: (required)
         :type update_commission_program_request: UpdateCommissionProgramRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of

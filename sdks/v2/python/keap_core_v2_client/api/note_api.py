@@ -16,8 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr, field_validator
-from typing import Optional
+from pydantic import Field, StrictStr
+from typing import Any, Optional
 from typing_extensions import Annotated
 from keap_core_v2_client.models.create_custom_field_request import CreateCustomFieldRequest
 from keap_core_v2_client.models.create_note_request import CreateNoteRequest
@@ -2206,7 +2206,7 @@ class NoteApi:
         contact_id: StrictStr,
         note_id: StrictStr,
         update_note_request: UpdateNoteRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2231,7 +2231,7 @@ class NoteApi:
         :param update_note_request: (required)
         :type update_note_request: UpdateNoteRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2292,7 +2292,7 @@ class NoteApi:
         contact_id: StrictStr,
         note_id: StrictStr,
         update_note_request: UpdateNoteRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2317,7 +2317,7 @@ class NoteApi:
         :param update_note_request: (required)
         :type update_note_request: UpdateNoteRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2378,7 +2378,7 @@ class NoteApi:
         contact_id: StrictStr,
         note_id: StrictStr,
         update_note_request: UpdateNoteRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2403,7 +2403,7 @@ class NoteApi:
         :param update_note_request: (required)
         :type update_note_request: UpdateNoteRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2547,7 +2547,7 @@ class NoteApi:
         self,
         custom_field_id: StrictStr,
         update_custom_field_meta_data_request: UpdateCustomFieldMetaDataRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2570,7 +2570,7 @@ class NoteApi:
         :param update_custom_field_meta_data_request: (required)
         :type update_custom_field_meta_data_request: UpdateCustomFieldMetaDataRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2629,7 +2629,7 @@ class NoteApi:
         self,
         custom_field_id: StrictStr,
         update_custom_field_meta_data_request: UpdateCustomFieldMetaDataRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2652,7 +2652,7 @@ class NoteApi:
         :param update_custom_field_meta_data_request: (required)
         :type update_custom_field_meta_data_request: UpdateCustomFieldMetaDataRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2711,7 +2711,7 @@ class NoteApi:
         self,
         custom_field_id: StrictStr,
         update_custom_field_meta_data_request: UpdateCustomFieldMetaDataRequest,
-        update_mask: Annotated[Optional[StrictStr], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2734,7 +2734,7 @@ class NoteApi:
         :param update_custom_field_meta_data_request: (required)
         :type update_custom_field_meta_data_request: UpdateCustomFieldMetaDataRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: str
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of

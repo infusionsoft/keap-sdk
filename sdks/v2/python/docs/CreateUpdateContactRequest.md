@@ -33,6 +33,9 @@ Name | Type | Description | Notes
 **spouse_name** | **str** | Spouse&#39;s name | [optional] 
 **time_zone** | **str** | Contact&#39;s timezone | [optional] 
 **utm_parameters** | [**CreateContactUtmPropertiesRequest**](CreateContactUtmPropertiesRequest.md) |  | [optional] 
+**assistant_name** | **str** |  | [optional] 
+**assistant_phone** | **str** |  | [optional] 
+**billing_information** | **str** |  | [optional] 
 
 ## Example
 

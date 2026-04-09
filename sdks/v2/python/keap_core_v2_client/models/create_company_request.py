@@ -34,13 +34,29 @@ class CreateCompanyRequest(BaseModel):
     address: Optional[Address] = Field(default=None, description="The company's address")
     notes: Optional[StrictStr] = Field(default=None, description="Notes about the company")
     website: Optional[StrictStr] = Field(default=None, description="The company's website URL")
+    suffix: Optional[StrictStr] = Field(default=None, description="Name suffix")
+    title: Optional[StrictStr] = Field(default=None, description="Name prefix or salutation")
     company_name: Optional[StrictStr] = Field(default=None, description="The name of the company")
     custom_fields: Optional[List[CustomFieldValue]] = None
     email_address: Optional[EmailAddress] = None
     fax_number: Optional[FaxNumber] = None
     phone_number: Optional[PhoneNumber] = None
+    anniversary_date: Optional[StrictStr] = Field(default=None, description="The anniversary date")
+    assistant_name: Optional[StrictStr] = Field(default=None, description="The name of the company contact's assistant")
+    assistant_phone: Optional[StrictStr] = Field(default=None, description="The phone number of the company contact's assistant")
+    billing_information: Optional[StrictStr] = Field(default=None, description="Billing information for the company")
+    birth_date: Optional[StrictStr] = Field(default=None, description="The birth date")
+    contact_type: Optional[StrictStr] = Field(default=None, description="Type of contact")
+    first_name: Optional[StrictStr] = Field(default=None, description="First name of the company contact")
+    job_title: Optional[StrictStr] = Field(default=None, description="Job title of the company contact")
+    last_name: Optional[StrictStr] = Field(default=None, description="Last name of the company contact")
+    middle_name: Optional[StrictStr] = Field(default=None, description="Middle name of the company contact")
+    preferred_name: Optional[StrictStr] = Field(default=None, description="Preferred name or nickname of the company contact")
+    owner_id: Optional[StrictStr] = Field(default=None, description="ID of the user who owns this company")
+    referral_code: Optional[StrictStr] = Field(default=None, description="Referral code")
+    spouse_name: Optional[StrictStr] = Field(default=None, description="Spouse's name")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["address", "notes", "website", "company_name", "custom_fields", "email_address", "fax_number", "phone_number"]
+    __properties: ClassVar[List[str]] = ["address", "notes", "website", "suffix", "title", "company_name", "custom_fields", "email_address", "fax_number", "phone_number", "anniversary_date", "assistant_name", "assistant_phone", "billing_information", "birth_date", "contact_type", "first_name", "job_title", "last_name", "middle_name", "preferred_name", "owner_id", "referral_code", "spouse_name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -122,11 +138,27 @@ class CreateCompanyRequest(BaseModel):
             "address": Address.from_dict(obj["address"]) if obj.get("address") is not None else None,
             "notes": obj.get("notes"),
             "website": obj.get("website"),
+            "suffix": obj.get("suffix"),
+            "title": obj.get("title"),
             "company_name": obj.get("company_name"),
             "custom_fields": [CustomFieldValue.from_dict(_item) for _item in obj["custom_fields"]] if obj.get("custom_fields") is not None else None,
             "email_address": EmailAddress.from_dict(obj["email_address"]) if obj.get("email_address") is not None else None,
             "fax_number": FaxNumber.from_dict(obj["fax_number"]) if obj.get("fax_number") is not None else None,
-            "phone_number": PhoneNumber.from_dict(obj["phone_number"]) if obj.get("phone_number") is not None else None
+            "phone_number": PhoneNumber.from_dict(obj["phone_number"]) if obj.get("phone_number") is not None else None,
+            "anniversary_date": obj.get("anniversary_date"),
+            "assistant_name": obj.get("assistant_name"),
+            "assistant_phone": obj.get("assistant_phone"),
+            "billing_information": obj.get("billing_information"),
+            "birth_date": obj.get("birth_date"),
+            "contact_type": obj.get("contact_type"),
+            "first_name": obj.get("first_name"),
+            "job_title": obj.get("job_title"),
+            "last_name": obj.get("last_name"),
+            "middle_name": obj.get("middle_name"),
+            "preferred_name": obj.get("preferred_name"),
+            "owner_id": obj.get("owner_id"),
+            "referral_code": obj.get("referral_code"),
+            "spouse_name": obj.get("spouse_name")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

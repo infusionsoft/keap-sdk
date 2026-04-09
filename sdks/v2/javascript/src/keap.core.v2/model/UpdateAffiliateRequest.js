@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CustomFieldValue from './CustomFieldValue';
 
 /**
  * The UpdateAffiliateRequest model module.
@@ -21,12 +22,10 @@ class UpdateAffiliateRequest {
     /**
      * Constructs a new <code>UpdateAffiliateRequest</code>.
      * @alias module:keap.core.v2/model/UpdateAffiliateRequest
-     * @param code {String} The Affiliate code which have some validations. 1. The code should not have white spaces 2. The code should starts with letters 3. The code minimum 4 characters length
-     * @param contactId {String} The contactId identifier , Must be a positive number
      */
-    constructor(code, contactId) { 
+    constructor() { 
         
-        UpdateAffiliateRequest.initialize(this, code, contactId);
+        UpdateAffiliateRequest.initialize(this);
     }
 
     /**
@@ -34,9 +33,7 @@ class UpdateAffiliateRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, code, contactId) { 
-        obj['code'] = code;
-        obj['contact_id'] = contactId;
+    static initialize(obj) { 
     }
 
     /**
@@ -77,6 +74,9 @@ class UpdateAffiliateRequest {
             if (data.hasOwnProperty('password')) {
                 obj['password'] = ApiClient.convertToType(data['password'], 'String');
             }
+            if (data.hasOwnProperty('custom_fields')) {
+                obj['custom_fields'] = ApiClient.convertToType(data['custom_fields'], [CustomFieldValue]);
+            }
         }
         return obj;
     }
@@ -87,12 +87,6 @@ class UpdateAffiliateRequest {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateAffiliateRequest</code>.
      */
     static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of UpdateAffiliateRequest.RequiredProperties) {
-            if (!data.hasOwnProperty(property)) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
         // ensure the json data is a string
         if (data['code'] && !(typeof data['code'] === 'string' || data['code'] instanceof String)) {
             throw new Error("Expected the field `code` to be a primitive type in the JSON string but got " + data['code']);
@@ -117,6 +111,16 @@ class UpdateAffiliateRequest {
         if (data['password'] && !(typeof data['password'] === 'string' || data['password'] instanceof String)) {
             throw new Error("Expected the field `password` to be a primitive type in the JSON string but got " + data['password']);
         }
+        if (data['custom_fields']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['custom_fields'])) {
+                throw new Error("Expected the field `custom_fields` to be an array in the JSON data but got " + data['custom_fields']);
+            }
+            // validate the optional field `custom_fields` (array)
+            for (const item of data['custom_fields']) {
+                CustomFieldValue.validateJSON(item);
+            };
+        }
 
         return true;
     }
@@ -124,16 +128,16 @@ class UpdateAffiliateRequest {
 
 }
 
-UpdateAffiliateRequest.RequiredProperties = ["code", "contact_id"];
+
 
 /**
- * The Affiliate code which have some validations. 1. The code should not have white spaces 2. The code should starts with letters 3. The code minimum 4 characters length
+ * The Affiliate code which have some validations. 1. The code should not have white spaces 2. The code should starts with letters 3. The code minimum 2 characters length
  * @member {String} code
  */
 UpdateAffiliateRequest.prototype['code'] = undefined;
 
 /**
- * The Affiliate name will be derived from the Contact, when not explicitly provided
+ * The Affiliate name.
  * @member {String} name
  */
 UpdateAffiliateRequest.prototype['name'] = undefined;
@@ -145,7 +149,7 @@ UpdateAffiliateRequest.prototype['name'] = undefined;
 UpdateAffiliateRequest.prototype['status'] = undefined;
 
 /**
- * The contactId identifier , Must be a positive number
+ * The contactId identifier. Must be a positive number
  * @member {String} contact_id
  */
 UpdateAffiliateRequest.prototype['contact_id'] = undefined;
@@ -179,6 +183,12 @@ UpdateAffiliateRequest.prototype['track_leads_days'] = undefined;
  * @member {String} password
  */
 UpdateAffiliateRequest.prototype['password'] = undefined;
+
+/**
+ * List of custom field values to apply to this affiliate
+ * @member {Array.<module:keap.core.v2/model/CustomFieldValue>} custom_fields
+ */
+UpdateAffiliateRequest.prototype['custom_fields'] = undefined;
 
 
 

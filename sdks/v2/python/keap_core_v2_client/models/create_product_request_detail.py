@@ -42,8 +42,13 @@ class CreateProductRequestDetail(BaseModel):
     country_taxable: Optional[StrictBool] = Field(default=None, description="If country-based taxes should be applied to this product")
     state_taxable: Optional[StrictBool] = Field(default=None, description="If state-based taxes should be applied to this product")
     city_taxable: Optional[StrictBool] = Field(default=None, description="If city-based taxes should be applied to this product")
+    top_html: Optional[StrictStr] = None
+    bottom_html: Optional[StrictStr] = None
+    is_package: Optional[StrictBool] = None
+    needs_digital_delivery: Optional[StrictBool] = None
+    delivery_description: Optional[StrictStr] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["name", "sku", "price", "active", "description", "shippable", "weight", "taxable", "inventory", "short_description", "subscription_only", "storefront_hidden", "country_taxable", "state_taxable", "city_taxable"]
+    __properties: ClassVar[List[str]] = ["name", "sku", "price", "active", "description", "shippable", "weight", "taxable", "inventory", "short_description", "subscription_only", "storefront_hidden", "country_taxable", "state_taxable", "city_taxable", "top_html", "bottom_html", "is_package", "needs_digital_delivery", "delivery_description"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -120,7 +125,12 @@ class CreateProductRequestDetail(BaseModel):
             "storefront_hidden": obj.get("storefront_hidden"),
             "country_taxable": obj.get("country_taxable"),
             "state_taxable": obj.get("state_taxable"),
-            "city_taxable": obj.get("city_taxable")
+            "city_taxable": obj.get("city_taxable"),
+            "top_html": obj.get("top_html"),
+            "bottom_html": obj.get("bottom_html"),
+            "is_package": obj.get("is_package"),
+            "needs_digital_delivery": obj.get("needs_digital_delivery"),
+            "delivery_description": obj.get("delivery_description")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

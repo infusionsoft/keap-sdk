@@ -47,6 +47,8 @@ const request: CompanyApiCreateCompanyRequest = {
     },
     notes: "Key enterprise client since 2020",
     website: "https://www.thryv.com",
+    suffix: "Jr",
+    title: "Dr.",
     companyName: "Thryv",
     customFields: [
       {
@@ -73,6 +75,20 @@ const request: CompanyApiCreateCompanyRequest = {
       field: "PHONE1",
       numberE164: "+15551234567",
     },
+    anniversaryDate: "2015-06-20",
+    assistantName: "Jane Doe",
+    assistantPhone: "555-123-4567",
+    billingInformation: "NET 30",
+    birthDate: "1985-03-15",
+    contactType: "Vendor",
+    firstName: "John",
+    jobTitle: "CEO",
+    lastName: "Smith",
+    middleName: "Robert",
+    preferredName: "Johnny",
+    ownerId: "45",
+    referralCode: "REF2024ABC",
+    spouseName: "Jane Smith",
   },
 };
 
@@ -473,6 +489,8 @@ const request: CompanyApiUpdateCompanyRequest = {
     },
     notes: "Key enterprise client since 2020",
     website: "https://www.thryv.com",
+    suffix: "Jr",
+    title: "Dr.",
     companyName: "Thryv",
     customFields: [
       {
@@ -499,10 +517,23 @@ const request: CompanyApiUpdateCompanyRequest = {
       field: "PHONE1",
       numberE164: "+15551234567",
     },
+    anniversaryDate: "2015-06-20",
+    assistantName: "Jane Doe",
+    assistantPhone: "555-123-4567",
+    billingInformation: "NET 30",
+    birthDate: "1985-03-15",
+    contactType: "Vendor",
+    firstName: "John",
+    jobTitle: "CEO",
+    lastName: "Smith",
+    middleName: "Robert",
+    preferredName: "Johnny",
+    ownerId: "45",
+    referralCode: "REF2024ABC",
+    spouseName: "Jane Smith",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: `id,company_name,address,phone_number,fax_number,email_address,
-notes,website,custom_fields,create_time,update_time`,
+  updateMask: null,
 };
 
 const data = await apiInstance.updateCompany(request);
@@ -516,7 +547,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateCompanyRequest** | **UpdateCompanyRequest**|  |
  **companyId** | [**string**] |  | defaults to undefined
- **updateMask** | [**&#39;id,company_name,address,phone_number,fax_number,email_address, notes,website,custom_fields,create_time,update_time&#39;**]**Array<&#39;id,company_name,address,phone_number,fax_number,email_address, notes,website,custom_fields,create_time,update_time&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -577,7 +608,7 @@ const request: CompanyApiUpdateCompanyCustomFieldRequest = {
     groupId: "groupId_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: "group_id,label,options",
+  updateMask: null,
 };
 
 const data = await apiInstance.updateCompanyCustomField(request);
@@ -591,7 +622,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**|  |
  **customFieldId** | [**string**] |  | defaults to undefined
- **updateMask** | [**&#39;group_id,label,options&#39;**]**Array<&#39;group_id,label,options&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

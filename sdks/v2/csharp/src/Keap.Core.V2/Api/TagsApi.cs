@@ -348,7 +348,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UpdateTagResponse</returns>
-        UpdateTagResponse UpdateTag(string tagId, CreateUpdateTagRequest createUpdateTagRequest, string? updateMask = default, int operationIndex = 0);
+        UpdateTagResponse UpdateTag(string tagId, CreateUpdateTagRequest createUpdateTagRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Tag
@@ -362,7 +362,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UpdateTagResponse</returns>
-        ApiResponse<UpdateTagResponse> UpdateTagWithHttpInfo(string tagId, CreateUpdateTagRequest createUpdateTagRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<UpdateTagResponse> UpdateTagWithHttpInfo(string tagId, CreateUpdateTagRequest createUpdateTagRequest, Object? updateMask = default, int operationIndex = 0);
         /// <summary>
         /// Update a Tag Category
         /// </summary>
@@ -375,7 +375,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UpdateTagCategoryResponse</returns>
-        UpdateTagCategoryResponse UpdateTagCategory(string tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, string? updateMask = default, int operationIndex = 0);
+        UpdateTagCategoryResponse UpdateTagCategory(string tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Tag Category
@@ -389,7 +389,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UpdateTagCategoryResponse</returns>
-        ApiResponse<UpdateTagCategoryResponse> UpdateTagCategoryWithHttpInfo(string tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<UpdateTagCategoryResponse> UpdateTagCategoryWithHttpInfo(string tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, Object? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -744,7 +744,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateTagResponse</returns>
-        System.Threading.Tasks.Task<UpdateTagResponse> UpdateTagAsync(string tagId, CreateUpdateTagRequest createUpdateTagRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<UpdateTagResponse> UpdateTagAsync(string tagId, CreateUpdateTagRequest createUpdateTagRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Tag
@@ -759,7 +759,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateTagResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateTagResponse>> UpdateTagWithHttpInfoAsync(string tagId, CreateUpdateTagRequest createUpdateTagRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<UpdateTagResponse>> UpdateTagWithHttpInfoAsync(string tagId, CreateUpdateTagRequest createUpdateTagRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update a Tag Category
         /// </summary>
@@ -773,7 +773,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateTagCategoryResponse</returns>
-        System.Threading.Tasks.Task<UpdateTagCategoryResponse> UpdateTagCategoryAsync(string tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<UpdateTagCategoryResponse> UpdateTagCategoryAsync(string tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Tag Category
@@ -788,7 +788,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateTagCategoryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateTagCategoryResponse>> UpdateTagCategoryWithHttpInfoAsync(string tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<UpdateTagCategoryResponse>> UpdateTagCategoryWithHttpInfoAsync(string tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -3236,7 +3236,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UpdateTagResponse</returns>
-        public UpdateTagResponse UpdateTag(string tagId, CreateUpdateTagRequest createUpdateTagRequest, string? updateMask = default, int operationIndex = 0)
+        public UpdateTagResponse UpdateTag(string tagId, CreateUpdateTagRequest createUpdateTagRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<UpdateTagResponse> localVarResponse = UpdateTagWithHttpInfo(tagId, createUpdateTagRequest, updateMask);
             return localVarResponse.Data;
@@ -3251,7 +3251,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UpdateTagResponse</returns>
-        public Keap.Core.V2.Client.ApiResponse<UpdateTagResponse> UpdateTagWithHttpInfo(string tagId, CreateUpdateTagRequest createUpdateTagRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<UpdateTagResponse> UpdateTagWithHttpInfo(string tagId, CreateUpdateTagRequest createUpdateTagRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'tagId' is set
             if (tagId == null)
@@ -3340,7 +3340,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateTagResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateTagResponse> UpdateTagAsync(string tagId, CreateUpdateTagRequest createUpdateTagRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<UpdateTagResponse> UpdateTagAsync(string tagId, CreateUpdateTagRequest createUpdateTagRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<UpdateTagResponse> localVarResponse = await UpdateTagWithHttpInfoAsync(tagId, createUpdateTagRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -3356,7 +3356,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateTagResponse)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<UpdateTagResponse>> UpdateTagWithHttpInfoAsync(string tagId, CreateUpdateTagRequest createUpdateTagRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<UpdateTagResponse>> UpdateTagWithHttpInfoAsync(string tagId, CreateUpdateTagRequest createUpdateTagRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'tagId' is set
             if (tagId == null)
@@ -3445,7 +3445,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UpdateTagCategoryResponse</returns>
-        public UpdateTagCategoryResponse UpdateTagCategory(string tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, string? updateMask = default, int operationIndex = 0)
+        public UpdateTagCategoryResponse UpdateTagCategory(string tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<UpdateTagCategoryResponse> localVarResponse = UpdateTagCategoryWithHttpInfo(tagCategoryId, createUpdateTagCategoryRequest, updateMask);
             return localVarResponse.Data;
@@ -3460,7 +3460,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UpdateTagCategoryResponse</returns>
-        public Keap.Core.V2.Client.ApiResponse<UpdateTagCategoryResponse> UpdateTagCategoryWithHttpInfo(string tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<UpdateTagCategoryResponse> UpdateTagCategoryWithHttpInfo(string tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'tagCategoryId' is set
             if (tagCategoryId == null)
@@ -3549,7 +3549,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateTagCategoryResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateTagCategoryResponse> UpdateTagCategoryAsync(string tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<UpdateTagCategoryResponse> UpdateTagCategoryAsync(string tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<UpdateTagCategoryResponse> localVarResponse = await UpdateTagCategoryWithHttpInfoAsync(tagCategoryId, createUpdateTagCategoryRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -3565,7 +3565,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateTagCategoryResponse)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<UpdateTagCategoryResponse>> UpdateTagCategoryWithHttpInfoAsync(string tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<UpdateTagCategoryResponse>> UpdateTagCategoryWithHttpInfoAsync(string tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'tagCategoryId' is set
             if (tagCategoryId == null)

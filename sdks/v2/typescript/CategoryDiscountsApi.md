@@ -309,7 +309,7 @@ const request: CategoryDiscountsApiUpdateCategoryDiscountRequest = {
     productCategoryIds: [10, 11, 12],
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: "name,description,discount_percent,apply_to_commissions,criteria,product_category_ids",
+  updateMask: null,
 };
 
 const data = await apiInstance.updateCategoryDiscount(request);
@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateCategoryDiscountRequest** | **UpdateCategoryDiscountRequest**|  |
  **discountId** | [**string**] |  | defaults to undefined
- **updateMask** | [**&#39;name,description,discount_percent,apply_to_commissions,criteria,product_category_ids&#39;**]**Array<&#39;name,description,discount_percent,apply_to_commissions,criteria,product_category_ids&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

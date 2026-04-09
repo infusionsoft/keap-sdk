@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictBytes, StrictStr
-from typing import Optional, Tuple, Union
+from typing import Any, Optional, Tuple, Union
 from typing_extensions import Annotated
 from keap_core_v2_client.models.file_metadata import FileMetadata
 from keap_core_v2_client.models.list_files_response import ListFilesResponse
@@ -1665,7 +1665,7 @@ class FilesApi:
     def update_file(
         self,
         file_id: StrictStr,
-        update_mask: Annotated[Optional[StrictStr], Field(description="Update Mask")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="File to upload. This is a file sent as multi-part (not a string)")] = None,
         file_name: Annotated[Optional[StrictStr], Field(description="File name")] = None,
         is_public: Annotated[Optional[StrictBool], Field(description="Is public")] = None,
@@ -1691,8 +1691,8 @@ class FilesApi:
 
         :param file_id: (required)
         :type file_id: str
-        :param update_mask: Update Mask
-        :type update_mask: str
+        :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        :type update_mask: object
         :param file: File to upload. This is a file sent as multi-part (not a string)
         :type file: bytearray
         :param file_name: File name
@@ -1767,7 +1767,7 @@ class FilesApi:
     def update_file_with_http_info(
         self,
         file_id: StrictStr,
-        update_mask: Annotated[Optional[StrictStr], Field(description="Update Mask")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="File to upload. This is a file sent as multi-part (not a string)")] = None,
         file_name: Annotated[Optional[StrictStr], Field(description="File name")] = None,
         is_public: Annotated[Optional[StrictBool], Field(description="Is public")] = None,
@@ -1793,8 +1793,8 @@ class FilesApi:
 
         :param file_id: (required)
         :type file_id: str
-        :param update_mask: Update Mask
-        :type update_mask: str
+        :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        :type update_mask: object
         :param file: File to upload. This is a file sent as multi-part (not a string)
         :type file: bytearray
         :param file_name: File name
@@ -1869,7 +1869,7 @@ class FilesApi:
     def update_file_without_preload_content(
         self,
         file_id: StrictStr,
-        update_mask: Annotated[Optional[StrictStr], Field(description="Update Mask")] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="File to upload. This is a file sent as multi-part (not a string)")] = None,
         file_name: Annotated[Optional[StrictStr], Field(description="File name")] = None,
         is_public: Annotated[Optional[StrictBool], Field(description="Is public")] = None,
@@ -1895,8 +1895,8 @@ class FilesApi:
 
         :param file_id: (required)
         :type file_id: str
-        :param update_mask: Update Mask
-        :type update_mask: str
+        :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        :type update_mask: object
         :param file: File to upload. This is a file sent as multi-part (not a string)
         :type file: bytearray
         :param file_name: File name

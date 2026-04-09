@@ -210,11 +210,14 @@ export default class ProductsApi {
     /**
      * Create the Product Image
      * Creates the Product Image file and uploads it to the specified Product
-     * @param {String} productId product_id
-     * @param {File} file File to upload
+     * @param {String} productId The product ID
+     * @param {File} file The image file to upload
+     * @param {Object} opts Optional parameters
+     * @param {Boolean} [legacy] Set to 'true' if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    createProductImageWithHttpInfo(productId, file) {
+    createProductImageWithHttpInfo(productId, file, opts) {
+      opts = opts || {};
       let postBody = null;
       // verify the required parameter 'productId' is set
       if (productId === undefined || productId === null) {
@@ -229,6 +232,7 @@ export default class ProductsApi {
         'product_id': productId
       };
       let queryParams = {
+        'legacy': opts['legacy']
       };
       let headerParams = {
       };
@@ -250,12 +254,14 @@ export default class ProductsApi {
     /**
      * Create the Product Image
      * Creates the Product Image file and uploads it to the specified Product
-     * @param {String} productId product_id
-     * @param {File} file File to upload
+     * @param {String} productId The product ID
+     * @param {File} file The image file to upload
+     * @param {Object} opts Optional parameters
+     * @param {Boolean} opts.legacy Set to 'true' if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    createProductImage(productId, file) {
-      return this.createProductImageWithHttpInfo(productId, file)
+    createProductImage(productId, file, opts) {
+      return this.createProductImageWithHttpInfo(productId, file, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -530,6 +536,54 @@ export default class ProductsApi {
 
 
     /**
+     * Retrieve Product Legacy Image Data
+     * Retrieves the product's legacy image
+     * @param {String} productId product_id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Blob} and HTTP response
+     */
+    getFileDataWithHttpInfo(productId) {
+      let postBody = null;
+      // verify the required parameter 'productId' is set
+      if (productId === undefined || productId === null) {
+        throw new Error("Missing the required parameter 'productId' when calling getFileData");
+      }
+
+      let pathParams = {
+        'product_id': productId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/rest/v2/products/{product_id}/images/legacyImageData', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Retrieve Product Legacy Image Data
+     * Retrieves the product's legacy image
+     * @param {String} productId product_id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Blob}
+     */
+    getFileData(productId) {
+      return this.getFileDataWithHttpInfo(productId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Get a Product
      * Gets a single Product
      * @param {String} productId product_id
@@ -742,7 +796,7 @@ export default class ProductsApi {
      * @param {String} productId product_id
      * @param {module:keap.core.v2/model/UpdateProductRequestDetail} updateProductRequestDetail 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/RestV2ProductDetail} and HTTP response
      */
     updateProductWithHttpInfo(productId, updateProductRequestDetail, opts) {
@@ -785,7 +839,7 @@ export default class ProductsApi {
      * @param {String} productId product_id
      * @param {module:keap.core.v2/model/UpdateProductRequestDetail} updateProductRequestDetail 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/RestV2ProductDetail}
      */
     updateProduct(productId, updateProductRequestDetail, opts) {
@@ -803,7 +857,7 @@ export default class ProductsApi {
      * @param {String} productOptionId product_option_id
      * @param {module:keap.core.v2/model/UpdateProductOptionRequest} updateProductOptionRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ProductOption} and HTTP response
      */
     updateProductOptionWithHttpInfo(productId, productOptionId, updateProductOptionRequest, opts) {
@@ -852,7 +906,7 @@ export default class ProductsApi {
      * @param {String} productOptionId product_option_id
      * @param {module:keap.core.v2/model/UpdateProductOptionRequest} updateProductOptionRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ProductOption}
      */
     updateProductOption(productId, productOptionId, updateProductOptionRequest, opts) {
@@ -871,7 +925,7 @@ export default class ProductsApi {
      * @param {String} itemId item_id
      * @param {module:keap.core.v2/model/UpdateProductOptionListOption} updateProductOptionListOption 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ProductOption} and HTTP response
      */
     updateProductOptionListOptionValueWithHttpInfo(productId, productOptionId, itemId, updateProductOptionListOption, opts) {
@@ -926,7 +980,7 @@ export default class ProductsApi {
      * @param {String} itemId item_id
      * @param {module:keap.core.v2/model/UpdateProductOptionListOption} updateProductOptionListOption 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ProductOption}
      */
     updateProductOptionListOptionValue(productId, productOptionId, itemId, updateProductOptionListOption, opts) {

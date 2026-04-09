@@ -1905,10 +1905,18 @@ paths:
       parameters:
       - name: product_id
         in: path
-        description: product_id
+        description: The product ID
         required: true
         schema:
           type: string
+      - name: legacy
+        in: query
+        description: Set to 'true' if the product image should also be used in legacy
+          cart features. Only one image is allowed. If an image already exists, it
+          will be replaced by the current image.
+        required: false
+        schema:
+          type: boolean
       requestBody:
         content:
           multipart/form-data:
@@ -1918,7 +1926,7 @@ paths:
                 file:
                   type: string
                   format: binary
-                  description: File to upload
+                  description: The image file to upload
               required:
               - file
       responses:
@@ -2682,8 +2690,8 @@ paths:
           - (String) `created_until_time`
           - (String) `title`
           - (String) `order_type` (Allowed values: `ONLINE`, `OFFLINE`)
-          - (String) `shipping_city`
-          - (String) `shipping_region`
+          - (String) `shipping_locality`
+          - (String) `shipping_region_code`
           - (String) `shipping_postal_code`
           - (String) `shipping_country_code`
 
@@ -2695,10 +2703,10 @@ paths:
           - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567`
           - `filter=title%3D%3DOrder`
           - `filter=order_type%3D%3DONLINE`
-          - `filter=shipping_city%3D%3DPhoenix`
-          - `filter=shipping_region%3D%3DAZ`
+          - `filter=shipping_locality%3D%3DPhoenix`
+          - `filter=shipping_region_code%3D%3DIN-MH`
           - `filter=shipping_postal_code%3D%3D85001`
-          - `filter=shipping_country_code%3D%3DUS`
+          - `filter=shipping_country_code%3D%3DIND`
         required: false
         schema:
           type: string
@@ -4269,7 +4277,8 @@ paths:
           type: string
       - name: lead_source_id
         in: path
-        description: The ID of the lead source this expense belongs to
+        description: The ID of the lead source this expense belongs to. Use '-' as
+          a wildcard (e.g. /v2/leadSources/-/expenses).
         required: true
         schema:
           type: string
@@ -4943,10 +4952,17 @@ paths:
           type: string
       - name: update_mask
         in: query
-        description: Update Mask
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
+          items:
+            type: string
+            enum:
+            - file
+            - file_name
+            - is_public
+          uniqueItems: true
       - name: file
         in: query
         description: File to upload. This is a file sent as multi-part (not a string)
@@ -6334,7 +6350,8 @@ paths:
           custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id,
           links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix,
           referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone,
-          update_time,utm_parameters,website)
+          update_time,utm_parameters,website,account_id,assistant_name,assistant_phone,
+          billing_information,created_by,groups,last_updated_by)
         schema:
           type: array
           items:
@@ -6458,7 +6475,8 @@ paths:
           custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id,
           links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix,
           referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone,
-          update_time,utm_parameters,website)
+          update_time,utm_parameters,website,account_id,assistant_name,assistant_phone,
+          billing_information,created_by,groups,last_updated_by)
         schema:
           type: array
           items:
@@ -9246,9 +9264,20 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - address,company_name,email_address,family_name,fax_numbers,given_name,job_title,phone_numbers,time_zone,website
+          items:
+            type: string
+            enum:
+            - address
+            - company_name
+            - email_address
+            - family_name
+            - fax_numbers
+            - given_name
+            - job_title
+            - phone_numbers
+            - time_zone
+            - website
+          uniqueItems: true
       - name: user_id
         in: path
         required: true
@@ -9447,11 +9476,21 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - |-
-            id,title,description,type,priority,completion_time,
-            due_time,remind_time_mins,assigned_to_user_id,contact_id,completed
+          items:
+            type: string
+            enum:
+            - id
+            - title
+            - description
+            - type
+            - priority
+            - completion_time
+            - due_time
+            - remind_time_mins
+            - assigned_to_user_id
+            - contact_id
+            - completed
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -9586,9 +9625,13 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - group_id,label,options
+          items:
+            type: string
+            enum:
+            - group_id
+            - label
+            - options
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -9781,9 +9824,13 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - name,description,category
+          items:
+            type: string
+            enum:
+            - name
+            - description
+            - category
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -9976,9 +10023,12 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - name,description
+          items:
+            type: string
+            enum:
+            - name
+            - description
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -10114,12 +10164,30 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - |-
-            contact_id,subscription_plan_id,quantity,billing_amount,auto_charge,max_charge_attempts,days_between_retries,
-            active,billing_frequency,billing_cycle,next_bill_date,end_date,payment_method_id,allow_tax,lead_affiliate_id,
-            sale_affiliate_id,promo_code,shipping_option_id,reason_stopped,shipping_address
+          items:
+            type: string
+            enum:
+            - contact_id
+            - subscription_plan_id
+            - quantity
+            - billing_amount
+            - auto_charge
+            - max_charge_attempts
+            - days_between_retries
+            - active
+            - billing_frequency
+            - billing_cycle
+            - next_bill_date
+            - end_date
+            - payment_method_id
+            - allow_tax
+            - lead_affiliate_id
+            - sale_affiliate_id
+            - promo_code
+            - shipping_option_id
+            - reason_stopped
+            - shipping_address
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -10252,9 +10320,13 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - group_id,label,options
+          items:
+            type: string
+            enum:
+            - group_id
+            - label
+            - options
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -10450,12 +10522,32 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - |-
-            active,name,description,price,sku,shippable,short_description,subscription_only,
-            storefront_hidden,weight,taxable,country_taxable,city_taxable,state_taxable,
-            inventory_limit,out_of_stock_enabled,email_for_inventory_notifications
+          items:
+            type: string
+            enum:
+            - active
+            - name
+            - description
+            - price
+            - sku
+            - shippable
+            - short_description
+            - subscription_only
+            - storefront_hidden
+            - weight
+            - taxable
+            - country_taxable
+            - city_taxable
+            - state_taxable
+            - inventory_limit
+            - out_of_stock_enabled
+            - email_for_inventory_notifications
+            - top_html
+            - bottom_html
+            - is_package
+            - needs_digital_delivery
+            - delivery_description
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -10669,9 +10761,17 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - active,allow_prorating,cycle_type,display_order_index,frequency,plan_price,total_cycles
+          items:
+            type: string
+            enum:
+            - active
+            - allow_prorating
+            - cycle_type
+            - display_order_index
+            - frequency
+            - plan_price
+            - total_cycles
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -10885,11 +10985,20 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - |-
-            option_label,display_order,required,minimum_characters,maximum_characters,allow_spaces,
-            only_starts_with,only_ends_with,only_contains,error_message
+          items:
+            type: string
+            enum:
+            - option_label
+            - display_order
+            - required
+            - minimum_characters
+            - maximum_characters
+            - allow_spaces
+            - only_starts_with
+            - only_ends_with
+            - only_contains
+            - error_message
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -11047,10 +11156,14 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - |
-            item_label,item_code,item_display_order,price_adjustment
+          items:
+            type: string
+            enum:
+            - item_label
+            - item_code
+            - item_display_order
+            - price_adjustment
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -11243,9 +11356,12 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - name,description
+          items:
+            type: string
+            enum:
+            - name
+            - description
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -11387,9 +11503,13 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - quantity,price,discount_percent
+          items:
+            type: string
+            enum:
+            - quantity
+            - price
+            - discount_percent
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -11583,9 +11703,13 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - name,display_order_index,parent_category_id
+          items:
+            type: string
+            enum:
+            - name
+            - display_order_index
+            - parent_category_id
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -11780,12 +11904,23 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - |-
-            contact_id,order_items,order_title,order_time,order_type,promo_codes,
-            lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan,
-            custom_fields
+          items:
+            type: string
+            enum:
+            - contact_id
+            - order_items
+            - order_title
+            - order_time
+            - order_type
+            - promo_codes
+            - lead_affiliate_id
+            - sales_affiliate_id
+            - shipping_address
+            - notes
+            - terms
+            - payment_plan
+            - custom_fields
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -11927,11 +12062,19 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - |-
-            name,description,notes,quantity,price_per_unit,cost_per_unit,
-            product_id,subscription_plan_id,subscription_plan_description
+          items:
+            type: string
+            enum:
+            - name
+            - description
+            - notes
+            - quantity
+            - price_per_unit
+            - cost_per_unit
+            - product_id
+            - subscription_plan_id
+            - subscription_plan_description
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -12064,9 +12207,13 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - group_id,label,options
+          items:
+            type: string
+            enum:
+            - group_id
+            - label
+            - options
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -12259,12 +12406,23 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - |-
-            opportunity_title,next_action_time,next_action_notes,opportunity_notes,
-            estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high,
-            contact_id,stage_id,user_id,custom_fields,affiliate_id
+          items:
+            type: string
+            enum:
+            - opportunity_title
+            - next_action_time
+            - next_action_notes
+            - opportunity_notes
+            - estimated_close_time
+            - include_in_forecast
+            - projected_revenue_low
+            - projected_revenue_high
+            - contact_id
+            - stage_id
+            - user_id
+            - custom_fields
+            - affiliate_id
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -12457,9 +12615,15 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - name,order,target_number_days,probability,checklist_items
+          items:
+            type: string
+            enum:
+            - name
+            - order
+            - target_number_days
+            - probability
+            - checklist_items
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -12535,9 +12699,13 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - group_id,label,options
+          items:
+            type: string
+            enum:
+            - group_id
+            - label
+            - options
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -12614,9 +12782,13 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - group_id,label,options
+          items:
+            type: string
+            enum:
+            - group_id
+            - label
+            - options
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -12812,9 +12984,19 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - name,description,vendor,medium,message,start_time,end_time,status,lead_source_category_id
+          items:
+            type: string
+            enum:
+            - name
+            - description
+            - vendor
+            - medium
+            - message
+            - start_time
+            - end_time
+            - status
+            - lead_source_category_id
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -13030,9 +13212,15 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - title,notes,amount,start_time,end_time
+          items:
+            type: string
+            enum:
+            - title
+            - notes
+            - amount
+            - start_time
+            - end_time
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -13246,9 +13434,14 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - title,notes,amount,incurred_time
+          items:
+            type: string
+            enum:
+            - title
+            - notes
+            - amount
+            - incurred_time
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -13444,9 +13637,12 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - name,description
+          items:
+            type: string
+            enum:
+            - name
+            - description
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -13786,9 +13982,15 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - name,description,discount_type,discount_value,criteria
+          items:
+            type: string
+            enum:
+            - name
+            - description
+            - discount_type
+            - discount_value
+            - criteria
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -13981,9 +14183,17 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - name,description,apply_to_commissions,discount_type,discount_value,product_id,criteria
+          items:
+            type: string
+            enum:
+            - name
+            - description
+            - apply_to_commissions
+            - discount_type
+            - discount_value
+            - product_id
+            - criteria
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -14176,9 +14386,16 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - name,description,discount_percent,apply_to_commissions,criteria,product_category_ids
+          items:
+            type: string
+            enum:
+            - name
+            - description
+            - discount_percent
+            - apply_to_commissions
+            - criteria
+            - product_category_ids
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -14371,9 +14588,17 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - name,description,apply_to_commissions,discount_type,discount_value,discount_strategy,criteria
+          items:
+            type: string
+            enum:
+            - name
+            - description
+            - apply_to_commissions
+            - discount_type
+            - discount_value
+            - discount_strategy
+            - criteria
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -14566,9 +14791,16 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - name,description,free_trial_days,hide_price,subscription_plan_id,criteria
+          items:
+            type: string
+            enum:
+            - name
+            - description
+            - free_trial_days
+            - hide_price
+            - subscription_plan_id
+            - criteria
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -14644,7 +14876,8 @@ paths:
           custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id,
           links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix,
           referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone,
-          update_time,utm_parameters,website)
+          update_time,utm_parameters,website,account_id,assistant_name,assistant_phone,
+          billing_information,created_by,groups,last_updated_by)
         schema:
           type: array
           items:
@@ -14774,14 +15007,51 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - |-
-            addresses,anniversary_date,birth_date,company,contact_type,create_time,
-            custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id,
-            links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix,
-            referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone,
-            update_time,utm_parameters,website
+          items:
+            type: string
+            enum:
+            - addresses
+            - anniversary_date
+            - birth_date
+            - company
+            - contact_type
+            - create_time
+            - custom_fields
+            - email_addresses
+            - family_name
+            - fax_numbers
+            - given_name
+            - id
+            - job_title
+            - leadsource_id
+            - links
+            - middle_name
+            - notes
+            - origin
+            - owner_id
+            - phone_numbers
+            - preferred_locale
+            - preferred_name
+            - prefix
+            - referral_code
+            - score_value
+            - social_accounts
+            - source_type
+            - spouse_name
+            - suffix
+            - tag_ids
+            - time_zone
+            - update_time
+            - utm_parameters
+            - website
+            - account_id
+            - assistant_name
+            - assistant_phone
+            - billing_information
+            - created_by
+            - groups
+            - last_updated_by
+          uniqueItems: true
       - name: fields
         in: query
         description: |-
@@ -14789,7 +15059,8 @@ paths:
           custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id,
           links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix,
           referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone,
-          update_time,utm_parameters,website)
+          update_time,utm_parameters,website,account_id,assistant_name,assistant_phone,
+          billing_information,created_by,groups,last_updated_by)
         schema:
           type: array
           items:
@@ -15002,9 +15273,15 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - contact_id, text, title, type, user_id
+          items:
+            type: string
+            enum:
+            - contact_id
+            - text
+            - title
+            - type
+            - user_id
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -15207,11 +15484,41 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - |-
-            id,company_name,address,phone_number,fax_number,email_address,
-            notes,website,custom_fields,create_time,update_time
+          items:
+            type: string
+            enum:
+            - id
+            - company_name
+            - address
+            - phone_number
+            - fax_number
+            - email_address
+            - notes
+            - website
+            - custom_fields
+            - create_time
+            - update_time
+            - anniversary_date
+            - assistant_name
+            - assistant_phone
+            - billing_information
+            - birth_date
+            - contact_type
+            - first_name
+            - job_title
+            - last_name
+            - middle_name
+            - preferred_name
+            - owner_id
+            - referral_code
+            - spouse_name
+            - suffix
+            - title
+            - account_id
+            - created_by
+            - groups
+            - last_updated_by
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -15287,9 +15594,13 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - group_id,label,options
+          items:
+            type: string
+            enum:
+            - group_id
+            - label
+            - options
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -15414,11 +15725,19 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - |-
-            name,email,website,phone,address,currency_code,business_goals,business_primary_color,
-            business_secondary_color
+          items:
+            type: string
+            enum:
+            - name
+            - email
+            - website
+            - phone
+            - address
+            - currency_code
+            - business_goals
+            - business_primary_color
+            - business_secondary_color
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -15673,6 +15992,26 @@ paths:
         required: true
         schema:
           type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        schema:
+          items:
+            type: string
+            enum:
+            - contact_id
+            - code
+            - name
+            - status
+            - parent_affiliate_id
+            - notify_on_sale
+            - notify_on_lead
+            - track_leads_days
+            - password
+            - custom_fields
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -15991,9 +16330,13 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - group_id,label,options
+          items:
+            type: string
+            enum:
+            - group_id
+            - label
+            - options
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -16186,9 +16529,13 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
-          type: string
-          enum:
-          - name,notes,priority
+          items:
+            type: string
+            enum:
+            - name
+            - notes
+            - priority
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -17223,10 +17570,22 @@ paths:
           that, data is returned for the fields that are mentioned in the query.
         required: false
         schema:
-          type: array
           items:
             type: string
-        explode: false
+            enum:
+            - AFFILIATE
+            - APPOINTMENT
+            - CONTACT
+            - ECOMMERCE
+            - EMAIL
+            - FORMS
+            - FULFILLMENT
+            - INVOICE
+            - NOTE
+            - OPPORTUNITY
+            - TASK
+            - TEMPLATE
+          uniqueItems: true
       responses:
         '200':
           description: OK
@@ -17624,6 +17983,70 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Report'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/products/{product_id}/images/legacyImageData:
+    get:
+      tags:
+      - Products
+      summary: Retrieve Product Legacy Image Data
+      description: Retrieves the product's legacy image
+      operationId: getFileData
+      parameters:
+      - name: product_id
+        in: path
+        description: product_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                format: byte
         '400':
           description: Bad Request
           content:
@@ -21304,6 +21727,16 @@ components:
           type: boolean
           description: If city-based taxes should be applied to this product
           example: false
+        top_html:
+          type: string
+        bottom_html:
+          type: string
+        is_package:
+          type: boolean
+        needs_digital_delivery:
+          type: boolean
+        delivery_description:
+          type: string
       required:
       - name
       - price
@@ -21523,6 +21956,22 @@ components:
             be empty.
           items:
             $ref: '#/components/schemas/SubscriptionPlan_Detail'
+        top_html:
+          type: string
+        bottom_html:
+          type: string
+        is_package:
+          type: boolean
+        needs_digital_delivery:
+          type: boolean
+        has_legacy_image:
+          type: boolean
+        delivery_description:
+          type: string
+        create_time:
+          type: string
+        update_time:
+          type: string
     SubscriptionPlan_Detail:
       type: object
       properties:
@@ -21688,6 +22137,12 @@ components:
         plan_price:
           $ref: '#/components/schemas/CurrencyValue'
           description: The price of the subscription plan.
+        preauthorize_amount:
+          type: number
+          format: double
+          description: The pre-authorize amount for the subscription plan. If null,
+            this field is omitted from the response.
+          example: 13
     CreateProductOptionListOption:
       type: object
       properties:
@@ -24525,6 +24980,12 @@ components:
           example: America/New_York
         utm_parameters:
           $ref: '#/components/schemas/CreateContactUtmPropertiesRequest'
+        assistant_name:
+          type: string
+        assistant_phone:
+          type: string
+        billing_information:
+          type: string
     EmailAddressRequest:
       type: object
       properties:
@@ -24653,6 +25114,8 @@ components:
           type: string
           description: Personal website URL
           example: https://thryv.com
+        groups:
+          type: string
         update_time:
           type: string
           description: Last update timestamp (ISO-8601)
@@ -24764,6 +25227,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ContactUtmResponse'
+        account_id:
+          type: string
+        assistant_name:
+          type: string
+        assistant_phone:
+          type: string
+        billing_information:
+          type: string
+        created_by:
+          type: string
+        last_updated_by:
+          type: string
     ContactUtmResponse:
       type: object
       properties:
@@ -25030,6 +25505,14 @@ components:
           type: string
           description: The company's website URL
           example: https://www.thryv.com
+        suffix:
+          type: string
+          description: Name suffix
+          example: Jr
+        title:
+          type: string
+          description: Name prefix or salutation
+          example: Dr.
         company_name:
           type: string
           description: The name of the company
@@ -25044,6 +25527,62 @@ components:
           $ref: '#/components/schemas/FaxNumber'
         phone_number:
           $ref: '#/components/schemas/PhoneNumber'
+        anniversary_date:
+          type: string
+          description: The anniversary date
+          example: '2015-06-20'
+        assistant_name:
+          type: string
+          description: The name of the company contact's assistant
+          example: Jane Doe
+        assistant_phone:
+          type: string
+          description: The phone number of the company contact's assistant
+          example: 555-123-4567
+        billing_information:
+          type: string
+          description: Billing information for the company
+          example: NET 30
+        birth_date:
+          type: string
+          description: The birth date
+          example: '1985-03-15'
+        contact_type:
+          type: string
+          description: Type of contact
+          example: Vendor
+        first_name:
+          type: string
+          description: First name of the company contact
+          example: John
+        job_title:
+          type: string
+          description: Job title of the company contact
+          example: CEO
+        last_name:
+          type: string
+          description: Last name of the company contact
+          example: Smith
+        middle_name:
+          type: string
+          description: Middle name of the company contact
+          example: Robert
+        preferred_name:
+          type: string
+          description: Preferred name or nickname of the company contact
+          example: Johnny
+        owner_id:
+          type: string
+          description: ID of the user who owns this company
+          example: 45
+        referral_code:
+          type: string
+          description: Referral code
+          example: REF2024ABC
+        spouse_name:
+          type: string
+          description: Spouse's name
+          example: Jane Smith
     Company:
       type: object
       properties:
@@ -25062,6 +25601,18 @@ components:
           type: string
           description: The company's website URL
           example: https://www.thryv.com
+        suffix:
+          type: string
+          description: Name suffix
+          example: Jr
+        title:
+          type: string
+          description: Name prefix or salutation
+          example: Dr.
+        groups:
+          type: string
+          description: Comma-delimited list of tag IDs applied to this company
+          example: 1,5,12
         company_name:
           type: string
           description: The name of the company
@@ -25084,6 +25635,74 @@ components:
           type: string
           description: Creation timestamp (ISO-8601)
           example: '2024-01-10T08:00:00Z'
+        anniversary_date:
+          type: string
+          description: The anniversary date
+          example: '2015-06-20'
+        assistant_name:
+          type: string
+          description: The name of the company contact's assistant
+          example: Jane Doe
+        assistant_phone:
+          type: string
+          description: The phone number of the company contact's assistant
+          example: 555-123-4567
+        billing_information:
+          type: string
+          description: Billing information for the company
+          example: NET 30
+        birth_date:
+          type: string
+          description: The birth date
+          example: '1985-03-15'
+        contact_type:
+          type: string
+          description: Type of contact
+          example: Vendor
+        first_name:
+          type: string
+          description: First name of the company contact
+          example: John
+        job_title:
+          type: string
+          description: Job title of the company contact
+          example: CEO
+        last_name:
+          type: string
+          description: Last name of the company contact
+          example: Smith
+        middle_name:
+          type: string
+          description: Middle name of the company contact
+          example: Robert
+        preferred_name:
+          type: string
+          description: Preferred name or nickname of the company contact
+          example: Johnny
+        owner_id:
+          type: string
+          description: ID of the user who owns this company
+          example: 45
+        referral_code:
+          type: string
+          description: Referral code
+          example: REF2024ABC
+        spouse_name:
+          type: string
+          description: Spouse's name
+          example: Jane Smith
+        account_id:
+          type: string
+          description: The company's account ID
+          example: 100
+        created_by:
+          type: string
+          description: ID of the user who created this company
+          example: 10
+        last_updated_by:
+          type: string
+          description: ID of the user who last updated this company
+          example: 10
     RemoveContactsFromSequenceRequest:
       type: object
       properties:
@@ -25385,6 +26004,16 @@ components:
         password:
           type: string
           description: Affiliate portal password
+        custom_fields:
+          type: array
+          description: List of custom field values to apply to this affiliate
+          example:
+          - id: '1'
+            content: VIP
+          - id: '2'
+            content: Preferred
+          items:
+            $ref: '#/components/schemas/CustomFieldValue'
       required:
       - code
       - contact_id
@@ -25439,6 +26068,16 @@ components:
           format: int32
           description: Number of days to track leads
           example: 30
+        custom_fields:
+          type: array
+          description: List of custom field values applied to this affiliate
+          example:
+          - id: '1'
+            content: VIP
+          - id: '2'
+            content: Preferred
+          items:
+            $ref: '#/components/schemas/CustomFieldValue'
     AffiliateRemoveFromProgramRequest:
       type: object
       properties:
@@ -26162,6 +26801,16 @@ components:
           type: string
           description: The email address for notifications about inventory
           example: notify@example.com
+        top_html:
+          type: string
+        bottom_html:
+          type: string
+        is_package:
+          type: boolean
+        needs_digital_delivery:
+          type: boolean
+        delivery_description:
+          type: string
     UpdateSubscriptionPlanRequest:
       type: object
       properties:
@@ -26987,6 +27636,14 @@ components:
           type: string
           description: The company's website URL
           example: https://www.thryv.com
+        suffix:
+          type: string
+          description: Name suffix
+          example: Jr
+        title:
+          type: string
+          description: Name prefix or salutation
+          example: Dr.
         company_name:
           type: string
           description: The name of the company
@@ -27001,6 +27658,62 @@ components:
           $ref: '#/components/schemas/FaxNumber'
         phone_number:
           $ref: '#/components/schemas/PhoneNumber'
+        anniversary_date:
+          type: string
+          description: The anniversary date
+          example: '2015-06-20'
+        assistant_name:
+          type: string
+          description: The name of the company contact's assistant
+          example: Jane Doe
+        assistant_phone:
+          type: string
+          description: The phone number of the company contact's assistant
+          example: 555-123-4567
+        billing_information:
+          type: string
+          description: Billing information for the company
+          example: NET 30
+        birth_date:
+          type: string
+          description: The birth date
+          example: '1985-03-15'
+        contact_type:
+          type: string
+          description: Type of contact
+          example: Vendor
+        first_name:
+          type: string
+          description: First name of the company contact
+          example: John
+        job_title:
+          type: string
+          description: Job title of the company contact
+          example: CEO
+        last_name:
+          type: string
+          description: Last name of the company contact
+          example: Smith
+        middle_name:
+          type: string
+          description: Middle name of the company contact
+          example: Robert
+        preferred_name:
+          type: string
+          description: Preferred name or nickname of the company contact
+          example: Johnny
+        owner_id:
+          type: string
+          description: ID of the user who owns this company
+          example: 45
+        referral_code:
+          type: string
+          description: Referral code
+          example: REF2024ABC
+        spouse_name:
+          type: string
+          description: Spouse's name
+          example: Jane Smith
     BusinessProfileAddressRequest:
       type: object
       properties:
@@ -27133,12 +27846,11 @@ components:
             The Affiliate code which have some validations.
             1. The code should not have white spaces
             2. The code should starts with letters
-            3. The code minimum 4 characters length
+            3. The code minimum 2 characters length
           example: M123
         name:
           type: string
-          description: The Affiliate name will be derived from the Contact, when not
-            explicitly provided
+          description: The Affiliate name.
           example: John Smith
         status:
           type: string
@@ -27149,7 +27861,7 @@ components:
           example: ACTIVE
         contact_id:
           type: string
-          description: The contactId identifier , Must be a positive number
+          description: The contactId identifier. Must be a positive number
           example: 1
         parent_affiliate_id:
           type: string
@@ -27171,9 +27883,16 @@ components:
         password:
           type: string
           description: Affiliate portal password.
-      required:
-      - code
-      - contact_id
+        custom_fields:
+          type: array
+          description: List of custom field values to apply to this affiliate
+          example:
+          - id: '1'
+            content: VIP
+          - id: '2'
+            content: Preferred
+          items:
+            $ref: '#/components/schemas/CustomFieldValue'
     UpdateCommissionProgramRequest:
       type: object
       properties:
@@ -28410,6 +29129,22 @@ components:
             be empty.
           items:
             $ref: '#/components/schemas/SubscriptionPlan_List'
+        top_html:
+          type: string
+        bottom_html:
+          type: string
+        is_package:
+          type: boolean
+        needs_digital_delivery:
+          type: boolean
+        has_legacy_image:
+          type: boolean
+        delivery_description:
+          type: string
+        create_time:
+          type: string
+        update_time:
+          type: string
     SubscriptionPlan_List:
       type: object
       properties:

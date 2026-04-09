@@ -138,7 +138,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductDiscount</returns>
-        ProductDiscount UpdateProductDiscount(string discountId, UpdateProductDiscountRequest updateProductDiscountRequest, string? updateMask = default, int operationIndex = 0);
+        ProductDiscount UpdateProductDiscount(string discountId, UpdateProductDiscountRequest updateProductDiscountRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Product Discount
@@ -152,7 +152,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductDiscount</returns>
-        ApiResponse<ProductDiscount> UpdateProductDiscountWithHttpInfo(string discountId, UpdateProductDiscountRequest updateProductDiscountRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<ProductDiscount> UpdateProductDiscountWithHttpInfo(string discountId, UpdateProductDiscountRequest updateProductDiscountRequest, Object? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -281,7 +281,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ProductDiscount</returns>
-        System.Threading.Tasks.Task<ProductDiscount> UpdateProductDiscountAsync(string discountId, UpdateProductDiscountRequest updateProductDiscountRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ProductDiscount> UpdateProductDiscountAsync(string discountId, UpdateProductDiscountRequest updateProductDiscountRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Product Discount
@@ -296,7 +296,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ProductDiscount)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ProductDiscount>> UpdateProductDiscountWithHttpInfoAsync(string discountId, UpdateProductDiscountRequest updateProductDiscountRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ProductDiscount>> UpdateProductDiscountWithHttpInfoAsync(string discountId, UpdateProductDiscountRequest updateProductDiscountRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -1164,7 +1164,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductDiscount</returns>
-        public ProductDiscount UpdateProductDiscount(string discountId, UpdateProductDiscountRequest updateProductDiscountRequest, string? updateMask = default, int operationIndex = 0)
+        public ProductDiscount UpdateProductDiscount(string discountId, UpdateProductDiscountRequest updateProductDiscountRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<ProductDiscount> localVarResponse = UpdateProductDiscountWithHttpInfo(discountId, updateProductDiscountRequest, updateMask);
             return localVarResponse.Data;
@@ -1179,7 +1179,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductDiscount</returns>
-        public Keap.Core.V2.Client.ApiResponse<ProductDiscount> UpdateProductDiscountWithHttpInfo(string discountId, UpdateProductDiscountRequest updateProductDiscountRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<ProductDiscount> UpdateProductDiscountWithHttpInfo(string discountId, UpdateProductDiscountRequest updateProductDiscountRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'discountId' is set
             if (discountId == null)
@@ -1268,7 +1268,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ProductDiscount</returns>
-        public async System.Threading.Tasks.Task<ProductDiscount> UpdateProductDiscountAsync(string discountId, UpdateProductDiscountRequest updateProductDiscountRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ProductDiscount> UpdateProductDiscountAsync(string discountId, UpdateProductDiscountRequest updateProductDiscountRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<ProductDiscount> localVarResponse = await UpdateProductDiscountWithHttpInfoAsync(discountId, updateProductDiscountRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1284,7 +1284,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ProductDiscount)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ProductDiscount>> UpdateProductDiscountWithHttpInfoAsync(string discountId, UpdateProductDiscountRequest updateProductDiscountRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ProductDiscount>> UpdateProductDiscountWithHttpInfoAsync(string discountId, UpdateProductDiscountRequest updateProductDiscountRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'discountId' is set
             if (discountId == null)

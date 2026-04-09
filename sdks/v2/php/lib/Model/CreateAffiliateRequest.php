@@ -65,7 +65,8 @@ class CreateAffiliateRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'notify_on_sale' => 'bool',
         'notify_on_lead' => 'bool',
         'track_leads_days' => 'int',
-        'password' => 'string'
+        'password' => 'string',
+        'custom_fields' => '\Keap\Core\V2\Model\CustomFieldValue[]'
     ];
 
     /**
@@ -84,7 +85,8 @@ class CreateAffiliateRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'notify_on_sale' => null,
         'notify_on_lead' => null,
         'track_leads_days' => 'int32',
-        'password' => null
+        'password' => null,
+        'custom_fields' => null
     ];
 
     /**
@@ -101,7 +103,8 @@ class CreateAffiliateRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'notify_on_sale' => false,
         'notify_on_lead' => false,
         'track_leads_days' => false,
-        'password' => false
+        'password' => false,
+        'custom_fields' => false
     ];
 
     /**
@@ -198,7 +201,8 @@ class CreateAffiliateRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'notify_on_sale' => 'notify_on_sale',
         'notify_on_lead' => 'notify_on_lead',
         'track_leads_days' => 'track_leads_days',
-        'password' => 'password'
+        'password' => 'password',
+        'custom_fields' => 'custom_fields'
     ];
 
     /**
@@ -215,7 +219,8 @@ class CreateAffiliateRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'notify_on_sale' => 'setNotifyOnSale',
         'notify_on_lead' => 'setNotifyOnLead',
         'track_leads_days' => 'setTrackLeadsDays',
-        'password' => 'setPassword'
+        'password' => 'setPassword',
+        'custom_fields' => 'setCustomFields'
     ];
 
     /**
@@ -232,7 +237,8 @@ class CreateAffiliateRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'notify_on_sale' => 'getNotifyOnSale',
         'notify_on_lead' => 'getNotifyOnLead',
         'track_leads_days' => 'getTrackLeadsDays',
-        'password' => 'getPassword'
+        'password' => 'getPassword',
+        'custom_fields' => 'getCustomFields'
     ];
 
     /**
@@ -316,6 +322,7 @@ class CreateAffiliateRequest implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('notify_on_lead', $data ?? [], null);
         $this->setIfExists('track_leads_days', $data ?? [], null);
         $this->setIfExists('password', $data ?? [], null);
+        $this->setIfExists('custom_fields', $data ?? [], null);
     }
 
     /**
@@ -624,6 +631,33 @@ class CreateAffiliateRequest implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable password cannot be null');
         }
         $this->container['password'] = $password;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_fields
+     *
+     * @return \Keap\Core\V2\Model\CustomFieldValue[]|null
+     */
+    public function getCustomFields()
+    {
+        return $this->container['custom_fields'];
+    }
+
+    /**
+     * Sets custom_fields
+     *
+     * @param \Keap\Core\V2\Model\CustomFieldValue[]|null $custom_fields List of custom field values to apply to this affiliate
+     *
+     * @return self
+     */
+    public function setCustomFields($custom_fields)
+    {
+        if (is_null($custom_fields)) {
+            throw new \InvalidArgumentException('non-nullable custom_fields cannot be null');
+        }
+        $this->container['custom_fields'] = $custom_fields;
 
         return $this;
     }

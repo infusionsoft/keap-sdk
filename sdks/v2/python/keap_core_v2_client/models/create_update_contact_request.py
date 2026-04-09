@@ -62,8 +62,11 @@ class CreateUpdateContactRequest(BaseModel):
     spouse_name: Optional[StrictStr] = Field(default=None, description="Spouse's name")
     time_zone: Optional[StrictStr] = Field(default=None, description="Contact's timezone")
     utm_parameters: Optional[CreateContactUtmPropertiesRequest] = None
+    assistant_name: Optional[StrictStr] = None
+    assistant_phone: Optional[StrictStr] = None
+    billing_information: Optional[StrictStr] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["addresses", "company", "origin", "prefix", "suffix", "website", "anniversary_date", "birth_date", "contact_type", "custom_fields", "email_addresses", "family_name", "fax_numbers", "given_name", "job_title", "leadsource_id", "middle_name", "owner_id", "phone_numbers", "preferred_locale", "preferred_name", "referral_code", "social_accounts", "source_type", "spouse_name", "time_zone", "utm_parameters"]
+    __properties: ClassVar[List[str]] = ["addresses", "company", "origin", "prefix", "suffix", "website", "anniversary_date", "birth_date", "contact_type", "custom_fields", "email_addresses", "family_name", "fax_numbers", "given_name", "job_title", "leadsource_id", "middle_name", "owner_id", "phone_numbers", "preferred_locale", "preferred_name", "referral_code", "social_accounts", "source_type", "spouse_name", "time_zone", "utm_parameters", "assistant_name", "assistant_phone", "billing_information"]
 
     @field_validator('source_type')
     def source_type_validate_enum(cls, value):
@@ -210,7 +213,10 @@ class CreateUpdateContactRequest(BaseModel):
             "source_type": obj.get("source_type"),
             "spouse_name": obj.get("spouse_name"),
             "time_zone": obj.get("time_zone"),
-            "utm_parameters": CreateContactUtmPropertiesRequest.from_dict(obj["utm_parameters"]) if obj.get("utm_parameters") is not None else None
+            "utm_parameters": CreateContactUtmPropertiesRequest.from_dict(obj["utm_parameters"]) if obj.get("utm_parameters") is not None else None,
+            "assistant_name": obj.get("assistant_name"),
+            "assistant_phone": obj.get("assistant_phone"),
+            "billing_information": obj.get("billing_information")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

@@ -2319,7 +2319,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_affiliate**
-> RestAffiliate update_affiliate(id, update_affiliate_request)
+> RestAffiliate update_affiliate(id, update_affiliate_request, update_mask=update_mask)
 
 Update an Affiliate
 
@@ -2354,10 +2354,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.AffiliateApi(api_client)
     id = 'id_example' # str | 
     update_affiliate_request = keap_core_v2_client.UpdateAffiliateRequest() # UpdateAffiliateRequest | 
+    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update an Affiliate
-        api_response = api_instance.update_affiliate(id, update_affiliate_request)
+        api_response = api_instance.update_affiliate(id, update_affiliate_request, update_mask=update_mask)
         print("The response of AffiliateApi->update_affiliate:\n")
         pprint(api_response)
     except Exception as e:
@@ -2372,6 +2373,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
  **update_affiliate_request** | [**UpdateAffiliateRequest**](UpdateAffiliateRequest.md)|  | 
+ **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -2437,7 +2439,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.AffiliateApi(api_client)
     custom_field_id = 'custom_field_id_example' # str | 
     update_custom_field_meta_data_request = keap_core_v2_client.UpdateCustomFieldMetaDataRequest() # UpdateCustomFieldMetaDataRequest | 
-    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Custom Field
@@ -2456,7 +2458,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **custom_field_id** | **str**|  | 
  **update_custom_field_meta_data_request** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | 
- **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -2522,7 +2524,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.AffiliateApi(api_client)
     commission_program_id = 'commission_program_id_example' # str | 
     update_commission_program_request = keap_core_v2_client.UpdateCommissionProgramRequest() # UpdateCommissionProgramRequest | 
-    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update an Affiliate Commission Program
@@ -2541,7 +2543,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commission_program_id** | **str**|  | 
  **update_commission_program_request** | [**UpdateCommissionProgramRequest**](UpdateCommissionProgramRequest.md)|  | 
- **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

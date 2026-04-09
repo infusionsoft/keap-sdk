@@ -61,11 +61,27 @@ class CreateCompanyRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'address' => '\Keap\Core\V2\Model\Address',
         'notes' => 'string',
         'website' => 'string',
+        'suffix' => 'string',
+        'title' => 'string',
         'company_name' => 'string',
         'custom_fields' => '\Keap\Core\V2\Model\CustomFieldValue[]',
         'email_address' => '\Keap\Core\V2\Model\EmailAddress',
         'fax_number' => '\Keap\Core\V2\Model\FaxNumber',
-        'phone_number' => '\Keap\Core\V2\Model\PhoneNumber'
+        'phone_number' => '\Keap\Core\V2\Model\PhoneNumber',
+        'anniversary_date' => 'string',
+        'assistant_name' => 'string',
+        'assistant_phone' => 'string',
+        'billing_information' => 'string',
+        'birth_date' => 'string',
+        'contact_type' => 'string',
+        'first_name' => 'string',
+        'job_title' => 'string',
+        'last_name' => 'string',
+        'middle_name' => 'string',
+        'preferred_name' => 'string',
+        'owner_id' => 'string',
+        'referral_code' => 'string',
+        'spouse_name' => 'string'
     ];
 
     /**
@@ -79,11 +95,27 @@ class CreateCompanyRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'address' => null,
         'notes' => null,
         'website' => null,
+        'suffix' => null,
+        'title' => null,
         'company_name' => null,
         'custom_fields' => null,
         'email_address' => null,
         'fax_number' => null,
-        'phone_number' => null
+        'phone_number' => null,
+        'anniversary_date' => null,
+        'assistant_name' => null,
+        'assistant_phone' => null,
+        'billing_information' => null,
+        'birth_date' => null,
+        'contact_type' => null,
+        'first_name' => null,
+        'job_title' => null,
+        'last_name' => null,
+        'middle_name' => null,
+        'preferred_name' => null,
+        'owner_id' => null,
+        'referral_code' => null,
+        'spouse_name' => null
     ];
 
     /**
@@ -95,11 +127,27 @@ class CreateCompanyRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'address' => false,
         'notes' => false,
         'website' => false,
+        'suffix' => false,
+        'title' => false,
         'company_name' => false,
         'custom_fields' => false,
         'email_address' => false,
         'fax_number' => false,
-        'phone_number' => false
+        'phone_number' => false,
+        'anniversary_date' => false,
+        'assistant_name' => false,
+        'assistant_phone' => false,
+        'billing_information' => false,
+        'birth_date' => false,
+        'contact_type' => false,
+        'first_name' => false,
+        'job_title' => false,
+        'last_name' => false,
+        'middle_name' => false,
+        'preferred_name' => false,
+        'owner_id' => false,
+        'referral_code' => false,
+        'spouse_name' => false
     ];
 
     /**
@@ -191,11 +239,27 @@ class CreateCompanyRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'address' => 'address',
         'notes' => 'notes',
         'website' => 'website',
+        'suffix' => 'suffix',
+        'title' => 'title',
         'company_name' => 'company_name',
         'custom_fields' => 'custom_fields',
         'email_address' => 'email_address',
         'fax_number' => 'fax_number',
-        'phone_number' => 'phone_number'
+        'phone_number' => 'phone_number',
+        'anniversary_date' => 'anniversary_date',
+        'assistant_name' => 'assistant_name',
+        'assistant_phone' => 'assistant_phone',
+        'billing_information' => 'billing_information',
+        'birth_date' => 'birth_date',
+        'contact_type' => 'contact_type',
+        'first_name' => 'first_name',
+        'job_title' => 'job_title',
+        'last_name' => 'last_name',
+        'middle_name' => 'middle_name',
+        'preferred_name' => 'preferred_name',
+        'owner_id' => 'owner_id',
+        'referral_code' => 'referral_code',
+        'spouse_name' => 'spouse_name'
     ];
 
     /**
@@ -207,11 +271,27 @@ class CreateCompanyRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'address' => 'setAddress',
         'notes' => 'setNotes',
         'website' => 'setWebsite',
+        'suffix' => 'setSuffix',
+        'title' => 'setTitle',
         'company_name' => 'setCompanyName',
         'custom_fields' => 'setCustomFields',
         'email_address' => 'setEmailAddress',
         'fax_number' => 'setFaxNumber',
-        'phone_number' => 'setPhoneNumber'
+        'phone_number' => 'setPhoneNumber',
+        'anniversary_date' => 'setAnniversaryDate',
+        'assistant_name' => 'setAssistantName',
+        'assistant_phone' => 'setAssistantPhone',
+        'billing_information' => 'setBillingInformation',
+        'birth_date' => 'setBirthDate',
+        'contact_type' => 'setContactType',
+        'first_name' => 'setFirstName',
+        'job_title' => 'setJobTitle',
+        'last_name' => 'setLastName',
+        'middle_name' => 'setMiddleName',
+        'preferred_name' => 'setPreferredName',
+        'owner_id' => 'setOwnerId',
+        'referral_code' => 'setReferralCode',
+        'spouse_name' => 'setSpouseName'
     ];
 
     /**
@@ -223,11 +303,27 @@ class CreateCompanyRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'address' => 'getAddress',
         'notes' => 'getNotes',
         'website' => 'getWebsite',
+        'suffix' => 'getSuffix',
+        'title' => 'getTitle',
         'company_name' => 'getCompanyName',
         'custom_fields' => 'getCustomFields',
         'email_address' => 'getEmailAddress',
         'fax_number' => 'getFaxNumber',
-        'phone_number' => 'getPhoneNumber'
+        'phone_number' => 'getPhoneNumber',
+        'anniversary_date' => 'getAnniversaryDate',
+        'assistant_name' => 'getAssistantName',
+        'assistant_phone' => 'getAssistantPhone',
+        'billing_information' => 'getBillingInformation',
+        'birth_date' => 'getBirthDate',
+        'contact_type' => 'getContactType',
+        'first_name' => 'getFirstName',
+        'job_title' => 'getJobTitle',
+        'last_name' => 'getLastName',
+        'middle_name' => 'getMiddleName',
+        'preferred_name' => 'getPreferredName',
+        'owner_id' => 'getOwnerId',
+        'referral_code' => 'getReferralCode',
+        'spouse_name' => 'getSpouseName'
     ];
 
     /**
@@ -290,11 +386,27 @@ class CreateCompanyRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('address', $data ?? [], null);
         $this->setIfExists('notes', $data ?? [], null);
         $this->setIfExists('website', $data ?? [], null);
+        $this->setIfExists('suffix', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('company_name', $data ?? [], null);
         $this->setIfExists('custom_fields', $data ?? [], null);
         $this->setIfExists('email_address', $data ?? [], null);
         $this->setIfExists('fax_number', $data ?? [], null);
         $this->setIfExists('phone_number', $data ?? [], null);
+        $this->setIfExists('anniversary_date', $data ?? [], null);
+        $this->setIfExists('assistant_name', $data ?? [], null);
+        $this->setIfExists('assistant_phone', $data ?? [], null);
+        $this->setIfExists('billing_information', $data ?? [], null);
+        $this->setIfExists('birth_date', $data ?? [], null);
+        $this->setIfExists('contact_type', $data ?? [], null);
+        $this->setIfExists('first_name', $data ?? [], null);
+        $this->setIfExists('job_title', $data ?? [], null);
+        $this->setIfExists('last_name', $data ?? [], null);
+        $this->setIfExists('middle_name', $data ?? [], null);
+        $this->setIfExists('preferred_name', $data ?? [], null);
+        $this->setIfExists('owner_id', $data ?? [], null);
+        $this->setIfExists('referral_code', $data ?? [], null);
+        $this->setIfExists('spouse_name', $data ?? [], null);
     }
 
     /**
@@ -416,6 +528,60 @@ class CreateCompanyRequest implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable website cannot be null');
         }
         $this->container['website'] = $website;
+
+        return $this;
+    }
+
+    /**
+     * Gets suffix
+     *
+     * @return string|null
+     */
+    public function getSuffix()
+    {
+        return $this->container['suffix'];
+    }
+
+    /**
+     * Sets suffix
+     *
+     * @param string|null $suffix Name suffix
+     *
+     * @return self
+     */
+    public function setSuffix($suffix)
+    {
+        if (is_null($suffix)) {
+            throw new \InvalidArgumentException('non-nullable suffix cannot be null');
+        }
+        $this->container['suffix'] = $suffix;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title Name prefix or salutation
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        }
+        $this->container['title'] = $title;
 
         return $this;
     }
@@ -551,6 +717,384 @@ class CreateCompanyRequest implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
         }
         $this->container['phone_number'] = $phone_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets anniversary_date
+     *
+     * @return string|null
+     */
+    public function getAnniversaryDate()
+    {
+        return $this->container['anniversary_date'];
+    }
+
+    /**
+     * Sets anniversary_date
+     *
+     * @param string|null $anniversary_date The anniversary date
+     *
+     * @return self
+     */
+    public function setAnniversaryDate($anniversary_date)
+    {
+        if (is_null($anniversary_date)) {
+            throw new \InvalidArgumentException('non-nullable anniversary_date cannot be null');
+        }
+        $this->container['anniversary_date'] = $anniversary_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets assistant_name
+     *
+     * @return string|null
+     */
+    public function getAssistantName()
+    {
+        return $this->container['assistant_name'];
+    }
+
+    /**
+     * Sets assistant_name
+     *
+     * @param string|null $assistant_name The name of the company contact's assistant
+     *
+     * @return self
+     */
+    public function setAssistantName($assistant_name)
+    {
+        if (is_null($assistant_name)) {
+            throw new \InvalidArgumentException('non-nullable assistant_name cannot be null');
+        }
+        $this->container['assistant_name'] = $assistant_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets assistant_phone
+     *
+     * @return string|null
+     */
+    public function getAssistantPhone()
+    {
+        return $this->container['assistant_phone'];
+    }
+
+    /**
+     * Sets assistant_phone
+     *
+     * @param string|null $assistant_phone The phone number of the company contact's assistant
+     *
+     * @return self
+     */
+    public function setAssistantPhone($assistant_phone)
+    {
+        if (is_null($assistant_phone)) {
+            throw new \InvalidArgumentException('non-nullable assistant_phone cannot be null');
+        }
+        $this->container['assistant_phone'] = $assistant_phone;
+
+        return $this;
+    }
+
+    /**
+     * Gets billing_information
+     *
+     * @return string|null
+     */
+    public function getBillingInformation()
+    {
+        return $this->container['billing_information'];
+    }
+
+    /**
+     * Sets billing_information
+     *
+     * @param string|null $billing_information Billing information for the company
+     *
+     * @return self
+     */
+    public function setBillingInformation($billing_information)
+    {
+        if (is_null($billing_information)) {
+            throw new \InvalidArgumentException('non-nullable billing_information cannot be null');
+        }
+        $this->container['billing_information'] = $billing_information;
+
+        return $this;
+    }
+
+    /**
+     * Gets birth_date
+     *
+     * @return string|null
+     */
+    public function getBirthDate()
+    {
+        return $this->container['birth_date'];
+    }
+
+    /**
+     * Sets birth_date
+     *
+     * @param string|null $birth_date The birth date
+     *
+     * @return self
+     */
+    public function setBirthDate($birth_date)
+    {
+        if (is_null($birth_date)) {
+            throw new \InvalidArgumentException('non-nullable birth_date cannot be null');
+        }
+        $this->container['birth_date'] = $birth_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_type
+     *
+     * @return string|null
+     */
+    public function getContactType()
+    {
+        return $this->container['contact_type'];
+    }
+
+    /**
+     * Sets contact_type
+     *
+     * @param string|null $contact_type Type of contact
+     *
+     * @return self
+     */
+    public function setContactType($contact_type)
+    {
+        if (is_null($contact_type)) {
+            throw new \InvalidArgumentException('non-nullable contact_type cannot be null');
+        }
+        $this->container['contact_type'] = $contact_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets first_name
+     *
+     * @return string|null
+     */
+    public function getFirstName()
+    {
+        return $this->container['first_name'];
+    }
+
+    /**
+     * Sets first_name
+     *
+     * @param string|null $first_name First name of the company contact
+     *
+     * @return self
+     */
+    public function setFirstName($first_name)
+    {
+        if (is_null($first_name)) {
+            throw new \InvalidArgumentException('non-nullable first_name cannot be null');
+        }
+        $this->container['first_name'] = $first_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets job_title
+     *
+     * @return string|null
+     */
+    public function getJobTitle()
+    {
+        return $this->container['job_title'];
+    }
+
+    /**
+     * Sets job_title
+     *
+     * @param string|null $job_title Job title of the company contact
+     *
+     * @return self
+     */
+    public function setJobTitle($job_title)
+    {
+        if (is_null($job_title)) {
+            throw new \InvalidArgumentException('non-nullable job_title cannot be null');
+        }
+        $this->container['job_title'] = $job_title;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_name
+     *
+     * @return string|null
+     */
+    public function getLastName()
+    {
+        return $this->container['last_name'];
+    }
+
+    /**
+     * Sets last_name
+     *
+     * @param string|null $last_name Last name of the company contact
+     *
+     * @return self
+     */
+    public function setLastName($last_name)
+    {
+        if (is_null($last_name)) {
+            throw new \InvalidArgumentException('non-nullable last_name cannot be null');
+        }
+        $this->container['last_name'] = $last_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets middle_name
+     *
+     * @return string|null
+     */
+    public function getMiddleName()
+    {
+        return $this->container['middle_name'];
+    }
+
+    /**
+     * Sets middle_name
+     *
+     * @param string|null $middle_name Middle name of the company contact
+     *
+     * @return self
+     */
+    public function setMiddleName($middle_name)
+    {
+        if (is_null($middle_name)) {
+            throw new \InvalidArgumentException('non-nullable middle_name cannot be null');
+        }
+        $this->container['middle_name'] = $middle_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets preferred_name
+     *
+     * @return string|null
+     */
+    public function getPreferredName()
+    {
+        return $this->container['preferred_name'];
+    }
+
+    /**
+     * Sets preferred_name
+     *
+     * @param string|null $preferred_name Preferred name or nickname of the company contact
+     *
+     * @return self
+     */
+    public function setPreferredName($preferred_name)
+    {
+        if (is_null($preferred_name)) {
+            throw new \InvalidArgumentException('non-nullable preferred_name cannot be null');
+        }
+        $this->container['preferred_name'] = $preferred_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets owner_id
+     *
+     * @return string|null
+     */
+    public function getOwnerId()
+    {
+        return $this->container['owner_id'];
+    }
+
+    /**
+     * Sets owner_id
+     *
+     * @param string|null $owner_id ID of the user who owns this company
+     *
+     * @return self
+     */
+    public function setOwnerId($owner_id)
+    {
+        if (is_null($owner_id)) {
+            throw new \InvalidArgumentException('non-nullable owner_id cannot be null');
+        }
+        $this->container['owner_id'] = $owner_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets referral_code
+     *
+     * @return string|null
+     */
+    public function getReferralCode()
+    {
+        return $this->container['referral_code'];
+    }
+
+    /**
+     * Sets referral_code
+     *
+     * @param string|null $referral_code Referral code
+     *
+     * @return self
+     */
+    public function setReferralCode($referral_code)
+    {
+        if (is_null($referral_code)) {
+            throw new \InvalidArgumentException('non-nullable referral_code cannot be null');
+        }
+        $this->container['referral_code'] = $referral_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets spouse_name
+     *
+     * @return string|null
+     */
+    public function getSpouseName()
+    {
+        return $this->container['spouse_name'];
+    }
+
+    /**
+     * Sets spouse_name
+     *
+     * @param string|null $spouse_name Spouse's name
+     *
+     * @return self
+     */
+    public function setSpouseName($spouse_name)
+    {
+        if (is_null($spouse_name)) {
+            throw new \InvalidArgumentException('non-nullable spouse_name cannot be null');
+        }
+        $this->container['spouse_name'] = $spouse_name;
 
         return $this;
     }

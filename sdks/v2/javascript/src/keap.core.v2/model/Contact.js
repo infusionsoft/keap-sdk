@@ -80,6 +80,9 @@ class Contact {
             if (data.hasOwnProperty('website')) {
                 obj['website'] = ApiClient.convertToType(data['website'], 'String');
             }
+            if (data.hasOwnProperty('groups')) {
+                obj['groups'] = ApiClient.convertToType(data['groups'], 'String');
+            }
             if (data.hasOwnProperty('update_time')) {
                 obj['update_time'] = ApiClient.convertToType(data['update_time'], 'String');
             }
@@ -155,6 +158,24 @@ class Contact {
             if (data.hasOwnProperty('utm_parameters')) {
                 obj['utm_parameters'] = ApiClient.convertToType(data['utm_parameters'], [ContactUtmResponse]);
             }
+            if (data.hasOwnProperty('account_id')) {
+                obj['account_id'] = ApiClient.convertToType(data['account_id'], 'String');
+            }
+            if (data.hasOwnProperty('assistant_name')) {
+                obj['assistant_name'] = ApiClient.convertToType(data['assistant_name'], 'String');
+            }
+            if (data.hasOwnProperty('assistant_phone')) {
+                obj['assistant_phone'] = ApiClient.convertToType(data['assistant_phone'], 'String');
+            }
+            if (data.hasOwnProperty('billing_information')) {
+                obj['billing_information'] = ApiClient.convertToType(data['billing_information'], 'String');
+            }
+            if (data.hasOwnProperty('created_by')) {
+                obj['created_by'] = ApiClient.convertToType(data['created_by'], 'String');
+            }
+            if (data.hasOwnProperty('last_updated_by')) {
+                obj['last_updated_by'] = ApiClient.convertToType(data['last_updated_by'], 'String');
+            }
         }
         return obj;
     }
@@ -208,6 +229,10 @@ class Contact {
         // ensure the json data is a string
         if (data['website'] && !(typeof data['website'] === 'string' || data['website'] instanceof String)) {
             throw new Error("Expected the field `website` to be a primitive type in the JSON string but got " + data['website']);
+        }
+        // ensure the json data is a string
+        if (data['groups'] && !(typeof data['groups'] === 'string' || data['groups'] instanceof String)) {
+            throw new Error("Expected the field `groups` to be a primitive type in the JSON string but got " + data['groups']);
         }
         // ensure the json data is a string
         if (data['update_time'] && !(typeof data['update_time'] === 'string' || data['update_time'] instanceof String)) {
@@ -345,6 +370,30 @@ class Contact {
                 ContactUtmResponse.validateJSON(item);
             };
         }
+        // ensure the json data is a string
+        if (data['account_id'] && !(typeof data['account_id'] === 'string' || data['account_id'] instanceof String)) {
+            throw new Error("Expected the field `account_id` to be a primitive type in the JSON string but got " + data['account_id']);
+        }
+        // ensure the json data is a string
+        if (data['assistant_name'] && !(typeof data['assistant_name'] === 'string' || data['assistant_name'] instanceof String)) {
+            throw new Error("Expected the field `assistant_name` to be a primitive type in the JSON string but got " + data['assistant_name']);
+        }
+        // ensure the json data is a string
+        if (data['assistant_phone'] && !(typeof data['assistant_phone'] === 'string' || data['assistant_phone'] instanceof String)) {
+            throw new Error("Expected the field `assistant_phone` to be a primitive type in the JSON string but got " + data['assistant_phone']);
+        }
+        // ensure the json data is a string
+        if (data['billing_information'] && !(typeof data['billing_information'] === 'string' || data['billing_information'] instanceof String)) {
+            throw new Error("Expected the field `billing_information` to be a primitive type in the JSON string but got " + data['billing_information']);
+        }
+        // ensure the json data is a string
+        if (data['created_by'] && !(typeof data['created_by'] === 'string' || data['created_by'] instanceof String)) {
+            throw new Error("Expected the field `created_by` to be a primitive type in the JSON string but got " + data['created_by']);
+        }
+        // ensure the json data is a string
+        if (data['last_updated_by'] && !(typeof data['last_updated_by'] === 'string' || data['last_updated_by'] instanceof String)) {
+            throw new Error("Expected the field `last_updated_by` to be a primitive type in the JSON string but got " + data['last_updated_by']);
+        }
 
         return true;
     }
@@ -398,6 +447,11 @@ Contact.prototype['suffix'] = undefined;
  * @member {String} website
  */
 Contact.prototype['website'] = undefined;
+
+/**
+ * @member {String} groups
+ */
+Contact.prototype['groups'] = undefined;
 
 /**
  * Last update timestamp (ISO-8601)
@@ -540,6 +594,36 @@ Contact.prototype['time_zone'] = undefined;
  * @member {Array.<module:keap.core.v2/model/ContactUtmResponse>} utm_parameters
  */
 Contact.prototype['utm_parameters'] = undefined;
+
+/**
+ * @member {String} account_id
+ */
+Contact.prototype['account_id'] = undefined;
+
+/**
+ * @member {String} assistant_name
+ */
+Contact.prototype['assistant_name'] = undefined;
+
+/**
+ * @member {String} assistant_phone
+ */
+Contact.prototype['assistant_phone'] = undefined;
+
+/**
+ * @member {String} billing_information
+ */
+Contact.prototype['billing_information'] = undefined;
+
+/**
+ * @member {String} created_by
+ */
+Contact.prototype['created_by'] = undefined;
+
+/**
+ * @member {String} last_updated_by
+ */
+Contact.prototype['last_updated_by'] = undefined;
 
 
 

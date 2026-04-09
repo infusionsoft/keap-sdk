@@ -962,7 +962,7 @@ import io.github.resilience4j.retry.Retry;
    * @return RestV2Opportunity
    * @throws ApiException if fails to make API call
    */
-  public RestV2Opportunity updateOpportunity(String opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, String updateMask) throws ApiException {
+  public RestV2Opportunity updateOpportunity(String opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Object updateMask) throws ApiException {
     ApiResponse<RestV2Opportunity> localVarResponse = updateOpportunityWithHttpInfo(opportunityId, updateOpportunityRequestV2, updateMask);
     return localVarResponse.getData();
   }
@@ -976,7 +976,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;RestV2Opportunity&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RestV2Opportunity> updateOpportunityWithHttpInfo(String opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, String updateMask) throws ApiException {
+  public ApiResponse<RestV2Opportunity> updateOpportunityWithHttpInfo(String opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateOpportunityRequestBuilder(opportunityId, updateOpportunityRequestV2, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1017,7 +1017,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateOpportunityRequestBuilder(String opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateOpportunityRequestBuilder(String opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Object updateMask) throws ApiException {
     // verify the required parameter 'opportunityId' is set
     if (opportunityId == null) {
       throw new ApiException(400, "Missing the required parameter 'opportunityId' when calling updateOpportunity");
@@ -1077,7 +1077,7 @@ import io.github.resilience4j.retry.Retry;
    * @return CustomFieldMetaData
    * @throws ApiException if fails to make API call
    */
-  public CustomFieldMetaData updateOpportunityCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, String updateMask) throws ApiException {
+  public CustomFieldMetaData updateOpportunityCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
     ApiResponse<CustomFieldMetaData> localVarResponse = updateOpportunityCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -1091,7 +1091,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;CustomFieldMetaData&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CustomFieldMetaData> updateOpportunityCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, String updateMask) throws ApiException {
+  public ApiResponse<CustomFieldMetaData> updateOpportunityCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateOpportunityCustomFieldRequestBuilder(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1132,7 +1132,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateOpportunityCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateOpportunityCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'customFieldId' is set
     if (customFieldId == null) {
       throw new ApiException(400, "Missing the required parameter 'customFieldId' when calling updateOpportunityCustomField");
@@ -1192,7 +1192,7 @@ import io.github.resilience4j.retry.Retry;
    * @return RestOpportunityStage
    * @throws ApiException if fails to make API call
    */
-  public RestOpportunityStage updateOpportunityStage(String stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, String updateMask) throws ApiException {
+  public RestOpportunityStage updateOpportunityStage(String stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Object updateMask) throws ApiException {
     ApiResponse<RestOpportunityStage> localVarResponse = updateOpportunityStageWithHttpInfo(stageId, updateOpportunityStageRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -1206,7 +1206,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;RestOpportunityStage&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RestOpportunityStage> updateOpportunityStageWithHttpInfo(String stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, String updateMask) throws ApiException {
+  public ApiResponse<RestOpportunityStage> updateOpportunityStageWithHttpInfo(String stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateOpportunityStageRequestBuilder(stageId, updateOpportunityStageRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1247,7 +1247,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateOpportunityStageRequestBuilder(String stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateOpportunityStageRequestBuilder(String stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'stageId' is set
     if (stageId == null) {
       throw new ApiException(400, "Missing the required parameter 'stageId' when calling updateOpportunityStage");

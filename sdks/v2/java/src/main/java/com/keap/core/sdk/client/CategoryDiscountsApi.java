@@ -479,7 +479,7 @@ import io.github.resilience4j.retry.Retry;
    * @return CategoryDiscount
    * @throws ApiException if fails to make API call
    */
-  public CategoryDiscount updateCategoryDiscount(String discountId, UpdateCategoryDiscountRequest updateCategoryDiscountRequest, String updateMask) throws ApiException {
+  public CategoryDiscount updateCategoryDiscount(String discountId, UpdateCategoryDiscountRequest updateCategoryDiscountRequest, Object updateMask) throws ApiException {
     ApiResponse<CategoryDiscount> localVarResponse = updateCategoryDiscountWithHttpInfo(discountId, updateCategoryDiscountRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -493,7 +493,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;CategoryDiscount&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CategoryDiscount> updateCategoryDiscountWithHttpInfo(String discountId, UpdateCategoryDiscountRequest updateCategoryDiscountRequest, String updateMask) throws ApiException {
+  public ApiResponse<CategoryDiscount> updateCategoryDiscountWithHttpInfo(String discountId, UpdateCategoryDiscountRequest updateCategoryDiscountRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateCategoryDiscountRequestBuilder(discountId, updateCategoryDiscountRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -534,7 +534,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateCategoryDiscountRequestBuilder(String discountId, UpdateCategoryDiscountRequest updateCategoryDiscountRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateCategoryDiscountRequestBuilder(String discountId, UpdateCategoryDiscountRequest updateCategoryDiscountRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'discountId' is set
     if (discountId == null) {
       throw new ApiException(400, "Missing the required parameter 'discountId' when calling updateCategoryDiscount");

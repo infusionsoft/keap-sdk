@@ -665,7 +665,7 @@ import io.github.resilience4j.retry.Retry;
    * Update a file
    * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
    * @param fileId  (required)
-   * @param updateMask Update Mask (optional)
+   * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
    * @param _file File to upload. This is a file sent as multi-part (not a string) (optional)
    * @param fileName File name (optional)
    * @param isPublic Is public (optional)
@@ -675,7 +675,7 @@ import io.github.resilience4j.retry.Retry;
    * @return FileMetadata
    * @throws ApiException if fails to make API call
    */
-  public FileMetadata updateFile(String fileId, String updateMask, File _file, String fileName, Boolean isPublic, File _file2, String fileName2, Boolean isPublic2) throws ApiException {
+  public FileMetadata updateFile(String fileId, Object updateMask, File _file, String fileName, Boolean isPublic, File _file2, String fileName2, Boolean isPublic2) throws ApiException {
     ApiResponse<FileMetadata> localVarResponse = updateFileWithHttpInfo(fileId, updateMask, _file, fileName, isPublic, _file2, fileName2, isPublic2);
     return localVarResponse.getData();
   }
@@ -684,7 +684,7 @@ import io.github.resilience4j.retry.Retry;
    * Update a file
    * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
    * @param fileId  (required)
-   * @param updateMask Update Mask (optional)
+   * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
    * @param _file File to upload. This is a file sent as multi-part (not a string) (optional)
    * @param fileName File name (optional)
    * @param isPublic Is public (optional)
@@ -694,7 +694,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;FileMetadata&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<FileMetadata> updateFileWithHttpInfo(String fileId, String updateMask, File _file, String fileName, Boolean isPublic, File _file2, String fileName2, Boolean isPublic2) throws ApiException {
+  public ApiResponse<FileMetadata> updateFileWithHttpInfo(String fileId, Object updateMask, File _file, String fileName, Boolean isPublic, File _file2, String fileName2, Boolean isPublic2) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateFileRequestBuilder(fileId, updateMask, _file, fileName, isPublic, _file2, fileName2, isPublic2);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -735,7 +735,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateFileRequestBuilder(String fileId, String updateMask, File _file, String fileName, Boolean isPublic, File _file2, String fileName2, Boolean isPublic2) throws ApiException {
+  private HttpRequest.Builder updateFileRequestBuilder(String fileId, Object updateMask, File _file, String fileName, Boolean isPublic, File _file2, String fileName2, Boolean isPublic2) throws ApiException {
     // verify the required parameter 'fileId' is set
     if (fileId == null) {
       throw new ApiException(400, "Missing the required parameter 'fileId' when calling updateFile");

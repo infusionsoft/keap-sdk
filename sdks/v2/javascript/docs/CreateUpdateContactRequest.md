@@ -31,6 +31,9 @@ Name | Type | Description | Notes
 **spouseName** | **String** | Spouse&#39;s name | [optional] 
 **timeZone** | **String** | Contact&#39;s timezone | [optional] 
 **utmParameters** | [**CreateContactUtmPropertiesRequest**](CreateContactUtmPropertiesRequest.md) |  | [optional] 
+**assistantName** | **String** |  | [optional] 
+**assistantPhone** | **String** |  | [optional] 
+**billingInformation** | **String** |  | [optional] 
 
 
 

@@ -71,7 +71,10 @@ import jakarta.validation.Valid;
   CreateUpdateContactRequest.JSON_PROPERTY_SOURCE_TYPE,
   CreateUpdateContactRequest.JSON_PROPERTY_SPOUSE_NAME,
   CreateUpdateContactRequest.JSON_PROPERTY_TIME_ZONE,
-  CreateUpdateContactRequest.JSON_PROPERTY_UTM_PARAMETERS
+  CreateUpdateContactRequest.JSON_PROPERTY_UTM_PARAMETERS,
+  CreateUpdateContactRequest.JSON_PROPERTY_ASSISTANT_NAME,
+  CreateUpdateContactRequest.JSON_PROPERTY_ASSISTANT_PHONE,
+  CreateUpdateContactRequest.JSON_PROPERTY_BILLING_INFORMATION
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CreateUpdateContactRequest implements Serializable {
@@ -213,6 +216,15 @@ public class CreateUpdateContactRequest implements Serializable {
 
   public static final String JSON_PROPERTY_UTM_PARAMETERS = "utm_parameters";
   @jakarta.annotation.Nullable  private CreateContactUtmPropertiesRequest utmParameters;
+
+  public static final String JSON_PROPERTY_ASSISTANT_NAME = "assistant_name";
+  @jakarta.annotation.Nullable  private String assistantName;
+
+  public static final String JSON_PROPERTY_ASSISTANT_PHONE = "assistant_phone";
+  @jakarta.annotation.Nullable  private String assistantPhone;
+
+  public static final String JSON_PROPERTY_BILLING_INFORMATION = "billing_information";
+  @jakarta.annotation.Nullable  private String billingInformation;
 
   public CreateUpdateContactRequest() { 
   }
@@ -921,6 +933,78 @@ public class CreateUpdateContactRequest implements Serializable {
     this.utmParameters = utmParameters;
   }
 
+
+  public CreateUpdateContactRequest assistantName(@jakarta.annotation.Nullable String assistantName) {
+    this.assistantName = assistantName;
+    return this;
+  }
+
+  /**
+   * Get assistantName
+   * @return assistantName
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_ASSISTANT_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getAssistantName() {
+    return assistantName;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ASSISTANT_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAssistantName(@jakarta.annotation.Nullable String assistantName) {
+    this.assistantName = assistantName;
+  }
+
+
+  public CreateUpdateContactRequest assistantPhone(@jakarta.annotation.Nullable String assistantPhone) {
+    this.assistantPhone = assistantPhone;
+    return this;
+  }
+
+  /**
+   * Get assistantPhone
+   * @return assistantPhone
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_ASSISTANT_PHONE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getAssistantPhone() {
+    return assistantPhone;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ASSISTANT_PHONE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAssistantPhone(@jakarta.annotation.Nullable String assistantPhone) {
+    this.assistantPhone = assistantPhone;
+  }
+
+
+  public CreateUpdateContactRequest billingInformation(@jakarta.annotation.Nullable String billingInformation) {
+    this.billingInformation = billingInformation;
+    return this;
+  }
+
+  /**
+   * Get billingInformation
+   * @return billingInformation
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_BILLING_INFORMATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getBillingInformation() {
+    return billingInformation;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BILLING_INFORMATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBillingInformation(@jakarta.annotation.Nullable String billingInformation) {
+    this.billingInformation = billingInformation;
+  }
+
   /**
    * Return true if this CreateUpdateContactRequest object is equal to o.
    */
@@ -959,12 +1043,15 @@ public class CreateUpdateContactRequest implements Serializable {
         Objects.equals(this.sourceType, createUpdateContactRequest.sourceType) &&
         Objects.equals(this.spouseName, createUpdateContactRequest.spouseName) &&
         Objects.equals(this.timeZone, createUpdateContactRequest.timeZone) &&
-        Objects.equals(this.utmParameters, createUpdateContactRequest.utmParameters);
+        Objects.equals(this.utmParameters, createUpdateContactRequest.utmParameters) &&
+        Objects.equals(this.assistantName, createUpdateContactRequest.assistantName) &&
+        Objects.equals(this.assistantPhone, createUpdateContactRequest.assistantPhone) &&
+        Objects.equals(this.billingInformation, createUpdateContactRequest.billingInformation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(addresses, company, origin, prefix, suffix, website, anniversaryDate, birthDate, contactType, customFields, emailAddresses, familyName, faxNumbers, givenName, jobTitle, leadsourceId, middleName, ownerId, phoneNumbers, preferredLocale, preferredName, referralCode, socialAccounts, sourceType, spouseName, timeZone, utmParameters);
+    return Objects.hash(addresses, company, origin, prefix, suffix, website, anniversaryDate, birthDate, contactType, customFields, emailAddresses, familyName, faxNumbers, givenName, jobTitle, leadsourceId, middleName, ownerId, phoneNumbers, preferredLocale, preferredName, referralCode, socialAccounts, sourceType, spouseName, timeZone, utmParameters, assistantName, assistantPhone, billingInformation);
   }
 
   @Override
@@ -998,6 +1085,9 @@ public class CreateUpdateContactRequest implements Serializable {
     sb.append("    spouseName: ").append(toIndentedString(spouseName)).append("\n");
     sb.append("    timeZone: ").append(toIndentedString(timeZone)).append("\n");
     sb.append("    utmParameters: ").append(toIndentedString(utmParameters)).append("\n");
+    sb.append("    assistantName: ").append(toIndentedString(assistantName)).append("\n");
+    sb.append("    assistantPhone: ").append(toIndentedString(assistantPhone)).append("\n");
+    sb.append("    billingInformation: ").append(toIndentedString(billingInformation)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1133,6 +1223,18 @@ public class CreateUpdateContactRequest implements Serializable {
               this.instance.utmParameters = utmParameters;
           return this;
         }
+            public CreateUpdateContactRequest.Builder assistantName(String assistantName) {
+              this.instance.assistantName = assistantName;
+          return this;
+        }
+            public CreateUpdateContactRequest.Builder assistantPhone(String assistantPhone) {
+              this.instance.assistantPhone = assistantPhone;
+          return this;
+        }
+            public CreateUpdateContactRequest.Builder billingInformation(String billingInformation) {
+              this.instance.billingInformation = billingInformation;
+          return this;
+        }
         
     
         /**
@@ -1193,7 +1295,10 @@ public class CreateUpdateContactRequest implements Serializable {
           .sourceType(getSourceType())
           .spouseName(getSpouseName())
           .timeZone(getTimeZone())
-          .utmParameters(getUtmParameters());
+          .utmParameters(getUtmParameters())
+          .assistantName(getAssistantName())
+          .assistantPhone(getAssistantPhone())
+          .billingInformation(getBillingInformation());
       }
 }
 

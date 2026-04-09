@@ -44,11 +44,27 @@ import jakarta.validation.Valid;
   UpdateCompanyRequest.JSON_PROPERTY_ADDRESS,
   UpdateCompanyRequest.JSON_PROPERTY_NOTES,
   UpdateCompanyRequest.JSON_PROPERTY_WEBSITE,
+  UpdateCompanyRequest.JSON_PROPERTY_SUFFIX,
+  UpdateCompanyRequest.JSON_PROPERTY_TITLE,
   UpdateCompanyRequest.JSON_PROPERTY_COMPANY_NAME,
   UpdateCompanyRequest.JSON_PROPERTY_CUSTOM_FIELDS,
   UpdateCompanyRequest.JSON_PROPERTY_EMAIL_ADDRESS,
   UpdateCompanyRequest.JSON_PROPERTY_FAX_NUMBER,
-  UpdateCompanyRequest.JSON_PROPERTY_PHONE_NUMBER
+  UpdateCompanyRequest.JSON_PROPERTY_PHONE_NUMBER,
+  UpdateCompanyRequest.JSON_PROPERTY_ANNIVERSARY_DATE,
+  UpdateCompanyRequest.JSON_PROPERTY_ASSISTANT_NAME,
+  UpdateCompanyRequest.JSON_PROPERTY_ASSISTANT_PHONE,
+  UpdateCompanyRequest.JSON_PROPERTY_BILLING_INFORMATION,
+  UpdateCompanyRequest.JSON_PROPERTY_BIRTH_DATE,
+  UpdateCompanyRequest.JSON_PROPERTY_CONTACT_TYPE,
+  UpdateCompanyRequest.JSON_PROPERTY_FIRST_NAME,
+  UpdateCompanyRequest.JSON_PROPERTY_JOB_TITLE,
+  UpdateCompanyRequest.JSON_PROPERTY_LAST_NAME,
+  UpdateCompanyRequest.JSON_PROPERTY_MIDDLE_NAME,
+  UpdateCompanyRequest.JSON_PROPERTY_PREFERRED_NAME,
+  UpdateCompanyRequest.JSON_PROPERTY_OWNER_ID,
+  UpdateCompanyRequest.JSON_PROPERTY_REFERRAL_CODE,
+  UpdateCompanyRequest.JSON_PROPERTY_SPOUSE_NAME
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateCompanyRequest implements Serializable {
@@ -62,6 +78,12 @@ public class UpdateCompanyRequest implements Serializable {
 
   public static final String JSON_PROPERTY_WEBSITE = "website";
   @jakarta.annotation.Nullable  private String website;
+
+  public static final String JSON_PROPERTY_SUFFIX = "suffix";
+  @jakarta.annotation.Nullable  private String suffix;
+
+  public static final String JSON_PROPERTY_TITLE = "title";
+  @jakarta.annotation.Nullable  private String title;
 
   public static final String JSON_PROPERTY_COMPANY_NAME = "company_name";
   @jakarta.annotation.Nullable  private String companyName;
@@ -77,6 +99,48 @@ public class UpdateCompanyRequest implements Serializable {
 
   public static final String JSON_PROPERTY_PHONE_NUMBER = "phone_number";
   @jakarta.annotation.Nullable  private PhoneNumber phoneNumber;
+
+  public static final String JSON_PROPERTY_ANNIVERSARY_DATE = "anniversary_date";
+  @jakarta.annotation.Nullable  private String anniversaryDate;
+
+  public static final String JSON_PROPERTY_ASSISTANT_NAME = "assistant_name";
+  @jakarta.annotation.Nullable  private String assistantName;
+
+  public static final String JSON_PROPERTY_ASSISTANT_PHONE = "assistant_phone";
+  @jakarta.annotation.Nullable  private String assistantPhone;
+
+  public static final String JSON_PROPERTY_BILLING_INFORMATION = "billing_information";
+  @jakarta.annotation.Nullable  private String billingInformation;
+
+  public static final String JSON_PROPERTY_BIRTH_DATE = "birth_date";
+  @jakarta.annotation.Nullable  private String birthDate;
+
+  public static final String JSON_PROPERTY_CONTACT_TYPE = "contact_type";
+  @jakarta.annotation.Nullable  private String contactType;
+
+  public static final String JSON_PROPERTY_FIRST_NAME = "first_name";
+  @jakarta.annotation.Nullable  private String firstName;
+
+  public static final String JSON_PROPERTY_JOB_TITLE = "job_title";
+  @jakarta.annotation.Nullable  private String jobTitle;
+
+  public static final String JSON_PROPERTY_LAST_NAME = "last_name";
+  @jakarta.annotation.Nullable  private String lastName;
+
+  public static final String JSON_PROPERTY_MIDDLE_NAME = "middle_name";
+  @jakarta.annotation.Nullable  private String middleName;
+
+  public static final String JSON_PROPERTY_PREFERRED_NAME = "preferred_name";
+  @jakarta.annotation.Nullable  private String preferredName;
+
+  public static final String JSON_PROPERTY_OWNER_ID = "owner_id";
+  @jakarta.annotation.Nullable  private String ownerId;
+
+  public static final String JSON_PROPERTY_REFERRAL_CODE = "referral_code";
+  @jakarta.annotation.Nullable  private String referralCode;
+
+  public static final String JSON_PROPERTY_SPOUSE_NAME = "spouse_name";
+  @jakarta.annotation.Nullable  private String spouseName;
 
   public UpdateCompanyRequest() { 
   }
@@ -151,6 +215,54 @@ public class UpdateCompanyRequest implements Serializable {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setWebsite(@jakarta.annotation.Nullable String website) {
     this.website = website;
+  }
+
+
+  public UpdateCompanyRequest suffix(@jakarta.annotation.Nullable String suffix) {
+    this.suffix = suffix;
+    return this;
+  }
+
+  /**
+   * Name suffix
+   * @return suffix
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Jr", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Name suffix")
+  @JsonProperty(JSON_PROPERTY_SUFFIX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getSuffix() {
+    return suffix;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SUFFIX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSuffix(@jakarta.annotation.Nullable String suffix) {
+    this.suffix = suffix;
+  }
+
+
+  public UpdateCompanyRequest title(@jakarta.annotation.Nullable String title) {
+    this.title = title;
+    return this;
+  }
+
+  /**
+   * Name prefix or salutation
+   * @return title
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Dr.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Name prefix or salutation")
+  @JsonProperty(JSON_PROPERTY_TITLE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getTitle() {
+    return title;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TITLE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTitle(@jakarta.annotation.Nullable String title) {
+    this.title = title;
   }
 
 
@@ -285,6 +397,342 @@ public class UpdateCompanyRequest implements Serializable {
     this.phoneNumber = phoneNumber;
   }
 
+
+  public UpdateCompanyRequest anniversaryDate(@jakarta.annotation.Nullable String anniversaryDate) {
+    this.anniversaryDate = anniversaryDate;
+    return this;
+  }
+
+  /**
+   * The anniversary date
+   * @return anniversaryDate
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "2015-06-20", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The anniversary date")
+  @JsonProperty(JSON_PROPERTY_ANNIVERSARY_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getAnniversaryDate() {
+    return anniversaryDate;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ANNIVERSARY_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAnniversaryDate(@jakarta.annotation.Nullable String anniversaryDate) {
+    this.anniversaryDate = anniversaryDate;
+  }
+
+
+  public UpdateCompanyRequest assistantName(@jakarta.annotation.Nullable String assistantName) {
+    this.assistantName = assistantName;
+    return this;
+  }
+
+  /**
+   * The name of the company contact&#39;s assistant
+   * @return assistantName
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Jane Doe", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The name of the company contact's assistant")
+  @JsonProperty(JSON_PROPERTY_ASSISTANT_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getAssistantName() {
+    return assistantName;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ASSISTANT_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAssistantName(@jakarta.annotation.Nullable String assistantName) {
+    this.assistantName = assistantName;
+  }
+
+
+  public UpdateCompanyRequest assistantPhone(@jakarta.annotation.Nullable String assistantPhone) {
+    this.assistantPhone = assistantPhone;
+    return this;
+  }
+
+  /**
+   * The phone number of the company contact&#39;s assistant
+   * @return assistantPhone
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "555-123-4567", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The phone number of the company contact's assistant")
+  @JsonProperty(JSON_PROPERTY_ASSISTANT_PHONE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getAssistantPhone() {
+    return assistantPhone;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ASSISTANT_PHONE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAssistantPhone(@jakarta.annotation.Nullable String assistantPhone) {
+    this.assistantPhone = assistantPhone;
+  }
+
+
+  public UpdateCompanyRequest billingInformation(@jakarta.annotation.Nullable String billingInformation) {
+    this.billingInformation = billingInformation;
+    return this;
+  }
+
+  /**
+   * Billing information for the company
+   * @return billingInformation
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "NET 30", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Billing information for the company")
+  @JsonProperty(JSON_PROPERTY_BILLING_INFORMATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getBillingInformation() {
+    return billingInformation;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BILLING_INFORMATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBillingInformation(@jakarta.annotation.Nullable String billingInformation) {
+    this.billingInformation = billingInformation;
+  }
+
+
+  public UpdateCompanyRequest birthDate(@jakarta.annotation.Nullable String birthDate) {
+    this.birthDate = birthDate;
+    return this;
+  }
+
+  /**
+   * The birth date
+   * @return birthDate
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "1985-03-15", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The birth date")
+  @JsonProperty(JSON_PROPERTY_BIRTH_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getBirthDate() {
+    return birthDate;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BIRTH_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBirthDate(@jakarta.annotation.Nullable String birthDate) {
+    this.birthDate = birthDate;
+  }
+
+
+  public UpdateCompanyRequest contactType(@jakarta.annotation.Nullable String contactType) {
+    this.contactType = contactType;
+    return this;
+  }
+
+  /**
+   * Type of contact
+   * @return contactType
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Vendor", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Type of contact")
+  @JsonProperty(JSON_PROPERTY_CONTACT_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getContactType() {
+    return contactType;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CONTACT_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setContactType(@jakarta.annotation.Nullable String contactType) {
+    this.contactType = contactType;
+  }
+
+
+  public UpdateCompanyRequest firstName(@jakarta.annotation.Nullable String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+  /**
+   * First name of the company contact
+   * @return firstName
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "John", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "First name of the company contact")
+  @JsonProperty(JSON_PROPERTY_FIRST_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getFirstName() {
+    return firstName;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FIRST_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFirstName(@jakarta.annotation.Nullable String firstName) {
+    this.firstName = firstName;
+  }
+
+
+  public UpdateCompanyRequest jobTitle(@jakarta.annotation.Nullable String jobTitle) {
+    this.jobTitle = jobTitle;
+    return this;
+  }
+
+  /**
+   * Job title of the company contact
+   * @return jobTitle
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "CEO", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Job title of the company contact")
+  @JsonProperty(JSON_PROPERTY_JOB_TITLE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getJobTitle() {
+    return jobTitle;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_JOB_TITLE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setJobTitle(@jakarta.annotation.Nullable String jobTitle) {
+    this.jobTitle = jobTitle;
+  }
+
+
+  public UpdateCompanyRequest lastName(@jakarta.annotation.Nullable String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
+  /**
+   * Last name of the company contact
+   * @return lastName
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Smith", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Last name of the company contact")
+  @JsonProperty(JSON_PROPERTY_LAST_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getLastName() {
+    return lastName;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LAST_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLastName(@jakarta.annotation.Nullable String lastName) {
+    this.lastName = lastName;
+  }
+
+
+  public UpdateCompanyRequest middleName(@jakarta.annotation.Nullable String middleName) {
+    this.middleName = middleName;
+    return this;
+  }
+
+  /**
+   * Middle name of the company contact
+   * @return middleName
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Robert", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Middle name of the company contact")
+  @JsonProperty(JSON_PROPERTY_MIDDLE_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getMiddleName() {
+    return middleName;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MIDDLE_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMiddleName(@jakarta.annotation.Nullable String middleName) {
+    this.middleName = middleName;
+  }
+
+
+  public UpdateCompanyRequest preferredName(@jakarta.annotation.Nullable String preferredName) {
+    this.preferredName = preferredName;
+    return this;
+  }
+
+  /**
+   * Preferred name or nickname of the company contact
+   * @return preferredName
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Johnny", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Preferred name or nickname of the company contact")
+  @JsonProperty(JSON_PROPERTY_PREFERRED_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getPreferredName() {
+    return preferredName;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PREFERRED_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPreferredName(@jakarta.annotation.Nullable String preferredName) {
+    this.preferredName = preferredName;
+  }
+
+
+  public UpdateCompanyRequest ownerId(@jakarta.annotation.Nullable String ownerId) {
+    this.ownerId = ownerId;
+    return this;
+  }
+
+  /**
+   * ID of the user who owns this company
+   * @return ownerId
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "45", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "ID of the user who owns this company")
+  @JsonProperty(JSON_PROPERTY_OWNER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getOwnerId() {
+    return ownerId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OWNER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOwnerId(@jakarta.annotation.Nullable String ownerId) {
+    this.ownerId = ownerId;
+  }
+
+
+  public UpdateCompanyRequest referralCode(@jakarta.annotation.Nullable String referralCode) {
+    this.referralCode = referralCode;
+    return this;
+  }
+
+  /**
+   * Referral code
+   * @return referralCode
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "REF2024ABC", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Referral code")
+  @JsonProperty(JSON_PROPERTY_REFERRAL_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getReferralCode() {
+    return referralCode;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_REFERRAL_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setReferralCode(@jakarta.annotation.Nullable String referralCode) {
+    this.referralCode = referralCode;
+  }
+
+
+  public UpdateCompanyRequest spouseName(@jakarta.annotation.Nullable String spouseName) {
+    this.spouseName = spouseName;
+    return this;
+  }
+
+  /**
+   * Spouse&#39;s name
+   * @return spouseName
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Jane Smith", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Spouse's name")
+  @JsonProperty(JSON_PROPERTY_SPOUSE_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getSpouseName() {
+    return spouseName;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SPOUSE_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSpouseName(@jakarta.annotation.Nullable String spouseName) {
+    this.spouseName = spouseName;
+  }
+
   /**
    * Return true if this UpdateCompanyRequest object is equal to o.
    */
@@ -300,16 +748,32 @@ public class UpdateCompanyRequest implements Serializable {
     return Objects.equals(this.address, updateCompanyRequest.address) &&
         Objects.equals(this.notes, updateCompanyRequest.notes) &&
         Objects.equals(this.website, updateCompanyRequest.website) &&
+        Objects.equals(this.suffix, updateCompanyRequest.suffix) &&
+        Objects.equals(this.title, updateCompanyRequest.title) &&
         Objects.equals(this.companyName, updateCompanyRequest.companyName) &&
         Objects.equals(this.customFields, updateCompanyRequest.customFields) &&
         Objects.equals(this.emailAddress, updateCompanyRequest.emailAddress) &&
         Objects.equals(this.faxNumber, updateCompanyRequest.faxNumber) &&
-        Objects.equals(this.phoneNumber, updateCompanyRequest.phoneNumber);
+        Objects.equals(this.phoneNumber, updateCompanyRequest.phoneNumber) &&
+        Objects.equals(this.anniversaryDate, updateCompanyRequest.anniversaryDate) &&
+        Objects.equals(this.assistantName, updateCompanyRequest.assistantName) &&
+        Objects.equals(this.assistantPhone, updateCompanyRequest.assistantPhone) &&
+        Objects.equals(this.billingInformation, updateCompanyRequest.billingInformation) &&
+        Objects.equals(this.birthDate, updateCompanyRequest.birthDate) &&
+        Objects.equals(this.contactType, updateCompanyRequest.contactType) &&
+        Objects.equals(this.firstName, updateCompanyRequest.firstName) &&
+        Objects.equals(this.jobTitle, updateCompanyRequest.jobTitle) &&
+        Objects.equals(this.lastName, updateCompanyRequest.lastName) &&
+        Objects.equals(this.middleName, updateCompanyRequest.middleName) &&
+        Objects.equals(this.preferredName, updateCompanyRequest.preferredName) &&
+        Objects.equals(this.ownerId, updateCompanyRequest.ownerId) &&
+        Objects.equals(this.referralCode, updateCompanyRequest.referralCode) &&
+        Objects.equals(this.spouseName, updateCompanyRequest.spouseName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, notes, website, companyName, customFields, emailAddress, faxNumber, phoneNumber);
+    return Objects.hash(address, notes, website, suffix, title, companyName, customFields, emailAddress, faxNumber, phoneNumber, anniversaryDate, assistantName, assistantPhone, billingInformation, birthDate, contactType, firstName, jobTitle, lastName, middleName, preferredName, ownerId, referralCode, spouseName);
   }
 
   @Override
@@ -319,11 +783,27 @@ public class UpdateCompanyRequest implements Serializable {
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
     sb.append("    website: ").append(toIndentedString(website)).append("\n");
+    sb.append("    suffix: ").append(toIndentedString(suffix)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
     sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
     sb.append("    emailAddress: ").append(toIndentedString(emailAddress)).append("\n");
     sb.append("    faxNumber: ").append(toIndentedString(faxNumber)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
+    sb.append("    anniversaryDate: ").append(toIndentedString(anniversaryDate)).append("\n");
+    sb.append("    assistantName: ").append(toIndentedString(assistantName)).append("\n");
+    sb.append("    assistantPhone: ").append(toIndentedString(assistantPhone)).append("\n");
+    sb.append("    billingInformation: ").append(toIndentedString(billingInformation)).append("\n");
+    sb.append("    birthDate: ").append(toIndentedString(birthDate)).append("\n");
+    sb.append("    contactType: ").append(toIndentedString(contactType)).append("\n");
+    sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
+    sb.append("    jobTitle: ").append(toIndentedString(jobTitle)).append("\n");
+    sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
+    sb.append("    middleName: ").append(toIndentedString(middleName)).append("\n");
+    sb.append("    preferredName: ").append(toIndentedString(preferredName)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
+    sb.append("    referralCode: ").append(toIndentedString(referralCode)).append("\n");
+    sb.append("    spouseName: ").append(toIndentedString(spouseName)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -363,6 +843,14 @@ public class UpdateCompanyRequest implements Serializable {
               this.instance.website = website;
           return this;
         }
+            public UpdateCompanyRequest.Builder suffix(String suffix) {
+              this.instance.suffix = suffix;
+          return this;
+        }
+            public UpdateCompanyRequest.Builder title(String title) {
+              this.instance.title = title;
+          return this;
+        }
             public UpdateCompanyRequest.Builder companyName(String companyName) {
               this.instance.companyName = companyName;
           return this;
@@ -381,6 +869,62 @@ public class UpdateCompanyRequest implements Serializable {
         }
             public UpdateCompanyRequest.Builder phoneNumber(PhoneNumber phoneNumber) {
               this.instance.phoneNumber = phoneNumber;
+          return this;
+        }
+            public UpdateCompanyRequest.Builder anniversaryDate(String anniversaryDate) {
+              this.instance.anniversaryDate = anniversaryDate;
+          return this;
+        }
+            public UpdateCompanyRequest.Builder assistantName(String assistantName) {
+              this.instance.assistantName = assistantName;
+          return this;
+        }
+            public UpdateCompanyRequest.Builder assistantPhone(String assistantPhone) {
+              this.instance.assistantPhone = assistantPhone;
+          return this;
+        }
+            public UpdateCompanyRequest.Builder billingInformation(String billingInformation) {
+              this.instance.billingInformation = billingInformation;
+          return this;
+        }
+            public UpdateCompanyRequest.Builder birthDate(String birthDate) {
+              this.instance.birthDate = birthDate;
+          return this;
+        }
+            public UpdateCompanyRequest.Builder contactType(String contactType) {
+              this.instance.contactType = contactType;
+          return this;
+        }
+            public UpdateCompanyRequest.Builder firstName(String firstName) {
+              this.instance.firstName = firstName;
+          return this;
+        }
+            public UpdateCompanyRequest.Builder jobTitle(String jobTitle) {
+              this.instance.jobTitle = jobTitle;
+          return this;
+        }
+            public UpdateCompanyRequest.Builder lastName(String lastName) {
+              this.instance.lastName = lastName;
+          return this;
+        }
+            public UpdateCompanyRequest.Builder middleName(String middleName) {
+              this.instance.middleName = middleName;
+          return this;
+        }
+            public UpdateCompanyRequest.Builder preferredName(String preferredName) {
+              this.instance.preferredName = preferredName;
+          return this;
+        }
+            public UpdateCompanyRequest.Builder ownerId(String ownerId) {
+              this.instance.ownerId = ownerId;
+          return this;
+        }
+            public UpdateCompanyRequest.Builder referralCode(String referralCode) {
+              this.instance.referralCode = referralCode;
+          return this;
+        }
+            public UpdateCompanyRequest.Builder spouseName(String spouseName) {
+              this.instance.spouseName = spouseName;
           return this;
         }
         
@@ -420,11 +964,27 @@ public class UpdateCompanyRequest implements Serializable {
           .address(getAddress())
           .notes(getNotes())
           .website(getWebsite())
+          .suffix(getSuffix())
+          .title(getTitle())
           .companyName(getCompanyName())
           .customFields(getCustomFields())
           .emailAddress(getEmailAddress())
           .faxNumber(getFaxNumber())
-          .phoneNumber(getPhoneNumber());
+          .phoneNumber(getPhoneNumber())
+          .anniversaryDate(getAnniversaryDate())
+          .assistantName(getAssistantName())
+          .assistantPhone(getAssistantPhone())
+          .billingInformation(getBillingInformation())
+          .birthDate(getBirthDate())
+          .contactType(getContactType())
+          .firstName(getFirstName())
+          .jobTitle(getJobTitle())
+          .lastName(getLastName())
+          .middleName(getMiddleName())
+          .preferredName(getPreferredName())
+          .ownerId(getOwnerId())
+          .referralCode(getReferralCode())
+          .spouseName(getSpouseName());
       }
 }
 

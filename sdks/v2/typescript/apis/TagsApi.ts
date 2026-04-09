@@ -642,7 +642,7 @@ export class TagsApiRequestFactory extends BaseAPIRequestFactory {
      * @param createUpdateTagRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateTag(tagId: string, createUpdateTagRequest: CreateUpdateTagRequest, updateMask?: 'name,description,category', _options?: Configuration): Promise<RequestContext> {
+    public async updateTag(tagId: string, createUpdateTagRequest: CreateUpdateTagRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'tagId' is not null or undefined
@@ -668,7 +668,10 @@ export class TagsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'name,description,category'", ""));
+            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
+            }
         }
 
 
@@ -705,7 +708,7 @@ export class TagsApiRequestFactory extends BaseAPIRequestFactory {
      * @param createUpdateTagCategoryRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateTagCategory(tagCategoryId: string, createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, updateMask?: 'name,description', _options?: Configuration): Promise<RequestContext> {
+    public async updateTagCategory(tagCategoryId: string, createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'tagCategoryId' is not null or undefined
@@ -731,7 +734,10 @@ export class TagsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'name,description'", ""));
+            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
+            }
         }
 
 

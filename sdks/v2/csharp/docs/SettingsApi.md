@@ -10,7 +10,7 @@ All URIs are relative to *https://api.keap.com/crm*
 
 <a id="getapplicationconfigurations"></a>
 # **GetApplicationConfigurations**
-> GetSettingsResponse GetApplicationConfigurations (List<string>? fields = null)
+> GetSettingsResponse GetApplicationConfigurations (Object? fields = null)
 
 Get Application Configuration
 
@@ -36,7 +36,7 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new SettingsApi(config);
-            var fields = new List<string>?(); // List<string>? | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional) 
+            var fields = new Object?(); // Object? | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional) 
 
             try
             {
@@ -79,7 +79,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **fields** | [**List&lt;string&gt;?**](string.md) | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | [optional]  |
+| **fields** | [**Object?**](Object?.md) | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | [optional]  |
 
 ### Return type
 

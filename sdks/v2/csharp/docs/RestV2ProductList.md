@@ -23,6 +23,14 @@ Name | Type | Description | Notes
 **StateTaxable** | **bool** | If state-based taxes should be applied to this product | [optional] 
 **CityTaxable** | **bool** | If city-based taxes should be applied to this product | [optional] 
 **SubscriptionPlans** | [**List&lt;SubscriptionPlanList&gt;**](SubscriptionPlanList.md) | List of subscription plans associated with the product. Can be empty. | [optional] 
+**TopHtml** | **string** |  | [optional] 
+**BottomHtml** | **string** |  | [optional] 
+**IsPackage** | **bool** |  | [optional] 
+**NeedsDigitalDelivery** | **bool** |  | [optional] 
+**HasLegacyImage** | **bool** |  | [optional] 
+**DeliveryDescription** | **string** |  | [optional] 
+**CreateTime** | **string** |  | [optional] 
+**UpdateTime** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

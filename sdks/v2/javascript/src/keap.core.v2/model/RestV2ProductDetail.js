@@ -107,6 +107,30 @@ class RestV2ProductDetail {
             if (data.hasOwnProperty('subscription_plans')) {
                 obj['subscription_plans'] = ApiClient.convertToType(data['subscription_plans'], [SubscriptionPlanDetail]);
             }
+            if (data.hasOwnProperty('top_html')) {
+                obj['top_html'] = ApiClient.convertToType(data['top_html'], 'String');
+            }
+            if (data.hasOwnProperty('bottom_html')) {
+                obj['bottom_html'] = ApiClient.convertToType(data['bottom_html'], 'String');
+            }
+            if (data.hasOwnProperty('is_package')) {
+                obj['is_package'] = ApiClient.convertToType(data['is_package'], 'Boolean');
+            }
+            if (data.hasOwnProperty('needs_digital_delivery')) {
+                obj['needs_digital_delivery'] = ApiClient.convertToType(data['needs_digital_delivery'], 'Boolean');
+            }
+            if (data.hasOwnProperty('has_legacy_image')) {
+                obj['has_legacy_image'] = ApiClient.convertToType(data['has_legacy_image'], 'Boolean');
+            }
+            if (data.hasOwnProperty('delivery_description')) {
+                obj['delivery_description'] = ApiClient.convertToType(data['delivery_description'], 'String');
+            }
+            if (data.hasOwnProperty('create_time')) {
+                obj['create_time'] = ApiClient.convertToType(data['create_time'], 'String');
+            }
+            if (data.hasOwnProperty('update_time')) {
+                obj['update_time'] = ApiClient.convertToType(data['update_time'], 'String');
+            }
         }
         return obj;
     }
@@ -168,6 +192,26 @@ class RestV2ProductDetail {
             for (const item of data['subscription_plans']) {
                 SubscriptionPlanDetail.validateJSON(item);
             };
+        }
+        // ensure the json data is a string
+        if (data['top_html'] && !(typeof data['top_html'] === 'string' || data['top_html'] instanceof String)) {
+            throw new Error("Expected the field `top_html` to be a primitive type in the JSON string but got " + data['top_html']);
+        }
+        // ensure the json data is a string
+        if (data['bottom_html'] && !(typeof data['bottom_html'] === 'string' || data['bottom_html'] instanceof String)) {
+            throw new Error("Expected the field `bottom_html` to be a primitive type in the JSON string but got " + data['bottom_html']);
+        }
+        // ensure the json data is a string
+        if (data['delivery_description'] && !(typeof data['delivery_description'] === 'string' || data['delivery_description'] instanceof String)) {
+            throw new Error("Expected the field `delivery_description` to be a primitive type in the JSON string but got " + data['delivery_description']);
+        }
+        // ensure the json data is a string
+        if (data['create_time'] && !(typeof data['create_time'] === 'string' || data['create_time'] instanceof String)) {
+            throw new Error("Expected the field `create_time` to be a primitive type in the JSON string but got " + data['create_time']);
+        }
+        // ensure the json data is a string
+        if (data['update_time'] && !(typeof data['update_time'] === 'string' || data['update_time'] instanceof String)) {
+            throw new Error("Expected the field `update_time` to be a primitive type in the JSON string but got " + data['update_time']);
         }
 
         return true;
@@ -291,6 +335,46 @@ RestV2ProductDetail.prototype['city_taxable'] = undefined;
  * @member {Array.<module:keap.core.v2/model/SubscriptionPlanDetail>} subscription_plans
  */
 RestV2ProductDetail.prototype['subscription_plans'] = undefined;
+
+/**
+ * @member {String} top_html
+ */
+RestV2ProductDetail.prototype['top_html'] = undefined;
+
+/**
+ * @member {String} bottom_html
+ */
+RestV2ProductDetail.prototype['bottom_html'] = undefined;
+
+/**
+ * @member {Boolean} is_package
+ */
+RestV2ProductDetail.prototype['is_package'] = undefined;
+
+/**
+ * @member {Boolean} needs_digital_delivery
+ */
+RestV2ProductDetail.prototype['needs_digital_delivery'] = undefined;
+
+/**
+ * @member {Boolean} has_legacy_image
+ */
+RestV2ProductDetail.prototype['has_legacy_image'] = undefined;
+
+/**
+ * @member {String} delivery_description
+ */
+RestV2ProductDetail.prototype['delivery_description'] = undefined;
+
+/**
+ * @member {String} create_time
+ */
+RestV2ProductDetail.prototype['create_time'] = undefined;
+
+/**
+ * @member {String} update_time
+ */
+RestV2ProductDetail.prototype['update_time'] = undefined;
 
 
 

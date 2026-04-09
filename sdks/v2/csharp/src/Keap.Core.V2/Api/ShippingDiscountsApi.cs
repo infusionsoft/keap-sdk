@@ -138,7 +138,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ShippingDiscount</returns>
-        ShippingDiscount UpdateShippingDiscount(string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, string? updateMask = default, int operationIndex = 0);
+        ShippingDiscount UpdateShippingDiscount(string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Shipping Discount
@@ -152,7 +152,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ShippingDiscount</returns>
-        ApiResponse<ShippingDiscount> UpdateShippingDiscountWithHttpInfo(string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<ShippingDiscount> UpdateShippingDiscountWithHttpInfo(string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, Object? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -281,7 +281,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ShippingDiscount</returns>
-        System.Threading.Tasks.Task<ShippingDiscount> UpdateShippingDiscountAsync(string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ShippingDiscount> UpdateShippingDiscountAsync(string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Shipping Discount
@@ -296,7 +296,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ShippingDiscount)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ShippingDiscount>> UpdateShippingDiscountWithHttpInfoAsync(string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ShippingDiscount>> UpdateShippingDiscountWithHttpInfoAsync(string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -1164,7 +1164,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ShippingDiscount</returns>
-        public ShippingDiscount UpdateShippingDiscount(string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, string? updateMask = default, int operationIndex = 0)
+        public ShippingDiscount UpdateShippingDiscount(string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<ShippingDiscount> localVarResponse = UpdateShippingDiscountWithHttpInfo(discountId, updateShippingDiscountRequest, updateMask);
             return localVarResponse.Data;
@@ -1179,7 +1179,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ShippingDiscount</returns>
-        public Keap.Core.V2.Client.ApiResponse<ShippingDiscount> UpdateShippingDiscountWithHttpInfo(string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<ShippingDiscount> UpdateShippingDiscountWithHttpInfo(string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'discountId' is set
             if (discountId == null)
@@ -1268,7 +1268,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ShippingDiscount</returns>
-        public async System.Threading.Tasks.Task<ShippingDiscount> UpdateShippingDiscountAsync(string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ShippingDiscount> UpdateShippingDiscountAsync(string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<ShippingDiscount> localVarResponse = await UpdateShippingDiscountWithHttpInfoAsync(discountId, updateShippingDiscountRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1284,7 +1284,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ShippingDiscount)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ShippingDiscount>> UpdateShippingDiscountWithHttpInfoAsync(string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ShippingDiscount>> UpdateShippingDiscountWithHttpInfoAsync(string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'discountId' is set
             if (discountId == null)

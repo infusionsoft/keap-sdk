@@ -405,7 +405,7 @@ $apiInstance = new Keap\Core\V2\Api\ProductInterestBundlesApi(
 $id = 'id_example'; // string
 $interest_id = 'interest_id_example'; // string
 $update_product_interest_request = new \Keap\Core\V2\Model\UpdateProductInterestRequest(); // \Keap\Core\V2\Model\UpdateProductInterestRequest
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateProductInterest($id, $interest_id, $update_product_interest_request, $update_mask);
@@ -422,7 +422,7 @@ try {
 | **id** | **string**|  | |
 | **interest_id** | **string**|  | |
 | **update_product_interest_request** | [**\Keap\Core\V2\Model\UpdateProductInterestRequest**](../Model/UpdateProductInterestRequest.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -469,7 +469,7 @@ $apiInstance = new Keap\Core\V2\Api\ProductInterestBundlesApi(
 );
 $id = 'id_example'; // string
 $update_product_interest_bundle_request = new \Keap\Core\V2\Model\UpdateProductInterestBundleRequest(); // \Keap\Core\V2\Model\UpdateProductInterestBundleRequest
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateProductInterestBundle($id, $update_product_interest_bundle_request, $update_mask);
@@ -485,7 +485,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**|  | |
 | **update_product_interest_bundle_request** | [**\Keap\Core\V2\Model\UpdateProductInterestBundleRequest**](../Model/UpdateProductInterestBundleRequest.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

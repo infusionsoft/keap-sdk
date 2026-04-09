@@ -13,5 +13,6 @@ Name | Type | Description | Notes
 **notify_on_lead** | **bool** | Whether to notify on lead events | [optional]
 **track_leads_days** | **int** | Number of days to track leads | [optional]
 **password** | **string** | Affiliate portal password | [optional]
+**custom_fields** | [**\Keap\Core\V2\Model\CustomFieldValue[]**](CustomFieldValue.md) | List of custom field values to apply to this affiliate | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

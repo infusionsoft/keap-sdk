@@ -301,7 +301,7 @@ oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new KeapCoreServiceV2Sdk.FilesApi();
 let fileId = "fileId_example"; // String | 
 let opts = {
-  'updateMask': "updateMask_example", // String | Update Mask
+  'updateMask': null, // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
   'file': "/path/to/file", // File | File to upload. This is a file sent as multi-part (not a string)
   'fileName': "fileName_example", // String | File name
   'isPublic': true, // Boolean | Is public
@@ -323,7 +323,7 @@ apiInstance.updateFile(fileId, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fileId** | **String**|  | 
- **updateMask** | **String**| Update Mask | [optional] 
+ **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
  **file** | **File**| File to upload. This is a file sent as multi-part (not a string) | [optional] 
  **fileName** | **String**| File name | [optional] 
  **isPublic** | **Boolean**| Is public | [optional] 

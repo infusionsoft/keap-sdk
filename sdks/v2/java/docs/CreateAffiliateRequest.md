@@ -16,6 +16,7 @@
 |**notifyOnLead** | **Boolean** | Whether to notify on lead events |  [optional] |
 |**trackLeadsDays** | **Integer** | Number of days to track leads |  [optional] |
 |**password** | **String** | Affiliate portal password |  [optional] |
+|**customFields** | [**List&lt;CustomFieldValue&gt;**](CustomFieldValue.md) | List of custom field values to apply to this affiliate |  [optional] |
 
 
 

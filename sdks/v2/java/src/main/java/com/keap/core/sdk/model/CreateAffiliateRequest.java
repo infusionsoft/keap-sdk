@@ -21,8 +21,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.keap.core.sdk.model.CustomFieldValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.validation.constraints.*;
@@ -41,7 +44,8 @@ import jakarta.validation.Valid;
   CreateAffiliateRequest.JSON_PROPERTY_NOTIFY_ON_SALE,
   CreateAffiliateRequest.JSON_PROPERTY_NOTIFY_ON_LEAD,
   CreateAffiliateRequest.JSON_PROPERTY_TRACK_LEADS_DAYS,
-  CreateAffiliateRequest.JSON_PROPERTY_PASSWORD
+  CreateAffiliateRequest.JSON_PROPERTY_PASSWORD,
+  CreateAffiliateRequest.JSON_PROPERTY_CUSTOM_FIELDS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CreateAffiliateRequest implements Serializable {
@@ -109,6 +113,9 @@ public class CreateAffiliateRequest implements Serializable {
 
   public static final String JSON_PROPERTY_PASSWORD = "password";
   @jakarta.annotation.Nullable  private String password;
+
+  public static final String JSON_PROPERTY_CUSTOM_FIELDS = "custom_fields";
+  @jakarta.annotation.Nullable  private List<@Valid CustomFieldValue> customFields = new ArrayList<>();
 
   public CreateAffiliateRequest() { 
   }
@@ -330,6 +337,39 @@ public class CreateAffiliateRequest implements Serializable {
     this.password = password;
   }
 
+
+  public CreateAffiliateRequest customFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValue> customFields) {
+    this.customFields = customFields;
+    return this;
+  }
+
+  public CreateAffiliateRequest addCustomFieldsItem(CustomFieldValue customFieldsItem) {
+    if (this.customFields == null) {
+      this.customFields = new ArrayList<>();
+    }
+    this.customFields.add(customFieldsItem);
+    return this;
+  }
+
+  /**
+   * List of custom field values to apply to this affiliate
+   * @return customFields
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "[{id=1, content=VIP}, {id=2, content=Preferred}]", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "List of custom field values to apply to this affiliate")
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<@Valid CustomFieldValue> getCustomFields() {
+    return customFields;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValue> customFields) {
+    this.customFields = customFields;
+  }
+
   /**
    * Return true if this CreateAffiliateRequest object is equal to o.
    */
@@ -350,12 +390,13 @@ public class CreateAffiliateRequest implements Serializable {
         Objects.equals(this.notifyOnSale, createAffiliateRequest.notifyOnSale) &&
         Objects.equals(this.notifyOnLead, createAffiliateRequest.notifyOnLead) &&
         Objects.equals(this.trackLeadsDays, createAffiliateRequest.trackLeadsDays) &&
-        Objects.equals(this.password, createAffiliateRequest.password);
+        Objects.equals(this.password, createAffiliateRequest.password) &&
+        Objects.equals(this.customFields, createAffiliateRequest.customFields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, status, name, contactId, parentAffiliateId, notifyOnSale, notifyOnLead, trackLeadsDays, password);
+    return Objects.hash(code, status, name, contactId, parentAffiliateId, notifyOnSale, notifyOnLead, trackLeadsDays, password, customFields);
   }
 
   @Override
@@ -371,6 +412,7 @@ public class CreateAffiliateRequest implements Serializable {
     sb.append("    notifyOnLead: ").append(toIndentedString(notifyOnLead)).append("\n");
     sb.append("    trackLeadsDays: ").append(toIndentedString(trackLeadsDays)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -434,6 +476,10 @@ public class CreateAffiliateRequest implements Serializable {
               this.instance.password = password;
           return this;
         }
+            public CreateAffiliateRequest.Builder customFields(List<CustomFieldValue> customFields) {
+              this.instance.customFields = customFields;
+          return this;
+        }
         
     
         /**
@@ -476,7 +522,8 @@ public class CreateAffiliateRequest implements Serializable {
           .notifyOnSale(getNotifyOnSale())
           .notifyOnLead(getNotifyOnLead())
           .trackLeadsDays(getTrackLeadsDays())
-          .password(getPassword());
+          .password(getPassword())
+          .customFields(getCustomFields());
       }
 }
 

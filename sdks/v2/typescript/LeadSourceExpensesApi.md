@@ -221,7 +221,7 @@ const configuration = createConfiguration();
 const apiInstance = new LeadSourceExpensesApi(configuration);
 
 const request: LeadSourceExpensesApiListLeadSourceExpensesRequest = {
-    // The ID of the lead source this expense belongs to
+    // The ID of the lead source this expense belongs to. Use \'-\' as a wildcard (e.g. /v2/leadSources/-/expenses).
   leadSourceId: "lead_source_id_example",
     // Filter to apply, allowed fields are:  - (String) `title` - (Long) `amount` - (String) `incurred_time` - (String) `create_time` - (String) `update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=amount%3D%3D2500` - `filter=incurred_time%3D%3D2024-12-22T01:00:00.000Z` (optional)
   filter: "filter_example",
@@ -242,7 +242,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **leadSourceId** | [**string**] | The ID of the lead source this expense belongs to | defaults to undefined
+ **leadSourceId** | [**string**] | The ID of the lead source this expense belongs to. Use \&#39;-\&#39; as a wildcard (e.g. /v2/leadSources/-/expenses). | defaults to undefined
  **filter** | [**string**] | Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60; | (optional) defaults to undefined
  **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
@@ -305,7 +305,7 @@ const request: LeadSourceExpensesApiUpdateLeadSourceExpenseRequest = {
     incurredTime: new Date('2024-03-15T00:00:00Z'),
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: "title,notes,amount,incurred_time",
+  updateMask: null,
 };
 
 const data = await apiInstance.updateLeadSourceExpense(request);
@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
  **updateLeadSourceExpenseRequest** | **UpdateLeadSourceExpenseRequest**|  |
  **leadSourceExpenseId** | [**string**] | The ID of a lead source expense | defaults to undefined
  **leadSourceId** | [**string**] | The ID of the lead source this expense belongs to | defaults to undefined
- **updateMask** | [**&#39;title,notes,amount,incurred_time&#39;**]**Array<&#39;title,notes,amount,incurred_time&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

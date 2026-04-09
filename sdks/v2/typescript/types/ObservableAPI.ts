@@ -1376,11 +1376,12 @@ export class ObservableAffiliateApi {
      * Update an Affiliate
      * @param id
      * @param updateAffiliateRequest
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateAffiliateWithHttpInfo(id: string, updateAffiliateRequest: UpdateAffiliateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<RestAffiliate>> {
+    public updateAffiliateWithHttpInfo(id: string, updateAffiliateRequest: UpdateAffiliateRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<RestAffiliate>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateAffiliate(id, updateAffiliateRequest, _config);
+        const requestContextPromise = this.requestFactory.updateAffiliate(id, updateAffiliateRequest, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1402,9 +1403,10 @@ export class ObservableAffiliateApi {
      * Update an Affiliate
      * @param id
      * @param updateAffiliateRequest
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateAffiliate(id: string, updateAffiliateRequest: UpdateAffiliateRequest, _options?: ConfigurationOptions): Observable<RestAffiliate> {
-        return this.updateAffiliateWithHttpInfo(id, updateAffiliateRequest, _options).pipe(map((apiResponse: HttpInfo<RestAffiliate>) => apiResponse.data));
+    public updateAffiliate(id: string, updateAffiliateRequest: UpdateAffiliateRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<RestAffiliate> {
+        return this.updateAffiliateWithHttpInfo(id, updateAffiliateRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<RestAffiliate>) => apiResponse.data));
     }
 
     /**
@@ -1414,7 +1416,7 @@ export class ObservableAffiliateApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateAffiliateCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: 'group_id,label,options', _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+    public updateAffiliateCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateAffiliateCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
@@ -1441,7 +1443,7 @@ export class ObservableAffiliateApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateAffiliateCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: 'group_id,label,options', _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+    public updateAffiliateCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
         return this.updateAffiliateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
     }
 
@@ -1452,7 +1454,7 @@ export class ObservableAffiliateApi {
      * @param updateCommissionProgramRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCommissionProgramWithHttpInfo(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: 'name,notes,priority', _options?: ConfigurationOptions): Observable<HttpInfo<AffiliateCommissionProgramResponse>> {
+    public updateCommissionProgramWithHttpInfo(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<AffiliateCommissionProgramResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateCommissionProgram(commissionProgramId, updateCommissionProgramRequest, updateMask, _config);
@@ -1479,7 +1481,7 @@ export class ObservableAffiliateApi {
      * @param updateCommissionProgramRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCommissionProgram(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: 'name,notes,priority', _options?: ConfigurationOptions): Observable<AffiliateCommissionProgramResponse> {
+    public updateCommissionProgram(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<AffiliateCommissionProgramResponse> {
         return this.updateCommissionProgramWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<AffiliateCommissionProgramResponse>) => apiResponse.data));
     }
 
@@ -2185,7 +2187,7 @@ export class ObservableBusinessProfileApi {
      * @param updateBusinessProfileRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateBusinessProfileWithHttpInfo(updateBusinessProfileRequest: UpdateBusinessProfileRequest, updateMask?: 'name,email,website,phone,address,currency_code,business_goals,business_primary_color, business_secondary_color', _options?: ConfigurationOptions): Observable<HttpInfo<GetBusinessProfileResponse>> {
+    public updateBusinessProfileWithHttpInfo(updateBusinessProfileRequest: UpdateBusinessProfileRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<GetBusinessProfileResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateBusinessProfile(updateBusinessProfileRequest, updateMask, _config);
@@ -2211,7 +2213,7 @@ export class ObservableBusinessProfileApi {
      * @param updateBusinessProfileRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateBusinessProfile(updateBusinessProfileRequest: UpdateBusinessProfileRequest, updateMask?: 'name,email,website,phone,address,currency_code,business_goals,business_primary_color, business_secondary_color', _options?: ConfigurationOptions): Observable<GetBusinessProfileResponse> {
+    public updateBusinessProfile(updateBusinessProfileRequest: UpdateBusinessProfileRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<GetBusinessProfileResponse> {
         return this.updateBusinessProfileWithHttpInfo(updateBusinessProfileRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<GetBusinessProfileResponse>) => apiResponse.data));
     }
 
@@ -2618,7 +2620,7 @@ export class ObservableCategoryDiscountsApi {
      * @param updateCategoryDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCategoryDiscountWithHttpInfo(discountId: string, updateCategoryDiscountRequest: UpdateCategoryDiscountRequest, updateMask?: 'name,description,discount_percent,apply_to_commissions,criteria,product_category_ids', _options?: ConfigurationOptions): Observable<HttpInfo<CategoryDiscount>> {
+    public updateCategoryDiscountWithHttpInfo(discountId: string, updateCategoryDiscountRequest: UpdateCategoryDiscountRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<CategoryDiscount>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateCategoryDiscount(discountId, updateCategoryDiscountRequest, updateMask, _config);
@@ -2645,7 +2647,7 @@ export class ObservableCategoryDiscountsApi {
      * @param updateCategoryDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCategoryDiscount(discountId: string, updateCategoryDiscountRequest: UpdateCategoryDiscountRequest, updateMask?: 'name,description,discount_percent,apply_to_commissions,criteria,product_category_ids', _options?: ConfigurationOptions): Observable<CategoryDiscount> {
+    public updateCategoryDiscount(discountId: string, updateCategoryDiscountRequest: UpdateCategoryDiscountRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<CategoryDiscount> {
         return this.updateCategoryDiscountWithHttpInfo(discountId, updateCategoryDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CategoryDiscount>) => apiResponse.data));
     }
 
@@ -2886,7 +2888,7 @@ export class ObservableCompanyApi {
      * @param updateCompanyRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCompanyWithHttpInfo(companyId: string, updateCompanyRequest: UpdateCompanyRequest, updateMask?: 'id,company_name,address,phone_number,fax_number,email_address, notes,website,custom_fields,create_time,update_time', _options?: ConfigurationOptions): Observable<HttpInfo<Company>> {
+    public updateCompanyWithHttpInfo(companyId: string, updateCompanyRequest: UpdateCompanyRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<Company>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateCompany(companyId, updateCompanyRequest, updateMask, _config);
@@ -2913,7 +2915,7 @@ export class ObservableCompanyApi {
      * @param updateCompanyRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCompany(companyId: string, updateCompanyRequest: UpdateCompanyRequest, updateMask?: 'id,company_name,address,phone_number,fax_number,email_address, notes,website,custom_fields,create_time,update_time', _options?: ConfigurationOptions): Observable<Company> {
+    public updateCompany(companyId: string, updateCompanyRequest: UpdateCompanyRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<Company> {
         return this.updateCompanyWithHttpInfo(companyId, updateCompanyRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<Company>) => apiResponse.data));
     }
 
@@ -2924,7 +2926,7 @@ export class ObservableCompanyApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCompanyCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: 'group_id,label,options', _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+    public updateCompanyCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateCompanyCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
@@ -2951,7 +2953,7 @@ export class ObservableCompanyApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCompanyCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: 'group_id,label,options', _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+    public updateCompanyCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
         return this.updateCompanyCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
     }
 
@@ -2977,7 +2979,7 @@ export class ObservableContactApi {
      * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified. Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
      * Create a Contact
      * @param createUpdateContactRequest
-     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      * @param [duplicateOption] Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found.
      */
     public createContactWithHttpInfo(createUpdateContactRequest: CreateUpdateContactRequest, fields?: Array<string>, duplicateOption?: 'Email' | 'EmailAndName' | 'EmailAndNameAndCompany', _options?: ConfigurationOptions): Observable<HttpInfo<Contact>> {
@@ -3004,7 +3006,7 @@ export class ObservableContactApi {
      * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified. Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
      * Create a Contact
      * @param createUpdateContactRequest
-     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      * @param [duplicateOption] Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found.
      */
     public createContact(createUpdateContactRequest: CreateUpdateContactRequest, fields?: Array<string>, duplicateOption?: 'Email' | 'EmailAndName' | 'EmailAndNameAndCompany', _options?: ConfigurationOptions): Observable<Contact> {
@@ -3117,7 +3119,7 @@ export class ObservableContactApi {
      * Retrieves a single Contact
      * Retrieve a Contact
      * @param contactId
-     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      */
     public getContactWithHttpInfo(contactId: string, fields?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<Contact>> {
         const _config = mergeConfiguration(this.configuration, _options);
@@ -3143,7 +3145,7 @@ export class ObservableContactApi {
      * Retrieves a single Contact
      * Retrieve a Contact
      * @param contactId
-     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      */
     public getContact(contactId: string, fields?: Array<string>, _options?: ConfigurationOptions): Observable<Contact> {
         return this.getContactWithHttpInfo(contactId, fields, _options).pipe(map((apiResponse: HttpInfo<Contact>) => apiResponse.data));
@@ -3260,7 +3262,7 @@ export class ObservableContactApi {
     /**
      * Retrieves a list of Contacts
      * List Contacts
-     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
@@ -3289,7 +3291,7 @@ export class ObservableContactApi {
     /**
      * Retrieves a list of Contacts
      * List Contacts
-     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
@@ -3413,9 +3415,9 @@ export class ObservableContactApi {
      * @param contactId
      * @param createUpdateContactRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      */
-    public updateContactWithHttpInfo(contactId: string, createUpdateContactRequest: CreateUpdateContactRequest, updateMask?: 'addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website', fields?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<Contact>> {
+    public updateContactWithHttpInfo(contactId: string, createUpdateContactRequest: CreateUpdateContactRequest, updateMask?: any, fields?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<Contact>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateContact(contactId, createUpdateContactRequest, updateMask, fields, _config);
@@ -3441,9 +3443,9 @@ export class ObservableContactApi {
      * @param contactId
      * @param createUpdateContactRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      */
-    public updateContact(contactId: string, createUpdateContactRequest: CreateUpdateContactRequest, updateMask?: 'addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website', fields?: Array<string>, _options?: ConfigurationOptions): Observable<Contact> {
+    public updateContact(contactId: string, createUpdateContactRequest: CreateUpdateContactRequest, updateMask?: any, fields?: Array<string>, _options?: ConfigurationOptions): Observable<Contact> {
         return this.updateContactWithHttpInfo(contactId, createUpdateContactRequest, updateMask, fields, _options).pipe(map((apiResponse: HttpInfo<Contact>) => apiResponse.data));
     }
 
@@ -4081,7 +4083,7 @@ export class ObservableFilesApi {
      * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
      * Update a file
      * @param fileId
-     * @param [updateMask] Update Mask
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [file] File to upload. This is a file sent as multi-part (not a string)
      * @param [fileName] File name
      * @param [isPublic] Is public
@@ -4089,7 +4091,7 @@ export class ObservableFilesApi {
      * @param [fileName2] File name
      * @param [isPublic2] Is public
      */
-    public updateFileWithHttpInfo(fileId: string, updateMask?: string, file?: HttpFile, fileName?: string, isPublic?: boolean, file2?: HttpFile, fileName2?: string, isPublic2?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<FileMetadata>> {
+    public updateFileWithHttpInfo(fileId: string, updateMask?: any, file?: HttpFile, fileName?: string, isPublic?: boolean, file2?: HttpFile, fileName2?: string, isPublic2?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<FileMetadata>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateFile(fileId, updateMask, file, fileName, isPublic, file2, fileName2, isPublic2, _config);
@@ -4113,7 +4115,7 @@ export class ObservableFilesApi {
      * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
      * Update a file
      * @param fileId
-     * @param [updateMask] Update Mask
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [file] File to upload. This is a file sent as multi-part (not a string)
      * @param [fileName] File name
      * @param [isPublic] Is public
@@ -4121,7 +4123,7 @@ export class ObservableFilesApi {
      * @param [fileName2] File name
      * @param [isPublic2] Is public
      */
-    public updateFile(fileId: string, updateMask?: string, file?: HttpFile, fileName?: string, isPublic?: boolean, file2?: HttpFile, fileName2?: string, isPublic2?: boolean, _options?: ConfigurationOptions): Observable<FileMetadata> {
+    public updateFile(fileId: string, updateMask?: any, file?: HttpFile, fileName?: string, isPublic?: boolean, file2?: HttpFile, fileName2?: string, isPublic2?: boolean, _options?: ConfigurationOptions): Observable<FileMetadata> {
         return this.updateFileWithHttpInfo(fileId, updateMask, file, fileName, isPublic, file2, fileName2, isPublic2, _options).pipe(map((apiResponse: HttpInfo<FileMetadata>) => apiResponse.data));
     }
 
@@ -4292,7 +4294,7 @@ export class ObservableFreeTrialDiscountsApi {
      * @param updateFreeTrialDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateFreeTrialDiscountWithHttpInfo(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: 'name,description,free_trial_days,hide_price,subscription_plan_id,criteria', _options?: ConfigurationOptions): Observable<HttpInfo<FreeTrialDiscount>> {
+    public updateFreeTrialDiscountWithHttpInfo(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<FreeTrialDiscount>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateFreeTrialDiscount(discountId, updateFreeTrialDiscountRequest, updateMask, _config);
@@ -4319,7 +4321,7 @@ export class ObservableFreeTrialDiscountsApi {
      * @param updateFreeTrialDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateFreeTrialDiscount(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: 'name,description,free_trial_days,hide_price,subscription_plan_id,criteria', _options?: ConfigurationOptions): Observable<FreeTrialDiscount> {
+    public updateFreeTrialDiscount(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<FreeTrialDiscount> {
         return this.updateFreeTrialDiscountWithHttpInfo(discountId, updateFreeTrialDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<FreeTrialDiscount>) => apiResponse.data));
     }
 
@@ -4628,7 +4630,7 @@ export class ObservableLeadSourceCategoriesApi {
      * @param createUpdateLeadSourceCategoryRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceCategoryWithHttpInfo(leadSourceCategoryId: string, createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, updateMask?: 'name,description', _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceCategory>> {
+    public updateLeadSourceCategoryWithHttpInfo(leadSourceCategoryId: string, createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceCategory>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateLeadSourceCategory(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask, _config);
@@ -4655,7 +4657,7 @@ export class ObservableLeadSourceCategoriesApi {
      * @param createUpdateLeadSourceCategoryRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceCategory(leadSourceCategoryId: string, createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, updateMask?: 'name,description', _options?: ConfigurationOptions): Observable<LeadSourceCategory> {
+    public updateLeadSourceCategory(leadSourceCategoryId: string, createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<LeadSourceCategory> {
         return this.updateLeadSourceCategoryWithHttpInfo(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<LeadSourceCategory>) => apiResponse.data));
     }
 
@@ -4788,7 +4790,7 @@ export class ObservableLeadSourceExpensesApi {
     /**
      * Retrieves a list of lead source expenses
      * List Lead Source Expenses
-     * @param leadSourceId The ID of the lead source this expense belongs to
+     * @param leadSourceId The ID of the lead source this expense belongs to. Use \&#39;-\&#39; as a wildcard (e.g. /v2/leadSources/-/expenses).
      * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60;
      * @param [orderBy] Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
@@ -4817,7 +4819,7 @@ export class ObservableLeadSourceExpensesApi {
     /**
      * Retrieves a list of lead source expenses
      * List Lead Source Expenses
-     * @param leadSourceId The ID of the lead source this expense belongs to
+     * @param leadSourceId The ID of the lead source this expense belongs to. Use \&#39;-\&#39; as a wildcard (e.g. /v2/leadSources/-/expenses).
      * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60;
      * @param [orderBy] Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
@@ -4835,7 +4837,7 @@ export class ObservableLeadSourceExpensesApi {
      * @param updateLeadSourceExpenseRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceExpenseWithHttpInfo(leadSourceExpenseId: string, leadSourceId: string, updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest, updateMask?: 'title,notes,amount,incurred_time', _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceExpense>> {
+    public updateLeadSourceExpenseWithHttpInfo(leadSourceExpenseId: string, leadSourceId: string, updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceExpense>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateLeadSourceExpense(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask, _config);
@@ -4863,7 +4865,7 @@ export class ObservableLeadSourceExpensesApi {
      * @param updateLeadSourceExpenseRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceExpense(leadSourceExpenseId: string, leadSourceId: string, updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest, updateMask?: 'title,notes,amount,incurred_time', _options?: ConfigurationOptions): Observable<LeadSourceExpense> {
+    public updateLeadSourceExpense(leadSourceExpenseId: string, leadSourceId: string, updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<LeadSourceExpense> {
         return this.updateLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<LeadSourceExpense>) => apiResponse.data));
     }
 
@@ -5087,7 +5089,7 @@ export class ObservableLeadSourceRecurringExpensesApi {
      * @param leadSourceRecurringExpenseUpdateRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceRecurringExpenseWithHttpInfo(leadSourceId: string, leadSourceRecurringExpenseId: string, leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest, updateMask?: 'title,notes,amount,start_time,end_time', _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceRecurringExpense>> {
+    public updateLeadSourceRecurringExpenseWithHttpInfo(leadSourceId: string, leadSourceRecurringExpenseId: string, leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceRecurringExpense>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask, _config);
@@ -5115,7 +5117,7 @@ export class ObservableLeadSourceRecurringExpensesApi {
      * @param leadSourceRecurringExpenseUpdateRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceRecurringExpense(leadSourceId: string, leadSourceRecurringExpenseId: string, leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest, updateMask?: 'title,notes,amount,start_time,end_time', _options?: ConfigurationOptions): Observable<LeadSourceRecurringExpense> {
+    public updateLeadSourceRecurringExpense(leadSourceId: string, leadSourceRecurringExpenseId: string, leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<LeadSourceRecurringExpense> {
         return this.updateLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<LeadSourceRecurringExpense>) => apiResponse.data));
     }
 
@@ -5286,7 +5288,7 @@ export class ObservableLeadSourcesApi {
      * @param createLeadSourceRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceWithHttpInfo(leadSourceId: string, createLeadSourceRequest: CreateLeadSourceRequest, updateMask?: 'name,description,vendor,medium,message,start_time,end_time,status,lead_source_category_id', _options?: ConfigurationOptions): Observable<HttpInfo<LeadSource>> {
+    public updateLeadSourceWithHttpInfo(leadSourceId: string, createLeadSourceRequest: CreateLeadSourceRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSource>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateLeadSource(leadSourceId, createLeadSourceRequest, updateMask, _config);
@@ -5313,7 +5315,7 @@ export class ObservableLeadSourcesApi {
      * @param createLeadSourceRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSource(leadSourceId: string, createLeadSourceRequest: CreateLeadSourceRequest, updateMask?: 'name,description,vendor,medium,message,start_time,end_time,status,lead_source_category_id', _options?: ConfigurationOptions): Observable<LeadSource> {
+    public updateLeadSource(leadSourceId: string, createLeadSourceRequest: CreateLeadSourceRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<LeadSource> {
         return this.updateLeadSourceWithHttpInfo(leadSourceId, createLeadSourceRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<LeadSource>) => apiResponse.data));
     }
 
@@ -5811,7 +5813,7 @@ export class ObservableNoteApi {
      * @param updateNoteRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateNoteWithHttpInfo(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: 'contact_id, text, title, type, user_id', _options?: ConfigurationOptions): Observable<HttpInfo<UpdateNoteResponse>> {
+    public updateNoteWithHttpInfo(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<UpdateNoteResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateNote(contactId, noteId, updateNoteRequest, updateMask, _config);
@@ -5839,7 +5841,7 @@ export class ObservableNoteApi {
      * @param updateNoteRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateNote(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: 'contact_id, text, title, type, user_id', _options?: ConfigurationOptions): Observable<UpdateNoteResponse> {
+    public updateNote(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<UpdateNoteResponse> {
         return this.updateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<UpdateNoteResponse>) => apiResponse.data));
     }
 
@@ -5850,7 +5852,7 @@ export class ObservableNoteApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateNotesCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: 'group_id,label,options', _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+    public updateNotesCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateNotesCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
@@ -5877,7 +5879,7 @@ export class ObservableNoteApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateNotesCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: 'group_id,label,options', _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+    public updateNotesCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
         return this.updateNotesCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
     }
 
@@ -6226,7 +6228,7 @@ export class ObservableOpportunityApi {
      * @param updateOpportunityRequestV2
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOpportunityWithHttpInfo(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: 'opportunity_title,next_action_time,next_action_notes,opportunity_notes, estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high, contact_id,stage_id,user_id,custom_fields,affiliate_id', _options?: ConfigurationOptions): Observable<HttpInfo<RestV2Opportunity>> {
+    public updateOpportunityWithHttpInfo(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<RestV2Opportunity>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateOpportunity(opportunityId, updateOpportunityRequestV2, updateMask, _config);
@@ -6253,7 +6255,7 @@ export class ObservableOpportunityApi {
      * @param updateOpportunityRequestV2
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOpportunity(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: 'opportunity_title,next_action_time,next_action_notes,opportunity_notes, estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high, contact_id,stage_id,user_id,custom_fields,affiliate_id', _options?: ConfigurationOptions): Observable<RestV2Opportunity> {
+    public updateOpportunity(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: any, _options?: ConfigurationOptions): Observable<RestV2Opportunity> {
         return this.updateOpportunityWithHttpInfo(opportunityId, updateOpportunityRequestV2, updateMask, _options).pipe(map((apiResponse: HttpInfo<RestV2Opportunity>) => apiResponse.data));
     }
 
@@ -6264,7 +6266,7 @@ export class ObservableOpportunityApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOpportunityCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: 'group_id,label,options', _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+    public updateOpportunityCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateOpportunityCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
@@ -6291,7 +6293,7 @@ export class ObservableOpportunityApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOpportunityCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: 'group_id,label,options', _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+    public updateOpportunityCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
         return this.updateOpportunityCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
     }
 
@@ -6302,7 +6304,7 @@ export class ObservableOpportunityApi {
      * @param updateOpportunityStageRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOpportunityStageWithHttpInfo(stageId: string, updateOpportunityStageRequest: UpdateOpportunityStageRequest, updateMask?: 'name,order,target_number_days,probability,checklist_items', _options?: ConfigurationOptions): Observable<HttpInfo<RestOpportunityStage>> {
+    public updateOpportunityStageWithHttpInfo(stageId: string, updateOpportunityStageRequest: UpdateOpportunityStageRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<RestOpportunityStage>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateOpportunityStage(stageId, updateOpportunityStageRequest, updateMask, _config);
@@ -6329,7 +6331,7 @@ export class ObservableOpportunityApi {
      * @param updateOpportunityStageRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOpportunityStage(stageId: string, updateOpportunityStageRequest: UpdateOpportunityStageRequest, updateMask?: 'name,order,target_number_days,probability,checklist_items', _options?: ConfigurationOptions): Observable<RestOpportunityStage> {
+    public updateOpportunityStage(stageId: string, updateOpportunityStageRequest: UpdateOpportunityStageRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<RestOpportunityStage> {
         return this.updateOpportunityStageWithHttpInfo(stageId, updateOpportunityStageRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<RestOpportunityStage>) => apiResponse.data));
     }
 
@@ -6500,7 +6502,7 @@ export class ObservableOrderTotalDiscountsApi {
      * @param updateOrderTotalDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderTotalDiscountWithHttpInfo(discountId: string, updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest, updateMask?: 'name,description,apply_to_commissions,discount_type,discount_value,discount_strategy,criteria', _options?: ConfigurationOptions): Observable<HttpInfo<OrderTotalDiscount>> {
+    public updateOrderTotalDiscountWithHttpInfo(discountId: string, updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<OrderTotalDiscount>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateOrderTotalDiscount(discountId, updateOrderTotalDiscountRequest, updateMask, _config);
@@ -6527,7 +6529,7 @@ export class ObservableOrderTotalDiscountsApi {
      * @param updateOrderTotalDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderTotalDiscount(discountId: string, updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest, updateMask?: 'name,description,apply_to_commissions,discount_type,discount_value,discount_strategy,criteria', _options?: ConfigurationOptions): Observable<OrderTotalDiscount> {
+    public updateOrderTotalDiscount(discountId: string, updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<OrderTotalDiscount> {
         return this.updateOrderTotalDiscountWithHttpInfo(discountId, updateOrderTotalDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<OrderTotalDiscount>) => apiResponse.data));
     }
 
@@ -7016,7 +7018,7 @@ export class ObservableOrdersApi {
     /**
      * Retrieves a list of orders
      * List orders
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_city&#x60; - (String) &#x60;shipping_region&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_city%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region%3D%3DAZ&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DUS&#x60;
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -7044,7 +7046,7 @@ export class ObservableOrdersApi {
     /**
      * Retrieves a list of orders
      * List orders
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_city&#x60; - (String) &#x60;shipping_region&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_city%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region%3D%3DAZ&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DUS&#x60;
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -7092,7 +7094,7 @@ export class ObservableOrdersApi {
      * @param updateOrderRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderWithHttpInfo(orderId: string, updateOrderRequest: UpdateOrderRequest, updateMask?: 'contact_id,order_items,order_title,order_time,order_type,promo_codes, lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan, custom_fields', _options?: ConfigurationOptions): Observable<HttpInfo<OrderV2>> {
+    public updateOrderWithHttpInfo(orderId: string, updateOrderRequest: UpdateOrderRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<OrderV2>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateOrder(orderId, updateOrderRequest, updateMask, _config);
@@ -7119,7 +7121,7 @@ export class ObservableOrdersApi {
      * @param updateOrderRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrder(orderId: string, updateOrderRequest: UpdateOrderRequest, updateMask?: 'contact_id,order_items,order_title,order_time,order_type,promo_codes, lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan, custom_fields', _options?: ConfigurationOptions): Observable<OrderV2> {
+    public updateOrder(orderId: string, updateOrderRequest: UpdateOrderRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<OrderV2> {
         return this.updateOrderWithHttpInfo(orderId, updateOrderRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<OrderV2>) => apiResponse.data));
     }
 
@@ -7130,7 +7132,7 @@ export class ObservableOrdersApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: 'group_id,label,options', _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+    public updateOrderCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateOrderCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
@@ -7157,7 +7159,7 @@ export class ObservableOrdersApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: 'group_id,label,options', _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+    public updateOrderCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
         return this.updateOrderCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
     }
 
@@ -7169,7 +7171,7 @@ export class ObservableOrdersApi {
      * @param updateOrderItemRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderItemWithHttpInfo(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: 'name,description,notes,quantity,price_per_unit,cost_per_unit, product_id,subscription_plan_id,subscription_plan_description', _options?: ConfigurationOptions): Observable<HttpInfo<OrderItem>> {
+    public updateOrderItemWithHttpInfo(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<OrderItem>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateOrderItem(orderId, orderItemId, updateOrderItemRequest, updateMask, _config);
@@ -7197,7 +7199,7 @@ export class ObservableOrdersApi {
      * @param updateOrderItemRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderItem(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: 'name,description,notes,quantity,price_per_unit,cost_per_unit, product_id,subscription_plan_id,subscription_plan_description', _options?: ConfigurationOptions): Observable<OrderItem> {
+    public updateOrderItem(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<OrderItem> {
         return this.updateOrderItemWithHttpInfo(orderId, orderItemId, updateOrderItemRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<OrderItem>) => apiResponse.data));
     }
 
@@ -7658,7 +7660,7 @@ export class ObservableProductCategoriesApi {
      * @param updateProductCategoryRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductCategoryWithHttpInfo(categoryId: string, updateProductCategoryRequest: UpdateProductCategoryRequest, updateMask?: 'name,display_order_index,parent_category_id', _options?: ConfigurationOptions): Observable<HttpInfo<ProductCategory>> {
+    public updateProductCategoryWithHttpInfo(categoryId: string, updateProductCategoryRequest: UpdateProductCategoryRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<ProductCategory>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateProductCategory(categoryId, updateProductCategoryRequest, updateMask, _config);
@@ -7685,7 +7687,7 @@ export class ObservableProductCategoriesApi {
      * @param updateProductCategoryRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductCategory(categoryId: string, updateProductCategoryRequest: UpdateProductCategoryRequest, updateMask?: 'name,display_order_index,parent_category_id', _options?: ConfigurationOptions): Observable<ProductCategory> {
+    public updateProductCategory(categoryId: string, updateProductCategoryRequest: UpdateProductCategoryRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<ProductCategory> {
         return this.updateProductCategoryWithHttpInfo(categoryId, updateProductCategoryRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ProductCategory>) => apiResponse.data));
     }
 
@@ -7856,7 +7858,7 @@ export class ObservableProductDiscountsApi {
      * @param updateProductDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductDiscountWithHttpInfo(discountId: string, updateProductDiscountRequest: UpdateProductDiscountRequest, updateMask?: 'name,description,apply_to_commissions,discount_type,discount_value,product_id,criteria', _options?: ConfigurationOptions): Observable<HttpInfo<ProductDiscount>> {
+    public updateProductDiscountWithHttpInfo(discountId: string, updateProductDiscountRequest: UpdateProductDiscountRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<ProductDiscount>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateProductDiscount(discountId, updateProductDiscountRequest, updateMask, _config);
@@ -7883,7 +7885,7 @@ export class ObservableProductDiscountsApi {
      * @param updateProductDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductDiscount(discountId: string, updateProductDiscountRequest: UpdateProductDiscountRequest, updateMask?: 'name,description,apply_to_commissions,discount_type,discount_value,product_id,criteria', _options?: ConfigurationOptions): Observable<ProductDiscount> {
+    public updateProductDiscount(discountId: string, updateProductDiscountRequest: UpdateProductDiscountRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<ProductDiscount> {
         return this.updateProductDiscountWithHttpInfo(discountId, updateProductDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ProductDiscount>) => apiResponse.data));
     }
 
@@ -8127,7 +8129,7 @@ export class ObservableProductInterestBundlesApi {
      * @param updateProductInterestRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductInterestWithHttpInfo(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: 'quantity,price,discount_percent', _options?: ConfigurationOptions): Observable<HttpInfo<ProductInterest>> {
+    public updateProductInterestWithHttpInfo(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<ProductInterest>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateProductInterest(id, interestId, updateProductInterestRequest, updateMask, _config);
@@ -8155,7 +8157,7 @@ export class ObservableProductInterestBundlesApi {
      * @param updateProductInterestRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductInterest(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: 'quantity,price,discount_percent', _options?: ConfigurationOptions): Observable<ProductInterest> {
+    public updateProductInterest(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<ProductInterest> {
         return this.updateProductInterestWithHttpInfo(id, interestId, updateProductInterestRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ProductInterest>) => apiResponse.data));
     }
 
@@ -8166,7 +8168,7 @@ export class ObservableProductInterestBundlesApi {
      * @param updateProductInterestBundleRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductInterestBundleWithHttpInfo(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: 'name,description', _options?: ConfigurationOptions): Observable<HttpInfo<ProductInterestBundle>> {
+    public updateProductInterestBundleWithHttpInfo(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<ProductInterestBundle>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateProductInterestBundle(id, updateProductInterestBundleRequest, updateMask, _config);
@@ -8193,7 +8195,7 @@ export class ObservableProductInterestBundlesApi {
      * @param updateProductInterestBundleRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductInterestBundle(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: 'name,description', _options?: ConfigurationOptions): Observable<ProductInterestBundle> {
+    public updateProductInterestBundle(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<ProductInterestBundle> {
         return this.updateProductInterestBundleWithHttpInfo(id, updateProductInterestBundleRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ProductInterestBundle>) => apiResponse.data));
     }
 
@@ -8326,13 +8328,14 @@ export class ObservableProductsApi {
     /**
      * Creates the Product Image file and uploads it to the specified Product
      * Create the Product Image
-     * @param productId product_id
-     * @param file File to upload
+     * @param productId The product ID
+     * @param file The image file to upload
+     * @param [legacy] Set to \&#39;true\&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image.
      */
-    public createProductImageWithHttpInfo(productId: string, file: HttpFile, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public createProductImageWithHttpInfo(productId: string, file: HttpFile, legacy?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createProductImage(productId, file, _config);
+        const requestContextPromise = this.requestFactory.createProductImage(productId, file, legacy, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8352,11 +8355,12 @@ export class ObservableProductsApi {
     /**
      * Creates the Product Image file and uploads it to the specified Product
      * Create the Product Image
-     * @param productId product_id
-     * @param file File to upload
+     * @param productId The product ID
+     * @param file The image file to upload
+     * @param [legacy] Set to \&#39;true\&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image.
      */
-    public createProductImage(productId: string, file: HttpFile, _options?: ConfigurationOptions): Observable<void> {
-        return this.createProductImageWithHttpInfo(productId, file, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public createProductImage(productId: string, file: HttpFile, legacy?: boolean, _options?: ConfigurationOptions): Observable<void> {
+        return this.createProductImageWithHttpInfo(productId, file, legacy, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -8538,6 +8542,40 @@ export class ObservableProductsApi {
     }
 
     /**
+     * Retrieves the product\'s legacy image
+     * Retrieve Product Legacy Image Data
+     * @param productId product_id
+     */
+    public getFileDataWithHttpInfo(productId: string, _options?: ConfigurationOptions): Observable<HttpInfo<string>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getFileData(productId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFileDataWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves the product\'s legacy image
+     * Retrieve Product Legacy Image Data
+     * @param productId product_id
+     */
+    public getFileData(productId: string, _options?: ConfigurationOptions): Observable<string> {
+        return this.getFileDataWithHttpInfo(productId, _options).pipe(map((apiResponse: HttpInfo<string>) => apiResponse.data));
+    }
+
+    /**
      * Gets a single Product
      * Get a Product
      * @param productId product_id
@@ -8688,7 +8726,7 @@ export class ObservableProductsApi {
      * @param updateProductRequestDetail
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductWithHttpInfo(productId: string, updateProductRequestDetail: UpdateProductRequestDetail, updateMask?: 'active,name,description,price,sku,shippable,short_description,subscription_only, storefront_hidden,weight,taxable,country_taxable,city_taxable,state_taxable, inventory_limit,out_of_stock_enabled,email_for_inventory_notifications', _options?: ConfigurationOptions): Observable<HttpInfo<RestV2ProductDetail>> {
+    public updateProductWithHttpInfo(productId: string, updateProductRequestDetail: UpdateProductRequestDetail, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<RestV2ProductDetail>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateProduct(productId, updateProductRequestDetail, updateMask, _config);
@@ -8715,7 +8753,7 @@ export class ObservableProductsApi {
      * @param updateProductRequestDetail
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProduct(productId: string, updateProductRequestDetail: UpdateProductRequestDetail, updateMask?: 'active,name,description,price,sku,shippable,short_description,subscription_only, storefront_hidden,weight,taxable,country_taxable,city_taxable,state_taxable, inventory_limit,out_of_stock_enabled,email_for_inventory_notifications', _options?: ConfigurationOptions): Observable<RestV2ProductDetail> {
+    public updateProduct(productId: string, updateProductRequestDetail: UpdateProductRequestDetail, updateMask?: any, _options?: ConfigurationOptions): Observable<RestV2ProductDetail> {
         return this.updateProductWithHttpInfo(productId, updateProductRequestDetail, updateMask, _options).pipe(map((apiResponse: HttpInfo<RestV2ProductDetail>) => apiResponse.data));
     }
 
@@ -8727,7 +8765,7 @@ export class ObservableProductsApi {
      * @param updateProductOptionRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductOptionWithHttpInfo(productId: string, productOptionId: string, updateProductOptionRequest: UpdateProductOptionRequest, updateMask?: 'option_label,display_order,required,minimum_characters,maximum_characters,allow_spaces, only_starts_with,only_ends_with,only_contains,error_message', _options?: ConfigurationOptions): Observable<HttpInfo<ProductOption>> {
+    public updateProductOptionWithHttpInfo(productId: string, productOptionId: string, updateProductOptionRequest: UpdateProductOptionRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<ProductOption>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateProductOption(productId, productOptionId, updateProductOptionRequest, updateMask, _config);
@@ -8755,7 +8793,7 @@ export class ObservableProductsApi {
      * @param updateProductOptionRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductOption(productId: string, productOptionId: string, updateProductOptionRequest: UpdateProductOptionRequest, updateMask?: 'option_label,display_order,required,minimum_characters,maximum_characters,allow_spaces, only_starts_with,only_ends_with,only_contains,error_message', _options?: ConfigurationOptions): Observable<ProductOption> {
+    public updateProductOption(productId: string, productOptionId: string, updateProductOptionRequest: UpdateProductOptionRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<ProductOption> {
         return this.updateProductOptionWithHttpInfo(productId, productOptionId, updateProductOptionRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ProductOption>) => apiResponse.data));
     }
 
@@ -8768,7 +8806,7 @@ export class ObservableProductsApi {
      * @param updateProductOptionListOption
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductOptionListOptionValueWithHttpInfo(productId: string, productOptionId: string, itemId: string, updateProductOptionListOption: UpdateProductOptionListOption, updateMask?: 'item_label,item_code,item_display_order,price_adjustment ', _options?: ConfigurationOptions): Observable<HttpInfo<ProductOption>> {
+    public updateProductOptionListOptionValueWithHttpInfo(productId: string, productOptionId: string, itemId: string, updateProductOptionListOption: UpdateProductOptionListOption, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<ProductOption>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateProductOptionListOptionValue(productId, productOptionId, itemId, updateProductOptionListOption, updateMask, _config);
@@ -8797,7 +8835,7 @@ export class ObservableProductsApi {
      * @param updateProductOptionListOption
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductOptionListOptionValue(productId: string, productOptionId: string, itemId: string, updateProductOptionListOption: UpdateProductOptionListOption, updateMask?: 'item_label,item_code,item_display_order,price_adjustment ', _options?: ConfigurationOptions): Observable<ProductOption> {
+    public updateProductOptionListOptionValue(productId: string, productOptionId: string, itemId: string, updateProductOptionListOption: UpdateProductOptionListOption, updateMask?: any, _options?: ConfigurationOptions): Observable<ProductOption> {
         return this.updateProductOptionListOptionValueWithHttpInfo(productId, productOptionId, itemId, updateProductOptionListOption, updateMask, _options).pipe(map((apiResponse: HttpInfo<ProductOption>) => apiResponse.data));
     }
 
@@ -9136,7 +9174,7 @@ export class ObservableSettingsApi {
      * Get Application Configuration
      * @param [fields] By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
      */
-    public getApplicationConfigurationsWithHttpInfo(fields?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<GetSettingsResponse>> {
+    public getApplicationConfigurationsWithHttpInfo(fields?: any, _options?: ConfigurationOptions): Observable<HttpInfo<GetSettingsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getApplicationConfigurations(fields, _config);
@@ -9161,7 +9199,7 @@ export class ObservableSettingsApi {
      * Get Application Configuration
      * @param [fields] By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
      */
-    public getApplicationConfigurations(fields?: Array<string>, _options?: ConfigurationOptions): Observable<GetSettingsResponse> {
+    public getApplicationConfigurations(fields?: any, _options?: ConfigurationOptions): Observable<GetSettingsResponse> {
         return this.getApplicationConfigurationsWithHttpInfo(fields, _options).pipe(map((apiResponse: HttpInfo<GetSettingsResponse>) => apiResponse.data));
     }
 
@@ -9446,7 +9484,7 @@ export class ObservableShippingDiscountsApi {
      * @param updateShippingDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateShippingDiscountWithHttpInfo(discountId: string, updateShippingDiscountRequest: UpdateShippingDiscountRequest, updateMask?: 'name,description,discount_type,discount_value,criteria', _options?: ConfigurationOptions): Observable<HttpInfo<ShippingDiscount>> {
+    public updateShippingDiscountWithHttpInfo(discountId: string, updateShippingDiscountRequest: UpdateShippingDiscountRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<ShippingDiscount>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateShippingDiscount(discountId, updateShippingDiscountRequest, updateMask, _config);
@@ -9473,7 +9511,7 @@ export class ObservableShippingDiscountsApi {
      * @param updateShippingDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateShippingDiscount(discountId: string, updateShippingDiscountRequest: UpdateShippingDiscountRequest, updateMask?: 'name,description,discount_type,discount_value,criteria', _options?: ConfigurationOptions): Observable<ShippingDiscount> {
+    public updateShippingDiscount(discountId: string, updateShippingDiscountRequest: UpdateShippingDiscountRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<ShippingDiscount> {
         return this.updateShippingDiscountWithHttpInfo(discountId, updateShippingDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ShippingDiscount>) => apiResponse.data));
     }
 
@@ -9653,7 +9691,7 @@ export class ObservableSubscriptionPlansApi {
      * @param updateSubscriptionPlanRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscriptionPlanWithHttpInfo(productId: string, subscriptionPlanId: string, updateSubscriptionPlanRequest: UpdateSubscriptionPlanRequest, updateMask?: 'active,allow_prorating,cycle_type,display_order_index,frequency,plan_price,total_cycles', _options?: ConfigurationOptions): Observable<HttpInfo<SubscriptionPlan>> {
+    public updateSubscriptionPlanWithHttpInfo(productId: string, subscriptionPlanId: string, updateSubscriptionPlanRequest: UpdateSubscriptionPlanRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<SubscriptionPlan>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateSubscriptionPlan(productId, subscriptionPlanId, updateSubscriptionPlanRequest, updateMask, _config);
@@ -9681,7 +9719,7 @@ export class ObservableSubscriptionPlansApi {
      * @param updateSubscriptionPlanRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscriptionPlan(productId: string, subscriptionPlanId: string, updateSubscriptionPlanRequest: UpdateSubscriptionPlanRequest, updateMask?: 'active,allow_prorating,cycle_type,display_order_index,frequency,plan_price,total_cycles', _options?: ConfigurationOptions): Observable<SubscriptionPlan> {
+    public updateSubscriptionPlan(productId: string, subscriptionPlanId: string, updateSubscriptionPlanRequest: UpdateSubscriptionPlanRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<SubscriptionPlan> {
         return this.updateSubscriptionPlanWithHttpInfo(productId, subscriptionPlanId, updateSubscriptionPlanRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<SubscriptionPlan>) => apiResponse.data));
     }
 
@@ -9954,7 +9992,7 @@ export class ObservableSubscriptionsApi {
      * @param updateSubscriptionRequestDetail
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscriptionWithHttpInfo(subscriptionId: string, updateSubscriptionRequestDetail: UpdateSubscriptionRequestDetail, updateMask?: 'contact_id,subscription_plan_id,quantity,billing_amount,auto_charge,max_charge_attempts,days_between_retries, active,billing_frequency,billing_cycle,next_bill_date,end_date,payment_method_id,allow_tax,lead_affiliate_id, sale_affiliate_id,promo_code,shipping_option_id,reason_stopped,shipping_address', _options?: ConfigurationOptions): Observable<HttpInfo<SubscriptionDetail>> {
+    public updateSubscriptionWithHttpInfo(subscriptionId: string, updateSubscriptionRequestDetail: UpdateSubscriptionRequestDetail, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<SubscriptionDetail>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateSubscription(subscriptionId, updateSubscriptionRequestDetail, updateMask, _config);
@@ -9981,7 +10019,7 @@ export class ObservableSubscriptionsApi {
      * @param updateSubscriptionRequestDetail
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscription(subscriptionId: string, updateSubscriptionRequestDetail: UpdateSubscriptionRequestDetail, updateMask?: 'contact_id,subscription_plan_id,quantity,billing_amount,auto_charge,max_charge_attempts,days_between_retries, active,billing_frequency,billing_cycle,next_bill_date,end_date,payment_method_id,allow_tax,lead_affiliate_id, sale_affiliate_id,promo_code,shipping_option_id,reason_stopped,shipping_address', _options?: ConfigurationOptions): Observable<SubscriptionDetail> {
+    public updateSubscription(subscriptionId: string, updateSubscriptionRequestDetail: UpdateSubscriptionRequestDetail, updateMask?: any, _options?: ConfigurationOptions): Observable<SubscriptionDetail> {
         return this.updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequestDetail, updateMask, _options).pipe(map((apiResponse: HttpInfo<SubscriptionDetail>) => apiResponse.data));
     }
 
@@ -9992,7 +10030,7 @@ export class ObservableSubscriptionsApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscriptionCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: 'group_id,label,options', _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+    public updateSubscriptionCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateSubscriptionCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
@@ -10019,7 +10057,7 @@ export class ObservableSubscriptionsApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscriptionCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: 'group_id,label,options', _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+    public updateSubscriptionCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
         return this.updateSubscriptionCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
     }
 
@@ -10488,7 +10526,7 @@ export class ObservableTagsApi {
      * @param createUpdateTagRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateTagWithHttpInfo(tagId: string, createUpdateTagRequest: CreateUpdateTagRequest, updateMask?: 'name,description,category', _options?: ConfigurationOptions): Observable<HttpInfo<UpdateTagResponse>> {
+    public updateTagWithHttpInfo(tagId: string, createUpdateTagRequest: CreateUpdateTagRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<UpdateTagResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateTag(tagId, createUpdateTagRequest, updateMask, _config);
@@ -10515,7 +10553,7 @@ export class ObservableTagsApi {
      * @param createUpdateTagRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateTag(tagId: string, createUpdateTagRequest: CreateUpdateTagRequest, updateMask?: 'name,description,category', _options?: ConfigurationOptions): Observable<UpdateTagResponse> {
+    public updateTag(tagId: string, createUpdateTagRequest: CreateUpdateTagRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<UpdateTagResponse> {
         return this.updateTagWithHttpInfo(tagId, createUpdateTagRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<UpdateTagResponse>) => apiResponse.data));
     }
 
@@ -10526,7 +10564,7 @@ export class ObservableTagsApi {
      * @param createUpdateTagCategoryRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateTagCategoryWithHttpInfo(tagCategoryId: string, createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, updateMask?: 'name,description', _options?: ConfigurationOptions): Observable<HttpInfo<UpdateTagCategoryResponse>> {
+    public updateTagCategoryWithHttpInfo(tagCategoryId: string, createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<UpdateTagCategoryResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateTagCategory(tagCategoryId, createUpdateTagCategoryRequest, updateMask, _config);
@@ -10553,7 +10591,7 @@ export class ObservableTagsApi {
      * @param createUpdateTagCategoryRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateTagCategory(tagCategoryId: string, createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, updateMask?: 'name,description', _options?: ConfigurationOptions): Observable<UpdateTagCategoryResponse> {
+    public updateTagCategory(tagCategoryId: string, createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<UpdateTagCategoryResponse> {
         return this.updateTagCategoryWithHttpInfo(tagCategoryId, createUpdateTagCategoryRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<UpdateTagCategoryResponse>) => apiResponse.data));
     }
 
@@ -10824,7 +10862,7 @@ export class ObservableTaskApi {
      * @param createUpdateTaskRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateTaskWithHttpInfo(taskId: string, createUpdateTaskRequest: CreateUpdateTaskRequest, updateMask?: 'id,title,description,type,priority,completion_time, due_time,remind_time_mins,assigned_to_user_id,contact_id,completed', _options?: ConfigurationOptions): Observable<HttpInfo<UpdateTaskResponse>> {
+    public updateTaskWithHttpInfo(taskId: string, createUpdateTaskRequest: CreateUpdateTaskRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<UpdateTaskResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateTask(taskId, createUpdateTaskRequest, updateMask, _config);
@@ -10851,7 +10889,7 @@ export class ObservableTaskApi {
      * @param createUpdateTaskRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateTask(taskId: string, createUpdateTaskRequest: CreateUpdateTaskRequest, updateMask?: 'id,title,description,type,priority,completion_time, due_time,remind_time_mins,assigned_to_user_id,contact_id,completed', _options?: ConfigurationOptions): Observable<UpdateTaskResponse> {
+    public updateTask(taskId: string, createUpdateTaskRequest: CreateUpdateTaskRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<UpdateTaskResponse> {
         return this.updateTaskWithHttpInfo(taskId, createUpdateTaskRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<UpdateTaskResponse>) => apiResponse.data));
     }
 
@@ -10862,7 +10900,7 @@ export class ObservableTaskApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateTaskCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: 'group_id,label,options', _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+    public updateTaskCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateTaskCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
@@ -10889,7 +10927,7 @@ export class ObservableTaskApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateTaskCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: 'group_id,label,options', _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+    public updateTaskCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
         return this.updateTaskCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
     }
 
@@ -11142,7 +11180,7 @@ export class ObservableUsersApi {
      * @param updateUserRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateUserWithHttpInfo(userId: string, updateUserRequest: UpdateUserRequest, updateMask?: 'address,company_name,email_address,family_name,fax_numbers,given_name,job_title,phone_numbers,time_zone,website', _options?: ConfigurationOptions): Observable<HttpInfo<User>> {
+    public updateUserWithHttpInfo(userId: string, updateUserRequest: UpdateUserRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<User>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateUser(userId, updateUserRequest, updateMask, _config);
@@ -11169,7 +11207,7 @@ export class ObservableUsersApi {
      * @param updateUserRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateUser(userId: string, updateUserRequest: UpdateUserRequest, updateMask?: 'address,company_name,email_address,family_name,fax_numbers,given_name,job_title,phone_numbers,time_zone,website', _options?: ConfigurationOptions): Observable<User> {
+    public updateUser(userId: string, updateUserRequest: UpdateUserRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<User> {
         return this.updateUserWithHttpInfo(userId, updateUserRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<User>) => apiResponse.data));
     }
 

@@ -110,11 +110,12 @@ namespace Keap.Core.V2.Api
         /// Creates the Product Image file and uploads it to the specified Product
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="productId">product_id</param>
-        /// <param name="file">File to upload</param>
+        /// <param name="productId">The product ID</param>
+        /// <param name="file">The image file to upload</param>
+        /// <param name="legacy">Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        void CreateProductImage(string productId, System.IO.Stream file, int operationIndex = 0);
+        void CreateProductImage(string productId, System.IO.Stream file, bool? legacy = default, int operationIndex = 0);
 
         /// <summary>
         /// Create the Product Image
@@ -123,11 +124,12 @@ namespace Keap.Core.V2.Api
         /// Creates the Product Image file and uploads it to the specified Product
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="productId">product_id</param>
-        /// <param name="file">File to upload</param>
+        /// <param name="productId">The product ID</param>
+        /// <param name="file">The image file to upload</param>
+        /// <param name="legacy">Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> CreateProductImageWithHttpInfo(string productId, System.IO.Stream file, int operationIndex = 0);
+        ApiResponse<Object> CreateProductImageWithHttpInfo(string productId, System.IO.Stream file, bool? legacy = default, int operationIndex = 0);
         /// <summary>
         /// Create a Product Option
         /// </summary>
@@ -252,6 +254,29 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteProductOptionListOptionValueWithHttpInfo(string productId, string productOptionId, string itemId, int operationIndex = 0);
         /// <summary>
+        /// Retrieve Product Legacy Image Data
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the product&#39;s legacy image
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productId">product_id</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>byte[]</returns>
+        byte[] GetFileData(string productId, int operationIndex = 0);
+
+        /// <summary>
+        /// Retrieve Product Legacy Image Data
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the product&#39;s legacy image
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productId">product_id</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of byte[]</returns>
+        ApiResponse<byte[]> GetFileDataWithHttpInfo(string productId, int operationIndex = 0);
+        /// <summary>
         /// Get a Product
         /// </summary>
         /// <remarks>
@@ -363,7 +388,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RestV2ProductDetail</returns>
-        RestV2ProductDetail UpdateProduct(string productId, UpdateProductRequestDetail updateProductRequestDetail, string? updateMask = default, int operationIndex = 0);
+        RestV2ProductDetail UpdateProduct(string productId, UpdateProductRequestDetail updateProductRequestDetail, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Product
@@ -377,7 +402,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RestV2ProductDetail</returns>
-        ApiResponse<RestV2ProductDetail> UpdateProductWithHttpInfo(string productId, UpdateProductRequestDetail updateProductRequestDetail, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<RestV2ProductDetail> UpdateProductWithHttpInfo(string productId, UpdateProductRequestDetail updateProductRequestDetail, Object? updateMask = default, int operationIndex = 0);
         /// <summary>
         /// Updates a Product Option
         /// </summary>
@@ -391,7 +416,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductOption</returns>
-        ProductOption UpdateProductOption(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, string? updateMask = default, int operationIndex = 0);
+        ProductOption UpdateProductOption(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Updates a Product Option
@@ -406,7 +431,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductOption</returns>
-        ApiResponse<ProductOption> UpdateProductOptionWithHttpInfo(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<ProductOption> UpdateProductOptionWithHttpInfo(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object? updateMask = default, int operationIndex = 0);
         /// <summary>
         /// Updates a Product Option List Option Value
         /// </summary>
@@ -421,7 +446,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductOption</returns>
-        ProductOption UpdateProductOptionListOptionValue(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, string? updateMask = default, int operationIndex = 0);
+        ProductOption UpdateProductOptionListOptionValue(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Updates a Product Option List Option Value
@@ -437,7 +462,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductOption</returns>
-        ApiResponse<ProductOption> UpdateProductOptionListOptionValueWithHttpInfo(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<ProductOption> UpdateProductOptionListOptionValueWithHttpInfo(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, Object? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -535,12 +560,13 @@ namespace Keap.Core.V2.Api
         /// Creates the Product Image file and uploads it to the specified Product
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="productId">product_id</param>
-        /// <param name="file">File to upload</param>
+        /// <param name="productId">The product ID</param>
+        /// <param name="file">The image file to upload</param>
+        /// <param name="legacy">Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task CreateProductImageAsync(string productId, System.IO.Stream file, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task CreateProductImageAsync(string productId, System.IO.Stream file, bool? legacy = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create the Product Image
@@ -549,12 +575,13 @@ namespace Keap.Core.V2.Api
         /// Creates the Product Image file and uploads it to the specified Product
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="productId">product_id</param>
-        /// <param name="file">File to upload</param>
+        /// <param name="productId">The product ID</param>
+        /// <param name="file">The image file to upload</param>
+        /// <param name="legacy">Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> CreateProductImageWithHttpInfoAsync(string productId, System.IO.Stream file, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Object>> CreateProductImageWithHttpInfoAsync(string productId, System.IO.Stream file, bool? legacy = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a Product Option
         /// </summary>
@@ -689,6 +716,31 @@ namespace Keap.Core.V2.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteProductOptionListOptionValueWithHttpInfoAsync(string productId, string productOptionId, string itemId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Retrieve Product Legacy Image Data
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the product&#39;s legacy image
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productId">product_id</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of byte[]</returns>
+        System.Threading.Tasks.Task<byte[]> GetFileDataAsync(string productId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Retrieve Product Legacy Image Data
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the product&#39;s legacy image
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productId">product_id</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> GetFileDataWithHttpInfoAsync(string productId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Get a Product
         /// </summary>
         /// <remarks>
@@ -809,7 +861,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RestV2ProductDetail</returns>
-        System.Threading.Tasks.Task<RestV2ProductDetail> UpdateProductAsync(string productId, UpdateProductRequestDetail updateProductRequestDetail, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<RestV2ProductDetail> UpdateProductAsync(string productId, UpdateProductRequestDetail updateProductRequestDetail, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Product
@@ -824,7 +876,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RestV2ProductDetail)</returns>
-        System.Threading.Tasks.Task<ApiResponse<RestV2ProductDetail>> UpdateProductWithHttpInfoAsync(string productId, UpdateProductRequestDetail updateProductRequestDetail, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<RestV2ProductDetail>> UpdateProductWithHttpInfoAsync(string productId, UpdateProductRequestDetail updateProductRequestDetail, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a Product Option
         /// </summary>
@@ -839,7 +891,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ProductOption</returns>
-        System.Threading.Tasks.Task<ProductOption> UpdateProductOptionAsync(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ProductOption> UpdateProductOptionAsync(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a Product Option
@@ -855,7 +907,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ProductOption)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ProductOption>> UpdateProductOptionWithHttpInfoAsync(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ProductOption>> UpdateProductOptionWithHttpInfoAsync(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a Product Option List Option Value
         /// </summary>
@@ -871,7 +923,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ProductOption</returns>
-        System.Threading.Tasks.Task<ProductOption> UpdateProductOptionListOptionValueAsync(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ProductOption> UpdateProductOptionListOptionValueAsync(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a Product Option List Option Value
@@ -888,7 +940,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ProductOption)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ProductOption>> UpdateProductOptionListOptionValueWithHttpInfoAsync(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ProductOption>> UpdateProductOptionListOptionValueWithHttpInfoAsync(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -1604,24 +1656,26 @@ namespace Keap.Core.V2.Api
         /// Create the Product Image Creates the Product Image file and uploads it to the specified Product
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="productId">product_id</param>
-        /// <param name="file">File to upload</param>
+        /// <param name="productId">The product ID</param>
+        /// <param name="file">The image file to upload</param>
+        /// <param name="legacy">Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        public void CreateProductImage(string productId, System.IO.Stream file, int operationIndex = 0)
+        public void CreateProductImage(string productId, System.IO.Stream file, bool? legacy = default, int operationIndex = 0)
         {
-            CreateProductImageWithHttpInfo(productId, file);
+            CreateProductImageWithHttpInfo(productId, file, legacy);
         }
 
         /// <summary>
         /// Create the Product Image Creates the Product Image file and uploads it to the specified Product
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="productId">product_id</param>
-        /// <param name="file">File to upload</param>
+        /// <param name="productId">The product ID</param>
+        /// <param name="file">The image file to upload</param>
+        /// <param name="legacy">Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Keap.Core.V2.Client.ApiResponse<Object> CreateProductImageWithHttpInfo(string productId, System.IO.Stream file, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<Object> CreateProductImageWithHttpInfo(string productId, System.IO.Stream file, bool? legacy = default, int operationIndex = 0)
         {
             // verify the required parameter 'productId' is set
             if (productId == null)
@@ -1660,6 +1714,10 @@ namespace Keap.Core.V2.Api
             }
 
             localVarRequestOptions.PathParameters.Add("product_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(productId)); // path parameter
+            if (legacy != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "legacy", legacy));
+            }
             localVarRequestOptions.FileParameters.Add("file", file);
 
             localVarRequestOptions.Operation = "ProductsApi.CreateProductImage";
@@ -1700,26 +1758,28 @@ namespace Keap.Core.V2.Api
         /// Create the Product Image Creates the Product Image file and uploads it to the specified Product
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="productId">product_id</param>
-        /// <param name="file">File to upload</param>
+        /// <param name="productId">The product ID</param>
+        /// <param name="file">The image file to upload</param>
+        /// <param name="legacy">Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task CreateProductImageAsync(string productId, System.IO.Stream file, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task CreateProductImageAsync(string productId, System.IO.Stream file, bool? legacy = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            await CreateProductImageWithHttpInfoAsync(productId, file, operationIndex, cancellationToken).ConfigureAwait(false);
+            await CreateProductImageWithHttpInfoAsync(productId, file, legacy, operationIndex, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Create the Product Image Creates the Product Image file and uploads it to the specified Product
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="productId">product_id</param>
-        /// <param name="file">File to upload</param>
+        /// <param name="productId">The product ID</param>
+        /// <param name="file">The image file to upload</param>
+        /// <param name="legacy">Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Object>> CreateProductImageWithHttpInfoAsync(string productId, System.IO.Stream file, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Object>> CreateProductImageWithHttpInfoAsync(string productId, System.IO.Stream file, bool? legacy = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'productId' is set
             if (productId == null)
@@ -1758,6 +1818,10 @@ namespace Keap.Core.V2.Api
             }
 
             localVarRequestOptions.PathParameters.Add("product_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(productId)); // path parameter
+            if (legacy != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "legacy", legacy));
+            }
             localVarRequestOptions.FileParameters.Add("file", file);
 
             localVarRequestOptions.Operation = "ProductsApi.CreateProductImage";
@@ -2747,6 +2811,183 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
+        /// Retrieve Product Legacy Image Data Retrieves the product&#39;s legacy image
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productId">product_id</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>byte[]</returns>
+        public byte[] GetFileData(string productId, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<byte[]> localVarResponse = GetFileDataWithHttpInfo(productId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve Product Legacy Image Data Retrieves the product&#39;s legacy image
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productId">product_id</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of byte[]</returns>
+        public Keap.Core.V2.Client.ApiResponse<byte[]> GetFileDataWithHttpInfo(string productId, int operationIndex = 0)
+        {
+            // verify the required parameter 'productId' is set
+            if (productId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'productId' when calling ProductsApi->GetFileData");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("product_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(productId)); // path parameter
+
+            localVarRequestOptions.Operation = "ProductsApi.GetFileData";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<byte[]>("/rest/v2/products/{product_id}/images/legacyImageData", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetFileData", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Retrieve Product Legacy Image Data Retrieves the product&#39;s legacy image
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productId">product_id</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of byte[]</returns>
+        public async System.Threading.Tasks.Task<byte[]> GetFileDataAsync(string productId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<byte[]> localVarResponse = await GetFileDataWithHttpInfoAsync(productId, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve Product Legacy Image Data Retrieves the product&#39;s legacy image
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="productId">product_id</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<byte[]>> GetFileDataWithHttpInfoAsync(string productId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'productId' is set
+            if (productId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'productId' when calling ProductsApi->GetFileData");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("product_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(productId)); // path parameter
+
+            localVarRequestOptions.Operation = "ProductsApi.GetFileData";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<byte[]>("/rest/v2/products/{product_id}/images/legacyImageData", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetFileData", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Get a Product Gets a single Product
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
@@ -3511,7 +3752,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RestV2ProductDetail</returns>
-        public RestV2ProductDetail UpdateProduct(string productId, UpdateProductRequestDetail updateProductRequestDetail, string? updateMask = default, int operationIndex = 0)
+        public RestV2ProductDetail UpdateProduct(string productId, UpdateProductRequestDetail updateProductRequestDetail, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<RestV2ProductDetail> localVarResponse = UpdateProductWithHttpInfo(productId, updateProductRequestDetail, updateMask);
             return localVarResponse.Data;
@@ -3526,7 +3767,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RestV2ProductDetail</returns>
-        public Keap.Core.V2.Client.ApiResponse<RestV2ProductDetail> UpdateProductWithHttpInfo(string productId, UpdateProductRequestDetail updateProductRequestDetail, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<RestV2ProductDetail> UpdateProductWithHttpInfo(string productId, UpdateProductRequestDetail updateProductRequestDetail, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'productId' is set
             if (productId == null)
@@ -3615,7 +3856,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RestV2ProductDetail</returns>
-        public async System.Threading.Tasks.Task<RestV2ProductDetail> UpdateProductAsync(string productId, UpdateProductRequestDetail updateProductRequestDetail, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<RestV2ProductDetail> UpdateProductAsync(string productId, UpdateProductRequestDetail updateProductRequestDetail, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<RestV2ProductDetail> localVarResponse = await UpdateProductWithHttpInfoAsync(productId, updateProductRequestDetail, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -3631,7 +3872,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RestV2ProductDetail)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<RestV2ProductDetail>> UpdateProductWithHttpInfoAsync(string productId, UpdateProductRequestDetail updateProductRequestDetail, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<RestV2ProductDetail>> UpdateProductWithHttpInfoAsync(string productId, UpdateProductRequestDetail updateProductRequestDetail, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'productId' is set
             if (productId == null)
@@ -3721,7 +3962,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductOption</returns>
-        public ProductOption UpdateProductOption(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, string? updateMask = default, int operationIndex = 0)
+        public ProductOption UpdateProductOption(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<ProductOption> localVarResponse = UpdateProductOptionWithHttpInfo(productId, productOptionId, updateProductOptionRequest, updateMask);
             return localVarResponse.Data;
@@ -3737,7 +3978,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductOption</returns>
-        public Keap.Core.V2.Client.ApiResponse<ProductOption> UpdateProductOptionWithHttpInfo(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<ProductOption> UpdateProductOptionWithHttpInfo(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'productId' is set
             if (productId == null)
@@ -3834,7 +4075,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ProductOption</returns>
-        public async System.Threading.Tasks.Task<ProductOption> UpdateProductOptionAsync(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ProductOption> UpdateProductOptionAsync(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<ProductOption> localVarResponse = await UpdateProductOptionWithHttpInfoAsync(productId, productOptionId, updateProductOptionRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -3851,7 +4092,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ProductOption)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ProductOption>> UpdateProductOptionWithHttpInfoAsync(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ProductOption>> UpdateProductOptionWithHttpInfoAsync(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'productId' is set
             if (productId == null)
@@ -3949,7 +4190,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductOption</returns>
-        public ProductOption UpdateProductOptionListOptionValue(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, string? updateMask = default, int operationIndex = 0)
+        public ProductOption UpdateProductOptionListOptionValue(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<ProductOption> localVarResponse = UpdateProductOptionListOptionValueWithHttpInfo(productId, productOptionId, itemId, updateProductOptionListOption, updateMask);
             return localVarResponse.Data;
@@ -3966,7 +4207,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductOption</returns>
-        public Keap.Core.V2.Client.ApiResponse<ProductOption> UpdateProductOptionListOptionValueWithHttpInfo(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<ProductOption> UpdateProductOptionListOptionValueWithHttpInfo(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'productId' is set
             if (productId == null)
@@ -4071,7 +4312,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ProductOption</returns>
-        public async System.Threading.Tasks.Task<ProductOption> UpdateProductOptionListOptionValueAsync(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ProductOption> UpdateProductOptionListOptionValueAsync(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<ProductOption> localVarResponse = await UpdateProductOptionListOptionValueWithHttpInfoAsync(productId, productOptionId, itemId, updateProductOptionListOption, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -4089,7 +4330,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ProductOption)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ProductOption>> UpdateProductOptionListOptionValueWithHttpInfoAsync(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ProductOption>> UpdateProductOptionListOptionValueWithHttpInfoAsync(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'productId' is set
             if (productId == null)

@@ -38,7 +38,7 @@ namespace Keap.Core.V2.Api
         /// <param name="fields">By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetSettingsResponse</returns>
-        GetSettingsResponse GetApplicationConfigurations(List<string>? fields = default, int operationIndex = 0);
+        GetSettingsResponse GetApplicationConfigurations(Object? fields = default, int operationIndex = 0);
 
         /// <summary>
         /// Get Application Configuration
@@ -50,7 +50,7 @@ namespace Keap.Core.V2.Api
         /// <param name="fields">By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetSettingsResponse</returns>
-        ApiResponse<GetSettingsResponse> GetApplicationConfigurationsWithHttpInfo(List<string>? fields = default, int operationIndex = 0);
+        ApiResponse<GetSettingsResponse> GetApplicationConfigurationsWithHttpInfo(Object? fields = default, int operationIndex = 0);
         /// <summary>
         /// Get Contact Option types
         /// </summary>
@@ -113,7 +113,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetSettingsResponse</returns>
-        System.Threading.Tasks.Task<GetSettingsResponse> GetApplicationConfigurationsAsync(List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<GetSettingsResponse> GetApplicationConfigurationsAsync(Object? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get Application Configuration
@@ -126,7 +126,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetSettingsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetSettingsResponse>> GetApplicationConfigurationsWithHttpInfoAsync(List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<GetSettingsResponse>> GetApplicationConfigurationsWithHttpInfoAsync(Object? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get Contact Option types
         /// </summary>
@@ -300,7 +300,7 @@ namespace Keap.Core.V2.Api
         /// <param name="fields">By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetSettingsResponse</returns>
-        public GetSettingsResponse GetApplicationConfigurations(List<string>? fields = default, int operationIndex = 0)
+        public GetSettingsResponse GetApplicationConfigurations(Object? fields = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<GetSettingsResponse> localVarResponse = GetApplicationConfigurationsWithHttpInfo(fields);
             return localVarResponse.Data;
@@ -313,7 +313,7 @@ namespace Keap.Core.V2.Api
         /// <param name="fields">By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetSettingsResponse</returns>
-        public Keap.Core.V2.Client.ApiResponse<GetSettingsResponse> GetApplicationConfigurationsWithHttpInfo(List<string>? fields = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<GetSettingsResponse> GetApplicationConfigurationsWithHttpInfo(Object? fields = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
 
@@ -340,7 +340,7 @@ namespace Keap.Core.V2.Api
 
             if (fields != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "fields", fields));
             }
 
             localVarRequestOptions.Operation = "SettingsApi.GetApplicationConfigurations";
@@ -385,7 +385,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetSettingsResponse</returns>
-        public async System.Threading.Tasks.Task<GetSettingsResponse> GetApplicationConfigurationsAsync(List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<GetSettingsResponse> GetApplicationConfigurationsAsync(Object? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<GetSettingsResponse> localVarResponse = await GetApplicationConfigurationsWithHttpInfoAsync(fields, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -399,7 +399,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetSettingsResponse)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<GetSettingsResponse>> GetApplicationConfigurationsWithHttpInfoAsync(List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<GetSettingsResponse>> GetApplicationConfigurationsWithHttpInfoAsync(Object? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
@@ -426,7 +426,7 @@ namespace Keap.Core.V2.Api
 
             if (fields != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "fields", fields));
             }
 
             localVarRequestOptions.Operation = "SettingsApi.GetApplicationConfigurations";

@@ -65,7 +65,8 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
         'cycle_type' => 'string',
         'display_order_index' => 'int',
         'total_cycles' => 'int',
-        'plan_price' => '\Keap\Core\V2\Model\CurrencyValue'
+        'plan_price' => '\Keap\Core\V2\Model\CurrencyValue',
+        'preauthorize_amount' => 'float'
     ];
 
     /**
@@ -84,7 +85,8 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
         'cycle_type' => null,
         'display_order_index' => 'int32',
         'total_cycles' => 'int32',
-        'plan_price' => null
+        'plan_price' => null,
+        'preauthorize_amount' => 'double'
     ];
 
     /**
@@ -101,7 +103,8 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
         'cycle_type' => false,
         'display_order_index' => false,
         'total_cycles' => false,
-        'plan_price' => false
+        'plan_price' => false,
+        'preauthorize_amount' => false
     ];
 
     /**
@@ -198,7 +201,8 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
         'cycle_type' => 'cycle_type',
         'display_order_index' => 'display_order_index',
         'total_cycles' => 'total_cycles',
-        'plan_price' => 'plan_price'
+        'plan_price' => 'plan_price',
+        'preauthorize_amount' => 'preauthorize_amount'
     ];
 
     /**
@@ -215,7 +219,8 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
         'cycle_type' => 'setCycleType',
         'display_order_index' => 'setDisplayOrderIndex',
         'total_cycles' => 'setTotalCycles',
-        'plan_price' => 'setPlanPrice'
+        'plan_price' => 'setPlanPrice',
+        'preauthorize_amount' => 'setPreauthorizeAmount'
     ];
 
     /**
@@ -232,7 +237,8 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
         'cycle_type' => 'getCycleType',
         'display_order_index' => 'getDisplayOrderIndex',
         'total_cycles' => 'getTotalCycles',
-        'plan_price' => 'getPlanPrice'
+        'plan_price' => 'getPlanPrice',
+        'preauthorize_amount' => 'getPreauthorizeAmount'
     ];
 
     /**
@@ -320,6 +326,7 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('display_order_index', $data ?? [], null);
         $this->setIfExists('total_cycles', $data ?? [], null);
         $this->setIfExists('plan_price', $data ?? [], null);
+        $this->setIfExists('preauthorize_amount', $data ?? [], null);
     }
 
     /**
@@ -622,6 +629,33 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable plan_price cannot be null');
         }
         $this->container['plan_price'] = $plan_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets preauthorize_amount
+     *
+     * @return float|null
+     */
+    public function getPreauthorizeAmount()
+    {
+        return $this->container['preauthorize_amount'];
+    }
+
+    /**
+     * Sets preauthorize_amount
+     *
+     * @param float|null $preauthorize_amount The pre-authorize amount for the subscription plan. If null, this field is omitted from the response.
+     *
+     * @return self
+     */
+    public function setPreauthorizeAmount($preauthorize_amount)
+    {
+        if (is_null($preauthorize_amount)) {
+            throw new \InvalidArgumentException('non-nullable preauthorize_amount cannot be null');
+        }
+        $this->container['preauthorize_amount'] = $preauthorize_amount;
 
         return $this;
     }

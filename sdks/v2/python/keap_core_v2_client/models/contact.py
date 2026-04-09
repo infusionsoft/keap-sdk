@@ -44,6 +44,7 @@ class Contact(BaseModel):
     prefix: Optional[StrictStr] = Field(default=None, description="Name prefix")
     suffix: Optional[StrictStr] = Field(default=None, description="Name suffix")
     website: Optional[StrictStr] = Field(default=None, description="Personal website URL")
+    groups: Optional[StrictStr] = None
     update_time: Optional[StrictStr] = Field(default=None, description="Last update timestamp (ISO-8601)")
     create_time: Optional[StrictStr] = Field(default=None, description="Creation timestamp (ISO-8601)")
     score_value: Optional[StrictStr] = Field(default=None, description="Contact score value")
@@ -69,8 +70,14 @@ class Contact(BaseModel):
     spouse_name: Optional[StrictStr] = Field(default=None, description="Spouse's name")
     time_zone: Optional[StrictStr] = Field(default=None, description="Contact's timezone")
     utm_parameters: Optional[List[ContactUtmResponse]] = None
+    account_id: Optional[StrictStr] = None
+    assistant_name: Optional[StrictStr] = None
+    assistant_phone: Optional[StrictStr] = None
+    billing_information: Optional[StrictStr] = None
+    created_by: Optional[StrictStr] = None
+    last_updated_by: Optional[StrictStr] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "links", "addresses", "company", "origin", "prefix", "suffix", "website", "update_time", "create_time", "score_value", "tag_ids", "anniversary_date", "birth_date", "contact_type", "custom_fields", "email_addresses", "family_name", "fax_numbers", "given_name", "job_title", "leadsource_id", "middle_name", "owner_id", "phone_numbers", "preferred_locale", "preferred_name", "referral_code", "social_accounts", "source_type", "spouse_name", "time_zone", "utm_parameters"]
+    __properties: ClassVar[List[str]] = ["id", "links", "addresses", "company", "origin", "prefix", "suffix", "website", "groups", "update_time", "create_time", "score_value", "tag_ids", "anniversary_date", "birth_date", "contact_type", "custom_fields", "email_addresses", "family_name", "fax_numbers", "given_name", "job_title", "leadsource_id", "middle_name", "owner_id", "phone_numbers", "preferred_locale", "preferred_name", "referral_code", "social_accounts", "source_type", "spouse_name", "time_zone", "utm_parameters", "account_id", "assistant_name", "assistant_phone", "billing_information", "created_by", "last_updated_by"]
 
     @field_validator('source_type')
     def source_type_validate_enum(cls, value):
@@ -210,6 +217,7 @@ class Contact(BaseModel):
             "prefix": obj.get("prefix"),
             "suffix": obj.get("suffix"),
             "website": obj.get("website"),
+            "groups": obj.get("groups"),
             "update_time": obj.get("update_time"),
             "create_time": obj.get("create_time"),
             "score_value": obj.get("score_value"),
@@ -234,7 +242,13 @@ class Contact(BaseModel):
             "source_type": obj.get("source_type"),
             "spouse_name": obj.get("spouse_name"),
             "time_zone": obj.get("time_zone"),
-            "utm_parameters": [ContactUtmResponse.from_dict(_item) for _item in obj["utm_parameters"]] if obj.get("utm_parameters") is not None else None
+            "utm_parameters": [ContactUtmResponse.from_dict(_item) for _item in obj["utm_parameters"]] if obj.get("utm_parameters") is not None else None,
+            "account_id": obj.get("account_id"),
+            "assistant_name": obj.get("assistant_name"),
+            "assistant_phone": obj.get("assistant_phone"),
+            "billing_information": obj.get("billing_information"),
+            "created_by": obj.get("created_by"),
+            "last_updated_by": obj.get("last_updated_by")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

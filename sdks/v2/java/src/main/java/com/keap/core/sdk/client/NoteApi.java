@@ -799,7 +799,7 @@ import io.github.resilience4j.retry.Retry;
    * @return UpdateNoteResponse
    * @throws ApiException if fails to make API call
    */
-  public UpdateNoteResponse updateNote(String contactId, String noteId, UpdateNoteRequest updateNoteRequest, String updateMask) throws ApiException {
+  public UpdateNoteResponse updateNote(String contactId, String noteId, UpdateNoteRequest updateNoteRequest, Object updateMask) throws ApiException {
     ApiResponse<UpdateNoteResponse> localVarResponse = updateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -814,7 +814,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;UpdateNoteResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<UpdateNoteResponse> updateNoteWithHttpInfo(String contactId, String noteId, UpdateNoteRequest updateNoteRequest, String updateMask) throws ApiException {
+  public ApiResponse<UpdateNoteResponse> updateNoteWithHttpInfo(String contactId, String noteId, UpdateNoteRequest updateNoteRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateNoteRequestBuilder(contactId, noteId, updateNoteRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -855,7 +855,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateNoteRequestBuilder(String contactId, String noteId, UpdateNoteRequest updateNoteRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateNoteRequestBuilder(String contactId, String noteId, UpdateNoteRequest updateNoteRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'contactId' is set
     if (contactId == null) {
       throw new ApiException(400, "Missing the required parameter 'contactId' when calling updateNote");
@@ -920,7 +920,7 @@ import io.github.resilience4j.retry.Retry;
    * @return CustomFieldMetaData
    * @throws ApiException if fails to make API call
    */
-  public CustomFieldMetaData updateNotesCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, String updateMask) throws ApiException {
+  public CustomFieldMetaData updateNotesCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
     ApiResponse<CustomFieldMetaData> localVarResponse = updateNotesCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -934,7 +934,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;CustomFieldMetaData&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CustomFieldMetaData> updateNotesCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, String updateMask) throws ApiException {
+  public ApiResponse<CustomFieldMetaData> updateNotesCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateNotesCustomFieldRequestBuilder(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -975,7 +975,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateNotesCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateNotesCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'customFieldId' is set
     if (customFieldId == null) {
       throw new ApiException(400, "Missing the required parameter 'customFieldId' when calling updateNotesCustomField");

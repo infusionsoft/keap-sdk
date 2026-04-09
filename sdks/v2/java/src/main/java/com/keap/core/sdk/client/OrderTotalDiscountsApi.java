@@ -485,7 +485,7 @@ import io.github.resilience4j.retry.Retry;
    * @return OrderTotalDiscount
    * @throws ApiException if fails to make API call
    */
-  public OrderTotalDiscount updateOrderTotalDiscount(String discountId, UpdateOrderTotalDiscountRequest updateOrderTotalDiscountRequest, String updateMask) throws ApiException {
+  public OrderTotalDiscount updateOrderTotalDiscount(String discountId, UpdateOrderTotalDiscountRequest updateOrderTotalDiscountRequest, Object updateMask) throws ApiException {
     ApiResponse<OrderTotalDiscount> localVarResponse = updateOrderTotalDiscountWithHttpInfo(discountId, updateOrderTotalDiscountRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -499,7 +499,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;OrderTotalDiscount&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<OrderTotalDiscount> updateOrderTotalDiscountWithHttpInfo(String discountId, UpdateOrderTotalDiscountRequest updateOrderTotalDiscountRequest, String updateMask) throws ApiException {
+  public ApiResponse<OrderTotalDiscount> updateOrderTotalDiscountWithHttpInfo(String discountId, UpdateOrderTotalDiscountRequest updateOrderTotalDiscountRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateOrderTotalDiscountRequestBuilder(discountId, updateOrderTotalDiscountRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -540,7 +540,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateOrderTotalDiscountRequestBuilder(String discountId, UpdateOrderTotalDiscountRequest updateOrderTotalDiscountRequest, String updateMask) throws ApiException {
+  private HttpRequest.Builder updateOrderTotalDiscountRequestBuilder(String discountId, UpdateOrderTotalDiscountRequest updateOrderTotalDiscountRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'discountId' is set
     if (discountId == null) {
       throw new ApiException(400, "Missing the required parameter 'discountId' when calling updateOrderTotalDiscount");

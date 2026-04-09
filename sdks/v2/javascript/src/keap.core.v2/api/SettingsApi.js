@@ -41,7 +41,7 @@ export default class SettingsApi {
      * Get Application Configuration
      * Get configuration values for the application instance.
      * @param {Object} opts Optional parameters
-     * @param {Array.<String>} [fields] By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
+     * @param {Object} [fields] By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/GetSettingsResponse} and HTTP response
      */
     getApplicationConfigurationsWithHttpInfo(opts) {
@@ -51,7 +51,7 @@ export default class SettingsApi {
       let pathParams = {
       };
       let queryParams = {
-        'fields': this.apiClient.buildCollectionParam(opts['fields'], 'csv')
+        'fields': opts['fields']
       };
       let headerParams = {
       };
@@ -73,7 +73,7 @@ export default class SettingsApi {
      * Get Application Configuration
      * Get configuration values for the application instance.
      * @param {Object} opts Optional parameters
-     * @param {Array.<String>} opts.fields By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
+     * @param {Object} opts.fields By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/GetSettingsResponse}
      */
     getApplicationConfigurations(opts) {

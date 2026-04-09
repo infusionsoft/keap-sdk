@@ -24,6 +24,14 @@ Name | Type | Description | Notes
 **state_taxable** | **bool** | If state-based taxes should be applied to this product | [optional] 
 **city_taxable** | **bool** | If city-based taxes should be applied to this product | [optional] 
 **subscription_plans** | [**List[SubscriptionPlanList]**](SubscriptionPlanList.md) | List of subscription plans associated with the product. Can be empty. | [optional] 
+**top_html** | **str** |  | [optional] 
+**bottom_html** | **str** |  | [optional] 
+**is_package** | **bool** |  | [optional] 
+**needs_digital_delivery** | **bool** |  | [optional] 
+**has_legacy_image** | **bool** |  | [optional] 
+**delivery_description** | **str** |  | [optional] 
+**create_time** | **str** |  | [optional] 
+**update_time** | **str** |  | [optional] 
 
 ## Example
 

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **prefix** | **string** | Name prefix | [optional]
 **suffix** | **string** | Name suffix | [optional]
 **website** | **string** | Personal website URL | [optional]
+**groups** | **string** |  | [optional]
 **update_time** | **string** | Last update timestamp (ISO-8601) | [optional]
 **create_time** | **string** | Creation timestamp (ISO-8601) | [optional]
 **score_value** | **string** | Contact score value | [optional]
@@ -37,5 +38,11 @@ Name | Type | Description | Notes
 **spouse_name** | **string** | Spouse&#39;s name | [optional]
 **time_zone** | **string** | Contact&#39;s timezone | [optional]
 **utm_parameters** | [**\Keap\Core\V2\Model\ContactUtmResponse[]**](ContactUtmResponse.md) |  | [optional]
+**account_id** | **string** |  | [optional]
+**assistant_name** | **string** |  | [optional]
+**assistant_phone** | **string** |  | [optional]
+**billing_information** | **string** |  | [optional]
+**created_by** | **string** |  | [optional]
+**last_updated_by** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

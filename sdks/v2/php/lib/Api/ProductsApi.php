@@ -101,6 +101,9 @@ class ProductsApi
         'deleteProductOptionListOptionValue' => [
             'application/json',
         ],
+        'getFileData' => [
+            'application/json',
+        ],
         'getProduct' => [
             'application/json',
         ],
@@ -1342,17 +1345,18 @@ class ProductsApi
      *
      * Create the Product Image
      *
-     * @param  string $product_id product_id (required)
-     * @param  \SplFileObject $file File to upload (required)
+     * @param  string $product_id The product ID (required)
+     * @param  \SplFileObject $file The image file to upload (required)
+     * @param  bool|null $legacy Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProductImage'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function createProductImage($product_id, $file, string $contentType = self::contentTypes['createProductImage'][0])
+    public function createProductImage($product_id, $file, $legacy = null, string $contentType = self::contentTypes['createProductImage'][0])
     {
-        $this->createProductImageWithHttpInfo($product_id, $file, $contentType);
+        $this->createProductImageWithHttpInfo($product_id, $file, $legacy, $contentType);
     }
 
     /**
@@ -1360,17 +1364,18 @@ class ProductsApi
      *
      * Create the Product Image
      *
-     * @param  string $product_id product_id (required)
-     * @param  \SplFileObject $file File to upload (required)
+     * @param  string $product_id The product ID (required)
+     * @param  \SplFileObject $file The image file to upload (required)
+     * @param  bool|null $legacy Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProductImage'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createProductImageWithHttpInfo($product_id, $file, string $contentType = self::contentTypes['createProductImage'][0])
+    public function createProductImageWithHttpInfo($product_id, $file, $legacy = null, string $contentType = self::contentTypes['createProductImage'][0])
     {
-        $request = $this->createProductImageRequest($product_id, $file, $contentType);
+        $request = $this->createProductImageRequest($product_id, $file, $legacy, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1466,16 +1471,17 @@ class ProductsApi
      *
      * Create the Product Image
      *
-     * @param  string $product_id product_id (required)
-     * @param  \SplFileObject $file File to upload (required)
+     * @param  string $product_id The product ID (required)
+     * @param  \SplFileObject $file The image file to upload (required)
+     * @param  bool|null $legacy Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProductImage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createProductImageAsync($product_id, $file, string $contentType = self::contentTypes['createProductImage'][0])
+    public function createProductImageAsync($product_id, $file, $legacy = null, string $contentType = self::contentTypes['createProductImage'][0])
     {
-        return $this->createProductImageAsyncWithHttpInfo($product_id, $file, $contentType)
+        return $this->createProductImageAsyncWithHttpInfo($product_id, $file, $legacy, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1488,17 +1494,18 @@ class ProductsApi
      *
      * Create the Product Image
      *
-     * @param  string $product_id product_id (required)
-     * @param  \SplFileObject $file File to upload (required)
+     * @param  string $product_id The product ID (required)
+     * @param  \SplFileObject $file The image file to upload (required)
+     * @param  bool|null $legacy Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProductImage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createProductImageAsyncWithHttpInfo($product_id, $file, string $contentType = self::contentTypes['createProductImage'][0])
+    public function createProductImageAsyncWithHttpInfo($product_id, $file, $legacy = null, string $contentType = self::contentTypes['createProductImage'][0])
     {
         $returnType = '';
-        $request = $this->createProductImageRequest($product_id, $file, $contentType);
+        $request = $this->createProductImageRequest($product_id, $file, $legacy, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1526,14 +1533,15 @@ class ProductsApi
     /**
      * Create request for operation 'createProductImage'
      *
-     * @param  string $product_id product_id (required)
-     * @param  \SplFileObject $file File to upload (required)
+     * @param  string $product_id The product ID (required)
+     * @param  \SplFileObject $file The image file to upload (required)
+     * @param  bool|null $legacy Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProductImage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createProductImageRequest($product_id, $file, string $contentType = self::contentTypes['createProductImage'][0])
+    public function createProductImageRequest($product_id, $file, $legacy = null, string $contentType = self::contentTypes['createProductImage'][0])
     {
 
         // verify the required parameter 'product_id' is set
@@ -1551,6 +1559,7 @@ class ProductsApi
         }
 
 
+
         $resourcePath = '/rest/v2/products/{product_id}/images';
         $formParams = [];
         $queryParams = [];
@@ -1558,6 +1567,15 @@ class ProductsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $legacy,
+            'legacy', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
@@ -3199,6 +3217,376 @@ class ProductsApi
     }
 
     /**
+     * Operation getFileData
+     *
+     * Retrieve Product Legacy Image Data
+     *
+     * @param  string $product_id product_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileData'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return string|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     */
+    public function getFileData($product_id, string $contentType = self::contentTypes['getFileData'][0])
+    {
+        list($response) = $this->getFileDataWithHttpInfo($product_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getFileDataWithHttpInfo
+     *
+     * Retrieve Product Legacy Image Data
+     *
+     * @param  string $product_id product_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileData'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of string|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getFileDataWithHttpInfo($product_id, string $contentType = self::contentTypes['getFileData'][0])
+    {
+        $request = $this->getFileDataRequest($product_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'string',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 501:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'string',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getFileDataAsync
+     *
+     * Retrieve Product Legacy Image Data
+     *
+     * @param  string $product_id product_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileData'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getFileDataAsync($product_id, string $contentType = self::contentTypes['getFileData'][0])
+    {
+        return $this->getFileDataAsyncWithHttpInfo($product_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getFileDataAsyncWithHttpInfo
+     *
+     * Retrieve Product Legacy Image Data
+     *
+     * @param  string $product_id product_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileData'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getFileDataAsyncWithHttpInfo($product_id, string $contentType = self::contentTypes['getFileData'][0])
+    {
+        $returnType = 'string';
+        $request = $this->getFileDataRequest($product_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getFileData'
+     *
+     * @param  string $product_id product_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileData'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getFileDataRequest($product_id, string $contentType = self::contentTypes['getFileData'][0])
+    {
+
+        // verify the required parameter 'product_id' is set
+        if ($product_id === null || (is_array($product_id) && count($product_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $product_id when calling getFileData'
+            );
+        }
+
+
+        $resourcePath = '/rest/v2/products/{product_id}/images/legacyImageData';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($product_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'product_id' . '}',
+                ObjectSerializer::toPathValue($product_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getProduct
      *
      * Get a Product
@@ -4751,7 +5139,7 @@ class ProductsApi
      *
      * @param  string $product_id product_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductRequestDetail $update_product_request_detail update_product_request_detail (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4771,7 +5159,7 @@ class ProductsApi
      *
      * @param  string $product_id product_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductRequestDetail $update_product_request_detail (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4956,7 +5344,7 @@ class ProductsApi
      *
      * @param  string $product_id product_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductRequestDetail $update_product_request_detail (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4979,7 +5367,7 @@ class ProductsApi
      *
      * @param  string $product_id product_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductRequestDetail $update_product_request_detail (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5031,7 +5419,7 @@ class ProductsApi
      *
      * @param  string $product_id product_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductRequestDetail $update_product_request_detail (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5067,7 +5455,7 @@ class ProductsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'string', // openApiType
+            'mixed', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -5156,7 +5544,7 @@ class ProductsApi
      * @param  string $product_id product_id (required)
      * @param  string $product_option_id product_option_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionRequest $update_product_option_request update_product_option_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOption'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5177,7 +5565,7 @@ class ProductsApi
      * @param  string $product_id product_id (required)
      * @param  string $product_option_id product_option_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionRequest $update_product_option_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOption'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5363,7 +5751,7 @@ class ProductsApi
      * @param  string $product_id product_id (required)
      * @param  string $product_option_id product_option_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionRequest $update_product_option_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOption'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5387,7 +5775,7 @@ class ProductsApi
      * @param  string $product_id product_id (required)
      * @param  string $product_option_id product_option_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionRequest $update_product_option_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOption'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5440,7 +5828,7 @@ class ProductsApi
      * @param  string $product_id product_id (required)
      * @param  string $product_option_id product_option_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionRequest $update_product_option_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOption'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5483,7 +5871,7 @@ class ProductsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'string', // openApiType
+            'mixed', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -5581,7 +5969,7 @@ class ProductsApi
      * @param  string $product_option_id product_option_id (required)
      * @param  string $item_id item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionListOption $update_product_option_list_option update_product_option_list_option (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOptionListOptionValue'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5603,7 +5991,7 @@ class ProductsApi
      * @param  string $product_option_id product_option_id (required)
      * @param  string $item_id item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionListOption $update_product_option_list_option (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOptionListOptionValue'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5790,7 +6178,7 @@ class ProductsApi
      * @param  string $product_option_id product_option_id (required)
      * @param  string $item_id item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionListOption $update_product_option_list_option (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOptionListOptionValue'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5815,7 +6203,7 @@ class ProductsApi
      * @param  string $product_option_id product_option_id (required)
      * @param  string $item_id item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionListOption $update_product_option_list_option (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOptionListOptionValue'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5869,7 +6257,7 @@ class ProductsApi
      * @param  string $product_option_id product_option_id (required)
      * @param  string $item_id item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionListOption $update_product_option_list_option (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOptionListOptionValue'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5919,7 +6307,7 @@ class ProductsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'string', // openApiType
+            'mixed', // openApiType
             'form', // style
             true, // explode
             false // required

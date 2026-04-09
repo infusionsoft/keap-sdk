@@ -337,7 +337,7 @@ let id = "id_example"; // String |
 let interestId = "interestId_example"; // String | 
 let updateProductInterestRequest = new KeapCoreServiceV2Sdk.UpdateProductInterestRequest(); // UpdateProductInterestRequest | 
 let opts = {
-  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateProductInterest(id, interestId, updateProductInterestRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -355,7 +355,7 @@ Name | Type | Description  | Notes
  **id** | **String**|  | 
  **interestId** | **String**|  | 
  **updateProductInterestRequest** | [**UpdateProductInterestRequest**](UpdateProductInterestRequest.md)|  | 
- **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -392,7 +392,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.ProductInterestBundlesApi();
 let id = "id_example"; // String | 
 let updateProductInterestBundleRequest = new KeapCoreServiceV2Sdk.UpdateProductInterestBundleRequest(); // UpdateProductInterestBundleRequest | 
 let opts = {
-  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateProductInterestBundle(id, updateProductInterestBundleRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -409,7 +409,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
  **updateProductInterestBundleRequest** | [**UpdateProductInterestBundleRequest**](UpdateProductInterestBundleRequest.md)|  | 
- **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

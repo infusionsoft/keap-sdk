@@ -323,7 +323,7 @@ const request: ShippingDiscountsApiUpdateShippingDiscountRequest = {
     discountValue: 100,
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: "name,description,discount_type,discount_value,criteria",
+  updateMask: null,
 };
 
 const data = await apiInstance.updateShippingDiscount(request);
@@ -337,7 +337,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateShippingDiscountRequest** | **UpdateShippingDiscountRequest**|  |
  **discountId** | [**string**] |  | defaults to undefined
- **updateMask** | [**&#39;name,description,discount_type,discount_value,criteria&#39;**]**Array<&#39;name,description,discount_type,discount_value,criteria&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

@@ -690,7 +690,7 @@ public class Example {
         CategoryDiscountsApi apiInstance = new CategoryDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | 
         UpdateCategoryDiscountRequest updateCategoryDiscountRequest = new UpdateCategoryDiscountRequest(); // UpdateCategoryDiscountRequest | 
-        String updateMask = "name,description,discount_percent,apply_to_commissions,criteria,product_category_ids"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             CategoryDiscount result = apiInstance.updateCategoryDiscount(discountId, updateCategoryDiscountRequest, updateMask);
             System.out.println(result);
@@ -712,7 +712,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **discountId** | **String**|  | |
 | **updateCategoryDiscountRequest** | [**UpdateCategoryDiscountRequest**](UpdateCategoryDiscountRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,description,discount_percent,apply_to_commissions,criteria,product_category_ids] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -772,7 +772,7 @@ public class Example {
         CategoryDiscountsApi apiInstance = new CategoryDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | 
         UpdateCategoryDiscountRequest updateCategoryDiscountRequest = new UpdateCategoryDiscountRequest(); // UpdateCategoryDiscountRequest | 
-        String updateMask = "name,description,discount_percent,apply_to_commissions,criteria,product_category_ids"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<CategoryDiscount> response = apiInstance.updateCategoryDiscountWithHttpInfo(discountId, updateCategoryDiscountRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -796,7 +796,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **discountId** | **String**|  | |
 | **updateCategoryDiscountRequest** | [**UpdateCategoryDiscountRequest**](UpdateCategoryDiscountRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,description,discount_percent,apply_to_commissions,criteria,product_category_ids] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

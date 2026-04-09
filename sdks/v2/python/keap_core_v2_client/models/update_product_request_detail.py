@@ -43,8 +43,13 @@ class UpdateProductRequestDetail(BaseModel):
     inventory_limit: Optional[StrictInt] = Field(default=None, description="The inventory limit for this product. Must be greater than or equal to 0.")
     out_of_stock_enabled: Optional[StrictBool] = Field(default=None, description="The flag to enable out of stock inventory")
     email_for_inventory_notifications: Optional[StrictStr] = Field(default=None, description="The email address for notifications about inventory")
+    top_html: Optional[StrictStr] = None
+    bottom_html: Optional[StrictStr] = None
+    is_package: Optional[StrictBool] = None
+    needs_digital_delivery: Optional[StrictBool] = None
+    delivery_description: Optional[StrictStr] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["name", "sku", "price", "active", "description", "shippable", "weight", "taxable", "short_description", "subscription_only", "storefront_hidden", "country_taxable", "state_taxable", "city_taxable", "inventory_limit", "out_of_stock_enabled", "email_for_inventory_notifications"]
+    __properties: ClassVar[List[str]] = ["name", "sku", "price", "active", "description", "shippable", "weight", "taxable", "short_description", "subscription_only", "storefront_hidden", "country_taxable", "state_taxable", "city_taxable", "inventory_limit", "out_of_stock_enabled", "email_for_inventory_notifications", "top_html", "bottom_html", "is_package", "needs_digital_delivery", "delivery_description"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -120,7 +125,12 @@ class UpdateProductRequestDetail(BaseModel):
             "city_taxable": obj.get("city_taxable"),
             "inventory_limit": obj.get("inventory_limit"),
             "out_of_stock_enabled": obj.get("out_of_stock_enabled"),
-            "email_for_inventory_notifications": obj.get("email_for_inventory_notifications")
+            "email_for_inventory_notifications": obj.get("email_for_inventory_notifications"),
+            "top_html": obj.get("top_html"),
+            "bottom_html": obj.get("bottom_html"),
+            "is_package": obj.get("is_package"),
+            "needs_digital_delivery": obj.get("needs_digital_delivery"),
+            "delivery_description": obj.get("delivery_description")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

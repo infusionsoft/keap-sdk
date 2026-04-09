@@ -1193,7 +1193,7 @@ public class Example {
         String contactId = "contactId_example"; // String | 
         String noteId = "noteId_example"; // String | 
         UpdateNoteRequest updateNoteRequest = new UpdateNoteRequest(); // UpdateNoteRequest | 
-        String updateMask = "contact_id, text, title, type, user_id"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             UpdateNoteResponse result = apiInstance.updateNote(contactId, noteId, updateNoteRequest, updateMask);
             System.out.println(result);
@@ -1216,7 +1216,7 @@ public class Example {
 | **contactId** | **String**|  | |
 | **noteId** | **String**|  | |
 | **updateNoteRequest** | [**UpdateNoteRequest**](UpdateNoteRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: contact_id, text, title, type, user_id] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1277,7 +1277,7 @@ public class Example {
         String contactId = "contactId_example"; // String | 
         String noteId = "noteId_example"; // String | 
         UpdateNoteRequest updateNoteRequest = new UpdateNoteRequest(); // UpdateNoteRequest | 
-        String updateMask = "contact_id, text, title, type, user_id"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<UpdateNoteResponse> response = apiInstance.updateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1302,7 +1302,7 @@ public class Example {
 | **contactId** | **String**|  | |
 | **noteId** | **String**|  | |
 | **updateNoteRequest** | [**UpdateNoteRequest**](UpdateNoteRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: contact_id, text, title, type, user_id] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1362,7 +1362,7 @@ public class Example {
         NoteApi apiInstance = new NoteApi(defaultClient);
         String customFieldId = "customFieldId_example"; // String | 
         UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-        String updateMask = "group_id,label,options"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             CustomFieldMetaData result = apiInstance.updateNotesCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println(result);
@@ -1384,7 +1384,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **customFieldId** | **String**|  | |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id,label,options] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1444,7 +1444,7 @@ public class Example {
         NoteApi apiInstance = new NoteApi(defaultClient);
         String customFieldId = "customFieldId_example"; // String | 
         UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-        String updateMask = "group_id,label,options"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<CustomFieldMetaData> response = apiInstance.updateNotesCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1468,7 +1468,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **customFieldId** | **String**|  | |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | |
-| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id,label,options] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

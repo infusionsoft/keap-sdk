@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **prefix** | **String** | Name prefix | [optional] 
 **suffix** | **String** | Name suffix | [optional] 
 **website** | **String** | Personal website URL | [optional] 
+**groups** | **String** |  | [optional] 
 **updateTime** | **String** | Last update timestamp (ISO-8601) | [optional] 
 **createTime** | **String** | Creation timestamp (ISO-8601) | [optional] 
 **scoreValue** | **String** | Contact score value | [optional] 
@@ -37,6 +38,12 @@ Name | Type | Description | Notes
 **spouseName** | **String** | Spouse&#39;s name | [optional] 
 **timeZone** | **String** | Contact&#39;s timezone | [optional] 
 **utmParameters** | [**[ContactUtmResponse]**](ContactUtmResponse.md) |  | [optional] 
+**accountId** | **String** |  | [optional] 
+**assistantName** | **String** |  | [optional] 
+**assistantPhone** | **String** |  | [optional] 
+**billingInformation** | **String** |  | [optional] 
+**createdBy** | **String** |  | [optional] 
+**lastUpdatedBy** | **String** |  | [optional] 
 
 
 

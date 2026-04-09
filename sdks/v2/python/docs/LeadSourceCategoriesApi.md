@@ -371,7 +371,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.LeadSourceCategoriesApi(api_client)
     lead_source_category_id = 'lead_source_category_id_example' # str | The ID of a lead source category
     create_update_lead_source_category_request = keap_core_v2_client.CreateUpdateLeadSourceCategoryRequest() # CreateUpdateLeadSourceCategoryRequest | 
-    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Lead Source Category
@@ -390,7 +390,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **lead_source_category_id** | **str**| The ID of a lead source category | 
  **create_update_lead_source_category_request** | [**CreateUpdateLeadSourceCategoryRequest**](CreateUpdateLeadSourceCategoryRequest.md)|  | 
- **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

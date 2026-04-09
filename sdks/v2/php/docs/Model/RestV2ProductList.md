@@ -23,5 +23,13 @@ Name | Type | Description | Notes
 **state_taxable** | **bool** | If state-based taxes should be applied to this product | [optional]
 **city_taxable** | **bool** | If city-based taxes should be applied to this product | [optional]
 **subscription_plans** | [**\Keap\Core\V2\Model\SubscriptionPlanList[]**](SubscriptionPlanList.md) | List of subscription plans associated with the product. Can be empty. | [optional]
+**top_html** | **string** |  | [optional]
+**bottom_html** | **string** |  | [optional]
+**is_package** | **bool** |  | [optional]
+**needs_digital_delivery** | **bool** |  | [optional]
+**has_legacy_image** | **bool** |  | [optional]
+**delivery_description** | **string** |  | [optional]
+**create_time** | **string** |  | [optional]
+**update_time** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

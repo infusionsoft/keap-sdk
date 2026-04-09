@@ -29,7 +29,7 @@ oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SettingsApi();
 let opts = {
-  'fields': ["null"] // [String] | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
+  'fields': null // Object | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
 };
 apiInstance.getApplicationConfigurations(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -44,7 +44,7 @@ apiInstance.getApplicationConfigurations(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fields** | [**[String]**](String.md)| By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | [optional] 
+ **fields** | [**Object**](.md)| By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | [optional] 
 
 ### Return type
 

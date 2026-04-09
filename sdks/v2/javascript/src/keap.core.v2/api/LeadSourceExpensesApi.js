@@ -205,7 +205,7 @@ export default class LeadSourceExpensesApi {
     /**
      * List Lead Source Expenses
      * Retrieves a list of lead source expenses
-     * @param {String} leadSourceId The ID of the lead source this expense belongs to
+     * @param {String} leadSourceId The ID of the lead source this expense belongs to. Use '-' as a wildcard (e.g. /v2/leadSources/-/expenses).
      * @param {Object} opts Optional parameters
      * @param {String} [filter] Filter to apply, allowed fields are:  - (String) `title` - (Long) `amount` - (String) `incurred_time` - (String) `create_time` - (String) `update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=amount%3D%3D2500` - `filter=incurred_time%3D%3D2024-12-22T01:00:00.000Z`
      * @param {String} [orderBy] Attribute and direction to order items. One of the following fields:  - `title` - `amount` - `incurred_time` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`
@@ -249,7 +249,7 @@ export default class LeadSourceExpensesApi {
     /**
      * List Lead Source Expenses
      * Retrieves a list of lead source expenses
-     * @param {String} leadSourceId The ID of the lead source this expense belongs to
+     * @param {String} leadSourceId The ID of the lead source this expense belongs to. Use '-' as a wildcard (e.g. /v2/leadSources/-/expenses).
      * @param {Object} opts Optional parameters
      * @param {String} opts.filter Filter to apply, allowed fields are:  - (String) `title` - (Long) `amount` - (String) `incurred_time` - (String) `create_time` - (String) `update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=amount%3D%3D2500` - `filter=incurred_time%3D%3D2024-12-22T01:00:00.000Z`
      * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields:  - `title` - `amount` - `incurred_time` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`
@@ -272,7 +272,7 @@ export default class LeadSourceExpensesApi {
      * @param {String} leadSourceId The ID of the lead source this expense belongs to
      * @param {module:keap.core.v2/model/UpdateLeadSourceExpenseRequest} updateLeadSourceExpenseRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/LeadSourceExpense} and HTTP response
      */
     updateLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, opts) {
@@ -321,7 +321,7 @@ export default class LeadSourceExpensesApi {
      * @param {String} leadSourceId The ID of the lead source this expense belongs to
      * @param {module:keap.core.v2/model/UpdateLeadSourceExpenseRequest} updateLeadSourceExpenseRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/LeadSourceExpense}
      */
     updateLeadSourceExpense(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, opts) {

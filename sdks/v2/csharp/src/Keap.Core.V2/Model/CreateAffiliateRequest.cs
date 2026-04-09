@@ -78,7 +78,8 @@ namespace Keap.Core.V2.Model
         /// <param name="notifyOnLead">Whether to notify on lead events.</param>
         /// <param name="trackLeadsDays">Number of days to track leads.</param>
         /// <param name="password">Affiliate portal password.</param>
-        public CreateAffiliateRequest(string code = default, StatusEnum? status = StatusEnum.INACTIVE, string name = default, string contactId = default, string parentAffiliateId = default, bool notifyOnSale = default, bool notifyOnLead = default, int trackLeadsDays = default, string password = default)
+        /// <param name="customFields">List of custom field values to apply to this affiliate.</param>
+        public CreateAffiliateRequest(string code = default, StatusEnum? status = StatusEnum.INACTIVE, string name = default, string contactId = default, string parentAffiliateId = default, bool notifyOnSale = default, bool notifyOnLead = default, int trackLeadsDays = default, string password = default, List<CustomFieldValue> customFields = default)
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -99,6 +100,7 @@ namespace Keap.Core.V2.Model
             this.NotifyOnLead = notifyOnLead;
             this.TrackLeadsDays = trackLeadsDays;
             this.Password = password;
+            this.CustomFields = customFields;
         }
 
         /// <summary>
@@ -179,6 +181,16 @@ namespace Keap.Core.V2.Model
         public string Password { get; set; }
 
         /// <summary>
+        /// List of custom field values to apply to this affiliate
+        /// </summary>
+        /// <value>List of custom field values to apply to this affiliate</value>
+        /*
+        <example>[{id&#x3D;1, content&#x3D;VIP}, {id&#x3D;2, content&#x3D;Preferred}]</example>
+        */
+        [DataMember(Name = "custom_fields", EmitDefaultValue = false)]
+        public List<CustomFieldValue> CustomFields { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -195,6 +207,7 @@ namespace Keap.Core.V2.Model
             sb.Append("  NotifyOnLead: ").Append(NotifyOnLead).Append("\n");
             sb.Append("  TrackLeadsDays: ").Append(TrackLeadsDays).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
+            sb.Append("  CustomFields: ").Append(CustomFields).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

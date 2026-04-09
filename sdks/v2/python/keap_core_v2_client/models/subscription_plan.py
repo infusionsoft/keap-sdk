@@ -17,8 +17,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from keap_core_v2_client.models.currency_value import CurrencyValue
 from typing import Optional, Set
 from typing_extensions import Self
@@ -36,8 +36,9 @@ class SubscriptionPlan(BaseModel):
     display_order_index: Optional[StrictInt] = Field(default=None, description="The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list.")
     total_cycles: Optional[StrictInt] = Field(default=None, description="Total number of cycles the plan will run before ending. Value of 0 indicates plan will never end.")
     plan_price: Optional[CurrencyValue] = Field(default=None, description="The price of the subscription plan.")
+    preauthorize_amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The pre-authorize amount for the subscription plan. If null, this field is omitted from the response.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "active", "frequency", "allow_prorating", "product_id", "cycle_type", "display_order_index", "total_cycles", "plan_price"]
+    __properties: ClassVar[List[str]] = ["id", "active", "frequency", "allow_prorating", "product_id", "cycle_type", "display_order_index", "total_cycles", "plan_price", "preauthorize_amount"]
 
     @field_validator('cycle_type')
     def cycle_type_validate_enum(cls, value):
@@ -118,7 +119,8 @@ class SubscriptionPlan(BaseModel):
             "cycle_type": obj.get("cycle_type"),
             "display_order_index": obj.get("display_order_index"),
             "total_cycles": obj.get("total_cycles"),
-            "plan_price": CurrencyValue.from_dict(obj["plan_price"]) if obj.get("plan_price") is not None else None
+            "plan_price": CurrencyValue.from_dict(obj["plan_price"]) if obj.get("plan_price") is not None else None,
+            "preauthorize_amount": obj.get("preauthorize_amount")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

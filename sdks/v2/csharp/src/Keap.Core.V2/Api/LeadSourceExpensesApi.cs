@@ -110,7 +110,7 @@ namespace Keap.Core.V2.Api
         /// Retrieves a list of lead source expenses
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="leadSourceId">The ID of the lead source this expense belongs to</param>
+        /// <param name="leadSourceId">The ID of the lead source this expense belongs to. Use &#39;-&#39; as a wildcard (e.g. /v2/leadSources/-/expenses).</param>
         /// <param name="filter">Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60; (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
@@ -126,7 +126,7 @@ namespace Keap.Core.V2.Api
         /// Retrieves a list of lead source expenses
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="leadSourceId">The ID of the lead source this expense belongs to</param>
+        /// <param name="leadSourceId">The ID of the lead source this expense belongs to. Use &#39;-&#39; as a wildcard (e.g. /v2/leadSources/-/expenses).</param>
         /// <param name="filter">Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60; (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
@@ -147,7 +147,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LeadSourceExpense</returns>
-        LeadSourceExpense UpdateLeadSourceExpense(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, string? updateMask = default, int operationIndex = 0);
+        LeadSourceExpense UpdateLeadSourceExpense(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Lead Source Expense
@@ -162,7 +162,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LeadSourceExpense</returns>
-        ApiResponse<LeadSourceExpense> UpdateLeadSourceExpenseWithHttpInfo(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<LeadSourceExpense> UpdateLeadSourceExpenseWithHttpInfo(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -260,7 +260,7 @@ namespace Keap.Core.V2.Api
         /// Retrieves a list of lead source expenses
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="leadSourceId">The ID of the lead source this expense belongs to</param>
+        /// <param name="leadSourceId">The ID of the lead source this expense belongs to. Use &#39;-&#39; as a wildcard (e.g. /v2/leadSources/-/expenses).</param>
         /// <param name="filter">Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60; (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
@@ -277,7 +277,7 @@ namespace Keap.Core.V2.Api
         /// Retrieves a list of lead source expenses
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="leadSourceId">The ID of the lead source this expense belongs to</param>
+        /// <param name="leadSourceId">The ID of the lead source this expense belongs to. Use &#39;-&#39; as a wildcard (e.g. /v2/leadSources/-/expenses).</param>
         /// <param name="filter">Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60; (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
@@ -300,7 +300,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LeadSourceExpense</returns>
-        System.Threading.Tasks.Task<LeadSourceExpense> UpdateLeadSourceExpenseAsync(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<LeadSourceExpense> UpdateLeadSourceExpenseAsync(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Lead Source Expense
@@ -316,7 +316,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LeadSourceExpense)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LeadSourceExpense>> UpdateLeadSourceExpenseWithHttpInfoAsync(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<LeadSourceExpense>> UpdateLeadSourceExpenseWithHttpInfoAsync(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -1026,7 +1026,7 @@ namespace Keap.Core.V2.Api
         /// List Lead Source Expenses Retrieves a list of lead source expenses
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="leadSourceId">The ID of the lead source this expense belongs to</param>
+        /// <param name="leadSourceId">The ID of the lead source this expense belongs to. Use &#39;-&#39; as a wildcard (e.g. /v2/leadSources/-/expenses).</param>
         /// <param name="filter">Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60; (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
@@ -1043,7 +1043,7 @@ namespace Keap.Core.V2.Api
         /// List Lead Source Expenses Retrieves a list of lead source expenses
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="leadSourceId">The ID of the lead source this expense belongs to</param>
+        /// <param name="leadSourceId">The ID of the lead source this expense belongs to. Use &#39;-&#39; as a wildcard (e.g. /v2/leadSources/-/expenses).</param>
         /// <param name="filter">Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60; (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
@@ -1137,7 +1137,7 @@ namespace Keap.Core.V2.Api
         /// List Lead Source Expenses Retrieves a list of lead source expenses
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="leadSourceId">The ID of the lead source this expense belongs to</param>
+        /// <param name="leadSourceId">The ID of the lead source this expense belongs to. Use &#39;-&#39; as a wildcard (e.g. /v2/leadSources/-/expenses).</param>
         /// <param name="filter">Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60; (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
@@ -1155,7 +1155,7 @@ namespace Keap.Core.V2.Api
         /// List Lead Source Expenses Retrieves a list of lead source expenses
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="leadSourceId">The ID of the lead source this expense belongs to</param>
+        /// <param name="leadSourceId">The ID of the lead source this expense belongs to. Use &#39;-&#39; as a wildcard (e.g. /v2/leadSources/-/expenses).</param>
         /// <param name="filter">Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60; (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
@@ -1257,7 +1257,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LeadSourceExpense</returns>
-        public LeadSourceExpense UpdateLeadSourceExpense(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, string? updateMask = default, int operationIndex = 0)
+        public LeadSourceExpense UpdateLeadSourceExpense(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<LeadSourceExpense> localVarResponse = UpdateLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask);
             return localVarResponse.Data;
@@ -1273,7 +1273,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LeadSourceExpense</returns>
-        public Keap.Core.V2.Client.ApiResponse<LeadSourceExpense> UpdateLeadSourceExpenseWithHttpInfo(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<LeadSourceExpense> UpdateLeadSourceExpenseWithHttpInfo(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'leadSourceExpenseId' is set
             if (leadSourceExpenseId == null)
@@ -1370,7 +1370,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LeadSourceExpense</returns>
-        public async System.Threading.Tasks.Task<LeadSourceExpense> UpdateLeadSourceExpenseAsync(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<LeadSourceExpense> UpdateLeadSourceExpenseAsync(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<LeadSourceExpense> localVarResponse = await UpdateLeadSourceExpenseWithHttpInfoAsync(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1387,7 +1387,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LeadSourceExpense)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<LeadSourceExpense>> UpdateLeadSourceExpenseWithHttpInfoAsync(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<LeadSourceExpense>> UpdateLeadSourceExpenseWithHttpInfoAsync(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'leadSourceExpenseId' is set
             if (leadSourceExpenseId == null)

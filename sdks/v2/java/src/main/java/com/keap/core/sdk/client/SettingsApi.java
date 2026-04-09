@@ -108,7 +108,7 @@ import io.github.resilience4j.retry.Retry;
    * @return GetSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public GetSettingsResponse getApplicationConfigurations(List<String> fields) throws ApiException {
+  public GetSettingsResponse getApplicationConfigurations(Object fields) throws ApiException {
     ApiResponse<GetSettingsResponse> localVarResponse = getApplicationConfigurationsWithHttpInfo(fields);
     return localVarResponse.getData();
   }
@@ -120,7 +120,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;GetSettingsResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<GetSettingsResponse> getApplicationConfigurationsWithHttpInfo(List<String> fields) throws ApiException {
+  public ApiResponse<GetSettingsResponse> getApplicationConfigurationsWithHttpInfo(Object fields) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getApplicationConfigurationsRequestBuilder(fields);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -161,7 +161,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder getApplicationConfigurationsRequestBuilder(List<String> fields) throws ApiException {
+  private HttpRequest.Builder getApplicationConfigurationsRequestBuilder(Object fields) throws ApiException {
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
 
@@ -171,7 +171,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "fields";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("csv", "fields", fields));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("fields", fields));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

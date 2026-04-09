@@ -685,7 +685,7 @@ export default class TagsApi {
      * @param {String} tagId 
      * @param {module:keap.core.v2/model/CreateUpdateTagRequest} createUpdateTagRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/UpdateTagResponse} and HTTP response
      */
     updateTagWithHttpInfo(tagId, createUpdateTagRequest, opts) {
@@ -728,7 +728,7 @@ export default class TagsApi {
      * @param {String} tagId 
      * @param {module:keap.core.v2/model/CreateUpdateTagRequest} createUpdateTagRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/UpdateTagResponse}
      */
     updateTag(tagId, createUpdateTagRequest, opts) {
@@ -745,7 +745,7 @@ export default class TagsApi {
      * @param {String} tagCategoryId 
      * @param {module:keap.core.v2/model/CreateUpdateTagCategoryRequest} createUpdateTagCategoryRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/UpdateTagCategoryResponse} and HTTP response
      */
     updateTagCategoryWithHttpInfo(tagCategoryId, createUpdateTagCategoryRequest, opts) {
@@ -788,7 +788,7 @@ export default class TagsApi {
      * @param {String} tagCategoryId 
      * @param {module:keap.core.v2/model/CreateUpdateTagCategoryRequest} createUpdateTagCategoryRequest 
      * @param {Object} opts Optional parameters
-     * @param {module:keap.core.v2/model/String} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/UpdateTagCategoryResponse}
      */
     updateTagCategory(tagCategoryId, createUpdateTagCategoryRequest, opts) {

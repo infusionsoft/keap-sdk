@@ -180,7 +180,7 @@ let oauth2 = defaultClient.authentications['oauth2'];
 oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceExpensesApi();
-let leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this expense belongs to
+let leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this expense belongs to. Use '-' as a wildcard (e.g. /v2/leadSources/-/expenses).
 let opts = {
   'filter': "filter_example", // String | Filter to apply, allowed fields are:  - (String) `title` - (Long) `amount` - (String) `incurred_time` - (String) `create_time` - (String) `update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=amount%3D%3D2500` - `filter=incurred_time%3D%3D2024-12-22T01:00:00.000Z`
   'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields:  - `title` - `amount` - `incurred_time` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`
@@ -200,7 +200,7 @@ apiInstance.listLeadSourceExpenses(leadSourceId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **leadSourceId** | **String**| The ID of the lead source this expense belongs to | 
+ **leadSourceId** | **String**| The ID of the lead source this expense belongs to. Use &#39;-&#39; as a wildcard (e.g. /v2/leadSources/-/expenses). | 
  **filter** | **String**| Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60; | [optional] 
  **orderBy** | **String**| Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
@@ -242,7 +242,7 @@ let leadSourceExpenseId = "leadSourceExpenseId_example"; // String | The ID of a
 let leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this expense belongs to
 let updateLeadSourceExpenseRequest = new KeapCoreServiceV2Sdk.UpdateLeadSourceExpenseRequest(); // UpdateLeadSourceExpenseRequest | 
 let opts = {
-  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateLeadSourceExpense(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
  **leadSourceExpenseId** | **String**| The ID of a lead source expense | 
  **leadSourceId** | **String**| The ID of the lead source this expense belongs to | 
  **updateLeadSourceExpenseRequest** | [**UpdateLeadSourceExpenseRequest**](UpdateLeadSourceExpenseRequest.md)|  | 
- **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

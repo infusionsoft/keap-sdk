@@ -57,7 +57,15 @@ import jakarta.validation.Valid;
   RestV2ProductDetail.JSON_PROPERTY_COUNTRY_TAXABLE,
   RestV2ProductDetail.JSON_PROPERTY_STATE_TAXABLE,
   RestV2ProductDetail.JSON_PROPERTY_CITY_TAXABLE,
-  RestV2ProductDetail.JSON_PROPERTY_SUBSCRIPTION_PLANS
+  RestV2ProductDetail.JSON_PROPERTY_SUBSCRIPTION_PLANS,
+  RestV2ProductDetail.JSON_PROPERTY_TOP_HTML,
+  RestV2ProductDetail.JSON_PROPERTY_BOTTOM_HTML,
+  RestV2ProductDetail.JSON_PROPERTY_IS_PACKAGE,
+  RestV2ProductDetail.JSON_PROPERTY_NEEDS_DIGITAL_DELIVERY,
+  RestV2ProductDetail.JSON_PROPERTY_HAS_LEGACY_IMAGE,
+  RestV2ProductDetail.JSON_PROPERTY_DELIVERY_DESCRIPTION,
+  RestV2ProductDetail.JSON_PROPERTY_CREATE_TIME,
+  RestV2ProductDetail.JSON_PROPERTY_UPDATE_TIME
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class RestV2ProductDetail implements Serializable {
@@ -119,6 +127,30 @@ public class RestV2ProductDetail implements Serializable {
 
   public static final String JSON_PROPERTY_SUBSCRIPTION_PLANS = "subscription_plans";
   @jakarta.annotation.Nullable  private List<@Valid SubscriptionPlanDetail> subscriptionPlans = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_TOP_HTML = "top_html";
+  @jakarta.annotation.Nullable  private String topHtml;
+
+  public static final String JSON_PROPERTY_BOTTOM_HTML = "bottom_html";
+  @jakarta.annotation.Nullable  private String bottomHtml;
+
+  public static final String JSON_PROPERTY_IS_PACKAGE = "is_package";
+  @jakarta.annotation.Nullable  private Boolean isPackage;
+
+  public static final String JSON_PROPERTY_NEEDS_DIGITAL_DELIVERY = "needs_digital_delivery";
+  @jakarta.annotation.Nullable  private Boolean needsDigitalDelivery;
+
+  public static final String JSON_PROPERTY_HAS_LEGACY_IMAGE = "has_legacy_image";
+  @jakarta.annotation.Nullable  private Boolean hasLegacyImage;
+
+  public static final String JSON_PROPERTY_DELIVERY_DESCRIPTION = "delivery_description";
+  @jakarta.annotation.Nullable  private String deliveryDescription;
+
+  public static final String JSON_PROPERTY_CREATE_TIME = "create_time";
+  @jakarta.annotation.Nullable  private String createTime;
+
+  public static final String JSON_PROPERTY_UPDATE_TIME = "update_time";
+  @jakarta.annotation.Nullable  private String updateTime;
 
   public RestV2ProductDetail() { 
   }
@@ -606,6 +638,198 @@ public class RestV2ProductDetail implements Serializable {
     this.subscriptionPlans = subscriptionPlans;
   }
 
+
+  public RestV2ProductDetail topHtml(@jakarta.annotation.Nullable String topHtml) {
+    this.topHtml = topHtml;
+    return this;
+  }
+
+  /**
+   * Get topHtml
+   * @return topHtml
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_TOP_HTML)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getTopHtml() {
+    return topHtml;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TOP_HTML)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTopHtml(@jakarta.annotation.Nullable String topHtml) {
+    this.topHtml = topHtml;
+  }
+
+
+  public RestV2ProductDetail bottomHtml(@jakarta.annotation.Nullable String bottomHtml) {
+    this.bottomHtml = bottomHtml;
+    return this;
+  }
+
+  /**
+   * Get bottomHtml
+   * @return bottomHtml
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_BOTTOM_HTML)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getBottomHtml() {
+    return bottomHtml;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BOTTOM_HTML)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBottomHtml(@jakarta.annotation.Nullable String bottomHtml) {
+    this.bottomHtml = bottomHtml;
+  }
+
+
+  public RestV2ProductDetail isPackage(@jakarta.annotation.Nullable Boolean isPackage) {
+    this.isPackage = isPackage;
+    return this;
+  }
+
+  /**
+   * Get isPackage
+   * @return isPackage
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_IS_PACKAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getIsPackage() {
+    return isPackage;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IS_PACKAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIsPackage(@jakarta.annotation.Nullable Boolean isPackage) {
+    this.isPackage = isPackage;
+  }
+
+
+  public RestV2ProductDetail needsDigitalDelivery(@jakarta.annotation.Nullable Boolean needsDigitalDelivery) {
+    this.needsDigitalDelivery = needsDigitalDelivery;
+    return this;
+  }
+
+  /**
+   * Get needsDigitalDelivery
+   * @return needsDigitalDelivery
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_NEEDS_DIGITAL_DELIVERY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getNeedsDigitalDelivery() {
+    return needsDigitalDelivery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NEEDS_DIGITAL_DELIVERY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNeedsDigitalDelivery(@jakarta.annotation.Nullable Boolean needsDigitalDelivery) {
+    this.needsDigitalDelivery = needsDigitalDelivery;
+  }
+
+
+  public RestV2ProductDetail hasLegacyImage(@jakarta.annotation.Nullable Boolean hasLegacyImage) {
+    this.hasLegacyImage = hasLegacyImage;
+    return this;
+  }
+
+  /**
+   * Get hasLegacyImage
+   * @return hasLegacyImage
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_HAS_LEGACY_IMAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getHasLegacyImage() {
+    return hasLegacyImage;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_HAS_LEGACY_IMAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setHasLegacyImage(@jakarta.annotation.Nullable Boolean hasLegacyImage) {
+    this.hasLegacyImage = hasLegacyImage;
+  }
+
+
+  public RestV2ProductDetail deliveryDescription(@jakarta.annotation.Nullable String deliveryDescription) {
+    this.deliveryDescription = deliveryDescription;
+    return this;
+  }
+
+  /**
+   * Get deliveryDescription
+   * @return deliveryDescription
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_DELIVERY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getDeliveryDescription() {
+    return deliveryDescription;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DELIVERY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDeliveryDescription(@jakarta.annotation.Nullable String deliveryDescription) {
+    this.deliveryDescription = deliveryDescription;
+  }
+
+
+  public RestV2ProductDetail createTime(@jakarta.annotation.Nullable String createTime) {
+    this.createTime = createTime;
+    return this;
+  }
+
+  /**
+   * Get createTime
+   * @return createTime
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_CREATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getCreateTime() {
+    return createTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CREATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCreateTime(@jakarta.annotation.Nullable String createTime) {
+    this.createTime = createTime;
+  }
+
+
+  public RestV2ProductDetail updateTime(@jakarta.annotation.Nullable String updateTime) {
+    this.updateTime = updateTime;
+    return this;
+  }
+
+  /**
+   * Get updateTime
+   * @return updateTime
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_UPDATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getUpdateTime() {
+    return updateTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_UPDATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUpdateTime(@jakarta.annotation.Nullable String updateTime) {
+    this.updateTime = updateTime;
+  }
+
   /**
    * Return true if this RestV2Product_Detail object is equal to o.
    */
@@ -636,12 +860,20 @@ public class RestV2ProductDetail implements Serializable {
         Objects.equals(this.countryTaxable, restV2ProductDetail.countryTaxable) &&
         Objects.equals(this.stateTaxable, restV2ProductDetail.stateTaxable) &&
         Objects.equals(this.cityTaxable, restV2ProductDetail.cityTaxable) &&
-        Objects.equals(this.subscriptionPlans, restV2ProductDetail.subscriptionPlans);
+        Objects.equals(this.subscriptionPlans, restV2ProductDetail.subscriptionPlans) &&
+        Objects.equals(this.topHtml, restV2ProductDetail.topHtml) &&
+        Objects.equals(this.bottomHtml, restV2ProductDetail.bottomHtml) &&
+        Objects.equals(this.isPackage, restV2ProductDetail.isPackage) &&
+        Objects.equals(this.needsDigitalDelivery, restV2ProductDetail.needsDigitalDelivery) &&
+        Objects.equals(this.hasLegacyImage, restV2ProductDetail.hasLegacyImage) &&
+        Objects.equals(this.deliveryDescription, restV2ProductDetail.deliveryDescription) &&
+        Objects.equals(this.createTime, restV2ProductDetail.createTime) &&
+        Objects.equals(this.updateTime, restV2ProductDetail.updateTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, price, active, description, sku, shippable, weight, taxable, categories, options, inventory, shortDescription, subscriptionOnly, storefrontHidden, countryTaxable, stateTaxable, cityTaxable, subscriptionPlans);
+    return Objects.hash(id, name, price, active, description, sku, shippable, weight, taxable, categories, options, inventory, shortDescription, subscriptionOnly, storefrontHidden, countryTaxable, stateTaxable, cityTaxable, subscriptionPlans, topHtml, bottomHtml, isPackage, needsDigitalDelivery, hasLegacyImage, deliveryDescription, createTime, updateTime);
   }
 
   @Override
@@ -667,6 +899,14 @@ public class RestV2ProductDetail implements Serializable {
     sb.append("    stateTaxable: ").append(toIndentedString(stateTaxable)).append("\n");
     sb.append("    cityTaxable: ").append(toIndentedString(cityTaxable)).append("\n");
     sb.append("    subscriptionPlans: ").append(toIndentedString(subscriptionPlans)).append("\n");
+    sb.append("    topHtml: ").append(toIndentedString(topHtml)).append("\n");
+    sb.append("    bottomHtml: ").append(toIndentedString(bottomHtml)).append("\n");
+    sb.append("    isPackage: ").append(toIndentedString(isPackage)).append("\n");
+    sb.append("    needsDigitalDelivery: ").append(toIndentedString(needsDigitalDelivery)).append("\n");
+    sb.append("    hasLegacyImage: ").append(toIndentedString(hasLegacyImage)).append("\n");
+    sb.append("    deliveryDescription: ").append(toIndentedString(deliveryDescription)).append("\n");
+    sb.append("    createTime: ").append(toIndentedString(createTime)).append("\n");
+    sb.append("    updateTime: ").append(toIndentedString(updateTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -770,6 +1010,38 @@ public class RestV2ProductDetail implements Serializable {
               this.instance.subscriptionPlans = subscriptionPlans;
           return this;
         }
+            public RestV2ProductDetail.Builder topHtml(String topHtml) {
+              this.instance.topHtml = topHtml;
+          return this;
+        }
+            public RestV2ProductDetail.Builder bottomHtml(String bottomHtml) {
+              this.instance.bottomHtml = bottomHtml;
+          return this;
+        }
+            public RestV2ProductDetail.Builder isPackage(Boolean isPackage) {
+              this.instance.isPackage = isPackage;
+          return this;
+        }
+            public RestV2ProductDetail.Builder needsDigitalDelivery(Boolean needsDigitalDelivery) {
+              this.instance.needsDigitalDelivery = needsDigitalDelivery;
+          return this;
+        }
+            public RestV2ProductDetail.Builder hasLegacyImage(Boolean hasLegacyImage) {
+              this.instance.hasLegacyImage = hasLegacyImage;
+          return this;
+        }
+            public RestV2ProductDetail.Builder deliveryDescription(String deliveryDescription) {
+              this.instance.deliveryDescription = deliveryDescription;
+          return this;
+        }
+            public RestV2ProductDetail.Builder createTime(String createTime) {
+              this.instance.createTime = createTime;
+          return this;
+        }
+            public RestV2ProductDetail.Builder updateTime(String updateTime) {
+              this.instance.updateTime = updateTime;
+          return this;
+        }
         
     
         /**
@@ -822,7 +1094,15 @@ public class RestV2ProductDetail implements Serializable {
           .countryTaxable(getCountryTaxable())
           .stateTaxable(getStateTaxable())
           .cityTaxable(getCityTaxable())
-          .subscriptionPlans(getSubscriptionPlans());
+          .subscriptionPlans(getSubscriptionPlans())
+          .topHtml(getTopHtml())
+          .bottomHtml(getBottomHtml())
+          .isPackage(getIsPackage())
+          .needsDigitalDelivery(getNeedsDigitalDelivery())
+          .hasLegacyImage(getHasLegacyImage())
+          .deliveryDescription(getDeliveryDescription())
+          .createTime(getCreateTime())
+          .updateTime(getUpdateTime());
       }
 }
 

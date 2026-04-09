@@ -3415,7 +3415,7 @@ class OpportunityApi
      *
      * @param  string $opportunity_id opportunity_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityRequestV2 $update_opportunity_request_v2 update_opportunity_request_v2 (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunity'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3435,7 +3435,7 @@ class OpportunityApi
      *
      * @param  string $opportunity_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityRequestV2 $update_opportunity_request_v2 (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunity'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3620,7 +3620,7 @@ class OpportunityApi
      *
      * @param  string $opportunity_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityRequestV2 $update_opportunity_request_v2 (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3643,7 +3643,7 @@ class OpportunityApi
      *
      * @param  string $opportunity_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityRequestV2 $update_opportunity_request_v2 (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3695,7 +3695,7 @@ class OpportunityApi
      *
      * @param  string $opportunity_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityRequestV2 $update_opportunity_request_v2 (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3731,7 +3731,7 @@ class OpportunityApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'string', // openApiType
+            'mixed', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -3819,7 +3819,7 @@ class OpportunityApi
      *
      * @param  string $custom_field_id custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request update_custom_field_meta_data_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityCustomField'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3839,7 +3839,7 @@ class OpportunityApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityCustomField'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4024,7 +4024,7 @@ class OpportunityApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4047,7 +4047,7 @@ class OpportunityApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4099,7 +4099,7 @@ class OpportunityApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4135,7 +4135,7 @@ class OpportunityApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'string', // openApiType
+            'mixed', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -4223,7 +4223,7 @@ class OpportunityApi
      *
      * @param  string $stage_id stage_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityStageRequest $update_opportunity_stage_request update_opportunity_stage_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityStage'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4243,7 +4243,7 @@ class OpportunityApi
      *
      * @param  string $stage_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityStageRequest $update_opportunity_stage_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityStage'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4428,7 +4428,7 @@ class OpportunityApi
      *
      * @param  string $stage_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityStageRequest $update_opportunity_stage_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityStage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4451,7 +4451,7 @@ class OpportunityApi
      *
      * @param  string $stage_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityStageRequest $update_opportunity_stage_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityStage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4503,7 +4503,7 @@ class OpportunityApi
      *
      * @param  string $stage_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityStageRequest $update_opportunity_stage_request (required)
-     * @param  string|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityStage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4539,7 +4539,7 @@ class OpportunityApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'string', // openApiType
+            'mixed', // openApiType
             'form', // style
             true, // explode
             false // required

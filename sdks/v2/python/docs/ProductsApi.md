@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**delete_product_image**](ProductsApi.md#delete_product_image) | **DELETE** /rest/v2/products/{product_id}/images | Delete the Product Image
 [**delete_product_option**](ProductsApi.md#delete_product_option) | **DELETE** /rest/v2/products/{product_id}/options/{product_option_id} | Delete a Product Option
 [**delete_product_option_list_option_value**](ProductsApi.md#delete_product_option_list_option_value) | **DELETE** /rest/v2/products/{product_id}/options/{product_option_id}/listItems/{item_id} | Delete a Product Option List Item
+[**get_file_data**](ProductsApi.md#get_file_data) | **GET** /rest/v2/products/{product_id}/images/legacyImageData | Retrieve Product Legacy Image Data
 [**get_product**](ProductsApi.md#get_product) | **GET** /rest/v2/products/{product_id} | Get a Product
 [**get_product_option**](ProductsApi.md#get_product_option) | **GET** /rest/v2/products/{product_id}/options/{product_option_id} | Get Product Option
 [**list_product_options**](ProductsApi.md#list_product_options) | **GET** /rest/v2/products/{product_id}/options | List Product Options
@@ -272,7 +273,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_product_image**
-> create_product_image(product_id, file)
+> create_product_image(product_id, file, legacy=legacy)
 
 Create the Product Image
 
@@ -303,12 +304,13 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ProductsApi(api_client)
-    product_id = 'product_id_example' # str | product_id
-    file = None # bytearray | File to upload
+    product_id = 'product_id_example' # str | The product ID
+    file = None # bytearray | The image file to upload
+    legacy = True # bool | Set to 'true' if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. (optional)
 
     try:
         # Create the Product Image
-        api_instance.create_product_image(product_id, file)
+        api_instance.create_product_image(product_id, file, legacy=legacy)
     except Exception as e:
         print("Exception when calling ProductsApi->create_product_image: %s\n" % e)
 ```
@@ -319,8 +321,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **product_id** | **str**| product_id | 
- **file** | **bytearray**| File to upload | 
+ **product_id** | **str**| The product ID | 
+ **file** | **bytearray**| The image file to upload | 
+ **legacy** | **bool**| Set to &#39;true&#39; if the product image should also be used in legacy cart features. Only one image is allowed. If an image already exists, it will be replaced by the current image. | [optional] 
 
 ### Return type
 
@@ -747,6 +750,85 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_file_data**
+> bytearray get_file_data(product_id)
+
+Retrieve Product Legacy Image Data
+
+Retrieves the product's legacy image
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ProductsApi(api_client)
+    product_id = 'product_id_example' # str | product_id
+
+    try:
+        # Retrieve Product Legacy Image Data
+        api_response = api_instance.get_file_data(product_id)
+        print("The response of ProductsApi->get_file_data:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ProductsApi->get_file_data: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **product_id** | **str**| product_id | 
+
+### Return type
+
+**bytearray**
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_product**
 > RestV2ProductDetail get_product(product_id)
 
@@ -1111,7 +1193,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.ProductsApi(api_client)
     product_id = 'product_id_example' # str | product_id
     update_product_request_detail = keap_core_v2_client.UpdateProductRequestDetail() # UpdateProductRequestDetail | 
-    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Product
@@ -1130,7 +1212,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **product_id** | **str**| product_id | 
  **update_product_request_detail** | [**UpdateProductRequestDetail**](UpdateProductRequestDetail.md)|  | 
- **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -1197,7 +1279,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     product_id = 'product_id_example' # str | product_id
     product_option_id = 'product_option_id_example' # str | product_option_id
     update_product_option_request = keap_core_v2_client.UpdateProductOptionRequest() # UpdateProductOptionRequest | 
-    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Updates a Product Option
@@ -1217,7 +1299,7 @@ Name | Type | Description  | Notes
  **product_id** | **str**| product_id | 
  **product_option_id** | **str**| product_option_id | 
  **update_product_option_request** | [**UpdateProductOptionRequest**](UpdateProductOptionRequest.md)|  | 
- **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -1285,7 +1367,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     product_option_id = 'product_option_id_example' # str | product_option_id
     item_id = 'item_id_example' # str | item_id
     update_product_option_list_option = keap_core_v2_client.UpdateProductOptionListOption() # UpdateProductOptionListOption | 
-    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Updates a Product Option List Option Value
@@ -1306,7 +1388,7 @@ Name | Type | Description  | Notes
  **product_option_id** | **str**| product_option_id | 
  **item_id** | **str**| item_id | 
  **update_product_option_list_option** | [**UpdateProductOptionListOption**](UpdateProductOptionListOption.md)|  | 
- **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

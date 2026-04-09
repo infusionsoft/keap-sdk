@@ -21,8 +21,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.keap.core.sdk.model.CustomFieldValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.validation.constraints.*;
@@ -43,7 +46,8 @@ import jakarta.validation.Valid;
   RestAffiliate.JSON_PROPERTY_PARENT_AFFILIATE_ID,
   RestAffiliate.JSON_PROPERTY_NOTIFY_ON_SALE,
   RestAffiliate.JSON_PROPERTY_NOTIFY_ON_LEAD,
-  RestAffiliate.JSON_PROPERTY_TRACK_LEADS_DAYS
+  RestAffiliate.JSON_PROPERTY_TRACK_LEADS_DAYS,
+  RestAffiliate.JSON_PROPERTY_CUSTOM_FIELDS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class RestAffiliate implements Serializable {
@@ -117,6 +121,9 @@ public class RestAffiliate implements Serializable {
 
   public static final String JSON_PROPERTY_TRACK_LEADS_DAYS = "track_leads_days";
   @jakarta.annotation.Nullable  private Integer trackLeadsDays;
+
+  public static final String JSON_PROPERTY_CUSTOM_FIELDS = "custom_fields";
+  @jakarta.annotation.Nullable  private List<@Valid CustomFieldValue> customFields = new ArrayList<>();
 
   public RestAffiliate() { 
   }
@@ -384,6 +391,39 @@ public class RestAffiliate implements Serializable {
     this.trackLeadsDays = trackLeadsDays;
   }
 
+
+  public RestAffiliate customFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValue> customFields) {
+    this.customFields = customFields;
+    return this;
+  }
+
+  public RestAffiliate addCustomFieldsItem(CustomFieldValue customFieldsItem) {
+    if (this.customFields == null) {
+      this.customFields = new ArrayList<>();
+    }
+    this.customFields.add(customFieldsItem);
+    return this;
+  }
+
+  /**
+   * List of custom field values applied to this affiliate
+   * @return customFields
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "[{id=1, content=VIP}, {id=2, content=Preferred}]", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "List of custom field values applied to this affiliate")
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<@Valid CustomFieldValue> getCustomFields() {
+    return customFields;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValue> customFields) {
+    this.customFields = customFields;
+  }
+
   /**
    * Return true if this RestAffiliate object is equal to o.
    */
@@ -406,12 +446,13 @@ public class RestAffiliate implements Serializable {
         Objects.equals(this.parentAffiliateId, restAffiliate.parentAffiliateId) &&
         Objects.equals(this.notifyOnSale, restAffiliate.notifyOnSale) &&
         Objects.equals(this.notifyOnLead, restAffiliate.notifyOnLead) &&
-        Objects.equals(this.trackLeadsDays, restAffiliate.trackLeadsDays);
+        Objects.equals(this.trackLeadsDays, restAffiliate.trackLeadsDays) &&
+        Objects.equals(this.customFields, restAffiliate.customFields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, code, name, status, contactId, uniqueSiteId, dateCreated, parentAffiliateId, notifyOnSale, notifyOnLead, trackLeadsDays);
+    return Objects.hash(id, code, name, status, contactId, uniqueSiteId, dateCreated, parentAffiliateId, notifyOnSale, notifyOnLead, trackLeadsDays, customFields);
   }
 
   @Override
@@ -429,6 +470,7 @@ public class RestAffiliate implements Serializable {
     sb.append("    notifyOnSale: ").append(toIndentedString(notifyOnSale)).append("\n");
     sb.append("    notifyOnLead: ").append(toIndentedString(notifyOnLead)).append("\n");
     sb.append("    trackLeadsDays: ").append(toIndentedString(trackLeadsDays)).append("\n");
+    sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -500,6 +542,10 @@ public class RestAffiliate implements Serializable {
               this.instance.trackLeadsDays = trackLeadsDays;
           return this;
         }
+            public RestAffiliate.Builder customFields(List<CustomFieldValue> customFields) {
+              this.instance.customFields = customFields;
+          return this;
+        }
         
     
         /**
@@ -544,7 +590,8 @@ public class RestAffiliate implements Serializable {
           .parentAffiliateId(getParentAffiliateId())
           .notifyOnSale(getNotifyOnSale())
           .notifyOnLead(getNotifyOnLead())
-          .trackLeadsDays(getTrackLeadsDays());
+          .trackLeadsDays(getTrackLeadsDays())
+          .customFields(getCustomFields());
       }
 }
 

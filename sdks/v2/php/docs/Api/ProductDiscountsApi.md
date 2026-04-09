@@ -280,7 +280,7 @@ $apiInstance = new Keap\Core\V2\Api\ProductDiscountsApi(
 );
 $discount_id = 'discount_id_example'; // string
 $update_product_discount_request = new \Keap\Core\V2\Model\UpdateProductDiscountRequest(); // \Keap\Core\V2\Model\UpdateProductDiscountRequest
-$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateProductDiscount($discount_id, $update_product_discount_request, $update_mask);
@@ -296,7 +296,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **discount_id** | **string**|  | |
 | **update_product_discount_request** | [**\Keap\Core\V2\Model\UpdateProductDiscountRequest**](../Model/UpdateProductDiscountRequest.md)|  | |
-| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

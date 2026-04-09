@@ -466,7 +466,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.FilesApi(api_client)
     file_id = 'file_id_example' # str | 
-    update_mask = 'update_mask_example' # str | Update Mask (optional)
+    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
     file = None # bytearray | File to upload. This is a file sent as multi-part (not a string) (optional)
     file_name = 'file_name_example' # str | File name (optional)
     is_public = True # bool | Is public (optional)
@@ -490,7 +490,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **file_id** | **str**|  | 
- **update_mask** | **str**| Update Mask | [optional] 
+ **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
  **file** | **bytearray**| File to upload. This is a file sent as multi-part (not a string) | [optional] 
  **file_name** | **str**| File name | [optional] 
  **is_public** | **bool**| Is public | [optional] 

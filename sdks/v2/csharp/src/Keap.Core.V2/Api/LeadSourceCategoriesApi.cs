@@ -138,7 +138,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LeadSourceCategory</returns>
-        LeadSourceCategory UpdateLeadSourceCategory(string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, string? updateMask = default, int operationIndex = 0);
+        LeadSourceCategory UpdateLeadSourceCategory(string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Lead Source Category
@@ -152,7 +152,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LeadSourceCategory</returns>
-        ApiResponse<LeadSourceCategory> UpdateLeadSourceCategoryWithHttpInfo(string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, string? updateMask = default, int operationIndex = 0);
+        ApiResponse<LeadSourceCategory> UpdateLeadSourceCategoryWithHttpInfo(string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, Object? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -281,7 +281,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LeadSourceCategory</returns>
-        System.Threading.Tasks.Task<LeadSourceCategory> UpdateLeadSourceCategoryAsync(string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<LeadSourceCategory> UpdateLeadSourceCategoryAsync(string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Lead Source Category
@@ -296,7 +296,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LeadSourceCategory)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LeadSourceCategory>> UpdateLeadSourceCategoryWithHttpInfoAsync(string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<LeadSourceCategory>> UpdateLeadSourceCategoryWithHttpInfoAsync(string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -1164,7 +1164,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LeadSourceCategory</returns>
-        public LeadSourceCategory UpdateLeadSourceCategory(string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, string? updateMask = default, int operationIndex = 0)
+        public LeadSourceCategory UpdateLeadSourceCategory(string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, Object? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<LeadSourceCategory> localVarResponse = UpdateLeadSourceCategoryWithHttpInfo(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask);
             return localVarResponse.Data;
@@ -1179,7 +1179,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LeadSourceCategory</returns>
-        public Keap.Core.V2.Client.ApiResponse<LeadSourceCategory> UpdateLeadSourceCategoryWithHttpInfo(string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, string? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<LeadSourceCategory> UpdateLeadSourceCategoryWithHttpInfo(string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'leadSourceCategoryId' is set
             if (leadSourceCategoryId == null)
@@ -1268,7 +1268,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LeadSourceCategory</returns>
-        public async System.Threading.Tasks.Task<LeadSourceCategory> UpdateLeadSourceCategoryAsync(string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<LeadSourceCategory> UpdateLeadSourceCategoryAsync(string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<LeadSourceCategory> localVarResponse = await UpdateLeadSourceCategoryWithHttpInfoAsync(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1284,7 +1284,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LeadSourceCategory)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<LeadSourceCategory>> UpdateLeadSourceCategoryWithHttpInfoAsync(string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, string? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<LeadSourceCategory>> UpdateLeadSourceCategoryWithHttpInfoAsync(string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'leadSourceCategoryId' is set
             if (leadSourceCategoryId == null)

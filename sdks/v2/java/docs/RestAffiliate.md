@@ -18,6 +18,7 @@
 |**notifyOnSale** | **Boolean** | Whether to notify on sale events |  [optional] |
 |**notifyOnLead** | **Boolean** | Whether to notify on lead events |  [optional] |
 |**trackLeadsDays** | **Integer** | Number of days to track leads |  [optional] |
+|**customFields** | [**List&lt;CustomFieldValue&gt;**](CustomFieldValue.md) | List of custom field values applied to this affiliate |  [optional] |
 
 
 

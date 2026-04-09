@@ -35,7 +35,7 @@ $apiInstance = new Keap\Core\V2\Api\SettingsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fields = array('fields_example'); // string[] | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
+$fields = NULL; // mixed | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
 
 try {
     $result = $apiInstance->getApplicationConfigurations($fields);
@@ -49,7 +49,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fields** | [**string[]**](../Model/string.md)| By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | [optional] |
+| **fields** | [**mixed**](../Model/.md)| By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | [optional] |
 
 ### Return type
 

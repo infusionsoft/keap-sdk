@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Prefix** | **string** | Name prefix | [optional] 
 **Suffix** | **string** | Name suffix | [optional] 
 **Website** | **string** | Personal website URL | [optional] 
+**Groups** | **string** |  | [optional] 
 **UpdateTime** | **string** | Last update timestamp (ISO-8601) | [optional] 
 **CreateTime** | **string** | Creation timestamp (ISO-8601) | [optional] 
 **ScoreValue** | **string** | Contact score value | [optional] 
@@ -37,6 +38,12 @@ Name | Type | Description | Notes
 **SpouseName** | **string** | Spouse&#39;s name | [optional] 
 **VarTimeZone** | **string** | Contact&#39;s timezone | [optional] 
 **UtmParameters** | [**List&lt;ContactUtmResponse&gt;**](ContactUtmResponse.md) |  | [optional] 
+**AccountId** | **string** |  | [optional] 
+**AssistantName** | **string** |  | [optional] 
+**AssistantPhone** | **string** |  | [optional] 
+**BillingInformation** | **string** |  | [optional] 
+**CreatedBy** | **string** |  | [optional] 
+**LastUpdatedBy** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
