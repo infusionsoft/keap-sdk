@@ -15,11 +15,21 @@ import { HttpFile } from '../http/http';
 export class CardInfo {
     'brand'?: string;
     /**
+    * A token that uniquely identifies the card info
+    */
+    'fingerprint'?: string;
+    /**
     * The card type. Valid values are: CREDIT, DEBIT, PREPAID.
     */
     'cardType'?: CardInfoCardTypeEnum;
     'lastFour'?: string;
+    /**
+    * Four-digit expiration year
+    */
     'expirationYear'?: string;
+    /**
+    * Two-digit expiration month
+    */
     'expirationMonth'?: string;
 
     static readonly discriminator: string | undefined = undefined;
@@ -30,6 +40,12 @@ export class CardInfo {
         {
             "name": "brand",
             "baseName": "brand",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "fingerprint",
+            "baseName": "fingerprint",
             "type": "string",
             "format": ""
         },

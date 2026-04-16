@@ -7,14 +7,14 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**contactId** | **String** |  |  [optional] |
-|**paymentMethodId** | **String** |  |  [optional] |
-|**creditCardId** | **String** |  |  [optional] |
-|**merchantAccountType** | [**MerchantAccountTypeEnum**](#MerchantAccountTypeEnum) | The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED |  [optional] |
-|**merchantAccountId** | **String** |  |  [optional] |
+|**contactId** | **String** | The id of the contact the payment method is associated with. |  [optional] |
+|**paymentMethodId** | **String** | The unique identifier of the payment method. |  [optional] |
+|**creditCardId** | **String** | For backward-compatibility with v1 endpoints. If present, it&#39;s the credit card id this payment method refers to. |  [optional] |
+|**merchantAccountType** | [**MerchantAccountTypeEnum**](#MerchantAccountTypeEnum) | The merchant account type through which the payment method was tokenized. |  [optional] |
+|**merchantAccountId** | **String** | The merchant account id through which the payment method was tokenize. |  [optional] |
 |**paymentMethodType** | [**PaymentMethodTypeEnum**](#PaymentMethodTypeEnum) | The type of payment method. For now, only CARD is supported. |  [optional] |
-|**createdTime** | **String** |  |  [optional] |
-|**cardInfo** | [**CardInfo**](CardInfo.md) | Additional info for payment methods of payment_method_type CARD. |  [optional] |
+|**createdTime** | **ZonedDateTime** | When this payment method was made. In ISO-8601 format. |  [optional] |
+|**cardInfo** | [**CardInfo**](CardInfo.md) | If present, it provides additional details for payment methods of payment_method_type CARD. |  [optional] |
 |**status** | [**StatusEnum**](#StatusEnum) | Status of the payment method. Fow now, only EXPIRED is supported. |  [optional] |
 
 

@@ -57,7 +57,7 @@ class ListPaymentMethodsResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'records' => '\Keap\Core\V2\Model\PaymentMethod[]',
+        'payment_methods' => '\Keap\Core\V2\Model\PaymentMethod[]',
         'next_page_token' => 'string'
     ];
 
@@ -69,7 +69,7 @@ class ListPaymentMethodsResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'records' => null,
+        'payment_methods' => null,
         'next_page_token' => null
     ];
 
@@ -79,7 +79,7 @@ class ListPaymentMethodsResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'records' => false,
+        'payment_methods' => false,
         'next_page_token' => false
     ];
 
@@ -169,7 +169,7 @@ class ListPaymentMethodsResponse implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'records' => 'records',
+        'payment_methods' => 'payment_methods',
         'next_page_token' => 'next_page_token'
     ];
 
@@ -179,7 +179,7 @@ class ListPaymentMethodsResponse implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'records' => 'setRecords',
+        'payment_methods' => 'setPaymentMethods',
         'next_page_token' => 'setNextPageToken'
     ];
 
@@ -189,7 +189,7 @@ class ListPaymentMethodsResponse implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'records' => 'getRecords',
+        'payment_methods' => 'getPaymentMethods',
         'next_page_token' => 'getNextPageToken'
     ];
 
@@ -250,7 +250,7 @@ class ListPaymentMethodsResponse implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('records', $data ?? [], null);
+        $this->setIfExists('payment_methods', $data ?? [], null);
         $this->setIfExists('next_page_token', $data ?? [], null);
     }
 
@@ -297,28 +297,28 @@ class ListPaymentMethodsResponse implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets records
+     * Gets payment_methods
      *
      * @return \Keap\Core\V2\Model\PaymentMethod[]|null
      */
-    public function getRecords()
+    public function getPaymentMethods()
     {
-        return $this->container['records'];
+        return $this->container['payment_methods'];
     }
 
     /**
-     * Sets records
+     * Sets payment_methods
      *
-     * @param \Keap\Core\V2\Model\PaymentMethod[]|null $records records
+     * @param \Keap\Core\V2\Model\PaymentMethod[]|null $payment_methods payment_methods
      *
      * @return self
      */
-    public function setRecords($records)
+    public function setPaymentMethods($payment_methods)
     {
-        if (is_null($records)) {
-            throw new \InvalidArgumentException('non-nullable records cannot be null');
+        if (is_null($payment_methods)) {
+            throw new \InvalidArgumentException('non-nullable payment_methods cannot be null');
         }
-        $this->container['records'] = $records;
+        $this->container['payment_methods'] = $payment_methods;
 
         return $this;
     }

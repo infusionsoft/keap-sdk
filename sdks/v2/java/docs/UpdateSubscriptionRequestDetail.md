@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**quantity** | **Integer** | The subscription quantity. Must be 1 or greater. |  [optional] |
 |**active** | **Boolean** | If the subscription is active or not. |  [optional] |
-|**contactId** | **String** | Id of the contact to create the subscription for. |  |
+|**contactId** | **String** | Id of the contact associated with the subscription. |  [optional] |
 |**subscriptionPlanId** | **String** | Id of the product subscription plan. |  [optional] |
 |**billingAmount** | **Double** | The billing amount. Must be 0 or greater. |  [optional] |
 |**autoCharge** | **Boolean** | If the subscription should auto charge on the next billing date. |  [optional] |

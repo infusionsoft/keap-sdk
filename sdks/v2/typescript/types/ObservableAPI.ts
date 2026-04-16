@@ -189,6 +189,7 @@ import { ListCategoryDiscountsResponse } from '../models/ListCategoryDiscountsRe
 import { ListCompaniesResponse } from '../models/ListCompaniesResponse';
 import { ListContactLinkTypesResponse } from '../models/ListContactLinkTypesResponse';
 import { ListContactLinksResponse } from '../models/ListContactLinksResponse';
+import { ListContactPaymentMethodsResponse } from '../models/ListContactPaymentMethodsResponse';
 import { ListContactTagsResponse } from '../models/ListContactTagsResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
@@ -7275,7 +7276,7 @@ export class ObservablePaymentMethodsApi {
 
     /**
      * Deactivate the specified payment method
-     * Deactivate a Payment Method
+     * Deactivate a Contact Payment Method
      * @param contactId ID of the contact to which the payment method belongs.
      * @param paymentMethodId ID of the payment method to be deactivated.
      */
@@ -7301,7 +7302,7 @@ export class ObservablePaymentMethodsApi {
 
     /**
      * Deactivate the specified payment method
-     * Deactivate a Payment Method
+     * Deactivate a Contact Payment Method
      * @param contactId ID of the contact to which the payment method belongs.
      * @param paymentMethodId ID of the payment method to be deactivated.
      */
@@ -7311,7 +7312,7 @@ export class ObservablePaymentMethodsApi {
 
     /**
      * Deletes the specified payment method
-     * Delete a Payment Method
+     * Delete a Contact Payment Method
      * @param contactId ID of the contact to which the payment method belongs.
      * @param paymentMethodId ID of the payment method to be deleted.
      */
@@ -7337,7 +7338,7 @@ export class ObservablePaymentMethodsApi {
 
     /**
      * Deletes the specified payment method
-     * Delete a Payment Method
+     * Delete a Contact Payment Method
      * @param contactId ID of the contact to which the payment method belongs.
      * @param paymentMethodId ID of the payment method to be deleted.
      */
@@ -7348,16 +7349,15 @@ export class ObservablePaymentMethodsApi {
     /**
      * Retrieves a list of Payment Methods
      * List of Payment Methods
-     * @param contactId ID of the contact to which the payment method belongs.
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  You can filter across all contacts by using the &#x60;-&#x60; for the &#x60;contact_id&#x60; field. 
-     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60;
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;payment_method_id&#x60; - (String) &#x60;credit_card_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;payment_method_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bmerchant_account_id%3D%3D567&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;payment_method_id&#x60; - &#x60;created_time&#x60; - &#x60;contact_id&#x60; - &#x60;merchant_account_id&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listPaymentMethodsWithHttpInfo(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListPaymentMethodsResponse>> {
+    public listPaymentMethodsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListPaymentMethodsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listPaymentMethods(contactId, filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listPaymentMethods(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7377,14 +7377,55 @@ export class ObservablePaymentMethodsApi {
     /**
      * Retrieves a list of Payment Methods
      * List of Payment Methods
-     * @param contactId ID of the contact to which the payment method belongs.
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  You can filter across all contacts by using the &#x60;-&#x60; for the &#x60;contact_id&#x60; field. 
-     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60;
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;payment_method_id&#x60; - (String) &#x60;credit_card_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;payment_method_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bmerchant_account_id%3D%3D567&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;payment_method_id&#x60; - &#x60;created_time&#x60; - &#x60;contact_id&#x60; - &#x60;merchant_account_id&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listPaymentMethods(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListPaymentMethodsResponse> {
-        return this.listPaymentMethodsWithHttpInfo(contactId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListPaymentMethodsResponse>) => apiResponse.data));
+    public listPaymentMethods(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListPaymentMethodsResponse> {
+        return this.listPaymentMethodsWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListPaymentMethodsResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of Contact Payment Methods
+     * List of Contact Payment Methods
+     * @param contactId ID of the contact to which the payment method belongs.
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listPaymentMethods_1WithHttpInfo(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListContactPaymentMethodsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listPaymentMethods_1(contactId, filter, orderBy, pageSize, pageToken, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listPaymentMethods_1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of Contact Payment Methods
+     * List of Contact Payment Methods
+     * @param contactId ID of the contact to which the payment method belongs.
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listPaymentMethods_1(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListContactPaymentMethodsResponse> {
+        return this.listPaymentMethods_1WithHttpInfo(contactId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListContactPaymentMethodsResponse>) => apiResponse.data));
     }
 
 }

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**records** | [**List[PaymentMethod]**](PaymentMethod.md) |  | [optional] 
+**payment_methods** | [**List[PaymentMethod]**](PaymentMethod.md) |  | [optional] 
 **next_page_token** | **str** |  | [optional] 
 
 ## Example

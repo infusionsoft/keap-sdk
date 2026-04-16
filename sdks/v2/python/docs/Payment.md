@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **update_time** | **datetime** | When this payment was updated. In ISO-8601 format. | [optional] 
 **external_transaction_id** | **str** | An external id - typically from a payment processor - that references this transaction. | [optional] 
 **merchant_account_id** | **str** | The merchant account id through which the transaction was made. | [optional] 
-**merchant_account_type** | **str** | The merchant account id through which the transaction was made. | [optional] 
+**merchant_account_type** | **str** | The merchant account type through which the transaction was made. | [optional] 
 **payment_method** | [**PaymentMethod**](PaymentMethod.md) | Details of the payment method used for this transaction. | [optional] 
 
 ## Example

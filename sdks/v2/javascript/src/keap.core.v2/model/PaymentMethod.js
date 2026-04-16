@@ -66,7 +66,7 @@ class PaymentMethod {
                 obj['payment_method_type'] = ApiClient.convertToType(data['payment_method_type'], 'String');
             }
             if (data.hasOwnProperty('created_time')) {
-                obj['created_time'] = ApiClient.convertToType(data['created_time'], 'String');
+                obj['created_time'] = ApiClient.convertToType(data['created_time'], 'Date');
             }
             if (data.hasOwnProperty('card_info')) {
                 obj['card_info'] = CardInfo.constructFromObject(data['card_info']);
@@ -108,10 +108,6 @@ class PaymentMethod {
         if (data['payment_method_type'] && !(typeof data['payment_method_type'] === 'string' || data['payment_method_type'] instanceof String)) {
             throw new Error("Expected the field `payment_method_type` to be a primitive type in the JSON string but got " + data['payment_method_type']);
         }
-        // ensure the json data is a string
-        if (data['created_time'] && !(typeof data['created_time'] === 'string' || data['created_time'] instanceof String)) {
-            throw new Error("Expected the field `created_time` to be a primitive type in the JSON string but got " + data['created_time']);
-        }
         // validate the optional field `card_info`
         if (data['card_info']) { // data not null
           CardInfo.validateJSON(data['card_info']);
@@ -130,27 +126,31 @@ class PaymentMethod {
 
 
 /**
+ * The id of the contact the payment method is associated with.
  * @member {String} contact_id
  */
 PaymentMethod.prototype['contact_id'] = undefined;
 
 /**
+ * The unique identifier of the payment method.
  * @member {String} payment_method_id
  */
 PaymentMethod.prototype['payment_method_id'] = undefined;
 
 /**
+ * For backward-compatibility with v1 endpoints. If present, it's the credit card id this payment method refers to.
  * @member {String} credit_card_id
  */
 PaymentMethod.prototype['credit_card_id'] = undefined;
 
 /**
- * The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED
+ * The merchant account type through which the payment method was tokenized.
  * @member {module:keap.core.v2/model/PaymentMethod.MerchantAccountTypeEnum} merchant_account_type
  */
 PaymentMethod.prototype['merchant_account_type'] = undefined;
 
 /**
+ * The merchant account id through which the payment method was tokenize.
  * @member {String} merchant_account_id
  */
 PaymentMethod.prototype['merchant_account_id'] = undefined;
@@ -162,12 +162,13 @@ PaymentMethod.prototype['merchant_account_id'] = undefined;
 PaymentMethod.prototype['payment_method_type'] = undefined;
 
 /**
- * @member {String} created_time
+ * When this payment method was made. In ISO-8601 format.
+ * @member {Date} created_time
  */
 PaymentMethod.prototype['created_time'] = undefined;
 
 /**
- * Additional info for payment methods of payment_method_type CARD.
+ * If present, it provides additional details for payment methods of payment_method_type CARD.
  * @member {module:keap.core.v2/model/CardInfo} card_info
  */
 PaymentMethod.prototype['card_info'] = undefined;

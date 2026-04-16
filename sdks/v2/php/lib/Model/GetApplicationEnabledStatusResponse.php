@@ -57,7 +57,7 @@ class GetApplicationEnabledStatusResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'enabled' => 'bool'
+        'is_enabled' => 'bool'
     ];
 
     /**
@@ -68,7 +68,7 @@ class GetApplicationEnabledStatusResponse implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'enabled' => null
+        'is_enabled' => null
     ];
 
     /**
@@ -77,7 +77,7 @@ class GetApplicationEnabledStatusResponse implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'enabled' => false
+        'is_enabled' => false
     ];
 
     /**
@@ -166,7 +166,7 @@ class GetApplicationEnabledStatusResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'enabled' => 'enabled'
+        'is_enabled' => 'isEnabled'
     ];
 
     /**
@@ -175,7 +175,7 @@ class GetApplicationEnabledStatusResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'enabled' => 'setEnabled'
+        'is_enabled' => 'setIsEnabled'
     ];
 
     /**
@@ -184,7 +184,7 @@ class GetApplicationEnabledStatusResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'enabled' => 'getEnabled'
+        'is_enabled' => 'getIsEnabled'
     ];
 
     /**
@@ -244,7 +244,7 @@ class GetApplicationEnabledStatusResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('enabled', $data ?? [], null);
+        $this->setIfExists('is_enabled', $data ?? [], null);
     }
 
     /**
@@ -290,28 +290,28 @@ class GetApplicationEnabledStatusResponse implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets enabled
+     * Gets is_enabled
      *
      * @return bool|null
      */
-    public function getEnabled()
+    public function getIsEnabled()
     {
-        return $this->container['enabled'];
+        return $this->container['is_enabled'];
     }
 
     /**
-     * Sets enabled
+     * Sets is_enabled
      *
-     * @param bool|null $enabled enabled
+     * @param bool|null $is_enabled is_enabled
      *
      * @return self
      */
-    public function setEnabled($enabled)
+    public function setIsEnabled($is_enabled)
     {
-        if (is_null($enabled)) {
-            throw new \InvalidArgumentException('non-nullable enabled cannot be null');
+        if (is_null($is_enabled)) {
+            throw new \InvalidArgumentException('non-nullable is_enabled cannot be null');
         }
-        $this->container['enabled'] = $enabled;
+        $this->container['is_enabled'] = $is_enabled;
 
         return $this;
     }

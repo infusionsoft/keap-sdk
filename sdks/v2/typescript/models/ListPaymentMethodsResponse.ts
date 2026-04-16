@@ -14,7 +14,7 @@ import { PaymentMethod } from '../models/PaymentMethod';
 import { HttpFile } from '../http/http';
 
 export class ListPaymentMethodsResponse {
-    'records'?: Array<PaymentMethod>;
+    'paymentMethods'?: Array<PaymentMethod>;
     'nextPageToken'?: string;
 
     static readonly discriminator: string | undefined = undefined;
@@ -23,8 +23,8 @@ export class ListPaymentMethodsResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "records",
-            "baseName": "records",
+            "name": "paymentMethods",
+            "baseName": "payment_methods",
             "type": "Array<PaymentMethod>",
             "format": ""
         },

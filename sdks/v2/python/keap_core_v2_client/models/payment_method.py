@@ -17,6 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
+from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from keap_core_v2_client.models.card_info import CardInfo
@@ -27,14 +28,14 @@ class PaymentMethod(BaseModel):
     """
     PaymentMethod
     """ # noqa: E501
-    contact_id: Optional[StrictStr] = None
-    payment_method_id: Optional[StrictStr] = None
-    credit_card_id: Optional[StrictStr] = None
-    merchant_account_type: Optional[StrictStr] = Field(default=None, description="The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED")
-    merchant_account_id: Optional[StrictStr] = None
+    contact_id: Optional[StrictStr] = Field(default=None, description="The id of the contact the payment method is associated with.")
+    payment_method_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the payment method.")
+    credit_card_id: Optional[StrictStr] = Field(default=None, description="For backward-compatibility with v1 endpoints. If present, it's the credit card id this payment method refers to.")
+    merchant_account_type: Optional[StrictStr] = Field(default=None, description="The merchant account type through which the payment method was tokenized.")
+    merchant_account_id: Optional[StrictStr] = Field(default=None, description="The merchant account id through which the payment method was tokenize.")
     payment_method_type: Optional[StrictStr] = Field(default=None, description="The type of payment method. For now, only CARD is supported.")
-    created_time: Optional[StrictStr] = None
-    card_info: Optional[CardInfo] = Field(default=None, description="Additional info for payment methods of payment_method_type CARD.")
+    created_time: Optional[datetime] = Field(default=None, description="When this payment method was made. In ISO-8601 format.")
+    card_info: Optional[CardInfo] = Field(default=None, description="If present, it provides additional details for payment methods of payment_method_type CARD.")
     status: Optional[StrictStr] = Field(default=None, description="Status of the payment method. Fow now, only EXPIRED is supported.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["contact_id", "payment_method_id", "credit_card_id", "merchant_account_type", "merchant_account_id", "payment_method_type", "created_time", "card_info", "status"]

@@ -76,14 +76,9 @@ namespace Keap.Core.V2.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateSubscriptionRequestDetail" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected UpdateSubscriptionRequestDetail() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateSubscriptionRequestDetail" /> class.
-        /// </summary>
         /// <param name="quantity">The subscription quantity. Must be 1 or greater..</param>
         /// <param name="active">If the subscription is active or not..</param>
-        /// <param name="contactId">Id of the contact to create the subscription for. (required).</param>
+        /// <param name="contactId">Id of the contact associated with the subscription..</param>
         /// <param name="subscriptionPlanId">Id of the product subscription plan..</param>
         /// <param name="billingAmount">The billing amount. Must be 0 or greater..</param>
         /// <param name="autoCharge">If the subscription should auto charge on the next billing date..</param>
@@ -103,14 +98,9 @@ namespace Keap.Core.V2.Model
         /// <param name="reasonStopped">The reason the subscription is no longer active..</param>
         public UpdateSubscriptionRequestDetail(int quantity = default, bool active = default, string contactId = default, string subscriptionPlanId = default, double billingAmount = default, bool autoCharge = default, int maxChargeAttempts = default, int daysBetweenRetries = default, int billingFrequency = default, BillingCycleEnum? billingCycle = default, DateOnly nextBillDate = default, DateOnly endDate = default, string paymentMethodId = default, bool allowTax = default, string leadAffiliateId = default, string saleAffiliateId = default, AddressRequestDetail shippingAddress = default, string promoCode = default, string shippingOptionId = default, string reasonStopped = default)
         {
-            // to ensure "contactId" is required (not null)
-            if (contactId == null)
-            {
-                throw new ArgumentNullException("contactId is a required property for UpdateSubscriptionRequestDetail and cannot be null");
-            }
-            this.ContactId = contactId;
             this.Quantity = quantity;
             this.Active = active;
+            this.ContactId = contactId;
             this.SubscriptionPlanId = subscriptionPlanId;
             this.BillingAmount = billingAmount;
             this.AutoCharge = autoCharge;
@@ -151,13 +141,13 @@ namespace Keap.Core.V2.Model
         public bool Active { get; set; }
 
         /// <summary>
-        /// Id of the contact to create the subscription for.
+        /// Id of the contact associated with the subscription.
         /// </summary>
-        /// <value>Id of the contact to create the subscription for.</value>
+        /// <value>Id of the contact associated with the subscription.</value>
         /*
         <example>123</example>
         */
-        [DataMember(Name = "contact_id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "contact_id", EmitDefaultValue = false)]
         public string ContactId { get; set; }
 
         /// <summary>

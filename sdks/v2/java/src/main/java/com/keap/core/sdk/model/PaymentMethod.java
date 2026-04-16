@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.keap.core.sdk.model.CardInfo;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -58,7 +59,7 @@ public class PaymentMethod implements Serializable {
   @jakarta.annotation.Nullable  private String creditCardId;
 
   /**
-   * The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED
+   * The merchant account type through which the payment method was tokenized.
    */
   public enum MerchantAccountTypeEnum {
     PAYPAL(String.valueOf("PAYPAL")),
@@ -147,7 +148,7 @@ public class PaymentMethod implements Serializable {
   @jakarta.annotation.Nullable  private PaymentMethodTypeEnum paymentMethodType;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "created_time";
-  @jakarta.annotation.Nullable  private String createdTime;
+  @jakarta.annotation.Nullable  private ZonedDateTime createdTime;
 
   public static final String JSON_PROPERTY_CARD_INFO = "card_info";
   @jakarta.annotation.Nullable  private CardInfo cardInfo;
@@ -198,10 +199,10 @@ public class PaymentMethod implements Serializable {
   }
 
   /**
-   * Get contactId
+   * The id of the contact the payment method is associated with.
    * @return contactId
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @jakarta.annotation.Nullable  @Schema(example = "123", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The id of the contact the payment method is associated with.")
   @JsonProperty(JSON_PROPERTY_CONTACT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getContactId() {
@@ -222,10 +223,10 @@ public class PaymentMethod implements Serializable {
   }
 
   /**
-   * Get paymentMethodId
+   * The unique identifier of the payment method.
    * @return paymentMethodId
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @jakarta.annotation.Nullable  @Schema(example = "123", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The unique identifier of the payment method.")
   @JsonProperty(JSON_PROPERTY_PAYMENT_METHOD_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPaymentMethodId() {
@@ -246,10 +247,10 @@ public class PaymentMethod implements Serializable {
   }
 
   /**
-   * Get creditCardId
+   * For backward-compatibility with v1 endpoints. If present, it&#39;s the credit card id this payment method refers to.
    * @return creditCardId
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "For backward-compatibility with v1 endpoints. If present, it's the credit card id this payment method refers to.")
   @JsonProperty(JSON_PROPERTY_CREDIT_CARD_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCreditCardId() {
@@ -270,10 +271,10 @@ public class PaymentMethod implements Serializable {
   }
 
   /**
-   * The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED
+   * The merchant account type through which the payment method was tokenized.
    * @return merchantAccountType
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED")
+  @jakarta.annotation.Nullable  @Schema(example = "STRIPE", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The merchant account type through which the payment method was tokenized.")
   @JsonProperty(JSON_PROPERTY_MERCHANT_ACCOUNT_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public MerchantAccountTypeEnum getMerchantAccountType() {
@@ -294,10 +295,10 @@ public class PaymentMethod implements Serializable {
   }
 
   /**
-   * Get merchantAccountId
+   * The merchant account id through which the payment method was tokenize.
    * @return merchantAccountId
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The merchant account id through which the payment method was tokenize.")
   @JsonProperty(JSON_PROPERTY_MERCHANT_ACCOUNT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getMerchantAccountId() {
@@ -336,26 +337,27 @@ public class PaymentMethod implements Serializable {
   }
 
 
-  public PaymentMethod createdTime(@jakarta.annotation.Nullable String createdTime) {
+  public PaymentMethod createdTime(@jakarta.annotation.Nullable ZonedDateTime createdTime) {
     this.createdTime = createdTime;
     return this;
   }
 
   /**
-   * Get createdTime
+   * When this payment method was made. In ISO-8601 format.
    * @return createdTime
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "2024-05-21T14:30:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "When this payment method was made. In ISO-8601 format.")
   @JsonProperty(JSON_PROPERTY_CREATED_TIME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCreatedTime() {
+  public ZonedDateTime getCreatedTime() {
     return createdTime;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CREATED_TIME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCreatedTime(@jakarta.annotation.Nullable String createdTime) {
+  public void setCreatedTime(@jakarta.annotation.Nullable ZonedDateTime createdTime) {
     this.createdTime = createdTime;
   }
 
@@ -366,11 +368,11 @@ public class PaymentMethod implements Serializable {
   }
 
   /**
-   * Additional info for payment methods of payment_method_type CARD.
+   * If present, it provides additional details for payment methods of payment_method_type CARD.
    * @return cardInfo
    */
   @jakarta.annotation.Nullable  @Valid
-  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Additional info for payment methods of payment_method_type CARD.")
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "If present, it provides additional details for payment methods of payment_method_type CARD.")
   @JsonProperty(JSON_PROPERTY_CARD_INFO)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CardInfo getCardInfo() {
@@ -500,7 +502,7 @@ public class PaymentMethod implements Serializable {
               this.instance.paymentMethodType = paymentMethodType;
           return this;
         }
-            public PaymentMethod.Builder createdTime(String createdTime) {
+            public PaymentMethod.Builder createdTime(ZonedDateTime createdTime) {
               this.instance.createdTime = createdTime;
           return this;
         }

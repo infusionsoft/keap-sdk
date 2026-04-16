@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**enabled** | **bool** |  | [optional] 
+**is_enabled** | **bool** |  | [optional] 
 
 ## Example
 

@@ -6672,7 +6672,7 @@ paths:
     post:
       tags:
       - Payment Methods
-      summary: Deactivate a Payment Method
+      summary: Deactivate a Contact Payment Method
       description: Deactivate the specified payment method
       operationId: deactivatePaymentMethod
       parameters:
@@ -18089,6 +18089,113 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/paymentMethods:
+    get:
+      tags:
+      - Payment Methods
+      summary: List of Payment Methods
+      description: Retrieves a list of Payment Methods
+      operationId: listPaymentMethods
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) `payment_method_id`
+          - (String) `credit_card_id`
+          - (String) `contact_id`
+          - (String) `merchant_account_id`
+          - (String) `since_time`
+          - (String) `until_time`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`.
+          - `filter=payment_method_id%3D%3D123`
+          - `filter=contact_id%3D%3D123%3Bmerchant_account_id%3D%3D567`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `payment_method_id`
+          - `created_time`
+          - `contact_id`
+          - `merchant_account_id`
+
+          One of the following directions:
+          - `desc`
+          - `asc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          maximum: 1000
+          minimum: 0
+        example: 0
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListPaymentMethodsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/orders/model:
     get:
       tags:
@@ -19187,8 +19294,8 @@ paths:
     get:
       tags:
       - Payment Methods
-      summary: List of Payment Methods
-      description: Retrieves a list of Payment Methods
+      summary: List of Contact Payment Methods
+      description: Retrieves a list of Contact Payment Methods
       operationId: listPaymentMethods
       parameters:
       - name: contact_id
@@ -19199,7 +19306,7 @@ paths:
           type: string
       - name: filter
         in: query
-        description: |
+        description: |+
           Filter to apply, allowed fields are:
           - (String) `merchant_account_id`
 
@@ -19207,7 +19314,6 @@ paths:
           word, in the encoded form `%3D%3D`.
           - `filter=merchant_account_id%3D%3D123`
 
-          You can filter across all contacts by using the `-` for the `contact_id` field.
         required: false
         schema:
           type: string
@@ -19216,7 +19322,7 @@ paths:
         description: |-
           Attribute and direction to order items.
           One of the following fields:
-          - `date_created`
+          - `created_time`
 
           One of the following directions:
           - `desc`
@@ -19246,7 +19352,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListPaymentMethodsResponse'
+                $ref: '#/components/schemas/ListContactPaymentMethodsResponse'
         '400':
           description: Bad Request
           content:
@@ -20768,7 +20874,7 @@ paths:
     delete:
       tags:
       - Payment Methods
-      summary: Delete a Payment Method
+      summary: Delete a Contact Payment Method
       description: Deletes the specified payment method
       operationId: deletePaymentMethod
       parameters:
@@ -26640,7 +26746,7 @@ components:
           example: true
         contact_id:
           type: string
-          description: Id of the contact to create the subscription for.
+          description: Id of the contact associated with the subscription.
           example: 123
         subscription_plan_id:
           type: string
@@ -26723,8 +26829,6 @@ components:
           type: string
           description: The reason the subscription is no longer active.
           example: Customer requested cancellation
-      required:
-      - contact_id
     UpdateProductRequest_Detail:
       type: object
       properties:
@@ -28369,7 +28473,7 @@ components:
     GetApplicationEnabledStatusResponse:
       type: object
       properties:
-        enabled:
+        isEnabled:
           type: boolean
     ApplicationCompany:
       type: object
@@ -28631,6 +28735,9 @@ components:
       properties:
         brand:
           type: string
+        fingerprint:
+          type: string
+          description: A token that uniquely identifies the card info
         card_type:
           type: string
           description: 'The card type. Valid values are: CREDIT, DEBIT, PREPAID.'
@@ -28643,8 +28750,10 @@ components:
           type: string
         expiration_year:
           type: string
+          description: Four-digit expiration year
         expiration_month:
           type: string
+          description: Two-digit expiration month
     ListTransactions:
       type: object
       properties:
@@ -28659,14 +28768,20 @@ components:
       properties:
         contact_id:
           type: string
+          description: The id of the contact the payment method is associated with.
+          example: 123
         payment_method_id:
           type: string
+          description: The unique identifier of the payment method.
+          example: 123
         credit_card_id:
           type: string
+          description: For backward-compatibility with v1 endpoints. If present, it's
+            the credit card id this payment method refers to.
         merchant_account_type:
           type: string
-          description: 'The merchant type this payment method was authorized with.
-            Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED'
+          description: The merchant account type through which the payment method
+            was tokenized.
           enum:
           - PAYPAL
           - UNSUPPORTED
@@ -28675,8 +28790,11 @@ components:
           - WEPAY
           - STRIPE
           - KEAP_PAY
+          example: STRIPE
         merchant_account_id:
           type: string
+          description: The merchant account id through which the payment method was
+            tokenize.
         payment_method_type:
           type: string
           description: The type of payment method. For now, only CARD is supported.
@@ -28684,10 +28802,13 @@ components:
           - CARD
         created_time:
           type: string
+          format: date-time
+          description: When this payment method was made. In ISO-8601 format.
+          example: '2024-05-21T14:30:00Z'
         card_info:
           $ref: '#/components/schemas/CardInfo'
-          description: Additional info for payment methods of payment_method_type
-            CARD.
+          description: If present, it provides additional details for payment methods
+            of payment_method_type CARD.
         status:
           type: string
           description: Status of the payment method. Fow now, only EXPIRED is supported.
@@ -28860,7 +28981,8 @@ components:
           description: The merchant account id through which the transaction was made.
         merchant_account_type:
           type: string
-          description: The merchant account id through which the transaction was made.
+          description: The merchant account type through which the transaction was
+            made.
           enum:
           - PAYPAL
           - UNSUPPORTED
@@ -29220,6 +29342,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ProductCategory'
+        next_page_token:
+          type: string
+    ListPaymentMethodsResponse:
+      type: object
+      properties:
+        payment_methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentMethod'
         next_page_token:
           type: string
     ListOrders:
@@ -29752,7 +29883,7 @@ components:
             $ref: '#/components/schemas/AppliedTag'
         next_page_token:
           type: string
-    ListPaymentMethodsResponse:
+    ListContactPaymentMethodsResponse:
       type: object
       properties:
         records:

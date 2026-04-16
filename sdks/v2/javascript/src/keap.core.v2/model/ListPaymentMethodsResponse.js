@@ -47,8 +47,8 @@ class ListPaymentMethodsResponse {
         if (data) {
             obj = obj || new ListPaymentMethodsResponse();
 
-            if (data.hasOwnProperty('records')) {
-                obj['records'] = ApiClient.convertToType(data['records'], [PaymentMethod]);
+            if (data.hasOwnProperty('payment_methods')) {
+                obj['payment_methods'] = ApiClient.convertToType(data['payment_methods'], [PaymentMethod]);
             }
             if (data.hasOwnProperty('next_page_token')) {
                 obj['next_page_token'] = ApiClient.convertToType(data['next_page_token'], 'String');
@@ -63,13 +63,13 @@ class ListPaymentMethodsResponse {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ListPaymentMethodsResponse</code>.
      */
     static validateJSON(data) {
-        if (data['records']) { // data not null
+        if (data['payment_methods']) { // data not null
             // ensure the json data is an array
-            if (!Array.isArray(data['records'])) {
-                throw new Error("Expected the field `records` to be an array in the JSON data but got " + data['records']);
+            if (!Array.isArray(data['payment_methods'])) {
+                throw new Error("Expected the field `payment_methods` to be an array in the JSON data but got " + data['payment_methods']);
             }
-            // validate the optional field `records` (array)
-            for (const item of data['records']) {
+            // validate the optional field `payment_methods` (array)
+            for (const item of data['payment_methods']) {
                 PaymentMethod.validateJSON(item);
             };
         }
@@ -87,9 +87,9 @@ class ListPaymentMethodsResponse {
 
 
 /**
- * @member {Array.<module:keap.core.v2/model/PaymentMethod>} records
+ * @member {Array.<module:keap.core.v2/model/PaymentMethod>} payment_methods
  */
-ListPaymentMethodsResponse.prototype['records'] = undefined;
+ListPaymentMethodsResponse.prototype['payment_methods'] = undefined;
 
 /**
  * @member {String} next_page_token

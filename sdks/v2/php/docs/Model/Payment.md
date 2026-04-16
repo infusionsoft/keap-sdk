@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **update_time** | **\DateTime** | When this payment was updated. In ISO-8601 format. | [optional]
 **external_transaction_id** | **string** | An external id - typically from a payment processor - that references this transaction. | [optional]
 **merchant_account_id** | **string** | The merchant account id through which the transaction was made. | [optional]
-**merchant_account_type** | **string** | The merchant account id through which the transaction was made. | [optional]
+**merchant_account_type** | **string** | The merchant account type through which the transaction was made. | [optional]
 **payment_method** | [**\Keap\Core\V2\Model\PaymentMethod**](PaymentMethod.md) | Details of the payment method used for this transaction. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

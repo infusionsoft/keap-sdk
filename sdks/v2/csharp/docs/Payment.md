@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **UpdateTime** | **DateTime** | When this payment was updated. In ISO-8601 format. | [optional] 
 **ExternalTransactionId** | **string** | An external id - typically from a payment processor - that references this transaction. | [optional] 
 **MerchantAccountId** | **string** | The merchant account id through which the transaction was made. | [optional] 
-**MerchantAccountType** | **string** | The merchant account id through which the transaction was made. | [optional] 
+**MerchantAccountType** | **string** | The merchant account type through which the transaction was made. | [optional] 
 **PaymentMethod** | [**PaymentMethod**](PaymentMethod.md) | Details of the payment method used for this transaction. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

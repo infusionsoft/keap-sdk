@@ -35,19 +35,19 @@ namespace Keap.Core.V2.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListPaymentMethodsResponse" /> class.
         /// </summary>
-        /// <param name="records">records.</param>
+        /// <param name="paymentMethods">paymentMethods.</param>
         /// <param name="nextPageToken">nextPageToken.</param>
-        public ListPaymentMethodsResponse(List<PaymentMethod> records = default, string nextPageToken = default)
+        public ListPaymentMethodsResponse(List<PaymentMethod> paymentMethods = default, string nextPageToken = default)
         {
-            this.Records = records;
+            this.PaymentMethods = paymentMethods;
             this.NextPageToken = nextPageToken;
         }
 
         /// <summary>
-        /// Gets or Sets Records
+        /// Gets or Sets PaymentMethods
         /// </summary>
-        [DataMember(Name = "records", EmitDefaultValue = false)]
-        public List<PaymentMethod> Records { get; set; }
+        [DataMember(Name = "payment_methods", EmitDefaultValue = false)]
+        public List<PaymentMethod> PaymentMethods { get; set; }
 
         /// <summary>
         /// Gets or Sets NextPageToken
@@ -63,7 +63,7 @@ namespace Keap.Core.V2.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListPaymentMethodsResponse {\n");
-            sb.Append("  Records: ").Append(Records).Append("\n");
+            sb.Append("  PaymentMethods: ").Append(PaymentMethods).Append("\n");
             sb.Append("  NextPageToken: ").Append(NextPageToken).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

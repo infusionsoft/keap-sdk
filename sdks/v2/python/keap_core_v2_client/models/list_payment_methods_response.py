@@ -27,10 +27,10 @@ class ListPaymentMethodsResponse(BaseModel):
     """
     ListPaymentMethodsResponse
     """ # noqa: E501
-    records: Optional[List[PaymentMethod]] = None
+    payment_methods: Optional[List[PaymentMethod]] = None
     next_page_token: Optional[StrictStr] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["records", "next_page_token"]
+    __properties: ClassVar[List[str]] = ["payment_methods", "next_page_token"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -73,13 +73,13 @@ class ListPaymentMethodsResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in records (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in payment_methods (list)
         _items = []
-        if self.records:
-            for _item_records in self.records:
-                if _item_records:
-                    _items.append(_item_records.to_dict())
-            _dict['records'] = _items
+        if self.payment_methods:
+            for _item_payment_methods in self.payment_methods:
+                if _item_payment_methods:
+                    _items.append(_item_payment_methods.to_dict())
+            _dict['payment_methods'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -97,7 +97,7 @@ class ListPaymentMethodsResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "records": [PaymentMethod.from_dict(_item) for _item in obj["records"]] if obj.get("records") is not None else None,
+            "payment_methods": [PaymentMethod.from_dict(_item) for _item in obj["payment_methods"]] if obj.get("payment_methods") is not None else None,
             "next_page_token": obj.get("next_page_token")
         })
         # store additional fields in additional_properties

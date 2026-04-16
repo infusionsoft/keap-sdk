@@ -83,6 +83,9 @@ class PaymentMethodsApi
         'listPaymentMethods' => [
             'application/json',
         ],
+        'listPaymentMethods_0' => [
+            'application/json',
+        ],
     ];
 
     /**
@@ -134,7 +137,7 @@ class PaymentMethodsApi
     /**
      * Operation deactivatePaymentMethod
      *
-     * Deactivate a Payment Method
+     * Deactivate a Contact Payment Method
      *
      * @param  string $contact_id ID of the contact to which the payment method belongs. (required)
      * @param  string $payment_method_id ID of the payment method to be deactivated. (required)
@@ -152,7 +155,7 @@ class PaymentMethodsApi
     /**
      * Operation deactivatePaymentMethodWithHttpInfo
      *
-     * Deactivate a Payment Method
+     * Deactivate a Contact Payment Method
      *
      * @param  string $contact_id ID of the contact to which the payment method belongs. (required)
      * @param  string $payment_method_id ID of the payment method to be deactivated. (required)
@@ -258,7 +261,7 @@ class PaymentMethodsApi
     /**
      * Operation deactivatePaymentMethodAsync
      *
-     * Deactivate a Payment Method
+     * Deactivate a Contact Payment Method
      *
      * @param  string $contact_id ID of the contact to which the payment method belongs. (required)
      * @param  string $payment_method_id ID of the payment method to be deactivated. (required)
@@ -280,7 +283,7 @@ class PaymentMethodsApi
     /**
      * Operation deactivatePaymentMethodAsyncWithHttpInfo
      *
-     * Deactivate a Payment Method
+     * Deactivate a Contact Payment Method
      *
      * @param  string $contact_id ID of the contact to which the payment method belongs. (required)
      * @param  string $payment_method_id ID of the payment method to be deactivated. (required)
@@ -432,7 +435,7 @@ class PaymentMethodsApi
     /**
      * Operation deletePaymentMethod
      *
-     * Delete a Payment Method
+     * Delete a Contact Payment Method
      *
      * @param  string $contact_id ID of the contact to which the payment method belongs. (required)
      * @param  string $payment_method_id ID of the payment method to be deleted. (required)
@@ -450,7 +453,7 @@ class PaymentMethodsApi
     /**
      * Operation deletePaymentMethodWithHttpInfo
      *
-     * Delete a Payment Method
+     * Delete a Contact Payment Method
      *
      * @param  string $contact_id ID of the contact to which the payment method belongs. (required)
      * @param  string $payment_method_id ID of the payment method to be deleted. (required)
@@ -556,7 +559,7 @@ class PaymentMethodsApi
     /**
      * Operation deletePaymentMethodAsync
      *
-     * Delete a Payment Method
+     * Delete a Contact Payment Method
      *
      * @param  string $contact_id ID of the contact to which the payment method belongs. (required)
      * @param  string $payment_method_id ID of the payment method to be deleted. (required)
@@ -578,7 +581,7 @@ class PaymentMethodsApi
     /**
      * Operation deletePaymentMethodAsyncWithHttpInfo
      *
-     * Delete a Payment Method
+     * Delete a Contact Payment Method
      *
      * @param  string $contact_id ID of the contact to which the payment method belongs. (required)
      * @param  string $payment_method_id ID of the payment method to be deleted. (required)
@@ -732,9 +735,8 @@ class PaymentMethodsApi
      *
      * List of Payment Methods
      *
-     * @param  string $contact_id ID of the contact to which the payment method belongs. (required)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  You can filter across all contacts by using the &#x60;-&#x60; for the &#x60;contact_id&#x60; field. (optional)
-     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;payment_method_id&#x60; - (String) &#x60;credit_card_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;payment_method_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bmerchant_account_id%3D%3D567&#x60; (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;payment_method_id&#x60; - &#x60;created_time&#x60; - &#x60;contact_id&#x60; - &#x60;merchant_account_id&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPaymentMethods'] to see the possible values for this operation
@@ -743,9 +745,9 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return \Keap\Core\V2\Model\ListPaymentMethodsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
-    public function listPaymentMethods($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
+    public function listPaymentMethods($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
     {
-        list($response) = $this->listPaymentMethodsWithHttpInfo($contact_id, $filter, $order_by, $page_size, $page_token, $contentType);
+        list($response) = $this->listPaymentMethodsWithHttpInfo($filter, $order_by, $page_size, $page_token, $contentType);
         return $response;
     }
 
@@ -754,9 +756,8 @@ class PaymentMethodsApi
      *
      * List of Payment Methods
      *
-     * @param  string $contact_id ID of the contact to which the payment method belongs. (required)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  You can filter across all contacts by using the &#x60;-&#x60; for the &#x60;contact_id&#x60; field. (optional)
-     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;payment_method_id&#x60; - (String) &#x60;credit_card_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;payment_method_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bmerchant_account_id%3D%3D567&#x60; (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;payment_method_id&#x60; - &#x60;created_time&#x60; - &#x60;contact_id&#x60; - &#x60;merchant_account_id&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPaymentMethods'] to see the possible values for this operation
@@ -765,9 +766,9 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return array of \Keap\Core\V2\Model\ListPaymentMethodsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listPaymentMethodsWithHttpInfo($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
+    public function listPaymentMethodsWithHttpInfo($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
     {
-        $request = $this->listPaymentMethodsRequest($contact_id, $filter, $order_by, $page_size, $page_token, $contentType);
+        $request = $this->listPaymentMethodsRequest($filter, $order_by, $page_size, $page_token, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -941,9 +942,8 @@ class PaymentMethodsApi
      *
      * List of Payment Methods
      *
-     * @param  string $contact_id ID of the contact to which the payment method belongs. (required)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  You can filter across all contacts by using the &#x60;-&#x60; for the &#x60;contact_id&#x60; field. (optional)
-     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;payment_method_id&#x60; - (String) &#x60;credit_card_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;payment_method_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bmerchant_account_id%3D%3D567&#x60; (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;payment_method_id&#x60; - &#x60;created_time&#x60; - &#x60;contact_id&#x60; - &#x60;merchant_account_id&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPaymentMethods'] to see the possible values for this operation
@@ -951,9 +951,9 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPaymentMethodsAsync($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
+    public function listPaymentMethodsAsync($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
     {
-        return $this->listPaymentMethodsAsyncWithHttpInfo($contact_id, $filter, $order_by, $page_size, $page_token, $contentType)
+        return $this->listPaymentMethodsAsyncWithHttpInfo($filter, $order_by, $page_size, $page_token, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -966,9 +966,8 @@ class PaymentMethodsApi
      *
      * List of Payment Methods
      *
-     * @param  string $contact_id ID of the contact to which the payment method belongs. (required)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  You can filter across all contacts by using the &#x60;-&#x60; for the &#x60;contact_id&#x60; field. (optional)
-     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;payment_method_id&#x60; - (String) &#x60;credit_card_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;payment_method_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bmerchant_account_id%3D%3D567&#x60; (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;payment_method_id&#x60; - &#x60;created_time&#x60; - &#x60;contact_id&#x60; - &#x60;merchant_account_id&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPaymentMethods'] to see the possible values for this operation
@@ -976,10 +975,10 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPaymentMethodsAsyncWithHttpInfo($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
+    public function listPaymentMethodsAsyncWithHttpInfo($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
     {
         $returnType = '\Keap\Core\V2\Model\ListPaymentMethodsResponse';
-        $request = $this->listPaymentMethodsRequest($contact_id, $filter, $order_by, $page_size, $page_token, $contentType);
+        $request = $this->listPaymentMethodsRequest($filter, $order_by, $page_size, $page_token, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1020,9 +1019,8 @@ class PaymentMethodsApi
     /**
      * Create request for operation 'listPaymentMethods'
      *
-     * @param  string $contact_id ID of the contact to which the payment method belongs. (required)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  You can filter across all contacts by using the &#x60;-&#x60; for the &#x60;contact_id&#x60; field. (optional)
-     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;payment_method_id&#x60; - (String) &#x60;credit_card_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;payment_method_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bmerchant_account_id%3D%3D567&#x60; (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;payment_method_id&#x60; - &#x60;created_time&#x60; - &#x60;contact_id&#x60; - &#x60;merchant_account_id&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPaymentMethods'] to see the possible values for this operation
@@ -1030,15 +1028,8 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listPaymentMethodsRequest($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
+    public function listPaymentMethodsRequest($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
     {
-
-        // verify the required parameter 'contact_id' is set
-        if ($contact_id === null || (is_array($contact_id) && count($contact_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $contact_id when calling listPaymentMethods'
-            );
-        }
 
 
 
@@ -1047,6 +1038,434 @@ class PaymentMethodsApi
         }
         if ($page_size !== null && $page_size < 0) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling PaymentMethodsApi.listPaymentMethods, must be bigger than or equal to 0.');
+        }
+        
+
+
+        $resourcePath = '/rest/v2/paymentMethods';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $filter,
+            'filter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $order_by,
+            'order_by', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_size,
+            'page_size', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_token,
+            'page_token', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listPaymentMethods_0
+     *
+     * List of Contact Payment Methods
+     *
+     * @param  string $contact_id ID of the contact to which the payment method belongs. (required)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60; (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
+     * @param  int|null $page_size Total number of items to return per page (optional)
+     * @param  string|null $page_token Page token (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPaymentMethods_0'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Keap\Core\V2\Model\ListContactPaymentMethodsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     */
+    public function listPaymentMethods_0($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listPaymentMethods_0'][0])
+    {
+        list($response) = $this->listPaymentMethods_0WithHttpInfo($contact_id, $filter, $order_by, $page_size, $page_token, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listPaymentMethods_0WithHttpInfo
+     *
+     * List of Contact Payment Methods
+     *
+     * @param  string $contact_id ID of the contact to which the payment method belongs. (required)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60; (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
+     * @param  int|null $page_size Total number of items to return per page (optional)
+     * @param  string|null $page_token Page token (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPaymentMethods_0'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Keap\Core\V2\Model\ListContactPaymentMethodsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listPaymentMethods_0WithHttpInfo($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listPaymentMethods_0'][0])
+    {
+        $request = $this->listPaymentMethods_0Request($contact_id, $filter, $order_by, $page_size, $page_token, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\ListContactPaymentMethodsResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 501:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Keap\Core\V2\Model\ListContactPaymentMethodsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\ListContactPaymentMethodsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listPaymentMethods_0Async
+     *
+     * List of Contact Payment Methods
+     *
+     * @param  string $contact_id ID of the contact to which the payment method belongs. (required)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60; (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
+     * @param  int|null $page_size Total number of items to return per page (optional)
+     * @param  string|null $page_token Page token (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPaymentMethods_0'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listPaymentMethods_0Async($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listPaymentMethods_0'][0])
+    {
+        return $this->listPaymentMethods_0AsyncWithHttpInfo($contact_id, $filter, $order_by, $page_size, $page_token, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listPaymentMethods_0AsyncWithHttpInfo
+     *
+     * List of Contact Payment Methods
+     *
+     * @param  string $contact_id ID of the contact to which the payment method belongs. (required)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60; (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
+     * @param  int|null $page_size Total number of items to return per page (optional)
+     * @param  string|null $page_token Page token (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPaymentMethods_0'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listPaymentMethods_0AsyncWithHttpInfo($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listPaymentMethods_0'][0])
+    {
+        $returnType = '\Keap\Core\V2\Model\ListContactPaymentMethodsResponse';
+        $request = $this->listPaymentMethods_0Request($contact_id, $filter, $order_by, $page_size, $page_token, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listPaymentMethods_0'
+     *
+     * @param  string $contact_id ID of the contact to which the payment method belongs. (required)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60; (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
+     * @param  int|null $page_size Total number of items to return per page (optional)
+     * @param  string|null $page_token Page token (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPaymentMethods_0'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listPaymentMethods_0Request($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listPaymentMethods_0'][0])
+    {
+
+        // verify the required parameter 'contact_id' is set
+        if ($contact_id === null || (is_array($contact_id) && count($contact_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $contact_id when calling listPaymentMethods_0'
+            );
+        }
+
+
+
+        if ($page_size !== null && $page_size > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling PaymentMethodsApi.listPaymentMethods_0, must be smaller than or equal to 1000.');
+        }
+        if ($page_size !== null && $page_size < 0) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling PaymentMethodsApi.listPaymentMethods_0, must be bigger than or equal to 0.');
         }
         
 

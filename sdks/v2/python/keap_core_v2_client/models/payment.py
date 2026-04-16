@@ -42,7 +42,7 @@ class Payment(BaseModel):
     update_time: Optional[datetime] = Field(default=None, description="When this payment was updated. In ISO-8601 format.")
     external_transaction_id: Optional[StrictStr] = Field(default=None, description="An external id - typically from a payment processor - that references this transaction.")
     merchant_account_id: Optional[StrictStr] = Field(default=None, description="The merchant account id through which the transaction was made.")
-    merchant_account_type: Optional[StrictStr] = Field(default=None, description="The merchant account id through which the transaction was made.")
+    merchant_account_type: Optional[StrictStr] = Field(default=None, description="The merchant account type through which the transaction was made.")
     payment_method: Optional[PaymentMethod] = Field(default=None, description="Details of the payment method used for this transaction.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "type", "amount", "note", "status", "commissioned", "synced", "payment_time", "refund_payment_id", "contact_id", "order_ids", "update_time", "external_transaction_id", "merchant_account_id", "merchant_account_type", "payment_method"]

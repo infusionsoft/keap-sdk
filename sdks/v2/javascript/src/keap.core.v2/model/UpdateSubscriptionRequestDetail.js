@@ -22,11 +22,10 @@ class UpdateSubscriptionRequestDetail {
     /**
      * Constructs a new <code>UpdateSubscriptionRequestDetail</code>.
      * @alias module:keap.core.v2/model/UpdateSubscriptionRequestDetail
-     * @param contactId {String} Id of the contact to create the subscription for.
      */
-    constructor(contactId) { 
+    constructor() { 
         
-        UpdateSubscriptionRequestDetail.initialize(this, contactId);
+        UpdateSubscriptionRequestDetail.initialize(this);
     }
 
     /**
@@ -34,8 +33,7 @@ class UpdateSubscriptionRequestDetail {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, contactId) { 
-        obj['contact_id'] = contactId;
+    static initialize(obj) { 
     }
 
     /**
@@ -119,12 +117,6 @@ class UpdateSubscriptionRequestDetail {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateSubscriptionRequestDetail</code>.
      */
     static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of UpdateSubscriptionRequestDetail.RequiredProperties) {
-            if (!data.hasOwnProperty(property)) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
         // ensure the json data is a string
         if (data['contact_id'] && !(typeof data['contact_id'] === 'string' || data['contact_id'] instanceof String)) {
             throw new Error("Expected the field `contact_id` to be a primitive type in the JSON string but got " + data['contact_id']);
@@ -172,7 +164,7 @@ class UpdateSubscriptionRequestDetail {
 
 }
 
-UpdateSubscriptionRequestDetail.RequiredProperties = ["contact_id"];
+
 
 /**
  * The subscription quantity. Must be 1 or greater.
@@ -187,7 +179,7 @@ UpdateSubscriptionRequestDetail.prototype['quantity'] = undefined;
 UpdateSubscriptionRequestDetail.prototype['active'] = undefined;
 
 /**
- * Id of the contact to create the subscription for.
+ * Id of the contact associated with the subscription.
  * @member {String} contact_id
  */
 UpdateSubscriptionRequestDetail.prototype['contact_id'] = undefined;

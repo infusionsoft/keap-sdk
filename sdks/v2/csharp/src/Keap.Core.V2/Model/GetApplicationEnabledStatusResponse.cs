@@ -35,17 +35,17 @@ namespace Keap.Core.V2.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetApplicationEnabledStatusResponse" /> class.
         /// </summary>
-        /// <param name="enabled">enabled.</param>
-        public GetApplicationEnabledStatusResponse(bool enabled = default)
+        /// <param name="isEnabled">isEnabled.</param>
+        public GetApplicationEnabledStatusResponse(bool isEnabled = default)
         {
-            this.Enabled = enabled;
+            this.IsEnabled = isEnabled;
         }
 
         /// <summary>
-        /// Gets or Sets Enabled
+        /// Gets or Sets IsEnabled
         /// </summary>
-        [DataMember(Name = "enabled", EmitDefaultValue = true)]
-        public bool Enabled { get; set; }
+        [DataMember(Name = "isEnabled", EmitDefaultValue = true)]
+        public bool IsEnabled { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -55,7 +55,7 @@ namespace Keap.Core.V2.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetApplicationEnabledStatusResponse {\n");
-            sb.Append("  Enabled: ").Append(Enabled).Append("\n");
+            sb.Append("  IsEnabled: ").Append(IsEnabled).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

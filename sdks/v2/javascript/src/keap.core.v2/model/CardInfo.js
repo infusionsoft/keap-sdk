@@ -49,6 +49,9 @@ class CardInfo {
             if (data.hasOwnProperty('brand')) {
                 obj['brand'] = ApiClient.convertToType(data['brand'], 'String');
             }
+            if (data.hasOwnProperty('fingerprint')) {
+                obj['fingerprint'] = ApiClient.convertToType(data['fingerprint'], 'String');
+            }
             if (data.hasOwnProperty('card_type')) {
                 obj['card_type'] = ApiClient.convertToType(data['card_type'], 'String');
             }
@@ -74,6 +77,10 @@ class CardInfo {
         // ensure the json data is a string
         if (data['brand'] && !(typeof data['brand'] === 'string' || data['brand'] instanceof String)) {
             throw new Error("Expected the field `brand` to be a primitive type in the JSON string but got " + data['brand']);
+        }
+        // ensure the json data is a string
+        if (data['fingerprint'] && !(typeof data['fingerprint'] === 'string' || data['fingerprint'] instanceof String)) {
+            throw new Error("Expected the field `fingerprint` to be a primitive type in the JSON string but got " + data['fingerprint']);
         }
         // ensure the json data is a string
         if (data['card_type'] && !(typeof data['card_type'] === 'string' || data['card_type'] instanceof String)) {
@@ -106,6 +113,12 @@ class CardInfo {
 CardInfo.prototype['brand'] = undefined;
 
 /**
+ * A token that uniquely identifies the card info
+ * @member {String} fingerprint
+ */
+CardInfo.prototype['fingerprint'] = undefined;
+
+/**
  * The card type. Valid values are: CREDIT, DEBIT, PREPAID.
  * @member {module:keap.core.v2/model/CardInfo.CardTypeEnum} card_type
  */
@@ -117,11 +130,13 @@ CardInfo.prototype['card_type'] = undefined;
 CardInfo.prototype['last_four'] = undefined;
 
 /**
+ * Four-digit expiration year
  * @member {String} expiration_year
  */
 CardInfo.prototype['expiration_year'] = undefined;
 
 /**
+ * Two-digit expiration month
  * @member {String} expiration_month
  */
 CardInfo.prototype['expiration_month'] = undefined;

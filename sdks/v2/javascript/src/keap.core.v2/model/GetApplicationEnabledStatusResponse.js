@@ -46,8 +46,8 @@ class GetApplicationEnabledStatusResponse {
         if (data) {
             obj = obj || new GetApplicationEnabledStatusResponse();
 
-            if (data.hasOwnProperty('enabled')) {
-                obj['enabled'] = ApiClient.convertToType(data['enabled'], 'Boolean');
+            if (data.hasOwnProperty('isEnabled')) {
+                obj['isEnabled'] = ApiClient.convertToType(data['isEnabled'], 'Boolean');
             }
         }
         return obj;
@@ -69,9 +69,9 @@ class GetApplicationEnabledStatusResponse {
 
 
 /**
- * @member {Boolean} enabled
+ * @member {Boolean} isEnabled
  */
-GetApplicationEnabledStatusResponse.prototype['enabled'] = undefined;
+GetApplicationEnabledStatusResponse.prototype['isEnabled'] = undefined;
 
 
 

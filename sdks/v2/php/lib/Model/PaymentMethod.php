@@ -63,7 +63,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_account_type' => 'string',
         'merchant_account_id' => 'string',
         'payment_method_type' => 'string',
-        'created_time' => 'string',
+        'created_time' => '\DateTime',
         'card_info' => '\Keap\Core\V2\Model\CardInfo',
         'status' => 'string'
     ];
@@ -82,7 +82,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_account_type' => null,
         'merchant_account_id' => null,
         'payment_method_type' => null,
-        'created_time' => null,
+        'created_time' => 'date-time',
         'card_info' => null,
         'status' => null
     ];
@@ -436,7 +436,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets contact_id
      *
-     * @param string|null $contact_id contact_id
+     * @param string|null $contact_id The id of the contact the payment method is associated with.
      *
      * @return self
      */
@@ -463,7 +463,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payment_method_id
      *
-     * @param string|null $payment_method_id payment_method_id
+     * @param string|null $payment_method_id The unique identifier of the payment method.
      *
      * @return self
      */
@@ -490,7 +490,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets credit_card_id
      *
-     * @param string|null $credit_card_id credit_card_id
+     * @param string|null $credit_card_id For backward-compatibility with v1 endpoints. If present, it's the credit card id this payment method refers to.
      *
      * @return self
      */
@@ -517,7 +517,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets merchant_account_type
      *
-     * @param string|null $merchant_account_type The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED
+     * @param string|null $merchant_account_type The merchant account type through which the payment method was tokenized.
      *
      * @return self
      */
@@ -554,7 +554,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets merchant_account_id
      *
-     * @param string|null $merchant_account_id merchant_account_id
+     * @param string|null $merchant_account_id The merchant account id through which the payment method was tokenize.
      *
      * @return self
      */
@@ -608,7 +608,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets created_time
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getCreatedTime()
     {
@@ -618,7 +618,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_time
      *
-     * @param string|null $created_time created_time
+     * @param \DateTime|null $created_time When this payment method was made. In ISO-8601 format.
      *
      * @return self
      */
@@ -645,7 +645,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets card_info
      *
-     * @param \Keap\Core\V2\Model\CardInfo|null $card_info Additional info for payment methods of payment_method_type CARD.
+     * @param \Keap\Core\V2\Model\CardInfo|null $card_info If present, it provides additional details for payment methods of payment_method_type CARD.
      *
      * @return self
      */

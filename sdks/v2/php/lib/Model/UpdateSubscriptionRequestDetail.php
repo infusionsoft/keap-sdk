@@ -426,9 +426,6 @@ class UpdateSubscriptionRequestDetail implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if ($this->container['contact_id'] === null) {
-            $invalidProperties[] = "'contact_id' can't be null";
-        }
         $allowedValues = $this->getBillingCycleAllowableValues();
         if (!is_null($this->container['billing_cycle']) && !in_array($this->container['billing_cycle'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -510,7 +507,7 @@ class UpdateSubscriptionRequestDetail implements ModelInterface, ArrayAccess, \J
     /**
      * Gets contact_id
      *
-     * @return string
+     * @return string|null
      */
     public function getContactId()
     {
@@ -520,7 +517,7 @@ class UpdateSubscriptionRequestDetail implements ModelInterface, ArrayAccess, \J
     /**
      * Sets contact_id
      *
-     * @param string $contact_id Id of the contact to create the subscription for.
+     * @param string|null $contact_id Id of the contact associated with the subscription.
      *
      * @return self
      */

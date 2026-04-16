@@ -74,9 +74,9 @@ namespace Keap.Core.V2.Model
         [DataMember(Name = "status", EmitDefaultValue = false)]
         public StatusEnum? Status { get; set; }
         /// <summary>
-        /// The merchant account id through which the transaction was made.
+        /// The merchant account type through which the transaction was made.
         /// </summary>
-        /// <value>The merchant account id through which the transaction was made.</value>
+        /// <value>The merchant account type through which the transaction was made.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum MerchantAccountTypeEnum
         {
@@ -124,9 +124,9 @@ namespace Keap.Core.V2.Model
         }
 
         /// <summary>
-        /// The merchant account id through which the transaction was made.
+        /// The merchant account type through which the transaction was made.
         /// </summary>
-        /// <value>The merchant account id through which the transaction was made.</value>
+        /// <value>The merchant account type through which the transaction was made.</value>
         /*
         <example>PAYPAL</example>
         */
@@ -149,7 +149,7 @@ namespace Keap.Core.V2.Model
         /// <param name="updateTime">When this payment was updated. In ISO-8601 format..</param>
         /// <param name="externalTransactionId">An external id - typically from a payment processor - that references this transaction..</param>
         /// <param name="merchantAccountId">The merchant account id through which the transaction was made..</param>
-        /// <param name="merchantAccountType">The merchant account id through which the transaction was made..</param>
+        /// <param name="merchantAccountType">The merchant account type through which the transaction was made..</param>
         /// <param name="paymentMethod">Details of the payment method used for this transaction..</param>
         public Payment(string id = default, string type = default, double amount = default, string note = default, StatusEnum? status = default, bool commissioned = default, bool synced = default, DateTime paymentTime = default, string refundPaymentId = default, string contactId = default, List<string> orderIds = default, DateTime updateTime = default, string externalTransactionId = default, string merchantAccountId = default, MerchantAccountTypeEnum? merchantAccountType = default, PaymentMethod paymentMethod = default)
         {

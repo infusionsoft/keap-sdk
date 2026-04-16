@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.5</version>
+  <version>2.0.6</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.5"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.6"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.5.jar`
+- `target/core-service-v2-java-sdk-2.0.6.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -464,12 +464,14 @@ Class | Method | HTTP request | Description
 *OrdersApi* | [**updateOrderItemWithHttpInfo**](docs/OrdersApi.md#updateOrderItemWithHttpInfo) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item
 *PaymentMethodConfigsApi* | [**createPaymentMethodConfig**](docs/PaymentMethodConfigsApi.md#createPaymentMethodConfig) | **POST** /rest/v2/paymentMethodConfigs | Create Payment Method Configuration
 *PaymentMethodConfigsApi* | [**createPaymentMethodConfigWithHttpInfo**](docs/PaymentMethodConfigsApi.md#createPaymentMethodConfigWithHttpInfo) | **POST** /rest/v2/paymentMethodConfigs | Create Payment Method Configuration
-*PaymentMethodsApi* | [**deactivatePaymentMethod**](docs/PaymentMethodsApi.md#deactivatePaymentMethod) | **POST** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id}:deactivate | Deactivate a Payment Method
-*PaymentMethodsApi* | [**deactivatePaymentMethodWithHttpInfo**](docs/PaymentMethodsApi.md#deactivatePaymentMethodWithHttpInfo) | **POST** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id}:deactivate | Deactivate a Payment Method
-*PaymentMethodsApi* | [**deletePaymentMethod**](docs/PaymentMethodsApi.md#deletePaymentMethod) | **DELETE** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id} | Delete a Payment Method
-*PaymentMethodsApi* | [**deletePaymentMethodWithHttpInfo**](docs/PaymentMethodsApi.md#deletePaymentMethodWithHttpInfo) | **DELETE** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id} | Delete a Payment Method
-*PaymentMethodsApi* | [**listPaymentMethods**](docs/PaymentMethodsApi.md#listPaymentMethods) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Payment Methods
-*PaymentMethodsApi* | [**listPaymentMethodsWithHttpInfo**](docs/PaymentMethodsApi.md#listPaymentMethodsWithHttpInfo) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Payment Methods
+*PaymentMethodsApi* | [**deactivatePaymentMethod**](docs/PaymentMethodsApi.md#deactivatePaymentMethod) | **POST** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id}:deactivate | Deactivate a Contact Payment Method
+*PaymentMethodsApi* | [**deactivatePaymentMethodWithHttpInfo**](docs/PaymentMethodsApi.md#deactivatePaymentMethodWithHttpInfo) | **POST** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id}:deactivate | Deactivate a Contact Payment Method
+*PaymentMethodsApi* | [**deletePaymentMethod**](docs/PaymentMethodsApi.md#deletePaymentMethod) | **DELETE** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id} | Delete a Contact Payment Method
+*PaymentMethodsApi* | [**deletePaymentMethodWithHttpInfo**](docs/PaymentMethodsApi.md#deletePaymentMethodWithHttpInfo) | **DELETE** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id} | Delete a Contact Payment Method
+*PaymentMethodsApi* | [**listPaymentMethods**](docs/PaymentMethodsApi.md#listPaymentMethods) | **GET** /rest/v2/paymentMethods | List of Payment Methods
+*PaymentMethodsApi* | [**listPaymentMethodsWithHttpInfo**](docs/PaymentMethodsApi.md#listPaymentMethodsWithHttpInfo) | **GET** /rest/v2/paymentMethods | List of Payment Methods
+*PaymentMethodsApi* | [**listPaymentMethods_0**](docs/PaymentMethodsApi.md#listPaymentMethods_0) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods
+*PaymentMethodsApi* | [**listPaymentMethods_0WithHttpInfo**](docs/PaymentMethodsApi.md#listPaymentMethods_0WithHttpInfo) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods
 *ProductCategoriesApi* | [**assignProductsToCategory**](docs/ProductCategoriesApi.md#assignProductsToCategory) | **POST** /rest/v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category
 *ProductCategoriesApi* | [**assignProductsToCategoryWithHttpInfo**](docs/ProductCategoriesApi.md#assignProductsToCategoryWithHttpInfo) | **POST** /rest/v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category
 *ProductCategoriesApi* | [**createImageFile**](docs/ProductCategoriesApi.md#createImageFile) | **POST** /rest/v2/productCategories/{category_id}/images | Create the product category image file
@@ -861,6 +863,7 @@ Class | Method | HTTP request | Description
  - [ListCompaniesResponse](docs/ListCompaniesResponse.md)
  - [ListContactLinkTypesResponse](docs/ListContactLinkTypesResponse.md)
  - [ListContactLinksResponse](docs/ListContactLinksResponse.md)
+ - [ListContactPaymentMethodsResponse](docs/ListContactPaymentMethodsResponse.md)
  - [ListContactTagsResponse](docs/ListContactTagsResponse.md)
  - [ListContactsResponse](docs/ListContactsResponse.md)
  - [ListCountriesResponse](docs/ListCountriesResponse.md)

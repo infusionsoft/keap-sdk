@@ -8,10 +8,11 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**brand** | **String** |  |  [optional] |
+|**fingerprint** | **String** | A token that uniquely identifies the card info |  [optional] |
 |**cardType** | [**CardTypeEnum**](#CardTypeEnum) | The card type. Valid values are: CREDIT, DEBIT, PREPAID. |  [optional] |
 |**lastFour** | **String** |  |  [optional] |
-|**expirationYear** | **String** |  |  [optional] |
-|**expirationMonth** | **String** |  |  [optional] |
+|**expirationYear** | **String** | Four-digit expiration year |  [optional] |
+|**expirationMonth** | **String** | Two-digit expiration month |  [optional] |
 
 
 

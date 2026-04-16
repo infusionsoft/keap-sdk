@@ -5,10 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Brand** | **string** |  | [optional] 
+**Fingerprint** | **string** | A token that uniquely identifies the card info | [optional] 
 **CardType** | **string** | The card type. Valid values are: CREDIT, DEBIT, PREPAID. | [optional] 
 **LastFour** | **string** |  | [optional] 
-**ExpirationYear** | **string** |  | [optional] 
-**ExpirationMonth** | **string** |  | [optional] 
+**ExpirationYear** | **string** | Four-digit expiration year | [optional] 
+**ExpirationMonth** | **string** | Two-digit expiration month | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

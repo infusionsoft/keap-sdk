@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **quantity** | **int** | The subscription quantity. Must be 1 or greater. | [optional]
 **active** | **bool** | If the subscription is active or not. | [optional]
-**contact_id** | **string** | Id of the contact to create the subscription for. |
+**contact_id** | **string** | Id of the contact associated with the subscription. | [optional]
 **subscription_plan_id** | **string** | Id of the product subscription plan. | [optional]
 **billing_amount** | **float** | The billing amount. Must be 0 or greater. | [optional]
 **auto_charge** | **bool** | If the subscription should auto charge on the next billing date. | [optional]

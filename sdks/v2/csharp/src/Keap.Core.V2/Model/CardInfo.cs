@@ -74,13 +74,15 @@ namespace Keap.Core.V2.Model
         /// Initializes a new instance of the <see cref="CardInfo" /> class.
         /// </summary>
         /// <param name="brand">brand.</param>
+        /// <param name="fingerprint">A token that uniquely identifies the card info.</param>
         /// <param name="cardType">The card type. Valid values are: CREDIT, DEBIT, PREPAID..</param>
         /// <param name="lastFour">lastFour.</param>
-        /// <param name="expirationYear">expirationYear.</param>
-        /// <param name="expirationMonth">expirationMonth.</param>
-        public CardInfo(string brand = default, CardTypeEnum? cardType = default, string lastFour = default, string expirationYear = default, string expirationMonth = default)
+        /// <param name="expirationYear">Four-digit expiration year.</param>
+        /// <param name="expirationMonth">Two-digit expiration month.</param>
+        public CardInfo(string brand = default, string fingerprint = default, CardTypeEnum? cardType = default, string lastFour = default, string expirationYear = default, string expirationMonth = default)
         {
             this.Brand = brand;
+            this.Fingerprint = fingerprint;
             this.CardType = cardType;
             this.LastFour = lastFour;
             this.ExpirationYear = expirationYear;
@@ -94,20 +96,29 @@ namespace Keap.Core.V2.Model
         public string Brand { get; set; }
 
         /// <summary>
+        /// A token that uniquely identifies the card info
+        /// </summary>
+        /// <value>A token that uniquely identifies the card info</value>
+        [DataMember(Name = "fingerprint", EmitDefaultValue = false)]
+        public string Fingerprint { get; set; }
+
+        /// <summary>
         /// Gets or Sets LastFour
         /// </summary>
         [DataMember(Name = "last_four", EmitDefaultValue = false)]
         public string LastFour { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExpirationYear
+        /// Four-digit expiration year
         /// </summary>
+        /// <value>Four-digit expiration year</value>
         [DataMember(Name = "expiration_year", EmitDefaultValue = false)]
         public string ExpirationYear { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExpirationMonth
+        /// Two-digit expiration month
         /// </summary>
+        /// <value>Two-digit expiration month</value>
         [DataMember(Name = "expiration_month", EmitDefaultValue = false)]
         public string ExpirationMonth { get; set; }
 
@@ -120,6 +131,7 @@ namespace Keap.Core.V2.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CardInfo {\n");
             sb.Append("  Brand: ").Append(Brand).Append("\n");
+            sb.Append("  Fingerprint: ").Append(Fingerprint).Append("\n");
             sb.Append("  CardType: ").Append(CardType).Append("\n");
             sb.Append("  LastFour: ").Append(LastFour).Append("\n");
             sb.Append("  ExpirationYear: ").Append(ExpirationYear).Append("\n");

@@ -34,6 +34,7 @@ import jakarta.validation.Valid;
  */
 @JsonPropertyOrder({
   CardInfo.JSON_PROPERTY_BRAND,
+  CardInfo.JSON_PROPERTY_FINGERPRINT,
   CardInfo.JSON_PROPERTY_CARD_TYPE,
   CardInfo.JSON_PROPERTY_LAST_FOUR,
   CardInfo.JSON_PROPERTY_EXPIRATION_YEAR,
@@ -45,6 +46,9 @@ public class CardInfo implements Serializable {
 
   public static final String JSON_PROPERTY_BRAND = "brand";
   @jakarta.annotation.Nullable  private String brand;
+
+  public static final String JSON_PROPERTY_FINGERPRINT = "fingerprint";
+  @jakarta.annotation.Nullable  private String fingerprint;
 
   /**
    * The card type. Valid values are: CREDIT, DEBIT, PREPAID.
@@ -125,6 +129,30 @@ public class CardInfo implements Serializable {
   }
 
 
+  public CardInfo fingerprint(@jakarta.annotation.Nullable String fingerprint) {
+    this.fingerprint = fingerprint;
+    return this;
+  }
+
+  /**
+   * A token that uniquely identifies the card info
+   * @return fingerprint
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "A token that uniquely identifies the card info")
+  @JsonProperty(JSON_PROPERTY_FINGERPRINT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getFingerprint() {
+    return fingerprint;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FINGERPRINT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFingerprint(@jakarta.annotation.Nullable String fingerprint) {
+    this.fingerprint = fingerprint;
+  }
+
+
   public CardInfo cardType(@jakarta.annotation.Nullable CardTypeEnum cardType) {
     this.cardType = cardType;
     return this;
@@ -179,10 +207,10 @@ public class CardInfo implements Serializable {
   }
 
   /**
-   * Get expirationYear
+   * Four-digit expiration year
    * @return expirationYear
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Four-digit expiration year")
   @JsonProperty(JSON_PROPERTY_EXPIRATION_YEAR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getExpirationYear() {
@@ -203,10 +231,10 @@ public class CardInfo implements Serializable {
   }
 
   /**
-   * Get expirationMonth
+   * Two-digit expiration month
    * @return expirationMonth
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Two-digit expiration month")
   @JsonProperty(JSON_PROPERTY_EXPIRATION_MONTH)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getExpirationMonth() {
@@ -233,6 +261,7 @@ public class CardInfo implements Serializable {
     }
     CardInfo cardInfo = (CardInfo) o;
     return Objects.equals(this.brand, cardInfo.brand) &&
+        Objects.equals(this.fingerprint, cardInfo.fingerprint) &&
         Objects.equals(this.cardType, cardInfo.cardType) &&
         Objects.equals(this.lastFour, cardInfo.lastFour) &&
         Objects.equals(this.expirationYear, cardInfo.expirationYear) &&
@@ -241,7 +270,7 @@ public class CardInfo implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(brand, cardType, lastFour, expirationYear, expirationMonth);
+    return Objects.hash(brand, fingerprint, cardType, lastFour, expirationYear, expirationMonth);
   }
 
   @Override
@@ -249,6 +278,7 @@ public class CardInfo implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class CardInfo {\n");
     sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
+    sb.append("    fingerprint: ").append(toIndentedString(fingerprint)).append("\n");
     sb.append("    cardType: ").append(toIndentedString(cardType)).append("\n");
     sb.append("    lastFour: ").append(toIndentedString(lastFour)).append("\n");
     sb.append("    expirationYear: ").append(toIndentedString(expirationYear)).append("\n");
@@ -282,6 +312,10 @@ public class CardInfo implements Serializable {
     
         public CardInfo.Builder brand(String brand) {
               this.instance.brand = brand;
+          return this;
+        }
+            public CardInfo.Builder fingerprint(String fingerprint) {
+              this.instance.fingerprint = fingerprint;
           return this;
         }
             public CardInfo.Builder cardType(CardTypeEnum cardType) {
@@ -335,6 +369,7 @@ public class CardInfo implements Serializable {
       public CardInfo.Builder toBuilder() {
         return new CardInfo.Builder()
           .brand(getBrand())
+          .fingerprint(getFingerprint())
           .cardType(getCardType())
           .lastFour(getLastFour())
           .expirationYear(getExpirationYear())

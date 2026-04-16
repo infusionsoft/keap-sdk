@@ -58,6 +58,7 @@ class CardInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'brand' => 'string',
+        'fingerprint' => 'string',
         'card_type' => 'string',
         'last_four' => 'string',
         'expiration_year' => 'string',
@@ -73,6 +74,7 @@ class CardInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'brand' => null,
+        'fingerprint' => null,
         'card_type' => null,
         'last_four' => null,
         'expiration_year' => null,
@@ -86,6 +88,7 @@ class CardInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'brand' => false,
+        'fingerprint' => false,
         'card_type' => false,
         'last_four' => false,
         'expiration_year' => false,
@@ -179,6 +182,7 @@ class CardInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'brand' => 'brand',
+        'fingerprint' => 'fingerprint',
         'card_type' => 'card_type',
         'last_four' => 'last_four',
         'expiration_year' => 'expiration_year',
@@ -192,6 +196,7 @@ class CardInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'brand' => 'setBrand',
+        'fingerprint' => 'setFingerprint',
         'card_type' => 'setCardType',
         'last_four' => 'setLastFour',
         'expiration_year' => 'setExpirationYear',
@@ -205,6 +210,7 @@ class CardInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'brand' => 'getBrand',
+        'fingerprint' => 'getFingerprint',
         'card_type' => 'getCardType',
         'last_four' => 'getLastFour',
         'expiration_year' => 'getExpirationYear',
@@ -288,6 +294,7 @@ class CardInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('brand', $data ?? [], null);
+        $this->setIfExists('fingerprint', $data ?? [], null);
         $this->setIfExists('card_type', $data ?? [], null);
         $this->setIfExists('last_four', $data ?? [], null);
         $this->setIfExists('expiration_year', $data ?? [], null);
@@ -373,6 +380,33 @@ class CardInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets fingerprint
+     *
+     * @return string|null
+     */
+    public function getFingerprint()
+    {
+        return $this->container['fingerprint'];
+    }
+
+    /**
+     * Sets fingerprint
+     *
+     * @param string|null $fingerprint A token that uniquely identifies the card info
+     *
+     * @return self
+     */
+    public function setFingerprint($fingerprint)
+    {
+        if (is_null($fingerprint)) {
+            throw new \InvalidArgumentException('non-nullable fingerprint cannot be null');
+        }
+        $this->container['fingerprint'] = $fingerprint;
+
+        return $this;
+    }
+
+    /**
      * Gets card_type
      *
      * @return string|null
@@ -449,7 +483,7 @@ class CardInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expiration_year
      *
-     * @param string|null $expiration_year expiration_year
+     * @param string|null $expiration_year Four-digit expiration year
      *
      * @return self
      */
@@ -476,7 +510,7 @@ class CardInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expiration_month
      *
-     * @param string|null $expiration_month expiration_month
+     * @param string|null $expiration_month Two-digit expiration month
      *
      * @return self
      */

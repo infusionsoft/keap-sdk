@@ -188,6 +188,7 @@ import { ListCategoryDiscountsResponse } from '../models/ListCategoryDiscountsRe
 import { ListCompaniesResponse } from '../models/ListCompaniesResponse';
 import { ListContactLinkTypesResponse } from '../models/ListContactLinkTypesResponse';
 import { ListContactLinksResponse } from '../models/ListContactLinksResponse';
+import { ListContactPaymentMethodsResponse } from '../models/ListContactPaymentMethodsResponse';
 import { ListContactTagsResponse } from '../models/ListContactTagsResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
@@ -7067,21 +7068,14 @@ export interface PaymentMethodsApiDeletePaymentMethodRequest {
 
 export interface PaymentMethodsApiListPaymentMethodsRequest {
     /**
-     * ID of the contact to which the payment method belongs.
-     * Defaults to: undefined
-     * @type string
-     * @memberof PaymentMethodsApilistPaymentMethods
-     */
-    contactId: string
-    /**
-     * Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  You can filter across all contacts by using the &#x60;-&#x60; for the &#x60;contact_id&#x60; field. 
+     * Filter to apply, allowed fields are: - (String) &#x60;payment_method_id&#x60; - (String) &#x60;credit_card_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;payment_method_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bmerchant_account_id%3D%3D567&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof PaymentMethodsApilistPaymentMethods
      */
     filter?: string
     /**
-     * Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60;
+     * Attribute and direction to order items. One of the following fields: - &#x60;payment_method_id&#x60; - &#x60;created_time&#x60; - &#x60;contact_id&#x60; - &#x60;merchant_account_id&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof PaymentMethodsApilistPaymentMethods
@@ -7105,6 +7099,46 @@ export interface PaymentMethodsApiListPaymentMethodsRequest {
     pageToken?: string
 }
 
+export interface PaymentMethodsApiListPaymentMethods0Request {
+    /**
+     * ID of the contact to which the payment method belongs.
+     * Defaults to: undefined
+     * @type string
+     * @memberof PaymentMethodsApilistPaymentMethods_1
+     */
+    contactId: string
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  
+     * Defaults to: undefined
+     * @type string
+     * @memberof PaymentMethodsApilistPaymentMethods_1
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof PaymentMethodsApilistPaymentMethods_1
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 0
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof PaymentMethodsApilistPaymentMethods_1
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof PaymentMethodsApilistPaymentMethods_1
+     */
+    pageToken?: string
+}
+
 export class ObjectPaymentMethodsApi {
     private api: ObservablePaymentMethodsApi
 
@@ -7114,7 +7148,7 @@ export class ObjectPaymentMethodsApi {
 
     /**
      * Deactivate the specified payment method
-     * Deactivate a Payment Method
+     * Deactivate a Contact Payment Method
      * @param param the request object
      */
     public deactivatePaymentMethodWithHttpInfo(param: PaymentMethodsApiDeactivatePaymentMethodRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
@@ -7123,7 +7157,7 @@ export class ObjectPaymentMethodsApi {
 
     /**
      * Deactivate the specified payment method
-     * Deactivate a Payment Method
+     * Deactivate a Contact Payment Method
      * @param param the request object
      */
     public deactivatePaymentMethod(param: PaymentMethodsApiDeactivatePaymentMethodRequest, options?: ConfigurationOptions): Promise<void> {
@@ -7132,7 +7166,7 @@ export class ObjectPaymentMethodsApi {
 
     /**
      * Deletes the specified payment method
-     * Delete a Payment Method
+     * Delete a Contact Payment Method
      * @param param the request object
      */
     public deletePaymentMethodWithHttpInfo(param: PaymentMethodsApiDeletePaymentMethodRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
@@ -7141,7 +7175,7 @@ export class ObjectPaymentMethodsApi {
 
     /**
      * Deletes the specified payment method
-     * Delete a Payment Method
+     * Delete a Contact Payment Method
      * @param param the request object
      */
     public deletePaymentMethod(param: PaymentMethodsApiDeletePaymentMethodRequest, options?: ConfigurationOptions): Promise<void> {
@@ -7153,8 +7187,8 @@ export class ObjectPaymentMethodsApi {
      * List of Payment Methods
      * @param param the request object
      */
-    public listPaymentMethodsWithHttpInfo(param: PaymentMethodsApiListPaymentMethodsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListPaymentMethodsResponse>> {
-        return this.api.listPaymentMethodsWithHttpInfo(param.contactId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listPaymentMethodsWithHttpInfo(param: PaymentMethodsApiListPaymentMethodsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListPaymentMethodsResponse>> {
+        return this.api.listPaymentMethodsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -7162,8 +7196,26 @@ export class ObjectPaymentMethodsApi {
      * List of Payment Methods
      * @param param the request object
      */
-    public listPaymentMethods(param: PaymentMethodsApiListPaymentMethodsRequest, options?: ConfigurationOptions): Promise<ListPaymentMethodsResponse> {
-        return this.api.listPaymentMethods(param.contactId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listPaymentMethods(param: PaymentMethodsApiListPaymentMethodsRequest = {}, options?: ConfigurationOptions): Promise<ListPaymentMethodsResponse> {
+        return this.api.listPaymentMethods(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Contact Payment Methods
+     * List of Contact Payment Methods
+     * @param param the request object
+     */
+    public listPaymentMethods_1WithHttpInfo(param: PaymentMethodsApiListPaymentMethods0Request, options?: ConfigurationOptions): Promise<HttpInfo<ListContactPaymentMethodsResponse>> {
+        return this.api.listPaymentMethods_1WithHttpInfo(param.contactId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Contact Payment Methods
+     * List of Contact Payment Methods
+     * @param param the request object
+     */
+    public listPaymentMethods_1(param: PaymentMethodsApiListPaymentMethods0Request, options?: ConfigurationOptions): Promise<ListContactPaymentMethodsResponse> {
+        return this.api.listPaymentMethods_1(param.contactId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
 }

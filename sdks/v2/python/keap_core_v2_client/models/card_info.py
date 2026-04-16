@@ -27,12 +27,13 @@ class CardInfo(BaseModel):
     CardInfo
     """ # noqa: E501
     brand: Optional[StrictStr] = None
+    fingerprint: Optional[StrictStr] = Field(default=None, description="A token that uniquely identifies the card info")
     card_type: Optional[StrictStr] = Field(default=None, description="The card type. Valid values are: CREDIT, DEBIT, PREPAID.")
     last_four: Optional[StrictStr] = None
-    expiration_year: Optional[StrictStr] = None
-    expiration_month: Optional[StrictStr] = None
+    expiration_year: Optional[StrictStr] = Field(default=None, description="Four-digit expiration year")
+    expiration_month: Optional[StrictStr] = Field(default=None, description="Two-digit expiration month")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["brand", "card_type", "last_four", "expiration_year", "expiration_month"]
+    __properties: ClassVar[List[str]] = ["brand", "fingerprint", "card_type", "last_four", "expiration_year", "expiration_month"]
 
     @field_validator('card_type')
     def card_type_validate_enum(cls, value):
@@ -103,6 +104,7 @@ class CardInfo(BaseModel):
 
         _obj = cls.model_validate({
             "brand": obj.get("brand"),
+            "fingerprint": obj.get("fingerprint"),
             "card_type": obj.get("card_type"),
             "last_four": obj.get("last_four"),
             "expiration_year": obj.get("expiration_year"),

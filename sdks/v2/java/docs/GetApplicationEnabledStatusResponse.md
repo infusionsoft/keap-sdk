@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**enabled** | **Boolean** |  |  [optional] |
+|**isEnabled** | **Boolean** |  |  [optional] |
 
 
 ## Implemented Interfaces

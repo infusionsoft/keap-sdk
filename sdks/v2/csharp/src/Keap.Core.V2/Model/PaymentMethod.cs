@@ -33,9 +33,9 @@ namespace Keap.Core.V2.Model
     public partial class PaymentMethod : IValidatableObject
     {
         /// <summary>
-        /// The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED
+        /// The merchant account type through which the payment method was tokenized.
         /// </summary>
-        /// <value>The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED</value>
+        /// <value>The merchant account type through which the payment method was tokenized.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum MerchantAccountTypeEnum
         {
@@ -83,9 +83,12 @@ namespace Keap.Core.V2.Model
         }
 
         /// <summary>
-        /// The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED
+        /// The merchant account type through which the payment method was tokenized.
         /// </summary>
-        /// <value>The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED</value>
+        /// <value>The merchant account type through which the payment method was tokenized.</value>
+        /*
+        <example>STRIPE</example>
+        */
         [DataMember(Name = "merchant_account_type", EmitDefaultValue = false)]
         public MerchantAccountTypeEnum? MerchantAccountType { get; set; }
         /// <summary>
@@ -131,16 +134,16 @@ namespace Keap.Core.V2.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentMethod" /> class.
         /// </summary>
-        /// <param name="contactId">contactId.</param>
-        /// <param name="paymentMethodId">paymentMethodId.</param>
-        /// <param name="creditCardId">creditCardId.</param>
-        /// <param name="merchantAccountType">The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED.</param>
-        /// <param name="merchantAccountId">merchantAccountId.</param>
+        /// <param name="contactId">The id of the contact the payment method is associated with..</param>
+        /// <param name="paymentMethodId">The unique identifier of the payment method..</param>
+        /// <param name="creditCardId">For backward-compatibility with v1 endpoints. If present, it&#39;s the credit card id this payment method refers to..</param>
+        /// <param name="merchantAccountType">The merchant account type through which the payment method was tokenized..</param>
+        /// <param name="merchantAccountId">The merchant account id through which the payment method was tokenize..</param>
         /// <param name="paymentMethodType">The type of payment method. For now, only CARD is supported..</param>
-        /// <param name="createdTime">createdTime.</param>
-        /// <param name="cardInfo">Additional info for payment methods of payment_method_type CARD..</param>
+        /// <param name="createdTime">When this payment method was made. In ISO-8601 format..</param>
+        /// <param name="cardInfo">If present, it provides additional details for payment methods of payment_method_type CARD..</param>
         /// <param name="status">Status of the payment method. Fow now, only EXPIRED is supported..</param>
-        public PaymentMethod(string contactId = default, string paymentMethodId = default, string creditCardId = default, MerchantAccountTypeEnum? merchantAccountType = default, string merchantAccountId = default, PaymentMethodTypeEnum? paymentMethodType = default, string createdTime = default, CardInfo cardInfo = default, StatusEnum? status = default)
+        public PaymentMethod(string contactId = default, string paymentMethodId = default, string creditCardId = default, MerchantAccountTypeEnum? merchantAccountType = default, string merchantAccountId = default, PaymentMethodTypeEnum? paymentMethodType = default, DateTime createdTime = default, CardInfo cardInfo = default, StatusEnum? status = default)
         {
             this.ContactId = contactId;
             this.PaymentMethodId = paymentMethodId;
@@ -154,39 +157,53 @@ namespace Keap.Core.V2.Model
         }
 
         /// <summary>
-        /// Gets or Sets ContactId
+        /// The id of the contact the payment method is associated with.
         /// </summary>
+        /// <value>The id of the contact the payment method is associated with.</value>
+        /*
+        <example>123</example>
+        */
         [DataMember(Name = "contact_id", EmitDefaultValue = false)]
         public string ContactId { get; set; }
 
         /// <summary>
-        /// Gets or Sets PaymentMethodId
+        /// The unique identifier of the payment method.
         /// </summary>
+        /// <value>The unique identifier of the payment method.</value>
+        /*
+        <example>123</example>
+        */
         [DataMember(Name = "payment_method_id", EmitDefaultValue = false)]
         public string PaymentMethodId { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreditCardId
+        /// For backward-compatibility with v1 endpoints. If present, it&#39;s the credit card id this payment method refers to.
         /// </summary>
+        /// <value>For backward-compatibility with v1 endpoints. If present, it&#39;s the credit card id this payment method refers to.</value>
         [DataMember(Name = "credit_card_id", EmitDefaultValue = false)]
         public string CreditCardId { get; set; }
 
         /// <summary>
-        /// Gets or Sets MerchantAccountId
+        /// The merchant account id through which the payment method was tokenize.
         /// </summary>
+        /// <value>The merchant account id through which the payment method was tokenize.</value>
         [DataMember(Name = "merchant_account_id", EmitDefaultValue = false)]
         public string MerchantAccountId { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedTime
+        /// When this payment method was made. In ISO-8601 format.
         /// </summary>
+        /// <value>When this payment method was made. In ISO-8601 format.</value>
+        /*
+        <example>2024-05-21T14:30:00Z</example>
+        */
         [DataMember(Name = "created_time", EmitDefaultValue = false)]
-        public string CreatedTime { get; set; }
+        public DateTime CreatedTime { get; set; }
 
         /// <summary>
-        /// Additional info for payment methods of payment_method_type CARD.
+        /// If present, it provides additional details for payment methods of payment_method_type CARD.
         /// </summary>
-        /// <value>Additional info for payment methods of payment_method_type CARD.</value>
+        /// <value>If present, it provides additional details for payment methods of payment_method_type CARD.</value>
         [DataMember(Name = "card_info", EmitDefaultValue = false)]
         public CardInfo CardInfo { get; set; }
 

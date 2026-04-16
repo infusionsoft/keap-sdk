@@ -184,6 +184,7 @@ export * from '../models/ListCategoryDiscountsResponse';
 export * from '../models/ListCompaniesResponse';
 export * from '../models/ListContactLinkTypesResponse';
 export * from '../models/ListContactLinksResponse';
+export * from '../models/ListContactPaymentMethodsResponse';
 export * from '../models/ListContactTagsResponse';
 export * from '../models/ListContactsResponse';
 export * from '../models/ListCountriesResponse';
@@ -404,7 +405,7 @@ import { BusinessProfileAddressRequest } from '../models/BusinessProfileAddressR
 import { BusinessProfileAddressResponse } from '../models/BusinessProfileAddressResponse';
 import { Campaign } from '../models/Campaign';
 import { CancelSubscriptionRequest } from '../models/CancelSubscriptionRequest';
-import { CardInfo , CardInfoCardTypeEnum      } from '../models/CardInfo';
+import { CardInfo  , CardInfoCardTypeEnum      } from '../models/CardInfo';
 import { CategoryDiscount } from '../models/CategoryDiscount';
 import { CategoryDiscountCriteriaRequest, CategoryDiscountCriteriaRequestTypeEnum      } from '../models/CategoryDiscountCriteriaRequest';
 import { CategoryDiscountCriteriaResponse, CategoryDiscountCriteriaResponseTypeEnum       } from '../models/CategoryDiscountCriteriaResponse';
@@ -532,6 +533,7 @@ import { ListCategoryDiscountsResponse } from '../models/ListCategoryDiscountsRe
 import { ListCompaniesResponse } from '../models/ListCompaniesResponse';
 import { ListContactLinkTypesResponse } from '../models/ListContactLinkTypesResponse';
 import { ListContactLinksResponse } from '../models/ListContactLinksResponse';
+import { ListContactPaymentMethodsResponse } from '../models/ListContactPaymentMethodsResponse';
 import { ListContactTagsResponse } from '../models/ListContactTagsResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
@@ -1012,6 +1014,7 @@ let typeMap: {[index: string]: any} = {
     "ListCompaniesResponse": ListCompaniesResponse,
     "ListContactLinkTypesResponse": ListContactLinkTypesResponse,
     "ListContactLinksResponse": ListContactLinksResponse,
+    "ListContactPaymentMethodsResponse": ListContactPaymentMethodsResponse,
     "ListContactTagsResponse": ListContactTagsResponse,
     "ListContactsResponse": ListContactsResponse,
     "ListCountriesResponse": ListCountriesResponse,

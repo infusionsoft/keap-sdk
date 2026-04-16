@@ -13,7 +13,7 @@
 import { HttpFile } from '../http/http';
 
 export class GetApplicationEnabledStatusResponse {
-    'enabled'?: boolean;
+    'isEnabled'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -21,8 +21,8 @@ export class GetApplicationEnabledStatusResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "enabled",
-            "baseName": "enabled",
+            "name": "isEnabled",
+            "baseName": "isEnabled",
             "type": "boolean",
             "format": ""
         }    ];

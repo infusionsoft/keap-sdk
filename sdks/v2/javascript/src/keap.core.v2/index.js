@@ -200,6 +200,7 @@ import ListCategoryDiscountsResponse from './model/ListCategoryDiscountsResponse
 import ListCompaniesResponse from './model/ListCompaniesResponse';
 import ListContactLinkTypesResponse from './model/ListContactLinkTypesResponse';
 import ListContactLinksResponse from './model/ListContactLinksResponse';
+import ListContactPaymentMethodsResponse from './model/ListContactPaymentMethodsResponse';
 import ListContactTagsResponse from './model/ListContactTagsResponse';
 import ListContactsResponse from './model/ListContactsResponse';
 import ListCountriesResponse from './model/ListCountriesResponse';
@@ -434,7 +435,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.5
+* @version 2.0.6
 */
 export {
     /**
@@ -1564,6 +1565,12 @@ export {
      * @property {module:keap.core.v2/model/ListContactLinksResponse}
      */
     ListContactLinksResponse,
+
+    /**
+     * The ListContactPaymentMethodsResponse model constructor.
+     * @property {module:keap.core.v2/model/ListContactPaymentMethodsResponse}
+     */
+    ListContactPaymentMethodsResponse,
 
     /**
      * The ListContactTagsResponse model constructor.

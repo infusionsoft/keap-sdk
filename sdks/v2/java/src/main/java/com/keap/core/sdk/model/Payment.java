@@ -141,7 +141,7 @@ public class Payment implements Serializable {
   @jakarta.annotation.Nullable  private String merchantAccountId;
 
   /**
-   * The merchant account id through which the transaction was made.
+   * The merchant account type through which the transaction was made.
    */
   public enum MerchantAccountTypeEnum {
     PAYPAL(String.valueOf("PAYPAL")),
@@ -547,10 +547,10 @@ public class Payment implements Serializable {
   }
 
   /**
-   * The merchant account id through which the transaction was made.
+   * The merchant account type through which the transaction was made.
    * @return merchantAccountType
    */
-  @jakarta.annotation.Nullable  @Schema(example = "PAYPAL", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The merchant account id through which the transaction was made.")
+  @jakarta.annotation.Nullable  @Schema(example = "PAYPAL", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The merchant account type through which the transaction was made.")
   @JsonProperty(JSON_PROPERTY_MERCHANT_ACCOUNT_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public MerchantAccountTypeEnum getMerchantAccountType() {

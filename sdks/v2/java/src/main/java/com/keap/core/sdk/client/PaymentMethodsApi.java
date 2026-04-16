@@ -18,6 +18,7 @@ import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Pair;
 
 import com.keap.core.sdk.model.Error;
+import com.keap.core.sdk.model.ListContactPaymentMethodsResponse;
 import com.keap.core.sdk.model.ListPaymentMethodsResponse;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -100,7 +101,7 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
-   * Deactivate a Payment Method
+   * Deactivate a Contact Payment Method
    * Deactivate the specified payment method
    * @param contactId ID of the contact to which the payment method belongs. (required)
    * @param paymentMethodId ID of the payment method to be deactivated. (required)
@@ -111,7 +112,7 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
-   * Deactivate a Payment Method
+   * Deactivate a Contact Payment Method
    * Deactivate the specified payment method
    * @param contactId ID of the contact to which the payment method belongs. (required)
    * @param paymentMethodId ID of the payment method to be deactivated. (required)
@@ -196,7 +197,7 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
-   * Delete a Payment Method
+   * Delete a Contact Payment Method
    * Deletes the specified payment method
    * @param contactId ID of the contact to which the payment method belongs. (required)
    * @param paymentMethodId ID of the payment method to be deleted. (required)
@@ -207,7 +208,7 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
-   * Delete a Payment Method
+   * Delete a Contact Payment Method
    * Deletes the specified payment method
    * @param contactId ID of the contact to which the payment method belongs. (required)
    * @param paymentMethodId ID of the payment method to be deleted. (required)
@@ -294,32 +295,30 @@ import io.github.resilience4j.retry.Retry;
   /**
    * List of Payment Methods
    * Retrieves a list of Payment Methods
-   * @param contactId ID of the contact to which the payment method belongs. (required)
-   * @param filter Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  You can filter across all contacts by using the &#x60;-&#x60; for the &#x60;contact_id&#x60; field.  (optional)
-   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;payment_method_id&#x60; - (String) &#x60;credit_card_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;payment_method_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bmerchant_account_id%3D%3D567&#x60;  (optional)
+   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;payment_method_id&#x60; - &#x60;created_time&#x60; - &#x60;contact_id&#x60; - &#x60;merchant_account_id&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
    * @return ListPaymentMethodsResponse
    * @throws ApiException if fails to make API call
    */
-  public ListPaymentMethodsResponse listPaymentMethods(String contactId, String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
-    ApiResponse<ListPaymentMethodsResponse> localVarResponse = listPaymentMethodsWithHttpInfo(contactId, filter, orderBy, pageSize, pageToken);
+  public ListPaymentMethodsResponse listPaymentMethods(String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
+    ApiResponse<ListPaymentMethodsResponse> localVarResponse = listPaymentMethodsWithHttpInfo(filter, orderBy, pageSize, pageToken);
     return localVarResponse.getData();
   }
 
   /**
    * List of Payment Methods
    * Retrieves a list of Payment Methods
-   * @param contactId ID of the contact to which the payment method belongs. (required)
-   * @param filter Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  You can filter across all contacts by using the &#x60;-&#x60; for the &#x60;contact_id&#x60; field.  (optional)
-   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;payment_method_id&#x60; - (String) &#x60;credit_card_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;payment_method_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bmerchant_account_id%3D%3D567&#x60;  (optional)
+   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;payment_method_id&#x60; - &#x60;created_time&#x60; - &#x60;contact_id&#x60; - &#x60;merchant_account_id&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
    * @return ApiResponse&lt;ListPaymentMethodsResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ListPaymentMethodsResponse> listPaymentMethodsWithHttpInfo(String contactId, String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = listPaymentMethodsRequestBuilder(contactId, filter, orderBy, pageSize, pageToken);
+  public ApiResponse<ListPaymentMethodsResponse> listPaymentMethodsWithHttpInfo(String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listPaymentMethodsRequestBuilder(filter, orderBy, pageSize, pageToken);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -359,10 +358,120 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder listPaymentMethodsRequestBuilder(String contactId, String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
+  private HttpRequest.Builder listPaymentMethodsRequestBuilder(String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/paymentMethods";
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "filter";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("filter", filter));
+    localVarQueryParameterBaseName = "order_by";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("order_by", orderBy));
+    localVarQueryParameterBaseName = "page_size";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page_size", pageSize));
+    localVarQueryParameterBaseName = "page_token";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page_token", pageToken));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * List of Contact Payment Methods
+   * Retrieves a list of Contact Payment Methods
+   * @param contactId ID of the contact to which the payment method belongs. (required)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;   (optional)
+   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
+   * @param pageSize Total number of items to return per page (optional)
+   * @param pageToken Page token (optional)
+   * @return ListContactPaymentMethodsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ListContactPaymentMethodsResponse listPaymentMethods_0(String contactId, String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
+    ApiResponse<ListContactPaymentMethodsResponse> localVarResponse = listPaymentMethods_0WithHttpInfo(contactId, filter, orderBy, pageSize, pageToken);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * List of Contact Payment Methods
+   * Retrieves a list of Contact Payment Methods
+   * @param contactId ID of the contact to which the payment method belongs. (required)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;   (optional)
+   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
+   * @param pageSize Total number of items to return per page (optional)
+   * @param pageToken Page token (optional)
+   * @return ApiResponse&lt;ListContactPaymentMethodsResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ListContactPaymentMethodsResponse> listPaymentMethods_0WithHttpInfo(String contactId, String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listPaymentMethods_0RequestBuilder(contactId, filter, orderBy, pageSize, pageToken);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("listPaymentMethods_0", localVarResponse);
+        }
+        return new ApiResponse<ListContactPaymentMethodsResponse>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ListContactPaymentMethodsResponse>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder listPaymentMethods_0RequestBuilder(String contactId, String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
     // verify the required parameter 'contactId' is set
     if (contactId == null) {
-      throw new ApiException(400, "Missing the required parameter 'contactId' when calling listPaymentMethods");
+      throw new ApiException(400, "Missing the required parameter 'contactId' when calling listPaymentMethods_0");
     }
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();

@@ -23,9 +23,9 @@ export class UpdateSubscriptionRequestDetail {
     */
     'active'?: boolean;
     /**
-    * Id of the contact to create the subscription for.
+    * Id of the contact associated with the subscription.
     */
-    'contactId': string;
+    'contactId'?: string;
     /**
     * Id of the product subscription plan.
     */

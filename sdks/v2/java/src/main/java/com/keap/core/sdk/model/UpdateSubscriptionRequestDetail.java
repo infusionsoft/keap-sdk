@@ -67,7 +67,7 @@ public class UpdateSubscriptionRequestDetail implements Serializable {
   @jakarta.annotation.Nullable  private Boolean active;
 
   public static final String JSON_PROPERTY_CONTACT_ID = "contact_id";
-  @jakarta.annotation.Nonnull  private String contactId;
+  @jakarta.annotation.Nullable  private String contactId;
 
   public static final String JSON_PROPERTY_SUBSCRIPTION_PLAN_ID = "subscription_plan_id";
   @jakarta.annotation.Nullable  private String subscriptionPlanId;
@@ -211,27 +211,26 @@ public class UpdateSubscriptionRequestDetail implements Serializable {
   }
 
 
-  public UpdateSubscriptionRequestDetail contactId(@jakarta.annotation.Nonnull String contactId) {
+  public UpdateSubscriptionRequestDetail contactId(@jakarta.annotation.Nullable String contactId) {
     this.contactId = contactId;
     return this;
   }
 
   /**
-   * Id of the contact to create the subscription for.
+   * Id of the contact associated with the subscription.
    * @return contactId
    */
-  @jakarta.annotation.Nonnull  @NotNull
-  @Schema(example = "123", requiredMode = Schema.RequiredMode.REQUIRED, description = "Id of the contact to create the subscription for.")
+  @jakarta.annotation.Nullable  @Schema(example = "123", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Id of the contact associated with the subscription.")
   @JsonProperty(JSON_PROPERTY_CONTACT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getContactId() {
     return contactId;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CONTACT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setContactId(@jakarta.annotation.Nonnull String contactId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setContactId(@jakarta.annotation.Nullable String contactId) {
     this.contactId = contactId;
   }
 

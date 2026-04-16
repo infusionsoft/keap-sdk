@@ -71,7 +71,7 @@ export class Payment {
     */
     'merchantAccountId'?: string;
     /**
-    * The merchant account id through which the transaction was made.
+    * The merchant account type through which the transaction was made.
     */
     'merchantAccountType'?: PaymentMerchantAccountTypeEnum;
     /**

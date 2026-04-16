@@ -33,39 +33,39 @@ import jakarta.validation.Valid;
  * GetApplicationEnabledStatusResponse
  */
 @JsonPropertyOrder({
-  GetApplicationEnabledStatusResponse.JSON_PROPERTY_ENABLED
+  GetApplicationEnabledStatusResponse.JSON_PROPERTY_IS_ENABLED
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class GetApplicationEnabledStatusResponse implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ENABLED = "enabled";
-  @jakarta.annotation.Nullable  private Boolean enabled;
+  public static final String JSON_PROPERTY_IS_ENABLED = "isEnabled";
+  @jakarta.annotation.Nullable  private Boolean isEnabled;
 
   public GetApplicationEnabledStatusResponse() { 
   }
 
-  public GetApplicationEnabledStatusResponse enabled(@jakarta.annotation.Nullable Boolean enabled) {
-    this.enabled = enabled;
+  public GetApplicationEnabledStatusResponse isEnabled(@jakarta.annotation.Nullable Boolean isEnabled) {
+    this.isEnabled = isEnabled;
     return this;
   }
 
   /**
-   * Get enabled
-   * @return enabled
+   * Get isEnabled
+   * @return isEnabled
    */
   @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
-  @JsonProperty(JSON_PROPERTY_ENABLED)
+  @JsonProperty(JSON_PROPERTY_IS_ENABLED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getEnabled() {
-    return enabled;
+  public Boolean getIsEnabled() {
+    return isEnabled;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ENABLED)
+  @JsonProperty(JSON_PROPERTY_IS_ENABLED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnabled(@jakarta.annotation.Nullable Boolean enabled) {
-    this.enabled = enabled;
+  public void setIsEnabled(@jakarta.annotation.Nullable Boolean isEnabled) {
+    this.isEnabled = isEnabled;
   }
 
   /**
@@ -80,19 +80,19 @@ public class GetApplicationEnabledStatusResponse implements Serializable {
       return false;
     }
     GetApplicationEnabledStatusResponse getApplicationEnabledStatusResponse = (GetApplicationEnabledStatusResponse) o;
-    return Objects.equals(this.enabled, getApplicationEnabledStatusResponse.enabled);
+    return Objects.equals(this.isEnabled, getApplicationEnabledStatusResponse.isEnabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(enabled);
+    return Objects.hash(isEnabled);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetApplicationEnabledStatusResponse {\n");
-    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    isEnabled: ").append(toIndentedString(isEnabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -120,8 +120,8 @@ public class GetApplicationEnabledStatusResponse implements Serializable {
           this.instance = instance;
         }
     
-        public GetApplicationEnabledStatusResponse.Builder enabled(Boolean enabled) {
-              this.instance.enabled = enabled;
+        public GetApplicationEnabledStatusResponse.Builder isEnabled(Boolean isEnabled) {
+              this.instance.isEnabled = isEnabled;
           return this;
         }
         
@@ -158,7 +158,7 @@ public class GetApplicationEnabledStatusResponse implements Serializable {
       */
       public GetApplicationEnabledStatusResponse.Builder toBuilder() {
         return new GetApplicationEnabledStatusResponse.Builder()
-          .enabled(getEnabled());
+          .isEnabled(getIsEnabled());
       }
 }
 

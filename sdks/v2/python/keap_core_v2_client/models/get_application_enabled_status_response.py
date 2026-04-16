@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -26,9 +26,9 @@ class GetApplicationEnabledStatusResponse(BaseModel):
     """
     GetApplicationEnabledStatusResponse
     """ # noqa: E501
-    enabled: Optional[StrictBool] = None
+    is_enabled: Optional[StrictBool] = Field(default=None, alias="isEnabled")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["enabled"]
+    __properties: ClassVar[List[str]] = ["isEnabled"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,7 +88,7 @@ class GetApplicationEnabledStatusResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "enabled": obj.get("enabled")
+            "isEnabled": obj.get("isEnabled")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

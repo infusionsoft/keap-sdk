@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**records** | [**List&lt;PaymentMethod&gt;**](PaymentMethod.md) |  |  [optional] |
+|**paymentMethods** | [**List&lt;PaymentMethod&gt;**](PaymentMethod.md) |  |  [optional] |
 |**nextPageToken** | **String** |  |  [optional] |
 
 

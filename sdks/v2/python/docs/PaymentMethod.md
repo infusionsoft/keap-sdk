@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contact_id** | **str** |  | [optional] 
-**payment_method_id** | **str** |  | [optional] 
-**credit_card_id** | **str** |  | [optional] 
-**merchant_account_type** | **str** | The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED | [optional] 
-**merchant_account_id** | **str** |  | [optional] 
+**contact_id** | **str** | The id of the contact the payment method is associated with. | [optional] 
+**payment_method_id** | **str** | The unique identifier of the payment method. | [optional] 
+**credit_card_id** | **str** | For backward-compatibility with v1 endpoints. If present, it&#39;s the credit card id this payment method refers to. | [optional] 
+**merchant_account_type** | **str** | The merchant account type through which the payment method was tokenized. | [optional] 
+**merchant_account_id** | **str** | The merchant account id through which the payment method was tokenize. | [optional] 
 **payment_method_type** | **str** | The type of payment method. For now, only CARD is supported. | [optional] 
-**created_time** | **str** |  | [optional] 
-**card_info** | [**CardInfo**](CardInfo.md) | Additional info for payment methods of payment_method_type CARD. | [optional] 
+**created_time** | **datetime** | When this payment method was made. In ISO-8601 format. | [optional] 
+**card_info** | [**CardInfo**](CardInfo.md) | If present, it provides additional details for payment methods of payment_method_type CARD. | [optional] 
 **status** | **str** | Status of the payment method. Fow now, only EXPIRED is supported. | [optional] 
 
 ## Example

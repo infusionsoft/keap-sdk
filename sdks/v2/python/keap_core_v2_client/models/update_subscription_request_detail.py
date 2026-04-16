@@ -30,7 +30,7 @@ class UpdateSubscriptionRequestDetail(BaseModel):
     """ # noqa: E501
     quantity: Optional[StrictInt] = Field(default=None, description="The subscription quantity. Must be 1 or greater.")
     active: Optional[StrictBool] = Field(default=None, description="If the subscription is active or not.")
-    contact_id: StrictStr = Field(description="Id of the contact to create the subscription for.")
+    contact_id: Optional[StrictStr] = Field(default=None, description="Id of the contact associated with the subscription.")
     subscription_plan_id: Optional[StrictStr] = Field(default=None, description="Id of the product subscription plan.")
     billing_amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The billing amount. Must be 0 or greater.")
     auto_charge: Optional[StrictBool] = Field(default=None, description="If the subscription should auto charge on the next billing date.")

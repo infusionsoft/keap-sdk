@@ -14,6 +14,7 @@
 
 import ApiClient from "../ApiClient";
 import Error from '../model/Error';
+import ListContactPaymentMethodsResponse from '../model/ListContactPaymentMethodsResponse';
 import ListPaymentMethodsResponse from '../model/ListPaymentMethodsResponse';
 
 /**
@@ -36,7 +37,7 @@ export default class PaymentMethodsApi {
 
 
     /**
-     * Deactivate a Payment Method
+     * Deactivate a Contact Payment Method
      * Deactivate the specified payment method
      * @param {String} contactId ID of the contact to which the payment method belongs.
      * @param {String} paymentMethodId ID of the payment method to be deactivated.
@@ -76,7 +77,7 @@ export default class PaymentMethodsApi {
     }
 
     /**
-     * Deactivate a Payment Method
+     * Deactivate a Contact Payment Method
      * Deactivate the specified payment method
      * @param {String} contactId ID of the contact to which the payment method belongs.
      * @param {String} paymentMethodId ID of the payment method to be deactivated.
@@ -91,7 +92,7 @@ export default class PaymentMethodsApi {
 
 
     /**
-     * Delete a Payment Method
+     * Delete a Contact Payment Method
      * Deletes the specified payment method
      * @param {String} contactId ID of the contact to which the payment method belongs.
      * @param {String} paymentMethodId ID of the payment method to be deleted.
@@ -131,7 +132,7 @@ export default class PaymentMethodsApi {
     }
 
     /**
-     * Delete a Payment Method
+     * Delete a Contact Payment Method
      * Deletes the specified payment method
      * @param {String} contactId ID of the contact to which the payment method belongs.
      * @param {String} paymentMethodId ID of the payment method to be deleted.
@@ -148,20 +149,76 @@ export default class PaymentMethodsApi {
     /**
      * List of Payment Methods
      * Retrieves a list of Payment Methods
-     * @param {String} contactId ID of the contact to which the payment method belongs.
      * @param {Object} opts Optional parameters
-     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `merchant_account_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=merchant_account_id%3D%3D123`  You can filter across all contacts by using the `-` for the `contact_id` field. 
-     * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `date_created`  One of the following directions: - `desc` - `asc`
+     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `payment_method_id` - (String) `credit_card_id` - (String) `contact_id` - (String) `merchant_account_id` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=payment_method_id%3D%3D123` - `filter=contact_id%3D%3D123%3Bmerchant_account_id%3D%3D567` 
+     * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `payment_method_id` - `created_time` - `contact_id` - `merchant_account_id`  One of the following directions: - `desc` - `asc`
      * @param {Number} [pageSize] Total number of items to return per page
      * @param {String} [pageToken] Page token
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListPaymentMethodsResponse} and HTTP response
      */
-    listPaymentMethodsWithHttpInfo(contactId, opts) {
+    listPaymentMethodsWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'filter': opts['filter'],
+        'order_by': opts['orderBy'],
+        'page_size': opts['pageSize'],
+        'page_token': opts['pageToken']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListPaymentMethodsResponse;
+      return this.apiClient.callApi(
+        '/rest/v2/paymentMethods', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List of Payment Methods
+     * Retrieves a list of Payment Methods
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `payment_method_id` - (String) `credit_card_id` - (String) `contact_id` - (String) `merchant_account_id` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=payment_method_id%3D%3D123` - `filter=contact_id%3D%3D123%3Bmerchant_account_id%3D%3D567` 
+     * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `payment_method_id` - `created_time` - `contact_id` - `merchant_account_id`  One of the following directions: - `desc` - `asc`
+     * @param {Number} opts.pageSize Total number of items to return per page
+     * @param {String} opts.pageToken Page token
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListPaymentMethodsResponse}
+     */
+    listPaymentMethods(opts) {
+      return this.listPaymentMethodsWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List of Contact Payment Methods
+     * Retrieves a list of Contact Payment Methods
+     * @param {String} contactId ID of the contact to which the payment method belongs.
+     * @param {Object} opts Optional parameters
+     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `merchant_account_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=merchant_account_id%3D%3D123`  
+     * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `desc` - `asc`
+     * @param {Number} [pageSize] Total number of items to return per page
+     * @param {String} [pageToken] Page token
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListContactPaymentMethodsResponse} and HTTP response
+     */
+    listPaymentMethods_0WithHttpInfo(contactId, opts) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'contactId' is set
       if (contactId === undefined || contactId === null) {
-        throw new Error("Missing the required parameter 'contactId' when calling listPaymentMethods");
+        throw new Error("Missing the required parameter 'contactId' when calling listPaymentMethods_0");
       }
 
       let pathParams = {
@@ -181,7 +238,7 @@ export default class PaymentMethodsApi {
       let authNames = ['oauth2'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = ListPaymentMethodsResponse;
+      let returnType = ListContactPaymentMethodsResponse;
       return this.apiClient.callApi(
         '/rest/v2/contacts/{contact_id}/paymentMethods', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -190,18 +247,18 @@ export default class PaymentMethodsApi {
     }
 
     /**
-     * List of Payment Methods
-     * Retrieves a list of Payment Methods
+     * List of Contact Payment Methods
+     * Retrieves a list of Contact Payment Methods
      * @param {String} contactId ID of the contact to which the payment method belongs.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `merchant_account_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=merchant_account_id%3D%3D123`  You can filter across all contacts by using the `-` for the `contact_id` field. 
-     * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `date_created`  One of the following directions: - `desc` - `asc`
+     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `merchant_account_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=merchant_account_id%3D%3D123`  
+     * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `desc` - `asc`
      * @param {Number} opts.pageSize Total number of items to return per page
      * @param {String} opts.pageToken Page token
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListPaymentMethodsResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListContactPaymentMethodsResponse}
      */
-    listPaymentMethods(contactId, opts) {
-      return this.listPaymentMethodsWithHttpInfo(contactId, opts)
+    listPaymentMethods_0(contactId, opts) {
+      return this.listPaymentMethods_0WithHttpInfo(contactId, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

@@ -6,10 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **brand** | **str** |  | [optional] 
+**fingerprint** | **str** | A token that uniquely identifies the card info | [optional] 
 **card_type** | **str** | The card type. Valid values are: CREDIT, DEBIT, PREPAID. | [optional] 
 **last_four** | **str** |  | [optional] 
-**expiration_year** | **str** |  | [optional] 
-**expiration_month** | **str** |  | [optional] 
+**expiration_year** | **str** | Four-digit expiration year | [optional] 
+**expiration_month** | **str** | Two-digit expiration month | [optional] 
 
 ## Example
 

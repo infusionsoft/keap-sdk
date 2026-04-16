@@ -21,7 +21,7 @@
 |**updateTime** | **ZonedDateTime** | When this payment was updated. In ISO-8601 format. |  [optional] |
 |**externalTransactionId** | **String** | An external id - typically from a payment processor - that references this transaction. |  [optional] |
 |**merchantAccountId** | **String** | The merchant account id through which the transaction was made. |  [optional] |
-|**merchantAccountType** | [**MerchantAccountTypeEnum**](#MerchantAccountTypeEnum) | The merchant account id through which the transaction was made. |  [optional] |
+|**merchantAccountType** | [**MerchantAccountTypeEnum**](#MerchantAccountTypeEnum) | The merchant account type through which the transaction was made. |  [optional] |
 |**paymentMethod** | [**PaymentMethod**](PaymentMethod.md) | Details of the payment method used for this transaction. |  [optional] |
 
 

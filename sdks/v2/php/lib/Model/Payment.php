@@ -857,7 +857,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets merchant_account_type
      *
-     * @param string|null $merchant_account_type The merchant account id through which the transaction was made.
+     * @param string|null $merchant_account_type The merchant account type through which the transaction was made.
      *
      * @return self
      */

@@ -36,15 +36,15 @@ import jakarta.validation.Valid;
  * ListPaymentMethodsResponse
  */
 @JsonPropertyOrder({
-  ListPaymentMethodsResponse.JSON_PROPERTY_RECORDS,
+  ListPaymentMethodsResponse.JSON_PROPERTY_PAYMENT_METHODS,
   ListPaymentMethodsResponse.JSON_PROPERTY_NEXT_PAGE_TOKEN
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ListPaymentMethodsResponse implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_RECORDS = "records";
-  @jakarta.annotation.Nullable  private List<@Valid PaymentMethod> records = new ArrayList<>();
+  public static final String JSON_PROPERTY_PAYMENT_METHODS = "payment_methods";
+  @jakarta.annotation.Nullable  private List<@Valid PaymentMethod> paymentMethods = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NEXT_PAGE_TOKEN = "next_page_token";
   @jakarta.annotation.Nullable  private String nextPageToken;
@@ -52,36 +52,36 @@ public class ListPaymentMethodsResponse implements Serializable {
   public ListPaymentMethodsResponse() { 
   }
 
-  public ListPaymentMethodsResponse records(@jakarta.annotation.Nullable List<@Valid PaymentMethod> records) {
-    this.records = records;
+  public ListPaymentMethodsResponse paymentMethods(@jakarta.annotation.Nullable List<@Valid PaymentMethod> paymentMethods) {
+    this.paymentMethods = paymentMethods;
     return this;
   }
 
-  public ListPaymentMethodsResponse addRecordsItem(PaymentMethod recordsItem) {
-    if (this.records == null) {
-      this.records = new ArrayList<>();
+  public ListPaymentMethodsResponse addPaymentMethodsItem(PaymentMethod paymentMethodsItem) {
+    if (this.paymentMethods == null) {
+      this.paymentMethods = new ArrayList<>();
     }
-    this.records.add(recordsItem);
+    this.paymentMethods.add(paymentMethodsItem);
     return this;
   }
 
   /**
-   * Get records
-   * @return records
+   * Get paymentMethods
+   * @return paymentMethods
    */
   @jakarta.annotation.Nullable  @Valid
   @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
-  @JsonProperty(JSON_PROPERTY_RECORDS)
+  @JsonProperty(JSON_PROPERTY_PAYMENT_METHODS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<@Valid PaymentMethod> getRecords() {
-    return records;
+  public List<@Valid PaymentMethod> getPaymentMethods() {
+    return paymentMethods;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RECORDS)
+  @JsonProperty(JSON_PROPERTY_PAYMENT_METHODS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRecords(@jakarta.annotation.Nullable List<@Valid PaymentMethod> records) {
-    this.records = records;
+  public void setPaymentMethods(@jakarta.annotation.Nullable List<@Valid PaymentMethod> paymentMethods) {
+    this.paymentMethods = paymentMethods;
   }
 
 
@@ -120,20 +120,20 @@ public class ListPaymentMethodsResponse implements Serializable {
       return false;
     }
     ListPaymentMethodsResponse listPaymentMethodsResponse = (ListPaymentMethodsResponse) o;
-    return Objects.equals(this.records, listPaymentMethodsResponse.records) &&
+    return Objects.equals(this.paymentMethods, listPaymentMethodsResponse.paymentMethods) &&
         Objects.equals(this.nextPageToken, listPaymentMethodsResponse.nextPageToken);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(records, nextPageToken);
+    return Objects.hash(paymentMethods, nextPageToken);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListPaymentMethodsResponse {\n");
-    sb.append("    records: ").append(toIndentedString(records)).append("\n");
+    sb.append("    paymentMethods: ").append(toIndentedString(paymentMethods)).append("\n");
     sb.append("    nextPageToken: ").append(toIndentedString(nextPageToken)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -162,8 +162,8 @@ public class ListPaymentMethodsResponse implements Serializable {
           this.instance = instance;
         }
     
-        public ListPaymentMethodsResponse.Builder records(List<PaymentMethod> records) {
-              this.instance.records = records;
+        public ListPaymentMethodsResponse.Builder paymentMethods(List<PaymentMethod> paymentMethods) {
+              this.instance.paymentMethods = paymentMethods;
           return this;
         }
             public ListPaymentMethodsResponse.Builder nextPageToken(String nextPageToken) {
@@ -204,7 +204,7 @@ public class ListPaymentMethodsResponse implements Serializable {
       */
       public ListPaymentMethodsResponse.Builder toBuilder() {
         return new ListPaymentMethodsResponse.Builder()
-          .records(getRecords())
+          .paymentMethods(getPaymentMethods())
           .nextPageToken(getNextPageToken());
       }
 }

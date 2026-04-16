@@ -14,21 +14,36 @@ import { CardInfo } from '../models/CardInfo';
 import { HttpFile } from '../http/http';
 
 export class PaymentMethod {
+    /**
+    * The id of the contact the payment method is associated with.
+    */
     'contactId'?: string;
+    /**
+    * The unique identifier of the payment method.
+    */
     'paymentMethodId'?: string;
+    /**
+    * For backward-compatibility with v1 endpoints. If present, it\'s the credit card id this payment method refers to.
+    */
     'creditCardId'?: string;
     /**
-    * The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED
+    * The merchant account type through which the payment method was tokenized.
     */
     'merchantAccountType'?: PaymentMethodMerchantAccountTypeEnum;
+    /**
+    * The merchant account id through which the payment method was tokenize.
+    */
     'merchantAccountId'?: string;
     /**
     * The type of payment method. For now, only CARD is supported.
     */
     'paymentMethodType'?: PaymentMethodPaymentMethodTypeEnum;
-    'createdTime'?: string;
     /**
-    * Additional info for payment methods of payment_method_type CARD.
+    * When this payment method was made. In ISO-8601 format.
+    */
+    'createdTime'?: Date;
+    /**
+    * If present, it provides additional details for payment methods of payment_method_type CARD.
     */
     'cardInfo'?: CardInfo;
     /**
@@ -80,8 +95,8 @@ export class PaymentMethod {
         {
             "name": "createdTime",
             "baseName": "created_time",
-            "type": "string",
-            "format": ""
+            "type": "Date",
+            "format": "date-time"
         },
         {
             "name": "cardInfo",

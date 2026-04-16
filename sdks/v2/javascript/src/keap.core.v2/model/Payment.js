@@ -243,7 +243,7 @@ Payment.prototype['external_transaction_id'] = undefined;
 Payment.prototype['merchant_account_id'] = undefined;
 
 /**
- * The merchant account id through which the transaction was made.
+ * The merchant account type through which the transaction was made.
  * @member {module:keap.core.v2/model/Payment.MerchantAccountTypeEnum} merchant_account_type
  */
 Payment.prototype['merchant_account_type'] = undefined;
