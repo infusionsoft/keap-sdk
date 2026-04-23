@@ -186,6 +186,7 @@ import { ListCampaignSequenceResponse } from '../models/ListCampaignSequenceResp
 import { ListCampaignsResponse } from '../models/ListCampaignsResponse';
 import { ListCategoryDiscountsResponse } from '../models/ListCategoryDiscountsResponse';
 import { ListCompaniesResponse } from '../models/ListCompaniesResponse';
+import { ListCompanyTagsResponse } from '../models/ListCompanyTagsResponse';
 import { ListContactLinkTypesResponse } from '../models/ListContactLinkTypesResponse';
 import { ListContactLinksResponse } from '../models/ListContactLinksResponse';
 import { ListContactPaymentMethodsResponse } from '../models/ListContactPaymentMethodsResponse';
@@ -2544,6 +2545,23 @@ export class ObjectCategoryDiscountsApi {
 import { ObservableCompanyApi } from "./ObservableAPI";
 import { CompanyApiRequestFactory, CompanyApiResponseProcessor} from "../apis/CompanyApi";
 
+export interface CompanyApiAddTagToCompanyRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApiaddTagToCompany
+     */
+    companyId: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApiaddTagToCompany
+     */
+    tagId: string
+}
+
 export interface CompanyApiCreateCompanyRequest {
     /**
      * 
@@ -2598,7 +2616,7 @@ export interface CompanyApiListCompaniesRequest {
      */
     fields?: Array<string>
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10) 
      * Defaults to: undefined
      * @type string
      * @memberof CompanyApilistCompanies
@@ -2627,6 +2645,63 @@ export interface CompanyApiListCompaniesRequest {
      * @memberof CompanyApilistCompanies
      */
     pageToken?: string
+}
+
+export interface CompanyApiListTagsForCompanyRequest {
+    /**
+     * Company identifier
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApilistTagsForCompany
+     */
+    companyId: string
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApilistTagsForCompany
+     */
+    filter?: string
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApilistTagsForCompany
+     */
+    pageToken?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApilistTagsForCompany
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 0
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof CompanyApilistTagsForCompany
+     */
+    pageSize?: number
+}
+
+export interface CompanyApiRemoveTagFromCompanyRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApiremoveTagFromCompany
+     */
+    companyId: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApiremoveTagFromCompany
+     */
+    tagId: string
 }
 
 export interface CompanyApiRetrieveCompanyCustomFieldModelRequest {
@@ -2683,6 +2758,24 @@ export class ObjectCompanyApi {
 
     public constructor(configuration: Configuration, requestFactory?: CompanyApiRequestFactory, responseProcessor?: CompanyApiResponseProcessor) {
         this.api = new ObservableCompanyApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Applies a Tag to a Company.
+     * Add Tag to Company
+     * @param param the request object
+     */
+    public addTagToCompanyWithHttpInfo(param: CompanyApiAddTagToCompanyRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.addTagToCompanyWithHttpInfo(param.companyId, param.tagId,  options).toPromise();
+    }
+
+    /**
+     * Applies a Tag to a Company.
+     * Add Tag to Company
+     * @param param the request object
+     */
+    public addTagToCompany(param: CompanyApiAddTagToCompanyRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.addTagToCompany(param.companyId, param.tagId,  options).toPromise();
     }
 
     /**
@@ -2773,6 +2866,42 @@ export class ObjectCompanyApi {
      */
     public listCompanies(param: CompanyApiListCompaniesRequest = {}, options?: ConfigurationOptions): Promise<ListCompaniesResponse> {
         return this.api.listCompanies(param.fields, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of tags applied to the specified Company
+     * List Applied Tags
+     * @param param the request object
+     */
+    public listTagsForCompanyWithHttpInfo(param: CompanyApiListTagsForCompanyRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListCompanyTagsResponse>> {
+        return this.api.listTagsForCompanyWithHttpInfo(param.companyId, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of tags applied to the specified Company
+     * List Applied Tags
+     * @param param the request object
+     */
+    public listTagsForCompany(param: CompanyApiListTagsForCompanyRequest, options?: ConfigurationOptions): Promise<ListCompanyTagsResponse> {
+        return this.api.listTagsForCompany(param.companyId, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
+    }
+
+    /**
+     * Remove a Tag from a Company.
+     * Remove Tag
+     * @param param the request object
+     */
+    public removeTagFromCompanyWithHttpInfo(param: CompanyApiRemoveTagFromCompanyRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.removeTagFromCompanyWithHttpInfo(param.companyId, param.tagId,  options).toPromise();
+    }
+
+    /**
+     * Remove a Tag from a Company.
+     * Remove Tag
+     * @param param the request object
+     */
+    public removeTagFromCompany(param: CompanyApiRemoveTagFromCompanyRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.removeTagFromCompany(param.companyId, param.tagId,  options).toPromise();
     }
 
     /**
@@ -2963,7 +3092,7 @@ export interface ContactApiListContactsRequest {
      */
     fields?: Array<string>
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; - (String) &#x60;phone_field&#x60; (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof ContactApilistContacts
@@ -6547,14 +6676,14 @@ export interface OrdersApiListOrderPaymentsRequest {
 
 export interface OrdersApiListOrdersRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;
+     * Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApilistOrders
      */
     filter?: string
     /**
-     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApilistOrders
@@ -8196,14 +8325,14 @@ export interface ProductsApiListProductOptionsRequest {
 
 export interface ProductsApiListProductsRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;sku&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3Dtestsearch&#x60; - &#x60;filter&#x3D;sku%3D%3Dtestsearch&#x60; - &#x60;filter&#x3D;name%3D%3Dtestsearch%3Bsku%3D%3Dtestsearch&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;sku&#x60; - Wildcard matching allowed - (String) &#x60;description&#x60; - Wildcard matching allowed - (String) &#x60;short_description&#x60; - Wildcard matching allowed - (String) &#x60;product_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (List[String]) &#x60;product_ids&#x60; - accepts a comma-separated list of product IDs  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3Dtestsearch&#x60; - &#x60;filter&#x3D;name%3D%3Dtest*&#x60; (starts with \&quot;test\&quot;) - &#x60;filter&#x3D;sku%3D%3Dtestsearch&#x60; - &#x60;filter&#x3D;sku%3D%3DSKU*&#x60; (starts with \&quot;SKU\&quot;) - &#x60;filter&#x3D;product_id&gt;5&#x60; (product ID greater than 5) - &#x60;filter&#x3D;product_id&gt;&#x3D;10&#x60; (product ID greater than or equal to 10) - &#x60;filter&#x3D;product_id%3D%3D42&#x60; (product ID equals 42) - &#x60;filter&#x3D;product_ids%3D%3D1,2,3,4,5&#x60; (products with IDs 1, 2, 3, 4, or 5) - &#x60;filter&#x3D;name%3D%3Dtestsearch%3Bsku%3D%3Dtestsearch&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof ProductsApilistProducts
      */
     filter?: string
     /**
-     * Attribute and direction to order items. One of the following fields: - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;sku&#x60; - &#x60;last_updated_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof ProductsApilistProducts

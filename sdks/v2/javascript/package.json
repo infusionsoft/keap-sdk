@@ -1,6 +1,6 @@
 {
     "name": "keap-core-service-v2-sdk-js",
-    "version": "2.0.6",
+    "version": "2.0.7",
     "description": "Keap Public API Documentation",
     "license": "Apache 2.0",
     "main": "dist/keap.core.v2/index.js",

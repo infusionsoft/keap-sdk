@@ -24,6 +24,7 @@ from keap_core_v2_client.models.create_company_request import CreateCompanyReque
 from keap_core_v2_client.models.create_custom_field_request import CreateCustomFieldRequest
 from keap_core_v2_client.models.custom_field_meta_data import CustomFieldMetaData
 from keap_core_v2_client.models.list_companies_response import ListCompaniesResponse
+from keap_core_v2_client.models.list_company_tags_response import ListCompanyTagsResponse
 from keap_core_v2_client.models.object_model import ObjectModel
 from keap_core_v2_client.models.update_company_request import UpdateCompanyRequest
 from keap_core_v2_client.models.update_custom_field_meta_data_request import UpdateCustomFieldMetaDataRequest
@@ -44,6 +45,303 @@ class CompanyApi:
         if api_client is None:
             api_client = ApiClient.get_default()
         self.api_client = api_client
+
+
+    @validate_call
+    def add_tag_to_company(
+        self,
+        company_id: StrictStr,
+        tag_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Add Tag to Company
+
+        Applies a Tag to a Company.
+
+        :param company_id: (required)
+        :type company_id: str
+        :param tag_id: (required)
+        :type tag_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._add_tag_to_company_serialize(
+            company_id=company_id,
+            tag_id=tag_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def add_tag_to_company_with_http_info(
+        self,
+        company_id: StrictStr,
+        tag_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Add Tag to Company
+
+        Applies a Tag to a Company.
+
+        :param company_id: (required)
+        :type company_id: str
+        :param tag_id: (required)
+        :type tag_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._add_tag_to_company_serialize(
+            company_id=company_id,
+            tag_id=tag_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def add_tag_to_company_without_preload_content(
+        self,
+        company_id: StrictStr,
+        tag_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Add Tag to Company
+
+        Applies a Tag to a Company.
+
+        :param company_id: (required)
+        :type company_id: str
+        :param tag_id: (required)
+        :type tag_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._add_tag_to_company_serialize(
+            company_id=company_id,
+            tag_id=tag_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _add_tag_to_company_serialize(
+        self,
+        company_id,
+        tag_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if company_id is not None:
+            _path_params['company_id'] = company_id
+        if tag_id is not None:
+            _path_params['tag_id'] = tag_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/rest/v2/companies/{company_id}/tags/{tag_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
 
 
     @validate_call
@@ -1222,7 +1520,7 @@ class CompanyApi:
     def list_companies(
         self,
         fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of Company properties to include in the response. (Fields such as `notes`, `fax_number`, `address`, `email_address`, `phone_number`, `update_time`, `create_time` and `custom_fields` aren't included, by default.)")] = None,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` ")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `company_name` - exact match on company name (equality only) - (String) `name` - company name with support for a wildcard at the end (e.g. `smith*`) - (String) `email` - exact match on email - (String) `since_time` - companies updated on or after this time - (String) `until_time` - companies updated on or before this time - (Number) `company_id` - supports comparison operators: `==`, `>`, `<`, `>=`, `<=`  For equality filters, use the `==` operator in encoded form `%3D%3D`: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  For wildcard name search (prefix only, case-insensitive): - `filter=name%3D%3DAcme%2A` (starts with \"Acme\")  For company_id comparison: - `filter=company_id%3E5` (company_id > 5) - `filter=company_id%3E%3D10` (company_id >= 10) ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `email`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -1245,7 +1543,7 @@ class CompanyApi:
 
         :param fields: Comma-delimited list of Company properties to include in the response. (Fields such as `notes`, `fax_number`, `address`, `email_address`, `phone_number`, `update_time`, `create_time` and `custom_fields` aren't included, by default.)
         :type fields: List[str]
-        :param filter: Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+        :param filter: Filter to apply, allowed fields are: - (String) `company_name` - exact match on company name (equality only) - (String) `name` - company name with support for a wildcard at the end (e.g. `smith*`) - (String) `email` - exact match on email - (String) `since_time` - companies updated on or after this time - (String) `until_time` - companies updated on or before this time - (Number) `company_id` - supports comparison operators: `==`, `>`, `<`, `>=`, `<=`  For equality filters, use the `==` operator in encoded form `%3D%3D`: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  For wildcard name search (prefix only, case-insensitive): - `filter=name%3D%3DAcme%2A` (starts with \"Acme\")  For company_id comparison: - `filter=company_id%3E5` (company_id > 5) - `filter=company_id%3E%3D10` (company_id >= 10) 
         :type filter: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `email`  One of the following directions: - `asc` - `desc`
         :type order_by: str
@@ -1312,7 +1610,7 @@ class CompanyApi:
     def list_companies_with_http_info(
         self,
         fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of Company properties to include in the response. (Fields such as `notes`, `fax_number`, `address`, `email_address`, `phone_number`, `update_time`, `create_time` and `custom_fields` aren't included, by default.)")] = None,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` ")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `company_name` - exact match on company name (equality only) - (String) `name` - company name with support for a wildcard at the end (e.g. `smith*`) - (String) `email` - exact match on email - (String) `since_time` - companies updated on or after this time - (String) `until_time` - companies updated on or before this time - (Number) `company_id` - supports comparison operators: `==`, `>`, `<`, `>=`, `<=`  For equality filters, use the `==` operator in encoded form `%3D%3D`: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  For wildcard name search (prefix only, case-insensitive): - `filter=name%3D%3DAcme%2A` (starts with \"Acme\")  For company_id comparison: - `filter=company_id%3E5` (company_id > 5) - `filter=company_id%3E%3D10` (company_id >= 10) ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `email`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -1335,7 +1633,7 @@ class CompanyApi:
 
         :param fields: Comma-delimited list of Company properties to include in the response. (Fields such as `notes`, `fax_number`, `address`, `email_address`, `phone_number`, `update_time`, `create_time` and `custom_fields` aren't included, by default.)
         :type fields: List[str]
-        :param filter: Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+        :param filter: Filter to apply, allowed fields are: - (String) `company_name` - exact match on company name (equality only) - (String) `name` - company name with support for a wildcard at the end (e.g. `smith*`) - (String) `email` - exact match on email - (String) `since_time` - companies updated on or after this time - (String) `until_time` - companies updated on or before this time - (Number) `company_id` - supports comparison operators: `==`, `>`, `<`, `>=`, `<=`  For equality filters, use the `==` operator in encoded form `%3D%3D`: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  For wildcard name search (prefix only, case-insensitive): - `filter=name%3D%3DAcme%2A` (starts with \"Acme\")  For company_id comparison: - `filter=company_id%3E5` (company_id > 5) - `filter=company_id%3E%3D10` (company_id >= 10) 
         :type filter: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `email`  One of the following directions: - `asc` - `desc`
         :type order_by: str
@@ -1402,7 +1700,7 @@ class CompanyApi:
     def list_companies_without_preload_content(
         self,
         fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of Company properties to include in the response. (Fields such as `notes`, `fax_number`, `address`, `email_address`, `phone_number`, `update_time`, `create_time` and `custom_fields` aren't included, by default.)")] = None,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` ")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `company_name` - exact match on company name (equality only) - (String) `name` - company name with support for a wildcard at the end (e.g. `smith*`) - (String) `email` - exact match on email - (String) `since_time` - companies updated on or after this time - (String) `until_time` - companies updated on or before this time - (Number) `company_id` - supports comparison operators: `==`, `>`, `<`, `>=`, `<=`  For equality filters, use the `==` operator in encoded form `%3D%3D`: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  For wildcard name search (prefix only, case-insensitive): - `filter=name%3D%3DAcme%2A` (starts with \"Acme\")  For company_id comparison: - `filter=company_id%3E5` (company_id > 5) - `filter=company_id%3E%3D10` (company_id >= 10) ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `email`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -1425,7 +1723,7 @@ class CompanyApi:
 
         :param fields: Comma-delimited list of Company properties to include in the response. (Fields such as `notes`, `fax_number`, `address`, `email_address`, `phone_number`, `update_time`, `create_time` and `custom_fields` aren't included, by default.)
         :type fields: List[str]
-        :param filter: Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+        :param filter: Filter to apply, allowed fields are: - (String) `company_name` - exact match on company name (equality only) - (String) `name` - company name with support for a wildcard at the end (e.g. `smith*`) - (String) `email` - exact match on email - (String) `since_time` - companies updated on or after this time - (String) `until_time` - companies updated on or before this time - (Number) `company_id` - supports comparison operators: `==`, `>`, `<`, `>=`, `<=`  For equality filters, use the `==` operator in encoded form `%3D%3D`: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  For wildcard name search (prefix only, case-insensitive): - `filter=name%3D%3DAcme%2A` (starts with \"Acme\")  For company_id comparison: - `filter=company_id%3E5` (company_id > 5) - `filter=company_id%3E%3D10` (company_id >= 10) 
         :type filter: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `email`  One of the following directions: - `asc` - `desc`
         :type order_by: str
@@ -1556,6 +1854,653 @@ class CompanyApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/rest/v2/companies',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def list_tags_for_company(
+        self,
+        company_id: Annotated[StrictStr, Field(description="Company identifier")],
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `name` - (String) `description` - (String) `category_id` (use `category_id==NONE` to filter tags not assigned to any category) - (String) `since_applied_time` - (String) `until_applied_time` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DCustomer` - `filter=category_id%3D%3D123` - `filter=category_id%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;` ")] = None,
+        page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `name` - `create_time` - `update_time` - `applied_time` - `category_id`  One of the following directions: - `asc` - `desc`")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ListCompanyTagsResponse:
+        """List Applied Tags
+
+        Retrieves a list of tags applied to the specified Company
+
+        :param company_id: Company identifier (required)
+        :type company_id: str
+        :param filter: Filter to apply, allowed fields are: - (String) `name` - (String) `description` - (String) `category_id` (use `category_id==NONE` to filter tags not assigned to any category) - (String) `since_applied_time` - (String) `until_applied_time` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DCustomer` - `filter=category_id%3D%3D123` - `filter=category_id%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;` 
+        :type filter: str
+        :param page_token: Page token
+        :type page_token: str
+        :param order_by: Attribute and direction to order items. One of the following fields: - `name` - `create_time` - `update_time` - `applied_time` - `category_id`  One of the following directions: - `asc` - `desc`
+        :type order_by: str
+        :param page_size: Total number of items to return per page
+        :type page_size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_tags_for_company_serialize(
+            company_id=company_id,
+            filter=filter,
+            page_token=page_token,
+            order_by=order_by,
+            page_size=page_size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ListCompanyTagsResponse",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def list_tags_for_company_with_http_info(
+        self,
+        company_id: Annotated[StrictStr, Field(description="Company identifier")],
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `name` - (String) `description` - (String) `category_id` (use `category_id==NONE` to filter tags not assigned to any category) - (String) `since_applied_time` - (String) `until_applied_time` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DCustomer` - `filter=category_id%3D%3D123` - `filter=category_id%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;` ")] = None,
+        page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `name` - `create_time` - `update_time` - `applied_time` - `category_id`  One of the following directions: - `asc` - `desc`")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ListCompanyTagsResponse]:
+        """List Applied Tags
+
+        Retrieves a list of tags applied to the specified Company
+
+        :param company_id: Company identifier (required)
+        :type company_id: str
+        :param filter: Filter to apply, allowed fields are: - (String) `name` - (String) `description` - (String) `category_id` (use `category_id==NONE` to filter tags not assigned to any category) - (String) `since_applied_time` - (String) `until_applied_time` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DCustomer` - `filter=category_id%3D%3D123` - `filter=category_id%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;` 
+        :type filter: str
+        :param page_token: Page token
+        :type page_token: str
+        :param order_by: Attribute and direction to order items. One of the following fields: - `name` - `create_time` - `update_time` - `applied_time` - `category_id`  One of the following directions: - `asc` - `desc`
+        :type order_by: str
+        :param page_size: Total number of items to return per page
+        :type page_size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_tags_for_company_serialize(
+            company_id=company_id,
+            filter=filter,
+            page_token=page_token,
+            order_by=order_by,
+            page_size=page_size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ListCompanyTagsResponse",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def list_tags_for_company_without_preload_content(
+        self,
+        company_id: Annotated[StrictStr, Field(description="Company identifier")],
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `name` - (String) `description` - (String) `category_id` (use `category_id==NONE` to filter tags not assigned to any category) - (String) `since_applied_time` - (String) `until_applied_time` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DCustomer` - `filter=category_id%3D%3D123` - `filter=category_id%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;` ")] = None,
+        page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `name` - `create_time` - `update_time` - `applied_time` - `category_id`  One of the following directions: - `asc` - `desc`")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List Applied Tags
+
+        Retrieves a list of tags applied to the specified Company
+
+        :param company_id: Company identifier (required)
+        :type company_id: str
+        :param filter: Filter to apply, allowed fields are: - (String) `name` - (String) `description` - (String) `category_id` (use `category_id==NONE` to filter tags not assigned to any category) - (String) `since_applied_time` - (String) `until_applied_time` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DCustomer` - `filter=category_id%3D%3D123` - `filter=category_id%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;` 
+        :type filter: str
+        :param page_token: Page token
+        :type page_token: str
+        :param order_by: Attribute and direction to order items. One of the following fields: - `name` - `create_time` - `update_time` - `applied_time` - `category_id`  One of the following directions: - `asc` - `desc`
+        :type order_by: str
+        :param page_size: Total number of items to return per page
+        :type page_size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_tags_for_company_serialize(
+            company_id=company_id,
+            filter=filter,
+            page_token=page_token,
+            order_by=order_by,
+            page_size=page_size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ListCompanyTagsResponse",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _list_tags_for_company_serialize(
+        self,
+        company_id,
+        filter,
+        page_token,
+        order_by,
+        page_size,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if company_id is not None:
+            _path_params['company_id'] = company_id
+        # process the query parameters
+        if filter is not None:
+            
+            _query_params.append(('filter', filter))
+            
+        if page_token is not None:
+            
+            _query_params.append(('page_token', page_token))
+            
+        if order_by is not None:
+            
+            _query_params.append(('order_by', order_by))
+            
+        if page_size is not None:
+            
+            _query_params.append(('page_size', page_size))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/rest/v2/companies/{company_id}/tags',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def remove_tag_from_company(
+        self,
+        company_id: StrictStr,
+        tag_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Remove Tag
+
+        Remove a Tag from a Company.
+
+        :param company_id: (required)
+        :type company_id: str
+        :param tag_id: (required)
+        :type tag_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._remove_tag_from_company_serialize(
+            company_id=company_id,
+            tag_id=tag_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def remove_tag_from_company_with_http_info(
+        self,
+        company_id: StrictStr,
+        tag_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Remove Tag
+
+        Remove a Tag from a Company.
+
+        :param company_id: (required)
+        :type company_id: str
+        :param tag_id: (required)
+        :type tag_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._remove_tag_from_company_serialize(
+            company_id=company_id,
+            tag_id=tag_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def remove_tag_from_company_without_preload_content(
+        self,
+        company_id: StrictStr,
+        tag_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Remove Tag
+
+        Remove a Tag from a Company.
+
+        :param company_id: (required)
+        :type company_id: str
+        :param tag_id: (required)
+        :type tag_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._remove_tag_from_company_serialize(
+            company_id=company_id,
+            tag_id=tag_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _remove_tag_from_company_serialize(
+        self,
+        company_id,
+        tag_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if company_id is not None:
+            _path_params['company_id'] = company_id
+        if tag_id is not None:
+            _path_params['tag_id'] = tag_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/rest/v2/companies/{company_id}/tags/{tag_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

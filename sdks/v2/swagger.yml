@@ -1290,14 +1290,29 @@ paths:
         in: query
         description: |
           Filter to apply, allowed fields are:
-          - (String) `name`
-          - (String) `sku`
+          - (String) `name` - Wildcard matching allowed
+          - (String) `sku` - Wildcard matching allowed
+          - (String) `description` - Wildcard matching allowed
+          - (String) `short_description` - Wildcard matching allowed
+          - (String) `product_id` - supports comparison operators: `==`, `>`, `<`, `>=`, `<=`
+          - (List[String]) `product_ids` - accepts a comma-separated list of product IDs
 
           You will need to apply the `==` operator to check the equality of one of the filters with your searched
           word, in the encoded form `%3D%3D`.
+
+          For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A)
+          for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage:
+          - `field==foo*` finds anything in `field` that begins with `foo`
+
           For the filters listed above, here are some examples:
           - `filter=name%3D%3Dtestsearch`
+          - `filter=name%3D%3Dtest*` (starts with "test")
           - `filter=sku%3D%3Dtestsearch`
+          - `filter=sku%3D%3DSKU*` (starts with "SKU")
+          - `filter=product_id>5` (product ID greater than 5)
+          - `filter=product_id>=10` (product ID greater than or equal to 10)
+          - `filter=product_id%3D%3D42` (product ID equals 42)
+          - `filter=product_ids%3D%3D1,2,3,4,5` (products with IDs 1, 2, 3, 4, or 5)
           - `filter=name%3D%3Dtestsearch%3Bsku%3D%3Dtestsearch`
         required: false
         schema:
@@ -1308,6 +1323,8 @@ paths:
           Attribute and direction to order items.
           One of the following fields:
           - `name`
+          - `sku`
+          - `last_updated_time`
 
           One of the following directions:
           - `asc`
@@ -2680,25 +2697,32 @@ paths:
       parameters:
       - name: filter
         in: query
-        description: |-
+        description: |
           Filter to apply, allowed fields are:
+          - (String) `id` - Allowable operators: "==","<=", "<", ">=", ">", "!="
+          - (List[String]) `ids`
           - (String) `product_id`
           - (String) `contact_id`
+          - (String) `invoice_id`
           - (String) `invoice_xid`
           - (Boolean) `paid`
           - (String) `created_since_time`
           - (String) `created_until_time`
-          - (String) `title`
+          - (String) `modified_since_time`
+          - (String) `modified_until_time`
+          - (String) `title` - Wildcard matching allowed
           - (String) `order_type` (Allowed values: `ONLINE`, `OFFLINE`)
           - (String) `shipping_locality`
           - (String) `shipping_region_code`
           - (String) `shipping_postal_code`
           - (String) `shipping_country_code`
 
-          You will need to apply the `==` operator to check the equality of one of the filters with your searched
-          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          You will need to apply the `==` operator (or other supported operators), to check the equality
+          of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above,
+          here are some examples:
           - `filter=product_id%3D%3D123`
-          - `filter=contact_id%3D%3D567`
+          - `filter=id%3C123`
+          - `filter=ids%3D%3D1,10,4,24`
           - `filter=invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8`
           - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567`
           - `filter=title%3D%3DOrder`
@@ -2707,6 +2731,10 @@ paths:
           - `filter=shipping_region_code%3D%3DIN-MH`
           - `filter=shipping_postal_code%3D%3D85001`
           - `filter=shipping_country_code%3D%3DIND`
+
+          For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A)
+          for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage:
+          - `field==foo*` finds anything in `field` that begins with `foo`
         required: false
         schema:
           type: string
@@ -2717,6 +2745,7 @@ paths:
           One of the following fields:
           - `id`
           - `order_time`
+          - `modification_time`
 
           One of the following directions:
           - `asc`
@@ -6368,6 +6397,8 @@ paths:
           - (Set[String]) `contact_ids`
           - (String) `start_update_time`
           - (String) `end_update_time`
+          - (String) `phone_number`
+          - (String) `phone_field` (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5)
 
           You will need to apply the `==` operator to check the equality of one of the filters with your searched
           word, in the encoded form `%3D%3D`.
@@ -7157,17 +7188,25 @@ paths:
         in: query
         description: |
           Filter to apply, allowed fields are:
-          - (String) `company_name`
-          - (String) `email`
-          - (String) `since_time`
-          - (String) `until_time`
+          - (String) `company_name` - exact match on company name (equality only)
+          - (String) `name` - company name with support for a wildcard at the end (e.g. `smith*`)
+          - (String) `email` - exact match on email
+          - (String) `since_time` - companies updated on or after this time
+          - (String) `until_time` - companies updated on or before this time
+          - (Number) `company_id` - supports comparison operators: `==`, `>`, `<`, `>=`, `<=`
 
-          You will need to apply the `==` operator to check the equality of one of the filters with your searched
-          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          For equality filters, use the `==` operator in encoded form `%3D%3D`:
           - `filter=company_name%3D%3DCompany`
           - `filter=email%3D%3Dtest@gmail.com`
-          - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;`
-          - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`
+          - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z`
+          - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`
+
+          For wildcard name search (prefix only, case-insensitive):
+          - `filter=name%3D%3DAcme%2A` (starts with "Acme")
+
+          For company_id comparison:
+          - `filter=company_id%3E5` (company_id > 5)
+          - `filter=company_id%3E%3D10` (company_id >= 10)
         required: false
         schema:
           type: string
@@ -7272,6 +7311,131 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Company'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/companies/{company_id}/tags/{tag_id}:
+    post:
+      tags:
+      - Company
+      summary: Add Tag to Company
+      description: Applies a Tag to a Company.
+      operationId: addTagToCompany
+      parameters:
+      - name: company_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: tag_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Company
+      summary: Remove Tag
+      description: Remove a Tag from a Company.
+      operationId: removeTagFromCompany
+      parameters:
+      - name: company_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: tag_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
         '400':
           description: Bad Request
           content:
@@ -19575,6 +19739,125 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/companies/{company_id}/tags:
+    get:
+      tags:
+      - Company
+      summary: List Applied Tags
+      description: Retrieves a list of tags applied to the specified Company
+      operationId: listTagsForCompany
+      parameters:
+      - name: company_id
+        in: path
+        description: Company identifier
+        required: true
+        schema:
+          type: string
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) `name`
+          - (String) `description`
+          - (String) `category_id` (use `category_id==NONE` to filter tags not assigned to any category)
+          - (String) `since_applied_time`
+          - (String) `until_applied_time`
+          - (String) `since_create_time`
+          - (String) `until_create_time`
+          - (String) `since_update_time`
+          - (String) `until_update_time`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          - `filter=name%3D%3DCustomer`
+          - `filter=category_id%3D%3D123`
+          - `filter=category_id%3D%3DNONE`
+          - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;`
+        required: false
+        schema:
+          type: string
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `name`
+          - `create_time`
+          - `update_time`
+          - `applied_time`
+          - `category_id`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          maximum: 1000
+          minimum: 0
+        example: 0
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCompanyTagsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/companies/model:
     get:
       tags:
@@ -29983,6 +30266,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Company'
+        next_page_token:
+          type: string
+    ListCompanyTagsResponse:
+      type: object
+      description: List of tags applied to a company
+      properties:
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppliedTag'
         next_page_token:
           type: string
     Campaign:

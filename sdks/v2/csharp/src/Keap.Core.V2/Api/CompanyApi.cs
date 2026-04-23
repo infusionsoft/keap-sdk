@@ -29,6 +29,31 @@ namespace Keap.Core.V2.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Add Tag to Company
+        /// </summary>
+        /// <remarks>
+        /// Applies a Tag to a Company.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId"></param>
+        /// <param name="tagId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        void AddTagToCompany(string companyId, string tagId, int operationIndex = 0);
+
+        /// <summary>
+        /// Add Tag to Company
+        /// </summary>
+        /// <remarks>
+        /// Applies a Tag to a Company.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId"></param>
+        /// <param name="tagId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> AddTagToCompanyWithHttpInfo(string companyId, string tagId, int operationIndex = 0);
+        /// <summary>
         /// Create a Company
         /// </summary>
         /// <remarks>
@@ -130,7 +155,7 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -146,13 +171,69 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ListCompaniesResponse</returns>
         ApiResponse<ListCompaniesResponse> ListCompaniesWithHttpInfo(List<string>? fields = default, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0);
+        /// <summary>
+        /// List Applied Tags
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of tags applied to the specified Company
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">Company identifier</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ListCompanyTagsResponse</returns>
+        ListCompanyTagsResponse ListTagsForCompany(string companyId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0);
+
+        /// <summary>
+        /// List Applied Tags
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of tags applied to the specified Company
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">Company identifier</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ListCompanyTagsResponse</returns>
+        ApiResponse<ListCompanyTagsResponse> ListTagsForCompanyWithHttpInfo(string companyId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0);
+        /// <summary>
+        /// Remove Tag
+        /// </summary>
+        /// <remarks>
+        /// Remove a Tag from a Company.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId"></param>
+        /// <param name="tagId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        void RemoveTagFromCompany(string companyId, string tagId, int operationIndex = 0);
+
+        /// <summary>
+        /// Remove Tag
+        /// </summary>
+        /// <remarks>
+        /// Remove a Tag from a Company.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId"></param>
+        /// <param name="tagId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> RemoveTagFromCompanyWithHttpInfo(string companyId, string tagId, int operationIndex = 0);
         /// <summary>
         /// Retrieve Company Custom Field Model
         /// </summary>
@@ -237,6 +318,33 @@ namespace Keap.Core.V2.Api
     public interface ICompanyApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
+        /// <summary>
+        /// Add Tag to Company
+        /// </summary>
+        /// <remarks>
+        /// Applies a Tag to a Company.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId"></param>
+        /// <param name="tagId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task AddTagToCompanyAsync(string companyId, string tagId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Add Tag to Company
+        /// </summary>
+        /// <remarks>
+        /// Applies a Tag to a Company.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId"></param>
+        /// <param name="tagId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> AddTagToCompanyWithHttpInfoAsync(string companyId, string tagId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a Company
         /// </summary>
@@ -347,7 +455,7 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -364,7 +472,7 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -372,6 +480,66 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCompaniesResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListCompaniesResponse>> ListCompaniesWithHttpInfoAsync(List<string>? fields = default, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// List Applied Tags
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of tags applied to the specified Company
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">Company identifier</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListCompanyTagsResponse</returns>
+        System.Threading.Tasks.Task<ListCompanyTagsResponse> ListTagsForCompanyAsync(string companyId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// List Applied Tags
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of tags applied to the specified Company
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">Company identifier</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListCompanyTagsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListCompanyTagsResponse>> ListTagsForCompanyWithHttpInfoAsync(string companyId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Remove Tag
+        /// </summary>
+        /// <remarks>
+        /// Remove a Tag from a Company.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId"></param>
+        /// <param name="tagId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task RemoveTagFromCompanyAsync(string companyId, string tagId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Remove Tag
+        /// </summary>
+        /// <remarks>
+        /// Remove a Tag from a Company.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId"></param>
+        /// <param name="tagId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> RemoveTagFromCompanyWithHttpInfoAsync(string companyId, string tagId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieve Company Custom Field Model
         /// </summary>
@@ -571,6 +739,199 @@ namespace Keap.Core.V2.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
+        }
+
+        /// <summary>
+        /// Add Tag to Company Applies a Tag to a Company.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId"></param>
+        /// <param name="tagId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        public void AddTagToCompany(string companyId, string tagId, int operationIndex = 0)
+        {
+            AddTagToCompanyWithHttpInfo(companyId, tagId);
+        }
+
+        /// <summary>
+        /// Add Tag to Company Applies a Tag to a Company.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId"></param>
+        /// <param name="tagId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Keap.Core.V2.Client.ApiResponse<Object> AddTagToCompanyWithHttpInfo(string companyId, string tagId, int operationIndex = 0)
+        {
+            // verify the required parameter 'companyId' is set
+            if (companyId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'companyId' when calling CompanyApi->AddTagToCompany");
+            }
+
+            // verify the required parameter 'tagId' is set
+            if (tagId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tagId' when calling CompanyApi->AddTagToCompany");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("company_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("tag_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tagId)); // path parameter
+
+            localVarRequestOptions.Operation = "CompanyApi.AddTagToCompany";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<Object>("/rest/v2/companies/{company_id}/tags/{tag_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("AddTagToCompany", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Add Tag to Company Applies a Tag to a Company.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId"></param>
+        /// <param name="tagId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task AddTagToCompanyAsync(string companyId, string tagId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            await AddTagToCompanyWithHttpInfoAsync(companyId, tagId, operationIndex, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Add Tag to Company Applies a Tag to a Company.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId"></param>
+        /// <param name="tagId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Object>> AddTagToCompanyWithHttpInfoAsync(string companyId, string tagId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'companyId' is set
+            if (companyId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'companyId' when calling CompanyApi->AddTagToCompany");
+            }
+
+            // verify the required parameter 'tagId' is set
+            if (tagId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tagId' when calling CompanyApi->AddTagToCompany");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("company_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("tag_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tagId)); // path parameter
+
+            localVarRequestOptions.Operation = "CompanyApi.AddTagToCompany";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/rest/v2/companies/{company_id}/tags/{tag_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("AddTagToCompany", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
         }
 
         /// <summary>
@@ -1300,7 +1661,7 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -1317,7 +1678,7 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -1408,7 +1769,7 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -1426,7 +1787,7 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -1505,6 +1866,424 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListCompanies", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List Applied Tags Retrieves a list of tags applied to the specified Company
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">Company identifier</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ListCompanyTagsResponse</returns>
+        public ListCompanyTagsResponse ListTagsForCompany(string companyId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<ListCompanyTagsResponse> localVarResponse = ListTagsForCompanyWithHttpInfo(companyId, filter, pageToken, orderBy, pageSize);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Applied Tags Retrieves a list of tags applied to the specified Company
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">Company identifier</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ListCompanyTagsResponse</returns>
+        public Keap.Core.V2.Client.ApiResponse<ListCompanyTagsResponse> ListTagsForCompanyWithHttpInfo(string companyId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0)
+        {
+            // verify the required parameter 'companyId' is set
+            if (companyId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'companyId' when calling CompanyApi->ListTagsForCompany");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("company_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (pageToken != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken));
+            }
+            if (orderBy != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "order_by", orderBy));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
+
+            localVarRequestOptions.Operation = "CompanyApi.ListTagsForCompany";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListCompanyTagsResponse>("/rest/v2/companies/{company_id}/tags", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListTagsForCompany", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List Applied Tags Retrieves a list of tags applied to the specified Company
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">Company identifier</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListCompanyTagsResponse</returns>
+        public async System.Threading.Tasks.Task<ListCompanyTagsResponse> ListTagsForCompanyAsync(string companyId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<ListCompanyTagsResponse> localVarResponse = await ListTagsForCompanyWithHttpInfoAsync(companyId, filter, pageToken, orderBy, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Applied Tags Retrieves a list of tags applied to the specified Company
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">Company identifier</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListCompanyTagsResponse)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ListCompanyTagsResponse>> ListTagsForCompanyWithHttpInfoAsync(string companyId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'companyId' is set
+            if (companyId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'companyId' when calling CompanyApi->ListTagsForCompany");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("company_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (pageToken != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken));
+            }
+            if (orderBy != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "order_by", orderBy));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
+
+            localVarRequestOptions.Operation = "CompanyApi.ListTagsForCompany";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListCompanyTagsResponse>("/rest/v2/companies/{company_id}/tags", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListTagsForCompany", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Remove Tag Remove a Tag from a Company.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId"></param>
+        /// <param name="tagId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        public void RemoveTagFromCompany(string companyId, string tagId, int operationIndex = 0)
+        {
+            RemoveTagFromCompanyWithHttpInfo(companyId, tagId);
+        }
+
+        /// <summary>
+        /// Remove Tag Remove a Tag from a Company.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId"></param>
+        /// <param name="tagId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Keap.Core.V2.Client.ApiResponse<Object> RemoveTagFromCompanyWithHttpInfo(string companyId, string tagId, int operationIndex = 0)
+        {
+            // verify the required parameter 'companyId' is set
+            if (companyId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'companyId' when calling CompanyApi->RemoveTagFromCompany");
+            }
+
+            // verify the required parameter 'tagId' is set
+            if (tagId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tagId' when calling CompanyApi->RemoveTagFromCompany");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("company_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("tag_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tagId)); // path parameter
+
+            localVarRequestOptions.Operation = "CompanyApi.RemoveTagFromCompany";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<Object>("/rest/v2/companies/{company_id}/tags/{tag_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RemoveTagFromCompany", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Remove Tag Remove a Tag from a Company.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId"></param>
+        /// <param name="tagId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task RemoveTagFromCompanyAsync(string companyId, string tagId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            await RemoveTagFromCompanyWithHttpInfoAsync(companyId, tagId, operationIndex, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Remove Tag Remove a Tag from a Company.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId"></param>
+        /// <param name="tagId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Object>> RemoveTagFromCompanyWithHttpInfoAsync(string companyId, string tagId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'companyId' is set
+            if (companyId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'companyId' when calling CompanyApi->RemoveTagFromCompany");
+            }
+
+            // verify the required parameter 'tagId' is set
+            if (tagId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tagId' when calling CompanyApi->RemoveTagFromCompany");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("company_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("tag_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tagId)); // path parameter
+
+            localVarRequestOptions.Operation = "CompanyApi.RemoveTagFromCompany";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/rest/v2/companies/{company_id}/tags/{tag_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RemoveTagFromCompany", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

@@ -74,6 +74,9 @@ class CompanyApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'addTagToCompany' => [
+            'application/json',
+        ],
         'createCompany' => [
             'application/json',
         ],
@@ -87,6 +90,12 @@ class CompanyApi
             'application/json',
         ],
         'listCompanies' => [
+            'application/json',
+        ],
+        'listTagsForCompany' => [
+            'application/json',
+        ],
+        'removeTagFromCompany' => [
             'application/json',
         ],
         'retrieveCompanyCustomFieldModel' => [
@@ -144,6 +153,304 @@ class CompanyApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation addTagToCompany
+     *
+     * Add Tag to Company
+     *
+     * @param  string $company_id company_id (required)
+     * @param  string $tag_id tag_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addTagToCompany'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function addTagToCompany($company_id, $tag_id, string $contentType = self::contentTypes['addTagToCompany'][0])
+    {
+        $this->addTagToCompanyWithHttpInfo($company_id, $tag_id, $contentType);
+    }
+
+    /**
+     * Operation addTagToCompanyWithHttpInfo
+     *
+     * Add Tag to Company
+     *
+     * @param  string $company_id (required)
+     * @param  string $tag_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addTagToCompany'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function addTagToCompanyWithHttpInfo($company_id, $tag_id, string $contentType = self::contentTypes['addTagToCompany'][0])
+    {
+        $request = $this->addTagToCompanyRequest($company_id, $tag_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation addTagToCompanyAsync
+     *
+     * Add Tag to Company
+     *
+     * @param  string $company_id (required)
+     * @param  string $tag_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addTagToCompany'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addTagToCompanyAsync($company_id, $tag_id, string $contentType = self::contentTypes['addTagToCompany'][0])
+    {
+        return $this->addTagToCompanyAsyncWithHttpInfo($company_id, $tag_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation addTagToCompanyAsyncWithHttpInfo
+     *
+     * Add Tag to Company
+     *
+     * @param  string $company_id (required)
+     * @param  string $tag_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addTagToCompany'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addTagToCompanyAsyncWithHttpInfo($company_id, $tag_id, string $contentType = self::contentTypes['addTagToCompany'][0])
+    {
+        $returnType = '';
+        $request = $this->addTagToCompanyRequest($company_id, $tag_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'addTagToCompany'
+     *
+     * @param  string $company_id (required)
+     * @param  string $tag_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addTagToCompany'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function addTagToCompanyRequest($company_id, $tag_id, string $contentType = self::contentTypes['addTagToCompany'][0])
+    {
+
+        // verify the required parameter 'company_id' is set
+        if ($company_id === null || (is_array($company_id) && count($company_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $company_id when calling addTagToCompany'
+            );
+        }
+
+        // verify the required parameter 'tag_id' is set
+        if ($tag_id === null || (is_array($tag_id) && count($tag_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tag_id when calling addTagToCompany'
+            );
+        }
+
+
+        $resourcePath = '/rest/v2/companies/{company_id}/tags/{tag_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($company_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'company_id' . '}',
+                ObjectSerializer::toPathValue($company_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($tag_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tag_id' . '}',
+                ObjectSerializer::toPathValue($tag_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -1553,7 +1860,7 @@ class CompanyApi
      * List Companies
      *
      * @param  string[]|null $fields Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) (optional)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10) (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -1575,7 +1882,7 @@ class CompanyApi
      * List Companies
      *
      * @param  string[]|null $fields Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) (optional)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10) (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -1762,7 +2069,7 @@ class CompanyApi
      * List Companies
      *
      * @param  string[]|null $fields Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) (optional)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10) (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -1787,7 +2094,7 @@ class CompanyApi
      * List Companies
      *
      * @param  string[]|null $fields Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) (optional)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10) (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -1841,7 +2148,7 @@ class CompanyApi
      * Create request for operation 'listCompanies'
      *
      * @param  string[]|null $fields Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) (optional)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10) (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -1972,6 +2279,740 @@ class CompanyApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listTagsForCompany
+     *
+     * List Applied Tags
+     *
+     * @param  string $company_id Company identifier (required)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; (optional)
+     * @param  string|null $page_token Page token (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+     * @param  int|null $page_size Total number of items to return per page (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTagsForCompany'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Keap\Core\V2\Model\ListCompanyTagsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     */
+    public function listTagsForCompany($company_id, $filter = null, $page_token = null, $order_by = null, $page_size = null, string $contentType = self::contentTypes['listTagsForCompany'][0])
+    {
+        list($response) = $this->listTagsForCompanyWithHttpInfo($company_id, $filter, $page_token, $order_by, $page_size, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listTagsForCompanyWithHttpInfo
+     *
+     * List Applied Tags
+     *
+     * @param  string $company_id Company identifier (required)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; (optional)
+     * @param  string|null $page_token Page token (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+     * @param  int|null $page_size Total number of items to return per page (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTagsForCompany'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Keap\Core\V2\Model\ListCompanyTagsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listTagsForCompanyWithHttpInfo($company_id, $filter = null, $page_token = null, $order_by = null, $page_size = null, string $contentType = self::contentTypes['listTagsForCompany'][0])
+    {
+        $request = $this->listTagsForCompanyRequest($company_id, $filter, $page_token, $order_by, $page_size, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\ListCompanyTagsResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 501:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Keap\Core\V2\Model\ListCompanyTagsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\ListCompanyTagsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listTagsForCompanyAsync
+     *
+     * List Applied Tags
+     *
+     * @param  string $company_id Company identifier (required)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; (optional)
+     * @param  string|null $page_token Page token (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+     * @param  int|null $page_size Total number of items to return per page (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTagsForCompany'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listTagsForCompanyAsync($company_id, $filter = null, $page_token = null, $order_by = null, $page_size = null, string $contentType = self::contentTypes['listTagsForCompany'][0])
+    {
+        return $this->listTagsForCompanyAsyncWithHttpInfo($company_id, $filter, $page_token, $order_by, $page_size, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listTagsForCompanyAsyncWithHttpInfo
+     *
+     * List Applied Tags
+     *
+     * @param  string $company_id Company identifier (required)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; (optional)
+     * @param  string|null $page_token Page token (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+     * @param  int|null $page_size Total number of items to return per page (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTagsForCompany'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listTagsForCompanyAsyncWithHttpInfo($company_id, $filter = null, $page_token = null, $order_by = null, $page_size = null, string $contentType = self::contentTypes['listTagsForCompany'][0])
+    {
+        $returnType = '\Keap\Core\V2\Model\ListCompanyTagsResponse';
+        $request = $this->listTagsForCompanyRequest($company_id, $filter, $page_token, $order_by, $page_size, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listTagsForCompany'
+     *
+     * @param  string $company_id Company identifier (required)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; (optional)
+     * @param  string|null $page_token Page token (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+     * @param  int|null $page_size Total number of items to return per page (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTagsForCompany'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listTagsForCompanyRequest($company_id, $filter = null, $page_token = null, $order_by = null, $page_size = null, string $contentType = self::contentTypes['listTagsForCompany'][0])
+    {
+
+        // verify the required parameter 'company_id' is set
+        if ($company_id === null || (is_array($company_id) && count($company_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $company_id when calling listTagsForCompany'
+            );
+        }
+
+
+
+
+        if ($page_size !== null && $page_size > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling CompanyApi.listTagsForCompany, must be smaller than or equal to 1000.');
+        }
+        if ($page_size !== null && $page_size < 0) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling CompanyApi.listTagsForCompany, must be bigger than or equal to 0.');
+        }
+        
+
+        $resourcePath = '/rest/v2/companies/{company_id}/tags';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $filter,
+            'filter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_token,
+            'page_token', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $order_by,
+            'order_by', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_size,
+            'page_size', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($company_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'company_id' . '}',
+                ObjectSerializer::toPathValue($company_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation removeTagFromCompany
+     *
+     * Remove Tag
+     *
+     * @param  string $company_id company_id (required)
+     * @param  string $tag_id tag_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeTagFromCompany'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function removeTagFromCompany($company_id, $tag_id, string $contentType = self::contentTypes['removeTagFromCompany'][0])
+    {
+        $this->removeTagFromCompanyWithHttpInfo($company_id, $tag_id, $contentType);
+    }
+
+    /**
+     * Operation removeTagFromCompanyWithHttpInfo
+     *
+     * Remove Tag
+     *
+     * @param  string $company_id (required)
+     * @param  string $tag_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeTagFromCompany'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeTagFromCompanyWithHttpInfo($company_id, $tag_id, string $contentType = self::contentTypes['removeTagFromCompany'][0])
+    {
+        $request = $this->removeTagFromCompanyRequest($company_id, $tag_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeTagFromCompanyAsync
+     *
+     * Remove Tag
+     *
+     * @param  string $company_id (required)
+     * @param  string $tag_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeTagFromCompany'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeTagFromCompanyAsync($company_id, $tag_id, string $contentType = self::contentTypes['removeTagFromCompany'][0])
+    {
+        return $this->removeTagFromCompanyAsyncWithHttpInfo($company_id, $tag_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeTagFromCompanyAsyncWithHttpInfo
+     *
+     * Remove Tag
+     *
+     * @param  string $company_id (required)
+     * @param  string $tag_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeTagFromCompany'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeTagFromCompanyAsyncWithHttpInfo($company_id, $tag_id, string $contentType = self::contentTypes['removeTagFromCompany'][0])
+    {
+        $returnType = '';
+        $request = $this->removeTagFromCompanyRequest($company_id, $tag_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeTagFromCompany'
+     *
+     * @param  string $company_id (required)
+     * @param  string $tag_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeTagFromCompany'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeTagFromCompanyRequest($company_id, $tag_id, string $contentType = self::contentTypes['removeTagFromCompany'][0])
+    {
+
+        // verify the required parameter 'company_id' is set
+        if ($company_id === null || (is_array($company_id) && count($company_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $company_id when calling removeTagFromCompany'
+            );
+        }
+
+        // verify the required parameter 'tag_id' is set
+        if ($tag_id === null || (is_array($tag_id) && count($tag_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tag_id when calling removeTagFromCompany'
+            );
+        }
+
+
+        $resourcePath = '/rest/v2/companies/{company_id}/tags/{tag_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($company_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'company_id' . '}',
+                ObjectSerializer::toPathValue($company_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($tag_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tag_id' . '}',
+                ObjectSerializer::toPathValue($tag_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

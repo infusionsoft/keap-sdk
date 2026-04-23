@@ -23,6 +23,7 @@ import com.keap.core.sdk.model.CreateCustomFieldRequest;
 import com.keap.core.sdk.model.CustomFieldMetaData;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.ListCompaniesResponse;
+import com.keap.core.sdk.model.ListCompanyTagsResponse;
 import com.keap.core.sdk.model.ObjectModel;
 import com.keap.core.sdk.model.UpdateCompanyRequest;
 import com.keap.core.sdk.model.UpdateCustomFieldMetaDataRequest;
@@ -98,6 +99,102 @@ import io.github.resilience4j.retry.Retry;
       body = "[no body]";
     }
     return operationId + " call failed with: " + statusCode + " - " + body;
+  }
+
+  /**
+   * Add Tag to Company
+   * Applies a Tag to a Company.
+   * @param companyId  (required)
+   * @param tagId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void addTagToCompany(String companyId, String tagId) throws ApiException {
+    addTagToCompanyWithHttpInfo(companyId, tagId);
+  }
+
+  /**
+   * Add Tag to Company
+   * Applies a Tag to a Company.
+   * @param companyId  (required)
+   * @param tagId  (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> addTagToCompanyWithHttpInfo(String companyId, String tagId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = addTagToCompanyRequestBuilder(companyId, tagId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("addTagToCompany", localVarResponse);
+        }
+        return new ApiResponse<Void>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          null
+        );
+      } finally {
+        // Drain the InputStream
+        while (localVarResponse.body().read() != -1) {
+            // Ignore
+        }
+        localVarResponse.body().close();
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder addTagToCompanyRequestBuilder(String companyId, String tagId) throws ApiException {
+    // verify the required parameter 'companyId' is set
+    if (companyId == null) {
+      throw new ApiException(400, "Missing the required parameter 'companyId' when calling addTagToCompany");
+    }
+    // verify the required parameter 'tagId' is set
+    if (tagId == null) {
+      throw new ApiException(400, "Missing the required parameter 'tagId' when calling addTagToCompany");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/companies/{company_id}/tags/{tag_id}"
+        .replace("{company_id}", ApiClient.urlEncode(companyId.toString()))
+        .replace("{tag_id}", ApiClient.urlEncode(tagId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
   }
 
   /**
@@ -478,7 +575,7 @@ import io.github.resilience4j.retry.Retry;
    * List Companies
    * Retrieves a list of all Companies.&lt;br/&gt;&lt;br/&gt;
    * @param fields Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) (optional)
-   * @param filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
@@ -494,7 +591,7 @@ import io.github.resilience4j.retry.Retry;
    * List Companies
    * Retrieves a list of all Companies.&lt;br/&gt;&lt;br/&gt;
    * @param fields Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) (optional)
-   * @param filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
@@ -577,6 +674,217 @@ import io.github.resilience4j.retry.Retry;
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
 
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * List Applied Tags
+   * Retrieves a list of tags applied to the specified Company
+   * @param companyId Company identifier (required)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)
+   * @param pageToken Page token (optional)
+   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+   * @param pageSize Total number of items to return per page (optional)
+   * @return ListCompanyTagsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ListCompanyTagsResponse listTagsForCompany(String companyId, String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
+    ApiResponse<ListCompanyTagsResponse> localVarResponse = listTagsForCompanyWithHttpInfo(companyId, filter, pageToken, orderBy, pageSize);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * List Applied Tags
+   * Retrieves a list of tags applied to the specified Company
+   * @param companyId Company identifier (required)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  (optional)
+   * @param pageToken Page token (optional)
+   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+   * @param pageSize Total number of items to return per page (optional)
+   * @return ApiResponse&lt;ListCompanyTagsResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ListCompanyTagsResponse> listTagsForCompanyWithHttpInfo(String companyId, String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listTagsForCompanyRequestBuilder(companyId, filter, pageToken, orderBy, pageSize);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("listTagsForCompany", localVarResponse);
+        }
+        return new ApiResponse<ListCompanyTagsResponse>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ListCompanyTagsResponse>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder listTagsForCompanyRequestBuilder(String companyId, String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
+    // verify the required parameter 'companyId' is set
+    if (companyId == null) {
+      throw new ApiException(400, "Missing the required parameter 'companyId' when calling listTagsForCompany");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/companies/{company_id}/tags"
+        .replace("{company_id}", ApiClient.urlEncode(companyId.toString()));
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "filter";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("filter", filter));
+    localVarQueryParameterBaseName = "page_token";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page_token", pageToken));
+    localVarQueryParameterBaseName = "order_by";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("order_by", orderBy));
+    localVarQueryParameterBaseName = "page_size";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page_size", pageSize));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Remove Tag
+   * Remove a Tag from a Company.
+   * @param companyId  (required)
+   * @param tagId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void removeTagFromCompany(String companyId, String tagId) throws ApiException {
+    removeTagFromCompanyWithHttpInfo(companyId, tagId);
+  }
+
+  /**
+   * Remove Tag
+   * Remove a Tag from a Company.
+   * @param companyId  (required)
+   * @param tagId  (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> removeTagFromCompanyWithHttpInfo(String companyId, String tagId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = removeTagFromCompanyRequestBuilder(companyId, tagId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("removeTagFromCompany", localVarResponse);
+        }
+        return new ApiResponse<Void>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          null
+        );
+      } finally {
+        // Drain the InputStream
+        while (localVarResponse.body().read() != -1) {
+            // Ignore
+        }
+        localVarResponse.body().close();
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder removeTagFromCompanyRequestBuilder(String companyId, String tagId) throws ApiException {
+    // verify the required parameter 'companyId' is set
+    if (companyId == null) {
+      throw new ApiException(400, "Missing the required parameter 'companyId' when calling removeTagFromCompany");
+    }
+    // verify the required parameter 'tagId' is set
+    if (tagId == null) {
+      throw new ApiException(400, "Missing the required parameter 'tagId' when calling removeTagFromCompany");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/companies/{company_id}/tags/{tag_id}"
+        .replace("{company_id}", ApiClient.urlEncode(companyId.toString()))
+        .replace("{tag_id}", ApiClient.urlEncode(tagId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }

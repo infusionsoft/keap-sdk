@@ -182,6 +182,7 @@ export * from '../models/ListCampaignSequenceResponse';
 export * from '../models/ListCampaignsResponse';
 export * from '../models/ListCategoryDiscountsResponse';
 export * from '../models/ListCompaniesResponse';
+export * from '../models/ListCompanyTagsResponse';
 export * from '../models/ListContactLinkTypesResponse';
 export * from '../models/ListContactLinksResponse';
 export * from '../models/ListContactPaymentMethodsResponse';
@@ -531,6 +532,7 @@ import { ListCampaignSequenceResponse } from '../models/ListCampaignSequenceResp
 import { ListCampaignsResponse } from '../models/ListCampaignsResponse';
 import { ListCategoryDiscountsResponse } from '../models/ListCategoryDiscountsResponse';
 import { ListCompaniesResponse } from '../models/ListCompaniesResponse';
+import { ListCompanyTagsResponse } from '../models/ListCompanyTagsResponse';
 import { ListContactLinkTypesResponse } from '../models/ListContactLinkTypesResponse';
 import { ListContactLinksResponse } from '../models/ListContactLinksResponse';
 import { ListContactPaymentMethodsResponse } from '../models/ListContactPaymentMethodsResponse';
@@ -1012,6 +1014,7 @@ let typeMap: {[index: string]: any} = {
     "ListCampaignsResponse": ListCampaignsResponse,
     "ListCategoryDiscountsResponse": ListCategoryDiscountsResponse,
     "ListCompaniesResponse": ListCompaniesResponse,
+    "ListCompanyTagsResponse": ListCompanyTagsResponse,
     "ListContactLinkTypesResponse": ListContactLinkTypesResponse,
     "ListContactLinksResponse": ListContactLinksResponse,
     "ListContactPaymentMethodsResponse": ListContactPaymentMethodsResponse,

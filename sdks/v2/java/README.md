@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.6</version>
+  <version>2.0.7</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.6"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.7"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.6.jar`
+- `target/core-service-v2-java-sdk-2.0.7.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -230,6 +230,8 @@ Class | Method | HTTP request | Description
 *CategoryDiscountsApi* | [**listCategoryDiscountsWithHttpInfo**](docs/CategoryDiscountsApi.md#listCategoryDiscountsWithHttpInfo) | **GET** /rest/v2/discounts/productCategories | List Category Discounts
 *CategoryDiscountsApi* | [**updateCategoryDiscount**](docs/CategoryDiscountsApi.md#updateCategoryDiscount) | **PATCH** /rest/v2/discounts/productCategories/{discount_id} | Update a Category Discount
 *CategoryDiscountsApi* | [**updateCategoryDiscountWithHttpInfo**](docs/CategoryDiscountsApi.md#updateCategoryDiscountWithHttpInfo) | **PATCH** /rest/v2/discounts/productCategories/{discount_id} | Update a Category Discount
+*CompanyApi* | [**addTagToCompany**](docs/CompanyApi.md#addTagToCompany) | **POST** /rest/v2/companies/{company_id}/tags/{tag_id} | Add Tag to Company
+*CompanyApi* | [**addTagToCompanyWithHttpInfo**](docs/CompanyApi.md#addTagToCompanyWithHttpInfo) | **POST** /rest/v2/companies/{company_id}/tags/{tag_id} | Add Tag to Company
 *CompanyApi* | [**createCompany**](docs/CompanyApi.md#createCompany) | **POST** /rest/v2/companies | Create a Company
 *CompanyApi* | [**createCompanyWithHttpInfo**](docs/CompanyApi.md#createCompanyWithHttpInfo) | **POST** /rest/v2/companies | Create a Company
 *CompanyApi* | [**createCompanyCustomField**](docs/CompanyApi.md#createCompanyCustomField) | **POST** /rest/v2/companies/model/customFields | Create a Company Custom Field
@@ -240,6 +242,10 @@ Class | Method | HTTP request | Description
 *CompanyApi* | [**getCompanyWithHttpInfo**](docs/CompanyApi.md#getCompanyWithHttpInfo) | **GET** /rest/v2/companies/{company_id} | Retrieve a Company
 *CompanyApi* | [**listCompanies**](docs/CompanyApi.md#listCompanies) | **GET** /rest/v2/companies | List Companies
 *CompanyApi* | [**listCompaniesWithHttpInfo**](docs/CompanyApi.md#listCompaniesWithHttpInfo) | **GET** /rest/v2/companies | List Companies
+*CompanyApi* | [**listTagsForCompany**](docs/CompanyApi.md#listTagsForCompany) | **GET** /rest/v2/companies/{company_id}/tags | List Applied Tags
+*CompanyApi* | [**listTagsForCompanyWithHttpInfo**](docs/CompanyApi.md#listTagsForCompanyWithHttpInfo) | **GET** /rest/v2/companies/{company_id}/tags | List Applied Tags
+*CompanyApi* | [**removeTagFromCompany**](docs/CompanyApi.md#removeTagFromCompany) | **DELETE** /rest/v2/companies/{company_id}/tags/{tag_id} | Remove Tag
+*CompanyApi* | [**removeTagFromCompanyWithHttpInfo**](docs/CompanyApi.md#removeTagFromCompanyWithHttpInfo) | **DELETE** /rest/v2/companies/{company_id}/tags/{tag_id} | Remove Tag
 *CompanyApi* | [**retrieveCompanyCustomFieldModel**](docs/CompanyApi.md#retrieveCompanyCustomFieldModel) | **GET** /rest/v2/companies/model | Retrieve Company Custom Field Model
 *CompanyApi* | [**retrieveCompanyCustomFieldModelWithHttpInfo**](docs/CompanyApi.md#retrieveCompanyCustomFieldModelWithHttpInfo) | **GET** /rest/v2/companies/model | Retrieve Company Custom Field Model
 *CompanyApi* | [**updateCompany**](docs/CompanyApi.md#updateCompany) | **PATCH** /rest/v2/companies/{company_id} | Update a Company
@@ -861,6 +867,7 @@ Class | Method | HTTP request | Description
  - [ListCampaignsResponse](docs/ListCampaignsResponse.md)
  - [ListCategoryDiscountsResponse](docs/ListCategoryDiscountsResponse.md)
  - [ListCompaniesResponse](docs/ListCompaniesResponse.md)
+ - [ListCompanyTagsResponse](docs/ListCompanyTagsResponse.md)
  - [ListContactLinkTypesResponse](docs/ListContactLinkTypesResponse.md)
  - [ListContactLinksResponse](docs/ListContactLinksResponse.md)
  - [ListContactPaymentMethodsResponse](docs/ListContactPaymentMethodsResponse.md)

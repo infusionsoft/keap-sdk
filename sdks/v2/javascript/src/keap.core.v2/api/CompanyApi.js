@@ -19,6 +19,7 @@ import CreateCustomFieldRequest from '../model/CreateCustomFieldRequest';
 import CustomFieldMetaData from '../model/CustomFieldMetaData';
 import Error from '../model/Error';
 import ListCompaniesResponse from '../model/ListCompaniesResponse';
+import ListCompanyTagsResponse from '../model/ListCompanyTagsResponse';
 import ObjectModel from '../model/ObjectModel';
 import UpdateCompanyRequest from '../model/UpdateCompanyRequest';
 import UpdateCustomFieldMetaDataRequest from '../model/UpdateCustomFieldMetaDataRequest';
@@ -40,6 +41,61 @@ export default class CompanyApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+
+
+    /**
+     * Add Tag to Company
+     * Applies a Tag to a Company.
+     * @param {String} companyId 
+     * @param {String} tagId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    addTagToCompanyWithHttpInfo(companyId, tagId) {
+      let postBody = null;
+      // verify the required parameter 'companyId' is set
+      if (companyId === undefined || companyId === null) {
+        throw new Error("Missing the required parameter 'companyId' when calling addTagToCompany");
+      }
+      // verify the required parameter 'tagId' is set
+      if (tagId === undefined || tagId === null) {
+        throw new Error("Missing the required parameter 'tagId' when calling addTagToCompany");
+      }
+
+      let pathParams = {
+        'company_id': companyId,
+        'tag_id': tagId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/companies/{company_id}/tags/{tag_id}', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Add Tag to Company
+     * Applies a Tag to a Company.
+     * @param {String} companyId 
+     * @param {String} tagId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    addTagToCompany(companyId, tagId) {
+      return this.addTagToCompanyWithHttpInfo(companyId, tagId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
 
 
     /**
@@ -243,7 +299,7 @@ export default class CompanyApi {
      * Retrieves a list of all Companies.<br/><br/>
      * @param {Object} opts Optional parameters
      * @param {Array.<String>} [fields] Comma-delimited list of Company properties to include in the response. (Fields such as `notes`, `fax_number`, `address`, `email_address`, `phone_number`, `update_time`, `create_time` and `custom_fields` aren't included, by default.)
-     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `company_name` - exact match on company name (equality only) - (String) `name` - company name with support for a wildcard at the end (e.g. `smith*`) - (String) `email` - exact match on email - (String) `since_time` - companies updated on or after this time - (String) `until_time` - companies updated on or before this time - (Number) `company_id` - supports comparison operators: `==`, `>`, `<`, `>=`, `<=`  For equality filters, use the `==` operator in encoded form `%3D%3D`: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  For wildcard name search (prefix only, case-insensitive): - `filter=name%3D%3DAcme%2A` (starts with \"Acme\")  For company_id comparison: - `filter=company_id%3E5` (company_id > 5) - `filter=company_id%3E%3D10` (company_id >= 10) 
      * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `email`  One of the following directions: - `asc` - `desc`
      * @param {Number} [pageSize] Total number of items to return per page
      * @param {String} [pageToken] Page token
@@ -283,7 +339,7 @@ export default class CompanyApi {
      * Retrieves a list of all Companies.<br/><br/>
      * @param {Object} opts Optional parameters
      * @param {Array.<String>} opts.fields Comma-delimited list of Company properties to include in the response. (Fields such as `notes`, `fax_number`, `address`, `email_address`, `phone_number`, `update_time`, `create_time` and `custom_fields` aren't included, by default.)
-     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `company_name` - exact match on company name (equality only) - (String) `name` - company name with support for a wildcard at the end (e.g. `smith*`) - (String) `email` - exact match on email - (String) `since_time` - companies updated on or after this time - (String) `until_time` - companies updated on or before this time - (Number) `company_id` - supports comparison operators: `==`, `>`, `<`, `>=`, `<=`  For equality filters, use the `==` operator in encoded form `%3D%3D`: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  For wildcard name search (prefix only, case-insensitive): - `filter=name%3D%3DAcme%2A` (starts with \"Acme\")  For company_id comparison: - `filter=company_id%3E5` (company_id > 5) - `filter=company_id%3E%3D10` (company_id >= 10) 
      * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `email`  One of the following directions: - `asc` - `desc`
      * @param {Number} opts.pageSize Total number of items to return per page
      * @param {String} opts.pageToken Page token
@@ -291,6 +347,124 @@ export default class CompanyApi {
      */
     listCompanies(opts) {
       return this.listCompaniesWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List Applied Tags
+     * Retrieves a list of tags applied to the specified Company
+     * @param {String} companyId Company identifier
+     * @param {Object} opts Optional parameters
+     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `name` - (String) `description` - (String) `category_id` (use `category_id==NONE` to filter tags not assigned to any category) - (String) `since_applied_time` - (String) `until_applied_time` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DCustomer` - `filter=category_id%3D%3D123` - `filter=category_id%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;` 
+     * @param {String} [pageToken] Page token
+     * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `name` - `create_time` - `update_time` - `applied_time` - `category_id`  One of the following directions: - `asc` - `desc`
+     * @param {Number} [pageSize] Total number of items to return per page
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListCompanyTagsResponse} and HTTP response
+     */
+    listTagsForCompanyWithHttpInfo(companyId, opts) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'companyId' is set
+      if (companyId === undefined || companyId === null) {
+        throw new Error("Missing the required parameter 'companyId' when calling listTagsForCompany");
+      }
+
+      let pathParams = {
+        'company_id': companyId
+      };
+      let queryParams = {
+        'filter': opts['filter'],
+        'page_token': opts['pageToken'],
+        'order_by': opts['orderBy'],
+        'page_size': opts['pageSize']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListCompanyTagsResponse;
+      return this.apiClient.callApi(
+        '/rest/v2/companies/{company_id}/tags', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List Applied Tags
+     * Retrieves a list of tags applied to the specified Company
+     * @param {String} companyId Company identifier
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `name` - (String) `description` - (String) `category_id` (use `category_id==NONE` to filter tags not assigned to any category) - (String) `since_applied_time` - (String) `until_applied_time` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DCustomer` - `filter=category_id%3D%3D123` - `filter=category_id%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;` 
+     * @param {String} opts.pageToken Page token
+     * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `name` - `create_time` - `update_time` - `applied_time` - `category_id`  One of the following directions: - `asc` - `desc`
+     * @param {Number} opts.pageSize Total number of items to return per page
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListCompanyTagsResponse}
+     */
+    listTagsForCompany(companyId, opts) {
+      return this.listTagsForCompanyWithHttpInfo(companyId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Remove Tag
+     * Remove a Tag from a Company.
+     * @param {String} companyId 
+     * @param {String} tagId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    removeTagFromCompanyWithHttpInfo(companyId, tagId) {
+      let postBody = null;
+      // verify the required parameter 'companyId' is set
+      if (companyId === undefined || companyId === null) {
+        throw new Error("Missing the required parameter 'companyId' when calling removeTagFromCompany");
+      }
+      // verify the required parameter 'tagId' is set
+      if (tagId === undefined || tagId === null) {
+        throw new Error("Missing the required parameter 'tagId' when calling removeTagFromCompany");
+      }
+
+      let pathParams = {
+        'company_id': companyId,
+        'tag_id': tagId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/companies/{company_id}/tags/{tag_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Remove Tag
+     * Remove a Tag from a Company.
+     * @param {String} companyId 
+     * @param {String} tagId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    removeTagFromCompany(companyId, tagId) {
+      return this.removeTagFromCompanyWithHttpInfo(companyId, tagId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
