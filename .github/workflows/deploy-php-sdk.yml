@@ -22,3 +22,4 @@ jobs:
           tag_name: ${{ github.event.release.tag_name }}
           tag_message: 'Release ${{ github.event.release.tag_name }}'
           force_orphan: true
+          exclude_assets: ''
