@@ -6,9 +6,8 @@ export * from '../models/AddProductInterestRequest';
 export * from '../models/AddToAutomationSequenceRequest';
 export * from '../models/AddToAutomationSequenceResponse';
 export * from '../models/Address';
-export * from '../models/AddressDetail';
 export * from '../models/AddressInformation';
-export * from '../models/AddressRequestDetail';
+export * from '../models/AddressRequest';
 export * from '../models/AffiliateAddToProgramRequest';
 export * from '../models/AffiliateCommission';
 export * from '../models/AffiliateCommissionEarned';
@@ -108,7 +107,7 @@ export * from '../models/CreateReferralRequest';
 export * from '../models/CreateShippingDiscountRequest';
 export * from '../models/CreateSubscriptionCommissionProgramRequest';
 export * from '../models/CreateSubscriptionPlanRequest';
-export * from '../models/CreateSubscriptionRequestDetail';
+export * from '../models/CreateSubscriptionRequest';
 export * from '../models/CreateTaskRequest';
 export * from '../models/CreateUpdateContactRequest';
 export * from '../models/CreateUpdateLeadSourceCategoryRequest';
@@ -219,7 +218,7 @@ export * from '../models/ListReportsResponse';
 export * from '../models/ListRestShippingMethodsResponse';
 export * from '../models/ListShippingDiscountsResponse';
 export * from '../models/ListSubscriptionPlansResponse';
-export * from '../models/ListSubscriptionsResponseList';
+export * from '../models/ListSubscriptionsResponse';
 export * from '../models/ListTagCategoriesResponse';
 export * from '../models/ListTaggedCompaniesResponse';
 export * from '../models/ListTaggedContactsResponse';
@@ -292,10 +291,9 @@ export * from '../models/ShippingInformation';
 export * from '../models/ShippingMethod';
 export * from '../models/SocialAccount';
 export * from '../models/StageDetails';
+export * from '../models/Subscription';
 export * from '../models/SubscriptionCommission';
 export * from '../models/SubscriptionCommissionProgram';
-export * from '../models/SubscriptionDetail';
-export * from '../models/SubscriptionList';
 export * from '../models/SubscriptionPlan';
 export * from '../models/SubscriptionPlanDetail';
 export * from '../models/SubscriptionPlanList';
@@ -337,7 +335,7 @@ export * from '../models/UpdateProductRequestDetail';
 export * from '../models/UpdateShippingDiscountRequest';
 export * from '../models/UpdateSubscriptionCommissionProgramRequest';
 export * from '../models/UpdateSubscriptionPlanRequest';
-export * from '../models/UpdateSubscriptionRequestDetail';
+export * from '../models/UpdateSubscriptionRequest';
 export * from '../models/UpdateTagCategoryResponse';
 export * from '../models/UpdateTagResponse';
 export * from '../models/UpdateTaskResponse';
@@ -356,9 +354,8 @@ import { AddProductInterestRequest, AddProductInterestRequestTypeEnum       } fr
 import { AddToAutomationSequenceRequest } from '../models/AddToAutomationSequenceRequest';
 import { AddToAutomationSequenceResponse, AddToAutomationSequenceResponseAddToAutomationSequenceResultsEnum   } from '../models/AddToAutomationSequenceResponse';
 import { Address     , AddressFieldEnum        } from '../models/Address';
-import { AddressDetail     , AddressDetailFieldEnum        } from '../models/AddressDetail';
 import { AddressInformation } from '../models/AddressInformation';
-import { AddressRequestDetail   , AddressRequestDetailFieldEnum      } from '../models/AddressRequestDetail';
+import { AddressRequest   , AddressRequestFieldEnum      } from '../models/AddressRequest';
 import { AffiliateAddToProgramRequest } from '../models/AffiliateAddToProgramRequest';
 import { AffiliateCommission } from '../models/AffiliateCommission';
 import { AffiliateCommissionEarned } from '../models/AffiliateCommissionEarned';
@@ -458,7 +455,7 @@ import { CreateReferralRequest       , CreateReferralRequestReferralTypeEnum   }
 import { CreateShippingDiscountRequest   , CreateShippingDiscountRequestDiscountTypeEnum    } from '../models/CreateShippingDiscountRequest';
 import { CreateSubscriptionCommissionProgramRequest } from '../models/CreateSubscriptionCommissionProgramRequest';
 import { CreateSubscriptionPlanRequest   , CreateSubscriptionPlanRequestCycleTypeEnum      } from '../models/CreateSubscriptionPlanRequest';
-import { CreateSubscriptionRequestDetail } from '../models/CreateSubscriptionRequestDetail';
+import { CreateSubscriptionRequest } from '../models/CreateSubscriptionRequest';
 import { CreateTaskRequest   , CreateTaskRequestPriorityEnum     , CreateTaskRequestRemindTimeMinsEnum     } from '../models/CreateTaskRequest';
 import { CreateUpdateContactRequest                       , CreateUpdateContactRequestSourceTypeEnum         } from '../models/CreateUpdateContactRequest';
 import { CreateUpdateLeadSourceCategoryRequest } from '../models/CreateUpdateLeadSourceCategoryRequest';
@@ -569,7 +566,7 @@ import { ListReportsResponse } from '../models/ListReportsResponse';
 import { ListRestShippingMethodsResponse } from '../models/ListRestShippingMethodsResponse';
 import { ListShippingDiscountsResponse } from '../models/ListShippingDiscountsResponse';
 import { ListSubscriptionPlansResponse } from '../models/ListSubscriptionPlansResponse';
-import { ListSubscriptionsResponseList } from '../models/ListSubscriptionsResponseList';
+import { ListSubscriptionsResponse } from '../models/ListSubscriptionsResponse';
 import { ListTagCategoriesResponse } from '../models/ListTagCategoriesResponse';
 import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesResponse';
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
@@ -642,10 +639,9 @@ import { ShippingInformation } from '../models/ShippingInformation';
 import { ShippingMethod } from '../models/ShippingMethod';
 import { SocialAccount , SocialAccountTypeEnum   } from '../models/SocialAccount';
 import { StageDetails } from '../models/StageDetails';
+import { Subscription         , SubscriptionBillingCycleEnum                    } from '../models/Subscription';
 import { SubscriptionCommission } from '../models/SubscriptionCommission';
 import { SubscriptionCommissionProgram } from '../models/SubscriptionCommissionProgram';
-import { SubscriptionDetail         , SubscriptionDetailBillingCycleEnum                  } from '../models/SubscriptionDetail';
-import { SubscriptionList         , SubscriptionListBillingCycleEnum                 } from '../models/SubscriptionList';
 import { SubscriptionPlan     , SubscriptionPlanCycleTypeEnum       } from '../models/SubscriptionPlan';
 import { SubscriptionPlanDetail   , SubscriptionPlanDetailBillingCycleEnum       } from '../models/SubscriptionPlanDetail';
 import { SubscriptionPlanList   , SubscriptionPlanListBillingCycleEnum       } from '../models/SubscriptionPlanList';
@@ -687,7 +683,7 @@ import { UpdateProductRequestDetail } from '../models/UpdateProductRequestDetail
 import { UpdateShippingDiscountRequest   , UpdateShippingDiscountRequestDiscountTypeEnum    } from '../models/UpdateShippingDiscountRequest';
 import { UpdateSubscriptionCommissionProgramRequest } from '../models/UpdateSubscriptionCommissionProgramRequest';
 import { UpdateSubscriptionPlanRequest   , UpdateSubscriptionPlanRequestCycleTypeEnum      } from '../models/UpdateSubscriptionPlanRequest';
-import { UpdateSubscriptionRequestDetail         , UpdateSubscriptionRequestDetailBillingCycleEnum             } from '../models/UpdateSubscriptionRequestDetail';
+import { UpdateSubscriptionRequest         , UpdateSubscriptionRequestBillingCycleEnum              } from '../models/UpdateSubscriptionRequest';
 import { UpdateTagCategoryResponse } from '../models/UpdateTagCategoryResponse';
 import { UpdateTagResponse } from '../models/UpdateTagResponse';
 import { UpdateTaskResponse    , UpdateTaskResponsePriorityEnum       , UpdateTaskResponseRemindTimeMinsEnum      } from '../models/UpdateTaskResponse';
@@ -715,8 +711,7 @@ let enumsMap: Set<string> = new Set<string>([
     "AddProductInterestRequestTypeEnum",
     "AddToAutomationSequenceResponseAddToAutomationSequenceResultsEnum",
     "AddressFieldEnum",
-    "AddressDetailFieldEnum",
-    "AddressRequestDetailFieldEnum",
+    "AddressRequestFieldEnum",
     "AffiliateProgramResourceTypeEnum",
     "ApplyCommissionRequestPayoutTypeEnum",
     "AutomationStatusEnum",
@@ -796,8 +791,7 @@ let enumsMap: Set<string> = new Set<string>([
     "RestEmailAddressStatusStatusEnum",
     "ShippingDiscountDiscountTypeEnum",
     "SocialAccountTypeEnum",
-    "SubscriptionDetailBillingCycleEnum",
-    "SubscriptionListBillingCycleEnum",
+    "SubscriptionBillingCycleEnum",
     "SubscriptionPlanCycleTypeEnum",
     "SubscriptionPlanDetailBillingCycleEnum",
     "SubscriptionPlanListBillingCycleEnum",
@@ -820,7 +814,7 @@ let enumsMap: Set<string> = new Set<string>([
     "UpdateProductOptionRequestOnlyContainsEnum",
     "UpdateShippingDiscountRequestDiscountTypeEnum",
     "UpdateSubscriptionPlanRequestCycleTypeEnum",
-    "UpdateSubscriptionRequestDetailBillingCycleEnum",
+    "UpdateSubscriptionRequestBillingCycleEnum",
     "UpdateTaskResponsePriorityEnum",
     "UpdateTaskResponseRemindTimeMinsEnum",
     "UserStatusEnum",
@@ -838,9 +832,8 @@ let typeMap: {[index: string]: any} = {
     "AddToAutomationSequenceRequest": AddToAutomationSequenceRequest,
     "AddToAutomationSequenceResponse": AddToAutomationSequenceResponse,
     "Address": Address,
-    "AddressDetail": AddressDetail,
     "AddressInformation": AddressInformation,
-    "AddressRequestDetail": AddressRequestDetail,
+    "AddressRequest": AddressRequest,
     "AffiliateAddToProgramRequest": AffiliateAddToProgramRequest,
     "AffiliateCommission": AffiliateCommission,
     "AffiliateCommissionEarned": AffiliateCommissionEarned,
@@ -940,7 +933,7 @@ let typeMap: {[index: string]: any} = {
     "CreateShippingDiscountRequest": CreateShippingDiscountRequest,
     "CreateSubscriptionCommissionProgramRequest": CreateSubscriptionCommissionProgramRequest,
     "CreateSubscriptionPlanRequest": CreateSubscriptionPlanRequest,
-    "CreateSubscriptionRequestDetail": CreateSubscriptionRequestDetail,
+    "CreateSubscriptionRequest": CreateSubscriptionRequest,
     "CreateTaskRequest": CreateTaskRequest,
     "CreateUpdateContactRequest": CreateUpdateContactRequest,
     "CreateUpdateLeadSourceCategoryRequest": CreateUpdateLeadSourceCategoryRequest,
@@ -1051,7 +1044,7 @@ let typeMap: {[index: string]: any} = {
     "ListRestShippingMethodsResponse": ListRestShippingMethodsResponse,
     "ListShippingDiscountsResponse": ListShippingDiscountsResponse,
     "ListSubscriptionPlansResponse": ListSubscriptionPlansResponse,
-    "ListSubscriptionsResponseList": ListSubscriptionsResponseList,
+    "ListSubscriptionsResponse": ListSubscriptionsResponse,
     "ListTagCategoriesResponse": ListTagCategoriesResponse,
     "ListTaggedCompaniesResponse": ListTaggedCompaniesResponse,
     "ListTaggedContactsResponse": ListTaggedContactsResponse,
@@ -1124,10 +1117,9 @@ let typeMap: {[index: string]: any} = {
     "ShippingMethod": ShippingMethod,
     "SocialAccount": SocialAccount,
     "StageDetails": StageDetails,
+    "Subscription": Subscription,
     "SubscriptionCommission": SubscriptionCommission,
     "SubscriptionCommissionProgram": SubscriptionCommissionProgram,
-    "SubscriptionDetail": SubscriptionDetail,
-    "SubscriptionList": SubscriptionList,
     "SubscriptionPlan": SubscriptionPlan,
     "SubscriptionPlanDetail": SubscriptionPlanDetail,
     "SubscriptionPlanList": SubscriptionPlanList,
@@ -1169,7 +1161,7 @@ let typeMap: {[index: string]: any} = {
     "UpdateShippingDiscountRequest": UpdateShippingDiscountRequest,
     "UpdateSubscriptionCommissionProgramRequest": UpdateSubscriptionCommissionProgramRequest,
     "UpdateSubscriptionPlanRequest": UpdateSubscriptionPlanRequest,
-    "UpdateSubscriptionRequestDetail": UpdateSubscriptionRequestDetail,
+    "UpdateSubscriptionRequest": UpdateSubscriptionRequest,
     "UpdateTagCategoryResponse": UpdateTagCategoryResponse,
     "UpdateTagResponse": UpdateTagResponse,
     "UpdateTaskResponse": UpdateTaskResponse,

@@ -68,7 +68,7 @@ null (empty response body)
 
 ## createSubscription
 
-> SubscriptionDetail createSubscription(createSubscriptionRequestDetail)
+> Subscription createSubscription(createSubscriptionRequest)
 
 Create Subscription
 
@@ -84,8 +84,8 @@ let oauth2 = defaultClient.authentications['oauth2'];
 oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
-let createSubscriptionRequestDetail = new KeapCoreServiceV2Sdk.CreateSubscriptionRequestDetail(); // CreateSubscriptionRequestDetail | 
-apiInstance.createSubscription(createSubscriptionRequestDetail).then((data) => {
+let createSubscriptionRequest = new KeapCoreServiceV2Sdk.CreateSubscriptionRequest(); // CreateSubscriptionRequest | 
+apiInstance.createSubscription(createSubscriptionRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -98,11 +98,11 @@ apiInstance.createSubscription(createSubscriptionRequestDetail).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createSubscriptionRequestDetail** | [**CreateSubscriptionRequestDetail**](CreateSubscriptionRequestDetail.md)|  | 
+ **createSubscriptionRequest** | [**CreateSubscriptionRequest**](CreateSubscriptionRequest.md)|  | 
 
 ### Return type
 
-[**SubscriptionDetail**](SubscriptionDetail.md)
+[**Subscription**](Subscription.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ null (empty response body)
 
 ## getSubscription
 
-> SubscriptionDetail getSubscription(subscriptionId)
+> Subscription getSubscription(subscriptionId)
 
 Retrieve a Subscription
 
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SubscriptionDetail**](SubscriptionDetail.md)
+[**Subscription**](Subscription.md)
 
 ### Authorization
 
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 
 ## listSubscriptions
 
-> ListSubscriptionsResponseList listSubscriptions(opts)
+> ListSubscriptionsResponse listSubscriptions(opts)
 
 List Subscriptions
 
@@ -277,8 +277,8 @@ oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
 let opts = {
-  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` 
-  'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc`
+  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive` 
+  'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc`
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
@@ -295,14 +295,14 @@ apiInstance.listSubscriptions(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  | [optional] 
- **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
+ **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  | [optional] 
+ **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
 
 ### Return type
 
-[**ListSubscriptionsResponseList**](ListSubscriptionsResponseList.md)
+[**ListSubscriptionsResponse**](ListSubscriptionsResponse.md)
 
 ### Authorization
 
@@ -360,7 +360,7 @@ This endpoint does not need any parameter.
 
 ## updateSubscription
 
-> SubscriptionDetail updateSubscription(subscriptionId, updateSubscriptionRequestDetail, opts)
+> Subscription updateSubscription(subscriptionId, updateSubscriptionRequest, opts)
 
 Update a Subscription
 
@@ -377,11 +377,11 @@ oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
 let subscriptionId = "subscriptionId_example"; // String | 
-let updateSubscriptionRequestDetail = new KeapCoreServiceV2Sdk.UpdateSubscriptionRequestDetail(); // UpdateSubscriptionRequestDetail | 
+let updateSubscriptionRequest = new KeapCoreServiceV2Sdk.UpdateSubscriptionRequest(); // UpdateSubscriptionRequest | 
 let opts = {
   'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateSubscription(subscriptionId, updateSubscriptionRequestDetail, opts).then((data) => {
+apiInstance.updateSubscription(subscriptionId, updateSubscriptionRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -395,12 +395,12 @@ apiInstance.updateSubscription(subscriptionId, updateSubscriptionRequestDetail, 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **subscriptionId** | **String**|  | 
- **updateSubscriptionRequestDetail** | [**UpdateSubscriptionRequestDetail**](UpdateSubscriptionRequestDetail.md)|  | 
+ **updateSubscriptionRequest** | [**UpdateSubscriptionRequest**](UpdateSubscriptionRequest.md)|  | 
  **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
-[**SubscriptionDetail**](SubscriptionDetail.md)
+[**Subscription**](Subscription.md)
 
 ### Authorization
 

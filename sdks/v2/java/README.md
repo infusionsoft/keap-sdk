@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.7</version>
+  <version>2.0.8</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.7"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.8"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.7.jar`
+- `target/core-service-v2-java-sdk-2.0.8.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -690,9 +690,8 @@ Class | Method | HTTP request | Description
  - [AddToAutomationSequenceRequest](docs/AddToAutomationSequenceRequest.md)
  - [AddToAutomationSequenceResponse](docs/AddToAutomationSequenceResponse.md)
  - [Address](docs/Address.md)
- - [AddressDetail](docs/AddressDetail.md)
  - [AddressInformation](docs/AddressInformation.md)
- - [AddressRequestDetail](docs/AddressRequestDetail.md)
+ - [AddressRequest](docs/AddressRequest.md)
  - [AffiliateAddToProgramRequest](docs/AffiliateAddToProgramRequest.md)
  - [AffiliateCommission](docs/AffiliateCommission.md)
  - [AffiliateCommissionEarned](docs/AffiliateCommissionEarned.md)
@@ -792,7 +791,7 @@ Class | Method | HTTP request | Description
  - [CreateShippingDiscountRequest](docs/CreateShippingDiscountRequest.md)
  - [CreateSubscriptionCommissionProgramRequest](docs/CreateSubscriptionCommissionProgramRequest.md)
  - [CreateSubscriptionPlanRequest](docs/CreateSubscriptionPlanRequest.md)
- - [CreateSubscriptionRequestDetail](docs/CreateSubscriptionRequestDetail.md)
+ - [CreateSubscriptionRequest](docs/CreateSubscriptionRequest.md)
  - [CreateTaskRequest](docs/CreateTaskRequest.md)
  - [CreateUpdateContactRequest](docs/CreateUpdateContactRequest.md)
  - [CreateUpdateLeadSourceCategoryRequest](docs/CreateUpdateLeadSourceCategoryRequest.md)
@@ -904,7 +903,7 @@ Class | Method | HTTP request | Description
  - [ListRestShippingMethodsResponse](docs/ListRestShippingMethodsResponse.md)
  - [ListShippingDiscountsResponse](docs/ListShippingDiscountsResponse.md)
  - [ListSubscriptionPlansResponse](docs/ListSubscriptionPlansResponse.md)
- - [ListSubscriptionsResponseList](docs/ListSubscriptionsResponseList.md)
+ - [ListSubscriptionsResponse](docs/ListSubscriptionsResponse.md)
  - [ListTagCategoriesResponse](docs/ListTagCategoriesResponse.md)
  - [ListTaggedCompaniesResponse](docs/ListTaggedCompaniesResponse.md)
  - [ListTaggedContactsResponse](docs/ListTaggedContactsResponse.md)
@@ -976,10 +975,9 @@ Class | Method | HTTP request | Description
  - [ShippingMethod](docs/ShippingMethod.md)
  - [SocialAccount](docs/SocialAccount.md)
  - [StageDetails](docs/StageDetails.md)
+ - [Subscription](docs/Subscription.md)
  - [SubscriptionCommission](docs/SubscriptionCommission.md)
  - [SubscriptionCommissionProgram](docs/SubscriptionCommissionProgram.md)
- - [SubscriptionDetail](docs/SubscriptionDetail.md)
- - [SubscriptionList](docs/SubscriptionList.md)
  - [SubscriptionPlan](docs/SubscriptionPlan.md)
  - [SubscriptionPlanDetail](docs/SubscriptionPlanDetail.md)
  - [SubscriptionPlanList](docs/SubscriptionPlanList.md)
@@ -1021,7 +1019,7 @@ Class | Method | HTTP request | Description
  - [UpdateShippingDiscountRequest](docs/UpdateShippingDiscountRequest.md)
  - [UpdateSubscriptionCommissionProgramRequest](docs/UpdateSubscriptionCommissionProgramRequest.md)
  - [UpdateSubscriptionPlanRequest](docs/UpdateSubscriptionPlanRequest.md)
- - [UpdateSubscriptionRequestDetail](docs/UpdateSubscriptionRequestDetail.md)
+ - [UpdateSubscriptionRequest](docs/UpdateSubscriptionRequest.md)
  - [UpdateTagCategoryResponse](docs/UpdateTagCategoryResponse.md)
  - [UpdateTagResponse](docs/UpdateTagResponse.md)
  - [UpdateTaskResponse](docs/UpdateTaskResponse.md)

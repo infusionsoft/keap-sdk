@@ -21,9 +21,8 @@ import AddProductInterestRequest from './model/AddProductInterestRequest';
 import AddToAutomationSequenceRequest from './model/AddToAutomationSequenceRequest';
 import AddToAutomationSequenceResponse from './model/AddToAutomationSequenceResponse';
 import Address from './model/Address';
-import AddressDetail from './model/AddressDetail';
 import AddressInformation from './model/AddressInformation';
-import AddressRequestDetail from './model/AddressRequestDetail';
+import AddressRequest from './model/AddressRequest';
 import AffiliateAddToProgramRequest from './model/AffiliateAddToProgramRequest';
 import AffiliateCommission from './model/AffiliateCommission';
 import AffiliateCommissionEarned from './model/AffiliateCommissionEarned';
@@ -123,7 +122,7 @@ import CreateReferralRequest from './model/CreateReferralRequest';
 import CreateShippingDiscountRequest from './model/CreateShippingDiscountRequest';
 import CreateSubscriptionCommissionProgramRequest from './model/CreateSubscriptionCommissionProgramRequest';
 import CreateSubscriptionPlanRequest from './model/CreateSubscriptionPlanRequest';
-import CreateSubscriptionRequestDetail from './model/CreateSubscriptionRequestDetail';
+import CreateSubscriptionRequest from './model/CreateSubscriptionRequest';
 import CreateTaskRequest from './model/CreateTaskRequest';
 import CreateUpdateContactRequest from './model/CreateUpdateContactRequest';
 import CreateUpdateLeadSourceCategoryRequest from './model/CreateUpdateLeadSourceCategoryRequest';
@@ -235,7 +234,7 @@ import ListReportsResponse from './model/ListReportsResponse';
 import ListRestShippingMethodsResponse from './model/ListRestShippingMethodsResponse';
 import ListShippingDiscountsResponse from './model/ListShippingDiscountsResponse';
 import ListSubscriptionPlansResponse from './model/ListSubscriptionPlansResponse';
-import ListSubscriptionsResponseList from './model/ListSubscriptionsResponseList';
+import ListSubscriptionsResponse from './model/ListSubscriptionsResponse';
 import ListTagCategoriesResponse from './model/ListTagCategoriesResponse';
 import ListTaggedCompaniesResponse from './model/ListTaggedCompaniesResponse';
 import ListTaggedContactsResponse from './model/ListTaggedContactsResponse';
@@ -307,10 +306,9 @@ import ShippingInformation from './model/ShippingInformation';
 import ShippingMethod from './model/ShippingMethod';
 import SocialAccount from './model/SocialAccount';
 import StageDetails from './model/StageDetails';
+import Subscription from './model/Subscription';
 import SubscriptionCommission from './model/SubscriptionCommission';
 import SubscriptionCommissionProgram from './model/SubscriptionCommissionProgram';
-import SubscriptionDetail from './model/SubscriptionDetail';
-import SubscriptionList from './model/SubscriptionList';
 import SubscriptionPlan from './model/SubscriptionPlan';
 import SubscriptionPlanDetail from './model/SubscriptionPlanDetail';
 import SubscriptionPlanList from './model/SubscriptionPlanList';
@@ -352,7 +350,7 @@ import UpdateProductRequestDetail from './model/UpdateProductRequestDetail';
 import UpdateShippingDiscountRequest from './model/UpdateShippingDiscountRequest';
 import UpdateSubscriptionCommissionProgramRequest from './model/UpdateSubscriptionCommissionProgramRequest';
 import UpdateSubscriptionPlanRequest from './model/UpdateSubscriptionPlanRequest';
-import UpdateSubscriptionRequestDetail from './model/UpdateSubscriptionRequestDetail';
+import UpdateSubscriptionRequest from './model/UpdateSubscriptionRequest';
 import UpdateTagCategoryResponse from './model/UpdateTagCategoryResponse';
 import UpdateTagResponse from './model/UpdateTagResponse';
 import UpdateTaskResponse from './model/UpdateTaskResponse';
@@ -436,7 +434,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.7
+* @version 2.0.8
 */
 export {
     /**
@@ -494,22 +492,16 @@ export {
     Address,
 
     /**
-     * The AddressDetail model constructor.
-     * @property {module:keap.core.v2/model/AddressDetail}
-     */
-    AddressDetail,
-
-    /**
      * The AddressInformation model constructor.
      * @property {module:keap.core.v2/model/AddressInformation}
      */
     AddressInformation,
 
     /**
-     * The AddressRequestDetail model constructor.
-     * @property {module:keap.core.v2/model/AddressRequestDetail}
+     * The AddressRequest model constructor.
+     * @property {module:keap.core.v2/model/AddressRequest}
      */
-    AddressRequestDetail,
+    AddressRequest,
 
     /**
      * The AffiliateAddToProgramRequest model constructor.
@@ -1106,10 +1098,10 @@ export {
     CreateSubscriptionPlanRequest,
 
     /**
-     * The CreateSubscriptionRequestDetail model constructor.
-     * @property {module:keap.core.v2/model/CreateSubscriptionRequestDetail}
+     * The CreateSubscriptionRequest model constructor.
+     * @property {module:keap.core.v2/model/CreateSubscriptionRequest}
      */
-    CreateSubscriptionRequestDetail,
+    CreateSubscriptionRequest,
 
     /**
      * The CreateTaskRequest model constructor.
@@ -1778,10 +1770,10 @@ export {
     ListSubscriptionPlansResponse,
 
     /**
-     * The ListSubscriptionsResponseList model constructor.
-     * @property {module:keap.core.v2/model/ListSubscriptionsResponseList}
+     * The ListSubscriptionsResponse model constructor.
+     * @property {module:keap.core.v2/model/ListSubscriptionsResponse}
      */
-    ListSubscriptionsResponseList,
+    ListSubscriptionsResponse,
 
     /**
      * The ListTagCategoriesResponse model constructor.
@@ -2210,6 +2202,12 @@ export {
     StageDetails,
 
     /**
+     * The Subscription model constructor.
+     * @property {module:keap.core.v2/model/Subscription}
+     */
+    Subscription,
+
+    /**
      * The SubscriptionCommission model constructor.
      * @property {module:keap.core.v2/model/SubscriptionCommission}
      */
@@ -2220,18 +2218,6 @@ export {
      * @property {module:keap.core.v2/model/SubscriptionCommissionProgram}
      */
     SubscriptionCommissionProgram,
-
-    /**
-     * The SubscriptionDetail model constructor.
-     * @property {module:keap.core.v2/model/SubscriptionDetail}
-     */
-    SubscriptionDetail,
-
-    /**
-     * The SubscriptionList model constructor.
-     * @property {module:keap.core.v2/model/SubscriptionList}
-     */
-    SubscriptionList,
 
     /**
      * The SubscriptionPlan model constructor.
@@ -2480,10 +2466,10 @@ export {
     UpdateSubscriptionPlanRequest,
 
     /**
-     * The UpdateSubscriptionRequestDetail model constructor.
-     * @property {module:keap.core.v2/model/UpdateSubscriptionRequestDetail}
+     * The UpdateSubscriptionRequest model constructor.
+     * @property {module:keap.core.v2/model/UpdateSubscriptionRequest}
      */
-    UpdateSubscriptionRequestDetail,
+    UpdateSubscriptionRequest,
 
     /**
      * The UpdateTagCategoryResponse model constructor.

@@ -11,9 +11,8 @@ import { AddProductInterestRequest } from '../models/AddProductInterestRequest';
 import { AddToAutomationSequenceRequest } from '../models/AddToAutomationSequenceRequest';
 import { AddToAutomationSequenceResponse } from '../models/AddToAutomationSequenceResponse';
 import { Address } from '../models/Address';
-import { AddressDetail } from '../models/AddressDetail';
 import { AddressInformation } from '../models/AddressInformation';
-import { AddressRequestDetail } from '../models/AddressRequestDetail';
+import { AddressRequest } from '../models/AddressRequest';
 import { AffiliateAddToProgramRequest } from '../models/AffiliateAddToProgramRequest';
 import { AffiliateCommission } from '../models/AffiliateCommission';
 import { AffiliateCommissionEarned } from '../models/AffiliateCommissionEarned';
@@ -113,7 +112,7 @@ import { CreateReferralRequest } from '../models/CreateReferralRequest';
 import { CreateShippingDiscountRequest } from '../models/CreateShippingDiscountRequest';
 import { CreateSubscriptionCommissionProgramRequest } from '../models/CreateSubscriptionCommissionProgramRequest';
 import { CreateSubscriptionPlanRequest } from '../models/CreateSubscriptionPlanRequest';
-import { CreateSubscriptionRequestDetail } from '../models/CreateSubscriptionRequestDetail';
+import { CreateSubscriptionRequest } from '../models/CreateSubscriptionRequest';
 import { CreateTaskRequest } from '../models/CreateTaskRequest';
 import { CreateUpdateContactRequest } from '../models/CreateUpdateContactRequest';
 import { CreateUpdateLeadSourceCategoryRequest } from '../models/CreateUpdateLeadSourceCategoryRequest';
@@ -224,7 +223,7 @@ import { ListReportsResponse } from '../models/ListReportsResponse';
 import { ListRestShippingMethodsResponse } from '../models/ListRestShippingMethodsResponse';
 import { ListShippingDiscountsResponse } from '../models/ListShippingDiscountsResponse';
 import { ListSubscriptionPlansResponse } from '../models/ListSubscriptionPlansResponse';
-import { ListSubscriptionsResponseList } from '../models/ListSubscriptionsResponseList';
+import { ListSubscriptionsResponse } from '../models/ListSubscriptionsResponse';
 import { ListTagCategoriesResponse } from '../models/ListTagCategoriesResponse';
 import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesResponse';
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
@@ -297,10 +296,9 @@ import { ShippingInformation } from '../models/ShippingInformation';
 import { ShippingMethod } from '../models/ShippingMethod';
 import { SocialAccount } from '../models/SocialAccount';
 import { StageDetails } from '../models/StageDetails';
+import { Subscription } from '../models/Subscription';
 import { SubscriptionCommission } from '../models/SubscriptionCommission';
 import { SubscriptionCommissionProgram } from '../models/SubscriptionCommissionProgram';
-import { SubscriptionDetail } from '../models/SubscriptionDetail';
-import { SubscriptionList } from '../models/SubscriptionList';
 import { SubscriptionPlan } from '../models/SubscriptionPlan';
 import { SubscriptionPlanDetail } from '../models/SubscriptionPlanDetail';
 import { SubscriptionPlanList } from '../models/SubscriptionPlanList';
@@ -342,7 +340,7 @@ import { UpdateProductRequestDetail } from '../models/UpdateProductRequestDetail
 import { UpdateShippingDiscountRequest } from '../models/UpdateShippingDiscountRequest';
 import { UpdateSubscriptionCommissionProgramRequest } from '../models/UpdateSubscriptionCommissionProgramRequest';
 import { UpdateSubscriptionPlanRequest } from '../models/UpdateSubscriptionPlanRequest';
-import { UpdateSubscriptionRequestDetail } from '../models/UpdateSubscriptionRequestDetail';
+import { UpdateSubscriptionRequest } from '../models/UpdateSubscriptionRequest';
 import { UpdateTagCategoryResponse } from '../models/UpdateTagCategoryResponse';
 import { UpdateTagResponse } from '../models/UpdateTagResponse';
 import { UpdateTaskResponse } from '../models/UpdateTaskResponse';
@@ -1032,8 +1030,8 @@ export class ObservableAffiliateApi {
     /**
      * Retrieves a list of Affiliates
      * List Affiliates
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;affiliate_name&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;affiliate_name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;
-     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
@@ -1060,8 +1058,8 @@ export class ObservableAffiliateApi {
     /**
      * Retrieves a list of Affiliates
      * List Affiliates
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;affiliate_name&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;affiliate_name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;
-     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
@@ -3379,7 +3377,7 @@ export class ObservableContactApi {
      * Retrieves a list of Contacts
      * List Contacts
      * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; - (String) &#x60;phone_field&#x60; (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; - (String) &#x60;phone_field&#x60; (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5) - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60;   You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -3408,7 +3406,7 @@ export class ObservableContactApi {
      * Retrieves a list of Contacts
      * List Contacts
      * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; - (String) &#x60;phone_field&#x60; (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; - (String) &#x60;phone_field&#x60; (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5) - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60;   You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -9936,12 +9934,12 @@ export class ObservableSubscriptionsApi {
     /**
      * Creates a subscription with the specified product and product subscription id.
      * Create Subscription
-     * @param createSubscriptionRequestDetail
+     * @param createSubscriptionRequest
      */
-    public createSubscriptionWithHttpInfo(createSubscriptionRequestDetail: CreateSubscriptionRequestDetail, _options?: ConfigurationOptions): Observable<HttpInfo<SubscriptionDetail>> {
+    public createSubscriptionWithHttpInfo(createSubscriptionRequest: CreateSubscriptionRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Subscription>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createSubscription(createSubscriptionRequestDetail, _config);
+        const requestContextPromise = this.requestFactory.createSubscription(createSubscriptionRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -9961,10 +9959,10 @@ export class ObservableSubscriptionsApi {
     /**
      * Creates a subscription with the specified product and product subscription id.
      * Create Subscription
-     * @param createSubscriptionRequestDetail
+     * @param createSubscriptionRequest
      */
-    public createSubscription(createSubscriptionRequestDetail: CreateSubscriptionRequestDetail, _options?: ConfigurationOptions): Observable<SubscriptionDetail> {
-        return this.createSubscriptionWithHttpInfo(createSubscriptionRequestDetail, _options).pipe(map((apiResponse: HttpInfo<SubscriptionDetail>) => apiResponse.data));
+    public createSubscription(createSubscriptionRequest: CreateSubscriptionRequest, _options?: ConfigurationOptions): Observable<Subscription> {
+        return this.createSubscriptionWithHttpInfo(createSubscriptionRequest, _options).pipe(map((apiResponse: HttpInfo<Subscription>) => apiResponse.data));
     }
 
     /**
@@ -10040,7 +10038,7 @@ export class ObservableSubscriptionsApi {
      * Retrieve a Subscription
      * @param subscriptionId
      */
-    public getSubscriptionWithHttpInfo(subscriptionId: string, _options?: ConfigurationOptions): Observable<HttpInfo<SubscriptionDetail>> {
+    public getSubscriptionWithHttpInfo(subscriptionId: string, _options?: ConfigurationOptions): Observable<HttpInfo<Subscription>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getSubscription(subscriptionId, _config);
@@ -10065,19 +10063,19 @@ export class ObservableSubscriptionsApi {
      * Retrieve a Subscription
      * @param subscriptionId
      */
-    public getSubscription(subscriptionId: string, _options?: ConfigurationOptions): Observable<SubscriptionDetail> {
-        return this.getSubscriptionWithHttpInfo(subscriptionId, _options).pipe(map((apiResponse: HttpInfo<SubscriptionDetail>) => apiResponse.data));
+    public getSubscription(subscriptionId: string, _options?: ConfigurationOptions): Observable<Subscription> {
+        return this.getSubscriptionWithHttpInfo(subscriptionId, _options).pipe(map((apiResponse: HttpInfo<Subscription>) => apiResponse.data));
     }
 
     /**
      * Retrieves a list of subscriptions using the specified search criteria.
      * List Subscriptions
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; 
-     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listSubscriptionsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListSubscriptionsResponseList>> {
+    public listSubscriptionsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListSubscriptionsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.listSubscriptions(filter, orderBy, pageSize, pageToken, _config);
@@ -10100,13 +10098,13 @@ export class ObservableSubscriptionsApi {
     /**
      * Retrieves a list of subscriptions using the specified search criteria.
      * List Subscriptions
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; 
-     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listSubscriptions(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListSubscriptionsResponseList> {
-        return this.listSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListSubscriptionsResponseList>) => apiResponse.data));
+    public listSubscriptions(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListSubscriptionsResponse> {
+        return this.listSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListSubscriptionsResponse>) => apiResponse.data));
     }
 
     /**
@@ -10145,13 +10143,13 @@ export class ObservableSubscriptionsApi {
      * Updates a Subscription
      * Update a Subscription
      * @param subscriptionId
-     * @param updateSubscriptionRequestDetail
+     * @param updateSubscriptionRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscriptionWithHttpInfo(subscriptionId: string, updateSubscriptionRequestDetail: UpdateSubscriptionRequestDetail, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<SubscriptionDetail>> {
+    public updateSubscriptionWithHttpInfo(subscriptionId: string, updateSubscriptionRequest: UpdateSubscriptionRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<Subscription>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateSubscription(subscriptionId, updateSubscriptionRequestDetail, updateMask, _config);
+        const requestContextPromise = this.requestFactory.updateSubscription(subscriptionId, updateSubscriptionRequest, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -10172,11 +10170,11 @@ export class ObservableSubscriptionsApi {
      * Updates a Subscription
      * Update a Subscription
      * @param subscriptionId
-     * @param updateSubscriptionRequestDetail
+     * @param updateSubscriptionRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscription(subscriptionId: string, updateSubscriptionRequestDetail: UpdateSubscriptionRequestDetail, updateMask?: any, _options?: ConfigurationOptions): Observable<SubscriptionDetail> {
-        return this.updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequestDetail, updateMask, _options).pipe(map((apiResponse: HttpInfo<SubscriptionDetail>) => apiResponse.data));
+    public updateSubscription(subscriptionId: string, updateSubscriptionRequest: UpdateSubscriptionRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<Subscription> {
+        return this.updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<Subscription>) => apiResponse.data));
     }
 
     /**

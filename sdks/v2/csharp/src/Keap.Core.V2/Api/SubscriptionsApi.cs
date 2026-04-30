@@ -60,10 +60,10 @@ namespace Keap.Core.V2.Api
         /// Creates a subscription with the specified product and product subscription id.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createSubscriptionRequestDetail"></param>
+        /// <param name="createSubscriptionRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>SubscriptionDetail</returns>
-        SubscriptionDetail CreateSubscription(CreateSubscriptionRequestDetail createSubscriptionRequestDetail, int operationIndex = 0);
+        /// <returns>Subscription</returns>
+        Subscription CreateSubscription(CreateSubscriptionRequest createSubscriptionRequest, int operationIndex = 0);
 
         /// <summary>
         /// Create Subscription
@@ -72,10 +72,10 @@ namespace Keap.Core.V2.Api
         /// Creates a subscription with the specified product and product subscription id.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createSubscriptionRequestDetail"></param>
+        /// <param name="createSubscriptionRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of SubscriptionDetail</returns>
-        ApiResponse<SubscriptionDetail> CreateSubscriptionWithHttpInfo(CreateSubscriptionRequestDetail createSubscriptionRequestDetail, int operationIndex = 0);
+        /// <returns>ApiResponse of Subscription</returns>
+        ApiResponse<Subscription> CreateSubscriptionWithHttpInfo(CreateSubscriptionRequest createSubscriptionRequest, int operationIndex = 0);
         /// <summary>
         /// Create a Subscription Custom Field
         /// </summary>
@@ -131,8 +131,8 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subscriptionId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>SubscriptionDetail</returns>
-        SubscriptionDetail GetSubscription(string subscriptionId, int operationIndex = 0);
+        /// <returns>Subscription</returns>
+        Subscription GetSubscription(string subscriptionId, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a Subscription
@@ -143,8 +143,8 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subscriptionId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of SubscriptionDetail</returns>
-        ApiResponse<SubscriptionDetail> GetSubscriptionWithHttpInfo(string subscriptionId, int operationIndex = 0);
+        /// <returns>ApiResponse of Subscription</returns>
+        ApiResponse<Subscription> GetSubscriptionWithHttpInfo(string subscriptionId, int operationIndex = 0);
         /// <summary>
         /// List Subscriptions
         /// </summary>
@@ -152,13 +152,13 @@ namespace Keap.Core.V2.Api
         /// Retrieves a list of subscriptions using the specified search criteria.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  (optional)</param>
-        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ListSubscriptionsResponseList</returns>
-        ListSubscriptionsResponseList ListSubscriptions(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0);
+        /// <returns>ListSubscriptionsResponse</returns>
+        ListSubscriptionsResponse ListSubscriptions(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0);
 
         /// <summary>
         /// List Subscriptions
@@ -167,13 +167,13 @@ namespace Keap.Core.V2.Api
         /// Retrieves a list of subscriptions using the specified search criteria.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  (optional)</param>
-        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ListSubscriptionsResponseList</returns>
-        ApiResponse<ListSubscriptionsResponseList> ListSubscriptionsWithHttpInfo(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0);
+        /// <returns>ApiResponse of ListSubscriptionsResponse</returns>
+        ApiResponse<ListSubscriptionsResponse> ListSubscriptionsWithHttpInfo(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve Subscription Custom Field Model
         /// </summary>
@@ -203,11 +203,11 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subscriptionId"></param>
-        /// <param name="updateSubscriptionRequestDetail"></param>
+        /// <param name="updateSubscriptionRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>SubscriptionDetail</returns>
-        SubscriptionDetail UpdateSubscription(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object? updateMask = default, int operationIndex = 0);
+        /// <returns>Subscription</returns>
+        Subscription UpdateSubscription(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Subscription
@@ -217,11 +217,11 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subscriptionId"></param>
-        /// <param name="updateSubscriptionRequestDetail"></param>
+        /// <param name="updateSubscriptionRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of SubscriptionDetail</returns>
-        ApiResponse<SubscriptionDetail> UpdateSubscriptionWithHttpInfo(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object? updateMask = default, int operationIndex = 0);
+        /// <returns>ApiResponse of Subscription</returns>
+        ApiResponse<Subscription> UpdateSubscriptionWithHttpInfo(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object? updateMask = default, int operationIndex = 0);
         /// <summary>
         /// Update a Subscription Custom Field
         /// </summary>
@@ -292,11 +292,11 @@ namespace Keap.Core.V2.Api
         /// Creates a subscription with the specified product and product subscription id.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createSubscriptionRequestDetail"></param>
+        /// <param name="createSubscriptionRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SubscriptionDetail</returns>
-        System.Threading.Tasks.Task<SubscriptionDetail> CreateSubscriptionAsync(CreateSubscriptionRequestDetail createSubscriptionRequestDetail, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of Subscription</returns>
+        System.Threading.Tasks.Task<Subscription> CreateSubscriptionAsync(CreateSubscriptionRequest createSubscriptionRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create Subscription
@@ -305,11 +305,11 @@ namespace Keap.Core.V2.Api
         /// Creates a subscription with the specified product and product subscription id.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createSubscriptionRequestDetail"></param>
+        /// <param name="createSubscriptionRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SubscriptionDetail)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SubscriptionDetail>> CreateSubscriptionWithHttpInfoAsync(CreateSubscriptionRequestDetail createSubscriptionRequestDetail, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (Subscription)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Subscription>> CreateSubscriptionWithHttpInfoAsync(CreateSubscriptionRequest createSubscriptionRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a Subscription Custom Field
         /// </summary>
@@ -370,8 +370,8 @@ namespace Keap.Core.V2.Api
         /// <param name="subscriptionId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SubscriptionDetail</returns>
-        System.Threading.Tasks.Task<SubscriptionDetail> GetSubscriptionAsync(string subscriptionId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of Subscription</returns>
+        System.Threading.Tasks.Task<Subscription> GetSubscriptionAsync(string subscriptionId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieve a Subscription
@@ -383,8 +383,8 @@ namespace Keap.Core.V2.Api
         /// <param name="subscriptionId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SubscriptionDetail)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SubscriptionDetail>> GetSubscriptionWithHttpInfoAsync(string subscriptionId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (Subscription)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Subscription>> GetSubscriptionWithHttpInfoAsync(string subscriptionId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List Subscriptions
         /// </summary>
@@ -392,14 +392,14 @@ namespace Keap.Core.V2.Api
         /// Retrieves a list of subscriptions using the specified search criteria.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  (optional)</param>
-        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListSubscriptionsResponseList</returns>
-        System.Threading.Tasks.Task<ListSubscriptionsResponseList> ListSubscriptionsAsync(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ListSubscriptionsResponse</returns>
+        System.Threading.Tasks.Task<ListSubscriptionsResponse> ListSubscriptionsAsync(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List Subscriptions
@@ -408,14 +408,14 @@ namespace Keap.Core.V2.Api
         /// Retrieves a list of subscriptions using the specified search criteria.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  (optional)</param>
-        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListSubscriptionsResponseList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListSubscriptionsResponseList>> ListSubscriptionsWithHttpInfoAsync(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (ListSubscriptionsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListSubscriptionsResponse>> ListSubscriptionsWithHttpInfoAsync(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieve Subscription Custom Field Model
         /// </summary>
@@ -447,12 +447,12 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subscriptionId"></param>
-        /// <param name="updateSubscriptionRequestDetail"></param>
+        /// <param name="updateSubscriptionRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SubscriptionDetail</returns>
-        System.Threading.Tasks.Task<SubscriptionDetail> UpdateSubscriptionAsync(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of Subscription</returns>
+        System.Threading.Tasks.Task<Subscription> UpdateSubscriptionAsync(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Subscription
@@ -462,12 +462,12 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subscriptionId"></param>
-        /// <param name="updateSubscriptionRequestDetail"></param>
+        /// <param name="updateSubscriptionRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SubscriptionDetail)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SubscriptionDetail>> UpdateSubscriptionWithHttpInfoAsync(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (Subscription)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Subscription>> UpdateSubscriptionWithHttpInfoAsync(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update a Subscription Custom Field
         /// </summary>
@@ -816,12 +816,12 @@ namespace Keap.Core.V2.Api
         /// Create Subscription Creates a subscription with the specified product and product subscription id.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createSubscriptionRequestDetail"></param>
+        /// <param name="createSubscriptionRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>SubscriptionDetail</returns>
-        public SubscriptionDetail CreateSubscription(CreateSubscriptionRequestDetail createSubscriptionRequestDetail, int operationIndex = 0)
+        /// <returns>Subscription</returns>
+        public Subscription CreateSubscription(CreateSubscriptionRequest createSubscriptionRequest, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<SubscriptionDetail> localVarResponse = CreateSubscriptionWithHttpInfo(createSubscriptionRequestDetail);
+            Keap.Core.V2.Client.ApiResponse<Subscription> localVarResponse = CreateSubscriptionWithHttpInfo(createSubscriptionRequest);
             return localVarResponse.Data;
         }
 
@@ -829,15 +829,15 @@ namespace Keap.Core.V2.Api
         /// Create Subscription Creates a subscription with the specified product and product subscription id.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createSubscriptionRequestDetail"></param>
+        /// <param name="createSubscriptionRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of SubscriptionDetail</returns>
-        public Keap.Core.V2.Client.ApiResponse<SubscriptionDetail> CreateSubscriptionWithHttpInfo(CreateSubscriptionRequestDetail createSubscriptionRequestDetail, int operationIndex = 0)
+        /// <returns>ApiResponse of Subscription</returns>
+        public Keap.Core.V2.Client.ApiResponse<Subscription> CreateSubscriptionWithHttpInfo(CreateSubscriptionRequest createSubscriptionRequest, int operationIndex = 0)
         {
-            // verify the required parameter 'createSubscriptionRequestDetail' is set
-            if (createSubscriptionRequestDetail == null)
+            // verify the required parameter 'createSubscriptionRequest' is set
+            if (createSubscriptionRequest == null)
             {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'createSubscriptionRequestDetail' when calling SubscriptionsApi->CreateSubscription");
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'createSubscriptionRequest' when calling SubscriptionsApi->CreateSubscription");
             }
 
             Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
@@ -864,7 +864,7 @@ namespace Keap.Core.V2.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = createSubscriptionRequestDetail;
+            localVarRequestOptions.Data = createSubscriptionRequest;
 
             localVarRequestOptions.Operation = "SubscriptionsApi.CreateSubscription";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -887,7 +887,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<SubscriptionDetail>("/rest/v2/subscriptions", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<Subscription>("/rest/v2/subscriptions", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateSubscription", localVarResponse);
@@ -904,13 +904,13 @@ namespace Keap.Core.V2.Api
         /// Create Subscription Creates a subscription with the specified product and product subscription id.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createSubscriptionRequestDetail"></param>
+        /// <param name="createSubscriptionRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SubscriptionDetail</returns>
-        public async System.Threading.Tasks.Task<SubscriptionDetail> CreateSubscriptionAsync(CreateSubscriptionRequestDetail createSubscriptionRequestDetail, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of Subscription</returns>
+        public async System.Threading.Tasks.Task<Subscription> CreateSubscriptionAsync(CreateSubscriptionRequest createSubscriptionRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<SubscriptionDetail> localVarResponse = await CreateSubscriptionWithHttpInfoAsync(createSubscriptionRequestDetail, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<Subscription> localVarResponse = await CreateSubscriptionWithHttpInfoAsync(createSubscriptionRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -918,16 +918,16 @@ namespace Keap.Core.V2.Api
         /// Create Subscription Creates a subscription with the specified product and product subscription id.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createSubscriptionRequestDetail"></param>
+        /// <param name="createSubscriptionRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SubscriptionDetail)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<SubscriptionDetail>> CreateSubscriptionWithHttpInfoAsync(CreateSubscriptionRequestDetail createSubscriptionRequestDetail, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (Subscription)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Subscription>> CreateSubscriptionWithHttpInfoAsync(CreateSubscriptionRequest createSubscriptionRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            // verify the required parameter 'createSubscriptionRequestDetail' is set
-            if (createSubscriptionRequestDetail == null)
+            // verify the required parameter 'createSubscriptionRequest' is set
+            if (createSubscriptionRequest == null)
             {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'createSubscriptionRequestDetail' when calling SubscriptionsApi->CreateSubscription");
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'createSubscriptionRequest' when calling SubscriptionsApi->CreateSubscription");
             }
 
 
@@ -954,7 +954,7 @@ namespace Keap.Core.V2.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = createSubscriptionRequestDetail;
+            localVarRequestOptions.Data = createSubscriptionRequest;
 
             localVarRequestOptions.Operation = "SubscriptionsApi.CreateSubscription";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -977,7 +977,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<SubscriptionDetail>("/rest/v2/subscriptions", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Subscription>("/rest/v2/subscriptions", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1351,10 +1351,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subscriptionId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>SubscriptionDetail</returns>
-        public SubscriptionDetail GetSubscription(string subscriptionId, int operationIndex = 0)
+        /// <returns>Subscription</returns>
+        public Subscription GetSubscription(string subscriptionId, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<SubscriptionDetail> localVarResponse = GetSubscriptionWithHttpInfo(subscriptionId);
+            Keap.Core.V2.Client.ApiResponse<Subscription> localVarResponse = GetSubscriptionWithHttpInfo(subscriptionId);
             return localVarResponse.Data;
         }
 
@@ -1364,8 +1364,8 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subscriptionId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of SubscriptionDetail</returns>
-        public Keap.Core.V2.Client.ApiResponse<SubscriptionDetail> GetSubscriptionWithHttpInfo(string subscriptionId, int operationIndex = 0)
+        /// <returns>ApiResponse of Subscription</returns>
+        public Keap.Core.V2.Client.ApiResponse<Subscription> GetSubscriptionWithHttpInfo(string subscriptionId, int operationIndex = 0)
         {
             // verify the required parameter 'subscriptionId' is set
             if (subscriptionId == null)
@@ -1419,7 +1419,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<SubscriptionDetail>("/rest/v2/subscriptions/{subscription_id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<Subscription>("/rest/v2/subscriptions/{subscription_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetSubscription", localVarResponse);
@@ -1439,10 +1439,10 @@ namespace Keap.Core.V2.Api
         /// <param name="subscriptionId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SubscriptionDetail</returns>
-        public async System.Threading.Tasks.Task<SubscriptionDetail> GetSubscriptionAsync(string subscriptionId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of Subscription</returns>
+        public async System.Threading.Tasks.Task<Subscription> GetSubscriptionAsync(string subscriptionId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<SubscriptionDetail> localVarResponse = await GetSubscriptionWithHttpInfoAsync(subscriptionId, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<Subscription> localVarResponse = await GetSubscriptionWithHttpInfoAsync(subscriptionId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1453,8 +1453,8 @@ namespace Keap.Core.V2.Api
         /// <param name="subscriptionId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SubscriptionDetail)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<SubscriptionDetail>> GetSubscriptionWithHttpInfoAsync(string subscriptionId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (Subscription)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Subscription>> GetSubscriptionWithHttpInfoAsync(string subscriptionId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'subscriptionId' is set
             if (subscriptionId == null)
@@ -1508,7 +1508,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<SubscriptionDetail>("/rest/v2/subscriptions/{subscription_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<Subscription>("/rest/v2/subscriptions/{subscription_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1526,15 +1526,15 @@ namespace Keap.Core.V2.Api
         /// List Subscriptions Retrieves a list of subscriptions using the specified search criteria.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  (optional)</param>
-        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ListSubscriptionsResponseList</returns>
-        public ListSubscriptionsResponseList ListSubscriptions(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0)
+        /// <returns>ListSubscriptionsResponse</returns>
+        public ListSubscriptionsResponse ListSubscriptions(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<ListSubscriptionsResponseList> localVarResponse = ListSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken);
+            Keap.Core.V2.Client.ApiResponse<ListSubscriptionsResponse> localVarResponse = ListSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken);
             return localVarResponse.Data;
         }
 
@@ -1542,13 +1542,13 @@ namespace Keap.Core.V2.Api
         /// List Subscriptions Retrieves a list of subscriptions using the specified search criteria.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  (optional)</param>
-        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ListSubscriptionsResponseList</returns>
-        public Keap.Core.V2.Client.ApiResponse<ListSubscriptionsResponseList> ListSubscriptionsWithHttpInfo(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0)
+        /// <returns>ApiResponse of ListSubscriptionsResponse</returns>
+        public Keap.Core.V2.Client.ApiResponse<ListSubscriptionsResponse> ListSubscriptionsWithHttpInfo(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
 
@@ -1611,7 +1611,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ListSubscriptionsResponseList>("/rest/v2/subscriptions", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ListSubscriptionsResponse>("/rest/v2/subscriptions", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListSubscriptions", localVarResponse);
@@ -1628,16 +1628,16 @@ namespace Keap.Core.V2.Api
         /// List Subscriptions Retrieves a list of subscriptions using the specified search criteria.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  (optional)</param>
-        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListSubscriptionsResponseList</returns>
-        public async System.Threading.Tasks.Task<ListSubscriptionsResponseList> ListSubscriptionsAsync(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ListSubscriptionsResponse</returns>
+        public async System.Threading.Tasks.Task<ListSubscriptionsResponse> ListSubscriptionsAsync(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<ListSubscriptionsResponseList> localVarResponse = await ListSubscriptionsWithHttpInfoAsync(filter, orderBy, pageSize, pageToken, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<ListSubscriptionsResponse> localVarResponse = await ListSubscriptionsWithHttpInfoAsync(filter, orderBy, pageSize, pageToken, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1645,14 +1645,14 @@ namespace Keap.Core.V2.Api
         /// List Subscriptions Retrieves a list of subscriptions using the specified search criteria.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  (optional)</param>
-        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListSubscriptionsResponseList)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ListSubscriptionsResponseList>> ListSubscriptionsWithHttpInfoAsync(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (ListSubscriptionsResponse)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ListSubscriptionsResponse>> ListSubscriptionsWithHttpInfoAsync(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
@@ -1715,7 +1715,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListSubscriptionsResponseList>("/rest/v2/subscriptions", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListSubscriptionsResponse>("/rest/v2/subscriptions", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1893,13 +1893,13 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subscriptionId"></param>
-        /// <param name="updateSubscriptionRequestDetail"></param>
+        /// <param name="updateSubscriptionRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>SubscriptionDetail</returns>
-        public SubscriptionDetail UpdateSubscription(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object? updateMask = default, int operationIndex = 0)
+        /// <returns>Subscription</returns>
+        public Subscription UpdateSubscription(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object? updateMask = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<SubscriptionDetail> localVarResponse = UpdateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequestDetail, updateMask);
+            Keap.Core.V2.Client.ApiResponse<Subscription> localVarResponse = UpdateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequest, updateMask);
             return localVarResponse.Data;
         }
 
@@ -1908,11 +1908,11 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subscriptionId"></param>
-        /// <param name="updateSubscriptionRequestDetail"></param>
+        /// <param name="updateSubscriptionRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of SubscriptionDetail</returns>
-        public Keap.Core.V2.Client.ApiResponse<SubscriptionDetail> UpdateSubscriptionWithHttpInfo(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object? updateMask = default, int operationIndex = 0)
+        /// <returns>ApiResponse of Subscription</returns>
+        public Keap.Core.V2.Client.ApiResponse<Subscription> UpdateSubscriptionWithHttpInfo(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'subscriptionId' is set
             if (subscriptionId == null)
@@ -1920,10 +1920,10 @@ namespace Keap.Core.V2.Api
                 throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'subscriptionId' when calling SubscriptionsApi->UpdateSubscription");
             }
 
-            // verify the required parameter 'updateSubscriptionRequestDetail' is set
-            if (updateSubscriptionRequestDetail == null)
+            // verify the required parameter 'updateSubscriptionRequest' is set
+            if (updateSubscriptionRequest == null)
             {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateSubscriptionRequestDetail' when calling SubscriptionsApi->UpdateSubscription");
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateSubscriptionRequest' when calling SubscriptionsApi->UpdateSubscription");
             }
 
             Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
@@ -1955,7 +1955,7 @@ namespace Keap.Core.V2.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
             }
-            localVarRequestOptions.Data = updateSubscriptionRequestDetail;
+            localVarRequestOptions.Data = updateSubscriptionRequest;
 
             localVarRequestOptions.Operation = "SubscriptionsApi.UpdateSubscription";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1978,7 +1978,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Patch<SubscriptionDetail>("/rest/v2/subscriptions/{subscription_id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Patch<Subscription>("/rest/v2/subscriptions/{subscription_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateSubscription", localVarResponse);
@@ -1996,14 +1996,14 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subscriptionId"></param>
-        /// <param name="updateSubscriptionRequestDetail"></param>
+        /// <param name="updateSubscriptionRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SubscriptionDetail</returns>
-        public async System.Threading.Tasks.Task<SubscriptionDetail> UpdateSubscriptionAsync(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of Subscription</returns>
+        public async System.Threading.Tasks.Task<Subscription> UpdateSubscriptionAsync(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<SubscriptionDetail> localVarResponse = await UpdateSubscriptionWithHttpInfoAsync(subscriptionId, updateSubscriptionRequestDetail, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<Subscription> localVarResponse = await UpdateSubscriptionWithHttpInfoAsync(subscriptionId, updateSubscriptionRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2012,12 +2012,12 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subscriptionId"></param>
-        /// <param name="updateSubscriptionRequestDetail"></param>
+        /// <param name="updateSubscriptionRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SubscriptionDetail)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<SubscriptionDetail>> UpdateSubscriptionWithHttpInfoAsync(string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (Subscription)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Subscription>> UpdateSubscriptionWithHttpInfoAsync(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'subscriptionId' is set
             if (subscriptionId == null)
@@ -2025,10 +2025,10 @@ namespace Keap.Core.V2.Api
                 throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'subscriptionId' when calling SubscriptionsApi->UpdateSubscription");
             }
 
-            // verify the required parameter 'updateSubscriptionRequestDetail' is set
-            if (updateSubscriptionRequestDetail == null)
+            // verify the required parameter 'updateSubscriptionRequest' is set
+            if (updateSubscriptionRequest == null)
             {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateSubscriptionRequestDetail' when calling SubscriptionsApi->UpdateSubscription");
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateSubscriptionRequest' when calling SubscriptionsApi->UpdateSubscription");
             }
 
 
@@ -2060,7 +2060,7 @@ namespace Keap.Core.V2.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
             }
-            localVarRequestOptions.Data = updateSubscriptionRequestDetail;
+            localVarRequestOptions.Data = updateSubscriptionRequest;
 
             localVarRequestOptions.Operation = "SubscriptionsApi.UpdateSubscription";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2083,7 +2083,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<SubscriptionDetail>("/rest/v2/subscriptions/{subscription_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<Subscription>("/rest/v2/subscriptions/{subscription_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

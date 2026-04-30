@@ -21,13 +21,13 @@ from typing import Any, Optional
 from typing_extensions import Annotated
 from keap_core_v2_client.models.cancel_subscription_request import CancelSubscriptionRequest
 from keap_core_v2_client.models.create_custom_field_request import CreateCustomFieldRequest
-from keap_core_v2_client.models.create_subscription_request_detail import CreateSubscriptionRequestDetail
+from keap_core_v2_client.models.create_subscription_request import CreateSubscriptionRequest
 from keap_core_v2_client.models.custom_field_meta_data import CustomFieldMetaData
-from keap_core_v2_client.models.list_subscriptions_response_list import ListSubscriptionsResponseList
+from keap_core_v2_client.models.list_subscriptions_response import ListSubscriptionsResponse
 from keap_core_v2_client.models.object_model import ObjectModel
-from keap_core_v2_client.models.subscription_detail import SubscriptionDetail
+from keap_core_v2_client.models.subscription import Subscription
 from keap_core_v2_client.models.update_custom_field_meta_data_request import UpdateCustomFieldMetaDataRequest
-from keap_core_v2_client.models.update_subscription_request_detail import UpdateSubscriptionRequestDetail
+from keap_core_v2_client.models.update_subscription_request import UpdateSubscriptionRequest
 
 from keap_core_v2_client.api_client import ApiClient, RequestSerialized
 from keap_core_v2_client.api_response import ApiResponse
@@ -360,7 +360,7 @@ class SubscriptionsApi:
     @validate_call
     def create_subscription(
         self,
-        create_subscription_request_detail: CreateSubscriptionRequestDetail,
+        create_subscription_request: CreateSubscriptionRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -373,13 +373,13 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SubscriptionDetail:
+    ) -> Subscription:
         """Create Subscription
 
         Creates a subscription with the specified product and product subscription id.
 
-        :param create_subscription_request_detail: (required)
-        :type create_subscription_request_detail: CreateSubscriptionRequestDetail
+        :param create_subscription_request: (required)
+        :type create_subscription_request: CreateSubscriptionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -403,7 +403,7 @@ class SubscriptionsApi:
         """ # noqa: E501
 
         _param = self._create_subscription_serialize(
-            create_subscription_request_detail=create_subscription_request_detail,
+            create_subscription_request=create_subscription_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -411,7 +411,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SubscriptionDetail",
+            '201': "Subscription",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -434,7 +434,7 @@ class SubscriptionsApi:
     @validate_call
     def create_subscription_with_http_info(
         self,
-        create_subscription_request_detail: CreateSubscriptionRequestDetail,
+        create_subscription_request: CreateSubscriptionRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -447,13 +447,13 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SubscriptionDetail]:
+    ) -> ApiResponse[Subscription]:
         """Create Subscription
 
         Creates a subscription with the specified product and product subscription id.
 
-        :param create_subscription_request_detail: (required)
-        :type create_subscription_request_detail: CreateSubscriptionRequestDetail
+        :param create_subscription_request: (required)
+        :type create_subscription_request: CreateSubscriptionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -477,7 +477,7 @@ class SubscriptionsApi:
         """ # noqa: E501
 
         _param = self._create_subscription_serialize(
-            create_subscription_request_detail=create_subscription_request_detail,
+            create_subscription_request=create_subscription_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -485,7 +485,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SubscriptionDetail",
+            '201': "Subscription",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -508,7 +508,7 @@ class SubscriptionsApi:
     @validate_call
     def create_subscription_without_preload_content(
         self,
-        create_subscription_request_detail: CreateSubscriptionRequestDetail,
+        create_subscription_request: CreateSubscriptionRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -526,8 +526,8 @@ class SubscriptionsApi:
 
         Creates a subscription with the specified product and product subscription id.
 
-        :param create_subscription_request_detail: (required)
-        :type create_subscription_request_detail: CreateSubscriptionRequestDetail
+        :param create_subscription_request: (required)
+        :type create_subscription_request: CreateSubscriptionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -551,7 +551,7 @@ class SubscriptionsApi:
         """ # noqa: E501
 
         _param = self._create_subscription_serialize(
-            create_subscription_request_detail=create_subscription_request_detail,
+            create_subscription_request=create_subscription_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -559,7 +559,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SubscriptionDetail",
+            '201': "Subscription",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -577,7 +577,7 @@ class SubscriptionsApi:
 
     def _create_subscription_serialize(
         self,
-        create_subscription_request_detail,
+        create_subscription_request,
         _request_auth,
         _content_type,
         _headers,
@@ -603,8 +603,8 @@ class SubscriptionsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if create_subscription_request_detail is not None:
-            _body_params = create_subscription_request_detail
+        if create_subscription_request is not None:
+            _body_params = create_subscription_request
 
 
         # set the HTTP header `Accept`
@@ -1245,7 +1245,7 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SubscriptionDetail:
+    ) -> Subscription:
         """Retrieve a Subscription
 
         Retrieves a single subscription
@@ -1283,7 +1283,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SubscriptionDetail",
+            '200': "Subscription",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -1319,7 +1319,7 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SubscriptionDetail]:
+    ) -> ApiResponse[Subscription]:
         """Retrieve a Subscription
 
         Retrieves a single subscription
@@ -1357,7 +1357,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SubscriptionDetail",
+            '200': "Subscription",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -1431,7 +1431,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SubscriptionDetail",
+            '200': "Subscription",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -1514,8 +1514,8 @@ class SubscriptionsApi:
     @validate_call
     def list_subscriptions(
         self,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` ")] = None,
-        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc`")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive` ")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
         _request_timeout: Union[
@@ -1530,14 +1530,14 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ListSubscriptionsResponseList:
+    ) -> ListSubscriptionsResponse:
         """List Subscriptions
 
         Retrieves a list of subscriptions using the specified search criteria.
 
-        :param filter: Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` 
+        :param filter: Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive` 
         :type filter: str
-        :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc`
+        :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc`
         :type order_by: str
         :param page_size: Total number of items to return per page
         :type page_size: int
@@ -1577,7 +1577,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListSubscriptionsResponseList",
+            '200': "ListSubscriptionsResponse",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -1600,8 +1600,8 @@ class SubscriptionsApi:
     @validate_call
     def list_subscriptions_with_http_info(
         self,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` ")] = None,
-        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc`")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive` ")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
         _request_timeout: Union[
@@ -1616,14 +1616,14 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ListSubscriptionsResponseList]:
+    ) -> ApiResponse[ListSubscriptionsResponse]:
         """List Subscriptions
 
         Retrieves a list of subscriptions using the specified search criteria.
 
-        :param filter: Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` 
+        :param filter: Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive` 
         :type filter: str
-        :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc`
+        :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc`
         :type order_by: str
         :param page_size: Total number of items to return per page
         :type page_size: int
@@ -1663,7 +1663,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListSubscriptionsResponseList",
+            '200': "ListSubscriptionsResponse",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -1686,8 +1686,8 @@ class SubscriptionsApi:
     @validate_call
     def list_subscriptions_without_preload_content(
         self,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` ")] = None,
-        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc`")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive` ")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
         _request_timeout: Union[
@@ -1707,9 +1707,9 @@ class SubscriptionsApi:
 
         Retrieves a list of subscriptions using the specified search criteria.
 
-        :param filter: Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` 
+        :param filter: Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive` 
         :type filter: str
-        :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc`
+        :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc`
         :type order_by: str
         :param page_size: Total number of items to return per page
         :type page_size: int
@@ -1749,7 +1749,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListSubscriptionsResponseList",
+            '200': "ListSubscriptionsResponse",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -2117,7 +2117,7 @@ class SubscriptionsApi:
     def update_subscription(
         self,
         subscription_id: StrictStr,
-        update_subscription_request_detail: UpdateSubscriptionRequestDetail,
+        update_subscription_request: UpdateSubscriptionRequest,
         update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
@@ -2131,15 +2131,15 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SubscriptionDetail:
+    ) -> Subscription:
         """Update a Subscription
 
         Updates a Subscription
 
         :param subscription_id: (required)
         :type subscription_id: str
-        :param update_subscription_request_detail: (required)
-        :type update_subscription_request_detail: UpdateSubscriptionRequestDetail
+        :param update_subscription_request: (required)
+        :type update_subscription_request: UpdateSubscriptionRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
@@ -2166,7 +2166,7 @@ class SubscriptionsApi:
 
         _param = self._update_subscription_serialize(
             subscription_id=subscription_id,
-            update_subscription_request_detail=update_subscription_request_detail,
+            update_subscription_request=update_subscription_request,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2175,7 +2175,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SubscriptionDetail",
+            '200': "Subscription",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -2199,7 +2199,7 @@ class SubscriptionsApi:
     def update_subscription_with_http_info(
         self,
         subscription_id: StrictStr,
-        update_subscription_request_detail: UpdateSubscriptionRequestDetail,
+        update_subscription_request: UpdateSubscriptionRequest,
         update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
@@ -2213,15 +2213,15 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SubscriptionDetail]:
+    ) -> ApiResponse[Subscription]:
         """Update a Subscription
 
         Updates a Subscription
 
         :param subscription_id: (required)
         :type subscription_id: str
-        :param update_subscription_request_detail: (required)
-        :type update_subscription_request_detail: UpdateSubscriptionRequestDetail
+        :param update_subscription_request: (required)
+        :type update_subscription_request: UpdateSubscriptionRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
@@ -2248,7 +2248,7 @@ class SubscriptionsApi:
 
         _param = self._update_subscription_serialize(
             subscription_id=subscription_id,
-            update_subscription_request_detail=update_subscription_request_detail,
+            update_subscription_request=update_subscription_request,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2257,7 +2257,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SubscriptionDetail",
+            '200': "Subscription",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -2281,7 +2281,7 @@ class SubscriptionsApi:
     def update_subscription_without_preload_content(
         self,
         subscription_id: StrictStr,
-        update_subscription_request_detail: UpdateSubscriptionRequestDetail,
+        update_subscription_request: UpdateSubscriptionRequest,
         update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
@@ -2302,8 +2302,8 @@ class SubscriptionsApi:
 
         :param subscription_id: (required)
         :type subscription_id: str
-        :param update_subscription_request_detail: (required)
-        :type update_subscription_request_detail: UpdateSubscriptionRequestDetail
+        :param update_subscription_request: (required)
+        :type update_subscription_request: UpdateSubscriptionRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
@@ -2330,7 +2330,7 @@ class SubscriptionsApi:
 
         _param = self._update_subscription_serialize(
             subscription_id=subscription_id,
-            update_subscription_request_detail=update_subscription_request_detail,
+            update_subscription_request=update_subscription_request,
             update_mask=update_mask,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2339,7 +2339,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SubscriptionDetail",
+            '200': "Subscription",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -2358,7 +2358,7 @@ class SubscriptionsApi:
     def _update_subscription_serialize(
         self,
         subscription_id,
-        update_subscription_request_detail,
+        update_subscription_request,
         update_mask,
         _request_auth,
         _content_type,
@@ -2391,8 +2391,8 @@ class SubscriptionsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if update_subscription_request_detail is not None:
-            _body_params = update_subscription_request_detail
+        if update_subscription_request is not None:
+            _body_params = update_subscription_request
 
 
         # set the HTTP header `Accept`

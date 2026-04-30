@@ -115,7 +115,7 @@ void (empty response body)
 
 <a id="createsubscription"></a>
 # **CreateSubscription**
-> SubscriptionDetail CreateSubscription (CreateSubscriptionRequestDetail createSubscriptionRequestDetail)
+> Subscription CreateSubscription (CreateSubscriptionRequest createSubscriptionRequest)
 
 Create Subscription
 
@@ -141,12 +141,12 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new SubscriptionsApi(config);
-            var createSubscriptionRequestDetail = new CreateSubscriptionRequestDetail(); // CreateSubscriptionRequestDetail | 
+            var createSubscriptionRequest = new CreateSubscriptionRequest(); // CreateSubscriptionRequest | 
 
             try
             {
                 // Create Subscription
-                SubscriptionDetail result = apiInstance.CreateSubscription(createSubscriptionRequestDetail);
+                Subscription result = apiInstance.CreateSubscription(createSubscriptionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -167,7 +167,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Create Subscription
-    ApiResponse<SubscriptionDetail> response = apiInstance.CreateSubscriptionWithHttpInfo(createSubscriptionRequestDetail);
+    ApiResponse<Subscription> response = apiInstance.CreateSubscriptionWithHttpInfo(createSubscriptionRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -184,11 +184,11 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **createSubscriptionRequestDetail** | [**CreateSubscriptionRequestDetail**](CreateSubscriptionRequestDetail.md) |  |  |
+| **createSubscriptionRequest** | [**CreateSubscriptionRequest**](CreateSubscriptionRequest.md) |  |  |
 
 ### Return type
 
-[**SubscriptionDetail**](SubscriptionDetail.md)
+[**Subscription**](Subscription.md)
 
 ### Authorization
 
@@ -414,7 +414,7 @@ void (empty response body)
 
 <a id="getsubscription"></a>
 # **GetSubscription**
-> SubscriptionDetail GetSubscription (string subscriptionId)
+> Subscription GetSubscription (string subscriptionId)
 
 Retrieve a Subscription
 
@@ -445,7 +445,7 @@ namespace Example
             try
             {
                 // Retrieve a Subscription
-                SubscriptionDetail result = apiInstance.GetSubscription(subscriptionId);
+                Subscription result = apiInstance.GetSubscription(subscriptionId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -466,7 +466,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Retrieve a Subscription
-    ApiResponse<SubscriptionDetail> response = apiInstance.GetSubscriptionWithHttpInfo(subscriptionId);
+    ApiResponse<Subscription> response = apiInstance.GetSubscriptionWithHttpInfo(subscriptionId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -487,7 +487,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**SubscriptionDetail**](SubscriptionDetail.md)
+[**Subscription**](Subscription.md)
 
 ### Authorization
 
@@ -515,7 +515,7 @@ catch (ApiException e)
 
 <a id="listsubscriptions"></a>
 # **ListSubscriptions**
-> ListSubscriptionsResponseList ListSubscriptions (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+> ListSubscriptionsResponse ListSubscriptions (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Subscriptions
 
@@ -541,15 +541,15 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new SubscriptionsApi(config);
-            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status`  (optional) 
-            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc` (optional) 
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive`  (optional) 
+            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
 
             try
             {
                 // List Subscriptions
-                ListSubscriptionsResponseList result = apiInstance.ListSubscriptions(filter, orderBy, pageSize, pageToken);
+                ListSubscriptionsResponse result = apiInstance.ListSubscriptions(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -570,7 +570,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // List Subscriptions
-    ApiResponse<ListSubscriptionsResponseList> response = apiInstance.ListSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListSubscriptionsResponse> response = apiInstance.ListSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -587,14 +587,14 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  | [optional]  |
-| **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
+| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  | [optional]  |
+| **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
 
 ### Return type
 
-[**ListSubscriptionsResponseList**](ListSubscriptionsResponseList.md)
+[**ListSubscriptionsResponse**](ListSubscriptionsResponse.md)
 
 ### Authorization
 
@@ -718,7 +718,7 @@ This endpoint does not need any parameter.
 
 <a id="updatesubscription"></a>
 # **UpdateSubscription**
-> SubscriptionDetail UpdateSubscription (string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object? updateMask = null)
+> Subscription UpdateSubscription (string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object? updateMask = null)
 
 Update a Subscription
 
@@ -745,13 +745,13 @@ namespace Example
 
             var apiInstance = new SubscriptionsApi(config);
             var subscriptionId = "subscriptionId_example";  // string | 
-            var updateSubscriptionRequestDetail = new UpdateSubscriptionRequestDetail(); // UpdateSubscriptionRequestDetail | 
+            var updateSubscriptionRequest = new UpdateSubscriptionRequest(); // UpdateSubscriptionRequest | 
             var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
                 // Update a Subscription
-                SubscriptionDetail result = apiInstance.UpdateSubscription(subscriptionId, updateSubscriptionRequestDetail, updateMask);
+                Subscription result = apiInstance.UpdateSubscription(subscriptionId, updateSubscriptionRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -772,7 +772,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Update a Subscription
-    ApiResponse<SubscriptionDetail> response = apiInstance.UpdateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequestDetail, updateMask);
+    ApiResponse<Subscription> response = apiInstance.UpdateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -790,12 +790,12 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **subscriptionId** | **string** |  |  |
-| **updateSubscriptionRequestDetail** | [**UpdateSubscriptionRequestDetail**](UpdateSubscriptionRequestDetail.md) |  |  |
+| **updateSubscriptionRequest** | [**UpdateSubscriptionRequest**](UpdateSubscriptionRequest.md) |  |  |
 | **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
-[**SubscriptionDetail**](SubscriptionDetail.md)
+[**Subscription**](Subscription.md)
 
 ### Authorization
 

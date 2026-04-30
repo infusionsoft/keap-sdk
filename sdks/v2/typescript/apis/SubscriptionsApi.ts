@@ -10,13 +10,13 @@ import {SecurityAuthentication} from '../auth/auth';
 
 import { CancelSubscriptionRequest } from '../models/CancelSubscriptionRequest';
 import { CreateCustomFieldRequest } from '../models/CreateCustomFieldRequest';
-import { CreateSubscriptionRequestDetail } from '../models/CreateSubscriptionRequestDetail';
+import { CreateSubscriptionRequest } from '../models/CreateSubscriptionRequest';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';
-import { ListSubscriptionsResponseList } from '../models/ListSubscriptionsResponseList';
+import { ListSubscriptionsResponse } from '../models/ListSubscriptionsResponse';
 import { ObjectModel } from '../models/ObjectModel';
-import { SubscriptionDetail } from '../models/SubscriptionDetail';
+import { Subscription } from '../models/Subscription';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
-import { UpdateSubscriptionRequestDetail } from '../models/UpdateSubscriptionRequestDetail';
+import { UpdateSubscriptionRequest } from '../models/UpdateSubscriptionRequest';
 
 /**
  * no description
@@ -82,14 +82,14 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Creates a subscription with the specified product and product subscription id.
      * Create Subscription
-     * @param createSubscriptionRequestDetail 
+     * @param createSubscriptionRequest 
      */
-    public async createSubscription(createSubscriptionRequestDetail: CreateSubscriptionRequestDetail, _options?: Configuration): Promise<RequestContext> {
+    public async createSubscription(createSubscriptionRequest: CreateSubscriptionRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
-        // verify required parameter 'createSubscriptionRequestDetail' is not null or undefined
-        if (createSubscriptionRequestDetail === null || createSubscriptionRequestDetail === undefined) {
-            throw new RequiredError("SubscriptionsApi", "createSubscription", "createSubscriptionRequestDetail");
+        // verify required parameter 'createSubscriptionRequest' is not null or undefined
+        if (createSubscriptionRequest === null || createSubscriptionRequest === undefined) {
+            throw new RequiredError("SubscriptionsApi", "createSubscription", "createSubscriptionRequest");
         }
 
 
@@ -107,7 +107,7 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(createSubscriptionRequestDetail, "CreateSubscriptionRequestDetail", ""),
+            ObjectSerializer.serialize(createSubscriptionRequest, "CreateSubscriptionRequest", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -254,8 +254,8 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a list of subscriptions using the specified search criteria.
      * List Subscriptions
-     * @param filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; 
-     * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60; 
+     * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
@@ -343,10 +343,10 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
      * Updates a Subscription
      * Update a Subscription
      * @param subscriptionId 
-     * @param updateSubscriptionRequestDetail 
+     * @param updateSubscriptionRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateSubscription(subscriptionId: string, updateSubscriptionRequestDetail: UpdateSubscriptionRequestDetail, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateSubscription(subscriptionId: string, updateSubscriptionRequest: UpdateSubscriptionRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'subscriptionId' is not null or undefined
@@ -355,9 +355,9 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'updateSubscriptionRequestDetail' is not null or undefined
-        if (updateSubscriptionRequestDetail === null || updateSubscriptionRequestDetail === undefined) {
-            throw new RequiredError("SubscriptionsApi", "updateSubscription", "updateSubscriptionRequestDetail");
+        // verify required parameter 'updateSubscriptionRequest' is not null or undefined
+        if (updateSubscriptionRequest === null || updateSubscriptionRequest === undefined) {
+            throw new RequiredError("SubscriptionsApi", "updateSubscription", "updateSubscriptionRequest");
         }
 
 
@@ -385,7 +385,7 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(updateSubscriptionRequestDetail, "UpdateSubscriptionRequestDetail", ""),
+            ObjectSerializer.serialize(updateSubscriptionRequest, "UpdateSubscriptionRequest", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -556,13 +556,13 @@ export class SubscriptionsApiResponseProcessor {
      * @params response Response returned by the server for a request to createSubscription
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createSubscriptionWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SubscriptionDetail >> {
+     public async createSubscriptionWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Subscription >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
-            const body: SubscriptionDetail = ObjectSerializer.deserialize(
+            const body: Subscription = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "SubscriptionDetail", ""
-            ) as SubscriptionDetail;
+                "Subscription", ""
+            ) as Subscription;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -617,10 +617,10 @@ export class SubscriptionsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: SubscriptionDetail = ObjectSerializer.deserialize(
+            const body: Subscription = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "SubscriptionDetail", ""
-            ) as SubscriptionDetail;
+                "Subscription", ""
+            ) as Subscription;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -786,13 +786,13 @@ export class SubscriptionsApiResponseProcessor {
      * @params response Response returned by the server for a request to getSubscription
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getSubscriptionWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SubscriptionDetail >> {
+     public async getSubscriptionWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Subscription >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: SubscriptionDetail = ObjectSerializer.deserialize(
+            const body: Subscription = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "SubscriptionDetail", ""
-            ) as SubscriptionDetail;
+                "Subscription", ""
+            ) as Subscription;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -847,10 +847,10 @@ export class SubscriptionsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: SubscriptionDetail = ObjectSerializer.deserialize(
+            const body: Subscription = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "SubscriptionDetail", ""
-            ) as SubscriptionDetail;
+                "Subscription", ""
+            ) as Subscription;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -864,13 +864,13 @@ export class SubscriptionsApiResponseProcessor {
      * @params response Response returned by the server for a request to listSubscriptions
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listSubscriptionsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListSubscriptionsResponseList >> {
+     public async listSubscriptionsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListSubscriptionsResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ListSubscriptionsResponseList = ObjectSerializer.deserialize(
+            const body: ListSubscriptionsResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ListSubscriptionsResponseList", ""
-            ) as ListSubscriptionsResponseList;
+                "ListSubscriptionsResponse", ""
+            ) as ListSubscriptionsResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -925,10 +925,10 @@ export class SubscriptionsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ListSubscriptionsResponseList = ObjectSerializer.deserialize(
+            const body: ListSubscriptionsResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ListSubscriptionsResponseList", ""
-            ) as ListSubscriptionsResponseList;
+                "ListSubscriptionsResponse", ""
+            ) as ListSubscriptionsResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1020,13 +1020,13 @@ export class SubscriptionsApiResponseProcessor {
      * @params response Response returned by the server for a request to updateSubscription
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateSubscriptionWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SubscriptionDetail >> {
+     public async updateSubscriptionWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Subscription >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: SubscriptionDetail = ObjectSerializer.deserialize(
+            const body: Subscription = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "SubscriptionDetail", ""
-            ) as SubscriptionDetail;
+                "Subscription", ""
+            ) as Subscription;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -1081,10 +1081,10 @@ export class SubscriptionsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: SubscriptionDetail = ObjectSerializer.deserialize(
+            const body: Subscription = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "SubscriptionDetail", ""
-            ) as SubscriptionDetail;
+                "Subscription", ""
+            ) as Subscription;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

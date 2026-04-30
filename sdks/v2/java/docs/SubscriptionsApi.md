@@ -187,7 +187,7 @@ ApiResponse<Void>
 
 ## createSubscription
 
-> SubscriptionDetail createSubscription(createSubscriptionRequestDetail)
+> Subscription createSubscription(createSubscriptionRequest)
 
 Create Subscription
 
@@ -214,9 +214,9 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        CreateSubscriptionRequestDetail createSubscriptionRequestDetail = new CreateSubscriptionRequestDetail(); // CreateSubscriptionRequestDetail | 
+        CreateSubscriptionRequest createSubscriptionRequest = new CreateSubscriptionRequest(); // CreateSubscriptionRequest | 
         try {
-            SubscriptionDetail result = apiInstance.createSubscription(createSubscriptionRequestDetail);
+            Subscription result = apiInstance.createSubscription(createSubscriptionRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SubscriptionsApi#createSubscription");
@@ -234,11 +234,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createSubscriptionRequestDetail** | [**CreateSubscriptionRequestDetail**](CreateSubscriptionRequestDetail.md)|  | |
+| **createSubscriptionRequest** | [**CreateSubscriptionRequest**](CreateSubscriptionRequest.md)|  | |
 
 ### Return type
 
-[**SubscriptionDetail**](SubscriptionDetail.md)
+[**Subscription**](Subscription.md)
 
 
 ### Authorization
@@ -264,7 +264,7 @@ public class Example {
 
 ## createSubscriptionWithHttpInfo
 
-> ApiResponse<SubscriptionDetail> createSubscription createSubscriptionWithHttpInfo(createSubscriptionRequestDetail)
+> ApiResponse<Subscription> createSubscription createSubscriptionWithHttpInfo(createSubscriptionRequest)
 
 Create Subscription
 
@@ -292,9 +292,9 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        CreateSubscriptionRequestDetail createSubscriptionRequestDetail = new CreateSubscriptionRequestDetail(); // CreateSubscriptionRequestDetail | 
+        CreateSubscriptionRequest createSubscriptionRequest = new CreateSubscriptionRequest(); // CreateSubscriptionRequest | 
         try {
-            ApiResponse<SubscriptionDetail> response = apiInstance.createSubscriptionWithHttpInfo(createSubscriptionRequestDetail);
+            ApiResponse<Subscription> response = apiInstance.createSubscriptionWithHttpInfo(createSubscriptionRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -314,11 +314,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createSubscriptionRequestDetail** | [**CreateSubscriptionRequestDetail**](CreateSubscriptionRequestDetail.md)|  | |
+| **createSubscriptionRequest** | [**CreateSubscriptionRequest**](CreateSubscriptionRequest.md)|  | |
 
 ### Return type
 
-ApiResponse<[**SubscriptionDetail**](SubscriptionDetail.md)>
+ApiResponse<[**Subscription**](Subscription.md)>
 
 
 ### Authorization
@@ -659,7 +659,7 @@ ApiResponse<Void>
 
 ## getSubscription
 
-> SubscriptionDetail getSubscription(subscriptionId)
+> Subscription getSubscription(subscriptionId)
 
 Retrieve a Subscription
 
@@ -688,7 +688,7 @@ public class Example {
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
         String subscriptionId = "subscriptionId_example"; // String | 
         try {
-            SubscriptionDetail result = apiInstance.getSubscription(subscriptionId);
+            Subscription result = apiInstance.getSubscription(subscriptionId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SubscriptionsApi#getSubscription");
@@ -710,7 +710,7 @@ public class Example {
 
 ### Return type
 
-[**SubscriptionDetail**](SubscriptionDetail.md)
+[**Subscription**](Subscription.md)
 
 
 ### Authorization
@@ -736,7 +736,7 @@ public class Example {
 
 ## getSubscriptionWithHttpInfo
 
-> ApiResponse<SubscriptionDetail> getSubscription getSubscriptionWithHttpInfo(subscriptionId)
+> ApiResponse<Subscription> getSubscription getSubscriptionWithHttpInfo(subscriptionId)
 
 Retrieve a Subscription
 
@@ -766,7 +766,7 @@ public class Example {
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
         String subscriptionId = "subscriptionId_example"; // String | 
         try {
-            ApiResponse<SubscriptionDetail> response = apiInstance.getSubscriptionWithHttpInfo(subscriptionId);
+            ApiResponse<Subscription> response = apiInstance.getSubscriptionWithHttpInfo(subscriptionId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -790,7 +790,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**SubscriptionDetail**](SubscriptionDetail.md)>
+ApiResponse<[**Subscription**](Subscription.md)>
 
 
 ### Authorization
@@ -817,7 +817,7 @@ ApiResponse<[**SubscriptionDetail**](SubscriptionDetail.md)>
 
 ## listSubscriptions
 
-> ListSubscriptionsResponseList listSubscriptions(filter, orderBy, pageSize, pageToken)
+> ListSubscriptionsResponse listSubscriptions(filter, orderBy, pageSize, pageToken)
 
 List Subscriptions
 
@@ -844,12 +844,12 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` 
-        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc`
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive` 
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListSubscriptionsResponseList result = apiInstance.listSubscriptions(filter, orderBy, pageSize, pageToken);
+            ListSubscriptionsResponse result = apiInstance.listSubscriptions(filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SubscriptionsApi#listSubscriptions");
@@ -867,14 +867,14 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  | [optional] |
-| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
 
 ### Return type
 
-[**ListSubscriptionsResponseList**](ListSubscriptionsResponseList.md)
+[**ListSubscriptionsResponse**](ListSubscriptionsResponse.md)
 
 
 ### Authorization
@@ -900,7 +900,7 @@ public class Example {
 
 ## listSubscriptionsWithHttpInfo
 
-> ApiResponse<ListSubscriptionsResponseList> listSubscriptions listSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListSubscriptionsResponse> listSubscriptions listSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken)
 
 List Subscriptions
 
@@ -928,12 +928,12 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` 
-        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc`
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive` 
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListSubscriptionsResponseList> response = apiInstance.listSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListSubscriptionsResponse> response = apiInstance.listSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -953,14 +953,14 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  | [optional] |
-| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
 
 ### Return type
 
-ApiResponse<[**ListSubscriptionsResponseList**](ListSubscriptionsResponseList.md)>
+ApiResponse<[**ListSubscriptionsResponse**](ListSubscriptionsResponse.md)>
 
 
 ### Authorization
@@ -1137,7 +1137,7 @@ ApiResponse<[**ObjectModel**](ObjectModel.md)>
 
 ## updateSubscription
 
-> SubscriptionDetail updateSubscription(subscriptionId, updateSubscriptionRequestDetail, updateMask)
+> Subscription updateSubscription(subscriptionId, updateSubscriptionRequest, updateMask)
 
 Update a Subscription
 
@@ -1165,10 +1165,10 @@ public class Example {
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
         String subscriptionId = "subscriptionId_example"; // String | 
-        UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail = new UpdateSubscriptionRequestDetail(); // UpdateSubscriptionRequestDetail | 
+        UpdateSubscriptionRequest updateSubscriptionRequest = new UpdateSubscriptionRequest(); // UpdateSubscriptionRequest | 
         Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            SubscriptionDetail result = apiInstance.updateSubscription(subscriptionId, updateSubscriptionRequestDetail, updateMask);
+            Subscription result = apiInstance.updateSubscription(subscriptionId, updateSubscriptionRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SubscriptionsApi#updateSubscription");
@@ -1187,12 +1187,12 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **subscriptionId** | **String**|  | |
-| **updateSubscriptionRequestDetail** | [**UpdateSubscriptionRequestDetail**](UpdateSubscriptionRequestDetail.md)|  | |
+| **updateSubscriptionRequest** | [**UpdateSubscriptionRequest**](UpdateSubscriptionRequest.md)|  | |
 | **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
-[**SubscriptionDetail**](SubscriptionDetail.md)
+[**Subscription**](Subscription.md)
 
 
 ### Authorization
@@ -1218,7 +1218,7 @@ public class Example {
 
 ## updateSubscriptionWithHttpInfo
 
-> ApiResponse<SubscriptionDetail> updateSubscription updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequestDetail, updateMask)
+> ApiResponse<Subscription> updateSubscription updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequest, updateMask)
 
 Update a Subscription
 
@@ -1247,10 +1247,10 @@ public class Example {
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
         String subscriptionId = "subscriptionId_example"; // String | 
-        UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail = new UpdateSubscriptionRequestDetail(); // UpdateSubscriptionRequestDetail | 
+        UpdateSubscriptionRequest updateSubscriptionRequest = new UpdateSubscriptionRequest(); // UpdateSubscriptionRequest | 
         Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<SubscriptionDetail> response = apiInstance.updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequestDetail, updateMask);
+            ApiResponse<Subscription> response = apiInstance.updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1271,12 +1271,12 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **subscriptionId** | **String**|  | |
-| **updateSubscriptionRequestDetail** | [**UpdateSubscriptionRequestDetail**](UpdateSubscriptionRequestDetail.md)|  | |
+| **updateSubscriptionRequest** | [**UpdateSubscriptionRequest**](UpdateSubscriptionRequest.md)|  | |
 | **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
-ApiResponse<[**SubscriptionDetail**](SubscriptionDetail.md)>
+ApiResponse<[**Subscription**](Subscription.md)>
 
 
 ### Authorization

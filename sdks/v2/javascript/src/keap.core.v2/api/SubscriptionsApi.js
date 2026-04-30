@@ -15,14 +15,14 @@
 import ApiClient from "../ApiClient";
 import CancelSubscriptionRequest from '../model/CancelSubscriptionRequest';
 import CreateCustomFieldRequest from '../model/CreateCustomFieldRequest';
-import CreateSubscriptionRequestDetail from '../model/CreateSubscriptionRequestDetail';
+import CreateSubscriptionRequest from '../model/CreateSubscriptionRequest';
 import CustomFieldMetaData from '../model/CustomFieldMetaData';
 import Error from '../model/Error';
-import ListSubscriptionsResponseList from '../model/ListSubscriptionsResponseList';
+import ListSubscriptionsResponse from '../model/ListSubscriptionsResponse';
 import ObjectModel from '../model/ObjectModel';
-import SubscriptionDetail from '../model/SubscriptionDetail';
+import Subscription from '../model/Subscription';
 import UpdateCustomFieldMetaDataRequest from '../model/UpdateCustomFieldMetaDataRequest';
-import UpdateSubscriptionRequestDetail from '../model/UpdateSubscriptionRequestDetail';
+import UpdateSubscriptionRequest from '../model/UpdateSubscriptionRequest';
 
 /**
 * Subscriptions service.
@@ -100,14 +100,14 @@ export default class SubscriptionsApi {
     /**
      * Create Subscription
      * Creates a subscription with the specified product and product subscription id.
-     * @param {module:keap.core.v2/model/CreateSubscriptionRequestDetail} createSubscriptionRequestDetail 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/SubscriptionDetail} and HTTP response
+     * @param {module:keap.core.v2/model/CreateSubscriptionRequest} createSubscriptionRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/Subscription} and HTTP response
      */
-    createSubscriptionWithHttpInfo(createSubscriptionRequestDetail) {
-      let postBody = createSubscriptionRequestDetail;
-      // verify the required parameter 'createSubscriptionRequestDetail' is set
-      if (createSubscriptionRequestDetail === undefined || createSubscriptionRequestDetail === null) {
-        throw new Error("Missing the required parameter 'createSubscriptionRequestDetail' when calling createSubscription");
+    createSubscriptionWithHttpInfo(createSubscriptionRequest) {
+      let postBody = createSubscriptionRequest;
+      // verify the required parameter 'createSubscriptionRequest' is set
+      if (createSubscriptionRequest === undefined || createSubscriptionRequest === null) {
+        throw new Error("Missing the required parameter 'createSubscriptionRequest' when calling createSubscription");
       }
 
       let pathParams = {
@@ -122,7 +122,7 @@ export default class SubscriptionsApi {
       let authNames = ['oauth2'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = SubscriptionDetail;
+      let returnType = Subscription;
       return this.apiClient.callApi(
         '/rest/v2/subscriptions', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -133,11 +133,11 @@ export default class SubscriptionsApi {
     /**
      * Create Subscription
      * Creates a subscription with the specified product and product subscription id.
-     * @param {module:keap.core.v2/model/CreateSubscriptionRequestDetail} createSubscriptionRequestDetail 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/SubscriptionDetail}
+     * @param {module:keap.core.v2/model/CreateSubscriptionRequest} createSubscriptionRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/Subscription}
      */
-    createSubscription(createSubscriptionRequestDetail) {
-      return this.createSubscriptionWithHttpInfo(createSubscriptionRequestDetail)
+    createSubscription(createSubscriptionRequest) {
+      return this.createSubscriptionWithHttpInfo(createSubscriptionRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -243,7 +243,7 @@ export default class SubscriptionsApi {
      * Retrieve a Subscription
      * Retrieves a single subscription
      * @param {String} subscriptionId 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/SubscriptionDetail} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/Subscription} and HTTP response
      */
     getSubscriptionWithHttpInfo(subscriptionId) {
       let postBody = null;
@@ -265,7 +265,7 @@ export default class SubscriptionsApi {
       let authNames = ['oauth2'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = SubscriptionDetail;
+      let returnType = Subscription;
       return this.apiClient.callApi(
         '/rest/v2/subscriptions/{subscription_id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -277,7 +277,7 @@ export default class SubscriptionsApi {
      * Retrieve a Subscription
      * Retrieves a single subscription
      * @param {String} subscriptionId 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/SubscriptionDetail}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/Subscription}
      */
     getSubscription(subscriptionId) {
       return this.getSubscriptionWithHttpInfo(subscriptionId)
@@ -291,11 +291,11 @@ export default class SubscriptionsApi {
      * List Subscriptions
      * Retrieves a list of subscriptions using the specified search criteria.
      * @param {Object} opts Optional parameters
-     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` 
-     * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc`
+     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive` 
+     * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} [pageSize] Total number of items to return per page
      * @param {String} [pageToken] Page token
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListSubscriptionsResponseList} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListSubscriptionsResponse} and HTTP response
      */
     listSubscriptionsWithHttpInfo(opts) {
       opts = opts || {};
@@ -317,7 +317,7 @@ export default class SubscriptionsApi {
       let authNames = ['oauth2'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = ListSubscriptionsResponseList;
+      let returnType = ListSubscriptionsResponse;
       return this.apiClient.callApi(
         '/rest/v2/subscriptions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -329,11 +329,11 @@ export default class SubscriptionsApi {
      * List Subscriptions
      * Retrieves a list of subscriptions using the specified search criteria.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` 
-     * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc`
+     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive` 
+     * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} opts.pageSize Total number of items to return per page
      * @param {String} opts.pageToken Page token
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListSubscriptionsResponseList}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListSubscriptionsResponse}
      */
     listSubscriptions(opts) {
       return this.listSubscriptionsWithHttpInfo(opts)
@@ -388,21 +388,21 @@ export default class SubscriptionsApi {
      * Update a Subscription
      * Updates a Subscription
      * @param {String} subscriptionId 
-     * @param {module:keap.core.v2/model/UpdateSubscriptionRequestDetail} updateSubscriptionRequestDetail 
+     * @param {module:keap.core.v2/model/UpdateSubscriptionRequest} updateSubscriptionRequest 
      * @param {Object} opts Optional parameters
      * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/SubscriptionDetail} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/Subscription} and HTTP response
      */
-    updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequestDetail, opts) {
+    updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequest, opts) {
       opts = opts || {};
-      let postBody = updateSubscriptionRequestDetail;
+      let postBody = updateSubscriptionRequest;
       // verify the required parameter 'subscriptionId' is set
       if (subscriptionId === undefined || subscriptionId === null) {
         throw new Error("Missing the required parameter 'subscriptionId' when calling updateSubscription");
       }
-      // verify the required parameter 'updateSubscriptionRequestDetail' is set
-      if (updateSubscriptionRequestDetail === undefined || updateSubscriptionRequestDetail === null) {
-        throw new Error("Missing the required parameter 'updateSubscriptionRequestDetail' when calling updateSubscription");
+      // verify the required parameter 'updateSubscriptionRequest' is set
+      if (updateSubscriptionRequest === undefined || updateSubscriptionRequest === null) {
+        throw new Error("Missing the required parameter 'updateSubscriptionRequest' when calling updateSubscription");
       }
 
       let pathParams = {
@@ -419,7 +419,7 @@ export default class SubscriptionsApi {
       let authNames = ['oauth2'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = SubscriptionDetail;
+      let returnType = Subscription;
       return this.apiClient.callApi(
         '/rest/v2/subscriptions/{subscription_id}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -431,13 +431,13 @@ export default class SubscriptionsApi {
      * Update a Subscription
      * Updates a Subscription
      * @param {String} subscriptionId 
-     * @param {module:keap.core.v2/model/UpdateSubscriptionRequestDetail} updateSubscriptionRequestDetail 
+     * @param {module:keap.core.v2/model/UpdateSubscriptionRequest} updateSubscriptionRequest 
      * @param {Object} opts Optional parameters
      * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/SubscriptionDetail}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/Subscription}
      */
-    updateSubscription(subscriptionId, updateSubscriptionRequestDetail, opts) {
-      return this.updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequestDetail, opts)
+    updateSubscription(subscriptionId, updateSubscriptionRequest, opts) {
+      return this.updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequest, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

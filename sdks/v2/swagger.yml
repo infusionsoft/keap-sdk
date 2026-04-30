@@ -816,6 +816,20 @@ paths:
           - (String) `contact_id`
           - (String) `subscription_plan_id`
           - (String) `status`
+          - (String) `id` - Allowable operators: "==", "<=", "<", ">=", ">", "!="
+          - (String) `billing_amount` - Allowable operators: "==", "<=", "<", ">=", ">", "!="
+          - (List[String]) `ids`
+          - (List[String]) `subscription_plan_ids`
+
+          You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          - `filter=contact_id%3D%3D123`
+          - `filter=subscription_plan_id%3D%3D456`
+          - `filter=status%3D%3DActive`
+          - `filter=id%3E5`
+          - `filter=billing_amount%3E%3D100`
+          - `filter=ids%3D%3D1,10,4,24`
+          - `filter=subscription_plan_ids%3D%3D10,20,30`
+          - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive`
         required: false
         schema:
           type: string
@@ -827,6 +841,7 @@ paths:
           - `id`
           - `contact_id`
           - `subscription_plan_id`
+          - `modification_time`
 
           One of the following directions:
           - `asc`
@@ -856,7 +871,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListSubscriptionsResponse_List'
+                $ref: '#/components/schemas/ListSubscriptionsResponse'
         '400':
           description: Bad Request
           content:
@@ -910,7 +925,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateSubscriptionRequest_Detail'
+              $ref: '#/components/schemas/CreateSubscriptionRequest'
         required: true
       responses:
         '201':
@@ -918,7 +933,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Subscription_Detail'
+                $ref: '#/components/schemas/Subscription'
         '400':
           description: Bad Request
           content:
@@ -6399,6 +6414,22 @@ paths:
           - (String) `end_update_time`
           - (String) `phone_number`
           - (String) `phone_field` (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5)
+          - (String) `billing_address_line1`
+          - (String) `billing_address_locality`
+          - (String) `billing_address_region` (long-form region/state name, e.g. "Arizona")
+          - (String) `billing_address_postal_code`
+          - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. "USA")
+          - (String) `shipping_address_line1`
+          - (String) `shipping_address_locality`
+          - (String) `shipping_address_region`
+          - (String) `shipping_address_postal_code`
+          - (String) `shipping_address_country_code`
+          - (String) `other_address_line1`
+          - (String) `other_address_locality`
+          - (String) `other_address_region`
+          - (String) `other_address_postal_code`
+          - (String) `other_address_country_code`
+
 
           You will need to apply the `==` operator to check the equality of one of the filters with your searched
           word, in the encoded form `%3D%3D`.
@@ -6406,6 +6437,8 @@ paths:
           - `filter=given_name%3D%3DMary`
           - `filter=company_id%3D%3D123`
           - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith`
+          - `filter=billing_address_locality%3D%3DChandler`
+          - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona`
         required: false
         schema:
           type: string
@@ -8132,9 +8165,10 @@ paths:
       parameters:
       - name: filter
         in: query
-        description: |-
+        description: |
           Filter to apply, allowed fields are:
-          - (String) `affiliate_name`
+          - (String) `id` - Allowable operators: "==","<=", "<", ">=", ">", "!="
+          - (String) `name` - Wildcard matching allowed
           - (String) `contact_id`
           - (String) `referral_contact_id`
           - (String) `status`
@@ -8143,9 +8177,15 @@ paths:
           You will need to apply the `==` operator to check the equality of one of the filters with the
           value you want to match, in the encoded form `%3D%3D`. For the filters listed above,
           here are some examples:
-          - `filter=affiliate_name%3D%3DBob`
+          - `filter=id%3C123`
+          - `filter=id%3D%3D123`
+          - `filter=name%3D%3DBob`
           - `filter=contact_id%3D%3D567`
           - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`
+
+          For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A)
+          for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage:
+          - `field==foo*` finds anything in `field` that begins with `foo`
         required: false
         schema:
           type: string
@@ -8155,7 +8195,7 @@ paths:
           Attribute and direction to order items.
           One of the following fields:
           - `id`
-          - `create_time`
+          - `date_created`
           - `name`
           - `status`
           - `code`
@@ -10267,7 +10307,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Subscription_Detail'
+                $ref: '#/components/schemas/Subscription'
         '400':
           description: Bad Request
           content:
@@ -10351,12 +10391,13 @@ paths:
             - shipping_option_id
             - reason_stopped
             - shipping_address
+            - custom_fields
           uniqueItems: true
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateSubscriptionRequest_Detail'
+              $ref: '#/components/schemas/UpdateSubscriptionRequest'
         required: true
       responses:
         '200':
@@ -10364,7 +10405,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Subscription_Detail'
+                $ref: '#/components/schemas/Subscription'
         '400':
           description: Bad Request
           content:
@@ -21615,7 +21656,7 @@ components:
           format: date-time
           description: The time this tag category was last updated, in ISO 8601 format
           example: '2024-03-15T10:30:00Z'
-    AddressRequest_Detail:
+    AddressRequest:
       type: object
       properties:
         line1:
@@ -21645,7 +21686,7 @@ components:
           type: string
           description: An ISO 3166-2 Province Code, such as one of the US States (https://en.wikipedia.org/wiki/ISO_3166-2:US)
           example: US-AZ
-    CreateSubscriptionRequest_Detail:
+    CreateSubscriptionRequest:
       type: object
       properties:
         quantity:
@@ -21721,7 +21762,7 @@ components:
             is 0.
           example: 102
         shipping_address:
-          $ref: '#/components/schemas/AddressRequest_Detail'
+          $ref: '#/components/schemas/AddressRequest'
           description: The shipping address for the subscription.
         promo_code:
           type: string
@@ -21735,10 +21776,27 @@ components:
           type: string
           description: The reason the subscription is no longer active.
           example: Customer requested
+        custom_fields:
+          type: array
+          description: List of custom field values to apply to this subscription
+          example:
+          - id: '1'
+            content: VIP
+          - id: '2'
+            content: Preferred
+          items:
+            $ref: '#/components/schemas/CustomFieldValue'
       required:
       - contact_id
       - subscription_plan_id
-    Address_Detail:
+    CustomFieldValue:
+      type: object
+      properties:
+        id:
+          type: string
+        content: {
+          }
+    Address:
       type: object
       properties:
         country:
@@ -21794,7 +21852,7 @@ components:
           type: string
           description: ZIP+4 extension
           example: 1234
-    Subscription_Detail:
+    Subscription:
       type: object
       properties:
         id:
@@ -21897,9 +21955,8 @@ components:
           description: The affiliate id for the sale of the subscription.
           example: 101
         shipping_address:
-          $ref: '#/components/schemas/Address_Detail'
-          description: The shipping address for the subscription. This field is omitted
-            in List responses.
+          $ref: '#/components/schemas/Address'
+          description: The shipping address for the subscription.
         promo_code:
           type: string
           description: The promo code for the subscription.
@@ -21912,6 +21969,21 @@ components:
           type: string
           description: The reason the subscription is no longer active.
           example: Customer requested cancellation
+        modification_time:
+          type: string
+          format: date-time
+          description: The date and time the subscription was last modified.
+          example: '2025-06-15T10:30:00Z'
+        custom_fields:
+          type: array
+          description: List of custom field values applied to this subscription
+          example:
+          - id: '1'
+            content: VIP
+          - id: '2'
+            content: Preferred
+          items:
+            $ref: '#/components/schemas/CustomFieldValue'
     CancelSubscriptionRequest:
       type: object
       properties:
@@ -22997,13 +23069,6 @@ components:
           example: 15
       required:
       - quantity
-    CustomFieldValue:
-      type: object
-      properties:
-        id:
-          type: string
-        content: {
-          }
     RestCreateOrderRequest:
       type: object
       properties:
@@ -23075,62 +23140,6 @@ components:
       - order_time
       - order_title
       - order_type
-    Address:
-      type: object
-      properties:
-        country:
-          type: string
-          deprecated: true
-          description: Deprecated. The long-name descriptive version of the Country
-            Code. Please use 'country_code' for POST/PATCH operations.
-          example: United States of America
-        line1:
-          type: string
-          description: Street address line 1
-          example: 123
-        line2:
-          type: string
-          description: Street address line 2
-          example: Suite 100
-        locality:
-          type: string
-          description: The municipality to which the address belongs
-          example: Phoenix
-        region:
-          type: string
-          deprecated: true
-          description: The long-name descriptive version of the Region Code. Please
-            use 'region_code' for POST/PATCH operations.
-          example: Arizona
-        field:
-          type: string
-          description: Address type field
-          enum:
-          - ADDRESS_FIELD_UNSPECIFIED
-          - BILLING
-          - SHIPPING
-          - OTHER
-          example: BILLING
-        country_code:
-          type: string
-          description: An ISO 3166-2 Country Code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3)
-          example: USA
-        postal_code:
-          type: string
-          description: Postal or ZIP code
-          example: 85001
-        region_code:
-          type: string
-          description: An ISO 3166-2 Province Code, such as one of the US States (https://en.wikipedia.org/wiki/ISO_3166-2:US)
-          example: US-AZ
-        zip_code:
-          type: string
-          description: ZIP code (US)
-          example: 85001
-        zip_four:
-          type: string
-          description: ZIP+4 extension
-          example: 1234
     BasicContact:
       type: object
       properties:
@@ -27015,7 +27024,7 @@ components:
           format: date-time
           description: The time this tag category was last updated, in ISO 8601 format
           example: '2024-03-15T10:30:00Z'
-    UpdateSubscriptionRequest_Detail:
+    UpdateSubscriptionRequest:
       type: object
       properties:
         quantity:
@@ -27098,7 +27107,7 @@ components:
           description: The affiliate id for the sale of the subscription.
           example: 102
         shipping_address:
-          $ref: '#/components/schemas/AddressRequest_Detail'
+          $ref: '#/components/schemas/AddressRequest'
           description: The shipping address for the subscription.
         promo_code:
           type: string
@@ -27112,6 +27121,16 @@ components:
           type: string
           description: The reason the subscription is no longer active.
           example: Customer requested cancellation
+        custom_fields:
+          type: array
+          description: List of custom field values to apply to this subscription
+          example:
+          - id: '1'
+            content: VIP
+          - id: '2'
+            content: Preferred
+          items:
+            $ref: '#/components/schemas/CustomFieldValue'
     UpdateProductRequest_Detail:
       type: object
       properties:
@@ -28597,129 +28616,15 @@ components:
           format: date-time
           description: The time this tag category was last updated, in ISO 8601 format
           example: '2024-03-15T10:30:00Z'
-    ListSubscriptionsResponse_List:
+    ListSubscriptionsResponse:
       type: object
       properties:
         subscriptions:
           type: array
           items:
-            $ref: '#/components/schemas/Subscription_List'
+            $ref: '#/components/schemas/Subscription'
         next_page_token:
           type: string
-    Subscription_List:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Id of the subscription.
-          example: 123
-        quantity:
-          type: integer
-          format: int64
-          description: The subscription quantity.
-          example: 1
-        active:
-          type: boolean
-          description: If the subscription is active or not.
-          example: true
-        contact_id:
-          type: string
-          description: Id of the contact associated with the subscription.
-          example: 456
-        product_id:
-          type: string
-          description: Id of the product associated with the subscription.
-          example: 789
-        subscription_plan_id:
-          type: string
-          description: Id of the product subscription plan.
-          example: 101
-        billing_amount:
-          type: number
-          format: double
-          description: The billing amount.
-          example: 10000
-        auto_charge:
-          type: boolean
-          description: If the subscription should auto charge on the next billing
-            date.
-          example: true
-        billing_frequency:
-          type: integer
-          format: int32
-          description: The billing frequency in days.
-          example: 30
-        billing_cycle:
-          type: string
-          description: The billing cycle of the subscription.
-          enum:
-          - YEAR
-          - MONTH
-          - WEEK
-          - DAY
-          example: MONTH
-        start_date:
-          type: string
-          format: date
-          description: The first day the subscription will bill.
-          example: '2024-05-21'
-        last_bill_date:
-          type: string
-          format: date
-          description: The last date the subscription was billed.
-          example: '2024-05-21'
-        next_bill_date:
-          type: string
-          format: date
-          description: The next date the subscription will bill.
-          example: '2024-06-21'
-        end_date:
-          type: string
-          format: date
-          description: The last date the subscription will bill.
-          example: '2025-05-21'
-        merchant_account_id:
-          type: string
-          description: The merchant account id associated with the subscription.
-          example: 123
-        payment_method_id:
-          type: string
-          description: Id associated with the payment method.
-          example: 456
-        allow_tax:
-          type: boolean
-          description: If the subscription allows tax.
-          example: false
-        max_charge_attempts:
-          type: integer
-          format: int32
-          description: Maximum number of charge attempts.
-          example: 3
-        days_between_retries:
-          type: integer
-          format: int32
-          description: Number of days between charge attempts.
-          example: 5
-        lead_affiliate_id:
-          type: string
-          description: The affiliate id for the lead of the subscription.
-          example: 789
-        sale_affiliate_id:
-          type: string
-          description: The affiliate id for the sale of the subscription.
-          example: 101
-        promo_code:
-          type: string
-          description: The promo code for the subscription.
-          example: PROMO123
-        shipping_option_id:
-          type: string
-          description: The shipping option ID for the subscription.
-          example: 123
-        reason_stopped:
-          type: string
-          description: The reason the subscription is no longer active.
-          example: Customer requested cancellation
     ListRestShippingMethodsResponse:
       type: object
       properties:

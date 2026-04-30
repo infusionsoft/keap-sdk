@@ -10,9 +10,8 @@ import { AddProductInterestRequest } from '../models/AddProductInterestRequest';
 import { AddToAutomationSequenceRequest } from '../models/AddToAutomationSequenceRequest';
 import { AddToAutomationSequenceResponse } from '../models/AddToAutomationSequenceResponse';
 import { Address } from '../models/Address';
-import { AddressDetail } from '../models/AddressDetail';
 import { AddressInformation } from '../models/AddressInformation';
-import { AddressRequestDetail } from '../models/AddressRequestDetail';
+import { AddressRequest } from '../models/AddressRequest';
 import { AffiliateAddToProgramRequest } from '../models/AffiliateAddToProgramRequest';
 import { AffiliateCommission } from '../models/AffiliateCommission';
 import { AffiliateCommissionEarned } from '../models/AffiliateCommissionEarned';
@@ -112,7 +111,7 @@ import { CreateReferralRequest } from '../models/CreateReferralRequest';
 import { CreateShippingDiscountRequest } from '../models/CreateShippingDiscountRequest';
 import { CreateSubscriptionCommissionProgramRequest } from '../models/CreateSubscriptionCommissionProgramRequest';
 import { CreateSubscriptionPlanRequest } from '../models/CreateSubscriptionPlanRequest';
-import { CreateSubscriptionRequestDetail } from '../models/CreateSubscriptionRequestDetail';
+import { CreateSubscriptionRequest } from '../models/CreateSubscriptionRequest';
 import { CreateTaskRequest } from '../models/CreateTaskRequest';
 import { CreateUpdateContactRequest } from '../models/CreateUpdateContactRequest';
 import { CreateUpdateLeadSourceCategoryRequest } from '../models/CreateUpdateLeadSourceCategoryRequest';
@@ -223,7 +222,7 @@ import { ListReportsResponse } from '../models/ListReportsResponse';
 import { ListRestShippingMethodsResponse } from '../models/ListRestShippingMethodsResponse';
 import { ListShippingDiscountsResponse } from '../models/ListShippingDiscountsResponse';
 import { ListSubscriptionPlansResponse } from '../models/ListSubscriptionPlansResponse';
-import { ListSubscriptionsResponseList } from '../models/ListSubscriptionsResponseList';
+import { ListSubscriptionsResponse } from '../models/ListSubscriptionsResponse';
 import { ListTagCategoriesResponse } from '../models/ListTagCategoriesResponse';
 import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesResponse';
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
@@ -296,10 +295,9 @@ import { ShippingInformation } from '../models/ShippingInformation';
 import { ShippingMethod } from '../models/ShippingMethod';
 import { SocialAccount } from '../models/SocialAccount';
 import { StageDetails } from '../models/StageDetails';
+import { Subscription } from '../models/Subscription';
 import { SubscriptionCommission } from '../models/SubscriptionCommission';
 import { SubscriptionCommissionProgram } from '../models/SubscriptionCommissionProgram';
-import { SubscriptionDetail } from '../models/SubscriptionDetail';
-import { SubscriptionList } from '../models/SubscriptionList';
 import { SubscriptionPlan } from '../models/SubscriptionPlan';
 import { SubscriptionPlanDetail } from '../models/SubscriptionPlanDetail';
 import { SubscriptionPlanList } from '../models/SubscriptionPlanList';
@@ -341,7 +339,7 @@ import { UpdateProductRequestDetail } from '../models/UpdateProductRequestDetail
 import { UpdateShippingDiscountRequest } from '../models/UpdateShippingDiscountRequest';
 import { UpdateSubscriptionCommissionProgramRequest } from '../models/UpdateSubscriptionCommissionProgramRequest';
 import { UpdateSubscriptionPlanRequest } from '../models/UpdateSubscriptionPlanRequest';
-import { UpdateSubscriptionRequestDetail } from '../models/UpdateSubscriptionRequestDetail';
+import { UpdateSubscriptionRequest } from '../models/UpdateSubscriptionRequest';
 import { UpdateTagCategoryResponse } from '../models/UpdateTagCategoryResponse';
 import { UpdateTagResponse } from '../models/UpdateTagResponse';
 import { UpdateTaskResponse } from '../models/UpdateTaskResponse';
@@ -590,14 +588,14 @@ export interface AffiliateApiGetReferralsByAffiliateIdRequest {
 
 export interface AffiliateApiListAffiliateRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;affiliate_name&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;affiliate_name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;
+     * Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApilistAffiliate
      */
     filter?: string
     /**
-     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApilistAffiliate
@@ -3092,7 +3090,7 @@ export interface ContactApiListContactsRequest {
      */
     fields?: Array<string>
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; - (String) &#x60;phone_field&#x60; (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; - (String) &#x60;phone_field&#x60; (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5) - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60;   You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof ContactApilistContacts
@@ -9614,10 +9612,10 @@ export interface SubscriptionsApiCancelSubscriptionRequest {
 export interface SubscriptionsApiCreateSubscriptionRequest {
     /**
      * 
-     * @type CreateSubscriptionRequestDetail
+     * @type CreateSubscriptionRequest
      * @memberof SubscriptionsApicreateSubscription
      */
-    createSubscriptionRequestDetail: CreateSubscriptionRequestDetail
+    createSubscriptionRequest: CreateSubscriptionRequest
 }
 
 export interface SubscriptionsApiCreateSubscriptionCustomFieldRequest {
@@ -9651,14 +9649,14 @@ export interface SubscriptionsApiGetSubscriptionRequest {
 
 export interface SubscriptionsApiListSubscriptionsRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof SubscriptionsApilistSubscriptions
      */
     filter?: string
     /**
-     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof SubscriptionsApilistSubscriptions
@@ -9695,10 +9693,10 @@ export interface SubscriptionsApiUpdateSubscriptionRequest {
     subscriptionId: string
     /**
      * 
-     * @type UpdateSubscriptionRequestDetail
+     * @type UpdateSubscriptionRequest
      * @memberof SubscriptionsApiupdateSubscription
      */
-    updateSubscriptionRequestDetail: UpdateSubscriptionRequestDetail
+    updateSubscriptionRequest: UpdateSubscriptionRequest
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
@@ -9761,8 +9759,8 @@ export class ObjectSubscriptionsApi {
      * Create Subscription
      * @param param the request object
      */
-    public createSubscriptionWithHttpInfo(param: SubscriptionsApiCreateSubscriptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<SubscriptionDetail>> {
-        return this.api.createSubscriptionWithHttpInfo(param.createSubscriptionRequestDetail,  options).toPromise();
+    public createSubscriptionWithHttpInfo(param: SubscriptionsApiCreateSubscriptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<Subscription>> {
+        return this.api.createSubscriptionWithHttpInfo(param.createSubscriptionRequest,  options).toPromise();
     }
 
     /**
@@ -9770,8 +9768,8 @@ export class ObjectSubscriptionsApi {
      * Create Subscription
      * @param param the request object
      */
-    public createSubscription(param: SubscriptionsApiCreateSubscriptionRequest, options?: ConfigurationOptions): Promise<SubscriptionDetail> {
-        return this.api.createSubscription(param.createSubscriptionRequestDetail,  options).toPromise();
+    public createSubscription(param: SubscriptionsApiCreateSubscriptionRequest, options?: ConfigurationOptions): Promise<Subscription> {
+        return this.api.createSubscription(param.createSubscriptionRequest,  options).toPromise();
     }
 
     /**
@@ -9815,7 +9813,7 @@ export class ObjectSubscriptionsApi {
      * Retrieve a Subscription
      * @param param the request object
      */
-    public getSubscriptionWithHttpInfo(param: SubscriptionsApiGetSubscriptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<SubscriptionDetail>> {
+    public getSubscriptionWithHttpInfo(param: SubscriptionsApiGetSubscriptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<Subscription>> {
         return this.api.getSubscriptionWithHttpInfo(param.subscriptionId,  options).toPromise();
     }
 
@@ -9824,7 +9822,7 @@ export class ObjectSubscriptionsApi {
      * Retrieve a Subscription
      * @param param the request object
      */
-    public getSubscription(param: SubscriptionsApiGetSubscriptionRequest, options?: ConfigurationOptions): Promise<SubscriptionDetail> {
+    public getSubscription(param: SubscriptionsApiGetSubscriptionRequest, options?: ConfigurationOptions): Promise<Subscription> {
         return this.api.getSubscription(param.subscriptionId,  options).toPromise();
     }
 
@@ -9833,7 +9831,7 @@ export class ObjectSubscriptionsApi {
      * List Subscriptions
      * @param param the request object
      */
-    public listSubscriptionsWithHttpInfo(param: SubscriptionsApiListSubscriptionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListSubscriptionsResponseList>> {
+    public listSubscriptionsWithHttpInfo(param: SubscriptionsApiListSubscriptionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListSubscriptionsResponse>> {
         return this.api.listSubscriptionsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
@@ -9842,7 +9840,7 @@ export class ObjectSubscriptionsApi {
      * List Subscriptions
      * @param param the request object
      */
-    public listSubscriptions(param: SubscriptionsApiListSubscriptionsRequest = {}, options?: ConfigurationOptions): Promise<ListSubscriptionsResponseList> {
+    public listSubscriptions(param: SubscriptionsApiListSubscriptionsRequest = {}, options?: ConfigurationOptions): Promise<ListSubscriptionsResponse> {
         return this.api.listSubscriptions(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
@@ -9869,8 +9867,8 @@ export class ObjectSubscriptionsApi {
      * Update a Subscription
      * @param param the request object
      */
-    public updateSubscriptionWithHttpInfo(param: SubscriptionsApiUpdateSubscriptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<SubscriptionDetail>> {
-        return this.api.updateSubscriptionWithHttpInfo(param.subscriptionId, param.updateSubscriptionRequestDetail, param.updateMask,  options).toPromise();
+    public updateSubscriptionWithHttpInfo(param: SubscriptionsApiUpdateSubscriptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<Subscription>> {
+        return this.api.updateSubscriptionWithHttpInfo(param.subscriptionId, param.updateSubscriptionRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -9878,8 +9876,8 @@ export class ObjectSubscriptionsApi {
      * Update a Subscription
      * @param param the request object
      */
-    public updateSubscription(param: SubscriptionsApiUpdateSubscriptionRequest, options?: ConfigurationOptions): Promise<SubscriptionDetail> {
-        return this.api.updateSubscription(param.subscriptionId, param.updateSubscriptionRequestDetail, param.updateMask,  options).toPromise();
+    public updateSubscription(param: SubscriptionsApiUpdateSubscriptionRequest, options?: ConfigurationOptions): Promise<Subscription> {
+        return this.api.updateSubscription(param.subscriptionId, param.updateSubscriptionRequest, param.updateMask,  options).toPromise();
     }
 
     /**

@@ -96,7 +96,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_subscription**
-> SubscriptionDetail create_subscription(create_subscription_request_detail)
+> Subscription create_subscription(create_subscription_request)
 
 Create Subscription
 
@@ -108,8 +108,8 @@ Creates a subscription with the specified product and product subscription id.
 
 ```python
 import keap_core_v2_client
-from keap_core_v2_client.models.create_subscription_request_detail import CreateSubscriptionRequestDetail
-from keap_core_v2_client.models.subscription_detail import SubscriptionDetail
+from keap_core_v2_client.models.create_subscription_request import CreateSubscriptionRequest
+from keap_core_v2_client.models.subscription import Subscription
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
@@ -129,11 +129,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
-    create_subscription_request_detail = keap_core_v2_client.CreateSubscriptionRequestDetail() # CreateSubscriptionRequestDetail | 
+    create_subscription_request = keap_core_v2_client.CreateSubscriptionRequest() # CreateSubscriptionRequest | 
 
     try:
         # Create Subscription
-        api_response = api_instance.create_subscription(create_subscription_request_detail)
+        api_response = api_instance.create_subscription(create_subscription_request)
         print("The response of SubscriptionsApi->create_subscription:\n")
         pprint(api_response)
     except Exception as e:
@@ -146,11 +146,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_subscription_request_detail** | [**CreateSubscriptionRequestDetail**](CreateSubscriptionRequestDetail.md)|  | 
+ **create_subscription_request** | [**CreateSubscriptionRequest**](CreateSubscriptionRequest.md)|  | 
 
 ### Return type
 
-[**SubscriptionDetail**](SubscriptionDetail.md)
+[**Subscription**](Subscription.md)
 
 ### Authorization
 
@@ -335,7 +335,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_subscription**
-> SubscriptionDetail get_subscription(subscription_id)
+> Subscription get_subscription(subscription_id)
 
 Retrieve a Subscription
 
@@ -347,7 +347,7 @@ Retrieves a single subscription
 
 ```python
 import keap_core_v2_client
-from keap_core_v2_client.models.subscription_detail import SubscriptionDetail
+from keap_core_v2_client.models.subscription import Subscription
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
@@ -388,7 +388,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SubscriptionDetail**](SubscriptionDetail.md)
+[**Subscription**](Subscription.md)
 
 ### Authorization
 
@@ -415,7 +415,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_subscriptions**
-> ListSubscriptionsResponseList list_subscriptions(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+> ListSubscriptionsResponse list_subscriptions(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
 
 List Subscriptions
 
@@ -427,7 +427,7 @@ Retrieves a list of subscriptions using the specified search criteria.
 
 ```python
 import keap_core_v2_client
-from keap_core_v2_client.models.list_subscriptions_response_list import ListSubscriptionsResponseList
+from keap_core_v2_client.models.list_subscriptions_response import ListSubscriptionsResponse
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
@@ -447,8 +447,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
-    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status`  (optional)
-    order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc` (optional)
+    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive`  (optional)
+    order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc` (optional)
     page_size = 0 # int | Total number of items to return per page (optional)
     page_token = 'page_token_example' # str | Page token (optional)
 
@@ -467,14 +467,14 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  | [optional] 
- **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
+ **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  | [optional] 
+ **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
  **page_token** | **str**| Page token | [optional] 
 
 ### Return type
 
-[**ListSubscriptionsResponseList**](ListSubscriptionsResponseList.md)
+[**ListSubscriptionsResponse**](ListSubscriptionsResponse.md)
 
 ### Authorization
 
@@ -577,7 +577,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_subscription**
-> SubscriptionDetail update_subscription(subscription_id, update_subscription_request_detail, update_mask=update_mask)
+> Subscription update_subscription(subscription_id, update_subscription_request, update_mask=update_mask)
 
 Update a Subscription
 
@@ -589,8 +589,8 @@ Updates a Subscription
 
 ```python
 import keap_core_v2_client
-from keap_core_v2_client.models.subscription_detail import SubscriptionDetail
-from keap_core_v2_client.models.update_subscription_request_detail import UpdateSubscriptionRequestDetail
+from keap_core_v2_client.models.subscription import Subscription
+from keap_core_v2_client.models.update_subscription_request import UpdateSubscriptionRequest
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
@@ -611,12 +611,12 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
     subscription_id = 'subscription_id_example' # str | 
-    update_subscription_request_detail = keap_core_v2_client.UpdateSubscriptionRequestDetail() # UpdateSubscriptionRequestDetail | 
+    update_subscription_request = keap_core_v2_client.UpdateSubscriptionRequest() # UpdateSubscriptionRequest | 
     update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Subscription
-        api_response = api_instance.update_subscription(subscription_id, update_subscription_request_detail, update_mask=update_mask)
+        api_response = api_instance.update_subscription(subscription_id, update_subscription_request, update_mask=update_mask)
         print("The response of SubscriptionsApi->update_subscription:\n")
         pprint(api_response)
     except Exception as e:
@@ -630,12 +630,12 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **subscription_id** | **str**|  | 
- **update_subscription_request_detail** | [**UpdateSubscriptionRequestDetail**](UpdateSubscriptionRequestDetail.md)|  | 
+ **update_subscription_request** | [**UpdateSubscriptionRequest**](UpdateSubscriptionRequest.md)|  | 
  **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
-[**SubscriptionDetail**](SubscriptionDetail.md)
+[**Subscription**](Subscription.md)
 
 ### Authorization
 

@@ -78,7 +78,7 @@ void (empty response body)
 ## `createSubscription()`
 
 ```php
-createSubscription($create_subscription_request_detail): \Keap\Core\V2\Model\SubscriptionDetail
+createSubscription($create_subscription_request): \Keap\Core\V2\Model\Subscription
 ```
 
 Create Subscription
@@ -101,10 +101,10 @@ $apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_subscription_request_detail = new \Keap\Core\V2\Model\CreateSubscriptionRequestDetail(); // \Keap\Core\V2\Model\CreateSubscriptionRequestDetail
+$create_subscription_request = new \Keap\Core\V2\Model\CreateSubscriptionRequest(); // \Keap\Core\V2\Model\CreateSubscriptionRequest
 
 try {
-    $result = $apiInstance->createSubscription($create_subscription_request_detail);
+    $result = $apiInstance->createSubscription($create_subscription_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionsApi->createSubscription: ', $e->getMessage(), PHP_EOL;
@@ -115,11 +115,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_subscription_request_detail** | [**\Keap\Core\V2\Model\CreateSubscriptionRequestDetail**](../Model/CreateSubscriptionRequestDetail.md)|  | |
+| **create_subscription_request** | [**\Keap\Core\V2\Model\CreateSubscriptionRequest**](../Model/CreateSubscriptionRequest.md)|  | |
 
 ### Return type
 
-[**\Keap\Core\V2\Model\SubscriptionDetail**](../Model/SubscriptionDetail.md)
+[**\Keap\Core\V2\Model\Subscription**](../Model/Subscription.md)
 
 ### Authorization
 
@@ -254,7 +254,7 @@ void (empty response body)
 ## `getSubscription()`
 
 ```php
-getSubscription($subscription_id): \Keap\Core\V2\Model\SubscriptionDetail
+getSubscription($subscription_id): \Keap\Core\V2\Model\Subscription
 ```
 
 Retrieve a Subscription
@@ -295,7 +295,7 @@ try {
 
 ### Return type
 
-[**\Keap\Core\V2\Model\SubscriptionDetail**](../Model/SubscriptionDetail.md)
+[**\Keap\Core\V2\Model\Subscription**](../Model/Subscription.md)
 
 ### Authorization
 
@@ -313,7 +313,7 @@ try {
 ## `listSubscriptions()`
 
 ```php
-listSubscriptions($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListSubscriptionsResponseList
+listSubscriptions($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListSubscriptionsResponse
 ```
 
 List Subscriptions
@@ -336,8 +336,8 @@ $apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status`
-$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc`
+$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive`
+$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
@@ -353,14 +353,14 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; | [optional] |
-| **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60; | [optional] |
+| **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
 
 ### Return type
 
-[**\Keap\Core\V2\Model\ListSubscriptionsResponseList**](../Model/ListSubscriptionsResponseList.md)
+[**\Keap\Core\V2\Model\ListSubscriptionsResponse**](../Model/ListSubscriptionsResponse.md)
 
 ### Authorization
 
@@ -434,7 +434,7 @@ This endpoint does not need any parameter.
 ## `updateSubscription()`
 
 ```php
-updateSubscription($subscription_id, $update_subscription_request_detail, $update_mask): \Keap\Core\V2\Model\SubscriptionDetail
+updateSubscription($subscription_id, $update_subscription_request, $update_mask): \Keap\Core\V2\Model\Subscription
 ```
 
 Update a Subscription
@@ -458,11 +458,11 @@ $apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
     $config
 );
 $subscription_id = 'subscription_id_example'; // string
-$update_subscription_request_detail = new \Keap\Core\V2\Model\UpdateSubscriptionRequestDetail(); // \Keap\Core\V2\Model\UpdateSubscriptionRequestDetail
+$update_subscription_request = new \Keap\Core\V2\Model\UpdateSubscriptionRequest(); // \Keap\Core\V2\Model\UpdateSubscriptionRequest
 $update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateSubscription($subscription_id, $update_subscription_request_detail, $update_mask);
+    $result = $apiInstance->updateSubscription($subscription_id, $update_subscription_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionsApi->updateSubscription: ', $e->getMessage(), PHP_EOL;
@@ -474,12 +474,12 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **subscription_id** | **string**|  | |
-| **update_subscription_request_detail** | [**\Keap\Core\V2\Model\UpdateSubscriptionRequestDetail**](../Model/UpdateSubscriptionRequestDetail.md)|  | |
+| **update_subscription_request** | [**\Keap\Core\V2\Model\UpdateSubscriptionRequest**](../Model/UpdateSubscriptionRequest.md)|  | |
 | **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
-[**\Keap\Core\V2\Model\SubscriptionDetail**](../Model/SubscriptionDetail.md)
+[**\Keap\Core\V2\Model\Subscription**](../Model/Subscription.md)
 
 ### Authorization
 

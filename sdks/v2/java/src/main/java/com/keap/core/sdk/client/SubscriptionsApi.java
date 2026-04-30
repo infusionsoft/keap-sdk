@@ -19,14 +19,14 @@ import com.keap.core.sdk.Pair;
 
 import com.keap.core.sdk.model.CancelSubscriptionRequest;
 import com.keap.core.sdk.model.CreateCustomFieldRequest;
-import com.keap.core.sdk.model.CreateSubscriptionRequestDetail;
+import com.keap.core.sdk.model.CreateSubscriptionRequest;
 import com.keap.core.sdk.model.CustomFieldMetaData;
 import com.keap.core.sdk.model.Error;
-import com.keap.core.sdk.model.ListSubscriptionsResponseList;
+import com.keap.core.sdk.model.ListSubscriptionsResponse;
 import com.keap.core.sdk.model.ObjectModel;
-import com.keap.core.sdk.model.SubscriptionDetail;
+import com.keap.core.sdk.model.Subscription;
 import com.keap.core.sdk.model.UpdateCustomFieldMetaDataRequest;
-import com.keap.core.sdk.model.UpdateSubscriptionRequestDetail;
+import com.keap.core.sdk.model.UpdateSubscriptionRequest;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -211,24 +211,24 @@ import io.github.resilience4j.retry.Retry;
   /**
    * Create Subscription
    * Creates a subscription with the specified product and product subscription id.
-   * @param createSubscriptionRequestDetail  (required)
-   * @return SubscriptionDetail
+   * @param createSubscriptionRequest  (required)
+   * @return Subscription
    * @throws ApiException if fails to make API call
    */
-  public SubscriptionDetail createSubscription(CreateSubscriptionRequestDetail createSubscriptionRequestDetail) throws ApiException {
-    ApiResponse<SubscriptionDetail> localVarResponse = createSubscriptionWithHttpInfo(createSubscriptionRequestDetail);
+  public Subscription createSubscription(CreateSubscriptionRequest createSubscriptionRequest) throws ApiException {
+    ApiResponse<Subscription> localVarResponse = createSubscriptionWithHttpInfo(createSubscriptionRequest);
     return localVarResponse.getData();
   }
 
   /**
    * Create Subscription
    * Creates a subscription with the specified product and product subscription id.
-   * @param createSubscriptionRequestDetail  (required)
-   * @return ApiResponse&lt;SubscriptionDetail&gt;
+   * @param createSubscriptionRequest  (required)
+   * @return ApiResponse&lt;Subscription&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<SubscriptionDetail> createSubscriptionWithHttpInfo(CreateSubscriptionRequestDetail createSubscriptionRequestDetail) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = createSubscriptionRequestBuilder(createSubscriptionRequestDetail);
+  public ApiResponse<Subscription> createSubscriptionWithHttpInfo(CreateSubscriptionRequest createSubscriptionRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createSubscriptionRequestBuilder(createSubscriptionRequest);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -246,10 +246,10 @@ import io.github.resilience4j.retry.Retry;
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("createSubscription", localVarResponse);
         }
-        return new ApiResponse<SubscriptionDetail>(
+        return new ApiResponse<Subscription>(
           localVarResponse.statusCode(),
           localVarResponse.headers().map(),
-          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<SubscriptionDetail>() {}) // closes the InputStream
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<Subscription>() {}) // closes the InputStream
         );
       } finally {
       }
@@ -268,10 +268,10 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder createSubscriptionRequestBuilder(CreateSubscriptionRequestDetail createSubscriptionRequestDetail) throws ApiException {
-    // verify the required parameter 'createSubscriptionRequestDetail' is set
-    if (createSubscriptionRequestDetail == null) {
-      throw new ApiException(400, "Missing the required parameter 'createSubscriptionRequestDetail' when calling createSubscription");
+  private HttpRequest.Builder createSubscriptionRequestBuilder(CreateSubscriptionRequest createSubscriptionRequest) throws ApiException {
+    // verify the required parameter 'createSubscriptionRequest' is set
+    if (createSubscriptionRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'createSubscriptionRequest' when calling createSubscription");
     }
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
@@ -285,7 +285,7 @@ import io.github.resilience4j.retry.Retry;
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
 
     try {
-      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(createSubscriptionRequestDetail);
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(createSubscriptionRequest);
       localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);
@@ -483,11 +483,11 @@ import io.github.resilience4j.retry.Retry;
    * Retrieve a Subscription
    * Retrieves a single subscription
    * @param subscriptionId  (required)
-   * @return SubscriptionDetail
+   * @return Subscription
    * @throws ApiException if fails to make API call
    */
-  public SubscriptionDetail getSubscription(String subscriptionId) throws ApiException {
-    ApiResponse<SubscriptionDetail> localVarResponse = getSubscriptionWithHttpInfo(subscriptionId);
+  public Subscription getSubscription(String subscriptionId) throws ApiException {
+    ApiResponse<Subscription> localVarResponse = getSubscriptionWithHttpInfo(subscriptionId);
     return localVarResponse.getData();
   }
 
@@ -495,10 +495,10 @@ import io.github.resilience4j.retry.Retry;
    * Retrieve a Subscription
    * Retrieves a single subscription
    * @param subscriptionId  (required)
-   * @return ApiResponse&lt;SubscriptionDetail&gt;
+   * @return ApiResponse&lt;Subscription&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<SubscriptionDetail> getSubscriptionWithHttpInfo(String subscriptionId) throws ApiException {
+  public ApiResponse<Subscription> getSubscriptionWithHttpInfo(String subscriptionId) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getSubscriptionRequestBuilder(subscriptionId);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -517,10 +517,10 @@ import io.github.resilience4j.retry.Retry;
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("getSubscription", localVarResponse);
         }
-        return new ApiResponse<SubscriptionDetail>(
+        return new ApiResponse<Subscription>(
           localVarResponse.statusCode(),
           localVarResponse.headers().map(),
-          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<SubscriptionDetail>() {}) // closes the InputStream
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<Subscription>() {}) // closes the InputStream
         );
       } finally {
       }
@@ -568,29 +568,29 @@ import io.github.resilience4j.retry.Retry;
   /**
    * List Subscriptions
    * Retrieves a list of subscriptions using the specified search criteria.
-   * @param filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  (optional)
-   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  (optional)
+   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
-   * @return ListSubscriptionsResponseList
+   * @return ListSubscriptionsResponse
    * @throws ApiException if fails to make API call
    */
-  public ListSubscriptionsResponseList listSubscriptions(String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
-    ApiResponse<ListSubscriptionsResponseList> localVarResponse = listSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken);
+  public ListSubscriptionsResponse listSubscriptions(String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
+    ApiResponse<ListSubscriptionsResponse> localVarResponse = listSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken);
     return localVarResponse.getData();
   }
 
   /**
    * List Subscriptions
    * Retrieves a list of subscriptions using the specified search criteria.
-   * @param filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  (optional)
-   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  (optional)
+   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
-   * @return ApiResponse&lt;ListSubscriptionsResponseList&gt;
+   * @return ApiResponse&lt;ListSubscriptionsResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ListSubscriptionsResponseList> listSubscriptionsWithHttpInfo(String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
+  public ApiResponse<ListSubscriptionsResponse> listSubscriptionsWithHttpInfo(String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = listSubscriptionsRequestBuilder(filter, orderBy, pageSize, pageToken);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -609,10 +609,10 @@ import io.github.resilience4j.retry.Retry;
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("listSubscriptions", localVarResponse);
         }
-        return new ApiResponse<ListSubscriptionsResponseList>(
+        return new ApiResponse<ListSubscriptionsResponse>(
           localVarResponse.statusCode(),
           localVarResponse.headers().map(),
-          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ListSubscriptionsResponseList>() {}) // closes the InputStream
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ListSubscriptionsResponse>() {}) // closes the InputStream
         );
       } finally {
       }
@@ -756,13 +756,13 @@ import io.github.resilience4j.retry.Retry;
    * Update a Subscription
    * Updates a Subscription
    * @param subscriptionId  (required)
-   * @param updateSubscriptionRequestDetail  (required)
+   * @param updateSubscriptionRequest  (required)
    * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-   * @return SubscriptionDetail
+   * @return Subscription
    * @throws ApiException if fails to make API call
    */
-  public SubscriptionDetail updateSubscription(String subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object updateMask) throws ApiException {
-    ApiResponse<SubscriptionDetail> localVarResponse = updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequestDetail, updateMask);
+  public Subscription updateSubscription(String subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object updateMask) throws ApiException {
+    ApiResponse<Subscription> localVarResponse = updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequest, updateMask);
     return localVarResponse.getData();
   }
 
@@ -770,13 +770,13 @@ import io.github.resilience4j.retry.Retry;
    * Update a Subscription
    * Updates a Subscription
    * @param subscriptionId  (required)
-   * @param updateSubscriptionRequestDetail  (required)
+   * @param updateSubscriptionRequest  (required)
    * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-   * @return ApiResponse&lt;SubscriptionDetail&gt;
+   * @return ApiResponse&lt;Subscription&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<SubscriptionDetail> updateSubscriptionWithHttpInfo(String subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object updateMask) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = updateSubscriptionRequestBuilder(subscriptionId, updateSubscriptionRequestDetail, updateMask);
+  public ApiResponse<Subscription> updateSubscriptionWithHttpInfo(String subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object updateMask) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateSubscriptionRequestBuilder(subscriptionId, updateSubscriptionRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -794,10 +794,10 @@ import io.github.resilience4j.retry.Retry;
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("updateSubscription", localVarResponse);
         }
-        return new ApiResponse<SubscriptionDetail>(
+        return new ApiResponse<Subscription>(
           localVarResponse.statusCode(),
           localVarResponse.headers().map(),
-          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<SubscriptionDetail>() {}) // closes the InputStream
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<Subscription>() {}) // closes the InputStream
         );
       } finally {
       }
@@ -816,14 +816,14 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateSubscriptionRequestBuilder(String subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateSubscriptionRequestBuilder(String subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'subscriptionId' is set
     if (subscriptionId == null) {
       throw new ApiException(400, "Missing the required parameter 'subscriptionId' when calling updateSubscription");
     }
-    // verify the required parameter 'updateSubscriptionRequestDetail' is set
-    if (updateSubscriptionRequestDetail == null) {
-      throw new ApiException(400, "Missing the required parameter 'updateSubscriptionRequestDetail' when calling updateSubscription");
+    // verify the required parameter 'updateSubscriptionRequest' is set
+    if (updateSubscriptionRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateSubscriptionRequest' when calling updateSubscription");
     }
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
@@ -853,7 +853,7 @@ import io.github.resilience4j.retry.Retry;
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
 
     try {
-      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateSubscriptionRequestDetail);
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateSubscriptionRequest);
       localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);

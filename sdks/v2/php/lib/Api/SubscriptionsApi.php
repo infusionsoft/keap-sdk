@@ -451,16 +451,16 @@ class SubscriptionsApi
      *
      * Create Subscription
      *
-     * @param  \Keap\Core\V2\Model\CreateSubscriptionRequestDetail $create_subscription_request_detail create_subscription_request_detail (required)
+     * @param  \Keap\Core\V2\Model\CreateSubscriptionRequest $create_subscription_request create_subscription_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSubscription'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\SubscriptionDetail|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\Subscription|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
-    public function createSubscription($create_subscription_request_detail, string $contentType = self::contentTypes['createSubscription'][0])
+    public function createSubscription($create_subscription_request, string $contentType = self::contentTypes['createSubscription'][0])
     {
-        list($response) = $this->createSubscriptionWithHttpInfo($create_subscription_request_detail, $contentType);
+        list($response) = $this->createSubscriptionWithHttpInfo($create_subscription_request, $contentType);
         return $response;
     }
 
@@ -469,16 +469,16 @@ class SubscriptionsApi
      *
      * Create Subscription
      *
-     * @param  \Keap\Core\V2\Model\CreateSubscriptionRequestDetail $create_subscription_request_detail (required)
+     * @param  \Keap\Core\V2\Model\CreateSubscriptionRequest $create_subscription_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSubscription'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\SubscriptionDetail|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\Subscription|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createSubscriptionWithHttpInfo($create_subscription_request_detail, string $contentType = self::contentTypes['createSubscription'][0])
+    public function createSubscriptionWithHttpInfo($create_subscription_request, string $contentType = self::contentTypes['createSubscription'][0])
     {
-        $request = $this->createSubscriptionRequest($create_subscription_request_detail, $contentType);
+        $request = $this->createSubscriptionRequest($create_subscription_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -506,7 +506,7 @@ class SubscriptionsApi
             switch($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
-                        '\Keap\Core\V2\Model\SubscriptionDetail',
+                        '\Keap\Core\V2\Model\Subscription',
                         $request,
                         $response,
                     );
@@ -570,7 +570,7 @@ class SubscriptionsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Keap\Core\V2\Model\SubscriptionDetail',
+                '\Keap\Core\V2\Model\Subscription',
                 $request,
                 $response,
             );
@@ -579,7 +579,7 @@ class SubscriptionsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Keap\Core\V2\Model\SubscriptionDetail',
+                        '\Keap\Core\V2\Model\Subscription',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -652,15 +652,15 @@ class SubscriptionsApi
      *
      * Create Subscription
      *
-     * @param  \Keap\Core\V2\Model\CreateSubscriptionRequestDetail $create_subscription_request_detail (required)
+     * @param  \Keap\Core\V2\Model\CreateSubscriptionRequest $create_subscription_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSubscription'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createSubscriptionAsync($create_subscription_request_detail, string $contentType = self::contentTypes['createSubscription'][0])
+    public function createSubscriptionAsync($create_subscription_request, string $contentType = self::contentTypes['createSubscription'][0])
     {
-        return $this->createSubscriptionAsyncWithHttpInfo($create_subscription_request_detail, $contentType)
+        return $this->createSubscriptionAsyncWithHttpInfo($create_subscription_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -673,16 +673,16 @@ class SubscriptionsApi
      *
      * Create Subscription
      *
-     * @param  \Keap\Core\V2\Model\CreateSubscriptionRequestDetail $create_subscription_request_detail (required)
+     * @param  \Keap\Core\V2\Model\CreateSubscriptionRequest $create_subscription_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSubscription'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createSubscriptionAsyncWithHttpInfo($create_subscription_request_detail, string $contentType = self::contentTypes['createSubscription'][0])
+    public function createSubscriptionAsyncWithHttpInfo($create_subscription_request, string $contentType = self::contentTypes['createSubscription'][0])
     {
-        $returnType = '\Keap\Core\V2\Model\SubscriptionDetail';
-        $request = $this->createSubscriptionRequest($create_subscription_request_detail, $contentType);
+        $returnType = '\Keap\Core\V2\Model\Subscription';
+        $request = $this->createSubscriptionRequest($create_subscription_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -723,19 +723,19 @@ class SubscriptionsApi
     /**
      * Create request for operation 'createSubscription'
      *
-     * @param  \Keap\Core\V2\Model\CreateSubscriptionRequestDetail $create_subscription_request_detail (required)
+     * @param  \Keap\Core\V2\Model\CreateSubscriptionRequest $create_subscription_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSubscription'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createSubscriptionRequest($create_subscription_request_detail, string $contentType = self::contentTypes['createSubscription'][0])
+    public function createSubscriptionRequest($create_subscription_request, string $contentType = self::contentTypes['createSubscription'][0])
     {
 
-        // verify the required parameter 'create_subscription_request_detail' is set
-        if ($create_subscription_request_detail === null || (is_array($create_subscription_request_detail) && count($create_subscription_request_detail) === 0)) {
+        // verify the required parameter 'create_subscription_request' is set
+        if ($create_subscription_request === null || (is_array($create_subscription_request) && count($create_subscription_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_subscription_request_detail when calling createSubscription'
+                'Missing the required parameter $create_subscription_request when calling createSubscription'
             );
         }
 
@@ -758,12 +758,12 @@ class SubscriptionsApi
         );
 
         // for model (json/xml)
-        if (isset($create_subscription_request_detail)) {
+        if (isset($create_subscription_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_subscription_request_detail));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_subscription_request));
             } else {
-                $httpBody = $create_subscription_request_detail;
+                $httpBody = $create_subscription_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1472,7 +1472,7 @@ class SubscriptionsApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\SubscriptionDetail|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\Subscription|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function getSubscription($subscription_id, string $contentType = self::contentTypes['getSubscription'][0])
     {
@@ -1490,7 +1490,7 @@ class SubscriptionsApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\SubscriptionDetail|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\Subscription|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSubscriptionWithHttpInfo($subscription_id, string $contentType = self::contentTypes['getSubscription'][0])
     {
@@ -1522,7 +1522,7 @@ class SubscriptionsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Keap\Core\V2\Model\SubscriptionDetail',
+                        '\Keap\Core\V2\Model\Subscription',
                         $request,
                         $response,
                     );
@@ -1586,7 +1586,7 @@ class SubscriptionsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Keap\Core\V2\Model\SubscriptionDetail',
+                '\Keap\Core\V2\Model\Subscription',
                 $request,
                 $response,
             );
@@ -1595,7 +1595,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Keap\Core\V2\Model\SubscriptionDetail',
+                        '\Keap\Core\V2\Model\Subscription',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1697,7 +1697,7 @@ class SubscriptionsApi
      */
     public function getSubscriptionAsyncWithHttpInfo($subscription_id, string $contentType = self::contentTypes['getSubscription'][0])
     {
-        $returnType = '\Keap\Core\V2\Model\SubscriptionDetail';
+        $returnType = '\Keap\Core\V2\Model\Subscription';
         $request = $this->getSubscriptionRequest($subscription_id, $contentType);
 
         return $this->client
@@ -1837,15 +1837,15 @@ class SubscriptionsApi
      *
      * List Subscriptions
      *
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; (optional)
-     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60; (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSubscriptions'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\ListSubscriptionsResponseList|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\ListSubscriptionsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function listSubscriptions($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listSubscriptions'][0])
     {
@@ -1858,15 +1858,15 @@ class SubscriptionsApi
      *
      * List Subscriptions
      *
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; (optional)
-     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60; (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSubscriptions'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\ListSubscriptionsResponseList|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\ListSubscriptionsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function listSubscriptionsWithHttpInfo($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listSubscriptions'][0])
     {
@@ -1898,7 +1898,7 @@ class SubscriptionsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Keap\Core\V2\Model\ListSubscriptionsResponseList',
+                        '\Keap\Core\V2\Model\ListSubscriptionsResponse',
                         $request,
                         $response,
                     );
@@ -1962,7 +1962,7 @@ class SubscriptionsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Keap\Core\V2\Model\ListSubscriptionsResponseList',
+                '\Keap\Core\V2\Model\ListSubscriptionsResponse',
                 $request,
                 $response,
             );
@@ -1971,7 +1971,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Keap\Core\V2\Model\ListSubscriptionsResponseList',
+                        '\Keap\Core\V2\Model\ListSubscriptionsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2044,8 +2044,8 @@ class SubscriptionsApi
      *
      * List Subscriptions
      *
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; (optional)
-     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60; (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSubscriptions'] to see the possible values for this operation
@@ -2068,8 +2068,8 @@ class SubscriptionsApi
      *
      * List Subscriptions
      *
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; (optional)
-     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60; (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSubscriptions'] to see the possible values for this operation
@@ -2079,7 +2079,7 @@ class SubscriptionsApi
      */
     public function listSubscriptionsAsyncWithHttpInfo($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listSubscriptions'][0])
     {
-        $returnType = '\Keap\Core\V2\Model\ListSubscriptionsResponseList';
+        $returnType = '\Keap\Core\V2\Model\ListSubscriptionsResponse';
         $request = $this->listSubscriptionsRequest($filter, $order_by, $page_size, $page_token, $contentType);
 
         return $this->client
@@ -2121,8 +2121,8 @@ class SubscriptionsApi
     /**
      * Create request for operation 'listSubscriptions'
      *
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; (optional)
-     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60; (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSubscriptions'] to see the possible values for this operation
@@ -2604,17 +2604,17 @@ class SubscriptionsApi
      * Update a Subscription
      *
      * @param  string $subscription_id subscription_id (required)
-     * @param  \Keap\Core\V2\Model\UpdateSubscriptionRequestDetail $update_subscription_request_detail update_subscription_request_detail (required)
+     * @param  \Keap\Core\V2\Model\UpdateSubscriptionRequest $update_subscription_request update_subscription_request (required)
      * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscription'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\SubscriptionDetail|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\Subscription|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
-    public function updateSubscription($subscription_id, $update_subscription_request_detail, $update_mask = null, string $contentType = self::contentTypes['updateSubscription'][0])
+    public function updateSubscription($subscription_id, $update_subscription_request, $update_mask = null, string $contentType = self::contentTypes['updateSubscription'][0])
     {
-        list($response) = $this->updateSubscriptionWithHttpInfo($subscription_id, $update_subscription_request_detail, $update_mask, $contentType);
+        list($response) = $this->updateSubscriptionWithHttpInfo($subscription_id, $update_subscription_request, $update_mask, $contentType);
         return $response;
     }
 
@@ -2624,17 +2624,17 @@ class SubscriptionsApi
      * Update a Subscription
      *
      * @param  string $subscription_id (required)
-     * @param  \Keap\Core\V2\Model\UpdateSubscriptionRequestDetail $update_subscription_request_detail (required)
+     * @param  \Keap\Core\V2\Model\UpdateSubscriptionRequest $update_subscription_request (required)
      * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscription'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\SubscriptionDetail|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\Subscription|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateSubscriptionWithHttpInfo($subscription_id, $update_subscription_request_detail, $update_mask = null, string $contentType = self::contentTypes['updateSubscription'][0])
+    public function updateSubscriptionWithHttpInfo($subscription_id, $update_subscription_request, $update_mask = null, string $contentType = self::contentTypes['updateSubscription'][0])
     {
-        $request = $this->updateSubscriptionRequest($subscription_id, $update_subscription_request_detail, $update_mask, $contentType);
+        $request = $this->updateSubscriptionRequest($subscription_id, $update_subscription_request, $update_mask, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2662,7 +2662,7 @@ class SubscriptionsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Keap\Core\V2\Model\SubscriptionDetail',
+                        '\Keap\Core\V2\Model\Subscription',
                         $request,
                         $response,
                     );
@@ -2726,7 +2726,7 @@ class SubscriptionsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Keap\Core\V2\Model\SubscriptionDetail',
+                '\Keap\Core\V2\Model\Subscription',
                 $request,
                 $response,
             );
@@ -2735,7 +2735,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Keap\Core\V2\Model\SubscriptionDetail',
+                        '\Keap\Core\V2\Model\Subscription',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2809,16 +2809,16 @@ class SubscriptionsApi
      * Update a Subscription
      *
      * @param  string $subscription_id (required)
-     * @param  \Keap\Core\V2\Model\UpdateSubscriptionRequestDetail $update_subscription_request_detail (required)
+     * @param  \Keap\Core\V2\Model\UpdateSubscriptionRequest $update_subscription_request (required)
      * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscription'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateSubscriptionAsync($subscription_id, $update_subscription_request_detail, $update_mask = null, string $contentType = self::contentTypes['updateSubscription'][0])
+    public function updateSubscriptionAsync($subscription_id, $update_subscription_request, $update_mask = null, string $contentType = self::contentTypes['updateSubscription'][0])
     {
-        return $this->updateSubscriptionAsyncWithHttpInfo($subscription_id, $update_subscription_request_detail, $update_mask, $contentType)
+        return $this->updateSubscriptionAsyncWithHttpInfo($subscription_id, $update_subscription_request, $update_mask, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2832,17 +2832,17 @@ class SubscriptionsApi
      * Update a Subscription
      *
      * @param  string $subscription_id (required)
-     * @param  \Keap\Core\V2\Model\UpdateSubscriptionRequestDetail $update_subscription_request_detail (required)
+     * @param  \Keap\Core\V2\Model\UpdateSubscriptionRequest $update_subscription_request (required)
      * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscription'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateSubscriptionAsyncWithHttpInfo($subscription_id, $update_subscription_request_detail, $update_mask = null, string $contentType = self::contentTypes['updateSubscription'][0])
+    public function updateSubscriptionAsyncWithHttpInfo($subscription_id, $update_subscription_request, $update_mask = null, string $contentType = self::contentTypes['updateSubscription'][0])
     {
-        $returnType = '\Keap\Core\V2\Model\SubscriptionDetail';
-        $request = $this->updateSubscriptionRequest($subscription_id, $update_subscription_request_detail, $update_mask, $contentType);
+        $returnType = '\Keap\Core\V2\Model\Subscription';
+        $request = $this->updateSubscriptionRequest($subscription_id, $update_subscription_request, $update_mask, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2884,14 +2884,14 @@ class SubscriptionsApi
      * Create request for operation 'updateSubscription'
      *
      * @param  string $subscription_id (required)
-     * @param  \Keap\Core\V2\Model\UpdateSubscriptionRequestDetail $update_subscription_request_detail (required)
+     * @param  \Keap\Core\V2\Model\UpdateSubscriptionRequest $update_subscription_request (required)
      * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscription'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateSubscriptionRequest($subscription_id, $update_subscription_request_detail, $update_mask = null, string $contentType = self::contentTypes['updateSubscription'][0])
+    public function updateSubscriptionRequest($subscription_id, $update_subscription_request, $update_mask = null, string $contentType = self::contentTypes['updateSubscription'][0])
     {
 
         // verify the required parameter 'subscription_id' is set
@@ -2901,10 +2901,10 @@ class SubscriptionsApi
             );
         }
 
-        // verify the required parameter 'update_subscription_request_detail' is set
-        if ($update_subscription_request_detail === null || (is_array($update_subscription_request_detail) && count($update_subscription_request_detail) === 0)) {
+        // verify the required parameter 'update_subscription_request' is set
+        if ($update_subscription_request === null || (is_array($update_subscription_request) && count($update_subscription_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_subscription_request_detail when calling updateSubscription'
+                'Missing the required parameter $update_subscription_request when calling updateSubscription'
             );
         }
 
@@ -2945,12 +2945,12 @@ class SubscriptionsApi
         );
 
         // for model (json/xml)
-        if (isset($update_subscription_request_detail)) {
+        if (isset($update_subscription_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_subscription_request_detail));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_subscription_request));
             } else {
-                $httpBody = $update_subscription_request_detail;
+                $httpBody = $update_subscription_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
