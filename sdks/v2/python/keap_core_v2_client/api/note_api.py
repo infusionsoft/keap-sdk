@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
-from typing import Any, Optional
+from typing import Any, List, Optional
 from typing_extensions import Annotated
 from keap_core_v2_client.models.create_custom_field_request import CreateCustomFieldRequest
 from keap_core_v2_client.models.create_note_request import CreateNoteRequest
@@ -956,6 +956,7 @@ class NoteApi:
         self,
         contact_id: StrictStr,
         note_id: StrictStr,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -977,6 +978,8 @@ class NoteApi:
         :type contact_id: str
         :param note_id: (required)
         :type note_id: str
+        :param fields: Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1002,6 +1005,7 @@ class NoteApi:
         _param = self._get_note_serialize(
             contact_id=contact_id,
             note_id=note_id,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1034,6 +1038,7 @@ class NoteApi:
         self,
         contact_id: StrictStr,
         note_id: StrictStr,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1055,6 +1060,8 @@ class NoteApi:
         :type contact_id: str
         :param note_id: (required)
         :type note_id: str
+        :param fields: Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1080,6 +1087,7 @@ class NoteApi:
         _param = self._get_note_serialize(
             contact_id=contact_id,
             note_id=note_id,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1112,6 +1120,7 @@ class NoteApi:
         self,
         contact_id: StrictStr,
         note_id: StrictStr,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1133,6 +1142,8 @@ class NoteApi:
         :type contact_id: str
         :param note_id: (required)
         :type note_id: str
+        :param fields: Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1158,6 +1169,7 @@ class NoteApi:
         _param = self._get_note_serialize(
             contact_id=contact_id,
             note_id=note_id,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1185,6 +1197,7 @@ class NoteApi:
         self,
         contact_id,
         note_id,
+        fields,
         _request_auth,
         _content_type,
         _headers,
@@ -1194,6 +1207,7 @@ class NoteApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'fields': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1211,6 +1225,10 @@ class NoteApi:
         if note_id is not None:
             _path_params['note_id'] = note_id
         # process the query parameters
+        if fields is not None:
+            
+            _query_params.append(('fields', fields))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1591,6 +1609,7 @@ class NoteApi:
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1618,6 +1637,8 @@ class NoteApi:
         :type page_size: int
         :param page_token: Page token
         :type page_token: str
+        :param fields: Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1646,6 +1667,7 @@ class NoteApi:
             order_by=order_by,
             page_size=page_size,
             page_token=page_token,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1681,6 +1703,7 @@ class NoteApi:
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1708,6 +1731,8 @@ class NoteApi:
         :type page_size: int
         :param page_token: Page token
         :type page_token: str
+        :param fields: Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1736,6 +1761,7 @@ class NoteApi:
             order_by=order_by,
             page_size=page_size,
             page_token=page_token,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1771,6 +1797,7 @@ class NoteApi:
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1798,6 +1825,8 @@ class NoteApi:
         :type page_size: int
         :param page_token: Page token
         :type page_token: str
+        :param fields: Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1826,6 +1855,7 @@ class NoteApi:
             order_by=order_by,
             page_size=page_size,
             page_token=page_token,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1856,6 +1886,7 @@ class NoteApi:
         order_by,
         page_size,
         page_token,
+        fields,
         _request_auth,
         _content_type,
         _headers,
@@ -1865,6 +1896,7 @@ class NoteApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'fields': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1895,6 +1927,10 @@ class NoteApi:
         if page_token is not None:
             
             _query_params.append(('page_token', page_token))
+            
+        if fields is not None:
+            
+            _query_params.append(('fields', fields))
             
         # process the header parameters
         # process the form parameters

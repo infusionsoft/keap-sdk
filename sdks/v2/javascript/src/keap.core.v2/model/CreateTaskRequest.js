@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CustomFieldValueObject from './CustomFieldValueObject';
 
 /**
  * The CreateTaskRequest model module.
@@ -79,6 +80,9 @@ class CreateTaskRequest {
             if (data.hasOwnProperty('contact_id')) {
                 obj['contact_id'] = ApiClient.convertToType(data['contact_id'], 'String');
             }
+            if (data.hasOwnProperty('custom_fields')) {
+                obj['custom_fields'] = ApiClient.convertToType(data['custom_fields'], [CustomFieldValueObject]);
+            }
         }
         return obj;
     }
@@ -126,6 +130,16 @@ class CreateTaskRequest {
         // ensure the json data is a string
         if (data['contact_id'] && !(typeof data['contact_id'] === 'string' || data['contact_id'] instanceof String)) {
             throw new Error("Expected the field `contact_id` to be a primitive type in the JSON string but got " + data['contact_id']);
+        }
+        if (data['custom_fields']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['custom_fields'])) {
+                throw new Error("Expected the field `custom_fields` to be an array in the JSON data but got " + data['custom_fields']);
+            }
+            // validate the optional field `custom_fields` (array)
+            for (const item of data['custom_fields']) {
+                CustomFieldValueObject.validateJSON(item);
+            };
         }
 
         return true;
@@ -195,6 +209,12 @@ CreateTaskRequest.prototype['assigned_to_user_id'] = undefined;
  * @member {String} contact_id
  */
 CreateTaskRequest.prototype['contact_id'] = undefined;
+
+/**
+ * Custom field values for the task. An empty array resets all custom fields to their defaults.
+ * @member {Array.<module:keap.core.v2/model/CustomFieldValueObject>} custom_fields
+ */
+CreateTaskRequest.prototype['custom_fields'] = undefined;
 
 
 

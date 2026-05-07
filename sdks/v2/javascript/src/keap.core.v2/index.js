@@ -136,6 +136,7 @@ import CustomField from './model/CustomField';
 import CustomFieldMetaData from './model/CustomFieldMetaData';
 import CustomFieldOption from './model/CustomFieldOption';
 import CustomFieldValue from './model/CustomFieldValue';
+import CustomFieldValueObject from './model/CustomFieldValueObject';
 import DefaultCommission from './model/DefaultCommission';
 import DeleteEmailsRequest from './model/DeleteEmailsRequest';
 import DeleteEmailsResponse from './model/DeleteEmailsResponse';
@@ -434,7 +435,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.8
+* @version 2.0.9
 */
 export {
     /**
@@ -1180,6 +1181,12 @@ export {
      * @property {module:keap.core.v2/model/CustomFieldValue}
      */
     CustomFieldValue,
+
+    /**
+     * The CustomFieldValueObject model constructor.
+     * @property {module:keap.core.v2/model/CustomFieldValueObject}
+     */
+    CustomFieldValueObject,
 
     /**
      * The DefaultCommission model constructor.

@@ -399,11 +399,12 @@ import io.github.resilience4j.retry.Retry;
    * Retrieves the specified Note
    * @param contactId  (required)
    * @param noteId  (required)
+   * @param fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
    * @return GetNoteResponse
    * @throws ApiException if fails to make API call
    */
-  public GetNoteResponse getNote(String contactId, String noteId) throws ApiException {
-    ApiResponse<GetNoteResponse> localVarResponse = getNoteWithHttpInfo(contactId, noteId);
+  public GetNoteResponse getNote(String contactId, String noteId, List<String> fields) throws ApiException {
+    ApiResponse<GetNoteResponse> localVarResponse = getNoteWithHttpInfo(contactId, noteId, fields);
     return localVarResponse.getData();
   }
 
@@ -412,11 +413,12 @@ import io.github.resilience4j.retry.Retry;
    * Retrieves the specified Note
    * @param contactId  (required)
    * @param noteId  (required)
+   * @param fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
    * @return ApiResponse&lt;GetNoteResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<GetNoteResponse> getNoteWithHttpInfo(String contactId, String noteId) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getNoteRequestBuilder(contactId, noteId);
+  public ApiResponse<GetNoteResponse> getNoteWithHttpInfo(String contactId, String noteId, List<String> fields) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getNoteRequestBuilder(contactId, noteId, fields);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -456,7 +458,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder getNoteRequestBuilder(String contactId, String noteId) throws ApiException {
+  private HttpRequest.Builder getNoteRequestBuilder(String contactId, String noteId, List<String> fields) throws ApiException {
     // verify the required parameter 'contactId' is set
     if (contactId == null) {
       throw new ApiException(400, "Missing the required parameter 'contactId' when calling getNote");
@@ -472,7 +474,22 @@ import io.github.resilience4j.retry.Retry;
         .replace("{contact_id}", ApiClient.urlEncode(contactId.toString()))
         .replace("{note_id}", ApiClient.urlEncode(noteId.toString()));
 
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "fields";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("csv", "fields", fields));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
 
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
@@ -603,11 +620,12 @@ import io.github.resilience4j.retry.Retry;
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
+   * @param fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
    * @return ListNotesResponse
    * @throws ApiException if fails to make API call
    */
-  public ListNotesResponse listNotes(String contactId, String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
-    ApiResponse<ListNotesResponse> localVarResponse = listNotesWithHttpInfo(contactId, filter, orderBy, pageSize, pageToken);
+  public ListNotesResponse listNotes(String contactId, String filter, String orderBy, Integer pageSize, String pageToken, List<String> fields) throws ApiException {
+    ApiResponse<ListNotesResponse> localVarResponse = listNotesWithHttpInfo(contactId, filter, orderBy, pageSize, pageToken, fields);
     return localVarResponse.getData();
   }
 
@@ -619,11 +637,12 @@ import io.github.resilience4j.retry.Retry;
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
+   * @param fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
    * @return ApiResponse&lt;ListNotesResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ListNotesResponse> listNotesWithHttpInfo(String contactId, String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = listNotesRequestBuilder(contactId, filter, orderBy, pageSize, pageToken);
+  public ApiResponse<ListNotesResponse> listNotesWithHttpInfo(String contactId, String filter, String orderBy, Integer pageSize, String pageToken, List<String> fields) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listNotesRequestBuilder(contactId, filter, orderBy, pageSize, pageToken, fields);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -663,7 +682,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder listNotesRequestBuilder(String contactId, String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
+  private HttpRequest.Builder listNotesRequestBuilder(String contactId, String filter, String orderBy, Integer pageSize, String pageToken, List<String> fields) throws ApiException {
     // verify the required parameter 'contactId' is set
     if (contactId == null) {
       throw new ApiException(400, "Missing the required parameter 'contactId' when calling listNotes");
@@ -685,6 +704,8 @@ import io.github.resilience4j.retry.Retry;
     localVarQueryParams.addAll(ApiClient.parameterToPairs("page_size", pageSize));
     localVarQueryParameterBaseName = "page_token";
     localVarQueryParams.addAll(ApiClient.parameterToPairs("page_token", pageToken));
+    localVarQueryParameterBaseName = "fields";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("csv", "fields", fields));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

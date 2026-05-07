@@ -69,6 +69,10 @@ export class RestV2Opportunity {
     * Affiliate ID
     */
     'affiliateId'?: string;
+    /**
+    * Lead source
+    */
+    'leadSource'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -168,6 +172,12 @@ export class RestV2Opportunity {
         {
             "name": "affiliateId",
             "baseName": "affiliate_id",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "leadSource",
+            "baseName": "lead_source",
             "type": "string",
             "format": ""
         }    ];

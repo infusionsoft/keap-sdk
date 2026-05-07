@@ -319,7 +319,7 @@ void (empty response body)
 
 <a id="getnote"></a>
 # **GetNote**
-> GetNoteResponse GetNote (string contactId, string noteId)
+> GetNoteResponse GetNote (string contactId, string noteId, List<string>? fields = null)
 
 Retrieve a Note
 
@@ -347,11 +347,12 @@ namespace Example
             var apiInstance = new NoteApi(config);
             var contactId = "contactId_example";  // string | 
             var noteId = "noteId_example";  // string | 
+            var fields = new List<string>?(); // List<string>? | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional) 
 
             try
             {
                 // Retrieve a Note
-                GetNoteResponse result = apiInstance.GetNote(contactId, noteId);
+                GetNoteResponse result = apiInstance.GetNote(contactId, noteId, fields);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -372,7 +373,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Retrieve a Note
-    ApiResponse<GetNoteResponse> response = apiInstance.GetNoteWithHttpInfo(contactId, noteId);
+    ApiResponse<GetNoteResponse> response = apiInstance.GetNoteWithHttpInfo(contactId, noteId, fields);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -391,6 +392,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **contactId** | **string** |  |  |
 | **noteId** | **string** |  |  |
+| **fields** | [**List&lt;string&gt;?**](string.md) | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional]  |
 
 ### Return type
 
@@ -529,7 +531,7 @@ catch (ApiException e)
 
 <a id="listnotes"></a>
 # **ListNotes**
-> ListNotesResponse ListNotes (string contactId, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+> ListNotesResponse ListNotes (string contactId, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null, List<string>? fields = null)
 
 List Notes
 
@@ -560,11 +562,12 @@ namespace Example
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
+            var fields = new List<string>?(); // List<string>? | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional) 
 
             try
             {
                 // List Notes
-                ListNotesResponse result = apiInstance.ListNotes(contactId, filter, orderBy, pageSize, pageToken);
+                ListNotesResponse result = apiInstance.ListNotes(contactId, filter, orderBy, pageSize, pageToken, fields);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -585,7 +588,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // List Notes
-    ApiResponse<ListNotesResponse> response = apiInstance.ListNotesWithHttpInfo(contactId, filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListNotesResponse> response = apiInstance.ListNotesWithHttpInfo(contactId, filter, orderBy, pageSize, pageToken, fields);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -607,6 +610,7 @@ catch (ApiException e)
 | **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
+| **fields** | [**List&lt;string&gt;?**](string.md) | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional]  |
 
 ### Return type
 

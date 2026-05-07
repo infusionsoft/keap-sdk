@@ -259,7 +259,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_note**
-> GetNoteResponse get_note(contact_id, note_id)
+> GetNoteResponse get_note(contact_id, note_id, fields=fields)
 
 Retrieve a Note
 
@@ -293,10 +293,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.NoteApi(api_client)
     contact_id = 'contact_id_example' # str | 
     note_id = 'note_id_example' # str | 
+    fields = ['fields_example'] # List[str] | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
 
     try:
         # Retrieve a Note
-        api_response = api_instance.get_note(contact_id, note_id)
+        api_response = api_instance.get_note(contact_id, note_id, fields=fields)
         print("The response of NoteApi->get_note:\n")
         pprint(api_response)
     except Exception as e:
@@ -311,6 +312,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contact_id** | **str**|  | 
  **note_id** | **str**|  | 
+ **fields** | [**List[str]**](str.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] 
 
 ### Return type
 
@@ -427,7 +429,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_notes**
-> ListNotesResponse list_notes(contact_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+> ListNotesResponse list_notes(contact_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, fields=fields)
 
 List Notes
 
@@ -464,10 +466,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc` (optional)
     page_size = 0 # int | Total number of items to return per page (optional)
     page_token = 'page_token_example' # str | Page token (optional)
+    fields = ['fields_example'] # List[str] | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
 
     try:
         # List Notes
-        api_response = api_instance.list_notes(contact_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+        api_response = api_instance.list_notes(contact_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, fields=fields)
         print("The response of NoteApi->list_notes:\n")
         pprint(api_response)
     except Exception as e:
@@ -485,6 +488,7 @@ Name | Type | Description  | Notes
  **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
  **page_token** | **str**| Page token | [optional] 
+ **fields** | [**List[str]**](str.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] 
 
 ### Return type
 

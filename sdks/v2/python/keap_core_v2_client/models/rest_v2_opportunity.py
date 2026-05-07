@@ -46,8 +46,9 @@ class RestV2Opportunity(BaseModel):
     created_time: Optional[StrictStr] = Field(default=None, description="Creation timestamp (ISO-8601)")
     last_updated_time: Optional[StrictStr] = Field(default=None, description="Last update timestamp (ISO-8601)")
     affiliate_id: Optional[StrictStr] = Field(default=None, description="Affiliate ID")
+    lead_source: Optional[StrictStr] = Field(default=None, description="Lead source")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "contact", "stage", "user", "opportunity_title", "next_action_time", "next_action_notes", "opportunity_notes", "estimated_close_time", "include_in_forecast", "projected_revenue_low", "projected_revenue_high", "custom_fields", "created_time", "last_updated_time", "affiliate_id"]
+    __properties: ClassVar[List[str]] = ["id", "contact", "stage", "user", "opportunity_title", "next_action_time", "next_action_notes", "opportunity_notes", "estimated_close_time", "include_in_forecast", "projected_revenue_low", "projected_revenue_high", "custom_fields", "created_time", "last_updated_time", "affiliate_id", "lead_source"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -138,7 +139,8 @@ class RestV2Opportunity(BaseModel):
             "custom_fields": [CustomField.from_dict(_item) for _item in obj["custom_fields"]] if obj.get("custom_fields") is not None else None,
             "created_time": obj.get("created_time"),
             "last_updated_time": obj.get("last_updated_time"),
-            "affiliate_id": obj.get("affiliate_id")
+            "affiliate_id": obj.get("affiliate_id"),
+            "lead_source": obj.get("lead_source")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

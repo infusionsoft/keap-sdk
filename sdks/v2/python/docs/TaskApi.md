@@ -16,12 +16,11 @@ Method | HTTP request | Description
 
 
 # **create_task**
-> Task create_task(create_task_request)
+> Task create_task(create_task_request, fields=fields)
 
 Create a Task
 
-Creates a new task as the authenticated user.  
-This endpoint does not currently support setting Custom Field values.
+Creates a new task as the authenticated user.
 
 ### Example
 
@@ -51,10 +50,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.TaskApi(api_client)
     create_task_request = keap_core_v2_client.CreateTaskRequest() # CreateTaskRequest | 
+    fields = ['fields_example'] # List[str] | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
 
     try:
         # Create a Task
-        api_response = api_instance.create_task(create_task_request)
+        api_response = api_instance.create_task(create_task_request, fields=fields)
         print("The response of TaskApi->create_task:\n")
         pprint(api_response)
     except Exception as e:
@@ -68,6 +68,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **create_task_request** | [**CreateTaskRequest**](CreateTaskRequest.md)|  | 
+ **fields** | [**List[str]**](str.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] 
 
 ### Return type
 
@@ -333,7 +334,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_task**
-> Task get_task(task_id)
+> Task get_task(task_id, fields=fields)
 
 Retrieve a Task
 
@@ -366,10 +367,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.TaskApi(api_client)
     task_id = 'task_id_example' # str | 
+    fields = ['fields_example'] # List[str] | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
 
     try:
         # Retrieve a Task
-        api_response = api_instance.get_task(task_id)
+        api_response = api_instance.get_task(task_id, fields=fields)
         print("The response of TaskApi->get_task:\n")
         pprint(api_response)
     except Exception as e:
@@ -383,6 +385,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **task_id** | **str**|  | 
+ **fields** | [**List[str]**](str.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] 
 
 ### Return type
 
@@ -413,7 +416,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_tasks**
-> ListTasksResponse list_tasks(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+> ListTasksResponse list_tasks(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, fields=fields)
 
 List Tasks
 
@@ -449,10 +452,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time`  One of the following directions: - `asc` - `desc` (optional)
     page_size = 0 # int | Total number of items to return per page (optional)
     page_token = 'page_token_example' # str | Page token (optional)
+    fields = ['fields_example'] # List[str] | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
 
     try:
         # List Tasks
-        api_response = api_instance.list_tasks(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+        api_response = api_instance.list_tasks(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, fields=fields)
         print("The response of TaskApi->list_tasks:\n")
         pprint(api_response)
     except Exception as e:
@@ -469,6 +473,7 @@ Name | Type | Description  | Notes
  **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
  **page_token** | **str**| Page token | [optional] 
+ **fields** | [**List[str]**](str.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] 
 
 ### Return type
 
@@ -575,12 +580,11 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_task**
-> UpdateTaskResponse update_task(task_id, create_update_task_request, update_mask=update_mask)
+> UpdateTaskResponse update_task(task_id, create_update_task_request, update_mask=update_mask, fields=fields)
 
 Update a Task
 
-Updates a task with only the values provided in the request. 
-This endpoint does not currently support updating Custom Field values.
+Updates a task with only the values provided in the request.
 
 ### Example
 
@@ -612,10 +616,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     task_id = 'task_id_example' # str | 
     create_update_task_request = keap_core_v2_client.CreateUpdateTaskRequest() # CreateUpdateTaskRequest | 
     update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    fields = ['fields_example'] # List[str] | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
 
     try:
         # Update a Task
-        api_response = api_instance.update_task(task_id, create_update_task_request, update_mask=update_mask)
+        api_response = api_instance.update_task(task_id, create_update_task_request, update_mask=update_mask, fields=fields)
         print("The response of TaskApi->update_task:\n")
         pprint(api_response)
     except Exception as e:
@@ -631,6 +636,7 @@ Name | Type | Description  | Notes
  **task_id** | **str**|  | 
  **create_update_task_request** | [**CreateUpdateTaskRequest**](CreateUpdateTaskRequest.md)|  | 
  **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **fields** | [**List[str]**](str.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] 
 
 ### Return type
 

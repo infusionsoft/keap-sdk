@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 
+import { CustomFieldValueObject } from '../models/CustomFieldValueObject';
 import { HttpFile } from '../http/http';
 
 /**
@@ -56,6 +57,10 @@ export class CreateUpdateTaskRequest {
     * Associated contact ID
     */
     'contactId'?: string;
+    /**
+    * Custom field values for the task. An empty array resets all custom fields to their defaults.
+    */
+    'customFields'?: Array<CustomFieldValueObject>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -120,6 +125,12 @@ export class CreateUpdateTaskRequest {
             "name": "contactId",
             "baseName": "contact_id",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "customFields",
+            "baseName": "custom_fields",
+            "type": "Array<CustomFieldValueObject>",
             "format": ""
         }    ];
 

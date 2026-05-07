@@ -1212,15 +1212,16 @@ class NoteApi
      *
      * @param  string $contact_id contact_id (required)
      * @param  string $note_id note_id (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNote'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Keap\Core\V2\Model\GetNoteResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
-    public function getNote($contact_id, $note_id, string $contentType = self::contentTypes['getNote'][0])
+    public function getNote($contact_id, $note_id, $fields = null, string $contentType = self::contentTypes['getNote'][0])
     {
-        list($response) = $this->getNoteWithHttpInfo($contact_id, $note_id, $contentType);
+        list($response) = $this->getNoteWithHttpInfo($contact_id, $note_id, $fields, $contentType);
         return $response;
     }
 
@@ -1231,15 +1232,16 @@ class NoteApi
      *
      * @param  string $contact_id (required)
      * @param  string $note_id (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNote'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Keap\Core\V2\Model\GetNoteResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getNoteWithHttpInfo($contact_id, $note_id, string $contentType = self::contentTypes['getNote'][0])
+    public function getNoteWithHttpInfo($contact_id, $note_id, $fields = null, string $contentType = self::contentTypes['getNote'][0])
     {
-        $request = $this->getNoteRequest($contact_id, $note_id, $contentType);
+        $request = $this->getNoteRequest($contact_id, $note_id, $fields, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1415,14 +1417,15 @@ class NoteApi
      *
      * @param  string $contact_id (required)
      * @param  string $note_id (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNote'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getNoteAsync($contact_id, $note_id, string $contentType = self::contentTypes['getNote'][0])
+    public function getNoteAsync($contact_id, $note_id, $fields = null, string $contentType = self::contentTypes['getNote'][0])
     {
-        return $this->getNoteAsyncWithHttpInfo($contact_id, $note_id, $contentType)
+        return $this->getNoteAsyncWithHttpInfo($contact_id, $note_id, $fields, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1437,15 +1440,16 @@ class NoteApi
      *
      * @param  string $contact_id (required)
      * @param  string $note_id (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNote'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getNoteAsyncWithHttpInfo($contact_id, $note_id, string $contentType = self::contentTypes['getNote'][0])
+    public function getNoteAsyncWithHttpInfo($contact_id, $note_id, $fields = null, string $contentType = self::contentTypes['getNote'][0])
     {
         $returnType = '\Keap\Core\V2\Model\GetNoteResponse';
-        $request = $this->getNoteRequest($contact_id, $note_id, $contentType);
+        $request = $this->getNoteRequest($contact_id, $note_id, $fields, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1488,12 +1492,13 @@ class NoteApi
      *
      * @param  string $contact_id (required)
      * @param  string $note_id (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNote'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getNoteRequest($contact_id, $note_id, string $contentType = self::contentTypes['getNote'][0])
+    public function getNoteRequest($contact_id, $note_id, $fields = null, string $contentType = self::contentTypes['getNote'][0])
     {
 
         // verify the required parameter 'contact_id' is set
@@ -1511,6 +1516,7 @@ class NoteApi
         }
 
 
+
         $resourcePath = '/rest/v2/contacts/{contact_id}/notes/{note_id}';
         $formParams = [];
         $queryParams = [];
@@ -1518,6 +1524,15 @@ class NoteApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
@@ -2021,15 +2036,16 @@ class NoteApi
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listNotes'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Keap\Core\V2\Model\ListNotesResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
-    public function listNotes($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listNotes'][0])
+    public function listNotes($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, $fields = null, string $contentType = self::contentTypes['listNotes'][0])
     {
-        list($response) = $this->listNotesWithHttpInfo($contact_id, $filter, $order_by, $page_size, $page_token, $contentType);
+        list($response) = $this->listNotesWithHttpInfo($contact_id, $filter, $order_by, $page_size, $page_token, $fields, $contentType);
         return $response;
     }
 
@@ -2043,15 +2059,16 @@ class NoteApi
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listNotes'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Keap\Core\V2\Model\ListNotesResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listNotesWithHttpInfo($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listNotes'][0])
+    public function listNotesWithHttpInfo($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, $fields = null, string $contentType = self::contentTypes['listNotes'][0])
     {
-        $request = $this->listNotesRequest($contact_id, $filter, $order_by, $page_size, $page_token, $contentType);
+        $request = $this->listNotesRequest($contact_id, $filter, $order_by, $page_size, $page_token, $fields, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2230,14 +2247,15 @@ class NoteApi
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listNotes'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listNotesAsync($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listNotes'][0])
+    public function listNotesAsync($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, $fields = null, string $contentType = self::contentTypes['listNotes'][0])
     {
-        return $this->listNotesAsyncWithHttpInfo($contact_id, $filter, $order_by, $page_size, $page_token, $contentType)
+        return $this->listNotesAsyncWithHttpInfo($contact_id, $filter, $order_by, $page_size, $page_token, $fields, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2255,15 +2273,16 @@ class NoteApi
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listNotes'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listNotesAsyncWithHttpInfo($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listNotes'][0])
+    public function listNotesAsyncWithHttpInfo($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, $fields = null, string $contentType = self::contentTypes['listNotes'][0])
     {
         $returnType = '\Keap\Core\V2\Model\ListNotesResponse';
-        $request = $this->listNotesRequest($contact_id, $filter, $order_by, $page_size, $page_token, $contentType);
+        $request = $this->listNotesRequest($contact_id, $filter, $order_by, $page_size, $page_token, $fields, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2309,12 +2328,13 @@ class NoteApi
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listNotes'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listNotesRequest($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listNotes'][0])
+    public function listNotesRequest($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, $fields = null, string $contentType = self::contentTypes['listNotes'][0])
     {
 
         // verify the required parameter 'contact_id' is set
@@ -2333,6 +2353,7 @@ class NoteApi
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling NoteApi.listNotes, must be bigger than or equal to 0.');
         }
         
+
 
 
         $resourcePath = '/rest/v2/contacts/{contact_id}/notes';
@@ -2376,6 +2397,15 @@ class NoteApi
             'string', // openApiType
             'form', // style
             true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
             false // required
         ) ?? []);
 

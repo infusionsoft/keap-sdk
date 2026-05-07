@@ -46,11 +46,14 @@ export default class TaskApi {
 
     /**
      * Create a Task
-     * Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+     * Creates a new task as the authenticated user.
      * @param {module:keap.core.v2/model/CreateTaskRequest} createTaskRequest 
+     * @param {Object} opts Optional parameters
+     * @param {Array.<String>} [fields] Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/Task} and HTTP response
      */
-    createTaskWithHttpInfo(createTaskRequest) {
+    createTaskWithHttpInfo(createTaskRequest, opts) {
+      opts = opts || {};
       let postBody = createTaskRequest;
       // verify the required parameter 'createTaskRequest' is set
       if (createTaskRequest === undefined || createTaskRequest === null) {
@@ -60,6 +63,7 @@ export default class TaskApi {
       let pathParams = {
       };
       let queryParams = {
+        'fields': this.apiClient.buildCollectionParam(opts['fields'], 'csv')
       };
       let headerParams = {
       };
@@ -79,12 +83,14 @@ export default class TaskApi {
 
     /**
      * Create a Task
-     * Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+     * Creates a new task as the authenticated user.
      * @param {module:keap.core.v2/model/CreateTaskRequest} createTaskRequest 
+     * @param {Object} opts Optional parameters
+     * @param {Array.<String>} opts.fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/Task}
      */
-    createTask(createTaskRequest) {
-      return this.createTaskWithHttpInfo(createTaskRequest)
+    createTask(createTaskRequest, opts) {
+      return this.createTaskWithHttpInfo(createTaskRequest, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -238,9 +244,12 @@ export default class TaskApi {
      * Retrieve a Task
      * Retrieves a single task
      * @param {String} taskId 
+     * @param {Object} opts Optional parameters
+     * @param {Array.<String>} [fields] Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/Task} and HTTP response
      */
-    getTaskWithHttpInfo(taskId) {
+    getTaskWithHttpInfo(taskId, opts) {
+      opts = opts || {};
       let postBody = null;
       // verify the required parameter 'taskId' is set
       if (taskId === undefined || taskId === null) {
@@ -251,6 +260,7 @@ export default class TaskApi {
         'task_id': taskId
       };
       let queryParams = {
+        'fields': this.apiClient.buildCollectionParam(opts['fields'], 'csv')
       };
       let headerParams = {
       };
@@ -272,10 +282,12 @@ export default class TaskApi {
      * Retrieve a Task
      * Retrieves a single task
      * @param {String} taskId 
+     * @param {Object} opts Optional parameters
+     * @param {Array.<String>} opts.fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/Task}
      */
-    getTask(taskId) {
-      return this.getTaskWithHttpInfo(taskId)
+    getTask(taskId, opts) {
+      return this.getTaskWithHttpInfo(taskId, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -290,6 +302,7 @@ export default class TaskApi {
      * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} [pageSize] Total number of items to return per page
      * @param {String} [pageToken] Page token
+     * @param {Array.<String>} [fields] Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListTasksResponse} and HTTP response
      */
     listTasksWithHttpInfo(opts) {
@@ -302,7 +315,8 @@ export default class TaskApi {
         'filter': opts['filter'],
         'order_by': opts['orderBy'],
         'page_size': opts['pageSize'],
-        'page_token': opts['pageToken']
+        'page_token': opts['pageToken'],
+        'fields': this.apiClient.buildCollectionParam(opts['fields'], 'csv')
       };
       let headerParams = {
       };
@@ -328,6 +342,7 @@ export default class TaskApi {
      * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} opts.pageSize Total number of items to return per page
      * @param {String} opts.pageToken Page token
+     * @param {Array.<String>} opts.fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListTasksResponse}
      */
     listTasks(opts) {
@@ -381,11 +396,12 @@ export default class TaskApi {
 
     /**
      * Update a Task
-     * Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+     * Updates a task with only the values provided in the request.
      * @param {String} taskId 
      * @param {module:keap.core.v2/model/CreateUpdateTaskRequest} createUpdateTaskRequest 
      * @param {Object} opts Optional parameters
      * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<String>} [fields] Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/UpdateTaskResponse} and HTTP response
      */
     updateTaskWithHttpInfo(taskId, createUpdateTaskRequest, opts) {
@@ -404,7 +420,8 @@ export default class TaskApi {
         'task_id': taskId
       };
       let queryParams = {
-        'update_mask': opts['updateMask']
+        'update_mask': opts['updateMask'],
+        'fields': this.apiClient.buildCollectionParam(opts['fields'], 'csv')
       };
       let headerParams = {
       };
@@ -424,11 +441,12 @@ export default class TaskApi {
 
     /**
      * Update a Task
-     * Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+     * Updates a task with only the values provided in the request.
      * @param {String} taskId 
      * @param {module:keap.core.v2/model/CreateUpdateTaskRequest} createUpdateTaskRequest 
      * @param {Object} opts Optional parameters
      * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<String>} opts.fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/UpdateTaskResponse}
      */
     updateTask(taskId, createUpdateTaskRequest, opts) {

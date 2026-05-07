@@ -25,11 +25,12 @@ import { UpdateTaskResponse } from '../models/UpdateTaskResponse';
 export class TaskApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+     * Creates a new task as the authenticated user.
      * Create a Task
      * @param createTaskRequest 
+     * @param fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
      */
-    public async createTask(createTaskRequest: CreateTaskRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createTask(createTaskRequest: CreateTaskRequest, fields?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'createTaskRequest' is not null or undefined
@@ -38,12 +39,18 @@ export class TaskApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+
         // Path Params
         const localVarPath = '/rest/v2/tasks';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (fields !== undefined) {
+            requestContext.setQueryParam("fields", ObjectSerializer.serialize(fields, "Array<string>", ""));
+        }
 
 
         // Body Params
@@ -200,14 +207,16 @@ export class TaskApiRequestFactory extends BaseAPIRequestFactory {
      * Retrieves a single task
      * Retrieve a Task
      * @param taskId 
+     * @param fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
      */
-    public async getTask(taskId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getTask(taskId: string, fields?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'taskId' is not null or undefined
         if (taskId === null || taskId === undefined) {
             throw new RequiredError("TaskApi", "getTask", "taskId");
         }
+
 
 
         // Path Params
@@ -217,6 +226,11 @@ export class TaskApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (fields !== undefined) {
+            requestContext.setQueryParam("fields", ObjectSerializer.serialize(fields, "Array<string>", ""));
+        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -241,9 +255,11 @@ export class TaskApiRequestFactory extends BaseAPIRequestFactory {
      * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
+     * @param fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
      */
-    public async listTasks(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listTasks(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, fields?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
 
 
 
@@ -274,6 +290,11 @@ export class TaskApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (pageToken !== undefined) {
             requestContext.setQueryParam("page_token", ObjectSerializer.serialize(pageToken, "string", ""));
+        }
+
+        // Query Params
+        if (fields !== undefined) {
+            requestContext.setQueryParam("fields", ObjectSerializer.serialize(fields, "Array<string>", ""));
         }
 
 
@@ -323,13 +344,14 @@ export class TaskApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+     * Updates a task with only the values provided in the request.
      * Update a Task
      * @param taskId 
      * @param createUpdateTaskRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
      */
-    public async updateTask(taskId: string, createUpdateTaskRequest: CreateUpdateTaskRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateTask(taskId: string, createUpdateTaskRequest: CreateUpdateTaskRequest, updateMask?: any, fields?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'taskId' is not null or undefined
@@ -342,6 +364,7 @@ export class TaskApiRequestFactory extends BaseAPIRequestFactory {
         if (createUpdateTaskRequest === null || createUpdateTaskRequest === undefined) {
             throw new RequiredError("TaskApi", "updateTask", "createUpdateTaskRequest");
         }
+
 
 
 
@@ -359,6 +382,11 @@ export class TaskApiRequestFactory extends BaseAPIRequestFactory {
             for (const key of Object.keys(serializedParams)) {
                 requestContext.setQueryParam(key, serializedParams[key]);
             }
+        }
+
+        // Query Params
+        if (fields !== undefined) {
+            requestContext.setQueryParam("fields", ObjectSerializer.serialize(fields, "Array<string>", ""));
         }
 
 

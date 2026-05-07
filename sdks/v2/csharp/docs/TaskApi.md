@@ -16,11 +16,11 @@ All URIs are relative to *https://api.keap.com/crm*
 
 <a id="createtask"></a>
 # **CreateTask**
-> Task CreateTask (CreateTaskRequest createTaskRequest)
+> Task CreateTask (CreateTaskRequest createTaskRequest, List<string>? fields = null)
 
 Create a Task
 
-Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+Creates a new task as the authenticated user.
 
 ### Example
 ```csharp
@@ -43,11 +43,12 @@ namespace Example
 
             var apiInstance = new TaskApi(config);
             var createTaskRequest = new CreateTaskRequest(); // CreateTaskRequest | 
+            var fields = new List<string>?(); // List<string>? | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional) 
 
             try
             {
                 // Create a Task
-                Task result = apiInstance.CreateTask(createTaskRequest);
+                Task result = apiInstance.CreateTask(createTaskRequest, fields);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -68,7 +69,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Create a Task
-    ApiResponse<Task> response = apiInstance.CreateTaskWithHttpInfo(createTaskRequest);
+    ApiResponse<Task> response = apiInstance.CreateTaskWithHttpInfo(createTaskRequest, fields);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -86,6 +87,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **createTaskRequest** | [**CreateTaskRequest**](CreateTaskRequest.md) |  |  |
+| **fields** | [**List&lt;string&gt;?**](string.md) | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional]  |
 
 ### Return type
 
@@ -412,7 +414,7 @@ void (empty response body)
 
 <a id="gettask"></a>
 # **GetTask**
-> Task GetTask (string taskId)
+> Task GetTask (string taskId, List<string>? fields = null)
 
 Retrieve a Task
 
@@ -439,11 +441,12 @@ namespace Example
 
             var apiInstance = new TaskApi(config);
             var taskId = "taskId_example";  // string | 
+            var fields = new List<string>?(); // List<string>? | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional) 
 
             try
             {
                 // Retrieve a Task
-                Task result = apiInstance.GetTask(taskId);
+                Task result = apiInstance.GetTask(taskId, fields);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -464,7 +467,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Retrieve a Task
-    ApiResponse<Task> response = apiInstance.GetTaskWithHttpInfo(taskId);
+    ApiResponse<Task> response = apiInstance.GetTaskWithHttpInfo(taskId, fields);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -482,6 +485,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **taskId** | **string** |  |  |
+| **fields** | [**List&lt;string&gt;?**](string.md) | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional]  |
 
 ### Return type
 
@@ -513,7 +517,7 @@ catch (ApiException e)
 
 <a id="listtasks"></a>
 # **ListTasks**
-> ListTasksResponse ListTasks (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+> ListTasksResponse ListTasks (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null, List<string>? fields = null)
 
 List Tasks
 
@@ -543,11 +547,12 @@ namespace Example
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
+            var fields = new List<string>?(); // List<string>? | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional) 
 
             try
             {
                 // List Tasks
-                ListTasksResponse result = apiInstance.ListTasks(filter, orderBy, pageSize, pageToken);
+                ListTasksResponse result = apiInstance.ListTasks(filter, orderBy, pageSize, pageToken, fields);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -568,7 +573,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // List Tasks
-    ApiResponse<ListTasksResponse> response = apiInstance.ListTasksWithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListTasksResponse> response = apiInstance.ListTasksWithHttpInfo(filter, orderBy, pageSize, pageToken, fields);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -589,6 +594,7 @@ catch (ApiException e)
 | **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
+| **fields** | [**List&lt;string&gt;?**](string.md) | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional]  |
 
 ### Return type
 
@@ -716,11 +722,11 @@ This endpoint does not need any parameter.
 
 <a id="updatetask"></a>
 # **UpdateTask**
-> UpdateTaskResponse UpdateTask (string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = null)
+> UpdateTaskResponse UpdateTask (string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = null, List<string>? fields = null)
 
 Update a Task
 
-Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+Updates a task with only the values provided in the request.
 
 ### Example
 ```csharp
@@ -745,11 +751,12 @@ namespace Example
             var taskId = "taskId_example";  // string | 
             var createUpdateTaskRequest = new CreateUpdateTaskRequest(); // CreateUpdateTaskRequest | 
             var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var fields = new List<string>?(); // List<string>? | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional) 
 
             try
             {
                 // Update a Task
-                UpdateTaskResponse result = apiInstance.UpdateTask(taskId, createUpdateTaskRequest, updateMask);
+                UpdateTaskResponse result = apiInstance.UpdateTask(taskId, createUpdateTaskRequest, updateMask, fields);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -770,7 +777,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Update a Task
-    ApiResponse<UpdateTaskResponse> response = apiInstance.UpdateTaskWithHttpInfo(taskId, createUpdateTaskRequest, updateMask);
+    ApiResponse<UpdateTaskResponse> response = apiInstance.UpdateTaskWithHttpInfo(taskId, createUpdateTaskRequest, updateMask, fields);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -790,6 +797,7 @@ catch (ApiException e)
 | **taskId** | **string** |  |  |
 | **createUpdateTaskRequest** | [**CreateUpdateTaskRequest**](CreateUpdateTaskRequest.md) |  |  |
 | **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **fields** | [**List&lt;string&gt;?**](string.md) | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional]  |
 
 ### Return type
 

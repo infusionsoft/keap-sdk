@@ -18,5 +18,6 @@ Name | Type | Description | Notes
 **assigned_to_user_id** | **string** | Assigned user ID | [optional]
 **created_by_user_id** | **string** | Creator user ID | [optional]
 **contact_id** | **string** | Associated contact ID | [optional]
+**custom_fields** | [**\Keap\Core\V2\Model\CustomFieldValueObject[]**](CustomFieldValueObject.md) | Custom field values for the task | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

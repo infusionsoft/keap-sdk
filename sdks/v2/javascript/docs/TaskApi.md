@@ -18,11 +18,11 @@ Method | HTTP request | Description
 
 ## createTask
 
-> Task createTask(createTaskRequest)
+> Task createTask(createTaskRequest, opts)
 
 Create a Task
 
-Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+Creates a new task as the authenticated user.
 
 ### Example
 
@@ -35,7 +35,10 @@ oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.TaskApi();
 let createTaskRequest = new KeapCoreServiceV2Sdk.CreateTaskRequest(); // CreateTaskRequest | 
-apiInstance.createTask(createTaskRequest).then((data) => {
+let opts = {
+  'fields': ["null"] // [String] | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
+};
+apiInstance.createTask(createTaskRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -49,6 +52,7 @@ apiInstance.createTask(createTaskRequest).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createTaskRequest** | [**CreateTaskRequest**](CreateTaskRequest.md)|  | 
+ **fields** | [**[String]**](String.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] 
 
 ### Return type
 
@@ -210,7 +214,7 @@ null (empty response body)
 
 ## getTask
 
-> Task getTask(taskId)
+> Task getTask(taskId, opts)
 
 Retrieve a Task
 
@@ -227,7 +231,10 @@ oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.TaskApi();
 let taskId = "taskId_example"; // String | 
-apiInstance.getTask(taskId).then((data) => {
+let opts = {
+  'fields': ["null"] // [String] | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
+};
+apiInstance.getTask(taskId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -241,6 +248,7 @@ apiInstance.getTask(taskId).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **taskId** | **String**|  | 
+ **fields** | [**[String]**](String.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] 
 
 ### Return type
 
@@ -278,7 +286,8 @@ let opts = {
   'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `has_due_date` - (String) `is_completed` - (String) `user_id` - (String) `task_ids` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=has_due_date%3D%3Dtrue` - `filter=is_completed%3D%3Dtrue` - `filter=user_id%3D%3D321` - `filter=task_ids%3D%3D1,2,3` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
   'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time`  One of the following directions: - `asc` - `desc`
   'pageSize': 0, // Number | Total number of items to return per page
-  'pageToken': "pageToken_example" // String | Page token
+  'pageToken': "pageToken_example", // String | Page token
+  'fields': ["null"] // [String] | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
 };
 apiInstance.listTasks(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -297,6 +306,7 @@ Name | Type | Description  | Notes
  **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
+ **fields** | [**[String]**](String.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] 
 
 ### Return type
 
@@ -362,7 +372,7 @@ This endpoint does not need any parameter.
 
 Update a Task
 
-Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+Updates a task with only the values provided in the request.
 
 ### Example
 
@@ -377,7 +387,8 @@ let apiInstance = new KeapCoreServiceV2Sdk.TaskApi();
 let taskId = "taskId_example"; // String | 
 let createUpdateTaskRequest = new KeapCoreServiceV2Sdk.CreateUpdateTaskRequest(); // CreateUpdateTaskRequest | 
 let opts = {
-  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': null, // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'fields': ["null"] // [String] | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
 };
 apiInstance.updateTask(taskId, createUpdateTaskRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -395,6 +406,7 @@ Name | Type | Description  | Notes
  **taskId** | **String**|  | 
  **createUpdateTaskRequest** | [**CreateUpdateTaskRequest**](CreateUpdateTaskRequest.md)|  | 
  **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **fields** | [**[String]**](String.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] 
 
 ### Return type
 

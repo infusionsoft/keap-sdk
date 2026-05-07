@@ -56,7 +56,8 @@ namespace Keap.Core.V2.Model
         /// <param name="createdTime">Creation timestamp (ISO-8601).</param>
         /// <param name="lastUpdatedTime">Last update timestamp (ISO-8601).</param>
         /// <param name="affiliateId">Affiliate ID.</param>
-        public RestV2Opportunity(string id = default, OpportunityContact contact = default, OpportunityStage stage = default, RestV2User user = default, string opportunityTitle = default, string nextActionTime = default, string nextActionNotes = default, string opportunityNotes = default, string estimatedCloseTime = default, bool includeInForecast = default, double projectedRevenueLow = default, double projectedRevenueHigh = default, List<CustomField> customFields = default, string createdTime = default, string lastUpdatedTime = default, string affiliateId = default)
+        /// <param name="leadSource">Lead source.</param>
+        public RestV2Opportunity(string id = default, OpportunityContact contact = default, OpportunityStage stage = default, RestV2User user = default, string opportunityTitle = default, string nextActionTime = default, string nextActionNotes = default, string opportunityNotes = default, string estimatedCloseTime = default, bool includeInForecast = default, double projectedRevenueLow = default, double projectedRevenueHigh = default, List<CustomField> customFields = default, string createdTime = default, string lastUpdatedTime = default, string affiliateId = default, string leadSource = default)
         {
             // to ensure "contact" is required (not null)
             if (contact == null)
@@ -89,6 +90,7 @@ namespace Keap.Core.V2.Model
             this.CreatedTime = createdTime;
             this.LastUpdatedTime = lastUpdatedTime;
             this.AffiliateId = affiliateId;
+            this.LeadSource = leadSource;
         }
 
         /// <summary>
@@ -236,6 +238,16 @@ namespace Keap.Core.V2.Model
         public string AffiliateId { get; set; }
 
         /// <summary>
+        /// Lead source
+        /// </summary>
+        /// <value>Lead source</value>
+        /*
+        <example>Web Form</example>
+        */
+        [DataMember(Name = "lead_source", EmitDefaultValue = false)]
+        public string LeadSource { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -259,6 +271,7 @@ namespace Keap.Core.V2.Model
             sb.Append("  CreatedTime: ").Append(CreatedTime).Append("\n");
             sb.Append("  LastUpdatedTime: ").Append(LastUpdatedTime).Append("\n");
             sb.Append("  AffiliateId: ").Append(AffiliateId).Append("\n");
+            sb.Append("  LeadSource: ").Append(LeadSource).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
-from typing import Any, Optional
+from typing import Any, List, Optional
 from typing_extensions import Annotated
 from keap_core_v2_client.models.create_custom_field_request import CreateCustomFieldRequest
 from keap_core_v2_client.models.create_custom_field_response import CreateCustomFieldResponse
@@ -52,6 +52,7 @@ class TaskApi:
     def create_task(
         self,
         create_task_request: CreateTaskRequest,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -67,10 +68,12 @@ class TaskApi:
     ) -> Task:
         """Create a Task
 
-        Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+        Creates a new task as the authenticated user.
 
         :param create_task_request: (required)
         :type create_task_request: CreateTaskRequest
+        :param fields: Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -95,6 +98,7 @@ class TaskApi:
 
         _param = self._create_task_serialize(
             create_task_request=create_task_request,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -126,6 +130,7 @@ class TaskApi:
     def create_task_with_http_info(
         self,
         create_task_request: CreateTaskRequest,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -141,10 +146,12 @@ class TaskApi:
     ) -> ApiResponse[Task]:
         """Create a Task
 
-        Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+        Creates a new task as the authenticated user.
 
         :param create_task_request: (required)
         :type create_task_request: CreateTaskRequest
+        :param fields: Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -169,6 +176,7 @@ class TaskApi:
 
         _param = self._create_task_serialize(
             create_task_request=create_task_request,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -200,6 +208,7 @@ class TaskApi:
     def create_task_without_preload_content(
         self,
         create_task_request: CreateTaskRequest,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -215,10 +224,12 @@ class TaskApi:
     ) -> RESTResponseType:
         """Create a Task
 
-        Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+        Creates a new task as the authenticated user.
 
         :param create_task_request: (required)
         :type create_task_request: CreateTaskRequest
+        :param fields: Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -243,6 +254,7 @@ class TaskApi:
 
         _param = self._create_task_serialize(
             create_task_request=create_task_request,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -269,6 +281,7 @@ class TaskApi:
     def _create_task_serialize(
         self,
         create_task_request,
+        fields,
         _request_auth,
         _content_type,
         _headers,
@@ -278,6 +291,7 @@ class TaskApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'fields': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -291,6 +305,10 @@ class TaskApi:
 
         # process the path parameters
         # process the query parameters
+        if fields is not None:
+            
+            _query_params.append(('fields', fields))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1206,6 +1224,7 @@ class TaskApi:
     def get_task(
         self,
         task_id: StrictStr,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1225,6 +1244,8 @@ class TaskApi:
 
         :param task_id: (required)
         :type task_id: str
+        :param fields: Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1249,6 +1270,7 @@ class TaskApi:
 
         _param = self._get_task_serialize(
             task_id=task_id,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1280,6 +1302,7 @@ class TaskApi:
     def get_task_with_http_info(
         self,
         task_id: StrictStr,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1299,6 +1322,8 @@ class TaskApi:
 
         :param task_id: (required)
         :type task_id: str
+        :param fields: Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1323,6 +1348,7 @@ class TaskApi:
 
         _param = self._get_task_serialize(
             task_id=task_id,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1354,6 +1380,7 @@ class TaskApi:
     def get_task_without_preload_content(
         self,
         task_id: StrictStr,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1373,6 +1400,8 @@ class TaskApi:
 
         :param task_id: (required)
         :type task_id: str
+        :param fields: Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1397,6 +1426,7 @@ class TaskApi:
 
         _param = self._get_task_serialize(
             task_id=task_id,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1423,6 +1453,7 @@ class TaskApi:
     def _get_task_serialize(
         self,
         task_id,
+        fields,
         _request_auth,
         _content_type,
         _headers,
@@ -1432,6 +1463,7 @@ class TaskApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'fields': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1447,6 +1479,10 @@ class TaskApi:
         if task_id is not None:
             _path_params['task_id'] = task_id
         # process the query parameters
+        if fields is not None:
+            
+            _query_params.append(('fields', fields))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1491,6 +1527,7 @@ class TaskApi:
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1516,6 +1553,8 @@ class TaskApi:
         :type page_size: int
         :param page_token: Page token
         :type page_token: str
+        :param fields: Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1543,6 +1582,7 @@ class TaskApi:
             order_by=order_by,
             page_size=page_size,
             page_token=page_token,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1577,6 +1617,7 @@ class TaskApi:
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1602,6 +1643,8 @@ class TaskApi:
         :type page_size: int
         :param page_token: Page token
         :type page_token: str
+        :param fields: Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1629,6 +1672,7 @@ class TaskApi:
             order_by=order_by,
             page_size=page_size,
             page_token=page_token,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1663,6 +1707,7 @@ class TaskApi:
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1688,6 +1733,8 @@ class TaskApi:
         :type page_size: int
         :param page_token: Page token
         :type page_token: str
+        :param fields: Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1715,6 +1762,7 @@ class TaskApi:
             order_by=order_by,
             page_size=page_size,
             page_token=page_token,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1744,6 +1792,7 @@ class TaskApi:
         order_by,
         page_size,
         page_token,
+        fields,
         _request_auth,
         _content_type,
         _headers,
@@ -1753,6 +1802,7 @@ class TaskApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'fields': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1781,6 +1831,10 @@ class TaskApi:
         if page_token is not None:
             
             _query_params.append(('page_token', page_token))
+            
+        if fields is not None:
+            
+            _query_params.append(('fields', fields))
             
         # process the header parameters
         # process the form parameters
@@ -2092,6 +2146,7 @@ class TaskApi:
         task_id: StrictStr,
         create_update_task_request: CreateUpdateTaskRequest,
         update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2107,7 +2162,7 @@ class TaskApi:
     ) -> UpdateTaskResponse:
         """Update a Task
 
-        Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+        Updates a task with only the values provided in the request.
 
         :param task_id: (required)
         :type task_id: str
@@ -2115,6 +2170,8 @@ class TaskApi:
         :type create_update_task_request: CreateUpdateTaskRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         :type update_mask: object
+        :param fields: Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2141,6 +2198,7 @@ class TaskApi:
             task_id=task_id,
             create_update_task_request=create_update_task_request,
             update_mask=update_mask,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2174,6 +2232,7 @@ class TaskApi:
         task_id: StrictStr,
         create_update_task_request: CreateUpdateTaskRequest,
         update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2189,7 +2248,7 @@ class TaskApi:
     ) -> ApiResponse[UpdateTaskResponse]:
         """Update a Task
 
-        Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+        Updates a task with only the values provided in the request.
 
         :param task_id: (required)
         :type task_id: str
@@ -2197,6 +2256,8 @@ class TaskApi:
         :type create_update_task_request: CreateUpdateTaskRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         :type update_mask: object
+        :param fields: Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2223,6 +2284,7 @@ class TaskApi:
             task_id=task_id,
             create_update_task_request=create_update_task_request,
             update_mask=update_mask,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2256,6 +2318,7 @@ class TaskApi:
         task_id: StrictStr,
         create_update_task_request: CreateUpdateTaskRequest,
         update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2271,7 +2334,7 @@ class TaskApi:
     ) -> RESTResponseType:
         """Update a Task
 
-        Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+        Updates a task with only the values provided in the request.
 
         :param task_id: (required)
         :type task_id: str
@@ -2279,6 +2342,8 @@ class TaskApi:
         :type create_update_task_request: CreateUpdateTaskRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         :type update_mask: object
+        :param fields: Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2305,6 +2370,7 @@ class TaskApi:
             task_id=task_id,
             create_update_task_request=create_update_task_request,
             update_mask=update_mask,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2333,6 +2399,7 @@ class TaskApi:
         task_id,
         create_update_task_request,
         update_mask,
+        fields,
         _request_auth,
         _content_type,
         _headers,
@@ -2342,6 +2409,7 @@ class TaskApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'fields': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2360,6 +2428,10 @@ class TaskApi:
         if update_mask is not None:
             
             _query_params.append(('update_mask', update_mask))
+            
+        if fields is not None:
+            
+            _query_params.append(('fields', fields))
             
         # process the header parameters
         # process the form parameters

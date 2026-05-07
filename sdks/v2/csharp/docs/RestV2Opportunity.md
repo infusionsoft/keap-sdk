@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **CreatedTime** | **string** | Creation timestamp (ISO-8601) | [optional] 
 **LastUpdatedTime** | **string** | Last update timestamp (ISO-8601) | [optional] 
 **AffiliateId** | **string** | Affiliate ID | [optional] 
+**LeadSource** | **string** | Lead source | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

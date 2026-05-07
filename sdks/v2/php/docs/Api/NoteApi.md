@@ -198,7 +198,7 @@ void (empty response body)
 ## `getNote()`
 
 ```php
-getNote($contact_id, $note_id): \Keap\Core\V2\Model\GetNoteResponse
+getNote($contact_id, $note_id, $fields): \Keap\Core\V2\Model\GetNoteResponse
 ```
 
 Retrieve a Note
@@ -223,9 +223,10 @@ $apiInstance = new Keap\Core\V2\Api\NoteApi(
 );
 $contact_id = 'contact_id_example'; // string
 $note_id = 'note_id_example'; // string
+$fields = array('fields_example'); // string[] | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
 
 try {
-    $result = $apiInstance->getNote($contact_id, $note_id);
+    $result = $apiInstance->getNote($contact_id, $note_id, $fields);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NoteApi->getNote: ', $e->getMessage(), PHP_EOL;
@@ -238,6 +239,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **contact_id** | **string**|  | |
 | **note_id** | **string**|  | |
+| **fields** | [**string[]**](../Model/string.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -324,7 +326,7 @@ try {
 ## `listNotes()`
 
 ```php
-listNotes($contact_id, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListNotesResponse
+listNotes($contact_id, $filter, $order_by, $page_size, $page_token, $fields): \Keap\Core\V2\Model\ListNotesResponse
 ```
 
 List Notes
@@ -352,9 +354,10 @@ $filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
+$fields = array('fields_example'); // string[] | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
 
 try {
-    $result = $apiInstance->listNotes($contact_id, $filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listNotes($contact_id, $filter, $order_by, $page_size, $page_token, $fields);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NoteApi->listNotes: ', $e->getMessage(), PHP_EOL;
@@ -370,6 +373,7 @@ try {
 | **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
+| **fields** | [**string[]**](../Model/string.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 

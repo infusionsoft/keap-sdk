@@ -15,5 +15,6 @@ Name | Type | Description | Notes
 **last_updated_by_user_id** | **string** | ID of user who last updated | [optional]
 **pinned_at** | **string** | Pin timestamp (ISO-8601), null if not pinned | [optional]
 **created_by_user_id** | **string** | ID of user who created | [optional]
+**custom_fields** | [**\Keap\Core\V2\Model\CustomFieldValueObject[]**](CustomFieldValueObject.md) | Custom field values for the note | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

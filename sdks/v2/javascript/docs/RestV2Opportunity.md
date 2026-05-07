@@ -20,5 +20,6 @@ Name | Type | Description | Notes
 **createdTime** | **String** | Creation timestamp (ISO-8601) | [optional] 
 **lastUpdatedTime** | **String** | Last update timestamp (ISO-8601) | [optional] 
 **affiliateId** | **String** | Affiliate ID | [optional] 
+**leadSource** | **String** | Lead source | [optional] 
 
 

@@ -110,25 +110,27 @@ import io.github.resilience4j.retry.Retry;
 
   /**
    * Create a Task
-   * Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+   * Creates a new task as the authenticated user.
    * @param createTaskRequest  (required)
+   * @param fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
    * @return Task
    * @throws ApiException if fails to make API call
    */
-  public Task createTask(CreateTaskRequest createTaskRequest) throws ApiException {
-    ApiResponse<Task> localVarResponse = createTaskWithHttpInfo(createTaskRequest);
+  public Task createTask(CreateTaskRequest createTaskRequest, List<String> fields) throws ApiException {
+    ApiResponse<Task> localVarResponse = createTaskWithHttpInfo(createTaskRequest, fields);
     return localVarResponse.getData();
   }
 
   /**
    * Create a Task
-   * Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+   * Creates a new task as the authenticated user.
    * @param createTaskRequest  (required)
+   * @param fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
    * @return ApiResponse&lt;Task&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Task> createTaskWithHttpInfo(CreateTaskRequest createTaskRequest) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = createTaskRequestBuilder(createTaskRequest);
+  public ApiResponse<Task> createTaskWithHttpInfo(CreateTaskRequest createTaskRequest, List<String> fields) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createTaskRequestBuilder(createTaskRequest, fields);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -168,7 +170,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder createTaskRequestBuilder(CreateTaskRequest createTaskRequest) throws ApiException {
+  private HttpRequest.Builder createTaskRequestBuilder(CreateTaskRequest createTaskRequest, List<String> fields) throws ApiException {
     // verify the required parameter 'createTaskRequest' is set
     if (createTaskRequest == null) {
       throw new ApiException(400, "Missing the required parameter 'createTaskRequest' when calling createTask");
@@ -178,7 +180,22 @@ import io.github.resilience4j.retry.Retry;
 
     String localVarPath = "/rest/v2/tasks";
 
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "fields";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("csv", "fields", fields));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
 
     localVarRequestBuilder.header("Content-Type", "application/json");
     localVarRequestBuilder.header("Accept", "application/json");
@@ -472,11 +489,12 @@ import io.github.resilience4j.retry.Retry;
    * Retrieve a Task
    * Retrieves a single task
    * @param taskId  (required)
+   * @param fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
    * @return Task
    * @throws ApiException if fails to make API call
    */
-  public Task getTask(String taskId) throws ApiException {
-    ApiResponse<Task> localVarResponse = getTaskWithHttpInfo(taskId);
+  public Task getTask(String taskId, List<String> fields) throws ApiException {
+    ApiResponse<Task> localVarResponse = getTaskWithHttpInfo(taskId, fields);
     return localVarResponse.getData();
   }
 
@@ -484,11 +502,12 @@ import io.github.resilience4j.retry.Retry;
    * Retrieve a Task
    * Retrieves a single task
    * @param taskId  (required)
+   * @param fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
    * @return ApiResponse&lt;Task&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Task> getTaskWithHttpInfo(String taskId) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getTaskRequestBuilder(taskId);
+  public ApiResponse<Task> getTaskWithHttpInfo(String taskId, List<String> fields) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getTaskRequestBuilder(taskId, fields);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -528,7 +547,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder getTaskRequestBuilder(String taskId) throws ApiException {
+  private HttpRequest.Builder getTaskRequestBuilder(String taskId, List<String> fields) throws ApiException {
     // verify the required parameter 'taskId' is set
     if (taskId == null) {
       throw new ApiException(400, "Missing the required parameter 'taskId' when calling getTask");
@@ -539,7 +558,22 @@ import io.github.resilience4j.retry.Retry;
     String localVarPath = "/rest/v2/tasks/{task_id}"
         .replace("{task_id}", ApiClient.urlEncode(taskId.toString()));
 
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "fields";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("csv", "fields", fields));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
 
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
@@ -561,11 +595,12 @@ import io.github.resilience4j.retry.Retry;
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
+   * @param fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
    * @return ListTasksResponse
    * @throws ApiException if fails to make API call
    */
-  public ListTasksResponse listTasks(String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
-    ApiResponse<ListTasksResponse> localVarResponse = listTasksWithHttpInfo(filter, orderBy, pageSize, pageToken);
+  public ListTasksResponse listTasks(String filter, String orderBy, Integer pageSize, String pageToken, List<String> fields) throws ApiException {
+    ApiResponse<ListTasksResponse> localVarResponse = listTasksWithHttpInfo(filter, orderBy, pageSize, pageToken, fields);
     return localVarResponse.getData();
   }
 
@@ -576,11 +611,12 @@ import io.github.resilience4j.retry.Retry;
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
+   * @param fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
    * @return ApiResponse&lt;ListTasksResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ListTasksResponse> listTasksWithHttpInfo(String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = listTasksRequestBuilder(filter, orderBy, pageSize, pageToken);
+  public ApiResponse<ListTasksResponse> listTasksWithHttpInfo(String filter, String orderBy, Integer pageSize, String pageToken, List<String> fields) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listTasksRequestBuilder(filter, orderBy, pageSize, pageToken, fields);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -620,7 +656,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder listTasksRequestBuilder(String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
+  private HttpRequest.Builder listTasksRequestBuilder(String filter, String orderBy, Integer pageSize, String pageToken, List<String> fields) throws ApiException {
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
 
@@ -637,6 +673,8 @@ import io.github.resilience4j.retry.Retry;
     localVarQueryParams.addAll(ApiClient.parameterToPairs("page_size", pageSize));
     localVarQueryParameterBaseName = "page_token";
     localVarQueryParams.addAll(ApiClient.parameterToPairs("page_token", pageToken));
+    localVarQueryParameterBaseName = "fields";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("csv", "fields", fields));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -743,29 +781,31 @@ import io.github.resilience4j.retry.Retry;
 
   /**
    * Update a Task
-   * Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+   * Updates a task with only the values provided in the request.
    * @param taskId  (required)
    * @param createUpdateTaskRequest  (required)
    * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+   * @param fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
    * @return UpdateTaskResponse
    * @throws ApiException if fails to make API call
    */
-  public UpdateTaskResponse updateTask(String taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object updateMask) throws ApiException {
-    ApiResponse<UpdateTaskResponse> localVarResponse = updateTaskWithHttpInfo(taskId, createUpdateTaskRequest, updateMask);
+  public UpdateTaskResponse updateTask(String taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object updateMask, List<String> fields) throws ApiException {
+    ApiResponse<UpdateTaskResponse> localVarResponse = updateTaskWithHttpInfo(taskId, createUpdateTaskRequest, updateMask, fields);
     return localVarResponse.getData();
   }
 
   /**
    * Update a Task
-   * Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+   * Updates a task with only the values provided in the request.
    * @param taskId  (required)
    * @param createUpdateTaskRequest  (required)
    * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+   * @param fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
    * @return ApiResponse&lt;UpdateTaskResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<UpdateTaskResponse> updateTaskWithHttpInfo(String taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object updateMask) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = updateTaskRequestBuilder(taskId, createUpdateTaskRequest, updateMask);
+  public ApiResponse<UpdateTaskResponse> updateTaskWithHttpInfo(String taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object updateMask, List<String> fields) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateTaskRequestBuilder(taskId, createUpdateTaskRequest, updateMask, fields);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -805,7 +845,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateTaskRequestBuilder(String taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateTaskRequestBuilder(String taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object updateMask, List<String> fields) throws ApiException {
     // verify the required parameter 'taskId' is set
     if (taskId == null) {
       throw new ApiException(400, "Missing the required parameter 'taskId' when calling updateTask");
@@ -825,6 +865,8 @@ import io.github.resilience4j.retry.Retry;
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
     localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParameterBaseName = "fields";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("csv", "fields", fields));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

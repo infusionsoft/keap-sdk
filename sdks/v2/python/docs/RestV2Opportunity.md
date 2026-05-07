@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **created_time** | **str** | Creation timestamp (ISO-8601) | [optional] 
 **last_updated_time** | **str** | Last update timestamp (ISO-8601) | [optional] 
 **affiliate_id** | **str** | Affiliate ID | [optional] 
+**lead_source** | **str** | Lead source | [optional] 
 
 ## Example
 

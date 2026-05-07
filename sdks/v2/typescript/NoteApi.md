@@ -237,6 +237,10 @@ const request: NoteApiGetNoteRequest = {
   contactId: "contact_id_example",
   
   noteId: "note_id_example",
+    // Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
+  fields: [
+    "fields_example",
+  ],
 };
 
 const data = await apiInstance.getNote(request);
@@ -250,6 +254,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contactId** | [**string**] |  | defaults to undefined
  **noteId** | [**string**] |  | defaults to undefined
+ **fields** | **Array&lt;string&gt;** | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | (optional) defaults to undefined
 
 
 ### Return type
@@ -375,6 +380,10 @@ const request: NoteApiListNotesRequest = {
   pageSize: 0,
     // Page token (optional)
   pageToken: "page_token_example",
+    // Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
+  fields: [
+    "fields_example",
+  ],
 };
 
 const data = await apiInstance.listNotes(request);
@@ -391,6 +400,7 @@ Name | Type | Description  | Notes
  **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
+ **fields** | **Array&lt;string&gt;** | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | (optional) defaults to undefined
 
 
 ### Return type

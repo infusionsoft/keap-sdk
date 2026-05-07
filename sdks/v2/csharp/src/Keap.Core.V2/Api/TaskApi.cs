@@ -32,25 +32,27 @@ namespace Keap.Core.V2.Api
         /// Create a Task
         /// </summary>
         /// <remarks>
-        /// Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+        /// Creates a new task as the authenticated user.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createTaskRequest"></param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Task</returns>
-        Task CreateTask(CreateTaskRequest createTaskRequest, int operationIndex = 0);
+        Task CreateTask(CreateTaskRequest createTaskRequest, List<string>? fields = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a Task
         /// </summary>
         /// <remarks>
-        /// Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+        /// Creates a new task as the authenticated user.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createTaskRequest"></param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Task</returns>
-        ApiResponse<Task> CreateTaskWithHttpInfo(CreateTaskRequest createTaskRequest, int operationIndex = 0);
+        ApiResponse<Task> CreateTaskWithHttpInfo(CreateTaskRequest createTaskRequest, List<string>? fields = default, int operationIndex = 0);
         /// <summary>
         /// Create a Custom Field
         /// </summary>
@@ -128,9 +130,10 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Task</returns>
-        Task GetTask(string taskId, int operationIndex = 0);
+        Task GetTask(string taskId, List<string>? fields = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a Task
@@ -140,9 +143,10 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Task</returns>
-        ApiResponse<Task> GetTaskWithHttpInfo(string taskId, int operationIndex = 0);
+        ApiResponse<Task> GetTaskWithHttpInfo(string taskId, List<string>? fields = default, int operationIndex = 0);
         /// <summary>
         /// List Tasks
         /// </summary>
@@ -154,9 +158,10 @@ namespace Keap.Core.V2.Api
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ListTasksResponse</returns>
-        ListTasksResponse ListTasks(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0);
+        ListTasksResponse ListTasks(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, List<string>? fields = default, int operationIndex = 0);
 
         /// <summary>
         /// List Tasks
@@ -169,9 +174,10 @@ namespace Keap.Core.V2.Api
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ListTasksResponse</returns>
-        ApiResponse<ListTasksResponse> ListTasksWithHttpInfo(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0);
+        ApiResponse<ListTasksResponse> ListTasksWithHttpInfo(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, List<string>? fields = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve Task Model
         /// </summary>
@@ -197,29 +203,31 @@ namespace Keap.Core.V2.Api
         /// Update a Task
         /// </summary>
         /// <remarks>
-        /// Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+        /// Updates a task with only the values provided in the request.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <param name="createUpdateTaskRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UpdateTaskResponse</returns>
-        UpdateTaskResponse UpdateTask(string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = default, int operationIndex = 0);
+        UpdateTaskResponse UpdateTask(string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Task
         /// </summary>
         /// <remarks>
-        /// Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+        /// Updates a task with only the values provided in the request.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <param name="createUpdateTaskRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UpdateTaskResponse</returns>
-        ApiResponse<UpdateTaskResponse> UpdateTaskWithHttpInfo(string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = default, int operationIndex = 0);
+        ApiResponse<UpdateTaskResponse> UpdateTaskWithHttpInfo(string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0);
         /// <summary>
         /// Update a Task&#39;s Custom Field
         /// </summary>
@@ -260,27 +268,29 @@ namespace Keap.Core.V2.Api
         /// Create a Task
         /// </summary>
         /// <remarks>
-        /// Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+        /// Creates a new task as the authenticated user.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createTaskRequest"></param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Task</returns>
-        System.Threading.Tasks.Task<Task> CreateTaskAsync(CreateTaskRequest createTaskRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Task> CreateTaskAsync(CreateTaskRequest createTaskRequest, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create a Task
         /// </summary>
         /// <remarks>
-        /// Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+        /// Creates a new task as the authenticated user.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createTaskRequest"></param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Task)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Task>> CreateTaskWithHttpInfoAsync(CreateTaskRequest createTaskRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Task>> CreateTaskWithHttpInfoAsync(CreateTaskRequest createTaskRequest, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a Custom Field
         /// </summary>
@@ -364,10 +374,11 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Task</returns>
-        System.Threading.Tasks.Task<Task> GetTaskAsync(string taskId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Task> GetTaskAsync(string taskId, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieve a Task
@@ -377,10 +388,11 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Task)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Task>> GetTaskWithHttpInfoAsync(string taskId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Task>> GetTaskWithHttpInfoAsync(string taskId, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List Tasks
         /// </summary>
@@ -392,10 +404,11 @@ namespace Keap.Core.V2.Api
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListTasksResponse</returns>
-        System.Threading.Tasks.Task<ListTasksResponse> ListTasksAsync(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListTasksResponse> ListTasksAsync(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List Tasks
@@ -408,10 +421,11 @@ namespace Keap.Core.V2.Api
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListTasksResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListTasksResponse>> ListTasksWithHttpInfoAsync(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListTasksResponse>> ListTasksWithHttpInfoAsync(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieve Task Model
         /// </summary>
@@ -439,31 +453,33 @@ namespace Keap.Core.V2.Api
         /// Update a Task
         /// </summary>
         /// <remarks>
-        /// Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+        /// Updates a task with only the values provided in the request.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <param name="createUpdateTaskRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateTaskResponse</returns>
-        System.Threading.Tasks.Task<UpdateTaskResponse> UpdateTaskAsync(string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<UpdateTaskResponse> UpdateTaskAsync(string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Task
         /// </summary>
         /// <remarks>
-        /// Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+        /// Updates a task with only the values provided in the request.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <param name="createUpdateTaskRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateTaskResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateTaskResponse>> UpdateTaskWithHttpInfoAsync(string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<UpdateTaskResponse>> UpdateTaskWithHttpInfoAsync(string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update a Task&#39;s Custom Field
         /// </summary>
@@ -614,26 +630,28 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
-        /// Create a Task Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+        /// Create a Task Creates a new task as the authenticated user.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createTaskRequest"></param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Task</returns>
-        public Task CreateTask(CreateTaskRequest createTaskRequest, int operationIndex = 0)
+        public Task CreateTask(CreateTaskRequest createTaskRequest, List<string>? fields = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<Task> localVarResponse = CreateTaskWithHttpInfo(createTaskRequest);
+            Keap.Core.V2.Client.ApiResponse<Task> localVarResponse = CreateTaskWithHttpInfo(createTaskRequest, fields);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Create a Task Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+        /// Create a Task Creates a new task as the authenticated user.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createTaskRequest"></param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Task</returns>
-        public Keap.Core.V2.Client.ApiResponse<Task> CreateTaskWithHttpInfo(CreateTaskRequest createTaskRequest, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<Task> CreateTaskWithHttpInfo(CreateTaskRequest createTaskRequest, List<string>? fields = default, int operationIndex = 0)
         {
             // verify the required parameter 'createTaskRequest' is set
             if (createTaskRequest == null)
@@ -665,6 +683,10 @@ namespace Keap.Core.V2.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (fields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
+            }
             localVarRequestOptions.Data = createTaskRequest;
 
             localVarRequestOptions.Operation = "TaskApi.CreateTask";
@@ -702,28 +724,30 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
-        /// Create a Task Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+        /// Create a Task Creates a new task as the authenticated user.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createTaskRequest"></param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Task</returns>
-        public async System.Threading.Tasks.Task<Task> CreateTaskAsync(CreateTaskRequest createTaskRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Task> CreateTaskAsync(CreateTaskRequest createTaskRequest, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<Task> localVarResponse = await CreateTaskWithHttpInfoAsync(createTaskRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<Task> localVarResponse = await CreateTaskWithHttpInfoAsync(createTaskRequest, fields, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Create a Task Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+        /// Create a Task Creates a new task as the authenticated user.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createTaskRequest"></param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Task)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Task>> CreateTaskWithHttpInfoAsync(CreateTaskRequest createTaskRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Task>> CreateTaskWithHttpInfoAsync(CreateTaskRequest createTaskRequest, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'createTaskRequest' is set
             if (createTaskRequest == null)
@@ -755,6 +779,10 @@ namespace Keap.Core.V2.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (fields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
+            }
             localVarRequestOptions.Data = createTaskRequest;
 
             localVarRequestOptions.Operation = "TaskApi.CreateTask";
@@ -1326,11 +1354,12 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Task</returns>
-        public Task GetTask(string taskId, int operationIndex = 0)
+        public Task GetTask(string taskId, List<string>? fields = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<Task> localVarResponse = GetTaskWithHttpInfo(taskId);
+            Keap.Core.V2.Client.ApiResponse<Task> localVarResponse = GetTaskWithHttpInfo(taskId, fields);
             return localVarResponse.Data;
         }
 
@@ -1339,9 +1368,10 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Task</returns>
-        public Keap.Core.V2.Client.ApiResponse<Task> GetTaskWithHttpInfo(string taskId, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<Task> GetTaskWithHttpInfo(string taskId, List<string>? fields = default, int operationIndex = 0)
         {
             // verify the required parameter 'taskId' is set
             if (taskId == null)
@@ -1373,6 +1403,10 @@ namespace Keap.Core.V2.Api
             }
 
             localVarRequestOptions.PathParameters.Add("task_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(taskId)); // path parameter
+            if (fields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
+            }
 
             localVarRequestOptions.Operation = "TaskApi.GetTask";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1413,12 +1447,13 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Task</returns>
-        public async System.Threading.Tasks.Task<Task> GetTaskAsync(string taskId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Task> GetTaskAsync(string taskId, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<Task> localVarResponse = await GetTaskWithHttpInfoAsync(taskId, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<Task> localVarResponse = await GetTaskWithHttpInfoAsync(taskId, fields, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1427,10 +1462,11 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Task)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Task>> GetTaskWithHttpInfoAsync(string taskId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Task>> GetTaskWithHttpInfoAsync(string taskId, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'taskId' is set
             if (taskId == null)
@@ -1462,6 +1498,10 @@ namespace Keap.Core.V2.Api
             }
 
             localVarRequestOptions.PathParameters.Add("task_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(taskId)); // path parameter
+            if (fields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
+            }
 
             localVarRequestOptions.Operation = "TaskApi.GetTask";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1506,11 +1546,12 @@ namespace Keap.Core.V2.Api
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ListTasksResponse</returns>
-        public ListTasksResponse ListTasks(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0)
+        public ListTasksResponse ListTasks(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, List<string>? fields = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<ListTasksResponse> localVarResponse = ListTasksWithHttpInfo(filter, orderBy, pageSize, pageToken);
+            Keap.Core.V2.Client.ApiResponse<ListTasksResponse> localVarResponse = ListTasksWithHttpInfo(filter, orderBy, pageSize, pageToken, fields);
             return localVarResponse.Data;
         }
 
@@ -1522,9 +1563,10 @@ namespace Keap.Core.V2.Api
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ListTasksResponse</returns>
-        public Keap.Core.V2.Client.ApiResponse<ListTasksResponse> ListTasksWithHttpInfo(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<ListTasksResponse> ListTasksWithHttpInfo(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, List<string>? fields = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
 
@@ -1564,6 +1606,10 @@ namespace Keap.Core.V2.Api
             if (pageToken != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken));
+            }
+            if (fields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
             }
 
             localVarRequestOptions.Operation = "TaskApi.ListTasks";
@@ -1608,12 +1654,13 @@ namespace Keap.Core.V2.Api
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListTasksResponse</returns>
-        public async System.Threading.Tasks.Task<ListTasksResponse> ListTasksAsync(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListTasksResponse> ListTasksAsync(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<ListTasksResponse> localVarResponse = await ListTasksWithHttpInfoAsync(filter, orderBy, pageSize, pageToken, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<ListTasksResponse> localVarResponse = await ListTasksWithHttpInfoAsync(filter, orderBy, pageSize, pageToken, fields, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1625,10 +1672,11 @@ namespace Keap.Core.V2.Api
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListTasksResponse)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ListTasksResponse>> ListTasksWithHttpInfoAsync(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ListTasksResponse>> ListTasksWithHttpInfoAsync(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
@@ -1668,6 +1716,10 @@ namespace Keap.Core.V2.Api
             if (pageToken != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken));
+            }
+            if (fields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
             }
 
             localVarRequestOptions.Operation = "TaskApi.ListTasks";
@@ -1865,30 +1917,32 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
-        /// Update a Task Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+        /// Update a Task Updates a task with only the values provided in the request.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <param name="createUpdateTaskRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UpdateTaskResponse</returns>
-        public UpdateTaskResponse UpdateTask(string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = default, int operationIndex = 0)
+        public UpdateTaskResponse UpdateTask(string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<UpdateTaskResponse> localVarResponse = UpdateTaskWithHttpInfo(taskId, createUpdateTaskRequest, updateMask);
+            Keap.Core.V2.Client.ApiResponse<UpdateTaskResponse> localVarResponse = UpdateTaskWithHttpInfo(taskId, createUpdateTaskRequest, updateMask, fields);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Update a Task Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+        /// Update a Task Updates a task with only the values provided in the request.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <param name="createUpdateTaskRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UpdateTaskResponse</returns>
-        public Keap.Core.V2.Client.ApiResponse<UpdateTaskResponse> UpdateTaskWithHttpInfo(string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<UpdateTaskResponse> UpdateTaskWithHttpInfo(string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0)
         {
             // verify the required parameter 'taskId' is set
             if (taskId == null)
@@ -1931,6 +1985,10 @@ namespace Keap.Core.V2.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
             }
+            if (fields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
+            }
             localVarRequestOptions.Data = createUpdateTaskRequest;
 
             localVarRequestOptions.Operation = "TaskApi.UpdateTask";
@@ -1968,32 +2026,34 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
-        /// Update a Task Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+        /// Update a Task Updates a task with only the values provided in the request.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <param name="createUpdateTaskRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateTaskResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateTaskResponse> UpdateTaskAsync(string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<UpdateTaskResponse> UpdateTaskAsync(string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<UpdateTaskResponse> localVarResponse = await UpdateTaskWithHttpInfoAsync(taskId, createUpdateTaskRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<UpdateTaskResponse> localVarResponse = await UpdateTaskWithHttpInfoAsync(taskId, createUpdateTaskRequest, updateMask, fields, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Update a Task Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+        /// Update a Task Updates a task with only the values provided in the request.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="taskId"></param>
         /// <param name="createUpdateTaskRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateTaskResponse)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<UpdateTaskResponse>> UpdateTaskWithHttpInfoAsync(string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<UpdateTaskResponse>> UpdateTaskWithHttpInfoAsync(string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'taskId' is set
             if (taskId == null)
@@ -2035,6 +2095,10 @@ namespace Keap.Core.V2.Api
             if (updateMask != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+            }
+            if (fields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
             }
             localVarRequestOptions.Data = createUpdateTaskRequest;
 

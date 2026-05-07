@@ -150,7 +150,8 @@ namespace Keap.Core.V2.Model
         /// <param name="assignedToUserId">Assigned user ID.</param>
         /// <param name="createdByUserId">Creator user ID.</param>
         /// <param name="contactId">Associated contact ID.</param>
-        public UpdateTaskResponse(string id = default, string title = default, string description = default, string type = default, PriorityEnum? priority = default, bool completed = default, string createTime = default, string modificationTime = default, string completionTime = default, string dueTime = default, RemindTimeMinsEnum? remindTimeMins = default, string assignedToUserId = default, string createdByUserId = default, string contactId = default)
+        /// <param name="customFields">Custom field values for the task.</param>
+        public UpdateTaskResponse(string id = default, string title = default, string description = default, string type = default, PriorityEnum? priority = default, bool completed = default, string createTime = default, string modificationTime = default, string completionTime = default, string dueTime = default, RemindTimeMinsEnum? remindTimeMins = default, string assignedToUserId = default, string createdByUserId = default, string contactId = default, List<CustomFieldValueObject> customFields = default)
         {
             this.Id = id;
             this.Title = title;
@@ -166,6 +167,7 @@ namespace Keap.Core.V2.Model
             this.AssignedToUserId = assignedToUserId;
             this.CreatedByUserId = createdByUserId;
             this.ContactId = contactId;
+            this.CustomFields = customFields;
         }
 
         /// <summary>
@@ -289,6 +291,16 @@ namespace Keap.Core.V2.Model
         public string ContactId { get; set; }
 
         /// <summary>
+        /// Custom field values for the task
+        /// </summary>
+        /// <value>Custom field values for the task</value>
+        /*
+        <example>[{id&#x3D;1, content&#x3D;Red}, {id&#x3D;2, content&#x3D;Preferred}]</example>
+        */
+        [DataMember(Name = "custom_fields", EmitDefaultValue = false)]
+        public List<CustomFieldValueObject> CustomFields { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -310,6 +322,7 @@ namespace Keap.Core.V2.Model
             sb.Append("  AssignedToUserId: ").Append(AssignedToUserId).Append("\n");
             sb.Append("  CreatedByUserId: ").Append(CreatedByUserId).Append("\n");
             sb.Append("  ContactId: ").Append(ContactId).Append("\n");
+            sb.Append("  CustomFields: ").Append(CustomFields).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

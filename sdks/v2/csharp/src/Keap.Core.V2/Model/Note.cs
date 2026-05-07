@@ -46,7 +46,8 @@ namespace Keap.Core.V2.Model
         /// <param name="lastUpdatedByUserId">ID of user who last updated.</param>
         /// <param name="pinnedAt">Pin timestamp (ISO-8601), null if not pinned.</param>
         /// <param name="createdByUserId">ID of user who created.</param>
-        public Note(string id = default, string text = default, string title = default, string type = default, string contactId = default, BasicUser assignedToUser = default, string createTime = default, string updateTime = default, string lastUpdatedByUserId = default, string pinnedAt = default, string createdByUserId = default)
+        /// <param name="customFields">Custom field values for the note.</param>
+        public Note(string id = default, string text = default, string title = default, string type = default, string contactId = default, BasicUser assignedToUser = default, string createTime = default, string updateTime = default, string lastUpdatedByUserId = default, string pinnedAt = default, string createdByUserId = default, List<CustomFieldValueObject> customFields = default)
         {
             this.Id = id;
             this.Text = text;
@@ -59,6 +60,7 @@ namespace Keap.Core.V2.Model
             this.LastUpdatedByUserId = lastUpdatedByUserId;
             this.PinnedAt = pinnedAt;
             this.CreatedByUserId = createdByUserId;
+            this.CustomFields = customFields;
         }
 
         /// <summary>
@@ -169,6 +171,16 @@ namespace Keap.Core.V2.Model
         public string CreatedByUserId { get; set; }
 
         /// <summary>
+        /// Custom field values for the note
+        /// </summary>
+        /// <value>Custom field values for the note</value>
+        /*
+        <example>[{id&#x3D;1, content&#x3D;Red}, {id&#x3D;2, content&#x3D;Preferred}]</example>
+        */
+        [DataMember(Name = "custom_fields", EmitDefaultValue = false)]
+        public List<CustomFieldValueObject> CustomFields { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -187,6 +199,7 @@ namespace Keap.Core.V2.Model
             sb.Append("  LastUpdatedByUserId: ").Append(LastUpdatedByUserId).Append("\n");
             sb.Append("  PinnedAt: ").Append(PinnedAt).Append("\n");
             sb.Append("  CreatedByUserId: ").Append(CreatedByUserId).Append("\n");
+            sb.Append("  CustomFields: ").Append(CustomFields).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -22,8 +22,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.keap.core.sdk.model.BasicUser;
+import com.keap.core.sdk.model.CustomFieldValueObject;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.validation.constraints.*;
@@ -44,7 +47,8 @@ import jakarta.validation.Valid;
   Note.JSON_PROPERTY_UPDATE_TIME,
   Note.JSON_PROPERTY_LAST_UPDATED_BY_USER_ID,
   Note.JSON_PROPERTY_PINNED_AT,
-  Note.JSON_PROPERTY_CREATED_BY_USER_ID
+  Note.JSON_PROPERTY_CREATED_BY_USER_ID,
+  Note.JSON_PROPERTY_CUSTOM_FIELDS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class Note implements Serializable {
@@ -82,6 +86,9 @@ public class Note implements Serializable {
 
   public static final String JSON_PROPERTY_CREATED_BY_USER_ID = "created_by_user_id";
   @jakarta.annotation.Nullable  private String createdByUserId;
+
+  public static final String JSON_PROPERTY_CUSTOM_FIELDS = "custom_fields";
+  @jakarta.annotation.Nullable  private List<@Valid CustomFieldValueObject> customFields = new ArrayList<>();
 
   public Note() { 
   }
@@ -350,6 +357,39 @@ public class Note implements Serializable {
     this.createdByUserId = createdByUserId;
   }
 
+
+  public Note customFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValueObject> customFields) {
+    this.customFields = customFields;
+    return this;
+  }
+
+  public Note addCustomFieldsItem(CustomFieldValueObject customFieldsItem) {
+    if (this.customFields == null) {
+      this.customFields = new ArrayList<>();
+    }
+    this.customFields.add(customFieldsItem);
+    return this;
+  }
+
+  /**
+   * Custom field values for the note
+   * @return customFields
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "[{id=1, content=Red}, {id=2, content=Preferred}]", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Custom field values for the note")
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<@Valid CustomFieldValueObject> getCustomFields() {
+    return customFields;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValueObject> customFields) {
+    this.customFields = customFields;
+  }
+
   /**
    * Return true if this Note object is equal to o.
    */
@@ -372,12 +412,13 @@ public class Note implements Serializable {
         Objects.equals(this.updateTime, note.updateTime) &&
         Objects.equals(this.lastUpdatedByUserId, note.lastUpdatedByUserId) &&
         Objects.equals(this.pinnedAt, note.pinnedAt) &&
-        Objects.equals(this.createdByUserId, note.createdByUserId);
+        Objects.equals(this.createdByUserId, note.createdByUserId) &&
+        Objects.equals(this.customFields, note.customFields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, text, title, type, contactId, assignedToUser, createTime, updateTime, lastUpdatedByUserId, pinnedAt, createdByUserId);
+    return Objects.hash(id, text, title, type, contactId, assignedToUser, createTime, updateTime, lastUpdatedByUserId, pinnedAt, createdByUserId, customFields);
   }
 
   @Override
@@ -395,6 +436,7 @@ public class Note implements Serializable {
     sb.append("    lastUpdatedByUserId: ").append(toIndentedString(lastUpdatedByUserId)).append("\n");
     sb.append("    pinnedAt: ").append(toIndentedString(pinnedAt)).append("\n");
     sb.append("    createdByUserId: ").append(toIndentedString(createdByUserId)).append("\n");
+    sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -466,6 +508,10 @@ public class Note implements Serializable {
               this.instance.createdByUserId = createdByUserId;
           return this;
         }
+            public Note.Builder customFields(List<CustomFieldValueObject> customFields) {
+              this.instance.customFields = customFields;
+          return this;
+        }
         
     
         /**
@@ -510,7 +556,8 @@ public class Note implements Serializable {
           .updateTime(getUpdateTime())
           .lastUpdatedByUserId(getLastUpdatedByUserId())
           .pinnedAt(getPinnedAt())
-          .createdByUserId(getCreatedByUserId());
+          .createdByUserId(getCreatedByUserId())
+          .customFields(getCustomFields());
       }
 }
 

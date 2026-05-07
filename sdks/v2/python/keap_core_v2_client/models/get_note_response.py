@@ -20,6 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from keap_core_v2_client.models.basic_user import BasicUser
+from keap_core_v2_client.models.custom_field_value_object import CustomFieldValueObject
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -38,8 +39,9 @@ class GetNoteResponse(BaseModel):
     last_updated_by_user_id: Optional[StrictStr] = Field(default=None, description="ID of user who last updated")
     pinned_at: Optional[StrictStr] = Field(default=None, description="Pin timestamp (ISO-8601), null if not pinned")
     created_by_user_id: Optional[StrictStr] = Field(default=None, description="ID of user who created")
+    custom_fields: Optional[List[CustomFieldValueObject]] = Field(default=None, description="Custom field values for the note")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "text", "title", "type", "contact_id", "assigned_to_user", "create_time", "update_time", "last_updated_by_user_id", "pinned_at", "created_by_user_id"]
+    __properties: ClassVar[List[str]] = ["id", "text", "title", "type", "contact_id", "assigned_to_user", "create_time", "update_time", "last_updated_by_user_id", "pinned_at", "created_by_user_id", "custom_fields"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,6 +87,13 @@ class GetNoteResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of assigned_to_user
         if self.assigned_to_user:
             _dict['assigned_to_user'] = self.assigned_to_user.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in custom_fields (list)
+        _items = []
+        if self.custom_fields:
+            for _item_custom_fields in self.custom_fields:
+                if _item_custom_fields:
+                    _items.append(_item_custom_fields.to_dict())
+            _dict['custom_fields'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -112,7 +121,8 @@ class GetNoteResponse(BaseModel):
             "update_time": obj.get("update_time"),
             "last_updated_by_user_id": obj.get("last_updated_by_user_id"),
             "pinned_at": obj.get("pinned_at"),
-            "created_by_user_id": obj.get("created_by_user_id")
+            "created_by_user_id": obj.get("created_by_user_id"),
+            "custom_fields": [CustomFieldValueObject.from_dict(_item) for _item in obj["custom_fields"]] if obj.get("custom_fields") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

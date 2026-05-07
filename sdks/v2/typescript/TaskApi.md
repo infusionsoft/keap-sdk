@@ -18,7 +18,7 @@ Method | HTTP request | Description
 # **createTask**
 > Task createTask(createTaskRequest)
 
-Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+Creates a new task as the authenticated user.
 
 ### Example
 
@@ -43,7 +43,17 @@ const request: TaskApiCreateTaskRequest = {
     remindTimeMins: 30,
     assignedToUserId: "456",
     contactId: "1001",
+    customFields: [
+      {
+        id: "id_example",
+        content: null,
+      },
+    ],
   },
+    // Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
+  fields: [
+    "fields_example",
+  ],
 };
 
 const data = await apiInstance.createTask(request);
@@ -56,6 +66,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createTaskRequest** | **CreateTaskRequest**|  |
+ **fields** | **Array&lt;string&gt;** | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | (optional) defaults to undefined
 
 
 ### Return type
@@ -294,6 +305,10 @@ const apiInstance = new TaskApi(configuration);
 const request: TaskApiGetTaskRequest = {
   
   taskId: "task_id_example",
+    // Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
+  fields: [
+    "fields_example",
+  ],
 };
 
 const data = await apiInstance.getTask(request);
@@ -306,6 +321,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **taskId** | [**string**] |  | defaults to undefined
+ **fields** | **Array&lt;string&gt;** | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | (optional) defaults to undefined
 
 
 ### Return type
@@ -360,6 +376,10 @@ const request: TaskApiListTasksRequest = {
   pageSize: 0,
     // Page token (optional)
   pageToken: "page_token_example",
+    // Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
+  fields: [
+    "fields_example",
+  ],
 };
 
 const data = await apiInstance.listTasks(request);
@@ -375,6 +395,7 @@ Name | Type | Description  | Notes
  **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
+ **fields** | **Array&lt;string&gt;** | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | (optional) defaults to undefined
 
 
 ### Return type
@@ -461,7 +482,7 @@ This endpoint does not need any parameter.
 # **updateTask**
 > UpdateTaskResponse updateTask(createUpdateTaskRequest)
 
-Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+Updates a task with only the values provided in the request.
 
 ### Example
 
@@ -488,9 +509,19 @@ const request: TaskApiUpdateTaskRequest = {
     remindTimeMins: 30,
     assignedToUserId: "456",
     contactId: "1001",
+    customFields: [
+      {
+        id: "id_example",
+        content: null,
+      },
+    ],
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
   updateMask: null,
+    // Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
+  fields: [
+    "fields_example",
+  ],
 };
 
 const data = await apiInstance.updateTask(request);
@@ -505,6 +536,7 @@ Name | Type | Description  | Notes
  **createUpdateTaskRequest** | **CreateUpdateTaskRequest**|  |
  **taskId** | [**string**] |  | defaults to undefined
  **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **fields** | **Array&lt;string&gt;** | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | (optional) defaults to undefined
 
 
 ### Return type

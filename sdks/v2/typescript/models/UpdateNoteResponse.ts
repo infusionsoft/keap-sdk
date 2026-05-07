@@ -11,6 +11,7 @@
  */
 
 import { BasicUser } from '../models/BasicUser';
+import { CustomFieldValueObject } from '../models/CustomFieldValueObject';
 import { HttpFile } from '../http/http';
 
 export class UpdateNoteResponse {
@@ -58,6 +59,10 @@ export class UpdateNoteResponse {
     * ID of user who created
     */
     'createdByUserId'?: string;
+    /**
+    * Custom field values for the note
+    */
+    'customFields'?: Array<CustomFieldValueObject>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -128,6 +133,12 @@ export class UpdateNoteResponse {
             "name": "createdByUserId",
             "baseName": "created_by_user_id",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "customFields",
+            "baseName": "custom_fields",
+            "type": "Array<CustomFieldValueObject>",
             "format": ""
         }    ];
 

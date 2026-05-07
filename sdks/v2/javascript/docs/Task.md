@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **assignedToUserId** | **String** | Assigned user ID | [optional] 
 **createdByUserId** | **String** | Creator user ID | [optional] 
 **contactId** | **String** | Associated contact ID | [optional] 
+**customFields** | [**[CustomFieldValueObject]**](CustomFieldValueObject.md) | Custom field values for the task | [optional] 
 
 
 

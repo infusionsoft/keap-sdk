@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **remindTimeMins** | **Number** | Value in minutes before start_date to show pop-up reminder. | [optional] 
 **assignedToUserId** | **String** | Assigned user ID | 
 **contactId** | **String** | Associated contact ID | [optional] 
+**customFields** | [**[CustomFieldValueObject]**](CustomFieldValueObject.md) | Custom field values for the task. An empty array resets all custom fields to their defaults. | [optional] 
 
 
 

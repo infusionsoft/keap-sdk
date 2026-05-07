@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **AssignedToUserId** | **string** | Assigned user ID | [optional] 
 **CreatedByUserId** | **string** | Creator user ID | [optional] 
 **ContactId** | **string** | Associated contact ID | [optional] 
+**CustomFields** | [**List&lt;CustomFieldValueObject&gt;**](CustomFieldValueObject.md) | Custom field values for the task | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

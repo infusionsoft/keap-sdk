@@ -67,7 +67,8 @@ class UpdateNoteResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'update_time' => 'string',
         'last_updated_by_user_id' => 'string',
         'pinned_at' => 'string',
-        'created_by_user_id' => 'string'
+        'created_by_user_id' => 'string',
+        'custom_fields' => '\Keap\Core\V2\Model\CustomFieldValueObject[]'
     ];
 
     /**
@@ -88,7 +89,8 @@ class UpdateNoteResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'update_time' => null,
         'last_updated_by_user_id' => null,
         'pinned_at' => null,
-        'created_by_user_id' => null
+        'created_by_user_id' => null,
+        'custom_fields' => null
     ];
 
     /**
@@ -107,7 +109,8 @@ class UpdateNoteResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'update_time' => false,
         'last_updated_by_user_id' => false,
         'pinned_at' => false,
-        'created_by_user_id' => false
+        'created_by_user_id' => false,
+        'custom_fields' => false
     ];
 
     /**
@@ -206,7 +209,8 @@ class UpdateNoteResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'update_time' => 'update_time',
         'last_updated_by_user_id' => 'last_updated_by_user_id',
         'pinned_at' => 'pinned_at',
-        'created_by_user_id' => 'created_by_user_id'
+        'created_by_user_id' => 'created_by_user_id',
+        'custom_fields' => 'custom_fields'
     ];
 
     /**
@@ -225,7 +229,8 @@ class UpdateNoteResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'update_time' => 'setUpdateTime',
         'last_updated_by_user_id' => 'setLastUpdatedByUserId',
         'pinned_at' => 'setPinnedAt',
-        'created_by_user_id' => 'setCreatedByUserId'
+        'created_by_user_id' => 'setCreatedByUserId',
+        'custom_fields' => 'setCustomFields'
     ];
 
     /**
@@ -244,7 +249,8 @@ class UpdateNoteResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'update_time' => 'getUpdateTime',
         'last_updated_by_user_id' => 'getLastUpdatedByUserId',
         'pinned_at' => 'getPinnedAt',
-        'created_by_user_id' => 'getCreatedByUserId'
+        'created_by_user_id' => 'getCreatedByUserId',
+        'custom_fields' => 'getCustomFields'
     ];
 
     /**
@@ -315,6 +321,7 @@ class UpdateNoteResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('last_updated_by_user_id', $data ?? [], null);
         $this->setIfExists('pinned_at', $data ?? [], null);
         $this->setIfExists('created_by_user_id', $data ?? [], null);
+        $this->setIfExists('custom_fields', $data ?? [], null);
     }
 
     /**
@@ -652,6 +659,33 @@ class UpdateNoteResponse implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable created_by_user_id cannot be null');
         }
         $this->container['created_by_user_id'] = $created_by_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_fields
+     *
+     * @return \Keap\Core\V2\Model\CustomFieldValueObject[]|null
+     */
+    public function getCustomFields()
+    {
+        return $this->container['custom_fields'];
+    }
+
+    /**
+     * Sets custom_fields
+     *
+     * @param \Keap\Core\V2\Model\CustomFieldValueObject[]|null $custom_fields Custom field values for the note
+     *
+     * @return self
+     */
+    public function setCustomFields($custom_fields)
+    {
+        if (is_null($custom_fields)) {
+            throw new \InvalidArgumentException('non-nullable custom_fields cannot be null');
+        }
+        $this->container['custom_fields'] = $custom_fields;
 
         return $this;
     }

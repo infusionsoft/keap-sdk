@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **LastUpdatedByUserId** | **string** | ID of user who last updated | [optional] 
 **PinnedAt** | **string** | Pin timestamp (ISO-8601), null if not pinned | [optional] 
 **CreatedByUserId** | **string** | ID of user who created | [optional] 
+**CustomFields** | [**List&lt;CustomFieldValueObject&gt;**](CustomFieldValueObject.md) | Custom field values for the note | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

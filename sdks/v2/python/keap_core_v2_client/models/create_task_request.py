@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from keap_core_v2_client.models.custom_field_value_object import CustomFieldValueObject
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -36,8 +37,9 @@ class CreateTaskRequest(BaseModel):
     remind_time_mins: Optional[StrictInt] = Field(default=None, description="Value in minutes before start_date to show pop-up reminder.")
     assigned_to_user_id: StrictStr = Field(description="Assigned user ID")
     contact_id: Optional[StrictStr] = Field(default=None, description="Associated contact ID")
+    custom_fields: Optional[List[CustomFieldValueObject]] = Field(default=None, description="Custom field values for the task. An empty array resets all custom fields to their defaults.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["title", "description", "type", "priority", "completed", "completion_time", "due_time", "remind_time_mins", "assigned_to_user_id", "contact_id"]
+    __properties: ClassVar[List[str]] = ["title", "description", "type", "priority", "completed", "completion_time", "due_time", "remind_time_mins", "assigned_to_user_id", "contact_id", "custom_fields"]
 
     @field_validator('priority')
     def priority_validate_enum(cls, value):
@@ -100,6 +102,13 @@ class CreateTaskRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in custom_fields (list)
+        _items = []
+        if self.custom_fields:
+            for _item_custom_fields in self.custom_fields:
+                if _item_custom_fields:
+                    _items.append(_item_custom_fields.to_dict())
+            _dict['custom_fields'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -126,7 +135,8 @@ class CreateTaskRequest(BaseModel):
             "due_time": obj.get("due_time"),
             "remind_time_mins": obj.get("remind_time_mins"),
             "assigned_to_user_id": obj.get("assigned_to_user_id"),
-            "contact_id": obj.get("contact_id")
+            "contact_id": obj.get("contact_id"),
+            "custom_fields": [CustomFieldValueObject.from_dict(_item) for _item in obj["custom_fields"]] if obj.get("custom_fields") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

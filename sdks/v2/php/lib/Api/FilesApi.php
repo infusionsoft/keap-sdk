@@ -550,36 +550,36 @@ class FilesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $file_name,
             'file_name', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
+            '', // openApiType
+            '', // style
+            false, // explode
             true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $contact_id,
             'contact_id', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
+            '', // openApiType
+            '', // style
+            false, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_public,
             'is_public', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
+            '', // openApiType
+            '', // style
+            false, // explode
             true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $file_association,
             'file_association', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
+            '', // openApiType
+            '', // style
+            false, // explode
             true // required
         ) ?? []);
 
@@ -2456,18 +2456,18 @@ class FilesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $file_name,
             'file_name', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
+            '', // openApiType
+            '', // style
+            false, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_public,
             'is_public', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
+            '', // openApiType
+            '', // style
+            false, // explode
             false // required
         ) ?? []);
 

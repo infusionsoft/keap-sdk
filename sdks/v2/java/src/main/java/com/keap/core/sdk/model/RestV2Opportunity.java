@@ -54,7 +54,8 @@ import jakarta.validation.Valid;
   RestV2Opportunity.JSON_PROPERTY_CUSTOM_FIELDS,
   RestV2Opportunity.JSON_PROPERTY_CREATED_TIME,
   RestV2Opportunity.JSON_PROPERTY_LAST_UPDATED_TIME,
-  RestV2Opportunity.JSON_PROPERTY_AFFILIATE_ID
+  RestV2Opportunity.JSON_PROPERTY_AFFILIATE_ID,
+  RestV2Opportunity.JSON_PROPERTY_LEAD_SOURCE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class RestV2Opportunity implements Serializable {
@@ -107,6 +108,9 @@ public class RestV2Opportunity implements Serializable {
 
   public static final String JSON_PROPERTY_AFFILIATE_ID = "affiliate_id";
   @jakarta.annotation.Nullable  private String affiliateId;
+
+  public static final String JSON_PROPERTY_LEAD_SOURCE = "lead_source";
+  @jakarta.annotation.Nullable  private String leadSource;
 
   public RestV2Opportunity() { 
   }
@@ -509,6 +513,30 @@ public class RestV2Opportunity implements Serializable {
     this.affiliateId = affiliateId;
   }
 
+
+  public RestV2Opportunity leadSource(@jakarta.annotation.Nullable String leadSource) {
+    this.leadSource = leadSource;
+    return this;
+  }
+
+  /**
+   * Lead source
+   * @return leadSource
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Web Form", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Lead source")
+  @JsonProperty(JSON_PROPERTY_LEAD_SOURCE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getLeadSource() {
+    return leadSource;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LEAD_SOURCE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLeadSource(@jakarta.annotation.Nullable String leadSource) {
+    this.leadSource = leadSource;
+  }
+
   /**
    * Return true if this RestV2Opportunity object is equal to o.
    */
@@ -536,12 +564,13 @@ public class RestV2Opportunity implements Serializable {
         Objects.equals(this.customFields, restV2Opportunity.customFields) &&
         Objects.equals(this.createdTime, restV2Opportunity.createdTime) &&
         Objects.equals(this.lastUpdatedTime, restV2Opportunity.lastUpdatedTime) &&
-        Objects.equals(this.affiliateId, restV2Opportunity.affiliateId);
+        Objects.equals(this.affiliateId, restV2Opportunity.affiliateId) &&
+        Objects.equals(this.leadSource, restV2Opportunity.leadSource);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, contact, stage, user, opportunityTitle, nextActionTime, nextActionNotes, opportunityNotes, estimatedCloseTime, includeInForecast, projectedRevenueLow, projectedRevenueHigh, customFields, createdTime, lastUpdatedTime, affiliateId);
+    return Objects.hash(id, contact, stage, user, opportunityTitle, nextActionTime, nextActionNotes, opportunityNotes, estimatedCloseTime, includeInForecast, projectedRevenueLow, projectedRevenueHigh, customFields, createdTime, lastUpdatedTime, affiliateId, leadSource);
   }
 
   @Override
@@ -564,6 +593,7 @@ public class RestV2Opportunity implements Serializable {
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    lastUpdatedTime: ").append(toIndentedString(lastUpdatedTime)).append("\n");
     sb.append("    affiliateId: ").append(toIndentedString(affiliateId)).append("\n");
+    sb.append("    leadSource: ").append(toIndentedString(leadSource)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -655,6 +685,10 @@ public class RestV2Opportunity implements Serializable {
               this.instance.affiliateId = affiliateId;
           return this;
         }
+            public RestV2Opportunity.Builder leadSource(String leadSource) {
+              this.instance.leadSource = leadSource;
+          return this;
+        }
         
     
         /**
@@ -704,7 +738,8 @@ public class RestV2Opportunity implements Serializable {
           .customFields(getCustomFields())
           .createdTime(getCreatedTime())
           .lastUpdatedTime(getLastUpdatedTime())
-          .affiliateId(getAffiliateId());
+          .affiliateId(getAffiliateId())
+          .leadSource(getLeadSource());
       }
 }
 

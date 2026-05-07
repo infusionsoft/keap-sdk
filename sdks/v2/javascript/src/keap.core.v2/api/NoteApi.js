@@ -206,9 +206,12 @@ export default class NoteApi {
      * Retrieves the specified Note
      * @param {String} contactId 
      * @param {String} noteId 
+     * @param {Object} opts Optional parameters
+     * @param {Array.<String>} [fields] Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/GetNoteResponse} and HTTP response
      */
-    getNoteWithHttpInfo(contactId, noteId) {
+    getNoteWithHttpInfo(contactId, noteId, opts) {
+      opts = opts || {};
       let postBody = null;
       // verify the required parameter 'contactId' is set
       if (contactId === undefined || contactId === null) {
@@ -224,6 +227,7 @@ export default class NoteApi {
         'note_id': noteId
       };
       let queryParams = {
+        'fields': this.apiClient.buildCollectionParam(opts['fields'], 'csv')
       };
       let headerParams = {
       };
@@ -246,10 +250,12 @@ export default class NoteApi {
      * Retrieves the specified Note
      * @param {String} contactId 
      * @param {String} noteId 
+     * @param {Object} opts Optional parameters
+     * @param {Array.<String>} opts.fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/GetNoteResponse}
      */
-    getNote(contactId, noteId) {
-      return this.getNoteWithHttpInfo(contactId, noteId)
+    getNote(contactId, noteId, opts) {
+      return this.getNoteWithHttpInfo(contactId, noteId, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -321,6 +327,7 @@ export default class NoteApi {
      * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} [pageSize] Total number of items to return per page
      * @param {String} [pageToken] Page token
+     * @param {Array.<String>} [fields] Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListNotesResponse} and HTTP response
      */
     listNotesWithHttpInfo(contactId, opts) {
@@ -338,7 +345,8 @@ export default class NoteApi {
         'filter': opts['filter'],
         'order_by': opts['orderBy'],
         'page_size': opts['pageSize'],
-        'page_token': opts['pageToken']
+        'page_token': opts['pageToken'],
+        'fields': this.apiClient.buildCollectionParam(opts['fields'], 'csv')
       };
       let headerParams = {
       };
@@ -365,6 +373,7 @@ export default class NoteApi {
      * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} opts.pageSize Total number of items to return per page
      * @param {String} opts.pageToken Page token
+     * @param {Array.<String>} opts.fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListNotesResponse}
      */
     listNotes(contactId, opts) {

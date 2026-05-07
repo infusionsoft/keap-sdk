@@ -21,6 +21,7 @@
 |**assignedToUserId** | **String** | Assigned user ID |  [optional] |
 |**createdByUserId** | **String** | Creator user ID |  [optional] |
 |**contactId** | **String** | Associated contact ID |  [optional] |
+|**customFields** | [**List&lt;CustomFieldValueObject&gt;**](CustomFieldValueObject.md) | Custom field values for the task |  [optional] |
 
 
 

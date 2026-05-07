@@ -18,12 +18,12 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 ## `createTask()`
 
 ```php
-createTask($create_task_request): \Keap\Core\V2\Model\Task
+createTask($create_task_request, $fields): \Keap\Core\V2\Model\Task
 ```
 
 Create a Task
 
-Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+Creates a new task as the authenticated user.
 
 ### Example
 
@@ -42,9 +42,10 @@ $apiInstance = new Keap\Core\V2\Api\TaskApi(
     $config
 );
 $create_task_request = new \Keap\Core\V2\Model\CreateTaskRequest(); // \Keap\Core\V2\Model\CreateTaskRequest
+$fields = array('fields_example'); // string[] | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
 
 try {
-    $result = $apiInstance->createTask($create_task_request);
+    $result = $apiInstance->createTask($create_task_request, $fields);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TaskApi->createTask: ', $e->getMessage(), PHP_EOL;
@@ -56,6 +57,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **create_task_request** | [**\Keap\Core\V2\Model\CreateTaskRequest**](../Model/CreateTaskRequest.md)|  | |
+| **fields** | [**string[]**](../Model/string.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -252,7 +254,7 @@ void (empty response body)
 ## `getTask()`
 
 ```php
-getTask($task_id): \Keap\Core\V2\Model\Task
+getTask($task_id, $fields): \Keap\Core\V2\Model\Task
 ```
 
 Retrieve a Task
@@ -276,9 +278,10 @@ $apiInstance = new Keap\Core\V2\Api\TaskApi(
     $config
 );
 $task_id = 'task_id_example'; // string
+$fields = array('fields_example'); // string[] | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
 
 try {
-    $result = $apiInstance->getTask($task_id);
+    $result = $apiInstance->getTask($task_id, $fields);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TaskApi->getTask: ', $e->getMessage(), PHP_EOL;
@@ -290,6 +293,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **task_id** | **string**|  | |
+| **fields** | [**string[]**](../Model/string.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -311,7 +315,7 @@ try {
 ## `listTasks()`
 
 ```php
-listTasks($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListTasksResponse
+listTasks($filter, $order_by, $page_size, $page_token, $fields): \Keap\Core\V2\Model\ListTasksResponse
 ```
 
 List Tasks
@@ -338,9 +342,10 @@ $filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
+$fields = array('fields_example'); // string[] | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
 
 try {
-    $result = $apiInstance->listTasks($filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listTasks($filter, $order_by, $page_size, $page_token, $fields);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TaskApi->listTasks: ', $e->getMessage(), PHP_EOL;
@@ -355,6 +360,7 @@ try {
 | **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
+| **fields** | [**string[]**](../Model/string.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -432,12 +438,12 @@ This endpoint does not need any parameter.
 ## `updateTask()`
 
 ```php
-updateTask($task_id, $create_update_task_request, $update_mask): \Keap\Core\V2\Model\UpdateTaskResponse
+updateTask($task_id, $create_update_task_request, $update_mask, $fields): \Keap\Core\V2\Model\UpdateTaskResponse
 ```
 
 Update a Task
 
-Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+Updates a task with only the values provided in the request.
 
 ### Example
 
@@ -458,9 +464,10 @@ $apiInstance = new Keap\Core\V2\Api\TaskApi(
 $task_id = 'task_id_example'; // string
 $create_update_task_request = new \Keap\Core\V2\Model\CreateUpdateTaskRequest(); // \Keap\Core\V2\Model\CreateUpdateTaskRequest
 $update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$fields = array('fields_example'); // string[] | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
 
 try {
-    $result = $apiInstance->updateTask($task_id, $create_update_task_request, $update_mask);
+    $result = $apiInstance->updateTask($task_id, $create_update_task_request, $update_mask, $fields);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TaskApi->updateTask: ', $e->getMessage(), PHP_EOL;
@@ -474,6 +481,7 @@ try {
 | **task_id** | **string**|  | |
 | **create_update_task_request** | [**\Keap\Core\V2\Model\CreateUpdateTaskRequest**](../Model/CreateUpdateTaskRequest.md)|  | |
 | **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **fields** | [**string[]**](../Model/string.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 

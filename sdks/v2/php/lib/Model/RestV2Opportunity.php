@@ -72,7 +72,8 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         'custom_fields' => '\Keap\Core\V2\Model\CustomField[]',
         'created_time' => 'string',
         'last_updated_time' => 'string',
-        'affiliate_id' => 'string'
+        'affiliate_id' => 'string',
+        'lead_source' => 'string'
     ];
 
     /**
@@ -98,7 +99,8 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         'custom_fields' => null,
         'created_time' => null,
         'last_updated_time' => null,
-        'affiliate_id' => null
+        'affiliate_id' => null,
+        'lead_source' => null
     ];
 
     /**
@@ -122,7 +124,8 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         'custom_fields' => false,
         'created_time' => false,
         'last_updated_time' => false,
-        'affiliate_id' => false
+        'affiliate_id' => false,
+        'lead_source' => false
     ];
 
     /**
@@ -226,7 +229,8 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         'custom_fields' => 'custom_fields',
         'created_time' => 'created_time',
         'last_updated_time' => 'last_updated_time',
-        'affiliate_id' => 'affiliate_id'
+        'affiliate_id' => 'affiliate_id',
+        'lead_source' => 'lead_source'
     ];
 
     /**
@@ -250,7 +254,8 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         'custom_fields' => 'setCustomFields',
         'created_time' => 'setCreatedTime',
         'last_updated_time' => 'setLastUpdatedTime',
-        'affiliate_id' => 'setAffiliateId'
+        'affiliate_id' => 'setAffiliateId',
+        'lead_source' => 'setLeadSource'
     ];
 
     /**
@@ -274,7 +279,8 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         'custom_fields' => 'getCustomFields',
         'created_time' => 'getCreatedTime',
         'last_updated_time' => 'getLastUpdatedTime',
-        'affiliate_id' => 'getAffiliateId'
+        'affiliate_id' => 'getAffiliateId',
+        'lead_source' => 'getLeadSource'
     ];
 
     /**
@@ -350,6 +356,7 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('created_time', $data ?? [], null);
         $this->setIfExists('last_updated_time', $data ?? [], null);
         $this->setIfExists('affiliate_id', $data ?? [], null);
+        $this->setIfExists('lead_source', $data ?? [], null);
     }
 
     /**
@@ -831,6 +838,33 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable affiliate_id cannot be null');
         }
         $this->container['affiliate_id'] = $affiliate_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets lead_source
+     *
+     * @return string|null
+     */
+    public function getLeadSource()
+    {
+        return $this->container['lead_source'];
+    }
+
+    /**
+     * Sets lead_source
+     *
+     * @param string|null $lead_source Lead source
+     *
+     * @return self
+     */
+    public function setLeadSource($lead_source)
+    {
+        if (is_null($lead_source)) {
+            throw new \InvalidArgumentException('non-nullable lead_source cannot be null');
+        }
+        $this->container['lead_source'] = $lead_source;
 
         return $this;
     }

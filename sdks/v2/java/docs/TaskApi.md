@@ -27,11 +27,11 @@ All URIs are relative to *https://api.keap.com/crm*
 
 ## createTask
 
-> Task createTask(createTaskRequest)
+> Task createTask(createTaskRequest, fields)
 
 Create a Task
 
-Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+Creates a new task as the authenticated user.
 
 ### Example
 
@@ -55,8 +55,9 @@ public class Example {
 
         TaskApi apiInstance = new TaskApi(defaultClient);
         CreateTaskRequest createTaskRequest = new CreateTaskRequest(); // CreateTaskRequest | 
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
         try {
-            Task result = apiInstance.createTask(createTaskRequest);
+            Task result = apiInstance.createTask(createTaskRequest, fields);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TaskApi#createTask");
@@ -75,6 +76,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **createTaskRequest** | [**CreateTaskRequest**](CreateTaskRequest.md)|  | |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -104,11 +106,11 @@ public class Example {
 
 ## createTaskWithHttpInfo
 
-> ApiResponse<Task> createTask createTaskWithHttpInfo(createTaskRequest)
+> ApiResponse<Task> createTask createTaskWithHttpInfo(createTaskRequest, fields)
 
 Create a Task
 
-Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+Creates a new task as the authenticated user.
 
 ### Example
 
@@ -133,8 +135,9 @@ public class Example {
 
         TaskApi apiInstance = new TaskApi(defaultClient);
         CreateTaskRequest createTaskRequest = new CreateTaskRequest(); // CreateTaskRequest | 
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
         try {
-            ApiResponse<Task> response = apiInstance.createTaskWithHttpInfo(createTaskRequest);
+            ApiResponse<Task> response = apiInstance.createTaskWithHttpInfo(createTaskRequest, fields);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -155,6 +158,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **createTaskRequest** | [**CreateTaskRequest**](CreateTaskRequest.md)|  | |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -655,7 +659,7 @@ ApiResponse<Void>
 
 ## getTask
 
-> Task getTask(taskId)
+> Task getTask(taskId, fields)
 
 Retrieve a Task
 
@@ -683,8 +687,9 @@ public class Example {
 
         TaskApi apiInstance = new TaskApi(defaultClient);
         String taskId = "taskId_example"; // String | 
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
         try {
-            Task result = apiInstance.getTask(taskId);
+            Task result = apiInstance.getTask(taskId, fields);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TaskApi#getTask");
@@ -703,6 +708,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **taskId** | **String**|  | |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -732,7 +738,7 @@ public class Example {
 
 ## getTaskWithHttpInfo
 
-> ApiResponse<Task> getTask getTaskWithHttpInfo(taskId)
+> ApiResponse<Task> getTask getTaskWithHttpInfo(taskId, fields)
 
 Retrieve a Task
 
@@ -761,8 +767,9 @@ public class Example {
 
         TaskApi apiInstance = new TaskApi(defaultClient);
         String taskId = "taskId_example"; // String | 
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
         try {
-            ApiResponse<Task> response = apiInstance.getTaskWithHttpInfo(taskId);
+            ApiResponse<Task> response = apiInstance.getTaskWithHttpInfo(taskId, fields);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -783,6 +790,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **taskId** | **String**|  | |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -813,7 +821,7 @@ ApiResponse<[**Task**](Task.md)>
 
 ## listTasks
 
-> ListTasksResponse listTasks(filter, orderBy, pageSize, pageToken)
+> ListTasksResponse listTasks(filter, orderBy, pageSize, pageToken, fields)
 
 List Tasks
 
@@ -844,8 +852,9 @@ public class Example {
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
         try {
-            ListTasksResponse result = apiInstance.listTasks(filter, orderBy, pageSize, pageToken);
+            ListTasksResponse result = apiInstance.listTasks(filter, orderBy, pageSize, pageToken, fields);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TaskApi#listTasks");
@@ -867,6 +876,7 @@ public class Example {
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -896,7 +906,7 @@ public class Example {
 
 ## listTasksWithHttpInfo
 
-> ApiResponse<ListTasksResponse> listTasks listTasksWithHttpInfo(filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListTasksResponse> listTasks listTasksWithHttpInfo(filter, orderBy, pageSize, pageToken, fields)
 
 List Tasks
 
@@ -928,8 +938,9 @@ public class Example {
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
         try {
-            ApiResponse<ListTasksResponse> response = apiInstance.listTasksWithHttpInfo(filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListTasksResponse> response = apiInstance.listTasksWithHttpInfo(filter, orderBy, pageSize, pageToken, fields);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -953,6 +964,7 @@ public class Example {
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -1133,11 +1145,11 @@ ApiResponse<[**ObjectModel**](ObjectModel.md)>
 
 ## updateTask
 
-> UpdateTaskResponse updateTask(taskId, createUpdateTaskRequest, updateMask)
+> UpdateTaskResponse updateTask(taskId, createUpdateTaskRequest, updateMask, fields)
 
 Update a Task
 
-Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+Updates a task with only the values provided in the request.
 
 ### Example
 
@@ -1163,8 +1175,9 @@ public class Example {
         String taskId = "taskId_example"; // String | 
         CreateUpdateTaskRequest createUpdateTaskRequest = new CreateUpdateTaskRequest(); // CreateUpdateTaskRequest | 
         Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
         try {
-            UpdateTaskResponse result = apiInstance.updateTask(taskId, createUpdateTaskRequest, updateMask);
+            UpdateTaskResponse result = apiInstance.updateTask(taskId, createUpdateTaskRequest, updateMask, fields);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TaskApi#updateTask");
@@ -1185,6 +1198,7 @@ public class Example {
 | **taskId** | **String**|  | |
 | **createUpdateTaskRequest** | [**CreateUpdateTaskRequest**](CreateUpdateTaskRequest.md)|  | |
 | **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -1214,11 +1228,11 @@ public class Example {
 
 ## updateTaskWithHttpInfo
 
-> ApiResponse<UpdateTaskResponse> updateTask updateTaskWithHttpInfo(taskId, createUpdateTaskRequest, updateMask)
+> ApiResponse<UpdateTaskResponse> updateTask updateTaskWithHttpInfo(taskId, createUpdateTaskRequest, updateMask, fields)
 
 Update a Task
 
-Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+Updates a task with only the values provided in the request.
 
 ### Example
 
@@ -1245,8 +1259,9 @@ public class Example {
         String taskId = "taskId_example"; // String | 
         CreateUpdateTaskRequest createUpdateTaskRequest = new CreateUpdateTaskRequest(); // CreateUpdateTaskRequest | 
         Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
         try {
-            ApiResponse<UpdateTaskResponse> response = apiInstance.updateTaskWithHttpInfo(taskId, createUpdateTaskRequest, updateMask);
+            ApiResponse<UpdateTaskResponse> response = apiInstance.updateTaskWithHttpInfo(taskId, createUpdateTaskRequest, updateMask, fields);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1269,6 +1284,7 @@ public class Example {
 | **taskId** | **String**|  | |
 | **createUpdateTaskRequest** | [**CreateUpdateTaskRequest**](CreateUpdateTaskRequest.md)|  | |
 | **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 

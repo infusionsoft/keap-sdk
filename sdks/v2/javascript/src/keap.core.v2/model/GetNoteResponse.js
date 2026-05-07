@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import BasicUser from './BasicUser';
+import CustomFieldValueObject from './CustomFieldValueObject';
 
 /**
  * The GetNoteResponse model module.
@@ -80,6 +81,9 @@ class GetNoteResponse {
             if (data.hasOwnProperty('created_by_user_id')) {
                 obj['created_by_user_id'] = ApiClient.convertToType(data['created_by_user_id'], 'String');
             }
+            if (data.hasOwnProperty('custom_fields')) {
+                obj['custom_fields'] = ApiClient.convertToType(data['custom_fields'], [CustomFieldValueObject]);
+            }
         }
         return obj;
     }
@@ -133,6 +137,16 @@ class GetNoteResponse {
         // ensure the json data is a string
         if (data['created_by_user_id'] && !(typeof data['created_by_user_id'] === 'string' || data['created_by_user_id'] instanceof String)) {
             throw new Error("Expected the field `created_by_user_id` to be a primitive type in the JSON string but got " + data['created_by_user_id']);
+        }
+        if (data['custom_fields']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['custom_fields'])) {
+                throw new Error("Expected the field `custom_fields` to be an array in the JSON data but got " + data['custom_fields']);
+            }
+            // validate the optional field `custom_fields` (array)
+            for (const item of data['custom_fields']) {
+                CustomFieldValueObject.validateJSON(item);
+            };
         }
 
         return true;
@@ -208,6 +222,12 @@ GetNoteResponse.prototype['pinned_at'] = undefined;
  * @member {String} created_by_user_id
  */
 GetNoteResponse.prototype['created_by_user_id'] = undefined;
+
+/**
+ * Custom field values for the note
+ * @member {Array.<module:keap.core.v2/model/CustomFieldValueObject>} custom_fields
+ */
+GetNoteResponse.prototype['custom_fields'] = undefined;
 
 
 

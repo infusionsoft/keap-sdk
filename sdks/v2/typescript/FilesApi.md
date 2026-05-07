@@ -31,11 +31,11 @@ const request: FilesApiCreateFileRequest = {
     // File to upload. This is a file sent as multi-part (not a string)
   file: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
     // File name
-  fileName: "file_name_example",
+  fileName: ,
     // Is public
-  isPublic: true,
+  isPublic: ,
     // File association
-  fileAssociation: "file_association_example",
+  fileAssociation: ,
     // File to upload
   file2: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
     // File name
@@ -45,7 +45,7 @@ const request: FilesApiCreateFileRequest = {
     // File association
   fileAssociation2: "fileAssociation_example",
     // Contact ID (optional)
-  contactId: "contact_id_example",
+  contactId: ,
     // Contact ID. Required if the `file_association` is CONTACT (optional)
   contactId2: "contactId_example",
 };
@@ -371,9 +371,9 @@ const request: FilesApiUpdateFileRequest = {
     // File to upload. This is a file sent as multi-part (not a string) (optional)
   file: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
     // File name (optional)
-  fileName: "file_name_example",
+  fileName: ,
     // Is public (optional)
-  isPublic: true,
+  isPublic: ,
     // File to upload (optional)
   file2: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
     // File name (optional)

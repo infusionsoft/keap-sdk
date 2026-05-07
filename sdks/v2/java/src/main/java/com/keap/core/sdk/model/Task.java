@@ -21,8 +21,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.keap.core.sdk.model.CustomFieldValueObject;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.validation.constraints.*;
@@ -46,7 +49,8 @@ import jakarta.validation.Valid;
   Task.JSON_PROPERTY_REMIND_TIME_MINS,
   Task.JSON_PROPERTY_ASSIGNED_TO_USER_ID,
   Task.JSON_PROPERTY_CREATED_BY_USER_ID,
-  Task.JSON_PROPERTY_CONTACT_ID
+  Task.JSON_PROPERTY_CONTACT_ID,
+  Task.JSON_PROPERTY_CUSTOM_FIELDS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class Task implements Serializable {
@@ -183,6 +187,9 @@ public class Task implements Serializable {
 
   public static final String JSON_PROPERTY_CONTACT_ID = "contact_id";
   @jakarta.annotation.Nullable  private String contactId;
+
+  public static final String JSON_PROPERTY_CUSTOM_FIELDS = "custom_fields";
+  @jakarta.annotation.Nullable  private List<@Valid CustomFieldValueObject> customFields = new ArrayList<>();
 
   public Task() { 
   }
@@ -522,6 +529,39 @@ public class Task implements Serializable {
     this.contactId = contactId;
   }
 
+
+  public Task customFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValueObject> customFields) {
+    this.customFields = customFields;
+    return this;
+  }
+
+  public Task addCustomFieldsItem(CustomFieldValueObject customFieldsItem) {
+    if (this.customFields == null) {
+      this.customFields = new ArrayList<>();
+    }
+    this.customFields.add(customFieldsItem);
+    return this;
+  }
+
+  /**
+   * Custom field values for the task
+   * @return customFields
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "[{id=1, content=Red}, {id=2, content=Preferred}]", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Custom field values for the task")
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<@Valid CustomFieldValueObject> getCustomFields() {
+    return customFields;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValueObject> customFields) {
+    this.customFields = customFields;
+  }
+
   /**
    * Return true if this Task object is equal to o.
    */
@@ -547,12 +587,13 @@ public class Task implements Serializable {
         Objects.equals(this.remindTimeMins, task.remindTimeMins) &&
         Objects.equals(this.assignedToUserId, task.assignedToUserId) &&
         Objects.equals(this.createdByUserId, task.createdByUserId) &&
-        Objects.equals(this.contactId, task.contactId);
+        Objects.equals(this.contactId, task.contactId) &&
+        Objects.equals(this.customFields, task.customFields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, title, description, type, priority, completed, createTime, modificationTime, completionTime, dueTime, remindTimeMins, assignedToUserId, createdByUserId, contactId);
+    return Objects.hash(id, title, description, type, priority, completed, createTime, modificationTime, completionTime, dueTime, remindTimeMins, assignedToUserId, createdByUserId, contactId, customFields);
   }
 
   @Override
@@ -573,6 +614,7 @@ public class Task implements Serializable {
     sb.append("    assignedToUserId: ").append(toIndentedString(assignedToUserId)).append("\n");
     sb.append("    createdByUserId: ").append(toIndentedString(createdByUserId)).append("\n");
     sb.append("    contactId: ").append(toIndentedString(contactId)).append("\n");
+    sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -656,6 +698,10 @@ public class Task implements Serializable {
               this.instance.contactId = contactId;
           return this;
         }
+            public Task.Builder customFields(List<CustomFieldValueObject> customFields) {
+              this.instance.customFields = customFields;
+          return this;
+        }
         
     
         /**
@@ -703,7 +749,8 @@ public class Task implements Serializable {
           .remindTimeMins(getRemindTimeMins())
           .assignedToUserId(getAssignedToUserId())
           .createdByUserId(getCreatedByUserId())
-          .contactId(getContactId());
+          .contactId(getContactId())
+          .customFields(getCustomFields());
       }
 }
 

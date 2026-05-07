@@ -14,7 +14,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-__version__ = "2.0.8"
+__version__ = "2.0.9"
 
 # import apis into sdk package
 from keap_core_v2_client.api.affiliate_api import AffiliateApi
@@ -196,6 +196,7 @@ from keap_core_v2_client.models.custom_field import CustomField
 from keap_core_v2_client.models.custom_field_meta_data import CustomFieldMetaData
 from keap_core_v2_client.models.custom_field_option import CustomFieldOption
 from keap_core_v2_client.models.custom_field_value import CustomFieldValue
+from keap_core_v2_client.models.custom_field_value_object import CustomFieldValueObject
 from keap_core_v2_client.models.default_commission import DefaultCommission
 from keap_core_v2_client.models.delete_emails_request import DeleteEmailsRequest
 from keap_core_v2_client.models.delete_emails_response import DeleteEmailsResponse

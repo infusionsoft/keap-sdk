@@ -121,6 +121,7 @@ export * from '../models/CustomField';
 export * from '../models/CustomFieldMetaData';
 export * from '../models/CustomFieldOption';
 export * from '../models/CustomFieldValue';
+export * from '../models/CustomFieldValueObject';
 export * from '../models/DefaultCommission';
 export * from '../models/DeleteEmailsRequest';
 export * from '../models/DeleteEmailsResponse';
@@ -456,12 +457,12 @@ import { CreateShippingDiscountRequest   , CreateShippingDiscountRequestDiscount
 import { CreateSubscriptionCommissionProgramRequest } from '../models/CreateSubscriptionCommissionProgramRequest';
 import { CreateSubscriptionPlanRequest   , CreateSubscriptionPlanRequestCycleTypeEnum      } from '../models/CreateSubscriptionPlanRequest';
 import { CreateSubscriptionRequest } from '../models/CreateSubscriptionRequest';
-import { CreateTaskRequest   , CreateTaskRequestPriorityEnum     , CreateTaskRequestRemindTimeMinsEnum     } from '../models/CreateTaskRequest';
+import { CreateTaskRequest   , CreateTaskRequestPriorityEnum     , CreateTaskRequestRemindTimeMinsEnum      } from '../models/CreateTaskRequest';
 import { CreateUpdateContactRequest                       , CreateUpdateContactRequestSourceTypeEnum         } from '../models/CreateUpdateContactRequest';
 import { CreateUpdateLeadSourceCategoryRequest } from '../models/CreateUpdateLeadSourceCategoryRequest';
 import { CreateUpdateTagCategoryRequest } from '../models/CreateUpdateTagCategoryRequest';
 import { CreateUpdateTagRequest } from '../models/CreateUpdateTagRequest';
-import { CreateUpdateTaskRequest   , CreateUpdateTaskRequestPriorityEnum     , CreateUpdateTaskRequestRemindTimeMinsEnum     } from '../models/CreateUpdateTaskRequest';
+import { CreateUpdateTaskRequest   , CreateUpdateTaskRequestPriorityEnum     , CreateUpdateTaskRequestRemindTimeMinsEnum      } from '../models/CreateUpdateTaskRequest';
 import { CurrencyValue } from '../models/CurrencyValue';
 import { CurrencyValueDetail } from '../models/CurrencyValueDetail';
 import { CurrencyValueList } from '../models/CurrencyValueList';
@@ -469,6 +470,7 @@ import { CustomField } from '../models/CustomField';
 import { CustomFieldMetaData   , CustomFieldMetaDataRecordTypeEnum  , CustomFieldMetaDataFieldTypeEnum      } from '../models/CustomFieldMetaData';
 import { CustomFieldOption } from '../models/CustomFieldOption';
 import { CustomFieldValue } from '../models/CustomFieldValue';
+import { CustomFieldValueObject } from '../models/CustomFieldValueObject';
 import { DefaultCommission } from '../models/DefaultCommission';
 import { DeleteEmailsRequest } from '../models/DeleteEmailsRequest';
 import { DeleteEmailsResponse } from '../models/DeleteEmailsResponse';
@@ -649,7 +651,7 @@ import { Tag } from '../models/Tag';
 import { TagCategory } from '../models/TagCategory';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { TaggedContact } from '../models/TaggedContact';
-import { Task    , TaskPriorityEnum       , TaskRemindTimeMinsEnum      } from '../models/Task';
+import { Task    , TaskPriorityEnum       , TaskRemindTimeMinsEnum       } from '../models/Task';
 import { TextOption   , TextOptionOnlyStartsWithEnum  , TextOptionOnlyEndsWithEnum  , TextOptionOnlyContainsEnum    } from '../models/TextOption';
 import { TransactionV2 , TransactionV2StatusEnum      , TransactionV2TransactionMethodEnum         , TransactionV2MerchantAccountTypeEnum    } from '../models/TransactionV2';
 import { UnpublishAutomationRequest } from '../models/UnpublishAutomationRequest';
@@ -686,7 +688,7 @@ import { UpdateSubscriptionPlanRequest   , UpdateSubscriptionPlanRequestCycleTyp
 import { UpdateSubscriptionRequest         , UpdateSubscriptionRequestBillingCycleEnum              } from '../models/UpdateSubscriptionRequest';
 import { UpdateTagCategoryResponse } from '../models/UpdateTagCategoryResponse';
 import { UpdateTagResponse } from '../models/UpdateTagResponse';
-import { UpdateTaskResponse    , UpdateTaskResponsePriorityEnum       , UpdateTaskResponseRemindTimeMinsEnum      } from '../models/UpdateTaskResponse';
+import { UpdateTaskResponse    , UpdateTaskResponsePriorityEnum       , UpdateTaskResponseRemindTimeMinsEnum       } from '../models/UpdateTaskResponse';
 import { UpdateUserRequest } from '../models/UpdateUserRequest';
 import { UpdatedPaymentPlan } from '../models/UpdatedPaymentPlan';
 import { User     , UserStatusEnum                 } from '../models/User';
@@ -947,6 +949,7 @@ let typeMap: {[index: string]: any} = {
     "CustomFieldMetaData": CustomFieldMetaData,
     "CustomFieldOption": CustomFieldOption,
     "CustomFieldValue": CustomFieldValue,
+    "CustomFieldValueObject": CustomFieldValueObject,
     "DefaultCommission": DefaultCommission,
     "DeleteEmailsRequest": DeleteEmailsRequest,
     "DeleteEmailsResponse": DeleteEmailsResponse,

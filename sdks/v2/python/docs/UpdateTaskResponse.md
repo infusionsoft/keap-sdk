@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **assigned_to_user_id** | **str** | Assigned user ID | [optional] 
 **created_by_user_id** | **str** | Creator user ID | [optional] 
 **contact_id** | **str** | Associated contact ID | [optional] 
+**custom_fields** | [**List[CustomFieldValueObject]**](CustomFieldValueObject.md) | Custom field values for the task | [optional] 
 
 ## Example
 

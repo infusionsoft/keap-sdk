@@ -166,7 +166,7 @@ null (empty response body)
 
 ## getNote
 
-> GetNoteResponse getNote(contactId, noteId)
+> GetNoteResponse getNote(contactId, noteId, opts)
 
 Retrieve a Note
 
@@ -184,7 +184,10 @@ oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new KeapCoreServiceV2Sdk.NoteApi();
 let contactId = "contactId_example"; // String | 
 let noteId = "noteId_example"; // String | 
-apiInstance.getNote(contactId, noteId).then((data) => {
+let opts = {
+  'fields': ["null"] // [String] | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+};
+apiInstance.getNote(contactId, noteId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -199,6 +202,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contactId** | **String**|  | 
  **noteId** | **String**|  | 
+ **fields** | [**[String]**](String.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] 
 
 ### Return type
 
@@ -293,7 +297,8 @@ let opts = {
   'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `assigned_to_user_id` - (String) `title` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=assigned_to_user_id%3D%3DUserId` - `filter=title%3D%3DexpectedTitle` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
   'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc`
   'pageSize': 0, // Number | Total number of items to return per page
-  'pageToken': "pageToken_example" // String | Page token
+  'pageToken': "pageToken_example", // String | Page token
+  'fields': ["null"] // [String] | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
 };
 apiInstance.listNotes(contactId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -313,6 +318,7 @@ Name | Type | Description  | Notes
  **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
+ **fields** | [**[String]**](String.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] 
 
 ### Return type
 

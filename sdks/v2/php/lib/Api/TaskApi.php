@@ -155,15 +155,16 @@ class TaskApi
      * Create a Task
      *
      * @param  \Keap\Core\V2\Model\CreateTaskRequest $create_task_request create_task_request (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTask'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Keap\Core\V2\Model\Task|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
-    public function createTask($create_task_request, string $contentType = self::contentTypes['createTask'][0])
+    public function createTask($create_task_request, $fields = null, string $contentType = self::contentTypes['createTask'][0])
     {
-        list($response) = $this->createTaskWithHttpInfo($create_task_request, $contentType);
+        list($response) = $this->createTaskWithHttpInfo($create_task_request, $fields, $contentType);
         return $response;
     }
 
@@ -173,15 +174,16 @@ class TaskApi
      * Create a Task
      *
      * @param  \Keap\Core\V2\Model\CreateTaskRequest $create_task_request (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTask'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Keap\Core\V2\Model\Task|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createTaskWithHttpInfo($create_task_request, string $contentType = self::contentTypes['createTask'][0])
+    public function createTaskWithHttpInfo($create_task_request, $fields = null, string $contentType = self::contentTypes['createTask'][0])
     {
-        $request = $this->createTaskRequest($create_task_request, $contentType);
+        $request = $this->createTaskRequest($create_task_request, $fields, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -356,14 +358,15 @@ class TaskApi
      * Create a Task
      *
      * @param  \Keap\Core\V2\Model\CreateTaskRequest $create_task_request (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTask'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTaskAsync($create_task_request, string $contentType = self::contentTypes['createTask'][0])
+    public function createTaskAsync($create_task_request, $fields = null, string $contentType = self::contentTypes['createTask'][0])
     {
-        return $this->createTaskAsyncWithHttpInfo($create_task_request, $contentType)
+        return $this->createTaskAsyncWithHttpInfo($create_task_request, $fields, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -377,15 +380,16 @@ class TaskApi
      * Create a Task
      *
      * @param  \Keap\Core\V2\Model\CreateTaskRequest $create_task_request (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTask'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTaskAsyncWithHttpInfo($create_task_request, string $contentType = self::contentTypes['createTask'][0])
+    public function createTaskAsyncWithHttpInfo($create_task_request, $fields = null, string $contentType = self::contentTypes['createTask'][0])
     {
         $returnType = '\Keap\Core\V2\Model\Task';
-        $request = $this->createTaskRequest($create_task_request, $contentType);
+        $request = $this->createTaskRequest($create_task_request, $fields, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -427,12 +431,13 @@ class TaskApi
      * Create request for operation 'createTask'
      *
      * @param  \Keap\Core\V2\Model\CreateTaskRequest $create_task_request (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTask'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createTaskRequest($create_task_request, string $contentType = self::contentTypes['createTask'][0])
+    public function createTaskRequest($create_task_request, $fields = null, string $contentType = self::contentTypes['createTask'][0])
     {
 
         // verify the required parameter 'create_task_request' is set
@@ -443,6 +448,7 @@ class TaskApi
         }
 
 
+
         $resourcePath = '/rest/v2/tasks';
         $formParams = [];
         $queryParams = [];
@@ -450,6 +456,15 @@ class TaskApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
+            false // required
+        ) ?? []);
 
 
 
@@ -1449,15 +1464,16 @@ class TaskApi
      * Retrieve a Task
      *
      * @param  string $task_id task_id (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTask'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Keap\Core\V2\Model\Task|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
-    public function getTask($task_id, string $contentType = self::contentTypes['getTask'][0])
+    public function getTask($task_id, $fields = null, string $contentType = self::contentTypes['getTask'][0])
     {
-        list($response) = $this->getTaskWithHttpInfo($task_id, $contentType);
+        list($response) = $this->getTaskWithHttpInfo($task_id, $fields, $contentType);
         return $response;
     }
 
@@ -1467,15 +1483,16 @@ class TaskApi
      * Retrieve a Task
      *
      * @param  string $task_id (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTask'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Keap\Core\V2\Model\Task|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTaskWithHttpInfo($task_id, string $contentType = self::contentTypes['getTask'][0])
+    public function getTaskWithHttpInfo($task_id, $fields = null, string $contentType = self::contentTypes['getTask'][0])
     {
-        $request = $this->getTaskRequest($task_id, $contentType);
+        $request = $this->getTaskRequest($task_id, $fields, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1650,14 +1667,15 @@ class TaskApi
      * Retrieve a Task
      *
      * @param  string $task_id (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTask'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTaskAsync($task_id, string $contentType = self::contentTypes['getTask'][0])
+    public function getTaskAsync($task_id, $fields = null, string $contentType = self::contentTypes['getTask'][0])
     {
-        return $this->getTaskAsyncWithHttpInfo($task_id, $contentType)
+        return $this->getTaskAsyncWithHttpInfo($task_id, $fields, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1671,15 +1689,16 @@ class TaskApi
      * Retrieve a Task
      *
      * @param  string $task_id (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTask'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTaskAsyncWithHttpInfo($task_id, string $contentType = self::contentTypes['getTask'][0])
+    public function getTaskAsyncWithHttpInfo($task_id, $fields = null, string $contentType = self::contentTypes['getTask'][0])
     {
         $returnType = '\Keap\Core\V2\Model\Task';
-        $request = $this->getTaskRequest($task_id, $contentType);
+        $request = $this->getTaskRequest($task_id, $fields, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1721,12 +1740,13 @@ class TaskApi
      * Create request for operation 'getTask'
      *
      * @param  string $task_id (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTask'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTaskRequest($task_id, string $contentType = self::contentTypes['getTask'][0])
+    public function getTaskRequest($task_id, $fields = null, string $contentType = self::contentTypes['getTask'][0])
     {
 
         // verify the required parameter 'task_id' is set
@@ -1737,6 +1757,7 @@ class TaskApi
         }
 
 
+
         $resourcePath = '/rest/v2/tasks/{task_id}';
         $formParams = [];
         $queryParams = [];
@@ -1744,6 +1765,15 @@ class TaskApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
@@ -1822,15 +1852,16 @@ class TaskApi
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTasks'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Keap\Core\V2\Model\ListTasksResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
-    public function listTasks($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listTasks'][0])
+    public function listTasks($filter = null, $order_by = null, $page_size = null, $page_token = null, $fields = null, string $contentType = self::contentTypes['listTasks'][0])
     {
-        list($response) = $this->listTasksWithHttpInfo($filter, $order_by, $page_size, $page_token, $contentType);
+        list($response) = $this->listTasksWithHttpInfo($filter, $order_by, $page_size, $page_token, $fields, $contentType);
         return $response;
     }
 
@@ -1843,15 +1874,16 @@ class TaskApi
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTasks'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Keap\Core\V2\Model\ListTasksResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listTasksWithHttpInfo($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listTasks'][0])
+    public function listTasksWithHttpInfo($filter = null, $order_by = null, $page_size = null, $page_token = null, $fields = null, string $contentType = self::contentTypes['listTasks'][0])
     {
-        $request = $this->listTasksRequest($filter, $order_by, $page_size, $page_token, $contentType);
+        $request = $this->listTasksRequest($filter, $order_by, $page_size, $page_token, $fields, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2029,14 +2061,15 @@ class TaskApi
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTasks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listTasksAsync($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listTasks'][0])
+    public function listTasksAsync($filter = null, $order_by = null, $page_size = null, $page_token = null, $fields = null, string $contentType = self::contentTypes['listTasks'][0])
     {
-        return $this->listTasksAsyncWithHttpInfo($filter, $order_by, $page_size, $page_token, $contentType)
+        return $this->listTasksAsyncWithHttpInfo($filter, $order_by, $page_size, $page_token, $fields, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2053,15 +2086,16 @@ class TaskApi
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTasks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listTasksAsyncWithHttpInfo($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listTasks'][0])
+    public function listTasksAsyncWithHttpInfo($filter = null, $order_by = null, $page_size = null, $page_token = null, $fields = null, string $contentType = self::contentTypes['listTasks'][0])
     {
         $returnType = '\Keap\Core\V2\Model\ListTasksResponse';
-        $request = $this->listTasksRequest($filter, $order_by, $page_size, $page_token, $contentType);
+        $request = $this->listTasksRequest($filter, $order_by, $page_size, $page_token, $fields, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2106,12 +2140,13 @@ class TaskApi
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTasks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listTasksRequest($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listTasks'][0])
+    public function listTasksRequest($filter = null, $order_by = null, $page_size = null, $page_token = null, $fields = null, string $contentType = self::contentTypes['listTasks'][0])
     {
 
 
@@ -2123,6 +2158,7 @@ class TaskApi
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling TaskApi.listTasks, must be bigger than or equal to 0.');
         }
         
+
 
 
         $resourcePath = '/rest/v2/tasks';
@@ -2166,6 +2202,15 @@ class TaskApi
             'string', // openApiType
             'form', // style
             true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
             false // required
         ) ?? []);
 
@@ -2587,15 +2632,16 @@ class TaskApi
      * @param  string $task_id task_id (required)
      * @param  \Keap\Core\V2\Model\CreateUpdateTaskRequest $create_update_task_request create_update_task_request (required)
      * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTask'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Keap\Core\V2\Model\UpdateTaskResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
-    public function updateTask($task_id, $create_update_task_request, $update_mask = null, string $contentType = self::contentTypes['updateTask'][0])
+    public function updateTask($task_id, $create_update_task_request, $update_mask = null, $fields = null, string $contentType = self::contentTypes['updateTask'][0])
     {
-        list($response) = $this->updateTaskWithHttpInfo($task_id, $create_update_task_request, $update_mask, $contentType);
+        list($response) = $this->updateTaskWithHttpInfo($task_id, $create_update_task_request, $update_mask, $fields, $contentType);
         return $response;
     }
 
@@ -2607,15 +2653,16 @@ class TaskApi
      * @param  string $task_id (required)
      * @param  \Keap\Core\V2\Model\CreateUpdateTaskRequest $create_update_task_request (required)
      * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTask'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Keap\Core\V2\Model\UpdateTaskResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateTaskWithHttpInfo($task_id, $create_update_task_request, $update_mask = null, string $contentType = self::contentTypes['updateTask'][0])
+    public function updateTaskWithHttpInfo($task_id, $create_update_task_request, $update_mask = null, $fields = null, string $contentType = self::contentTypes['updateTask'][0])
     {
-        $request = $this->updateTaskRequest($task_id, $create_update_task_request, $update_mask, $contentType);
+        $request = $this->updateTaskRequest($task_id, $create_update_task_request, $update_mask, $fields, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2792,14 +2839,15 @@ class TaskApi
      * @param  string $task_id (required)
      * @param  \Keap\Core\V2\Model\CreateUpdateTaskRequest $create_update_task_request (required)
      * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTask'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateTaskAsync($task_id, $create_update_task_request, $update_mask = null, string $contentType = self::contentTypes['updateTask'][0])
+    public function updateTaskAsync($task_id, $create_update_task_request, $update_mask = null, $fields = null, string $contentType = self::contentTypes['updateTask'][0])
     {
-        return $this->updateTaskAsyncWithHttpInfo($task_id, $create_update_task_request, $update_mask, $contentType)
+        return $this->updateTaskAsyncWithHttpInfo($task_id, $create_update_task_request, $update_mask, $fields, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2815,15 +2863,16 @@ class TaskApi
      * @param  string $task_id (required)
      * @param  \Keap\Core\V2\Model\CreateUpdateTaskRequest $create_update_task_request (required)
      * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTask'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateTaskAsyncWithHttpInfo($task_id, $create_update_task_request, $update_mask = null, string $contentType = self::contentTypes['updateTask'][0])
+    public function updateTaskAsyncWithHttpInfo($task_id, $create_update_task_request, $update_mask = null, $fields = null, string $contentType = self::contentTypes['updateTask'][0])
     {
         $returnType = '\Keap\Core\V2\Model\UpdateTaskResponse';
-        $request = $this->updateTaskRequest($task_id, $create_update_task_request, $update_mask, $contentType);
+        $request = $this->updateTaskRequest($task_id, $create_update_task_request, $update_mask, $fields, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2867,12 +2916,13 @@ class TaskApi
      * @param  string $task_id (required)
      * @param  \Keap\Core\V2\Model\CreateUpdateTaskRequest $create_update_task_request (required)
      * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTask'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateTaskRequest($task_id, $create_update_task_request, $update_mask = null, string $contentType = self::contentTypes['updateTask'][0])
+    public function updateTaskRequest($task_id, $create_update_task_request, $update_mask = null, $fields = null, string $contentType = self::contentTypes['updateTask'][0])
     {
 
         // verify the required parameter 'task_id' is set
@@ -2891,6 +2941,7 @@ class TaskApi
 
 
 
+
         $resourcePath = '/rest/v2/tasks/{task_id}';
         $formParams = [];
         $queryParams = [];
@@ -2905,6 +2956,15 @@ class TaskApi
             'mixed', // openApiType
             'form', // style
             true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
             false // required
         ) ?? []);
 

@@ -125,6 +125,7 @@ import { CustomField } from '../models/CustomField';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';
 import { CustomFieldOption } from '../models/CustomFieldOption';
 import { CustomFieldValue } from '../models/CustomFieldValue';
+import { CustomFieldValueObject } from '../models/CustomFieldValueObject';
 import { DefaultCommission } from '../models/DefaultCommission';
 import { DeleteEmailsRequest } from '../models/DeleteEmailsRequest';
 import { DeleteEmailsResponse } from '../models/DeleteEmailsResponse';
@@ -3090,14 +3091,14 @@ export interface ContactApiListContactsRequest {
      */
     fields?: Array<string>
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; - (String) &#x60;phone_field&#x60; (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5) - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60;   You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3) 
      * Defaults to: undefined
      * @type string
      * @memberof ContactApilistContacts
      */
     filter?: string
     /**
-     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof ContactApilistContacts
@@ -5541,6 +5542,13 @@ export interface NoteApiGetNoteRequest {
      * @memberof NoteApigetNote
      */
     noteId: string
+    /**
+     * Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof NoteApigetNote
+     */
+    fields?: Array<string>
 }
 
 export interface NoteApiListNoteTemplatesRequest {
@@ -5614,6 +5622,13 @@ export interface NoteApiListNotesRequest {
      * @memberof NoteApilistNotes
      */
     pageToken?: string
+    /**
+     * Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof NoteApilistNotes
+     */
+    fields?: Array<string>
 }
 
 export interface NoteApiRetrieveNoteModelRequest {
@@ -5739,7 +5754,7 @@ export class ObjectNoteApi {
      * @param param the request object
      */
     public getNoteWithHttpInfo(param: NoteApiGetNoteRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetNoteResponse>> {
-        return this.api.getNoteWithHttpInfo(param.contactId, param.noteId,  options).toPromise();
+        return this.api.getNoteWithHttpInfo(param.contactId, param.noteId, param.fields,  options).toPromise();
     }
 
     /**
@@ -5748,7 +5763,7 @@ export class ObjectNoteApi {
      * @param param the request object
      */
     public getNote(param: NoteApiGetNoteRequest, options?: ConfigurationOptions): Promise<GetNoteResponse> {
-        return this.api.getNote(param.contactId, param.noteId,  options).toPromise();
+        return this.api.getNote(param.contactId, param.noteId, param.fields,  options).toPromise();
     }
 
     /**
@@ -5775,7 +5790,7 @@ export class ObjectNoteApi {
      * @param param the request object
      */
     public listNotesWithHttpInfo(param: NoteApiListNotesRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListNotesResponse>> {
-        return this.api.listNotesWithHttpInfo(param.contactId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+        return this.api.listNotesWithHttpInfo(param.contactId, param.filter, param.orderBy, param.pageSize, param.pageToken, param.fields,  options).toPromise();
     }
 
     /**
@@ -5784,7 +5799,7 @@ export class ObjectNoteApi {
      * @param param the request object
      */
     public listNotes(param: NoteApiListNotesRequest, options?: ConfigurationOptions): Promise<ListNotesResponse> {
-        return this.api.listNotes(param.contactId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+        return this.api.listNotes(param.contactId, param.filter, param.orderBy, param.pageSize, param.pageToken, param.fields,  options).toPromise();
     }
 
     /**
@@ -5922,14 +5937,14 @@ export interface OpportunityApiListOpportunitiesRequest {
      */
     fields?: Set<string>
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. 
      * Defaults to: undefined
      * @type string
      * @memberof OpportunityApilistOpportunities
      */
     filter?: string
     /**
-     * Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_name&#x60; - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof OpportunityApilistOpportunities
@@ -10456,6 +10471,13 @@ export interface TaskApiCreateTaskRequest {
      * @memberof TaskApicreateTask
      */
     createTaskRequest: CreateTaskRequest
+    /**
+     * Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof TaskApicreateTask
+     */
+    fields?: Array<string>
 }
 
 export interface TaskApiCreateTaskCustomFieldRequest {
@@ -10495,6 +10517,13 @@ export interface TaskApiGetTaskRequest {
      * @memberof TaskApigetTask
      */
     taskId: string
+    /**
+     * Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof TaskApigetTask
+     */
+    fields?: Array<string>
 }
 
 export interface TaskApiListTasksRequest {
@@ -10528,6 +10557,13 @@ export interface TaskApiListTasksRequest {
      * @memberof TaskApilistTasks
      */
     pageToken?: string
+    /**
+     * Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof TaskApilistTasks
+     */
+    fields?: Array<string>
 }
 
 export interface TaskApiRetrieveTaskModelRequest {
@@ -10554,6 +10590,13 @@ export interface TaskApiUpdateTaskRequest {
      * @memberof TaskApiupdateTask
      */
     updateMask?: any
+    /**
+     * Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof TaskApiupdateTask
+     */
+    fields?: Array<string>
 }
 
 export interface TaskApiUpdateTaskCustomFieldRequest {
@@ -10587,21 +10630,21 @@ export class ObjectTaskApi {
     }
 
     /**
-     * Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+     * Creates a new task as the authenticated user.
      * Create a Task
      * @param param the request object
      */
     public createTaskWithHttpInfo(param: TaskApiCreateTaskRequest, options?: ConfigurationOptions): Promise<HttpInfo<Task>> {
-        return this.api.createTaskWithHttpInfo(param.createTaskRequest,  options).toPromise();
+        return this.api.createTaskWithHttpInfo(param.createTaskRequest, param.fields,  options).toPromise();
     }
 
     /**
-     * Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+     * Creates a new task as the authenticated user.
      * Create a Task
      * @param param the request object
      */
     public createTask(param: TaskApiCreateTaskRequest, options?: ConfigurationOptions): Promise<Task> {
-        return this.api.createTask(param.createTaskRequest,  options).toPromise();
+        return this.api.createTask(param.createTaskRequest, param.fields,  options).toPromise();
     }
 
     /**
@@ -10664,7 +10707,7 @@ export class ObjectTaskApi {
      * @param param the request object
      */
     public getTaskWithHttpInfo(param: TaskApiGetTaskRequest, options?: ConfigurationOptions): Promise<HttpInfo<Task>> {
-        return this.api.getTaskWithHttpInfo(param.taskId,  options).toPromise();
+        return this.api.getTaskWithHttpInfo(param.taskId, param.fields,  options).toPromise();
     }
 
     /**
@@ -10673,7 +10716,7 @@ export class ObjectTaskApi {
      * @param param the request object
      */
     public getTask(param: TaskApiGetTaskRequest, options?: ConfigurationOptions): Promise<Task> {
-        return this.api.getTask(param.taskId,  options).toPromise();
+        return this.api.getTask(param.taskId, param.fields,  options).toPromise();
     }
 
     /**
@@ -10682,7 +10725,7 @@ export class ObjectTaskApi {
      * @param param the request object
      */
     public listTasksWithHttpInfo(param: TaskApiListTasksRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListTasksResponse>> {
-        return this.api.listTasksWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+        return this.api.listTasksWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken, param.fields,  options).toPromise();
     }
 
     /**
@@ -10691,7 +10734,7 @@ export class ObjectTaskApi {
      * @param param the request object
      */
     public listTasks(param: TaskApiListTasksRequest = {}, options?: ConfigurationOptions): Promise<ListTasksResponse> {
-        return this.api.listTasks(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+        return this.api.listTasks(param.filter, param.orderBy, param.pageSize, param.pageToken, param.fields,  options).toPromise();
     }
 
     /**
@@ -10713,21 +10756,21 @@ export class ObjectTaskApi {
     }
 
     /**
-     * Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+     * Updates a task with only the values provided in the request.
      * Update a Task
      * @param param the request object
      */
     public updateTaskWithHttpInfo(param: TaskApiUpdateTaskRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateTaskResponse>> {
-        return this.api.updateTaskWithHttpInfo(param.taskId, param.createUpdateTaskRequest, param.updateMask,  options).toPromise();
+        return this.api.updateTaskWithHttpInfo(param.taskId, param.createUpdateTaskRequest, param.updateMask, param.fields,  options).toPromise();
     }
 
     /**
-     * Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+     * Updates a task with only the values provided in the request.
      * Update a Task
      * @param param the request object
      */
     public updateTask(param: TaskApiUpdateTaskRequest, options?: ConfigurationOptions): Promise<UpdateTaskResponse> {
-        return this.api.updateTask(param.taskId, param.createUpdateTaskRequest, param.updateMask,  options).toPromise();
+        return this.api.updateTask(param.taskId, param.createUpdateTaskRequest, param.updateMask, param.fields,  options).toPromise();
     }
 
     /**

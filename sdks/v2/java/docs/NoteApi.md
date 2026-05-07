@@ -507,7 +507,7 @@ ApiResponse<Void>
 
 ## getNote
 
-> GetNoteResponse getNote(contactId, noteId)
+> GetNoteResponse getNote(contactId, noteId, fields)
 
 Retrieve a Note
 
@@ -536,8 +536,9 @@ public class Example {
         NoteApi apiInstance = new NoteApi(defaultClient);
         String contactId = "contactId_example"; // String | 
         String noteId = "noteId_example"; // String | 
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
         try {
-            GetNoteResponse result = apiInstance.getNote(contactId, noteId);
+            GetNoteResponse result = apiInstance.getNote(contactId, noteId, fields);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NoteApi#getNote");
@@ -557,6 +558,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **contactId** | **String**|  | |
 | **noteId** | **String**|  | |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -586,7 +588,7 @@ public class Example {
 
 ## getNoteWithHttpInfo
 
-> ApiResponse<GetNoteResponse> getNote getNoteWithHttpInfo(contactId, noteId)
+> ApiResponse<GetNoteResponse> getNote getNoteWithHttpInfo(contactId, noteId, fields)
 
 Retrieve a Note
 
@@ -616,8 +618,9 @@ public class Example {
         NoteApi apiInstance = new NoteApi(defaultClient);
         String contactId = "contactId_example"; // String | 
         String noteId = "noteId_example"; // String | 
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
         try {
-            ApiResponse<GetNoteResponse> response = apiInstance.getNoteWithHttpInfo(contactId, noteId);
+            ApiResponse<GetNoteResponse> response = apiInstance.getNoteWithHttpInfo(contactId, noteId, fields);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -639,6 +642,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **contactId** | **String**|  | |
 | **noteId** | **String**|  | |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -839,7 +843,7 @@ ApiResponse<[**ListNoteTemplateResponse**](ListNoteTemplateResponse.md)>
 
 ## listNotes
 
-> ListNotesResponse listNotes(contactId, filter, orderBy, pageSize, pageToken)
+> ListNotesResponse listNotes(contactId, filter, orderBy, pageSize, pageToken, fields)
 
 List Notes
 
@@ -871,8 +875,9 @@ public class Example {
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
         try {
-            ListNotesResponse result = apiInstance.listNotes(contactId, filter, orderBy, pageSize, pageToken);
+            ListNotesResponse result = apiInstance.listNotes(contactId, filter, orderBy, pageSize, pageToken, fields);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NoteApi#listNotes");
@@ -895,6 +900,7 @@ public class Example {
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -924,7 +930,7 @@ public class Example {
 
 ## listNotesWithHttpInfo
 
-> ApiResponse<ListNotesResponse> listNotes listNotesWithHttpInfo(contactId, filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListNotesResponse> listNotes listNotesWithHttpInfo(contactId, filter, orderBy, pageSize, pageToken, fields)
 
 List Notes
 
@@ -957,8 +963,9 @@ public class Example {
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
         try {
-            ApiResponse<ListNotesResponse> response = apiInstance.listNotesWithHttpInfo(contactId, filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListNotesResponse> response = apiInstance.listNotesWithHttpInfo(contactId, filter, orderBy, pageSize, pageToken, fields);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -983,6 +990,7 @@ public class Example {
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 

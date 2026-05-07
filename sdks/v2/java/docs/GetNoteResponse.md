@@ -18,6 +18,7 @@
 |**lastUpdatedByUserId** | **String** | ID of user who last updated |  [optional] |
 |**pinnedAt** | **String** | Pin timestamp (ISO-8601), null if not pinned |  [optional] |
 |**createdByUserId** | **String** | ID of user who created |  [optional] |
+|**customFields** | [**List&lt;CustomFieldValueObject&gt;**](CustomFieldValueObject.md) | Custom field values for the note |  [optional] |
 
 
 ## Implemented Interfaces

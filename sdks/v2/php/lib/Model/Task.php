@@ -70,7 +70,8 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
         'remind_time_mins' => 'int',
         'assigned_to_user_id' => 'string',
         'created_by_user_id' => 'string',
-        'contact_id' => 'string'
+        'contact_id' => 'string',
+        'custom_fields' => '\Keap\Core\V2\Model\CustomFieldValueObject[]'
     ];
 
     /**
@@ -94,7 +95,8 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
         'remind_time_mins' => 'int32',
         'assigned_to_user_id' => null,
         'created_by_user_id' => null,
-        'contact_id' => null
+        'contact_id' => null,
+        'custom_fields' => null
     ];
 
     /**
@@ -116,7 +118,8 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
         'remind_time_mins' => false,
         'assigned_to_user_id' => false,
         'created_by_user_id' => false,
-        'contact_id' => false
+        'contact_id' => false,
+        'custom_fields' => false
     ];
 
     /**
@@ -218,7 +221,8 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
         'remind_time_mins' => 'remind_time_mins',
         'assigned_to_user_id' => 'assigned_to_user_id',
         'created_by_user_id' => 'created_by_user_id',
-        'contact_id' => 'contact_id'
+        'contact_id' => 'contact_id',
+        'custom_fields' => 'custom_fields'
     ];
 
     /**
@@ -240,7 +244,8 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
         'remind_time_mins' => 'setRemindTimeMins',
         'assigned_to_user_id' => 'setAssignedToUserId',
         'created_by_user_id' => 'setCreatedByUserId',
-        'contact_id' => 'setContactId'
+        'contact_id' => 'setContactId',
+        'custom_fields' => 'setCustomFields'
     ];
 
     /**
@@ -262,7 +267,8 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
         'remind_time_mins' => 'getRemindTimeMins',
         'assigned_to_user_id' => 'getAssignedToUserId',
         'created_by_user_id' => 'getCreatedByUserId',
-        'contact_id' => 'getContactId'
+        'contact_id' => 'getContactId',
+        'custom_fields' => 'getCustomFields'
     ];
 
     /**
@@ -384,6 +390,7 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('assigned_to_user_id', $data ?? [], null);
         $this->setIfExists('created_by_user_id', $data ?? [], null);
         $this->setIfExists('contact_id', $data ?? [], null);
+        $this->setIfExists('custom_fields', $data ?? [], null);
     }
 
     /**
@@ -840,6 +847,33 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable contact_id cannot be null');
         }
         $this->container['contact_id'] = $contact_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_fields
+     *
+     * @return \Keap\Core\V2\Model\CustomFieldValueObject[]|null
+     */
+    public function getCustomFields()
+    {
+        return $this->container['custom_fields'];
+    }
+
+    /**
+     * Sets custom_fields
+     *
+     * @param \Keap\Core\V2\Model\CustomFieldValueObject[]|null $custom_fields Custom field values for the task
+     *
+     * @return self
+     */
+    public function setCustomFields($custom_fields)
+    {
+        if (is_null($custom_fields)) {
+            throw new \InvalidArgumentException('non-nullable custom_fields cannot be null');
+        }
+        $this->container['custom_fields'] = $custom_fields;
 
         return $this;
     }

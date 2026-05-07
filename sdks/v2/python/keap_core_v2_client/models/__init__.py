@@ -137,6 +137,7 @@ from keap_core_v2_client.models.custom_field import CustomField
 from keap_core_v2_client.models.custom_field_meta_data import CustomFieldMetaData
 from keap_core_v2_client.models.custom_field_option import CustomFieldOption
 from keap_core_v2_client.models.custom_field_value import CustomFieldValue
+from keap_core_v2_client.models.custom_field_value_object import CustomFieldValueObject
 from keap_core_v2_client.models.default_commission import DefaultCommission
 from keap_core_v2_client.models.delete_emails_request import DeleteEmailsRequest
 from keap_core_v2_client.models.delete_emails_response import DeleteEmailsResponse

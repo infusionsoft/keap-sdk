@@ -145,6 +145,16 @@ paths:
         required: false
         schema:
           type: string
+      - name: fields
+        in: query
+        description: 'Comma-delimited list of optional Task properties to include
+          in the response. Allowed values: custom_fields'
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        explode: false
       responses:
         '200':
           description: OK
@@ -198,9 +208,19 @@ paths:
       tags:
       - Task
       summary: Create a Task
-      description: "Creates a new task as the authenticated user.  \nThis endpoint\
-        \ does not currently support setting Custom Field values."
+      description: Creates a new task as the authenticated user.
       operationId: createTask
+      parameters:
+      - name: fields
+        in: query
+        description: 'Comma-delimited list of optional Task properties to include
+          in the response. Allowed values: custom_fields'
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        explode: false
       requestBody:
         content:
           application/json:
@@ -3502,6 +3522,13 @@ paths:
           Filter to apply, allowed fields are:
           - (String) `stage_id`
           - (String) `user_id`
+          - (String) `contact_id`
+          - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`)
+          - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`)
+          - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`)
+          - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=`
+          - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs
+          Note: `opportunity_id` and `ids` cannot be used together in the same request.
         required: false
         schema:
           type: string
@@ -3512,8 +3539,9 @@ paths:
           One of the following fields:
           - `next_action_time`
           - `contact_name`
-          - `opportunity_name`
+          - `opportunity_title`
           - `created_time`
+          - `update_time`
 
           One of the following directions:
           - `asc`
@@ -4824,25 +4852,33 @@ paths:
         in: query
         description: File name
         required: true
-        schema:
-          type: string
+        content:
+          application/json:
+            schema:
+              type: string
       - name: contact_id
         in: query
         description: Contact ID
-        schema:
-          type: string
+        content:
+          application/json:
+            schema:
+              type: string
       - name: is_public
         in: query
         description: Is public
         required: true
-        schema:
-          type: boolean
+        content:
+          application/json:
+            schema:
+              type: boolean
       - name: file_association
         in: query
         description: File association
         required: true
-        schema:
-          type: string
+        content:
+          application/json:
+            schema:
+              type: string
       requestBody:
         content:
           multipart/form-data:
@@ -5016,13 +5052,17 @@ paths:
       - name: file_name
         in: query
         description: File name
-        schema:
-          type: string
+        content:
+          application/json:
+            schema:
+              type: string
       - name: is_public
         in: query
         description: Is public
-        schema:
-          type: boolean
+        content:
+          application/json:
+            schema:
+              type: boolean
       requestBody:
         content:
           multipart/form-data:
@@ -6405,15 +6445,17 @@ paths:
         in: query
         description: |
           Filter to apply, allowed fields are:
-          - (String) `email`
-          - (String) `given_name`
-          - (String) `family_name`
+          - (String) `email` — supports wildcard (e.g. `email==john*`)
+          - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`)
+          - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`)
+          - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`)
           - (String) `company_id`
           - (Set[String]) `contact_ids`
+          - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`)
           - (String) `start_update_time`
           - (String) `end_update_time`
-          - (String) `phone_number`
-          - (String) `phone_field` (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5)
+          - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched.
+          - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied.
           - (String) `billing_address_line1`
           - (String) `billing_address_locality`
           - (String) `billing_address_region` (long-form region/state name, e.g. "Arizona")
@@ -6429,16 +6471,23 @@ paths:
           - (String) `other_address_region`
           - (String) `other_address_postal_code`
           - (String) `other_address_country_code`
-
+          - (String) `website` — supports wildcard (e.g. `website==https://example*`)
+          - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`)
+          - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=`
+          (e.g. `contact_id>5` encoded as `contact_id%3E5`)
 
           You will need to apply the `==` operator to check the equality of one of the filters with your searched
           word, in the encoded form `%3D%3D`.
+          For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`.
           For the filters listed above, here are some examples:
           - `filter=given_name%3D%3DMary`
+          - `filter=given_name%3D%3DMar%2A` (wildcard: starts with "Mar")
           - `filter=company_id%3D%3D123`
           - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith`
           - `filter=billing_address_locality%3D%3DChandler`
           - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona`
+          - `filter=contact_id%3E5` (contact_id > 5)
+          - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)
         required: false
         schema:
           type: string
@@ -6450,6 +6499,7 @@ paths:
           - `id`
           - `create_time`
           - `email`
+          - `update_time`
 
           One of the following directions:
           - `asc`
@@ -6858,6 +6908,16 @@ paths:
         required: false
         schema:
           type: string
+      - name: fields
+        in: query
+        description: 'Comma-delimited list of optional Note properties to include
+          in the response. Allowed values: custom_fields'
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        explode: false
       responses:
         '200':
           description: OK
@@ -9555,6 +9615,16 @@ paths:
         required: true
         schema:
           type: string
+      - name: fields
+        in: query
+        description: 'Comma-delimited list of optional Task properties to include
+          in the response. Allowed values: custom_fields'
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        explode: false
       responses:
         '200':
           description: OK
@@ -9665,8 +9735,7 @@ paths:
       tags:
       - Task
       summary: Update a Task
-      description: "Updates a task with only the values provided in the request. \n\
-        This endpoint does not currently support updating Custom Field values."
+      description: Updates a task with only the values provided in the request.
       operationId: updateTask
       parameters:
       - name: task_id
@@ -9694,7 +9763,18 @@ paths:
             - assigned_to_user_id
             - contact_id
             - completed
+            - custom_fields
           uniqueItems: true
+      - name: fields
+        in: query
+        description: 'Comma-delimited list of optional Task properties to include
+          in the response. Allowed values: custom_fields'
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        explode: false
       requestBody:
         content:
           application/json:
@@ -15344,6 +15424,16 @@ paths:
         required: true
         schema:
           type: string
+      - name: fields
+        in: query
+        description: 'Comma-delimited list of optional Note properties to include
+          in the response. Allowed values: custom_fields'
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        explode: false
       responses:
         '200':
           description: OK
@@ -15482,10 +15572,11 @@ paths:
             type: string
             enum:
             - contact_id
-            - text
             - title
+            - text
             - type
             - user_id
+            - is_pinned
           uniqueItems: true
       requestBody:
         content:
@@ -21350,8 +21441,24 @@ components:
           type: string
           description: Associated contact ID
           example: 1001
+        custom_fields:
+          type: array
+          description: Custom field values for the task. An empty array resets all
+            custom fields to their defaults.
+          example:
+          - id: '1'
+            content: Red
+          items:
+            $ref: '#/components/schemas/CustomFieldValueObject'
       required:
       - assigned_to_user_id
+    CustomFieldValueObject:
+      type: object
+      properties:
+        id:
+          type: string
+        content: {
+          }
     Task:
       type: object
       properties:
@@ -21427,6 +21534,16 @@ components:
           type: string
           description: Associated contact ID
           example: 1001
+        custom_fields:
+          type: array
+          description: Custom field values for the task
+          example:
+          - id: '1'
+            content: Red
+          - id: '2'
+            content: Preferred
+          items:
+            $ref: '#/components/schemas/CustomFieldValueObject'
     CreateCustomFieldOptionRequest:
       type: object
       properties:
@@ -23841,6 +23958,10 @@ components:
           type: string
           description: Affiliate ID
           example: 456
+        lead_source:
+          type: string
+          description: Lead source
+          example: Web Form
       required:
       - contact
       - opportunity_title
@@ -25856,6 +25977,16 @@ components:
           type: string
           description: ID of user who created
           example: 789
+        custom_fields:
+          type: array
+          description: Custom field values for the note
+          example:
+          - id: '1'
+            content: Red
+          - id: '2'
+            content: Preferred
+          items:
+            $ref: '#/components/schemas/CustomFieldValueObject'
     CreateContactLinkTypeRequest:
       type: object
       properties:
@@ -26883,6 +27014,15 @@ components:
           type: string
           description: Associated contact ID
           example: 1001
+        custom_fields:
+          type: array
+          description: Custom field values for the task. An empty array resets all
+            custom fields to their defaults.
+          example:
+          - id: '1'
+            content: Red
+          items:
+            $ref: '#/components/schemas/CustomFieldValueObject'
     UpdateTaskResponse:
       type: object
       properties:
@@ -26958,6 +27098,16 @@ components:
           type: string
           description: Associated contact ID
           example: 1001
+        custom_fields:
+          type: array
+          description: Custom field values for the task
+          example:
+          - id: '1'
+            content: Red
+          - id: '2'
+            content: Preferred
+          items:
+            $ref: '#/components/schemas/CustomFieldValueObject'
     UpdateCustomFieldMetaDataRequest:
       type: object
       properties:
@@ -28027,6 +28177,16 @@ components:
           type: string
           description: ID of user who created
           example: 789
+        custom_fields:
+          type: array
+          description: Custom field values for the note
+          example:
+          - id: '1'
+            content: Red
+          - id: '2'
+            content: Preferred
+          items:
+            $ref: '#/components/schemas/CustomFieldValueObject'
     UpdateCompanyRequest:
       type: object
       description: company
@@ -30135,6 +30295,16 @@ components:
           type: string
           description: ID of user who created
           example: 789
+        custom_fields:
+          type: array
+          description: Custom field values for the note
+          example:
+          - id: '1'
+            content: Red
+          - id: '2'
+            content: Preferred
+          items:
+            $ref: '#/components/schemas/CustomFieldValueObject'
     ListContactLinksResponse:
       type: object
       properties:

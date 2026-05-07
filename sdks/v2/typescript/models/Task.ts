@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 
+import { CustomFieldValueObject } from '../models/CustomFieldValueObject';
 import { HttpFile } from '../http/http';
 
 export class Task {
@@ -69,6 +70,10 @@ export class Task {
     * Associated contact ID
     */
     'contactId'?: string;
+    /**
+    * Custom field values for the task
+    */
+    'customFields'?: Array<CustomFieldValueObject>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -157,6 +162,12 @@ export class Task {
             "name": "contactId",
             "baseName": "contact_id",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "customFields",
+            "baseName": "custom_fields",
+            "type": "Array<CustomFieldValueObject>",
             "format": ""
         }    ];
 

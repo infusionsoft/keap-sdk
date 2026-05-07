@@ -104,6 +104,9 @@ class RestV2Opportunity {
             if (data.hasOwnProperty('affiliate_id')) {
                 obj['affiliate_id'] = ApiClient.convertToType(data['affiliate_id'], 'String');
             }
+            if (data.hasOwnProperty('lead_source')) {
+                obj['lead_source'] = ApiClient.convertToType(data['lead_source'], 'String');
+            }
         }
         return obj;
     }
@@ -177,6 +180,10 @@ class RestV2Opportunity {
         // ensure the json data is a string
         if (data['affiliate_id'] && !(typeof data['affiliate_id'] === 'string' || data['affiliate_id'] instanceof String)) {
             throw new Error("Expected the field `affiliate_id` to be a primitive type in the JSON string but got " + data['affiliate_id']);
+        }
+        // ensure the json data is a string
+        if (data['lead_source'] && !(typeof data['lead_source'] === 'string' || data['lead_source'] instanceof String)) {
+            throw new Error("Expected the field `lead_source` to be a primitive type in the JSON string but got " + data['lead_source']);
         }
 
         return true;
@@ -278,6 +285,12 @@ RestV2Opportunity.prototype['last_updated_time'] = undefined;
  * @member {String} affiliate_id
  */
 RestV2Opportunity.prototype['affiliate_id'] = undefined;
+
+/**
+ * Lead source
+ * @member {String} lead_source
+ */
+RestV2Opportunity.prototype['lead_source'] = undefined;
 
 
 

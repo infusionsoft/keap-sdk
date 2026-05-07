@@ -180,8 +180,9 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
      * Retrieve a Note
      * @param contactId 
      * @param noteId 
+     * @param fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      */
-    public async getNote(contactId: string, noteId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getNote(contactId: string, noteId: string, fields?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'contactId' is not null or undefined
@@ -196,6 +197,7 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+
         // Path Params
         const localVarPath = '/rest/v2/contacts/{contact_id}/notes/{note_id}'
             .replace('{' + 'contact_id' + '}', encodeURIComponent(String(contactId)))
@@ -204,6 +206,11 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (fields !== undefined) {
+            requestContext.setQueryParam("fields", ObjectSerializer.serialize(fields, "Array<string>", ""));
+        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -287,14 +294,16 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
      * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
+     * @param fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      */
-    public async listNotes(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listNotes(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, fields?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'contactId' is not null or undefined
         if (contactId === null || contactId === undefined) {
             throw new RequiredError("NoteApi", "listNotes", "contactId");
         }
+
 
 
 
@@ -327,6 +336,11 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (pageToken !== undefined) {
             requestContext.setQueryParam("page_token", ObjectSerializer.serialize(pageToken, "string", ""));
+        }
+
+        // Query Params
+        if (fields !== undefined) {
+            requestContext.setQueryParam("fields", ObjectSerializer.serialize(fields, "Array<string>", ""));
         }
 
 

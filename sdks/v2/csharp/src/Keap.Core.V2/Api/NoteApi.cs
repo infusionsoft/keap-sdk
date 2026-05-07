@@ -110,9 +110,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId"></param>
         /// <param name="noteId"></param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetNoteResponse</returns>
-        GetNoteResponse GetNote(string contactId, string noteId, int operationIndex = 0);
+        GetNoteResponse GetNote(string contactId, string noteId, List<string>? fields = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a Note
@@ -123,9 +124,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId"></param>
         /// <param name="noteId"></param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetNoteResponse</returns>
-        ApiResponse<GetNoteResponse> GetNoteWithHttpInfo(string contactId, string noteId, int operationIndex = 0);
+        ApiResponse<GetNoteResponse> GetNoteWithHttpInfo(string contactId, string noteId, List<string>? fields = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve Note Templates
         /// </summary>
@@ -167,9 +169,10 @@ namespace Keap.Core.V2.Api
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ListNotesResponse</returns>
-        ListNotesResponse ListNotes(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0);
+        ListNotesResponse ListNotes(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, List<string>? fields = default, int operationIndex = 0);
 
         /// <summary>
         /// List Notes
@@ -183,9 +186,10 @@ namespace Keap.Core.V2.Api
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ListNotesResponse</returns>
-        ApiResponse<ListNotesResponse> ListNotesWithHttpInfo(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0);
+        ApiResponse<ListNotesResponse> ListNotesWithHttpInfo(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, List<string>? fields = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve Note Model
         /// </summary>
@@ -360,10 +364,11 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId"></param>
         /// <param name="noteId"></param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetNoteResponse</returns>
-        System.Threading.Tasks.Task<GetNoteResponse> GetNoteAsync(string contactId, string noteId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<GetNoteResponse> GetNoteAsync(string contactId, string noteId, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieve a Note
@@ -374,10 +379,11 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId"></param>
         /// <param name="noteId"></param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetNoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetNoteResponse>> GetNoteWithHttpInfoAsync(string contactId, string noteId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<GetNoteResponse>> GetNoteWithHttpInfoAsync(string contactId, string noteId, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieve Note Templates
         /// </summary>
@@ -421,10 +427,11 @@ namespace Keap.Core.V2.Api
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListNotesResponse</returns>
-        System.Threading.Tasks.Task<ListNotesResponse> ListNotesAsync(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListNotesResponse> ListNotesAsync(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List Notes
@@ -438,10 +445,11 @@ namespace Keap.Core.V2.Api
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListNotesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListNotesResponse>> ListNotesWithHttpInfoAsync(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListNotesResponse>> ListNotesWithHttpInfoAsync(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieve Note Model
         /// </summary>
@@ -1220,11 +1228,12 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId"></param>
         /// <param name="noteId"></param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetNoteResponse</returns>
-        public GetNoteResponse GetNote(string contactId, string noteId, int operationIndex = 0)
+        public GetNoteResponse GetNote(string contactId, string noteId, List<string>? fields = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<GetNoteResponse> localVarResponse = GetNoteWithHttpInfo(contactId, noteId);
+            Keap.Core.V2.Client.ApiResponse<GetNoteResponse> localVarResponse = GetNoteWithHttpInfo(contactId, noteId, fields);
             return localVarResponse.Data;
         }
 
@@ -1234,9 +1243,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId"></param>
         /// <param name="noteId"></param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetNoteResponse</returns>
-        public Keap.Core.V2.Client.ApiResponse<GetNoteResponse> GetNoteWithHttpInfo(string contactId, string noteId, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<GetNoteResponse> GetNoteWithHttpInfo(string contactId, string noteId, List<string>? fields = default, int operationIndex = 0)
         {
             // verify the required parameter 'contactId' is set
             if (contactId == null)
@@ -1275,6 +1285,10 @@ namespace Keap.Core.V2.Api
 
             localVarRequestOptions.PathParameters.Add("contact_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(contactId)); // path parameter
             localVarRequestOptions.PathParameters.Add("note_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(noteId)); // path parameter
+            if (fields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
+            }
 
             localVarRequestOptions.Operation = "NoteApi.GetNote";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1316,12 +1330,13 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId"></param>
         /// <param name="noteId"></param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetNoteResponse</returns>
-        public async System.Threading.Tasks.Task<GetNoteResponse> GetNoteAsync(string contactId, string noteId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<GetNoteResponse> GetNoteAsync(string contactId, string noteId, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<GetNoteResponse> localVarResponse = await GetNoteWithHttpInfoAsync(contactId, noteId, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<GetNoteResponse> localVarResponse = await GetNoteWithHttpInfoAsync(contactId, noteId, fields, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1331,10 +1346,11 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId"></param>
         /// <param name="noteId"></param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetNoteResponse)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<GetNoteResponse>> GetNoteWithHttpInfoAsync(string contactId, string noteId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<GetNoteResponse>> GetNoteWithHttpInfoAsync(string contactId, string noteId, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'contactId' is set
             if (contactId == null)
@@ -1373,6 +1389,10 @@ namespace Keap.Core.V2.Api
 
             localVarRequestOptions.PathParameters.Add("contact_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(contactId)); // path parameter
             localVarRequestOptions.PathParameters.Add("note_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(noteId)); // path parameter
+            if (fields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
+            }
 
             localVarRequestOptions.Operation = "NoteApi.GetNote";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1625,11 +1645,12 @@ namespace Keap.Core.V2.Api
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ListNotesResponse</returns>
-        public ListNotesResponse ListNotes(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0)
+        public ListNotesResponse ListNotes(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, List<string>? fields = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<ListNotesResponse> localVarResponse = ListNotesWithHttpInfo(contactId, filter, orderBy, pageSize, pageToken);
+            Keap.Core.V2.Client.ApiResponse<ListNotesResponse> localVarResponse = ListNotesWithHttpInfo(contactId, filter, orderBy, pageSize, pageToken, fields);
             return localVarResponse.Data;
         }
 
@@ -1642,9 +1663,10 @@ namespace Keap.Core.V2.Api
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ListNotesResponse</returns>
-        public Keap.Core.V2.Client.ApiResponse<ListNotesResponse> ListNotesWithHttpInfo(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<ListNotesResponse> ListNotesWithHttpInfo(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, List<string>? fields = default, int operationIndex = 0)
         {
             // verify the required parameter 'contactId' is set
             if (contactId == null)
@@ -1692,6 +1714,10 @@ namespace Keap.Core.V2.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken));
             }
+            if (fields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
+            }
 
             localVarRequestOptions.Operation = "NoteApi.ListNotes";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1736,12 +1762,13 @@ namespace Keap.Core.V2.Api
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListNotesResponse</returns>
-        public async System.Threading.Tasks.Task<ListNotesResponse> ListNotesAsync(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListNotesResponse> ListNotesAsync(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<ListNotesResponse> localVarResponse = await ListNotesWithHttpInfoAsync(contactId, filter, orderBy, pageSize, pageToken, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<ListNotesResponse> localVarResponse = await ListNotesWithHttpInfoAsync(contactId, filter, orderBy, pageSize, pageToken, fields, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1754,10 +1781,11 @@ namespace Keap.Core.V2.Api
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListNotesResponse)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ListNotesResponse>> ListNotesWithHttpInfoAsync(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ListNotesResponse>> ListNotesWithHttpInfoAsync(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'contactId' is set
             if (contactId == null)
@@ -1804,6 +1832,10 @@ namespace Keap.Core.V2.Api
             if (pageToken != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken));
+            }
+            if (fields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
             }
 
             localVarRequestOptions.Operation = "NoteApi.ListNotes";
