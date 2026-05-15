@@ -10,17 +10,38 @@
  * Do not edit the class manually.
  */
 
+import { CommissionItem } from '../models/CommissionItem';
 import { HttpFile } from '../http/http';
 
 export class SubscriptionCommission {
     /**
+    * The payout type for this commission.
+    */
+    'payoutType'?: SubscriptionCommissionPayoutTypeEnum;
+    /**
+    * Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for `level_1`
+    */
+    'dollarAmount'?: number;
+    /**
+    * Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for `level_1`
+    */
+    'percentage'?: number;
+    /**
+    * Payout rules for any unused commissions.
+    */
+    'unused'?: CommissionItem;
+    /**
+    * Payout rules for Level 1 recipients of the commission.
+    */
+    'level1'?: CommissionItem;
+    /**
+    * Payout rules for Level 2 recipients of the commission.
+    */
+    'level2'?: CommissionItem;
+    /**
     * Subscription name
     */
     'name'?: string;
-    /**
-    * Percentage commission
-    */
-    'percentage'?: number;
     /**
     * Subscription ID
     */
@@ -29,10 +50,6 @@ export class SubscriptionCommission {
     * Plan price
     */
     'planPrice'?: number;
-    /**
-    * Fixed dollar commission
-    */
-    'dollarAmount'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -40,16 +57,46 @@ export class SubscriptionCommission {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "name",
-            "baseName": "name",
-            "type": "string",
+            "name": "payoutType",
+            "baseName": "payout_type",
+            "type": "SubscriptionCommissionPayoutTypeEnum",
             "format": ""
+        },
+        {
+            "name": "dollarAmount",
+            "baseName": "dollar_amount",
+            "type": "number",
+            "format": "double"
         },
         {
             "name": "percentage",
             "baseName": "percentage",
             "type": "number",
             "format": "double"
+        },
+        {
+            "name": "unused",
+            "baseName": "unused",
+            "type": "CommissionItem",
+            "format": ""
+        },
+        {
+            "name": "level1",
+            "baseName": "level_1",
+            "type": "CommissionItem",
+            "format": ""
+        },
+        {
+            "name": "level2",
+            "baseName": "level_2",
+            "type": "CommissionItem",
+            "format": ""
+        },
+        {
+            "name": "name",
+            "baseName": "name",
+            "type": "string",
+            "format": ""
         },
         {
             "name": "subscriptionId",
@@ -62,12 +109,6 @@ export class SubscriptionCommission {
             "baseName": "plan_price",
             "type": "number",
             "format": "double"
-        },
-        {
-            "name": "dollarAmount",
-            "baseName": "dollar_amount",
-            "type": "number",
-            "format": "double"
         }    ];
 
     static getAttributeTypeMap() {
@@ -77,3 +118,9 @@ export class SubscriptionCommission {
     public constructor() {
     }
 }
+
+export enum SubscriptionCommissionPayoutTypeEnum {
+    Upfront = 'UPFRONT',
+    PaymentReceived = 'PAYMENT_RECEIVED'
+}
+

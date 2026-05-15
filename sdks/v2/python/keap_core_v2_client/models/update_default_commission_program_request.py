@@ -17,8 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from keap_core_v2_client.models.commission_item_request import CommissionItemRequest
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,10 +27,24 @@ class UpdateDefaultCommissionProgramRequest(BaseModel):
     """
     UpdateDefaultCommissionProgramRequest
     """ # noqa: E501
-    percentage: Optional[StrictStr] = Field(default=None, description="Commission percentage (0-100). Either percentage or dollar_amount is required")
-    dollar_amount: Optional[StrictStr] = Field(default=None, description="Fixed dollar amount. Either percentage or dollar_amount is required")
+    percentage: Optional[StrictStr] = Field(default=None, description="Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for `level_1`")
+    unused: Optional[CommissionItemRequest] = Field(default=None, description="Payout rules for any unused commissions.")
+    dollar_amount: Optional[StrictStr] = Field(default=None, description="Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for `level_1`")
+    level_1: Optional[CommissionItemRequest] = Field(default=None, description="Payout rules for Level 1 recipients of the commission.")
+    level_2: Optional[CommissionItemRequest] = Field(default=None, description="Payout rules for Level 2 recipients of the commission.")
+    payout_type: Optional[StrictStr] = Field(default='UPFRONT', description="The payout type for this commission.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["percentage", "dollar_amount"]
+    __properties: ClassVar[List[str]] = ["percentage", "unused", "dollar_amount", "level_1", "level_2", "payout_type"]
+
+    @field_validator('payout_type')
+    def payout_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['UPFRONT', 'PAYMENT_RECEIVED']):
+            raise ValueError("must be one of enum values ('UPFRONT', 'PAYMENT_RECEIVED')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,6 +87,15 @@ class UpdateDefaultCommissionProgramRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of unused
+        if self.unused:
+            _dict['unused'] = self.unused.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of level_1
+        if self.level_1:
+            _dict['level_1'] = self.level_1.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of level_2
+        if self.level_2:
+            _dict['level_2'] = self.level_2.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -90,7 +114,11 @@ class UpdateDefaultCommissionProgramRequest(BaseModel):
 
         _obj = cls.model_validate({
             "percentage": obj.get("percentage"),
-            "dollar_amount": obj.get("dollar_amount")
+            "unused": CommissionItemRequest.from_dict(obj["unused"]) if obj.get("unused") is not None else None,
+            "dollar_amount": obj.get("dollar_amount"),
+            "level_1": CommissionItemRequest.from_dict(obj["level_1"]) if obj.get("level_1") is not None else None,
+            "level_2": CommissionItemRequest.from_dict(obj["level_2"]) if obj.get("level_2") is not None else None,
+            "payout_type": obj.get("payout_type") if obj.get("payout_type") is not None else 'UPFRONT'
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

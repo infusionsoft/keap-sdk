@@ -150,6 +150,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -230,6 +231,7 @@ ApiResponse<[**RestAffiliate**](RestAffiliate.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -309,6 +311,7 @@ null (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -390,6 +393,7 @@ ApiResponse<Void>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -468,6 +472,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -548,6 +553,7 @@ ApiResponse<[**AffiliateCommissionProgramResponse**](AffiliateCommissionProgramR
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -555,7 +561,7 @@ ApiResponse<[**AffiliateCommissionProgramResponse**](AffiliateCommissionProgramR
 
 ## assignProductCommissionProgram
 
-> ProductCommissionProgram assignProductCommissionProgram(commissionProgramId, createProductCommissionProgramRequest)
+> GetRestCommissionProgram assignProductCommissionProgram(commissionProgramId, createProductCommissionProgramRequest)
 
 Assign a Product Commission Program
 
@@ -585,7 +591,7 @@ public class Example {
         String commissionProgramId = "commissionProgramId_example"; // String | 
         CreateProductCommissionProgramRequest createProductCommissionProgramRequest = new CreateProductCommissionProgramRequest(); // CreateProductCommissionProgramRequest | 
         try {
-            ProductCommissionProgram result = apiInstance.assignProductCommissionProgram(commissionProgramId, createProductCommissionProgramRequest);
+            GetRestCommissionProgram result = apiInstance.assignProductCommissionProgram(commissionProgramId, createProductCommissionProgramRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AffiliateApi#assignProductCommissionProgram");
@@ -608,7 +614,7 @@ public class Example {
 
 ### Return type
 
-[**ProductCommissionProgram**](ProductCommissionProgram.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 
 ### Authorization
@@ -628,13 +634,14 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
 
 ## assignProductCommissionProgramWithHttpInfo
 
-> ApiResponse<ProductCommissionProgram> assignProductCommissionProgram assignProductCommissionProgramWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest)
+> ApiResponse<GetRestCommissionProgram> assignProductCommissionProgram assignProductCommissionProgramWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest)
 
 Assign a Product Commission Program
 
@@ -665,7 +672,7 @@ public class Example {
         String commissionProgramId = "commissionProgramId_example"; // String | 
         CreateProductCommissionProgramRequest createProductCommissionProgramRequest = new CreateProductCommissionProgramRequest(); // CreateProductCommissionProgramRequest | 
         try {
-            ApiResponse<ProductCommissionProgram> response = apiInstance.assignProductCommissionProgramWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest);
+            ApiResponse<GetRestCommissionProgram> response = apiInstance.assignProductCommissionProgramWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -690,7 +697,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**ProductCommissionProgram**](ProductCommissionProgram.md)>
+ApiResponse<[**GetRestCommissionProgram**](GetRestCommissionProgram.md)>
 
 
 ### Authorization
@@ -710,6 +717,7 @@ ApiResponse<[**ProductCommissionProgram**](ProductCommissionProgram.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -717,7 +725,7 @@ ApiResponse<[**ProductCommissionProgram**](ProductCommissionProgram.md)>
 
 ## assignSubscriptionCommissionProgram
 
-> SubscriptionCommissionProgram assignSubscriptionCommissionProgram(commissionProgramId, createSubscriptionCommissionProgramRequest)
+> GetRestCommissionProgram assignSubscriptionCommissionProgram(commissionProgramId, createSubscriptionCommissionProgramRequest)
 
 Assign a Subscription Commission Program
 
@@ -747,7 +755,7 @@ public class Example {
         String commissionProgramId = "commissionProgramId_example"; // String | 
         CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest = new CreateSubscriptionCommissionProgramRequest(); // CreateSubscriptionCommissionProgramRequest | 
         try {
-            SubscriptionCommissionProgram result = apiInstance.assignSubscriptionCommissionProgram(commissionProgramId, createSubscriptionCommissionProgramRequest);
+            GetRestCommissionProgram result = apiInstance.assignSubscriptionCommissionProgram(commissionProgramId, createSubscriptionCommissionProgramRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AffiliateApi#assignSubscriptionCommissionProgram");
@@ -770,7 +778,7 @@ public class Example {
 
 ### Return type
 
-[**SubscriptionCommissionProgram**](SubscriptionCommissionProgram.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 
 ### Authorization
@@ -790,13 +798,14 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
 
 ## assignSubscriptionCommissionProgramWithHttpInfo
 
-> ApiResponse<SubscriptionCommissionProgram> assignSubscriptionCommissionProgram assignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest)
+> ApiResponse<GetRestCommissionProgram> assignSubscriptionCommissionProgram assignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest)
 
 Assign a Subscription Commission Program
 
@@ -827,7 +836,7 @@ public class Example {
         String commissionProgramId = "commissionProgramId_example"; // String | 
         CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest = new CreateSubscriptionCommissionProgramRequest(); // CreateSubscriptionCommissionProgramRequest | 
         try {
-            ApiResponse<SubscriptionCommissionProgram> response = apiInstance.assignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest);
+            ApiResponse<GetRestCommissionProgram> response = apiInstance.assignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -852,7 +861,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**SubscriptionCommissionProgram**](SubscriptionCommissionProgram.md)>
+ApiResponse<[**GetRestCommissionProgram**](GetRestCommissionProgram.md)>
 
 
 ### Authorization
@@ -872,6 +881,7 @@ ApiResponse<[**SubscriptionCommissionProgram**](SubscriptionCommissionProgram.md
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -950,6 +960,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1030,6 +1041,7 @@ ApiResponse<[**CustomFieldMetaData**](CustomFieldMetaData.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1037,7 +1049,7 @@ ApiResponse<[**CustomFieldMetaData**](CustomFieldMetaData.md)>
 
 ## createDefaultCommissionProgram
 
-> SetDefaultCommissionProgramResponse createDefaultCommissionProgram(commissionProgramId, createDefaultCommissionProgramRequest)
+> GetRestCommissionProgram createDefaultCommissionProgram(commissionProgramId, createDefaultCommissionProgramRequest)
 
 Create a Default Commission Program
 
@@ -1067,7 +1079,7 @@ public class Example {
         String commissionProgramId = "commissionProgramId_example"; // String | 
         CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest = new CreateDefaultCommissionProgramRequest(); // CreateDefaultCommissionProgramRequest | 
         try {
-            SetDefaultCommissionProgramResponse result = apiInstance.createDefaultCommissionProgram(commissionProgramId, createDefaultCommissionProgramRequest);
+            GetRestCommissionProgram result = apiInstance.createDefaultCommissionProgram(commissionProgramId, createDefaultCommissionProgramRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AffiliateApi#createDefaultCommissionProgram");
@@ -1090,7 +1102,7 @@ public class Example {
 
 ### Return type
 
-[**SetDefaultCommissionProgramResponse**](SetDefaultCommissionProgramResponse.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 
 ### Authorization
@@ -1110,13 +1122,14 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
 
 ## createDefaultCommissionProgramWithHttpInfo
 
-> ApiResponse<SetDefaultCommissionProgramResponse> createDefaultCommissionProgram createDefaultCommissionProgramWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest)
+> ApiResponse<GetRestCommissionProgram> createDefaultCommissionProgram createDefaultCommissionProgramWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest)
 
 Create a Default Commission Program
 
@@ -1147,7 +1160,7 @@ public class Example {
         String commissionProgramId = "commissionProgramId_example"; // String | 
         CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest = new CreateDefaultCommissionProgramRequest(); // CreateDefaultCommissionProgramRequest | 
         try {
-            ApiResponse<SetDefaultCommissionProgramResponse> response = apiInstance.createDefaultCommissionProgramWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest);
+            ApiResponse<GetRestCommissionProgram> response = apiInstance.createDefaultCommissionProgramWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1172,7 +1185,7 @@ public class Example {
 
 ### Return type
 
-ApiResponse<[**SetDefaultCommissionProgramResponse**](SetDefaultCommissionProgramResponse.md)>
+ApiResponse<[**GetRestCommissionProgram**](GetRestCommissionProgram.md)>
 
 
 ### Authorization
@@ -1192,6 +1205,7 @@ ApiResponse<[**SetDefaultCommissionProgramResponse**](SetDefaultCommissionProgra
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1270,6 +1284,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1350,6 +1365,7 @@ ApiResponse<[**AffiliateLink**](AffiliateLink.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1427,6 +1443,7 @@ null (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1506,6 +1523,7 @@ ApiResponse<Void>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1583,6 +1601,7 @@ null (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1662,6 +1681,7 @@ ApiResponse<Void>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1739,6 +1759,7 @@ null (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1818,6 +1839,7 @@ ApiResponse<Void>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1895,6 +1917,7 @@ null (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1974,6 +1997,7 @@ ApiResponse<Void>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2052,6 +2076,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2132,6 +2157,7 @@ ApiResponse<[**RestAffiliate**](RestAffiliate.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2210,6 +2236,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2290,6 +2317,7 @@ ApiResponse<[**AffiliateCommissionEarned**](AffiliateCommissionEarned.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2376,6 +2404,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2464,6 +2493,7 @@ ApiResponse<[**ListAffiliateCommissionsResponse**](ListAffiliateCommissionsRespo
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2538,6 +2568,7 @@ This endpoint does not need any parameter.
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2614,6 +2645,7 @@ ApiResponse<[**ObjectModel**](ObjectModel.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2692,6 +2724,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2772,6 +2805,7 @@ ApiResponse<[**GetRestCommissionProgram**](GetRestCommissionProgram.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2850,6 +2884,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2930,6 +2965,7 @@ ApiResponse<[**AffiliateLink**](AffiliateLink.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -3008,6 +3044,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -3088,6 +3125,7 @@ ApiResponse<[**ListAffiliateReferralsResponse**](ListAffiliateReferralsResponse.
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -3172,6 +3210,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -3258,6 +3297,7 @@ ApiResponse<[**ListAffiliatesResponse**](ListAffiliatesResponse.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -3342,6 +3382,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -3428,6 +3469,7 @@ ApiResponse<[**ListAffiliateCommissionProgramsResponse**](ListAffiliateCommissio
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -3512,6 +3554,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -3598,6 +3641,7 @@ ApiResponse<[**ListAffiliateLinksResponse**](ListAffiliateLinksResponse.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -3684,6 +3728,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -3772,6 +3817,7 @@ ApiResponse<[**ListAffiliatePaymentsResponse**](ListAffiliatePaymentsResponse.md
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -3850,6 +3896,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -3930,6 +3977,7 @@ ApiResponse<[**ListProgramResourcesResponse**](ListProgramResourcesResponse.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -4014,6 +4062,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -4100,6 +4149,7 @@ ApiResponse<[**ListAffiliateSummariesResponse**](ListAffiliateSummariesResponse.
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -4179,6 +4229,7 @@ null (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -4260,6 +4311,7 @@ ApiResponse<Void>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -4339,6 +4391,7 @@ null (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -4420,6 +4473,7 @@ ApiResponse<Void>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -4499,6 +4553,7 @@ null (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -4580,6 +4635,7 @@ ApiResponse<Void>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -4662,6 +4718,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -4746,6 +4803,7 @@ ApiResponse<[**RestAffiliate**](RestAffiliate.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -4828,6 +4886,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -4912,6 +4971,7 @@ ApiResponse<[**CustomFieldMetaData**](CustomFieldMetaData.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -4994,6 +5054,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -5078,6 +5139,7 @@ ApiResponse<[**AffiliateCommissionProgramResponse**](AffiliateCommissionProgramR
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -5085,7 +5147,7 @@ ApiResponse<[**AffiliateCommissionProgramResponse**](AffiliateCommissionProgramR
 
 ## updateDefaultCommissionProgram
 
-> SetDefaultCommissionProgramResponse updateDefaultCommissionProgram(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask)
+> GetRestCommissionProgram updateDefaultCommissionProgram(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask)
 
 Update a Default Commission Program
 
@@ -5114,9 +5176,9 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String commissionProgramId = "commissionProgramId_example"; // String | 
         UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest = new UpdateDefaultCommissionProgramRequest(); // UpdateDefaultCommissionProgramRequest | 
-        Set<String> updateMask = Arrays.asList(); // Set<String> | 
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            SetDefaultCommissionProgramResponse result = apiInstance.updateDefaultCommissionProgram(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
+            GetRestCommissionProgram result = apiInstance.updateDefaultCommissionProgram(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AffiliateApi#updateDefaultCommissionProgram");
@@ -5136,11 +5198,11 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **commissionProgramId** | **String**|  | |
 | **updateDefaultCommissionProgramRequest** | [**UpdateDefaultCommissionProgramRequest**](UpdateDefaultCommissionProgramRequest.md)|  | |
-| **updateMask** | [**Set&lt;String&gt;**](String.md)|  | [optional] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
-[**SetDefaultCommissionProgramResponse**](SetDefaultCommissionProgramResponse.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 
 ### Authorization
@@ -5160,13 +5222,14 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
 
 ## updateDefaultCommissionProgramWithHttpInfo
 
-> ApiResponse<SetDefaultCommissionProgramResponse> updateDefaultCommissionProgram updateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask)
+> ApiResponse<GetRestCommissionProgram> updateDefaultCommissionProgram updateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask)
 
 Update a Default Commission Program
 
@@ -5196,9 +5259,9 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String commissionProgramId = "commissionProgramId_example"; // String | 
         UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest = new UpdateDefaultCommissionProgramRequest(); // UpdateDefaultCommissionProgramRequest | 
-        Set<String> updateMask = Arrays.asList(); // Set<String> | 
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<SetDefaultCommissionProgramResponse> response = apiInstance.updateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
+            ApiResponse<GetRestCommissionProgram> response = apiInstance.updateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -5220,11 +5283,11 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **commissionProgramId** | **String**|  | |
 | **updateDefaultCommissionProgramRequest** | [**UpdateDefaultCommissionProgramRequest**](UpdateDefaultCommissionProgramRequest.md)|  | |
-| **updateMask** | [**Set&lt;String&gt;**](String.md)|  | [optional] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
-ApiResponse<[**SetDefaultCommissionProgramResponse**](SetDefaultCommissionProgramResponse.md)>
+ApiResponse<[**GetRestCommissionProgram**](GetRestCommissionProgram.md)>
 
 
 ### Authorization
@@ -5244,6 +5307,7 @@ ApiResponse<[**SetDefaultCommissionProgramResponse**](SetDefaultCommissionProgra
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -5251,7 +5315,7 @@ ApiResponse<[**SetDefaultCommissionProgramResponse**](SetDefaultCommissionProgra
 
 ## updateProductCommissionProgram
 
-> ProductCommissionProgram updateProductCommissionProgram(commissionProgramId, updateProductCommissionProgramRequest, updateMask)
+> GetRestCommissionProgram updateProductCommissionProgram(commissionProgramId, updateProductCommissionProgramRequest, updateMask)
 
 Update a Product Commission Program
 
@@ -5280,9 +5344,9 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String commissionProgramId = "commissionProgramId_example"; // String | 
         UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest = new UpdateProductCommissionProgramRequest(); // UpdateProductCommissionProgramRequest | 
-        Set<String> updateMask = Arrays.asList(); // Set<String> | 
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ProductCommissionProgram result = apiInstance.updateProductCommissionProgram(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
+            GetRestCommissionProgram result = apiInstance.updateProductCommissionProgram(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AffiliateApi#updateProductCommissionProgram");
@@ -5302,11 +5366,11 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **commissionProgramId** | **String**|  | |
 | **updateProductCommissionProgramRequest** | [**UpdateProductCommissionProgramRequest**](UpdateProductCommissionProgramRequest.md)|  | |
-| **updateMask** | [**Set&lt;String&gt;**](String.md)|  | [optional] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
-[**ProductCommissionProgram**](ProductCommissionProgram.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 
 ### Authorization
@@ -5326,13 +5390,14 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
 
 ## updateProductCommissionProgramWithHttpInfo
 
-> ApiResponse<ProductCommissionProgram> updateProductCommissionProgram updateProductCommissionProgramWithHttpInfo(commissionProgramId, updateProductCommissionProgramRequest, updateMask)
+> ApiResponse<GetRestCommissionProgram> updateProductCommissionProgram updateProductCommissionProgramWithHttpInfo(commissionProgramId, updateProductCommissionProgramRequest, updateMask)
 
 Update a Product Commission Program
 
@@ -5362,9 +5427,9 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String commissionProgramId = "commissionProgramId_example"; // String | 
         UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest = new UpdateProductCommissionProgramRequest(); // UpdateProductCommissionProgramRequest | 
-        Set<String> updateMask = Arrays.asList(); // Set<String> | 
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<ProductCommissionProgram> response = apiInstance.updateProductCommissionProgramWithHttpInfo(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
+            ApiResponse<GetRestCommissionProgram> response = apiInstance.updateProductCommissionProgramWithHttpInfo(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -5386,11 +5451,11 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **commissionProgramId** | **String**|  | |
 | **updateProductCommissionProgramRequest** | [**UpdateProductCommissionProgramRequest**](UpdateProductCommissionProgramRequest.md)|  | |
-| **updateMask** | [**Set&lt;String&gt;**](String.md)|  | [optional] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
-ApiResponse<[**ProductCommissionProgram**](ProductCommissionProgram.md)>
+ApiResponse<[**GetRestCommissionProgram**](GetRestCommissionProgram.md)>
 
 
 ### Authorization
@@ -5410,6 +5475,7 @@ ApiResponse<[**ProductCommissionProgram**](ProductCommissionProgram.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -5490,6 +5556,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -5572,6 +5639,7 @@ ApiResponse<[**AffiliateLink**](AffiliateLink.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -5579,7 +5647,7 @@ ApiResponse<[**AffiliateLink**](AffiliateLink.md)>
 
 ## updateSubscriptionCommissionProgram
 
-> SubscriptionCommissionProgram updateSubscriptionCommissionProgram(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask)
+> GetRestCommissionProgram updateSubscriptionCommissionProgram(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask)
 
 Update a Subscription Commission Program
 
@@ -5608,9 +5676,9 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String commissionProgramId = "commissionProgramId_example"; // String | 
         UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest = new UpdateSubscriptionCommissionProgramRequest(); // UpdateSubscriptionCommissionProgramRequest | 
-        Set<String> updateMask = Arrays.asList(); // Set<String> | 
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            SubscriptionCommissionProgram result = apiInstance.updateSubscriptionCommissionProgram(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
+            GetRestCommissionProgram result = apiInstance.updateSubscriptionCommissionProgram(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AffiliateApi#updateSubscriptionCommissionProgram");
@@ -5630,11 +5698,11 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **commissionProgramId** | **String**|  | |
 | **updateSubscriptionCommissionProgramRequest** | [**UpdateSubscriptionCommissionProgramRequest**](UpdateSubscriptionCommissionProgramRequest.md)|  | |
-| **updateMask** | [**Set&lt;String&gt;**](String.md)|  | [optional] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
-[**SubscriptionCommissionProgram**](SubscriptionCommissionProgram.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 
 ### Authorization
@@ -5654,13 +5722,14 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
 
 ## updateSubscriptionCommissionProgramWithHttpInfo
 
-> ApiResponse<SubscriptionCommissionProgram> updateSubscriptionCommissionProgram updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask)
+> ApiResponse<GetRestCommissionProgram> updateSubscriptionCommissionProgram updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask)
 
 Update a Subscription Commission Program
 
@@ -5690,9 +5759,9 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String commissionProgramId = "commissionProgramId_example"; // String | 
         UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest = new UpdateSubscriptionCommissionProgramRequest(); // UpdateSubscriptionCommissionProgramRequest | 
-        Set<String> updateMask = Arrays.asList(); // Set<String> | 
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<SubscriptionCommissionProgram> response = apiInstance.updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
+            ApiResponse<GetRestCommissionProgram> response = apiInstance.updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -5714,11 +5783,11 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **commissionProgramId** | **String**|  | |
 | **updateSubscriptionCommissionProgramRequest** | [**UpdateSubscriptionCommissionProgramRequest**](UpdateSubscriptionCommissionProgramRequest.md)|  | |
-| **updateMask** | [**Set&lt;String&gt;**](String.md)|  | [optional] |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
-ApiResponse<[**SubscriptionCommissionProgram**](SubscriptionCommissionProgram.md)>
+ApiResponse<[**GetRestCommissionProgram**](GetRestCommissionProgram.md)>
 
 
 ### Authorization
@@ -5738,6 +5807,7 @@ ApiResponse<[**SubscriptionCommissionProgram**](SubscriptionCommissionProgram.md
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |

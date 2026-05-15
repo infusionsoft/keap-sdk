@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CustomFieldValueObject from './CustomFieldValueObject';
 
 /**
  * The UpdateNoteRequest model module.
@@ -63,6 +64,9 @@ class UpdateNoteRequest {
             if (data.hasOwnProperty('is_pinned')) {
                 obj['is_pinned'] = ApiClient.convertToType(data['is_pinned'], 'Boolean');
             }
+            if (data.hasOwnProperty('custom_fields')) {
+                obj['custom_fields'] = ApiClient.convertToType(data['custom_fields'], [CustomFieldValueObject]);
+            }
             if (data.hasOwnProperty('contact_id')) {
                 obj['contact_id'] = ApiClient.convertToType(data['contact_id'], 'String');
             }
@@ -97,6 +101,16 @@ class UpdateNoteRequest {
         // ensure the json data is a string
         if (data['user_id'] && !(typeof data['user_id'] === 'string' || data['user_id'] instanceof String)) {
             throw new Error("Expected the field `user_id` to be a primitive type in the JSON string but got " + data['user_id']);
+        }
+        if (data['custom_fields']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['custom_fields'])) {
+                throw new Error("Expected the field `custom_fields` to be an array in the JSON data but got " + data['custom_fields']);
+            }
+            // validate the optional field `custom_fields` (array)
+            for (const item of data['custom_fields']) {
+                CustomFieldValueObject.validateJSON(item);
+            };
         }
         // ensure the json data is a string
         if (data['contact_id'] && !(typeof data['contact_id'] === 'string' || data['contact_id'] instanceof String)) {
@@ -140,6 +154,12 @@ UpdateNoteRequest.prototype['user_id'] = undefined;
  * @member {Boolean} is_pinned
  */
 UpdateNoteRequest.prototype['is_pinned'] = undefined;
+
+/**
+ * Custom field values for the note. An empty array resets all custom fields to their defaults.
+ * @member {Array.<module:keap.core.v2/model/CustomFieldValueObject>} custom_fields
+ */
+UpdateNoteRequest.prototype['custom_fields'] = undefined;
 
 /**
  * Associated contact ID

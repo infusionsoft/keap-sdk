@@ -40,7 +40,17 @@ const request: NoteApiCreateNoteRequest = {
     type: "Call",
     userId: "123",
     isPinned: false,
+    customFields: [
+      {
+        id: "id_example",
+        content: null,
+      },
+    ],
   },
+    // Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
+  fields: [
+    "fields_example",
+  ],
 };
 
 const data = await apiInstance.createNote(request);
@@ -54,6 +64,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createNoteRequest** | **CreateNoteRequest**|  |
  **contactId** | [**string**] |  | defaults to undefined
+ **fields** | **Array&lt;string&gt;** | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | (optional) defaults to undefined
 
 
 ### Return type
@@ -78,6 +89,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -148,6 +160,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -211,6 +224,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -279,6 +293,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -348,6 +363,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -425,6 +441,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -478,6 +495,7 @@ This endpoint does not need any parameter.
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -511,10 +529,20 @@ const request: NoteApiUpdateNoteRequest = {
     type: "Call",
     userId: "123",
     isPinned: false,
+    customFields: [
+      {
+        id: "id_example",
+        content: null,
+      },
+    ],
     contactId: "1001",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
   updateMask: null,
+    // Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
+  fields: [
+    "fields_example",
+  ],
 };
 
 const data = await apiInstance.updateNote(request);
@@ -530,6 +558,7 @@ Name | Type | Description  | Notes
  **contactId** | [**string**] |  | defaults to undefined
  **noteId** | [**string**] |  | defaults to undefined
  **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **fields** | **Array&lt;string&gt;** | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | (optional) defaults to undefined
 
 
 ### Return type
@@ -554,6 +583,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -629,6 +659,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |

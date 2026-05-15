@@ -33,21 +33,99 @@ namespace Keap.Core.V2.Model
     public partial class SubscriptionCommission : IValidatableObject
     {
         /// <summary>
+        /// The payout type for this commission.
+        /// </summary>
+        /// <value>The payout type for this commission.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum PayoutTypeEnum
+        {
+            /// <summary>
+            /// Enum UPFRONT for value: UPFRONT
+            /// </summary>
+            [EnumMember(Value = "UPFRONT")]
+            UPFRONT = 1,
+
+            /// <summary>
+            /// Enum PAYMENTRECEIVED for value: PAYMENT_RECEIVED
+            /// </summary>
+            [EnumMember(Value = "PAYMENT_RECEIVED")]
+            PAYMENTRECEIVED = 2
+        }
+
+        /// <summary>
+        /// The payout type for this commission.
+        /// </summary>
+        /// <value>The payout type for this commission.</value>
+        /*
+        <example>UPFRONT</example>
+        */
+        [DataMember(Name = "payout_type", EmitDefaultValue = false)]
+        public PayoutTypeEnum? PayoutType { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionCommission" /> class.
         /// </summary>
+        /// <param name="payoutType">The payout type for this commission. (default to PayoutTypeEnum.UPFRONT).</param>
+        /// <param name="dollarAmount">Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for &#x60;level_1&#x60;.</param>
+        /// <param name="percentage">Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for &#x60;level_1&#x60;.</param>
+        /// <param name="unused">Payout rules for any unused commissions..</param>
+        /// <param name="level1">Payout rules for Level 1 recipients of the commission..</param>
+        /// <param name="level2">Payout rules for Level 2 recipients of the commission..</param>
         /// <param name="name">Subscription name.</param>
-        /// <param name="percentage">Percentage commission.</param>
         /// <param name="subscriptionId">Subscription ID.</param>
         /// <param name="planPrice">Plan price.</param>
-        /// <param name="dollarAmount">Fixed dollar commission.</param>
-        public SubscriptionCommission(string name = default, double percentage = default, string subscriptionId = default, double planPrice = default, double dollarAmount = default)
+        public SubscriptionCommission(PayoutTypeEnum? payoutType = PayoutTypeEnum.UPFRONT, double dollarAmount = default, double percentage = default, CommissionItem unused = default, CommissionItem level1 = default, CommissionItem level2 = default, string name = default, string subscriptionId = default, double planPrice = default)
         {
-            this.Name = name;
+            this.PayoutType = payoutType;
+            this.DollarAmount = dollarAmount;
             this.Percentage = percentage;
+            this.Unused = unused;
+            this.Level1 = level1;
+            this.Level2 = level2;
+            this.Name = name;
             this.SubscriptionId = subscriptionId;
             this.PlanPrice = planPrice;
-            this.DollarAmount = dollarAmount;
         }
+
+        /// <summary>
+        /// Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for &#x60;level_1&#x60;
+        /// </summary>
+        /// <value>Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for &#x60;level_1&#x60;</value>
+        /*
+        <example>10.5</example>
+        */
+        [DataMember(Name = "dollar_amount", EmitDefaultValue = false)]
+        public double DollarAmount { get; set; }
+
+        /// <summary>
+        /// Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for &#x60;level_1&#x60;
+        /// </summary>
+        /// <value>Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for &#x60;level_1&#x60;</value>
+        /*
+        <example>25</example>
+        */
+        [DataMember(Name = "percentage", EmitDefaultValue = false)]
+        public double Percentage { get; set; }
+
+        /// <summary>
+        /// Payout rules for any unused commissions.
+        /// </summary>
+        /// <value>Payout rules for any unused commissions.</value>
+        [DataMember(Name = "unused", EmitDefaultValue = false)]
+        public CommissionItem Unused { get; set; }
+
+        /// <summary>
+        /// Payout rules for Level 1 recipients of the commission.
+        /// </summary>
+        /// <value>Payout rules for Level 1 recipients of the commission.</value>
+        [DataMember(Name = "level_1", EmitDefaultValue = false)]
+        public CommissionItem Level1 { get; set; }
+
+        /// <summary>
+        /// Payout rules for Level 2 recipients of the commission.
+        /// </summary>
+        /// <value>Payout rules for Level 2 recipients of the commission.</value>
+        [DataMember(Name = "level_2", EmitDefaultValue = false)]
+        public CommissionItem Level2 { get; set; }
 
         /// <summary>
         /// Subscription name
@@ -58,16 +136,6 @@ namespace Keap.Core.V2.Model
         */
         [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
-
-        /// <summary>
-        /// Percentage commission
-        /// </summary>
-        /// <value>Percentage commission</value>
-        /*
-        <example>10</example>
-        */
-        [DataMember(Name = "percentage", EmitDefaultValue = false)]
-        public double Percentage { get; set; }
 
         /// <summary>
         /// Subscription ID
@@ -90,16 +158,6 @@ namespace Keap.Core.V2.Model
         public double PlanPrice { get; set; }
 
         /// <summary>
-        /// Fixed dollar commission
-        /// </summary>
-        /// <value>Fixed dollar commission</value>
-        /*
-        <example>5</example>
-        */
-        [DataMember(Name = "dollar_amount", EmitDefaultValue = false)]
-        public double DollarAmount { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -107,11 +165,15 @@ namespace Keap.Core.V2.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SubscriptionCommission {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  PayoutType: ").Append(PayoutType).Append("\n");
+            sb.Append("  DollarAmount: ").Append(DollarAmount).Append("\n");
             sb.Append("  Percentage: ").Append(Percentage).Append("\n");
+            sb.Append("  Unused: ").Append(Unused).Append("\n");
+            sb.Append("  Level1: ").Append(Level1).Append("\n");
+            sb.Append("  Level2: ").Append(Level2).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  SubscriptionId: ").Append(SubscriptionId).Append("\n");
             sb.Append("  PlanPrice: ").Append(PlanPrice).Append("\n");
-            sb.Append("  DollarAmount: ").Append(DollarAmount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

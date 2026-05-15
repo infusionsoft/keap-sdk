@@ -45,7 +45,8 @@ namespace Keap.Core.V2.Model
         /// <param name="type">A value for either &#x60;title&#x60; or &#x60;type&#x60; is required. The value may be one of &#x60;Appointment&#x60;, &#x60;Call&#x60;, &#x60;Email&#x60;, &#x60;Fax&#x60;, &#x60;Letter&#x60; or &#x60;Other&#x60; in Keap Max/Pro, or an admin-configured value in Classic..</param>
         /// <param name="userId">ID of user creating the note (required).</param>
         /// <param name="isPinned">Whether to pin this note.</param>
-        public CreateNoteRequest(string title = default, string text = default, string type = default, string userId = default, bool isPinned = default)
+        /// <param name="customFields">Custom field values for the note. An empty array resets all custom fields to their defaults..</param>
+        public CreateNoteRequest(string title = default, string text = default, string type = default, string userId = default, bool isPinned = default, List<CustomFieldValueObject> customFields = default)
         {
             // to ensure "userId" is required (not null)
             if (userId == null)
@@ -57,6 +58,7 @@ namespace Keap.Core.V2.Model
             this.Text = text;
             this.Type = type;
             this.IsPinned = isPinned;
+            this.CustomFields = customFields;
         }
 
         /// <summary>
@@ -110,6 +112,16 @@ namespace Keap.Core.V2.Model
         public bool IsPinned { get; set; }
 
         /// <summary>
+        /// Custom field values for the note. An empty array resets all custom fields to their defaults.
+        /// </summary>
+        /// <value>Custom field values for the note. An empty array resets all custom fields to their defaults.</value>
+        /*
+        <example>[{id&#x3D;1, content&#x3D;Red}]</example>
+        */
+        [DataMember(Name = "custom_fields", EmitDefaultValue = false)]
+        public List<CustomFieldValueObject> CustomFields { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -122,6 +134,7 @@ namespace Keap.Core.V2.Model
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  IsPinned: ").Append(IsPinned).Append("\n");
+            sb.Append("  CustomFields: ").Append(CustomFields).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

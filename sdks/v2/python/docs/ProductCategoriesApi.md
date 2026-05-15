@@ -88,6 +88,7 @@ void (empty response body)
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -167,6 +168,7 @@ void (empty response body)
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -248,6 +250,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -325,6 +328,7 @@ void (empty response body)
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -402,6 +406,7 @@ void (empty response body)
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -482,6 +487,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -521,7 +527,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ProductCategoriesApi(api_client)
-    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `product_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D29`  (optional)
+    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `product_id` - (String) `name` - Wildcard matching allowed - (Number) `product_category_id` - supports comparison operators: `==`,`!=`, `>`, `<`, `>=`, `<=`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  For the filters listed above, here are some examples: - `filter=product_id%3D%3D29` - `filter=name%3D%3DTestSearch` - `filter=name%3D%3DElec*` (starts with \"Elec\") - `filter=product_category_id>5` (category ID greater than 5) - `filter=product_category_id>=10` (category ID greater than or equal to 10) - `filter=product_category_id%3D%3D42` (category ID equals 42) - `filter=name%3D%3DElec*%3Bproduct_category_id>5` (multiple filters combined)  (optional)
     order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `id`  One of the following directions: - `asc` - `desc` (optional)
     page_size = 0 # int | Total number of items to return per page (optional)
     page_token = 'page_token_example' # str | Page token (optional)
@@ -541,7 +547,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D29&#x60;  | [optional] 
+ **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;name&#x60; - Wildcard matching allowed - (Number) &#x60;product_category_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;,&#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D29&#x60; - &#x60;filter&#x3D;name%3D%3DTestSearch&#x60; - &#x60;filter&#x3D;name%3D%3DElec*&#x60; (starts with \&quot;Elec\&quot;) - &#x60;filter&#x3D;product_category_id&gt;5&#x60; (category ID greater than 5) - &#x60;filter&#x3D;product_category_id&gt;&#x3D;10&#x60; (category ID greater than or equal to 10) - &#x60;filter&#x3D;product_category_id%3D%3D42&#x60; (category ID equals 42) - &#x60;filter&#x3D;name%3D%3DElec*%3Bproduct_category_id&gt;5&#x60; (multiple filters combined)  | [optional] 
  **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
  **page_token** | **str**| Page token | [optional] 
@@ -568,6 +574,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -653,6 +660,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |

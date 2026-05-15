@@ -147,7 +147,7 @@ class ProductDiscountsApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\ProductDiscount|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\ProductDiscount|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function createProductDiscount($create_product_discount_request, string $contentType = self::contentTypes['createProductDiscount'][0])
     {
@@ -165,7 +165,7 @@ class ProductDiscountsApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\ProductDiscount|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\ProductDiscount|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createProductDiscountWithHttpInfo($create_product_discount_request, string $contentType = self::contentTypes['createProductDiscount'][0])
     {
@@ -220,6 +220,12 @@ class ProductDiscountsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -300,6 +306,14 @@ class ProductDiscountsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',
@@ -597,6 +611,14 @@ class ProductDiscountsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -794,7 +816,7 @@ class ProductDiscountsApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\ProductDiscount|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\ProductDiscount|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function getProductDiscount($discount_id, string $contentType = self::contentTypes['getProductDiscount'][0])
     {
@@ -812,7 +834,7 @@ class ProductDiscountsApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\ProductDiscount|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\ProductDiscount|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getProductDiscountWithHttpInfo($discount_id, string $contentType = self::contentTypes['getProductDiscount'][0])
     {
@@ -867,6 +889,12 @@ class ProductDiscountsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -947,6 +975,14 @@ class ProductDiscountsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',
@@ -1167,7 +1203,7 @@ class ProductDiscountsApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\ListProductDiscountsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\ListProductDiscountsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function listProductDiscounts($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listProductDiscounts'][0])
     {
@@ -1188,7 +1224,7 @@ class ProductDiscountsApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\ListProductDiscountsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\ListProductDiscountsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function listProductDiscountsWithHttpInfo($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listProductDiscounts'][0])
     {
@@ -1243,6 +1279,12 @@ class ProductDiscountsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -1323,6 +1365,14 @@ class ProductDiscountsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',
@@ -1582,7 +1632,7 @@ class ProductDiscountsApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\ProductDiscount|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\ProductDiscount|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function updateProductDiscount($discount_id, $update_product_discount_request, $update_mask = null, string $contentType = self::contentTypes['updateProductDiscount'][0])
     {
@@ -1602,7 +1652,7 @@ class ProductDiscountsApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\ProductDiscount|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\ProductDiscount|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateProductDiscountWithHttpInfo($discount_id, $update_product_discount_request, $update_mask = null, string $contentType = self::contentTypes['updateProductDiscount'][0])
     {
@@ -1657,6 +1707,12 @@ class ProductDiscountsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -1737,6 +1793,14 @@ class ProductDiscountsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',

@@ -168,7 +168,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\RestV2Opportunity|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\RestV2Opportunity|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function createOpportunity($create_opportunity_request, string $contentType = self::contentTypes['createOpportunity'][0])
     {
@@ -186,7 +186,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\RestV2Opportunity|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\RestV2Opportunity|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createOpportunityWithHttpInfo($create_opportunity_request, string $contentType = self::contentTypes['createOpportunity'][0])
     {
@@ -241,6 +241,12 @@ class OpportunityApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -321,6 +327,14 @@ class OpportunityApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',
@@ -537,7 +551,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\CustomFieldMetaData|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\CustomFieldMetaData|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function createOpportunityCustomFields($create_custom_field_request, string $contentType = self::contentTypes['createOpportunityCustomFields'][0])
     {
@@ -555,7 +569,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\CustomFieldMetaData|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\CustomFieldMetaData|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createOpportunityCustomFieldsWithHttpInfo($create_custom_field_request, string $contentType = self::contentTypes['createOpportunityCustomFields'][0])
     {
@@ -610,6 +624,12 @@ class OpportunityApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -690,6 +710,14 @@ class OpportunityApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',
@@ -906,7 +934,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\RestOpportunityStage|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\RestOpportunityStage|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function createOpportunityStage($create_opportunity_stage_request, string $contentType = self::contentTypes['createOpportunityStage'][0])
     {
@@ -924,7 +952,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\RestOpportunityStage|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\RestOpportunityStage|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createOpportunityStageWithHttpInfo($create_opportunity_stage_request, string $contentType = self::contentTypes['createOpportunityStage'][0])
     {
@@ -979,6 +1007,12 @@ class OpportunityApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -1059,6 +1093,14 @@ class OpportunityApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',
@@ -1356,6 +1398,14 @@ class OpportunityApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1634,6 +1684,14 @@ class OpportunityApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1831,7 +1889,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\RestV2Opportunity|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\RestV2Opportunity|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function getOpportunity($opportunity_id, string $contentType = self::contentTypes['getOpportunity'][0])
     {
@@ -1849,7 +1907,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\RestV2Opportunity|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\RestV2Opportunity|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOpportunityWithHttpInfo($opportunity_id, string $contentType = self::contentTypes['getOpportunity'][0])
     {
@@ -1904,6 +1962,12 @@ class OpportunityApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -1984,6 +2048,14 @@ class OpportunityApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',
@@ -2201,7 +2273,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\RestOpportunityStage|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\RestOpportunityStage|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function getOpportunityStage($stage_id, string $contentType = self::contentTypes['getOpportunityStage'][0])
     {
@@ -2219,7 +2291,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\RestOpportunityStage|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\RestOpportunityStage|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOpportunityStageWithHttpInfo($stage_id, string $contentType = self::contentTypes['getOpportunityStage'][0])
     {
@@ -2274,6 +2346,12 @@ class OpportunityApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -2354,6 +2432,14 @@ class OpportunityApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',
@@ -2575,7 +2661,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\ListOpportunitiesResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\ListOpportunitiesResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function listOpportunities($fields = null, $filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listOpportunities'][0])
     {
@@ -2597,7 +2683,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\ListOpportunitiesResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\ListOpportunitiesResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function listOpportunitiesWithHttpInfo($fields = null, $filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listOpportunities'][0])
     {
@@ -2652,6 +2738,12 @@ class OpportunityApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -2732,6 +2824,14 @@ class OpportunityApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',
@@ -3005,7 +3105,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\ListOpportunityStagesResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\ListOpportunityStagesResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function listOpportunityStages($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listOpportunityStages'][0])
     {
@@ -3026,7 +3126,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\ListOpportunityStagesResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\ListOpportunityStagesResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function listOpportunityStagesWithHttpInfo($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listOpportunityStages'][0])
     {
@@ -3081,6 +3181,12 @@ class OpportunityApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -3161,6 +3267,14 @@ class OpportunityApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',
@@ -3420,7 +3534,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\RestV2Opportunity|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\RestV2Opportunity|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function updateOpportunity($opportunity_id, $update_opportunity_request_v2, $update_mask = null, string $contentType = self::contentTypes['updateOpportunity'][0])
     {
@@ -3440,7 +3554,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\RestV2Opportunity|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\RestV2Opportunity|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateOpportunityWithHttpInfo($opportunity_id, $update_opportunity_request_v2, $update_mask = null, string $contentType = self::contentTypes['updateOpportunity'][0])
     {
@@ -3495,6 +3609,12 @@ class OpportunityApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -3575,6 +3695,14 @@ class OpportunityApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',
@@ -3824,7 +3952,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\CustomFieldMetaData|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\CustomFieldMetaData|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function updateOpportunityCustomField($custom_field_id, $update_custom_field_meta_data_request, $update_mask = null, string $contentType = self::contentTypes['updateOpportunityCustomField'][0])
     {
@@ -3844,7 +3972,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\CustomFieldMetaData|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\CustomFieldMetaData|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateOpportunityCustomFieldWithHttpInfo($custom_field_id, $update_custom_field_meta_data_request, $update_mask = null, string $contentType = self::contentTypes['updateOpportunityCustomField'][0])
     {
@@ -3899,6 +4027,12 @@ class OpportunityApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -3979,6 +4113,14 @@ class OpportunityApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',
@@ -4228,7 +4370,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\RestOpportunityStage|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\RestOpportunityStage|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function updateOpportunityStage($stage_id, $update_opportunity_stage_request, $update_mask = null, string $contentType = self::contentTypes['updateOpportunityStage'][0])
     {
@@ -4248,7 +4390,7 @@ class OpportunityApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\RestOpportunityStage|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\RestOpportunityStage|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateOpportunityStageWithHttpInfo($stage_id, $update_opportunity_stage_request, $update_mask = null, string $contentType = self::contentTypes['updateOpportunityStage'][0])
     {
@@ -4303,6 +4445,12 @@ class OpportunityApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -4383,6 +4531,14 @@ class OpportunityApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',

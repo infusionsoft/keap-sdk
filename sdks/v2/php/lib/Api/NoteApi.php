@@ -156,15 +156,16 @@ class NoteApi
      *
      * @param  string $contact_id contact_id (required)
      * @param  \Keap\Core\V2\Model\CreateNoteRequest $create_note_request create_note_request (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createNote'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\Note|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\Note|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
-    public function createNote($contact_id, $create_note_request, string $contentType = self::contentTypes['createNote'][0])
+    public function createNote($contact_id, $create_note_request, $fields = null, string $contentType = self::contentTypes['createNote'][0])
     {
-        list($response) = $this->createNoteWithHttpInfo($contact_id, $create_note_request, $contentType);
+        list($response) = $this->createNoteWithHttpInfo($contact_id, $create_note_request, $fields, $contentType);
         return $response;
     }
 
@@ -175,15 +176,16 @@ class NoteApi
      *
      * @param  string $contact_id (required)
      * @param  \Keap\Core\V2\Model\CreateNoteRequest $create_note_request (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createNote'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\Note|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\Note|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createNoteWithHttpInfo($contact_id, $create_note_request, string $contentType = self::contentTypes['createNote'][0])
+    public function createNoteWithHttpInfo($contact_id, $create_note_request, $fields = null, string $contentType = self::contentTypes['createNote'][0])
     {
-        $request = $this->createNoteRequest($contact_id, $create_note_request, $contentType);
+        $request = $this->createNoteRequest($contact_id, $create_note_request, $fields, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -234,6 +236,12 @@ class NoteApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -321,6 +329,14 @@ class NoteApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -359,14 +375,15 @@ class NoteApi
      *
      * @param  string $contact_id (required)
      * @param  \Keap\Core\V2\Model\CreateNoteRequest $create_note_request (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createNote'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createNoteAsync($contact_id, $create_note_request, string $contentType = self::contentTypes['createNote'][0])
+    public function createNoteAsync($contact_id, $create_note_request, $fields = null, string $contentType = self::contentTypes['createNote'][0])
     {
-        return $this->createNoteAsyncWithHttpInfo($contact_id, $create_note_request, $contentType)
+        return $this->createNoteAsyncWithHttpInfo($contact_id, $create_note_request, $fields, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -381,15 +398,16 @@ class NoteApi
      *
      * @param  string $contact_id (required)
      * @param  \Keap\Core\V2\Model\CreateNoteRequest $create_note_request (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createNote'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createNoteAsyncWithHttpInfo($contact_id, $create_note_request, string $contentType = self::contentTypes['createNote'][0])
+    public function createNoteAsyncWithHttpInfo($contact_id, $create_note_request, $fields = null, string $contentType = self::contentTypes['createNote'][0])
     {
         $returnType = '\Keap\Core\V2\Model\Note';
-        $request = $this->createNoteRequest($contact_id, $create_note_request, $contentType);
+        $request = $this->createNoteRequest($contact_id, $create_note_request, $fields, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -432,12 +450,13 @@ class NoteApi
      *
      * @param  string $contact_id (required)
      * @param  \Keap\Core\V2\Model\CreateNoteRequest $create_note_request (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createNote'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createNoteRequest($contact_id, $create_note_request, string $contentType = self::contentTypes['createNote'][0])
+    public function createNoteRequest($contact_id, $create_note_request, $fields = null, string $contentType = self::contentTypes['createNote'][0])
     {
 
         // verify the required parameter 'contact_id' is set
@@ -455,6 +474,7 @@ class NoteApi
         }
 
 
+
         $resourcePath = '/rest/v2/contacts/{contact_id}/notes';
         $formParams = [];
         $queryParams = [];
@@ -462,6 +482,15 @@ class NoteApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
@@ -548,7 +577,7 @@ class NoteApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\CustomFieldMetaData|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\CustomFieldMetaData|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function createNoteCustomField($create_custom_field_request, string $contentType = self::contentTypes['createNoteCustomField'][0])
     {
@@ -566,7 +595,7 @@ class NoteApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\CustomFieldMetaData|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\CustomFieldMetaData|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createNoteCustomFieldWithHttpInfo($create_custom_field_request, string $contentType = self::contentTypes['createNoteCustomField'][0])
     {
@@ -621,6 +650,12 @@ class NoteApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -701,6 +736,14 @@ class NoteApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',
@@ -1000,6 +1043,14 @@ class NoteApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1217,7 +1268,7 @@ class NoteApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\GetNoteResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\GetNoteResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function getNote($contact_id, $note_id, $fields = null, string $contentType = self::contentTypes['getNote'][0])
     {
@@ -1237,7 +1288,7 @@ class NoteApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\GetNoteResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\GetNoteResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getNoteWithHttpInfo($contact_id, $note_id, $fields = null, string $contentType = self::contentTypes['getNote'][0])
     {
@@ -1292,6 +1343,12 @@ class NoteApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -1372,6 +1429,14 @@ class NoteApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',
@@ -1623,7 +1688,7 @@ class NoteApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\ListNoteTemplateResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\ListNoteTemplateResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function listNoteTemplates($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listNoteTemplates'][0])
     {
@@ -1644,7 +1709,7 @@ class NoteApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\ListNoteTemplateResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\ListNoteTemplateResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function listNoteTemplatesWithHttpInfo($filter = null, $order_by = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['listNoteTemplates'][0])
     {
@@ -1699,6 +1764,12 @@ class NoteApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -1779,6 +1850,14 @@ class NoteApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',
@@ -2041,7 +2120,7 @@ class NoteApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\ListNotesResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\ListNotesResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function listNotes($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, $fields = null, string $contentType = self::contentTypes['listNotes'][0])
     {
@@ -2064,7 +2143,7 @@ class NoteApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\ListNotesResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\ListNotesResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function listNotesWithHttpInfo($contact_id, $filter = null, $order_by = null, $page_size = null, $page_token = null, $fields = null, string $contentType = self::contentTypes['listNotes'][0])
     {
@@ -2119,6 +2198,12 @@ class NoteApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -2199,6 +2284,14 @@ class NoteApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',
@@ -2486,7 +2579,7 @@ class NoteApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\ObjectModel|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\ObjectModel|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function retrieveNoteModel(string $contentType = self::contentTypes['retrieveNoteModel'][0])
     {
@@ -2503,7 +2596,7 @@ class NoteApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\ObjectModel|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\ObjectModel|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function retrieveNoteModelWithHttpInfo(string $contentType = self::contentTypes['retrieveNoteModel'][0])
     {
@@ -2558,6 +2651,12 @@ class NoteApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -2638,6 +2737,14 @@ class NoteApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',
@@ -2836,15 +2943,16 @@ class NoteApi
      * @param  string $note_id note_id (required)
      * @param  \Keap\Core\V2\Model\UpdateNoteRequest $update_note_request update_note_request (required)
      * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNote'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\UpdateNoteResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\UpdateNoteResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
-    public function updateNote($contact_id, $note_id, $update_note_request, $update_mask = null, string $contentType = self::contentTypes['updateNote'][0])
+    public function updateNote($contact_id, $note_id, $update_note_request, $update_mask = null, $fields = null, string $contentType = self::contentTypes['updateNote'][0])
     {
-        list($response) = $this->updateNoteWithHttpInfo($contact_id, $note_id, $update_note_request, $update_mask, $contentType);
+        list($response) = $this->updateNoteWithHttpInfo($contact_id, $note_id, $update_note_request, $update_mask, $fields, $contentType);
         return $response;
     }
 
@@ -2857,15 +2965,16 @@ class NoteApi
      * @param  string $note_id (required)
      * @param  \Keap\Core\V2\Model\UpdateNoteRequest $update_note_request (required)
      * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNote'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\UpdateNoteResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\UpdateNoteResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateNoteWithHttpInfo($contact_id, $note_id, $update_note_request, $update_mask = null, string $contentType = self::contentTypes['updateNote'][0])
+    public function updateNoteWithHttpInfo($contact_id, $note_id, $update_note_request, $update_mask = null, $fields = null, string $contentType = self::contentTypes['updateNote'][0])
     {
-        $request = $this->updateNoteRequest($contact_id, $note_id, $update_note_request, $update_mask, $contentType);
+        $request = $this->updateNoteRequest($contact_id, $note_id, $update_note_request, $update_mask, $fields, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2916,6 +3025,12 @@ class NoteApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -3003,6 +3118,14 @@ class NoteApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3043,14 +3166,15 @@ class NoteApi
      * @param  string $note_id (required)
      * @param  \Keap\Core\V2\Model\UpdateNoteRequest $update_note_request (required)
      * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNote'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateNoteAsync($contact_id, $note_id, $update_note_request, $update_mask = null, string $contentType = self::contentTypes['updateNote'][0])
+    public function updateNoteAsync($contact_id, $note_id, $update_note_request, $update_mask = null, $fields = null, string $contentType = self::contentTypes['updateNote'][0])
     {
-        return $this->updateNoteAsyncWithHttpInfo($contact_id, $note_id, $update_note_request, $update_mask, $contentType)
+        return $this->updateNoteAsyncWithHttpInfo($contact_id, $note_id, $update_note_request, $update_mask, $fields, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3067,15 +3191,16 @@ class NoteApi
      * @param  string $note_id (required)
      * @param  \Keap\Core\V2\Model\UpdateNoteRequest $update_note_request (required)
      * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNote'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateNoteAsyncWithHttpInfo($contact_id, $note_id, $update_note_request, $update_mask = null, string $contentType = self::contentTypes['updateNote'][0])
+    public function updateNoteAsyncWithHttpInfo($contact_id, $note_id, $update_note_request, $update_mask = null, $fields = null, string $contentType = self::contentTypes['updateNote'][0])
     {
         $returnType = '\Keap\Core\V2\Model\UpdateNoteResponse';
-        $request = $this->updateNoteRequest($contact_id, $note_id, $update_note_request, $update_mask, $contentType);
+        $request = $this->updateNoteRequest($contact_id, $note_id, $update_note_request, $update_mask, $fields, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3120,12 +3245,13 @@ class NoteApi
      * @param  string $note_id (required)
      * @param  \Keap\Core\V2\Model\UpdateNoteRequest $update_note_request (required)
      * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNote'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateNoteRequest($contact_id, $note_id, $update_note_request, $update_mask = null, string $contentType = self::contentTypes['updateNote'][0])
+    public function updateNoteRequest($contact_id, $note_id, $update_note_request, $update_mask = null, $fields = null, string $contentType = self::contentTypes['updateNote'][0])
     {
 
         // verify the required parameter 'contact_id' is set
@@ -3151,6 +3277,7 @@ class NoteApi
 
 
 
+
         $resourcePath = '/rest/v2/contacts/{contact_id}/notes/{note_id}';
         $formParams = [];
         $queryParams = [];
@@ -3165,6 +3292,15 @@ class NoteApi
             'mixed', // openApiType
             'form', // style
             true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
             false // required
         ) ?? []);
 
@@ -3263,7 +3399,7 @@ class NoteApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Keap\Core\V2\Model\CustomFieldMetaData|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     * @return \Keap\Core\V2\Model\CustomFieldMetaData|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
     public function updateNotesCustomField($custom_field_id, $update_custom_field_meta_data_request, $update_mask = null, string $contentType = self::contentTypes['updateNotesCustomField'][0])
     {
@@ -3283,7 +3419,7 @@ class NoteApi
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Keap\Core\V2\Model\CustomFieldMetaData|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Keap\Core\V2\Model\CustomFieldMetaData|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateNotesCustomFieldWithHttpInfo($custom_field_id, $update_custom_field_meta_data_request, $update_mask = null, string $contentType = self::contentTypes['updateNotesCustomField'][0])
     {
@@ -3338,6 +3474,12 @@ class NoteApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Error',
                         $request,
@@ -3418,6 +3560,14 @@ class NoteApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Error',

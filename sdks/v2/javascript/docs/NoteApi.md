@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## createNote
 
-> Note createNote(contactId, createNoteRequest)
+> Note createNote(contactId, createNoteRequest, opts)
 
 Create a Note
 
@@ -36,7 +36,10 @@ oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new KeapCoreServiceV2Sdk.NoteApi();
 let contactId = "contactId_example"; // String | 
 let createNoteRequest = new KeapCoreServiceV2Sdk.CreateNoteRequest(); // CreateNoteRequest | 
-apiInstance.createNote(contactId, createNoteRequest).then((data) => {
+let opts = {
+  'fields': ["null"] // [String] | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+};
+apiInstance.createNote(contactId, createNoteRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -51,6 +54,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contactId** | **String**|  | 
  **createNoteRequest** | [**CreateNoteRequest**](CreateNoteRequest.md)|  | 
+ **fields** | [**[String]**](String.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] 
 
 ### Return type
 
@@ -400,7 +404,8 @@ let contactId = "contactId_example"; // String |
 let noteId = "noteId_example"; // String | 
 let updateNoteRequest = new KeapCoreServiceV2Sdk.UpdateNoteRequest(); // UpdateNoteRequest | 
 let opts = {
-  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': null, // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'fields': ["null"] // [String] | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
 };
 apiInstance.updateNote(contactId, noteId, updateNoteRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -419,6 +424,7 @@ Name | Type | Description  | Notes
  **noteId** | **String**|  | 
  **updateNoteRequest** | [**UpdateNoteRequest**](UpdateNoteRequest.md)|  | 
  **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **fields** | [**[String]**](String.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] 
 
 ### Return type
 

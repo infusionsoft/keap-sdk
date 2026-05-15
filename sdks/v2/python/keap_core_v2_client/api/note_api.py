@@ -54,6 +54,7 @@ class NoteApi:
         self,
         contact_id: StrictStr,
         create_note_request: CreateNoteRequest,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -75,6 +76,8 @@ class NoteApi:
         :type contact_id: str
         :param create_note_request: (required)
         :type create_note_request: CreateNoteRequest
+        :param fields: Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -100,6 +103,7 @@ class NoteApi:
         _param = self._create_note_serialize(
             contact_id=contact_id,
             create_note_request=create_note_request,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -112,6 +116,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -132,6 +137,7 @@ class NoteApi:
         self,
         contact_id: StrictStr,
         create_note_request: CreateNoteRequest,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -153,6 +159,8 @@ class NoteApi:
         :type contact_id: str
         :param create_note_request: (required)
         :type create_note_request: CreateNoteRequest
+        :param fields: Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -178,6 +186,7 @@ class NoteApi:
         _param = self._create_note_serialize(
             contact_id=contact_id,
             create_note_request=create_note_request,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -190,6 +199,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -210,6 +220,7 @@ class NoteApi:
         self,
         contact_id: StrictStr,
         create_note_request: CreateNoteRequest,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -231,6 +242,8 @@ class NoteApi:
         :type contact_id: str
         :param create_note_request: (required)
         :type create_note_request: CreateNoteRequest
+        :param fields: Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -256,6 +269,7 @@ class NoteApi:
         _param = self._create_note_serialize(
             contact_id=contact_id,
             create_note_request=create_note_request,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -268,6 +282,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -283,6 +298,7 @@ class NoteApi:
         self,
         contact_id,
         create_note_request,
+        fields,
         _request_auth,
         _content_type,
         _headers,
@@ -292,6 +308,7 @@ class NoteApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'fields': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -307,6 +324,10 @@ class NoteApi:
         if contact_id is not None:
             _path_params['contact_id'] = contact_id
         # process the query parameters
+        if fields is not None:
+            
+            _query_params.append(('fields', fields))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -418,6 +439,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -492,6 +514,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -566,6 +589,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -717,6 +741,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -795,6 +820,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -873,6 +899,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1018,6 +1045,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1100,6 +1128,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1182,6 +1211,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1337,6 +1367,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1423,6 +1454,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1509,6 +1541,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1680,6 +1713,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1774,6 +1808,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1868,6 +1903,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2024,6 +2060,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2094,6 +2131,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2164,6 +2202,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2243,6 +2282,7 @@ class NoteApi:
         note_id: StrictStr,
         update_note_request: UpdateNoteRequest,
         update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2268,6 +2308,8 @@ class NoteApi:
         :type update_note_request: UpdateNoteRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         :type update_mask: object
+        :param fields: Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2295,6 +2337,7 @@ class NoteApi:
             note_id=note_id,
             update_note_request=update_note_request,
             update_mask=update_mask,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2307,6 +2350,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2329,6 +2373,7 @@ class NoteApi:
         note_id: StrictStr,
         update_note_request: UpdateNoteRequest,
         update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2354,6 +2399,8 @@ class NoteApi:
         :type update_note_request: UpdateNoteRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         :type update_mask: object
+        :param fields: Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2381,6 +2428,7 @@ class NoteApi:
             note_id=note_id,
             update_note_request=update_note_request,
             update_mask=update_mask,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2393,6 +2441,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2415,6 +2464,7 @@ class NoteApi:
         note_id: StrictStr,
         update_note_request: UpdateNoteRequest,
         update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2440,6 +2490,8 @@ class NoteApi:
         :type update_note_request: UpdateNoteRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         :type update_mask: object
+        :param fields: Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2467,6 +2519,7 @@ class NoteApi:
             note_id=note_id,
             update_note_request=update_note_request,
             update_mask=update_mask,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2479,6 +2532,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2496,6 +2550,7 @@ class NoteApi:
         note_id,
         update_note_request,
         update_mask,
+        fields,
         _request_auth,
         _content_type,
         _headers,
@@ -2505,6 +2560,7 @@ class NoteApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'fields': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2525,6 +2581,10 @@ class NoteApi:
         if update_mask is not None:
             
             _query_params.append(('update_mask', update_mask))
+            
+        if fields is not None:
+            
+            _query_params.append(('fields', fields))
             
         # process the header parameters
         # process the form parameters
@@ -2645,6 +2705,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2727,6 +2788,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2809,6 +2871,7 @@ class NoteApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",

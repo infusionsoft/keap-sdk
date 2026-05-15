@@ -21,8 +21,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.keap.core.sdk.model.CustomFieldValueObject;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.validation.constraints.*;
@@ -38,6 +41,7 @@ import jakarta.validation.Valid;
   UpdateNoteRequest.JSON_PROPERTY_TYPE,
   UpdateNoteRequest.JSON_PROPERTY_USER_ID,
   UpdateNoteRequest.JSON_PROPERTY_IS_PINNED,
+  UpdateNoteRequest.JSON_PROPERTY_CUSTOM_FIELDS,
   UpdateNoteRequest.JSON_PROPERTY_CONTACT_ID
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
@@ -58,6 +62,9 @@ public class UpdateNoteRequest implements Serializable {
 
   public static final String JSON_PROPERTY_IS_PINNED = "is_pinned";
   @jakarta.annotation.Nullable  private Boolean isPinned;
+
+  public static final String JSON_PROPERTY_CUSTOM_FIELDS = "custom_fields";
+  @jakarta.annotation.Nullable  private List<@Valid CustomFieldValueObject> customFields = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CONTACT_ID = "contact_id";
   @jakarta.annotation.Nullable  private String contactId;
@@ -186,6 +193,39 @@ public class UpdateNoteRequest implements Serializable {
   }
 
 
+  public UpdateNoteRequest customFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValueObject> customFields) {
+    this.customFields = customFields;
+    return this;
+  }
+
+  public UpdateNoteRequest addCustomFieldsItem(CustomFieldValueObject customFieldsItem) {
+    if (this.customFields == null) {
+      this.customFields = new ArrayList<>();
+    }
+    this.customFields.add(customFieldsItem);
+    return this;
+  }
+
+  /**
+   * Custom field values for the note. An empty array resets all custom fields to their defaults.
+   * @return customFields
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "[{id=1, content=Red}]", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Custom field values for the note. An empty array resets all custom fields to their defaults.")
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<@Valid CustomFieldValueObject> getCustomFields() {
+    return customFields;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValueObject> customFields) {
+    this.customFields = customFields;
+  }
+
+
   public UpdateNoteRequest contactId(@jakarta.annotation.Nullable String contactId) {
     this.contactId = contactId;
     return this;
@@ -226,12 +266,13 @@ public class UpdateNoteRequest implements Serializable {
         Objects.equals(this.type, updateNoteRequest.type) &&
         Objects.equals(this.userId, updateNoteRequest.userId) &&
         Objects.equals(this.isPinned, updateNoteRequest.isPinned) &&
+        Objects.equals(this.customFields, updateNoteRequest.customFields) &&
         Objects.equals(this.contactId, updateNoteRequest.contactId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, text, type, userId, isPinned, contactId);
+    return Objects.hash(title, text, type, userId, isPinned, customFields, contactId);
   }
 
   @Override
@@ -243,6 +284,7 @@ public class UpdateNoteRequest implements Serializable {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    isPinned: ").append(toIndentedString(isPinned)).append("\n");
+    sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
     sb.append("    contactId: ").append(toIndentedString(contactId)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -291,6 +333,10 @@ public class UpdateNoteRequest implements Serializable {
               this.instance.isPinned = isPinned;
           return this;
         }
+            public UpdateNoteRequest.Builder customFields(List<CustomFieldValueObject> customFields) {
+              this.instance.customFields = customFields;
+          return this;
+        }
             public UpdateNoteRequest.Builder contactId(String contactId) {
               this.instance.contactId = contactId;
           return this;
@@ -334,6 +380,7 @@ public class UpdateNoteRequest implements Serializable {
           .type(getType())
           .userId(getUserId())
           .isPinned(getIsPinned())
+          .customFields(getCustomFields())
           .contactId(getContactId());
       }
 }

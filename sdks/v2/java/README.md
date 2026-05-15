@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.9</version>
+  <version>2.0.10</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.9"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.10"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.9.jar`
+- `target/core-service-v2-java-sdk-2.0.10.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -746,6 +746,8 @@ Class | Method | HTTP request | Description
  - [CategoryReference](docs/CategoryReference.md)
  - [CheckListItemDetails](docs/CheckListItemDetails.md)
  - [ChecklistItem](docs/ChecklistItem.md)
+ - [CommissionItem](docs/CommissionItem.md)
+ - [CommissionItemRequest](docs/CommissionItemRequest.md)
  - [Company](docs/Company.md)
  - [Contact](docs/Contact.md)
  - [ContactLink](docs/ContactLink.md)
@@ -935,7 +937,6 @@ Class | Method | HTTP request | Description
  - [PhoneNumber](docs/PhoneNumber.md)
  - [ProductCategory](docs/ProductCategory.md)
  - [ProductCommission](docs/ProductCommission.md)
- - [ProductCommissionProgram](docs/ProductCommissionProgram.md)
  - [ProductDiscount](docs/ProductDiscount.md)
  - [ProductFixedOptionDetail](docs/ProductFixedOptionDetail.md)
  - [ProductFixedOptionList](docs/ProductFixedOptionList.md)
@@ -970,7 +971,6 @@ Class | Method | HTTP request | Description
  - [RunReportRequest](docs/RunReportRequest.md)
  - [Sequence](docs/Sequence.md)
  - [SequencePath](docs/SequencePath.md)
- - [SetDefaultCommissionProgramResponse](docs/SetDefaultCommissionProgramResponse.md)
  - [ShippingDiscount](docs/ShippingDiscount.md)
  - [ShippingInformation](docs/ShippingInformation.md)
  - [ShippingMethod](docs/ShippingMethod.md)
@@ -978,7 +978,6 @@ Class | Method | HTTP request | Description
  - [StageDetails](docs/StageDetails.md)
  - [Subscription](docs/Subscription.md)
  - [SubscriptionCommission](docs/SubscriptionCommission.md)
- - [SubscriptionCommissionProgram](docs/SubscriptionCommissionProgram.md)
  - [SubscriptionPlan](docs/SubscriptionPlan.md)
  - [SubscriptionPlanDetail](docs/SubscriptionPlanDetail.md)
  - [SubscriptionPlanList](docs/SubscriptionPlanList.md)

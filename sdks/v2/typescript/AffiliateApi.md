@@ -111,6 +111,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -176,6 +177,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -240,6 +242,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -247,7 +250,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **assignProductCommissionProgram**
-> ProductCommissionProgram assignProductCommissionProgram(createProductCommissionProgramRequest)
+> GetRestCommissionProgram assignProductCommissionProgram(createProductCommissionProgramRequest)
 
 Assigns a Product Commission Program to a Product
 
@@ -267,7 +270,26 @@ const request: AffiliateApiAssignProductCommissionProgramRequest = {
   
   createProductCommissionProgramRequest: {
     percentage: "10.5",
+    unused: {
+      salePercent: "10.5",
+      saleAmount: "25",
+      leadPercent: "10.5",
+      leadAmount: "25",
+    },
     dollarAmount: "25",
+    level1: {
+      salePercent: "10.5",
+      saleAmount: "25",
+      leadPercent: "10.5",
+      leadAmount: "25",
+    },
+    level2: {
+      salePercent: "10.5",
+      saleAmount: "25",
+      leadPercent: "10.5",
+      leadAmount: "25",
+    },
+    payoutType: "UPFRONT",
     productId: "123",
   },
 };
@@ -287,7 +309,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**ProductCommissionProgram**
+**GetRestCommissionProgram**
 
 ### Authorization
 
@@ -307,6 +329,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -314,7 +337,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **assignSubscriptionCommissionProgram**
-> SubscriptionCommissionProgram assignSubscriptionCommissionProgram(createSubscriptionCommissionProgramRequest)
+> GetRestCommissionProgram assignSubscriptionCommissionProgram(createSubscriptionCommissionProgramRequest)
 
 Assigns a Subscription Commission Program to a Subscription
 
@@ -334,7 +357,26 @@ const request: AffiliateApiAssignSubscriptionCommissionProgramRequest = {
   
   createSubscriptionCommissionProgramRequest: {
     percentage: "10.5",
+    unused: {
+      salePercent: "10.5",
+      saleAmount: "25",
+      leadPercent: "10.5",
+      leadAmount: "25",
+    },
     dollarAmount: "25",
+    level1: {
+      salePercent: "10.5",
+      saleAmount: "25",
+      leadPercent: "10.5",
+      leadAmount: "25",
+    },
+    level2: {
+      salePercent: "10.5",
+      saleAmount: "25",
+      leadPercent: "10.5",
+      leadAmount: "25",
+    },
+    payoutType: "UPFRONT",
     subscriptionId: "456",
   },
 };
@@ -354,7 +396,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**SubscriptionCommissionProgram**
+**GetRestCommissionProgram**
 
 ### Authorization
 
@@ -374,6 +416,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -444,6 +487,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -451,7 +495,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **createDefaultCommissionProgram**
-> SetDefaultCommissionProgramResponse createDefaultCommissionProgram(createDefaultCommissionProgramRequest)
+> GetRestCommissionProgram createDefaultCommissionProgram(createDefaultCommissionProgramRequest)
 
 Creates a Default Commission Program
 
@@ -471,7 +515,26 @@ const request: AffiliateApiCreateDefaultCommissionProgramRequest = {
   
   createDefaultCommissionProgramRequest: {
     percentage: "10.5",
+    unused: {
+      salePercent: "10.5",
+      saleAmount: "25",
+      leadPercent: "10.5",
+      leadAmount: "25",
+    },
     dollarAmount: "25",
+    level1: {
+      salePercent: "10.5",
+      saleAmount: "25",
+      leadPercent: "10.5",
+      leadAmount: "25",
+    },
+    level2: {
+      salePercent: "10.5",
+      saleAmount: "25",
+      leadPercent: "10.5",
+      leadAmount: "25",
+    },
+    payoutType: "UPFRONT",
   },
 };
 
@@ -490,7 +553,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**SetDefaultCommissionProgramResponse**
+**GetRestCommissionProgram**
 
 ### Authorization
 
@@ -510,6 +573,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -576,6 +640,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -636,6 +701,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -696,6 +762,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -756,6 +823,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -816,6 +884,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -876,6 +945,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -936,6 +1006,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1008,6 +1079,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1061,6 +1133,7 @@ This endpoint does not need any parameter.
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1121,6 +1194,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1181,6 +1255,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1241,6 +1316,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1310,6 +1386,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1379,6 +1456,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1448,6 +1526,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1520,6 +1599,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1580,6 +1660,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1649,6 +1730,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1714,6 +1796,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1779,6 +1862,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1845,6 +1929,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1927,6 +2012,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -2002,6 +2088,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -2072,6 +2159,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -2079,7 +2167,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateDefaultCommissionProgram**
-> SetDefaultCommissionProgramResponse updateDefaultCommissionProgram(updateDefaultCommissionProgramRequest)
+> GetRestCommissionProgram updateDefaultCommissionProgram(updateDefaultCommissionProgramRequest)
 
 Updates a Default Commission Program
 
@@ -2099,12 +2187,29 @@ const request: AffiliateApiUpdateDefaultCommissionProgramRequest = {
   
   updateDefaultCommissionProgramRequest: {
     percentage: "10.5",
+    unused: {
+      salePercent: "10.5",
+      saleAmount: "25",
+      leadPercent: "10.5",
+      leadAmount: "25",
+    },
     dollarAmount: "25",
+    level1: {
+      salePercent: "10.5",
+      saleAmount: "25",
+      leadPercent: "10.5",
+      leadAmount: "25",
+    },
+    level2: {
+      salePercent: "10.5",
+      saleAmount: "25",
+      leadPercent: "10.5",
+      leadAmount: "25",
+    },
+    payoutType: "UPFRONT",
   },
-  
-  updateMask: [
-    "update_mask_example",
-  ],
+    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+  updateMask: null,
 };
 
 const data = await apiInstance.updateDefaultCommissionProgram(request);
@@ -2118,12 +2223,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateDefaultCommissionProgramRequest** | **UpdateDefaultCommissionProgramRequest**|  |
  **commissionProgramId** | [**string**] |  | defaults to undefined
- **updateMask** | **Set&lt;string&gt;** |  | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
 
-**SetDefaultCommissionProgramResponse**
+**GetRestCommissionProgram**
 
 ### Authorization
 
@@ -2143,6 +2248,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -2150,7 +2256,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateProductCommissionProgram**
-> ProductCommissionProgram updateProductCommissionProgram(updateProductCommissionProgramRequest)
+> GetRestCommissionProgram updateProductCommissionProgram(updateProductCommissionProgramRequest)
 
 Updates a Product Commission Program
 
@@ -2170,13 +2276,30 @@ const request: AffiliateApiUpdateProductCommissionProgramRequest = {
   
   updateProductCommissionProgramRequest: {
     percentage: "10.5",
+    unused: {
+      salePercent: "10.5",
+      saleAmount: "25",
+      leadPercent: "10.5",
+      leadAmount: "25",
+    },
     dollarAmount: "25",
+    level1: {
+      salePercent: "10.5",
+      saleAmount: "25",
+      leadPercent: "10.5",
+      leadAmount: "25",
+    },
+    level2: {
+      salePercent: "10.5",
+      saleAmount: "25",
+      leadPercent: "10.5",
+      leadAmount: "25",
+    },
+    payoutType: "UPFRONT",
     productId: "123",
   },
-  
-  updateMask: [
-    "update_mask_example",
-  ],
+    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+  updateMask: null,
 };
 
 const data = await apiInstance.updateProductCommissionProgram(request);
@@ -2190,12 +2313,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateProductCommissionProgramRequest** | **UpdateProductCommissionProgramRequest**|  |
  **commissionProgramId** | [**string**] |  | defaults to undefined
- **updateMask** | **Set&lt;string&gt;** |  | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
 
-**ProductCommissionProgram**
+**GetRestCommissionProgram**
 
 ### Authorization
 
@@ -2215,6 +2338,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -2284,6 +2408,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -2291,7 +2416,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateSubscriptionCommissionProgram**
-> SubscriptionCommissionProgram updateSubscriptionCommissionProgram(updateSubscriptionCommissionProgramRequest)
+> GetRestCommissionProgram updateSubscriptionCommissionProgram(updateSubscriptionCommissionProgramRequest)
 
 Updates a Subscription Commission Program
 
@@ -2311,13 +2436,30 @@ const request: AffiliateApiUpdateSubscriptionCommissionProgramRequest = {
   
   updateSubscriptionCommissionProgramRequest: {
     percentage: "10.5",
+    unused: {
+      salePercent: "10.5",
+      saleAmount: "25",
+      leadPercent: "10.5",
+      leadAmount: "25",
+    },
     dollarAmount: "25",
+    level1: {
+      salePercent: "10.5",
+      saleAmount: "25",
+      leadPercent: "10.5",
+      leadAmount: "25",
+    },
+    level2: {
+      salePercent: "10.5",
+      saleAmount: "25",
+      leadPercent: "10.5",
+      leadAmount: "25",
+    },
+    payoutType: "UPFRONT",
     subscriptionId: "456",
   },
-  
-  updateMask: [
-    "update_mask_example",
-  ],
+    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+  updateMask: null,
 };
 
 const data = await apiInstance.updateSubscriptionCommissionProgram(request);
@@ -2331,12 +2473,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateSubscriptionCommissionProgramRequest** | **UpdateSubscriptionCommissionProgramRequest**|  |
  **commissionProgramId** | [**string**] |  | defaults to undefined
- **updateMask** | **Set&lt;string&gt;** |  | (optional) defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
 
-**SubscriptionCommissionProgram**
+**GetRestCommissionProgram**
 
 ### Authorization
 
@@ -2356,6 +2498,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |

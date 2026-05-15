@@ -10,17 +10,34 @@
  * Do not edit the class manually.
  */
 
+import { CommissionItemRequest } from '../models/CommissionItemRequest';
 import { HttpFile } from '../http/http';
 
 export class CreateDefaultCommissionProgramRequest {
     /**
-    * Commission percentage (0-100). Either percentage or dollar_amount is required
+    * Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for `level_1`
     */
     'percentage'?: string;
     /**
-    * Fixed dollar amount. Either percentage or dollar_amount is required
+    * Payout rules for any unused commissions.
+    */
+    'unused'?: CommissionItemRequest;
+    /**
+    * Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for `level_1`
     */
     'dollarAmount'?: string;
+    /**
+    * Payout rules for Level 1 recipients of the commission.
+    */
+    'level1'?: CommissionItemRequest;
+    /**
+    * Payout rules for Level 2 recipients of the commission.
+    */
+    'level2'?: CommissionItemRequest;
+    /**
+    * The payout type for this commission.
+    */
+    'payoutType'?: CreateDefaultCommissionProgramRequestPayoutTypeEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -34,9 +51,33 @@ export class CreateDefaultCommissionProgramRequest {
             "format": ""
         },
         {
+            "name": "unused",
+            "baseName": "unused",
+            "type": "CommissionItemRequest",
+            "format": ""
+        },
+        {
             "name": "dollarAmount",
             "baseName": "dollar_amount",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "level1",
+            "baseName": "level_1",
+            "type": "CommissionItemRequest",
+            "format": ""
+        },
+        {
+            "name": "level2",
+            "baseName": "level_2",
+            "type": "CommissionItemRequest",
+            "format": ""
+        },
+        {
+            "name": "payoutType",
+            "baseName": "payout_type",
+            "type": "CreateDefaultCommissionProgramRequestPayoutTypeEnum",
             "format": ""
         }    ];
 
@@ -47,3 +88,9 @@ export class CreateDefaultCommissionProgramRequest {
     public constructor() {
     }
 }
+
+export enum CreateDefaultCommissionProgramRequestPayoutTypeEnum {
+    Upfront = 'UPFRONT',
+    PaymentReceived = 'PAYMENT_RECEIVED'
+}
+

@@ -116,6 +116,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -196,6 +197,7 @@ void (empty response body)
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -277,6 +279,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -284,7 +287,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **assign_product_commission_program**
-> ProductCommissionProgram assign_product_commission_program(commission_program_id, create_product_commission_program_request)
+> GetRestCommissionProgram assign_product_commission_program(commission_program_id, create_product_commission_program_request)
 
 Assign a Product Commission Program
 
@@ -297,7 +300,7 @@ Assigns a Product Commission Program to a Product
 ```python
 import keap_core_v2_client
 from keap_core_v2_client.models.create_product_commission_program_request import CreateProductCommissionProgramRequest
-from keap_core_v2_client.models.product_commission_program import ProductCommissionProgram
+from keap_core_v2_client.models.get_rest_commission_program import GetRestCommissionProgram
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
@@ -340,7 +343,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProductCommissionProgram**](ProductCommissionProgram.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -360,6 +363,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -367,7 +371,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **assign_subscription_commission_program**
-> SubscriptionCommissionProgram assign_subscription_commission_program(commission_program_id, create_subscription_commission_program_request)
+> GetRestCommissionProgram assign_subscription_commission_program(commission_program_id, create_subscription_commission_program_request)
 
 Assign a Subscription Commission Program
 
@@ -380,7 +384,7 @@ Assigns a Subscription Commission Program to a Subscription
 ```python
 import keap_core_v2_client
 from keap_core_v2_client.models.create_subscription_commission_program_request import CreateSubscriptionCommissionProgramRequest
-from keap_core_v2_client.models.subscription_commission_program import SubscriptionCommissionProgram
+from keap_core_v2_client.models.get_rest_commission_program import GetRestCommissionProgram
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
@@ -423,7 +427,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SubscriptionCommissionProgram**](SubscriptionCommissionProgram.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -443,6 +447,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -524,6 +529,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -531,7 +537,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_default_commission_program**
-> SetDefaultCommissionProgramResponse create_default_commission_program(commission_program_id, create_default_commission_program_request)
+> GetRestCommissionProgram create_default_commission_program(commission_program_id, create_default_commission_program_request)
 
 Create a Default Commission Program
 
@@ -544,7 +550,7 @@ Creates a Default Commission Program
 ```python
 import keap_core_v2_client
 from keap_core_v2_client.models.create_default_commission_program_request import CreateDefaultCommissionProgramRequest
-from keap_core_v2_client.models.set_default_commission_program_response import SetDefaultCommissionProgramResponse
+from keap_core_v2_client.models.get_rest_commission_program import GetRestCommissionProgram
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
@@ -587,7 +593,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SetDefaultCommissionProgramResponse**](SetDefaultCommissionProgramResponse.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -607,6 +613,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -688,6 +695,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -765,6 +773,7 @@ void (empty response body)
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -842,6 +851,7 @@ void (empty response body)
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -919,6 +929,7 @@ void (empty response body)
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -996,6 +1007,7 @@ void (empty response body)
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1076,6 +1088,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1156,6 +1169,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1244,6 +1258,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1320,6 +1335,7 @@ This endpoint does not need any parameter.
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1400,6 +1416,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1480,6 +1497,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1560,6 +1578,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1646,6 +1665,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1732,6 +1752,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1818,6 +1839,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1906,6 +1928,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -1986,6 +2009,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -2072,6 +2096,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -2152,6 +2177,7 @@ void (empty response body)
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -2232,6 +2258,7 @@ void (empty response body)
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -2312,6 +2339,7 @@ void (empty response body)
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -2397,6 +2425,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -2482,6 +2511,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -2567,6 +2597,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -2574,7 +2605,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_default_commission_program**
-> SetDefaultCommissionProgramResponse update_default_commission_program(commission_program_id, update_default_commission_program_request, update_mask=update_mask)
+> GetRestCommissionProgram update_default_commission_program(commission_program_id, update_default_commission_program_request, update_mask=update_mask)
 
 Update a Default Commission Program
 
@@ -2586,7 +2617,7 @@ Updates a Default Commission Program
 
 ```python
 import keap_core_v2_client
-from keap_core_v2_client.models.set_default_commission_program_response import SetDefaultCommissionProgramResponse
+from keap_core_v2_client.models.get_rest_commission_program import GetRestCommissionProgram
 from keap_core_v2_client.models.update_default_commission_program_request import UpdateDefaultCommissionProgramRequest
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
@@ -2609,7 +2640,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.AffiliateApi(api_client)
     commission_program_id = 'commission_program_id_example' # str | 
     update_default_commission_program_request = keap_core_v2_client.UpdateDefaultCommissionProgramRequest() # UpdateDefaultCommissionProgramRequest | 
-    update_mask = ['update_mask_example'] # List[str] |  (optional)
+    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Default Commission Program
@@ -2628,11 +2659,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commission_program_id** | **str**|  | 
  **update_default_commission_program_request** | [**UpdateDefaultCommissionProgramRequest**](UpdateDefaultCommissionProgramRequest.md)|  | 
- **update_mask** | [**List[str]**](str.md)|  | [optional] 
+ **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
-[**SetDefaultCommissionProgramResponse**](SetDefaultCommissionProgramResponse.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -2652,6 +2683,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -2659,7 +2691,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_product_commission_program**
-> ProductCommissionProgram update_product_commission_program(commission_program_id, update_product_commission_program_request, update_mask=update_mask)
+> GetRestCommissionProgram update_product_commission_program(commission_program_id, update_product_commission_program_request, update_mask=update_mask)
 
 Update a Product Commission Program
 
@@ -2671,7 +2703,7 @@ Updates a Product Commission Program
 
 ```python
 import keap_core_v2_client
-from keap_core_v2_client.models.product_commission_program import ProductCommissionProgram
+from keap_core_v2_client.models.get_rest_commission_program import GetRestCommissionProgram
 from keap_core_v2_client.models.update_product_commission_program_request import UpdateProductCommissionProgramRequest
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
@@ -2694,7 +2726,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.AffiliateApi(api_client)
     commission_program_id = 'commission_program_id_example' # str | 
     update_product_commission_program_request = keap_core_v2_client.UpdateProductCommissionProgramRequest() # UpdateProductCommissionProgramRequest | 
-    update_mask = ['update_mask_example'] # List[str] |  (optional)
+    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Product Commission Program
@@ -2713,11 +2745,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commission_program_id** | **str**|  | 
  **update_product_commission_program_request** | [**UpdateProductCommissionProgramRequest**](UpdateProductCommissionProgramRequest.md)|  | 
- **update_mask** | [**List[str]**](str.md)|  | [optional] 
+ **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
-[**ProductCommissionProgram**](ProductCommissionProgram.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -2737,6 +2769,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -2820,6 +2853,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -2827,7 +2861,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_subscription_commission_program**
-> SubscriptionCommissionProgram update_subscription_commission_program(commission_program_id, update_subscription_commission_program_request, update_mask=update_mask)
+> GetRestCommissionProgram update_subscription_commission_program(commission_program_id, update_subscription_commission_program_request, update_mask=update_mask)
 
 Update a Subscription Commission Program
 
@@ -2839,7 +2873,7 @@ Updates a Subscription Commission Program
 
 ```python
 import keap_core_v2_client
-from keap_core_v2_client.models.subscription_commission_program import SubscriptionCommissionProgram
+from keap_core_v2_client.models.get_rest_commission_program import GetRestCommissionProgram
 from keap_core_v2_client.models.update_subscription_commission_program_request import UpdateSubscriptionCommissionProgramRequest
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
@@ -2862,7 +2896,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.AffiliateApi(api_client)
     commission_program_id = 'commission_program_id_example' # str | 
     update_subscription_commission_program_request = keap_core_v2_client.UpdateSubscriptionCommissionProgramRequest() # UpdateSubscriptionCommissionProgramRequest | 
-    update_mask = ['update_mask_example'] # List[str] |  (optional)
+    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Subscription Commission Program
@@ -2881,11 +2915,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commission_program_id** | **str**|  | 
  **update_subscription_commission_program_request** | [**UpdateSubscriptionCommissionProgramRequest**](UpdateSubscriptionCommissionProgramRequest.md)|  | 
- **update_mask** | [**List[str]**](str.md)|  | [optional] 
+ **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
-[**SubscriptionCommissionProgram**](SubscriptionCommissionProgram.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -2905,6 +2939,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |

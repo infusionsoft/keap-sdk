@@ -62,6 +62,8 @@ export * from '../models/CategoryDiscountCriteriaResponse';
 export * from '../models/CategoryReference';
 export * from '../models/CheckListItemDetails';
 export * from '../models/ChecklistItem';
+export * from '../models/CommissionItem';
+export * from '../models/CommissionItemRequest';
 export * from '../models/Company';
 export * from '../models/Contact';
 export * from '../models/ContactLink';
@@ -251,7 +253,6 @@ export * from '../models/PaymentResult';
 export * from '../models/PhoneNumber';
 export * from '../models/ProductCategory';
 export * from '../models/ProductCommission';
-export * from '../models/ProductCommissionProgram';
 export * from '../models/ProductDiscount';
 export * from '../models/ProductFixedOptionDetail';
 export * from '../models/ProductFixedOptionList';
@@ -286,7 +287,6 @@ export * from '../models/RestV2User';
 export * from '../models/RunReportRequest';
 export * from '../models/Sequence';
 export * from '../models/SequencePath';
-export * from '../models/SetDefaultCommissionProgramResponse';
 export * from '../models/ShippingDiscount';
 export * from '../models/ShippingInformation';
 export * from '../models/ShippingMethod';
@@ -294,7 +294,6 @@ export * from '../models/SocialAccount';
 export * from '../models/StageDetails';
 export * from '../models/Subscription';
 export * from '../models/SubscriptionCommission';
-export * from '../models/SubscriptionCommissionProgram';
 export * from '../models/SubscriptionPlan';
 export * from '../models/SubscriptionPlanDetail';
 export * from '../models/SubscriptionPlanList';
@@ -411,6 +410,8 @@ import { CategoryDiscountCriteriaResponse, CategoryDiscountCriteriaResponseTypeE
 import { CategoryReference } from '../models/CategoryReference';
 import { CheckListItemDetails } from '../models/CheckListItemDetails';
 import { ChecklistItem } from '../models/ChecklistItem';
+import { CommissionItem } from '../models/CommissionItem';
+import { CommissionItemRequest } from '../models/CommissionItemRequest';
 import { Company } from '../models/Company';
 import { Contact                              , ContactSourceTypeEnum            } from '../models/Contact';
 import { ContactLink } from '../models/ContactLink';
@@ -428,7 +429,7 @@ import { CreateContactUtmPropertiesRequest } from '../models/CreateContactUtmPro
 import { CreateCustomFieldOptionRequest } from '../models/CreateCustomFieldOptionRequest';
 import { CreateCustomFieldRequest  , CreateCustomFieldRequestFieldTypeEnum     } from '../models/CreateCustomFieldRequest';
 import { CreateCustomFieldResponse } from '../models/CreateCustomFieldResponse';
-import { CreateDefaultCommissionProgramRequest } from '../models/CreateDefaultCommissionProgramRequest';
+import { CreateDefaultCommissionProgramRequest     , CreateDefaultCommissionProgramRequestPayoutTypeEnum   } from '../models/CreateDefaultCommissionProgramRequest';
 import { CreateEmailSentRequest              , CreateEmailSentRequestOriginalProviderEnum     } from '../models/CreateEmailSentRequest';
 import { CreateEmailsSentRequest } from '../models/CreateEmailsSentRequest';
 import { CreateFreeTrialDiscountRequest } from '../models/CreateFreeTrialDiscountRequest';
@@ -445,7 +446,7 @@ import { CreateOrderItemRequest       , CreateOrderItemRequestItemTypeEnum     }
 import { CreateOrderTotalDiscountRequest    , CreateOrderTotalDiscountRequestDiscountTypeEnum   , CreateOrderTotalDiscountRequestDiscountStrategyEnum   } from '../models/CreateOrderTotalDiscountRequest';
 import { CreatePaymentMethodConfigRequest } from '../models/CreatePaymentMethodConfigRequest';
 import { CreateProductCategoryRequest } from '../models/CreateProductCategoryRequest';
-import { CreateProductCommissionProgramRequest } from '../models/CreateProductCommissionProgramRequest';
+import { CreateProductCommissionProgramRequest     , CreateProductCommissionProgramRequestPayoutTypeEnum    } from '../models/CreateProductCommissionProgramRequest';
 import { CreateProductDiscountRequest     , CreateProductDiscountRequestDiscountTypeEnum    } from '../models/CreateProductDiscountRequest';
 import { CreateProductInterestBundleRequest } from '../models/CreateProductInterestBundleRequest';
 import { CreateProductOptionListOption } from '../models/CreateProductOptionListOption';
@@ -454,7 +455,7 @@ import { CreateProductOptionTextOption   , CreateProductOptionTextOptionOnlyStar
 import { CreateProductRequestDetail } from '../models/CreateProductRequestDetail';
 import { CreateReferralRequest       , CreateReferralRequestReferralTypeEnum   } from '../models/CreateReferralRequest';
 import { CreateShippingDiscountRequest   , CreateShippingDiscountRequestDiscountTypeEnum    } from '../models/CreateShippingDiscountRequest';
-import { CreateSubscriptionCommissionProgramRequest } from '../models/CreateSubscriptionCommissionProgramRequest';
+import { CreateSubscriptionCommissionProgramRequest     , CreateSubscriptionCommissionProgramRequestPayoutTypeEnum    } from '../models/CreateSubscriptionCommissionProgramRequest';
 import { CreateSubscriptionPlanRequest   , CreateSubscriptionPlanRequestCycleTypeEnum      } from '../models/CreateSubscriptionPlanRequest';
 import { CreateSubscriptionRequest } from '../models/CreateSubscriptionRequest';
 import { CreateTaskRequest   , CreateTaskRequestPriorityEnum     , CreateTaskRequestRemindTimeMinsEnum      } from '../models/CreateTaskRequest';
@@ -471,7 +472,7 @@ import { CustomFieldMetaData   , CustomFieldMetaDataRecordTypeEnum  , CustomFiel
 import { CustomFieldOption } from '../models/CustomFieldOption';
 import { CustomFieldValue } from '../models/CustomFieldValue';
 import { CustomFieldValueObject } from '../models/CustomFieldValueObject';
-import { DefaultCommission } from '../models/DefaultCommission';
+import { DefaultCommission, DefaultCommissionPayoutTypeEnum        } from '../models/DefaultCommission';
 import { DeleteEmailsRequest } from '../models/DeleteEmailsRequest';
 import { DeleteEmailsResponse } from '../models/DeleteEmailsResponse';
 import { DeleteProgramCommissionRequest } from '../models/DeleteProgramCommissionRequest';
@@ -599,8 +600,7 @@ import { PaymentPlanItem, PaymentPlanItemStatusEnum      } from '../models/Payme
 import { PaymentResult } from '../models/PaymentResult';
 import { PhoneNumber   , PhoneNumberFieldEnum    } from '../models/PhoneNumber';
 import { ProductCategory } from '../models/ProductCategory';
-import { ProductCommission } from '../models/ProductCommission';
-import { ProductCommissionProgram } from '../models/ProductCommissionProgram';
+import { ProductCommission, ProductCommissionPayoutTypeEnum           } from '../models/ProductCommission';
 import { ProductDiscount      , ProductDiscountDiscountTypeEnum    } from '../models/ProductDiscount';
 import { ProductFixedOptionDetail } from '../models/ProductFixedOptionDetail';
 import { ProductFixedOptionList } from '../models/ProductFixedOptionList';
@@ -635,15 +635,13 @@ import { RestV2User } from '../models/RestV2User';
 import { RunReportRequest } from '../models/RunReportRequest';
 import { Sequence } from '../models/Sequence';
 import { SequencePath } from '../models/SequencePath';
-import { SetDefaultCommissionProgramResponse } from '../models/SetDefaultCommissionProgramResponse';
 import { ShippingDiscount    , ShippingDiscountDiscountTypeEnum    } from '../models/ShippingDiscount';
 import { ShippingInformation } from '../models/ShippingInformation';
 import { ShippingMethod } from '../models/ShippingMethod';
 import { SocialAccount , SocialAccountTypeEnum   } from '../models/SocialAccount';
 import { StageDetails } from '../models/StageDetails';
 import { Subscription         , SubscriptionBillingCycleEnum                    } from '../models/Subscription';
-import { SubscriptionCommission } from '../models/SubscriptionCommission';
-import { SubscriptionCommissionProgram } from '../models/SubscriptionCommissionProgram';
+import { SubscriptionCommission, SubscriptionCommissionPayoutTypeEnum           } from '../models/SubscriptionCommission';
 import { SubscriptionPlan     , SubscriptionPlanCycleTypeEnum       } from '../models/SubscriptionPlan';
 import { SubscriptionPlanDetail   , SubscriptionPlanDetailBillingCycleEnum       } from '../models/SubscriptionPlanDetail';
 import { SubscriptionPlanList   , SubscriptionPlanListBillingCycleEnum       } from '../models/SubscriptionPlanList';
@@ -661,7 +659,7 @@ import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountR
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
-import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
+import { UpdateDefaultCommissionProgramRequest     , UpdateDefaultCommissionProgramRequestPayoutTypeEnum   } from '../models/UpdateDefaultCommissionProgramRequest';
 import { UpdateEmailAddress } from '../models/UpdateEmailAddress';
 import { UpdateFreeTrialDiscountRequest } from '../models/UpdateFreeTrialDiscountRequest';
 import { UpdateLeadSourceExpenseRequest } from '../models/UpdateLeadSourceExpenseRequest';
@@ -674,7 +672,7 @@ import { UpdateOrderItemRequest } from '../models/UpdateOrderItemRequest';
 import { UpdateOrderRequest     , UpdateOrderRequestOrderTypeEnum         } from '../models/UpdateOrderRequest';
 import { UpdateOrderTotalDiscountRequest    , UpdateOrderTotalDiscountRequestDiscountTypeEnum   , UpdateOrderTotalDiscountRequestDiscountStrategyEnum   } from '../models/UpdateOrderTotalDiscountRequest';
 import { UpdateProductCategoryRequest } from '../models/UpdateProductCategoryRequest';
-import { UpdateProductCommissionProgramRequest } from '../models/UpdateProductCommissionProgramRequest';
+import { UpdateProductCommissionProgramRequest     , UpdateProductCommissionProgramRequestPayoutTypeEnum    } from '../models/UpdateProductCommissionProgramRequest';
 import { UpdateProductDiscountRequest     , UpdateProductDiscountRequestDiscountTypeEnum    } from '../models/UpdateProductDiscountRequest';
 import { UpdateProductInterestBundleRequest } from '../models/UpdateProductInterestBundleRequest';
 import { UpdateProductInterestRequest } from '../models/UpdateProductInterestRequest';
@@ -683,7 +681,7 @@ import { UpdateProductOptionListOption } from '../models/UpdateProductOptionList
 import { UpdateProductOptionRequest      , UpdateProductOptionRequestOnlyStartsWithEnum  , UpdateProductOptionRequestOnlyEndsWithEnum  , UpdateProductOptionRequestOnlyContainsEnum    } from '../models/UpdateProductOptionRequest';
 import { UpdateProductRequestDetail } from '../models/UpdateProductRequestDetail';
 import { UpdateShippingDiscountRequest   , UpdateShippingDiscountRequestDiscountTypeEnum    } from '../models/UpdateShippingDiscountRequest';
-import { UpdateSubscriptionCommissionProgramRequest } from '../models/UpdateSubscriptionCommissionProgramRequest';
+import { UpdateSubscriptionCommissionProgramRequest     , UpdateSubscriptionCommissionProgramRequestPayoutTypeEnum    } from '../models/UpdateSubscriptionCommissionProgramRequest';
 import { UpdateSubscriptionPlanRequest   , UpdateSubscriptionPlanRequestCycleTypeEnum      } from '../models/UpdateSubscriptionPlanRequest';
 import { UpdateSubscriptionRequest         , UpdateSubscriptionRequestBillingCycleEnum              } from '../models/UpdateSubscriptionRequest';
 import { UpdateTagCategoryResponse } from '../models/UpdateTagCategoryResponse';
@@ -723,11 +721,13 @@ let enumsMap: Set<string> = new Set<string>([
     "ContactSourceTypeEnum",
     "CreateAffiliateRequestStatusEnum",
     "CreateCustomFieldRequestFieldTypeEnum",
+    "CreateDefaultCommissionProgramRequestPayoutTypeEnum",
     "CreateEmailSentRequestOriginalProviderEnum",
     "CreateLeadSourceRequestStatusEnum",
     "CreateOrderItemRequestItemTypeEnum",
     "CreateOrderTotalDiscountRequestDiscountTypeEnum",
     "CreateOrderTotalDiscountRequestDiscountStrategyEnum",
+    "CreateProductCommissionProgramRequestPayoutTypeEnum",
     "CreateProductDiscountRequestDiscountTypeEnum",
     "CreateProductOptionRequestOptionTypeEnum",
     "CreateProductOptionTextOptionOnlyStartsWithEnum",
@@ -735,6 +735,7 @@ let enumsMap: Set<string> = new Set<string>([
     "CreateProductOptionTextOptionOnlyContainsEnum",
     "CreateReferralRequestReferralTypeEnum",
     "CreateShippingDiscountRequestDiscountTypeEnum",
+    "CreateSubscriptionCommissionProgramRequestPayoutTypeEnum",
     "CreateSubscriptionPlanRequestCycleTypeEnum",
     "CreateTaskRequestPriorityEnum",
     "CreateTaskRequestRemindTimeMinsEnum",
@@ -743,6 +744,7 @@ let enumsMap: Set<string> = new Set<string>([
     "CreateUpdateTaskRequestRemindTimeMinsEnum",
     "CustomFieldMetaDataRecordTypeEnum",
     "CustomFieldMetaDataFieldTypeEnum",
+    "DefaultCommissionPayoutTypeEnum",
     "DiscountDiscountMethodEnum",
     "DiscountCriteriaTypeEnum",
     "DiscountCriteriaOperatorEnum",
@@ -774,6 +776,7 @@ let enumsMap: Set<string> = new Set<string>([
     "PaymentMethodStatusEnum",
     "PaymentPlanItemStatusEnum",
     "PhoneNumberFieldEnum",
+    "ProductCommissionPayoutTypeEnum",
     "ProductDiscountDiscountTypeEnum",
     "ProductInterestTypeEnum",
     "ProductOptionOptionTypeEnum",
@@ -794,6 +797,7 @@ let enumsMap: Set<string> = new Set<string>([
     "ShippingDiscountDiscountTypeEnum",
     "SocialAccountTypeEnum",
     "SubscriptionBillingCycleEnum",
+    "SubscriptionCommissionPayoutTypeEnum",
     "SubscriptionPlanCycleTypeEnum",
     "SubscriptionPlanDetailBillingCycleEnum",
     "SubscriptionPlanListBillingCycleEnum",
@@ -806,15 +810,18 @@ let enumsMap: Set<string> = new Set<string>([
     "TransactionV2TransactionMethodEnum",
     "TransactionV2MerchantAccountTypeEnum",
     "UpdateAffiliateRequestStatusEnum",
+    "UpdateDefaultCommissionProgramRequestPayoutTypeEnum",
     "UpdateOrderRequestOrderTypeEnum",
     "UpdateOrderTotalDiscountRequestDiscountTypeEnum",
     "UpdateOrderTotalDiscountRequestDiscountStrategyEnum",
+    "UpdateProductCommissionProgramRequestPayoutTypeEnum",
     "UpdateProductDiscountRequestDiscountTypeEnum",
     "UpdateProductInventoryRequestDetailTypeEnum",
     "UpdateProductOptionRequestOnlyStartsWithEnum",
     "UpdateProductOptionRequestOnlyEndsWithEnum",
     "UpdateProductOptionRequestOnlyContainsEnum",
     "UpdateShippingDiscountRequestDiscountTypeEnum",
+    "UpdateSubscriptionCommissionProgramRequestPayoutTypeEnum",
     "UpdateSubscriptionPlanRequestCycleTypeEnum",
     "UpdateSubscriptionRequestBillingCycleEnum",
     "UpdateTaskResponsePriorityEnum",
@@ -890,6 +897,8 @@ let typeMap: {[index: string]: any} = {
     "CategoryReference": CategoryReference,
     "CheckListItemDetails": CheckListItemDetails,
     "ChecklistItem": ChecklistItem,
+    "CommissionItem": CommissionItem,
+    "CommissionItemRequest": CommissionItemRequest,
     "Company": Company,
     "Contact": Contact,
     "ContactLink": ContactLink,
@@ -1079,7 +1088,6 @@ let typeMap: {[index: string]: any} = {
     "PhoneNumber": PhoneNumber,
     "ProductCategory": ProductCategory,
     "ProductCommission": ProductCommission,
-    "ProductCommissionProgram": ProductCommissionProgram,
     "ProductDiscount": ProductDiscount,
     "ProductFixedOptionDetail": ProductFixedOptionDetail,
     "ProductFixedOptionList": ProductFixedOptionList,
@@ -1114,7 +1122,6 @@ let typeMap: {[index: string]: any} = {
     "RunReportRequest": RunReportRequest,
     "Sequence": Sequence,
     "SequencePath": SequencePath,
-    "SetDefaultCommissionProgramResponse": SetDefaultCommissionProgramResponse,
     "ShippingDiscount": ShippingDiscount,
     "ShippingInformation": ShippingInformation,
     "ShippingMethod": ShippingMethod,
@@ -1122,7 +1129,6 @@ let typeMap: {[index: string]: any} = {
     "StageDetails": StageDetails,
     "Subscription": Subscription,
     "SubscriptionCommission": SubscriptionCommission,
-    "SubscriptionCommissionProgram": SubscriptionCommissionProgram,
     "SubscriptionPlan": SubscriptionPlan,
     "SubscriptionPlanDetail": SubscriptionPlanDetail,
     "SubscriptionPlanList": SubscriptionPlanList,

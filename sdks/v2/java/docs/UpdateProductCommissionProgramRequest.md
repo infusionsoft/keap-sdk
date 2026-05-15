@@ -7,9 +7,23 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**percentage** | **String** | Commission percentage (0-100). Either percentage or dollar_amount is required |  [optional] |
-|**dollarAmount** | **String** | Fixed dollar amount. Either percentage or dollar_amount is required |  [optional] |
+|**percentage** | **String** | Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for &#x60;level_1&#x60; |  [optional] |
+|**unused** | [**CommissionItemRequest**](CommissionItemRequest.md) | Payout rules for any unused commissions. |  [optional] |
+|**dollarAmount** | **String** | Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for &#x60;level_1&#x60; |  [optional] |
+|**level1** | [**CommissionItemRequest**](CommissionItemRequest.md) | Payout rules for Level 1 recipients of the commission. |  [optional] |
+|**level2** | [**CommissionItemRequest**](CommissionItemRequest.md) | Payout rules for Level 2 recipients of the commission. |  [optional] |
+|**payoutType** | [**PayoutTypeEnum**](#PayoutTypeEnum) | The payout type for this commission. |  [optional] |
 |**productId** | **String** | Product ID to assign commission |  |
+
+
+
+## Enum: PayoutTypeEnum
+
+| Name | Value |
+|---- | -----|
+| UPFRONT | &quot;UPFRONT&quot; |
+| PAYMENT_RECEIVED | &quot;PAYMENT_RECEIVED&quot; |
+| UNKNOWN_COULD_NOT_DESERIALIZE | &quot;unknown_default_open_api&quot; |
 
 
 ## Implemented Interfaces

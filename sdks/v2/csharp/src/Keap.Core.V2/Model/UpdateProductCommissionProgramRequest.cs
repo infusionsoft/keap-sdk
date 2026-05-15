@@ -33,6 +33,35 @@ namespace Keap.Core.V2.Model
     public partial class UpdateProductCommissionProgramRequest : IValidatableObject
     {
         /// <summary>
+        /// The payout type for this commission.
+        /// </summary>
+        /// <value>The payout type for this commission.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum PayoutTypeEnum
+        {
+            /// <summary>
+            /// Enum UPFRONT for value: UPFRONT
+            /// </summary>
+            [EnumMember(Value = "UPFRONT")]
+            UPFRONT = 1,
+
+            /// <summary>
+            /// Enum PAYMENTRECEIVED for value: PAYMENT_RECEIVED
+            /// </summary>
+            [EnumMember(Value = "PAYMENT_RECEIVED")]
+            PAYMENTRECEIVED = 2
+        }
+
+        /// <summary>
+        /// The payout type for this commission.
+        /// </summary>
+        /// <value>The payout type for this commission.</value>
+        /*
+        <example>UPFRONT</example>
+        */
+        [DataMember(Name = "payout_type", EmitDefaultValue = false)]
+        public PayoutTypeEnum? PayoutType { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="UpdateProductCommissionProgramRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -40,10 +69,14 @@ namespace Keap.Core.V2.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateProductCommissionProgramRequest" /> class.
         /// </summary>
-        /// <param name="percentage">Commission percentage (0-100). Either percentage or dollar_amount is required.</param>
-        /// <param name="dollarAmount">Fixed dollar amount. Either percentage or dollar_amount is required.</param>
+        /// <param name="percentage">Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for &#x60;level_1&#x60;.</param>
+        /// <param name="unused">Payout rules for any unused commissions..</param>
+        /// <param name="dollarAmount">Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for &#x60;level_1&#x60;.</param>
+        /// <param name="level1">Payout rules for Level 1 recipients of the commission..</param>
+        /// <param name="level2">Payout rules for Level 2 recipients of the commission..</param>
+        /// <param name="payoutType">The payout type for this commission. (default to PayoutTypeEnum.UPFRONT).</param>
         /// <param name="productId">Product ID to assign commission (required).</param>
-        public UpdateProductCommissionProgramRequest(string percentage = default, string dollarAmount = default, string productId = default)
+        public UpdateProductCommissionProgramRequest(string percentage = default, CommissionItemRequest unused = default, string dollarAmount = default, CommissionItemRequest level1 = default, CommissionItemRequest level2 = default, PayoutTypeEnum? payoutType = PayoutTypeEnum.UPFRONT, string productId = default)
         {
             // to ensure "productId" is required (not null)
             if (productId == null)
@@ -52,28 +85,55 @@ namespace Keap.Core.V2.Model
             }
             this.ProductId = productId;
             this.Percentage = percentage;
+            this.Unused = unused;
             this.DollarAmount = dollarAmount;
+            this.Level1 = level1;
+            this.Level2 = level2;
+            this.PayoutType = payoutType;
         }
 
         /// <summary>
-        /// Commission percentage (0-100). Either percentage or dollar_amount is required
+        /// Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for &#x60;level_1&#x60;
         /// </summary>
-        /// <value>Commission percentage (0-100). Either percentage or dollar_amount is required</value>
+        /// <value>Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for &#x60;level_1&#x60;</value>
         /*
         <example>10.5</example>
         */
         [DataMember(Name = "percentage", EmitDefaultValue = false)]
+        [Obsolete]
         public string Percentage { get; set; }
 
         /// <summary>
-        /// Fixed dollar amount. Either percentage or dollar_amount is required
+        /// Payout rules for any unused commissions.
         /// </summary>
-        /// <value>Fixed dollar amount. Either percentage or dollar_amount is required</value>
+        /// <value>Payout rules for any unused commissions.</value>
+        [DataMember(Name = "unused", EmitDefaultValue = false)]
+        public CommissionItemRequest Unused { get; set; }
+
+        /// <summary>
+        /// Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for &#x60;level_1&#x60;
+        /// </summary>
+        /// <value>Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for &#x60;level_1&#x60;</value>
         /*
         <example>25</example>
         */
         [DataMember(Name = "dollar_amount", EmitDefaultValue = false)]
+        [Obsolete]
         public string DollarAmount { get; set; }
+
+        /// <summary>
+        /// Payout rules for Level 1 recipients of the commission.
+        /// </summary>
+        /// <value>Payout rules for Level 1 recipients of the commission.</value>
+        [DataMember(Name = "level_1", EmitDefaultValue = false)]
+        public CommissionItemRequest Level1 { get; set; }
+
+        /// <summary>
+        /// Payout rules for Level 2 recipients of the commission.
+        /// </summary>
+        /// <value>Payout rules for Level 2 recipients of the commission.</value>
+        [DataMember(Name = "level_2", EmitDefaultValue = false)]
+        public CommissionItemRequest Level2 { get; set; }
 
         /// <summary>
         /// Product ID to assign commission
@@ -94,7 +154,11 @@ namespace Keap.Core.V2.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateProductCommissionProgramRequest {\n");
             sb.Append("  Percentage: ").Append(Percentage).Append("\n");
+            sb.Append("  Unused: ").Append(Unused).Append("\n");
             sb.Append("  DollarAmount: ").Append(DollarAmount).Append("\n");
+            sb.Append("  Level1: ").Append(Level1).Append("\n");
+            sb.Append("  Level2: ").Append(Level2).Append("\n");
+            sb.Append("  PayoutType: ").Append(PayoutType).Append("\n");
             sb.Append("  ProductId: ").Append(ProductId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

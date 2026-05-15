@@ -135,6 +135,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -234,6 +235,7 @@ void (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -335,6 +337,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -343,7 +346,7 @@ catch (ApiException e)
 
 <a id="assignproductcommissionprogram"></a>
 # **AssignProductCommissionProgram**
-> ProductCommissionProgram AssignProductCommissionProgram (string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest)
+> GetRestCommissionProgram AssignProductCommissionProgram (string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest)
 
 Assign a Product Commission Program
 
@@ -375,7 +378,7 @@ namespace Example
             try
             {
                 // Assign a Product Commission Program
-                ProductCommissionProgram result = apiInstance.AssignProductCommissionProgram(commissionProgramId, createProductCommissionProgramRequest);
+                GetRestCommissionProgram result = apiInstance.AssignProductCommissionProgram(commissionProgramId, createProductCommissionProgramRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -396,7 +399,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Assign a Product Commission Program
-    ApiResponse<ProductCommissionProgram> response = apiInstance.AssignProductCommissionProgramWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest);
+    ApiResponse<GetRestCommissionProgram> response = apiInstance.AssignProductCommissionProgramWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -418,7 +421,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**ProductCommissionProgram**](ProductCommissionProgram.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -438,6 +441,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -446,7 +450,7 @@ catch (ApiException e)
 
 <a id="assignsubscriptioncommissionprogram"></a>
 # **AssignSubscriptionCommissionProgram**
-> SubscriptionCommissionProgram AssignSubscriptionCommissionProgram (string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest)
+> GetRestCommissionProgram AssignSubscriptionCommissionProgram (string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest)
 
 Assign a Subscription Commission Program
 
@@ -478,7 +482,7 @@ namespace Example
             try
             {
                 // Assign a Subscription Commission Program
-                SubscriptionCommissionProgram result = apiInstance.AssignSubscriptionCommissionProgram(commissionProgramId, createSubscriptionCommissionProgramRequest);
+                GetRestCommissionProgram result = apiInstance.AssignSubscriptionCommissionProgram(commissionProgramId, createSubscriptionCommissionProgramRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -499,7 +503,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Assign a Subscription Commission Program
-    ApiResponse<SubscriptionCommissionProgram> response = apiInstance.AssignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest);
+    ApiResponse<GetRestCommissionProgram> response = apiInstance.AssignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -521,7 +525,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**SubscriptionCommissionProgram**](SubscriptionCommissionProgram.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -541,6 +545,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -642,6 +647,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -650,7 +656,7 @@ catch (ApiException e)
 
 <a id="createdefaultcommissionprogram"></a>
 # **CreateDefaultCommissionProgram**
-> SetDefaultCommissionProgramResponse CreateDefaultCommissionProgram (string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest)
+> GetRestCommissionProgram CreateDefaultCommissionProgram (string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest)
 
 Create a Default Commission Program
 
@@ -682,7 +688,7 @@ namespace Example
             try
             {
                 // Create a Default Commission Program
-                SetDefaultCommissionProgramResponse result = apiInstance.CreateDefaultCommissionProgram(commissionProgramId, createDefaultCommissionProgramRequest);
+                GetRestCommissionProgram result = apiInstance.CreateDefaultCommissionProgram(commissionProgramId, createDefaultCommissionProgramRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -703,7 +709,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Create a Default Commission Program
-    ApiResponse<SetDefaultCommissionProgramResponse> response = apiInstance.CreateDefaultCommissionProgramWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest);
+    ApiResponse<GetRestCommissionProgram> response = apiInstance.CreateDefaultCommissionProgramWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -725,7 +731,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**SetDefaultCommissionProgramResponse**](SetDefaultCommissionProgramResponse.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -745,6 +751,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -846,6 +853,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -943,6 +951,7 @@ void (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1040,6 +1049,7 @@ void (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1137,6 +1147,7 @@ void (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1234,6 +1245,7 @@ void (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1335,6 +1347,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1436,6 +1449,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1545,6 +1559,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1641,6 +1656,7 @@ This endpoint does not need any parameter.
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1742,6 +1758,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1843,6 +1860,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1944,6 +1962,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2051,6 +2070,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2158,6 +2178,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2265,6 +2286,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2374,6 +2396,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2475,6 +2498,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2582,6 +2606,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2681,6 +2706,7 @@ void (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2780,6 +2806,7 @@ void (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2879,6 +2906,7 @@ void (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2984,6 +3012,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -3089,6 +3118,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -3194,6 +3224,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -3202,7 +3233,7 @@ catch (ApiException e)
 
 <a id="updatedefaultcommissionprogram"></a>
 # **UpdateDefaultCommissionProgram**
-> SetDefaultCommissionProgramResponse UpdateDefaultCommissionProgram (string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, List<string>? updateMask = null)
+> GetRestCommissionProgram UpdateDefaultCommissionProgram (string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Object? updateMask = null)
 
 Update a Default Commission Program
 
@@ -3230,12 +3261,12 @@ namespace Example
             var apiInstance = new AffiliateApi(config);
             var commissionProgramId = "commissionProgramId_example";  // string | 
             var updateDefaultCommissionProgramRequest = new UpdateDefaultCommissionProgramRequest(); // UpdateDefaultCommissionProgramRequest | 
-            var updateMask = new List<string>?(); // List<string>? |  (optional) 
+            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
                 // Update a Default Commission Program
-                SetDefaultCommissionProgramResponse result = apiInstance.UpdateDefaultCommissionProgram(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
+                GetRestCommissionProgram result = apiInstance.UpdateDefaultCommissionProgram(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3256,7 +3287,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Update a Default Commission Program
-    ApiResponse<SetDefaultCommissionProgramResponse> response = apiInstance.UpdateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
+    ApiResponse<GetRestCommissionProgram> response = apiInstance.UpdateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -3275,11 +3306,11 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **commissionProgramId** | **string** |  |  |
 | **updateDefaultCommissionProgramRequest** | [**UpdateDefaultCommissionProgramRequest**](UpdateDefaultCommissionProgramRequest.md) |  |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) |  | [optional]  |
+| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
-[**SetDefaultCommissionProgramResponse**](SetDefaultCommissionProgramResponse.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -3299,6 +3330,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -3307,7 +3339,7 @@ catch (ApiException e)
 
 <a id="updateproductcommissionprogram"></a>
 # **UpdateProductCommissionProgram**
-> ProductCommissionProgram UpdateProductCommissionProgram (string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, List<string>? updateMask = null)
+> GetRestCommissionProgram UpdateProductCommissionProgram (string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Object? updateMask = null)
 
 Update a Product Commission Program
 
@@ -3335,12 +3367,12 @@ namespace Example
             var apiInstance = new AffiliateApi(config);
             var commissionProgramId = "commissionProgramId_example";  // string | 
             var updateProductCommissionProgramRequest = new UpdateProductCommissionProgramRequest(); // UpdateProductCommissionProgramRequest | 
-            var updateMask = new List<string>?(); // List<string>? |  (optional) 
+            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
                 // Update a Product Commission Program
-                ProductCommissionProgram result = apiInstance.UpdateProductCommissionProgram(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
+                GetRestCommissionProgram result = apiInstance.UpdateProductCommissionProgram(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3361,7 +3393,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Update a Product Commission Program
-    ApiResponse<ProductCommissionProgram> response = apiInstance.UpdateProductCommissionProgramWithHttpInfo(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
+    ApiResponse<GetRestCommissionProgram> response = apiInstance.UpdateProductCommissionProgramWithHttpInfo(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -3380,11 +3412,11 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **commissionProgramId** | **string** |  |  |
 | **updateProductCommissionProgramRequest** | [**UpdateProductCommissionProgramRequest**](UpdateProductCommissionProgramRequest.md) |  |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) |  | [optional]  |
+| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
-[**ProductCommissionProgram**](ProductCommissionProgram.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -3404,6 +3436,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -3507,6 +3540,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -3515,7 +3549,7 @@ catch (ApiException e)
 
 <a id="updatesubscriptioncommissionprogram"></a>
 # **UpdateSubscriptionCommissionProgram**
-> SubscriptionCommissionProgram UpdateSubscriptionCommissionProgram (string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, List<string>? updateMask = null)
+> GetRestCommissionProgram UpdateSubscriptionCommissionProgram (string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Object? updateMask = null)
 
 Update a Subscription Commission Program
 
@@ -3543,12 +3577,12 @@ namespace Example
             var apiInstance = new AffiliateApi(config);
             var commissionProgramId = "commissionProgramId_example";  // string | 
             var updateSubscriptionCommissionProgramRequest = new UpdateSubscriptionCommissionProgramRequest(); // UpdateSubscriptionCommissionProgramRequest | 
-            var updateMask = new List<string>?(); // List<string>? |  (optional) 
+            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
                 // Update a Subscription Commission Program
-                SubscriptionCommissionProgram result = apiInstance.UpdateSubscriptionCommissionProgram(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
+                GetRestCommissionProgram result = apiInstance.UpdateSubscriptionCommissionProgram(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3569,7 +3603,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Update a Subscription Commission Program
-    ApiResponse<SubscriptionCommissionProgram> response = apiInstance.UpdateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
+    ApiResponse<GetRestCommissionProgram> response = apiInstance.UpdateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -3588,11 +3622,11 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **commissionProgramId** | **string** |  |  |
 | **updateSubscriptionCommissionProgramRequest** | [**UpdateSubscriptionCommissionProgramRequest**](UpdateSubscriptionCommissionProgramRequest.md) |  |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) |  | [optional]  |
+| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
-[**SubscriptionCommissionProgram**](SubscriptionCommissionProgram.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -3612,6 +3646,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |

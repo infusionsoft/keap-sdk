@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from keap_core_v2_client.models.custom_field_value_object import CustomFieldValueObject
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,8 +32,9 @@ class CreateNoteRequest(BaseModel):
     type: Optional[StrictStr] = Field(default=None, description="A value for either `title` or `type` is required. The value may be one of `Appointment`, `Call`, `Email`, `Fax`, `Letter` or `Other` in Keap Max/Pro, or an admin-configured value in Classic.")
     user_id: StrictStr = Field(description="ID of user creating the note")
     is_pinned: Optional[StrictBool] = Field(default=None, description="Whether to pin this note")
+    custom_fields: Optional[List[CustomFieldValueObject]] = Field(default=None, description="Custom field values for the note. An empty array resets all custom fields to their defaults.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["title", "text", "type", "user_id", "is_pinned"]
+    __properties: ClassVar[List[str]] = ["title", "text", "type", "user_id", "is_pinned", "custom_fields"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -75,6 +77,13 @@ class CreateNoteRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in custom_fields (list)
+        _items = []
+        if self.custom_fields:
+            for _item_custom_fields in self.custom_fields:
+                if _item_custom_fields:
+                    _items.append(_item_custom_fields.to_dict())
+            _dict['custom_fields'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -96,7 +105,8 @@ class CreateNoteRequest(BaseModel):
             "text": obj.get("text"),
             "type": obj.get("type"),
             "user_id": obj.get("user_id"),
-            "is_pinned": obj.get("is_pinned")
+            "is_pinned": obj.get("is_pinned"),
+            "custom_fields": [CustomFieldValueObject.from_dict(_item) for _item in obj["custom_fields"]] if obj.get("custom_fields") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

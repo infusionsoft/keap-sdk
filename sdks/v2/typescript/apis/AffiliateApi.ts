@@ -33,10 +33,7 @@ import { ListAffiliateSummariesResponse } from '../models/ListAffiliateSummaries
 import { ListAffiliatesResponse } from '../models/ListAffiliatesResponse';
 import { ListProgramResourcesResponse } from '../models/ListProgramResourcesResponse';
 import { ObjectModel } from '../models/ObjectModel';
-import { ProductCommissionProgram } from '../models/ProductCommissionProgram';
 import { RestAffiliate } from '../models/RestAffiliate';
-import { SetDefaultCommissionProgramResponse } from '../models/SetDefaultCommissionProgramResponse';
-import { SubscriptionCommissionProgram } from '../models/SubscriptionCommissionProgram';
 import { UpdateAffiliateRequest } from '../models/UpdateAffiliateRequest';
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
@@ -1610,9 +1607,9 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * Update a Default Commission Program
      * @param commissionProgramId 
      * @param updateDefaultCommissionProgramRequest 
-     * @param updateMask 
+     * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateDefaultCommissionProgram(commissionProgramId: string, updateDefaultCommissionProgramRequest: UpdateDefaultCommissionProgramRequest, updateMask?: Set<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateDefaultCommissionProgram(commissionProgramId: string, updateDefaultCommissionProgramRequest: UpdateDefaultCommissionProgramRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commissionProgramId' is not null or undefined
@@ -1638,9 +1635,9 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("update_mask", serializedParam);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
             }
         }
 
@@ -1676,9 +1673,9 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * Update a Product Commission Program
      * @param commissionProgramId 
      * @param updateProductCommissionProgramRequest 
-     * @param updateMask 
+     * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateProductCommissionProgram(commissionProgramId: string, updateProductCommissionProgramRequest: UpdateProductCommissionProgramRequest, updateMask?: Set<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateProductCommissionProgram(commissionProgramId: string, updateProductCommissionProgramRequest: UpdateProductCommissionProgramRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commissionProgramId' is not null or undefined
@@ -1704,9 +1701,9 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("update_mask", serializedParam);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
             }
         }
 
@@ -1798,9 +1795,9 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * Update a Subscription Commission Program
      * @param commissionProgramId 
      * @param updateSubscriptionCommissionProgramRequest 
-     * @param updateMask 
+     * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateSubscriptionCommissionProgram(commissionProgramId: string, updateSubscriptionCommissionProgramRequest: UpdateSubscriptionCommissionProgramRequest, updateMask?: Set<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateSubscriptionCommissionProgram(commissionProgramId: string, updateSubscriptionCommissionProgramRequest: UpdateSubscriptionCommissionProgramRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commissionProgramId' is not null or undefined
@@ -1826,9 +1823,9 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("update_mask", serializedParam);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
+            for (const key of Object.keys(serializedParams)) {
+                requestContext.setQueryParam(key, serializedParams[key]);
             }
         }
 
@@ -1907,6 +1904,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1980,6 +1984,13 @@ export class AffiliateApiResponseProcessor {
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
         }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -2059,6 +2070,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -2100,13 +2118,13 @@ export class AffiliateApiResponseProcessor {
      * @params response Response returned by the server for a request to assignProductCommissionProgram
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async assignProductCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ProductCommissionProgram >> {
+     public async assignProductCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetRestCommissionProgram >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
-            const body: ProductCommissionProgram = ObjectSerializer.deserialize(
+            const body: GetRestCommissionProgram = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ProductCommissionProgram", ""
-            ) as ProductCommissionProgram;
+                "GetRestCommissionProgram", ""
+            ) as GetRestCommissionProgram;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -2137,6 +2155,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -2161,10 +2186,10 @@ export class AffiliateApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ProductCommissionProgram = ObjectSerializer.deserialize(
+            const body: GetRestCommissionProgram = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ProductCommissionProgram", ""
-            ) as ProductCommissionProgram;
+                "GetRestCommissionProgram", ""
+            ) as GetRestCommissionProgram;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -2178,13 +2203,13 @@ export class AffiliateApiResponseProcessor {
      * @params response Response returned by the server for a request to assignSubscriptionCommissionProgram
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async assignSubscriptionCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SubscriptionCommissionProgram >> {
+     public async assignSubscriptionCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetRestCommissionProgram >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
-            const body: SubscriptionCommissionProgram = ObjectSerializer.deserialize(
+            const body: GetRestCommissionProgram = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "SubscriptionCommissionProgram", ""
-            ) as SubscriptionCommissionProgram;
+                "GetRestCommissionProgram", ""
+            ) as GetRestCommissionProgram;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -2215,6 +2240,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -2239,10 +2271,10 @@ export class AffiliateApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: SubscriptionCommissionProgram = ObjectSerializer.deserialize(
+            const body: GetRestCommissionProgram = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "SubscriptionCommissionProgram", ""
-            ) as SubscriptionCommissionProgram;
+                "GetRestCommissionProgram", ""
+            ) as GetRestCommissionProgram;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -2293,6 +2325,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -2334,13 +2373,13 @@ export class AffiliateApiResponseProcessor {
      * @params response Response returned by the server for a request to createDefaultCommissionProgram
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createDefaultCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SetDefaultCommissionProgramResponse >> {
+     public async createDefaultCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetRestCommissionProgram >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
-            const body: SetDefaultCommissionProgramResponse = ObjectSerializer.deserialize(
+            const body: GetRestCommissionProgram = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "SetDefaultCommissionProgramResponse", ""
-            ) as SetDefaultCommissionProgramResponse;
+                "GetRestCommissionProgram", ""
+            ) as GetRestCommissionProgram;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -2371,6 +2410,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -2395,10 +2441,10 @@ export class AffiliateApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: SetDefaultCommissionProgramResponse = ObjectSerializer.deserialize(
+            const body: GetRestCommissionProgram = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "SetDefaultCommissionProgramResponse", ""
-            ) as SetDefaultCommissionProgramResponse;
+                "GetRestCommissionProgram", ""
+            ) as GetRestCommissionProgram;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -2448,6 +2494,13 @@ export class AffiliateApiResponseProcessor {
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
         }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -2523,6 +2576,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -2596,6 +2656,13 @@ export class AffiliateApiResponseProcessor {
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
         }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -2671,6 +2738,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -2744,6 +2818,13 @@ export class AffiliateApiResponseProcessor {
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
         }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -2823,6 +2904,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -2900,6 +2988,13 @@ export class AffiliateApiResponseProcessor {
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
         }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -2979,6 +3074,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -3056,6 +3158,13 @@ export class AffiliateApiResponseProcessor {
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
         }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -3135,6 +3244,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -3212,6 +3328,13 @@ export class AffiliateApiResponseProcessor {
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
         }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -3291,6 +3414,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -3368,6 +3498,13 @@ export class AffiliateApiResponseProcessor {
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
         }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -3447,6 +3584,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -3524,6 +3668,13 @@ export class AffiliateApiResponseProcessor {
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
         }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -3603,6 +3754,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -3680,6 +3838,13 @@ export class AffiliateApiResponseProcessor {
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
         }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -3759,6 +3924,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -3832,6 +4004,13 @@ export class AffiliateApiResponseProcessor {
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
         }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -3907,6 +4086,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -3980,6 +4166,13 @@ export class AffiliateApiResponseProcessor {
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
         }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -4059,6 +4252,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -4136,6 +4336,13 @@ export class AffiliateApiResponseProcessor {
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
         }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -4215,6 +4422,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -4256,13 +4470,13 @@ export class AffiliateApiResponseProcessor {
      * @params response Response returned by the server for a request to updateDefaultCommissionProgram
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateDefaultCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SetDefaultCommissionProgramResponse >> {
+     public async updateDefaultCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetRestCommissionProgram >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: SetDefaultCommissionProgramResponse = ObjectSerializer.deserialize(
+            const body: GetRestCommissionProgram = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "SetDefaultCommissionProgramResponse", ""
-            ) as SetDefaultCommissionProgramResponse;
+                "GetRestCommissionProgram", ""
+            ) as GetRestCommissionProgram;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -4293,6 +4507,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -4317,10 +4538,10 @@ export class AffiliateApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: SetDefaultCommissionProgramResponse = ObjectSerializer.deserialize(
+            const body: GetRestCommissionProgram = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "SetDefaultCommissionProgramResponse", ""
-            ) as SetDefaultCommissionProgramResponse;
+                "GetRestCommissionProgram", ""
+            ) as GetRestCommissionProgram;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -4334,13 +4555,13 @@ export class AffiliateApiResponseProcessor {
      * @params response Response returned by the server for a request to updateProductCommissionProgram
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateProductCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ProductCommissionProgram >> {
+     public async updateProductCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetRestCommissionProgram >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ProductCommissionProgram = ObjectSerializer.deserialize(
+            const body: GetRestCommissionProgram = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ProductCommissionProgram", ""
-            ) as ProductCommissionProgram;
+                "GetRestCommissionProgram", ""
+            ) as GetRestCommissionProgram;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -4371,6 +4592,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -4395,10 +4623,10 @@ export class AffiliateApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ProductCommissionProgram = ObjectSerializer.deserialize(
+            const body: GetRestCommissionProgram = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ProductCommissionProgram", ""
-            ) as ProductCommissionProgram;
+                "GetRestCommissionProgram", ""
+            ) as GetRestCommissionProgram;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -4449,6 +4677,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -4490,13 +4725,13 @@ export class AffiliateApiResponseProcessor {
      * @params response Response returned by the server for a request to updateSubscriptionCommissionProgram
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateSubscriptionCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SubscriptionCommissionProgram >> {
+     public async updateSubscriptionCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetRestCommissionProgram >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: SubscriptionCommissionProgram = ObjectSerializer.deserialize(
+            const body: GetRestCommissionProgram = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "SubscriptionCommissionProgram", ""
-            ) as SubscriptionCommissionProgram;
+                "GetRestCommissionProgram", ""
+            ) as GetRestCommissionProgram;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -4527,6 +4762,13 @@ export class AffiliateApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -4551,10 +4793,10 @@ export class AffiliateApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: SubscriptionCommissionProgram = ObjectSerializer.deserialize(
+            const body: GetRestCommissionProgram = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "SubscriptionCommissionProgram", ""
-            ) as SubscriptionCommissionProgram;
+                "GetRestCommissionProgram", ""
+            ) as GetRestCommissionProgram;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

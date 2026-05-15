@@ -77,6 +77,8 @@ import CategoryDiscountCriteriaResponse from './model/CategoryDiscountCriteriaRe
 import CategoryReference from './model/CategoryReference';
 import CheckListItemDetails from './model/CheckListItemDetails';
 import ChecklistItem from './model/ChecklistItem';
+import CommissionItem from './model/CommissionItem';
+import CommissionItemRequest from './model/CommissionItemRequest';
 import Company from './model/Company';
 import Contact from './model/Contact';
 import ContactLink from './model/ContactLink';
@@ -266,7 +268,6 @@ import PaymentResult from './model/PaymentResult';
 import PhoneNumber from './model/PhoneNumber';
 import ProductCategory from './model/ProductCategory';
 import ProductCommission from './model/ProductCommission';
-import ProductCommissionProgram from './model/ProductCommissionProgram';
 import ProductDiscount from './model/ProductDiscount';
 import ProductFixedOptionDetail from './model/ProductFixedOptionDetail';
 import ProductFixedOptionList from './model/ProductFixedOptionList';
@@ -301,7 +302,6 @@ import RestV2User from './model/RestV2User';
 import RunReportRequest from './model/RunReportRequest';
 import Sequence from './model/Sequence';
 import SequencePath from './model/SequencePath';
-import SetDefaultCommissionProgramResponse from './model/SetDefaultCommissionProgramResponse';
 import ShippingDiscount from './model/ShippingDiscount';
 import ShippingInformation from './model/ShippingInformation';
 import ShippingMethod from './model/ShippingMethod';
@@ -309,7 +309,6 @@ import SocialAccount from './model/SocialAccount';
 import StageDetails from './model/StageDetails';
 import Subscription from './model/Subscription';
 import SubscriptionCommission from './model/SubscriptionCommission';
-import SubscriptionCommissionProgram from './model/SubscriptionCommissionProgram';
 import SubscriptionPlan from './model/SubscriptionPlan';
 import SubscriptionPlanDetail from './model/SubscriptionPlanDetail';
 import SubscriptionPlanList from './model/SubscriptionPlanList';
@@ -435,7 +434,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.9
+* @version 2.0.10
 */
 export {
     /**
@@ -827,6 +826,18 @@ export {
      * @property {module:keap.core.v2/model/ChecklistItem}
      */
     ChecklistItem,
+
+    /**
+     * The CommissionItem model constructor.
+     * @property {module:keap.core.v2/model/CommissionItem}
+     */
+    CommissionItem,
+
+    /**
+     * The CommissionItemRequest model constructor.
+     * @property {module:keap.core.v2/model/CommissionItemRequest}
+     */
+    CommissionItemRequest,
 
     /**
      * The Company model constructor.
@@ -1963,12 +1974,6 @@ export {
     ProductCommission,
 
     /**
-     * The ProductCommissionProgram model constructor.
-     * @property {module:keap.core.v2/model/ProductCommissionProgram}
-     */
-    ProductCommissionProgram,
-
-    /**
      * The ProductDiscount model constructor.
      * @property {module:keap.core.v2/model/ProductDiscount}
      */
@@ -2173,12 +2178,6 @@ export {
     SequencePath,
 
     /**
-     * The SetDefaultCommissionProgramResponse model constructor.
-     * @property {module:keap.core.v2/model/SetDefaultCommissionProgramResponse}
-     */
-    SetDefaultCommissionProgramResponse,
-
-    /**
      * The ShippingDiscount model constructor.
      * @property {module:keap.core.v2/model/ShippingDiscount}
      */
@@ -2219,12 +2218,6 @@ export {
      * @property {module:keap.core.v2/model/SubscriptionCommission}
      */
     SubscriptionCommission,
-
-    /**
-     * The SubscriptionCommissionProgram model constructor.
-     * @property {module:keap.core.v2/model/SubscriptionCommissionProgram}
-     */
-    SubscriptionCommissionProgram,
 
     /**
      * The SubscriptionPlan model constructor.

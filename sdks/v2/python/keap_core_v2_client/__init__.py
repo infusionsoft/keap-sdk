@@ -14,7 +14,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-__version__ = "2.0.9"
+__version__ = "2.0.10"
 
 # import apis into sdk package
 from keap_core_v2_client.api.affiliate_api import AffiliateApi
@@ -137,6 +137,8 @@ from keap_core_v2_client.models.category_discount_criteria_response import Categ
 from keap_core_v2_client.models.category_reference import CategoryReference
 from keap_core_v2_client.models.check_list_item_details import CheckListItemDetails
 from keap_core_v2_client.models.checklist_item import ChecklistItem
+from keap_core_v2_client.models.commission_item import CommissionItem
+from keap_core_v2_client.models.commission_item_request import CommissionItemRequest
 from keap_core_v2_client.models.company import Company
 from keap_core_v2_client.models.contact import Contact
 from keap_core_v2_client.models.contact_link import ContactLink
@@ -326,7 +328,6 @@ from keap_core_v2_client.models.payment_result import PaymentResult
 from keap_core_v2_client.models.phone_number import PhoneNumber
 from keap_core_v2_client.models.product_category import ProductCategory
 from keap_core_v2_client.models.product_commission import ProductCommission
-from keap_core_v2_client.models.product_commission_program import ProductCommissionProgram
 from keap_core_v2_client.models.product_discount import ProductDiscount
 from keap_core_v2_client.models.product_fixed_option_detail import ProductFixedOptionDetail
 from keap_core_v2_client.models.product_fixed_option_list import ProductFixedOptionList
@@ -361,7 +362,6 @@ from keap_core_v2_client.models.rest_v2_user import RestV2User
 from keap_core_v2_client.models.run_report_request import RunReportRequest
 from keap_core_v2_client.models.sequence import Sequence
 from keap_core_v2_client.models.sequence_path import SequencePath
-from keap_core_v2_client.models.set_default_commission_program_response import SetDefaultCommissionProgramResponse
 from keap_core_v2_client.models.shipping_discount import ShippingDiscount
 from keap_core_v2_client.models.shipping_information import ShippingInformation
 from keap_core_v2_client.models.shipping_method import ShippingMethod
@@ -369,7 +369,6 @@ from keap_core_v2_client.models.social_account import SocialAccount
 from keap_core_v2_client.models.stage_details import StageDetails
 from keap_core_v2_client.models.subscription import Subscription
 from keap_core_v2_client.models.subscription_commission import SubscriptionCommission
-from keap_core_v2_client.models.subscription_commission_program import SubscriptionCommissionProgram
 from keap_core_v2_client.models.subscription_plan import SubscriptionPlan
 from keap_core_v2_client.models.subscription_plan_detail import SubscriptionPlanDetail
 from keap_core_v2_client.models.subscription_plan_list import SubscriptionPlanList

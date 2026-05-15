@@ -37,9 +37,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId"></param>
         /// <param name="createNoteRequest"></param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Note</returns>
-        Note CreateNote(string contactId, CreateNoteRequest createNoteRequest, int operationIndex = 0);
+        Note CreateNote(string contactId, CreateNoteRequest createNoteRequest, List<string>? fields = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a Note
@@ -50,9 +51,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId"></param>
         /// <param name="createNoteRequest"></param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Note</returns>
-        ApiResponse<Note> CreateNoteWithHttpInfo(string contactId, CreateNoteRequest createNoteRequest, int operationIndex = 0);
+        ApiResponse<Note> CreateNoteWithHttpInfo(string contactId, CreateNoteRequest createNoteRequest, List<string>? fields = default, int operationIndex = 0);
         /// <summary>
         /// Create a Custom Field
         /// </summary>
@@ -222,9 +224,10 @@ namespace Keap.Core.V2.Api
         /// <param name="noteId"></param>
         /// <param name="updateNoteRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UpdateNoteResponse</returns>
-        UpdateNoteResponse UpdateNote(string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = default, int operationIndex = 0);
+        UpdateNoteResponse UpdateNote(string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Note
@@ -237,9 +240,10 @@ namespace Keap.Core.V2.Api
         /// <param name="noteId"></param>
         /// <param name="updateNoteRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UpdateNoteResponse</returns>
-        ApiResponse<UpdateNoteResponse> UpdateNoteWithHttpInfo(string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = default, int operationIndex = 0);
+        ApiResponse<UpdateNoteResponse> UpdateNoteWithHttpInfo(string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0);
         /// <summary>
         /// Update a Custom Field
         /// </summary>
@@ -285,10 +289,11 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId"></param>
         /// <param name="createNoteRequest"></param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Note</returns>
-        System.Threading.Tasks.Task<Note> CreateNoteAsync(string contactId, CreateNoteRequest createNoteRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Note> CreateNoteAsync(string contactId, CreateNoteRequest createNoteRequest, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create a Note
@@ -299,10 +304,11 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId"></param>
         /// <param name="createNoteRequest"></param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Note)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Note>> CreateNoteWithHttpInfoAsync(string contactId, CreateNoteRequest createNoteRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Note>> CreateNoteWithHttpInfoAsync(string contactId, CreateNoteRequest createNoteRequest, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a Custom Field
         /// </summary>
@@ -484,10 +490,11 @@ namespace Keap.Core.V2.Api
         /// <param name="noteId"></param>
         /// <param name="updateNoteRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateNoteResponse</returns>
-        System.Threading.Tasks.Task<UpdateNoteResponse> UpdateNoteAsync(string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<UpdateNoteResponse> UpdateNoteAsync(string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Note
@@ -500,10 +507,11 @@ namespace Keap.Core.V2.Api
         /// <param name="noteId"></param>
         /// <param name="updateNoteRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateNoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateNoteResponse>> UpdateNoteWithHttpInfoAsync(string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<UpdateNoteResponse>> UpdateNoteWithHttpInfoAsync(string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update a Custom Field
         /// </summary>
@@ -659,11 +667,12 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId"></param>
         /// <param name="createNoteRequest"></param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Note</returns>
-        public Note CreateNote(string contactId, CreateNoteRequest createNoteRequest, int operationIndex = 0)
+        public Note CreateNote(string contactId, CreateNoteRequest createNoteRequest, List<string>? fields = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<Note> localVarResponse = CreateNoteWithHttpInfo(contactId, createNoteRequest);
+            Keap.Core.V2.Client.ApiResponse<Note> localVarResponse = CreateNoteWithHttpInfo(contactId, createNoteRequest, fields);
             return localVarResponse.Data;
         }
 
@@ -673,9 +682,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId"></param>
         /// <param name="createNoteRequest"></param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Note</returns>
-        public Keap.Core.V2.Client.ApiResponse<Note> CreateNoteWithHttpInfo(string contactId, CreateNoteRequest createNoteRequest, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<Note> CreateNoteWithHttpInfo(string contactId, CreateNoteRequest createNoteRequest, List<string>? fields = default, int operationIndex = 0)
         {
             // verify the required parameter 'contactId' is set
             if (contactId == null)
@@ -714,6 +724,10 @@ namespace Keap.Core.V2.Api
             }
 
             localVarRequestOptions.PathParameters.Add("contact_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(contactId)); // path parameter
+            if (fields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
+            }
             localVarRequestOptions.Data = createNoteRequest;
 
             localVarRequestOptions.Operation = "NoteApi.CreateNote";
@@ -756,12 +770,13 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId"></param>
         /// <param name="createNoteRequest"></param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Note</returns>
-        public async System.Threading.Tasks.Task<Note> CreateNoteAsync(string contactId, CreateNoteRequest createNoteRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Note> CreateNoteAsync(string contactId, CreateNoteRequest createNoteRequest, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<Note> localVarResponse = await CreateNoteWithHttpInfoAsync(contactId, createNoteRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<Note> localVarResponse = await CreateNoteWithHttpInfoAsync(contactId, createNoteRequest, fields, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -771,10 +786,11 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId"></param>
         /// <param name="createNoteRequest"></param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Note)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Note>> CreateNoteWithHttpInfoAsync(string contactId, CreateNoteRequest createNoteRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Note>> CreateNoteWithHttpInfoAsync(string contactId, CreateNoteRequest createNoteRequest, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'contactId' is set
             if (contactId == null)
@@ -813,6 +829,10 @@ namespace Keap.Core.V2.Api
             }
 
             localVarRequestOptions.PathParameters.Add("contact_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(contactId)); // path parameter
+            if (fields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
+            }
             localVarRequestOptions.Data = createNoteRequest;
 
             localVarRequestOptions.Operation = "NoteApi.CreateNote";
@@ -2040,11 +2060,12 @@ namespace Keap.Core.V2.Api
         /// <param name="noteId"></param>
         /// <param name="updateNoteRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UpdateNoteResponse</returns>
-        public UpdateNoteResponse UpdateNote(string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = default, int operationIndex = 0)
+        public UpdateNoteResponse UpdateNote(string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<UpdateNoteResponse> localVarResponse = UpdateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask);
+            Keap.Core.V2.Client.ApiResponse<UpdateNoteResponse> localVarResponse = UpdateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask, fields);
             return localVarResponse.Data;
         }
 
@@ -2056,9 +2077,10 @@ namespace Keap.Core.V2.Api
         /// <param name="noteId"></param>
         /// <param name="updateNoteRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UpdateNoteResponse</returns>
-        public Keap.Core.V2.Client.ApiResponse<UpdateNoteResponse> UpdateNoteWithHttpInfo(string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<UpdateNoteResponse> UpdateNoteWithHttpInfo(string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0)
         {
             // verify the required parameter 'contactId' is set
             if (contactId == null)
@@ -2108,6 +2130,10 @@ namespace Keap.Core.V2.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
             }
+            if (fields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
+            }
             localVarRequestOptions.Data = updateNoteRequest;
 
             localVarRequestOptions.Operation = "NoteApi.UpdateNote";
@@ -2152,12 +2178,13 @@ namespace Keap.Core.V2.Api
         /// <param name="noteId"></param>
         /// <param name="updateNoteRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateNoteResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateNoteResponse> UpdateNoteAsync(string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<UpdateNoteResponse> UpdateNoteAsync(string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<UpdateNoteResponse> localVarResponse = await UpdateNoteWithHttpInfoAsync(contactId, noteId, updateNoteRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<UpdateNoteResponse> localVarResponse = await UpdateNoteWithHttpInfoAsync(contactId, noteId, updateNoteRequest, updateMask, fields, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2169,10 +2196,11 @@ namespace Keap.Core.V2.Api
         /// <param name="noteId"></param>
         /// <param name="updateNoteRequest"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="fields">Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateNoteResponse)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<UpdateNoteResponse>> UpdateNoteWithHttpInfoAsync(string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<UpdateNoteResponse>> UpdateNoteWithHttpInfoAsync(string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'contactId' is set
             if (contactId == null)
@@ -2221,6 +2249,10 @@ namespace Keap.Core.V2.Api
             if (updateMask != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+            }
+            if (fields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
             }
             localVarRequestOptions.Data = updateNoteRequest;
 

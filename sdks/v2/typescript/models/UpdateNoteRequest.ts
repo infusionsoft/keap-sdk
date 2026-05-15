@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 
+import { CustomFieldValueObject } from '../models/CustomFieldValueObject';
 import { HttpFile } from '../http/http';
 
 export class UpdateNoteRequest {
@@ -33,6 +34,10 @@ export class UpdateNoteRequest {
     * Whether to pin this note
     */
     'isPinned'?: boolean;
+    /**
+    * Custom field values for the note. An empty array resets all custom fields to their defaults.
+    */
+    'customFields'?: Array<CustomFieldValueObject>;
     /**
     * Associated contact ID
     */
@@ -71,6 +76,12 @@ export class UpdateNoteRequest {
             "name": "isPinned",
             "baseName": "is_pinned",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "customFields",
+            "baseName": "custom_fields",
+            "type": "Array<CustomFieldValueObject>",
             "format": ""
         },
         {

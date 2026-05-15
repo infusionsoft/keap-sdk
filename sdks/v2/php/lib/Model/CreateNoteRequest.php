@@ -61,7 +61,8 @@ class CreateNoteRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'text' => 'string',
         'type' => 'string',
         'user_id' => 'string',
-        'is_pinned' => 'bool'
+        'is_pinned' => 'bool',
+        'custom_fields' => '\Keap\Core\V2\Model\CustomFieldValueObject[]'
     ];
 
     /**
@@ -76,7 +77,8 @@ class CreateNoteRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'text' => null,
         'type' => null,
         'user_id' => null,
-        'is_pinned' => null
+        'is_pinned' => null,
+        'custom_fields' => null
     ];
 
     /**
@@ -89,7 +91,8 @@ class CreateNoteRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'text' => false,
         'type' => false,
         'user_id' => false,
-        'is_pinned' => false
+        'is_pinned' => false,
+        'custom_fields' => false
     ];
 
     /**
@@ -182,7 +185,8 @@ class CreateNoteRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'text' => 'text',
         'type' => 'type',
         'user_id' => 'user_id',
-        'is_pinned' => 'is_pinned'
+        'is_pinned' => 'is_pinned',
+        'custom_fields' => 'custom_fields'
     ];
 
     /**
@@ -195,7 +199,8 @@ class CreateNoteRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'text' => 'setText',
         'type' => 'setType',
         'user_id' => 'setUserId',
-        'is_pinned' => 'setIsPinned'
+        'is_pinned' => 'setIsPinned',
+        'custom_fields' => 'setCustomFields'
     ];
 
     /**
@@ -208,7 +213,8 @@ class CreateNoteRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'text' => 'getText',
         'type' => 'getType',
         'user_id' => 'getUserId',
-        'is_pinned' => 'getIsPinned'
+        'is_pinned' => 'getIsPinned',
+        'custom_fields' => 'getCustomFields'
     ];
 
     /**
@@ -273,6 +279,7 @@ class CreateNoteRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('user_id', $data ?? [], null);
         $this->setIfExists('is_pinned', $data ?? [], null);
+        $this->setIfExists('custom_fields', $data ?? [], null);
     }
 
     /**
@@ -451,6 +458,33 @@ class CreateNoteRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable is_pinned cannot be null');
         }
         $this->container['is_pinned'] = $is_pinned;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_fields
+     *
+     * @return \Keap\Core\V2\Model\CustomFieldValueObject[]|null
+     */
+    public function getCustomFields()
+    {
+        return $this->container['custom_fields'];
+    }
+
+    /**
+     * Sets custom_fields
+     *
+     * @param \Keap\Core\V2\Model\CustomFieldValueObject[]|null $custom_fields Custom field values for the note. An empty array resets all custom fields to their defaults.
+     *
+     * @return self
+     */
+    public function setCustomFields($custom_fields)
+    {
+        if (is_null($custom_fields)) {
+            throw new \InvalidArgumentException('non-nullable custom_fields cannot be null');
+        }
+        $this->container['custom_fields'] = $custom_fields;
 
         return $this;
     }

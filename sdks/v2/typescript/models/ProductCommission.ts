@@ -10,13 +10,34 @@
  * Do not edit the class manually.
  */
 
+import { CommissionItem } from '../models/CommissionItem';
 import { HttpFile } from '../http/http';
 
 export class ProductCommission {
     /**
-    * Percentage commission
+    * The payout type for this commission.
+    */
+    'payoutType'?: ProductCommissionPayoutTypeEnum;
+    /**
+    * Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for `level_1`
+    */
+    'dollarAmount'?: number;
+    /**
+    * Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for `level_1`
     */
     'percentage'?: number;
+    /**
+    * Payout rules for any unused commissions.
+    */
+    'unused'?: CommissionItem;
+    /**
+    * Payout rules for Level 1 recipients of the commission.
+    */
+    'level1'?: CommissionItem;
+    /**
+    * Payout rules for Level 2 recipients of the commission.
+    */
+    'level2'?: CommissionItem;
     /**
     * Product ID
     */
@@ -29,10 +50,6 @@ export class ProductCommission {
     * Product price
     */
     'productPrice'?: number;
-    /**
-    * Fixed dollar commission
-    */
-    'dollarAmount'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -40,10 +57,40 @@ export class ProductCommission {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
+            "name": "payoutType",
+            "baseName": "payout_type",
+            "type": "ProductCommissionPayoutTypeEnum",
+            "format": ""
+        },
+        {
+            "name": "dollarAmount",
+            "baseName": "dollar_amount",
+            "type": "number",
+            "format": "double"
+        },
+        {
             "name": "percentage",
             "baseName": "percentage",
             "type": "number",
             "format": "double"
+        },
+        {
+            "name": "unused",
+            "baseName": "unused",
+            "type": "CommissionItem",
+            "format": ""
+        },
+        {
+            "name": "level1",
+            "baseName": "level_1",
+            "type": "CommissionItem",
+            "format": ""
+        },
+        {
+            "name": "level2",
+            "baseName": "level_2",
+            "type": "CommissionItem",
+            "format": ""
         },
         {
             "name": "productId",
@@ -62,12 +109,6 @@ export class ProductCommission {
             "baseName": "product_price",
             "type": "number",
             "format": "double"
-        },
-        {
-            "name": "dollarAmount",
-            "baseName": "dollar_amount",
-            "type": "number",
-            "format": "double"
         }    ];
 
     static getAttributeTypeMap() {
@@ -77,3 +118,9 @@ export class ProductCommission {
     public constructor() {
     }
 }
+
+export enum ProductCommissionPayoutTypeEnum {
+    Upfront = 'UPFRONT',
+    PaymentReceived = 'PAYMENT_RECEIVED'
+}
+

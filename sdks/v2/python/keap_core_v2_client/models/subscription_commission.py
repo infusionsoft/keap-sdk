@@ -17,8 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
+from keap_core_v2_client.models.commission_item import CommissionItem
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,13 +27,27 @@ class SubscriptionCommission(BaseModel):
     """
     SubscriptionCommission
     """ # noqa: E501
+    payout_type: Optional[StrictStr] = Field(default='UPFRONT', description="The payout type for this commission.")
+    dollar_amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for `level_1`")
+    percentage: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for `level_1`")
+    unused: Optional[CommissionItem] = Field(default=None, description="Payout rules for any unused commissions.")
+    level_1: Optional[CommissionItem] = Field(default=None, description="Payout rules for Level 1 recipients of the commission.")
+    level_2: Optional[CommissionItem] = Field(default=None, description="Payout rules for Level 2 recipients of the commission.")
     name: Optional[StrictStr] = Field(default=None, description="Subscription name")
-    percentage: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Percentage commission")
     subscription_id: Optional[StrictStr] = Field(default=None, description="Subscription ID")
     plan_price: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Plan price")
-    dollar_amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Fixed dollar commission")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["name", "percentage", "subscription_id", "plan_price", "dollar_amount"]
+    __properties: ClassVar[List[str]] = ["payout_type", "dollar_amount", "percentage", "unused", "level_1", "level_2", "name", "subscription_id", "plan_price"]
+
+    @field_validator('payout_type')
+    def payout_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['UPFRONT', 'PAYMENT_RECEIVED']):
+            raise ValueError("must be one of enum values ('UPFRONT', 'PAYMENT_RECEIVED')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -75,6 +90,15 @@ class SubscriptionCommission(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of unused
+        if self.unused:
+            _dict['unused'] = self.unused.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of level_1
+        if self.level_1:
+            _dict['level_1'] = self.level_1.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of level_2
+        if self.level_2:
+            _dict['level_2'] = self.level_2.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -92,11 +116,15 @@ class SubscriptionCommission(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
+            "payout_type": obj.get("payout_type") if obj.get("payout_type") is not None else 'UPFRONT',
+            "dollar_amount": obj.get("dollar_amount"),
             "percentage": obj.get("percentage"),
+            "unused": CommissionItem.from_dict(obj["unused"]) if obj.get("unused") is not None else None,
+            "level_1": CommissionItem.from_dict(obj["level_1"]) if obj.get("level_1") is not None else None,
+            "level_2": CommissionItem.from_dict(obj["level_2"]) if obj.get("level_2") is not None else None,
+            "name": obj.get("name"),
             "subscription_id": obj.get("subscription_id"),
-            "plan_price": obj.get("plan_price"),
-            "dollar_amount": obj.get("dollar_amount")
+            "plan_price": obj.get("plan_price")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

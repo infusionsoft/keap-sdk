@@ -57,11 +57,15 @@ class ProductCommission implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
+        'payout_type' => 'string',
+        'dollar_amount' => 'float',
         'percentage' => 'float',
+        'unused' => '\Keap\Core\V2\Model\CommissionItem',
+        'level_1' => '\Keap\Core\V2\Model\CommissionItem',
+        'level_2' => '\Keap\Core\V2\Model\CommissionItem',
         'product_id' => 'string',
         'product_name' => 'string',
-        'product_price' => 'float',
-        'dollar_amount' => 'float'
+        'product_price' => 'float'
     ];
 
     /**
@@ -72,11 +76,15 @@ class ProductCommission implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'payout_type' => null,
+        'dollar_amount' => 'double',
         'percentage' => 'double',
+        'unused' => null,
+        'level_1' => null,
+        'level_2' => null,
         'product_id' => null,
         'product_name' => null,
-        'product_price' => 'double',
-        'dollar_amount' => 'double'
+        'product_price' => 'double'
     ];
 
     /**
@@ -85,11 +93,15 @@ class ProductCommission implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'payout_type' => false,
+        'dollar_amount' => false,
         'percentage' => false,
+        'unused' => false,
+        'level_1' => false,
+        'level_2' => false,
         'product_id' => false,
         'product_name' => false,
-        'product_price' => false,
-        'dollar_amount' => false
+        'product_price' => false
     ];
 
     /**
@@ -178,11 +190,15 @@ class ProductCommission implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
+        'payout_type' => 'payout_type',
+        'dollar_amount' => 'dollar_amount',
         'percentage' => 'percentage',
+        'unused' => 'unused',
+        'level_1' => 'level_1',
+        'level_2' => 'level_2',
         'product_id' => 'product_id',
         'product_name' => 'product_name',
-        'product_price' => 'product_price',
-        'dollar_amount' => 'dollar_amount'
+        'product_price' => 'product_price'
     ];
 
     /**
@@ -191,11 +207,15 @@ class ProductCommission implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
+        'payout_type' => 'setPayoutType',
+        'dollar_amount' => 'setDollarAmount',
         'percentage' => 'setPercentage',
+        'unused' => 'setUnused',
+        'level_1' => 'setLevel1',
+        'level_2' => 'setLevel2',
         'product_id' => 'setProductId',
         'product_name' => 'setProductName',
-        'product_price' => 'setProductPrice',
-        'dollar_amount' => 'setDollarAmount'
+        'product_price' => 'setProductPrice'
     ];
 
     /**
@@ -204,11 +224,15 @@ class ProductCommission implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
+        'payout_type' => 'getPayoutType',
+        'dollar_amount' => 'getDollarAmount',
         'percentage' => 'getPercentage',
+        'unused' => 'getUnused',
+        'level_1' => 'getLevel1',
+        'level_2' => 'getLevel2',
         'product_id' => 'getProductId',
         'product_name' => 'getProductName',
-        'product_price' => 'getProductPrice',
-        'dollar_amount' => 'getDollarAmount'
+        'product_price' => 'getProductPrice'
     ];
 
     /**
@@ -252,6 +276,21 @@ class ProductCommission implements ModelInterface, ArrayAccess, \JsonSerializabl
         return self::$openAPIModelName;
     }
 
+    public const PAYOUT_TYPE_UPFRONT = 'UPFRONT';
+    public const PAYOUT_TYPE_PAYMENT_RECEIVED = 'PAYMENT_RECEIVED';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPayoutTypeAllowableValues()
+    {
+        return [
+            self::PAYOUT_TYPE_UPFRONT,
+            self::PAYOUT_TYPE_PAYMENT_RECEIVED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -268,11 +307,15 @@ class ProductCommission implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('payout_type', $data ?? [], 'UPFRONT');
+        $this->setIfExists('dollar_amount', $data ?? [], null);
         $this->setIfExists('percentage', $data ?? [], null);
+        $this->setIfExists('unused', $data ?? [], null);
+        $this->setIfExists('level_1', $data ?? [], null);
+        $this->setIfExists('level_2', $data ?? [], null);
         $this->setIfExists('product_id', $data ?? [], null);
         $this->setIfExists('product_name', $data ?? [], null);
         $this->setIfExists('product_price', $data ?? [], null);
-        $this->setIfExists('dollar_amount', $data ?? [], null);
     }
 
     /**
@@ -302,6 +345,15 @@ class ProductCommission implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getPayoutTypeAllowableValues();
+        if (!is_null($this->container['payout_type']) && !in_array($this->container['payout_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'payout_type', must be one of '%s'",
+                $this->container['payout_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -318,6 +370,70 @@ class ProductCommission implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
+     * Gets payout_type
+     *
+     * @return string|null
+     */
+    public function getPayoutType()
+    {
+        return $this->container['payout_type'];
+    }
+
+    /**
+     * Sets payout_type
+     *
+     * @param string|null $payout_type The payout type for this commission.
+     *
+     * @return self
+     */
+    public function setPayoutType($payout_type)
+    {
+        if (is_null($payout_type)) {
+            throw new \InvalidArgumentException('non-nullable payout_type cannot be null');
+        }
+        $allowedValues = $this->getPayoutTypeAllowableValues();
+        if (!in_array($payout_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'payout_type', must be one of '%s'",
+                    $payout_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['payout_type'] = $payout_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets dollar_amount
+     *
+     * @return float|null
+     */
+    public function getDollarAmount()
+    {
+        return $this->container['dollar_amount'];
+    }
+
+    /**
+     * Sets dollar_amount
+     *
+     * @param float|null $dollar_amount Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for `level_1`
+     *
+     * @return self
+     */
+    public function setDollarAmount($dollar_amount)
+    {
+        if (is_null($dollar_amount)) {
+            throw new \InvalidArgumentException('non-nullable dollar_amount cannot be null');
+        }
+        $this->container['dollar_amount'] = $dollar_amount;
+
+        return $this;
+    }
+
+    /**
      * Gets percentage
      *
      * @return float|null
@@ -330,7 +446,7 @@ class ProductCommission implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets percentage
      *
-     * @param float|null $percentage Percentage commission
+     * @param float|null $percentage Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for `level_1`
      *
      * @return self
      */
@@ -340,6 +456,87 @@ class ProductCommission implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable percentage cannot be null');
         }
         $this->container['percentage'] = $percentage;
+
+        return $this;
+    }
+
+    /**
+     * Gets unused
+     *
+     * @return \Keap\Core\V2\Model\CommissionItem|null
+     */
+    public function getUnused()
+    {
+        return $this->container['unused'];
+    }
+
+    /**
+     * Sets unused
+     *
+     * @param \Keap\Core\V2\Model\CommissionItem|null $unused Payout rules for any unused commissions.
+     *
+     * @return self
+     */
+    public function setUnused($unused)
+    {
+        if (is_null($unused)) {
+            throw new \InvalidArgumentException('non-nullable unused cannot be null');
+        }
+        $this->container['unused'] = $unused;
+
+        return $this;
+    }
+
+    /**
+     * Gets level_1
+     *
+     * @return \Keap\Core\V2\Model\CommissionItem|null
+     */
+    public function getLevel1()
+    {
+        return $this->container['level_1'];
+    }
+
+    /**
+     * Sets level_1
+     *
+     * @param \Keap\Core\V2\Model\CommissionItem|null $level_1 Payout rules for Level 1 recipients of the commission.
+     *
+     * @return self
+     */
+    public function setLevel1($level_1)
+    {
+        if (is_null($level_1)) {
+            throw new \InvalidArgumentException('non-nullable level_1 cannot be null');
+        }
+        $this->container['level_1'] = $level_1;
+
+        return $this;
+    }
+
+    /**
+     * Gets level_2
+     *
+     * @return \Keap\Core\V2\Model\CommissionItem|null
+     */
+    public function getLevel2()
+    {
+        return $this->container['level_2'];
+    }
+
+    /**
+     * Sets level_2
+     *
+     * @param \Keap\Core\V2\Model\CommissionItem|null $level_2 Payout rules for Level 2 recipients of the commission.
+     *
+     * @return self
+     */
+    public function setLevel2($level_2)
+    {
+        if (is_null($level_2)) {
+            throw new \InvalidArgumentException('non-nullable level_2 cannot be null');
+        }
+        $this->container['level_2'] = $level_2;
 
         return $this;
     }
@@ -421,33 +618,6 @@ class ProductCommission implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable product_price cannot be null');
         }
         $this->container['product_price'] = $product_price;
-
-        return $this;
-    }
-
-    /**
-     * Gets dollar_amount
-     *
-     * @return float|null
-     */
-    public function getDollarAmount()
-    {
-        return $this->container['dollar_amount'];
-    }
-
-    /**
-     * Sets dollar_amount
-     *
-     * @param float|null $dollar_amount Fixed dollar commission
-     *
-     * @return self
-     */
-    public function setDollarAmount($dollar_amount)
-    {
-        if (is_null($dollar_amount)) {
-            throw new \InvalidArgumentException('non-nullable dollar_amount cannot be null');
-        }
-        $this->container['dollar_amount'] = $dollar_amount;
 
         return $this;
     }

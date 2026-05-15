@@ -88,6 +88,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -168,6 +169,7 @@ ApiResponse<[**AutomationCategory**](AutomationCategory.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -245,6 +247,7 @@ null (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -324,6 +327,7 @@ ApiResponse<Void>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -398,6 +402,7 @@ This endpoint does not need any parameter.
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -474,6 +479,7 @@ ApiResponse<[**ListAutomationCategoryResponse**](ListAutomationCategoryResponse.
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -554,6 +560,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -636,6 +643,7 @@ ApiResponse<[**AutomationCategory**](AutomationCategory.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |

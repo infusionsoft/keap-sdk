@@ -101,6 +101,7 @@ class CategoryDiscountsApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -175,6 +176,7 @@ class CategoryDiscountsApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -249,6 +251,7 @@ class CategoryDiscountsApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -396,6 +399,7 @@ class CategoryDiscountsApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -470,6 +474,7 @@ class CategoryDiscountsApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -544,6 +549,7 @@ class CategoryDiscountsApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -678,6 +684,7 @@ class CategoryDiscountsApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -752,6 +759,7 @@ class CategoryDiscountsApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -826,6 +834,7 @@ class CategoryDiscountsApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -904,7 +913,7 @@ class CategoryDiscountsApi:
     @validate_call
     def list_category_discounts(
         self,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, the allowed field is: - (String) `product_category_id`  You will need to apply the `==` operator to check the equality of the filter with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_category_id%3D%3D4` ")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, the allowed field is: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (String) `name` - Wildcard matching allowed - (String) `description` - Wildcard matching allowed - (String) `product_category_id`  You will need to apply the `==` operator to check the equality of the filter with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_category_id%3D%3D4` - `filter=ids%3D%3D1,10,4,24` - `filter=id%3E5`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `description==foo*` finds anything in `description` that begins with `foo`  ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `name`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -925,7 +934,7 @@ class CategoryDiscountsApi:
 
         Retrieves a list of Category Discounts
 
-        :param filter: Filter to apply, the allowed field is: - (String) `product_category_id`  You will need to apply the `==` operator to check the equality of the filter with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_category_id%3D%3D4` 
+        :param filter: Filter to apply, the allowed field is: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (String) `name` - Wildcard matching allowed - (String) `description` - Wildcard matching allowed - (String) `product_category_id`  You will need to apply the `==` operator to check the equality of the filter with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_category_id%3D%3D4` - `filter=ids%3D%3D1,10,4,24` - `filter=id%3E5`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `description==foo*` finds anything in `description` that begins with `foo`  
         :type filter: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `name`  One of the following directions: - `asc` - `desc`
         :type order_by: str
@@ -972,6 +981,7 @@ class CategoryDiscountsApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -990,7 +1000,7 @@ class CategoryDiscountsApi:
     @validate_call
     def list_category_discounts_with_http_info(
         self,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, the allowed field is: - (String) `product_category_id`  You will need to apply the `==` operator to check the equality of the filter with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_category_id%3D%3D4` ")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, the allowed field is: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (String) `name` - Wildcard matching allowed - (String) `description` - Wildcard matching allowed - (String) `product_category_id`  You will need to apply the `==` operator to check the equality of the filter with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_category_id%3D%3D4` - `filter=ids%3D%3D1,10,4,24` - `filter=id%3E5`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `description==foo*` finds anything in `description` that begins with `foo`  ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `name`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -1011,7 +1021,7 @@ class CategoryDiscountsApi:
 
         Retrieves a list of Category Discounts
 
-        :param filter: Filter to apply, the allowed field is: - (String) `product_category_id`  You will need to apply the `==` operator to check the equality of the filter with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_category_id%3D%3D4` 
+        :param filter: Filter to apply, the allowed field is: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (String) `name` - Wildcard matching allowed - (String) `description` - Wildcard matching allowed - (String) `product_category_id`  You will need to apply the `==` operator to check the equality of the filter with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_category_id%3D%3D4` - `filter=ids%3D%3D1,10,4,24` - `filter=id%3E5`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `description==foo*` finds anything in `description` that begins with `foo`  
         :type filter: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `name`  One of the following directions: - `asc` - `desc`
         :type order_by: str
@@ -1058,6 +1068,7 @@ class CategoryDiscountsApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1076,7 +1087,7 @@ class CategoryDiscountsApi:
     @validate_call
     def list_category_discounts_without_preload_content(
         self,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, the allowed field is: - (String) `product_category_id`  You will need to apply the `==` operator to check the equality of the filter with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_category_id%3D%3D4` ")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, the allowed field is: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (String) `name` - Wildcard matching allowed - (String) `description` - Wildcard matching allowed - (String) `product_category_id`  You will need to apply the `==` operator to check the equality of the filter with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_category_id%3D%3D4` - `filter=ids%3D%3D1,10,4,24` - `filter=id%3E5`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `description==foo*` finds anything in `description` that begins with `foo`  ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `name`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -1097,7 +1108,7 @@ class CategoryDiscountsApi:
 
         Retrieves a list of Category Discounts
 
-        :param filter: Filter to apply, the allowed field is: - (String) `product_category_id`  You will need to apply the `==` operator to check the equality of the filter with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_category_id%3D%3D4` 
+        :param filter: Filter to apply, the allowed field is: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (String) `name` - Wildcard matching allowed - (String) `description` - Wildcard matching allowed - (String) `product_category_id`  You will need to apply the `==` operator to check the equality of the filter with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_category_id%3D%3D4` - `filter=ids%3D%3D1,10,4,24` - `filter=id%3E5`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `description==foo*` finds anything in `description` that begins with `foo`  
         :type filter: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `name`  One of the following directions: - `asc` - `desc`
         :type order_by: str
@@ -1144,6 +1155,7 @@ class CategoryDiscountsApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1303,6 +1315,7 @@ class CategoryDiscountsApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1385,6 +1398,7 @@ class CategoryDiscountsApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1467,6 +1481,7 @@ class CategoryDiscountsApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",

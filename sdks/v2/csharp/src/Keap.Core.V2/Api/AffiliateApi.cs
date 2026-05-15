@@ -109,8 +109,8 @@ namespace Keap.Core.V2.Api
         /// <param name="commissionProgramId"></param>
         /// <param name="createProductCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ProductCommissionProgram</returns>
-        ProductCommissionProgram AssignProductCommissionProgram(string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest, int operationIndex = 0);
+        /// <returns>GetRestCommissionProgram</returns>
+        GetRestCommissionProgram AssignProductCommissionProgram(string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest, int operationIndex = 0);
 
         /// <summary>
         /// Assign a Product Commission Program
@@ -122,8 +122,8 @@ namespace Keap.Core.V2.Api
         /// <param name="commissionProgramId"></param>
         /// <param name="createProductCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ProductCommissionProgram</returns>
-        ApiResponse<ProductCommissionProgram> AssignProductCommissionProgramWithHttpInfo(string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest, int operationIndex = 0);
+        /// <returns>ApiResponse of GetRestCommissionProgram</returns>
+        ApiResponse<GetRestCommissionProgram> AssignProductCommissionProgramWithHttpInfo(string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest, int operationIndex = 0);
         /// <summary>
         /// Assign a Subscription Commission Program
         /// </summary>
@@ -134,8 +134,8 @@ namespace Keap.Core.V2.Api
         /// <param name="commissionProgramId"></param>
         /// <param name="createSubscriptionCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>SubscriptionCommissionProgram</returns>
-        SubscriptionCommissionProgram AssignSubscriptionCommissionProgram(string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest, int operationIndex = 0);
+        /// <returns>GetRestCommissionProgram</returns>
+        GetRestCommissionProgram AssignSubscriptionCommissionProgram(string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest, int operationIndex = 0);
 
         /// <summary>
         /// Assign a Subscription Commission Program
@@ -147,8 +147,8 @@ namespace Keap.Core.V2.Api
         /// <param name="commissionProgramId"></param>
         /// <param name="createSubscriptionCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of SubscriptionCommissionProgram</returns>
-        ApiResponse<SubscriptionCommissionProgram> AssignSubscriptionCommissionProgramWithHttpInfo(string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest, int operationIndex = 0);
+        /// <returns>ApiResponse of GetRestCommissionProgram</returns>
+        ApiResponse<GetRestCommissionProgram> AssignSubscriptionCommissionProgramWithHttpInfo(string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest, int operationIndex = 0);
         /// <summary>
         /// Create an Affiliate Custom Field
         /// </summary>
@@ -182,8 +182,8 @@ namespace Keap.Core.V2.Api
         /// <param name="commissionProgramId"></param>
         /// <param name="createDefaultCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>SetDefaultCommissionProgramResponse</returns>
-        SetDefaultCommissionProgramResponse CreateDefaultCommissionProgram(string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest, int operationIndex = 0);
+        /// <returns>GetRestCommissionProgram</returns>
+        GetRestCommissionProgram CreateDefaultCommissionProgram(string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest, int operationIndex = 0);
 
         /// <summary>
         /// Create a Default Commission Program
@@ -195,8 +195,8 @@ namespace Keap.Core.V2.Api
         /// <param name="commissionProgramId"></param>
         /// <param name="createDefaultCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of SetDefaultCommissionProgramResponse</returns>
-        ApiResponse<SetDefaultCommissionProgramResponse> CreateDefaultCommissionProgramWithHttpInfo(string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest, int operationIndex = 0);
+        /// <returns>ApiResponse of GetRestCommissionProgram</returns>
+        ApiResponse<GetRestCommissionProgram> CreateDefaultCommissionProgramWithHttpInfo(string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest, int operationIndex = 0);
         /// <summary>
         /// Create an Affiliate Link
         /// </summary>
@@ -814,10 +814,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateDefaultCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>SetDefaultCommissionProgramResponse</returns>
-        SetDefaultCommissionProgramResponse UpdateDefaultCommissionProgram(string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0);
+        /// <returns>GetRestCommissionProgram</returns>
+        GetRestCommissionProgram UpdateDefaultCommissionProgram(string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Default Commission Program
@@ -828,10 +828,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateDefaultCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of SetDefaultCommissionProgramResponse</returns>
-        ApiResponse<SetDefaultCommissionProgramResponse> UpdateDefaultCommissionProgramWithHttpInfo(string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0);
+        /// <returns>ApiResponse of GetRestCommissionProgram</returns>
+        ApiResponse<GetRestCommissionProgram> UpdateDefaultCommissionProgramWithHttpInfo(string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0);
         /// <summary>
         /// Update a Product Commission Program
         /// </summary>
@@ -841,10 +841,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateProductCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ProductCommissionProgram</returns>
-        ProductCommissionProgram UpdateProductCommissionProgram(string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0);
+        /// <returns>GetRestCommissionProgram</returns>
+        GetRestCommissionProgram UpdateProductCommissionProgram(string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Product Commission Program
@@ -855,10 +855,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateProductCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ProductCommissionProgram</returns>
-        ApiResponse<ProductCommissionProgram> UpdateProductCommissionProgramWithHttpInfo(string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0);
+        /// <returns>ApiResponse of GetRestCommissionProgram</returns>
+        ApiResponse<GetRestCommissionProgram> UpdateProductCommissionProgramWithHttpInfo(string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0);
         /// <summary>
         /// Update an Affiliate Link
         /// </summary>
@@ -893,10 +893,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateSubscriptionCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>SubscriptionCommissionProgram</returns>
-        SubscriptionCommissionProgram UpdateSubscriptionCommissionProgram(string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0);
+        /// <returns>GetRestCommissionProgram</returns>
+        GetRestCommissionProgram UpdateSubscriptionCommissionProgram(string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Subscription Commission Program
@@ -907,10 +907,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateSubscriptionCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of SubscriptionCommissionProgram</returns>
-        ApiResponse<SubscriptionCommissionProgram> UpdateSubscriptionCommissionProgramWithHttpInfo(string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0);
+        /// <returns>ApiResponse of GetRestCommissionProgram</returns>
+        ApiResponse<GetRestCommissionProgram> UpdateSubscriptionCommissionProgramWithHttpInfo(string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -1008,8 +1008,8 @@ namespace Keap.Core.V2.Api
         /// <param name="createProductCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ProductCommissionProgram</returns>
-        System.Threading.Tasks.Task<ProductCommissionProgram> AssignProductCommissionProgramAsync(string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of GetRestCommissionProgram</returns>
+        System.Threading.Tasks.Task<GetRestCommissionProgram> AssignProductCommissionProgramAsync(string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Assign a Product Commission Program
@@ -1022,8 +1022,8 @@ namespace Keap.Core.V2.Api
         /// <param name="createProductCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ProductCommissionProgram)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ProductCommissionProgram>> AssignProductCommissionProgramWithHttpInfoAsync(string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (GetRestCommissionProgram)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetRestCommissionProgram>> AssignProductCommissionProgramWithHttpInfoAsync(string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Assign a Subscription Commission Program
         /// </summary>
@@ -1035,8 +1035,8 @@ namespace Keap.Core.V2.Api
         /// <param name="createSubscriptionCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SubscriptionCommissionProgram</returns>
-        System.Threading.Tasks.Task<SubscriptionCommissionProgram> AssignSubscriptionCommissionProgramAsync(string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of GetRestCommissionProgram</returns>
+        System.Threading.Tasks.Task<GetRestCommissionProgram> AssignSubscriptionCommissionProgramAsync(string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Assign a Subscription Commission Program
@@ -1049,8 +1049,8 @@ namespace Keap.Core.V2.Api
         /// <param name="createSubscriptionCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SubscriptionCommissionProgram)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SubscriptionCommissionProgram>> AssignSubscriptionCommissionProgramWithHttpInfoAsync(string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (GetRestCommissionProgram)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetRestCommissionProgram>> AssignSubscriptionCommissionProgramWithHttpInfoAsync(string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create an Affiliate Custom Field
         /// </summary>
@@ -1087,8 +1087,8 @@ namespace Keap.Core.V2.Api
         /// <param name="createDefaultCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SetDefaultCommissionProgramResponse</returns>
-        System.Threading.Tasks.Task<SetDefaultCommissionProgramResponse> CreateDefaultCommissionProgramAsync(string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of GetRestCommissionProgram</returns>
+        System.Threading.Tasks.Task<GetRestCommissionProgram> CreateDefaultCommissionProgramAsync(string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create a Default Commission Program
@@ -1101,8 +1101,8 @@ namespace Keap.Core.V2.Api
         /// <param name="createDefaultCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SetDefaultCommissionProgramResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SetDefaultCommissionProgramResponse>> CreateDefaultCommissionProgramWithHttpInfoAsync(string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (GetRestCommissionProgram)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetRestCommissionProgram>> CreateDefaultCommissionProgramWithHttpInfoAsync(string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create an Affiliate Link
         /// </summary>
@@ -1768,11 +1768,11 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateDefaultCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SetDefaultCommissionProgramResponse</returns>
-        System.Threading.Tasks.Task<SetDefaultCommissionProgramResponse> UpdateDefaultCommissionProgramAsync(string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of GetRestCommissionProgram</returns>
+        System.Threading.Tasks.Task<GetRestCommissionProgram> UpdateDefaultCommissionProgramAsync(string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Default Commission Program
@@ -1783,11 +1783,11 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateDefaultCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SetDefaultCommissionProgramResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SetDefaultCommissionProgramResponse>> UpdateDefaultCommissionProgramWithHttpInfoAsync(string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (GetRestCommissionProgram)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetRestCommissionProgram>> UpdateDefaultCommissionProgramWithHttpInfoAsync(string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update a Product Commission Program
         /// </summary>
@@ -1797,11 +1797,11 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateProductCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ProductCommissionProgram</returns>
-        System.Threading.Tasks.Task<ProductCommissionProgram> UpdateProductCommissionProgramAsync(string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of GetRestCommissionProgram</returns>
+        System.Threading.Tasks.Task<GetRestCommissionProgram> UpdateProductCommissionProgramAsync(string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Product Commission Program
@@ -1812,11 +1812,11 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateProductCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ProductCommissionProgram)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ProductCommissionProgram>> UpdateProductCommissionProgramWithHttpInfoAsync(string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (GetRestCommissionProgram)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetRestCommissionProgram>> UpdateProductCommissionProgramWithHttpInfoAsync(string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update an Affiliate Link
         /// </summary>
@@ -1853,11 +1853,11 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateSubscriptionCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SubscriptionCommissionProgram</returns>
-        System.Threading.Tasks.Task<SubscriptionCommissionProgram> UpdateSubscriptionCommissionProgramAsync(string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of GetRestCommissionProgram</returns>
+        System.Threading.Tasks.Task<GetRestCommissionProgram> UpdateSubscriptionCommissionProgramAsync(string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Subscription Commission Program
@@ -1868,11 +1868,11 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateSubscriptionCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SubscriptionCommissionProgram)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SubscriptionCommissionProgram>> UpdateSubscriptionCommissionProgramWithHttpInfoAsync(string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (GetRestCommissionProgram)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetRestCommissionProgram>> UpdateSubscriptionCommissionProgramWithHttpInfoAsync(string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -2553,10 +2553,10 @@ namespace Keap.Core.V2.Api
         /// <param name="commissionProgramId"></param>
         /// <param name="createProductCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ProductCommissionProgram</returns>
-        public ProductCommissionProgram AssignProductCommissionProgram(string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest, int operationIndex = 0)
+        /// <returns>GetRestCommissionProgram</returns>
+        public GetRestCommissionProgram AssignProductCommissionProgram(string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<ProductCommissionProgram> localVarResponse = AssignProductCommissionProgramWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest);
+            Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram> localVarResponse = AssignProductCommissionProgramWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest);
             return localVarResponse.Data;
         }
 
@@ -2567,8 +2567,8 @@ namespace Keap.Core.V2.Api
         /// <param name="commissionProgramId"></param>
         /// <param name="createProductCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ProductCommissionProgram</returns>
-        public Keap.Core.V2.Client.ApiResponse<ProductCommissionProgram> AssignProductCommissionProgramWithHttpInfo(string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest, int operationIndex = 0)
+        /// <returns>ApiResponse of GetRestCommissionProgram</returns>
+        public Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram> AssignProductCommissionProgramWithHttpInfo(string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest, int operationIndex = 0)
         {
             // verify the required parameter 'commissionProgramId' is set
             if (commissionProgramId == null)
@@ -2630,7 +2630,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<ProductCommissionProgram>("/rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<GetRestCommissionProgram>("/rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("AssignProductCommissionProgram", localVarResponse);
@@ -2651,10 +2651,10 @@ namespace Keap.Core.V2.Api
         /// <param name="createProductCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ProductCommissionProgram</returns>
-        public async System.Threading.Tasks.Task<ProductCommissionProgram> AssignProductCommissionProgramAsync(string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of GetRestCommissionProgram</returns>
+        public async System.Threading.Tasks.Task<GetRestCommissionProgram> AssignProductCommissionProgramAsync(string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<ProductCommissionProgram> localVarResponse = await AssignProductCommissionProgramWithHttpInfoAsync(commissionProgramId, createProductCommissionProgramRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram> localVarResponse = await AssignProductCommissionProgramWithHttpInfoAsync(commissionProgramId, createProductCommissionProgramRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2666,8 +2666,8 @@ namespace Keap.Core.V2.Api
         /// <param name="createProductCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ProductCommissionProgram)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ProductCommissionProgram>> AssignProductCommissionProgramWithHttpInfoAsync(string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (GetRestCommissionProgram)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram>> AssignProductCommissionProgramWithHttpInfoAsync(string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'commissionProgramId' is set
             if (commissionProgramId == null)
@@ -2729,7 +2729,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<ProductCommissionProgram>("/rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GetRestCommissionProgram>("/rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -2750,10 +2750,10 @@ namespace Keap.Core.V2.Api
         /// <param name="commissionProgramId"></param>
         /// <param name="createSubscriptionCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>SubscriptionCommissionProgram</returns>
-        public SubscriptionCommissionProgram AssignSubscriptionCommissionProgram(string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest, int operationIndex = 0)
+        /// <returns>GetRestCommissionProgram</returns>
+        public GetRestCommissionProgram AssignSubscriptionCommissionProgram(string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<SubscriptionCommissionProgram> localVarResponse = AssignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest);
+            Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram> localVarResponse = AssignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest);
             return localVarResponse.Data;
         }
 
@@ -2764,8 +2764,8 @@ namespace Keap.Core.V2.Api
         /// <param name="commissionProgramId"></param>
         /// <param name="createSubscriptionCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of SubscriptionCommissionProgram</returns>
-        public Keap.Core.V2.Client.ApiResponse<SubscriptionCommissionProgram> AssignSubscriptionCommissionProgramWithHttpInfo(string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest, int operationIndex = 0)
+        /// <returns>ApiResponse of GetRestCommissionProgram</returns>
+        public Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram> AssignSubscriptionCommissionProgramWithHttpInfo(string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest, int operationIndex = 0)
         {
             // verify the required parameter 'commissionProgramId' is set
             if (commissionProgramId == null)
@@ -2827,7 +2827,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<SubscriptionCommissionProgram>("/rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<GetRestCommissionProgram>("/rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("AssignSubscriptionCommissionProgram", localVarResponse);
@@ -2848,10 +2848,10 @@ namespace Keap.Core.V2.Api
         /// <param name="createSubscriptionCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SubscriptionCommissionProgram</returns>
-        public async System.Threading.Tasks.Task<SubscriptionCommissionProgram> AssignSubscriptionCommissionProgramAsync(string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of GetRestCommissionProgram</returns>
+        public async System.Threading.Tasks.Task<GetRestCommissionProgram> AssignSubscriptionCommissionProgramAsync(string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<SubscriptionCommissionProgram> localVarResponse = await AssignSubscriptionCommissionProgramWithHttpInfoAsync(commissionProgramId, createSubscriptionCommissionProgramRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram> localVarResponse = await AssignSubscriptionCommissionProgramWithHttpInfoAsync(commissionProgramId, createSubscriptionCommissionProgramRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2863,8 +2863,8 @@ namespace Keap.Core.V2.Api
         /// <param name="createSubscriptionCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SubscriptionCommissionProgram)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<SubscriptionCommissionProgram>> AssignSubscriptionCommissionProgramWithHttpInfoAsync(string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (GetRestCommissionProgram)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram>> AssignSubscriptionCommissionProgramWithHttpInfoAsync(string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'commissionProgramId' is set
             if (commissionProgramId == null)
@@ -2926,7 +2926,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<SubscriptionCommissionProgram>("/rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GetRestCommissionProgram>("/rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -3126,10 +3126,10 @@ namespace Keap.Core.V2.Api
         /// <param name="commissionProgramId"></param>
         /// <param name="createDefaultCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>SetDefaultCommissionProgramResponse</returns>
-        public SetDefaultCommissionProgramResponse CreateDefaultCommissionProgram(string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest, int operationIndex = 0)
+        /// <returns>GetRestCommissionProgram</returns>
+        public GetRestCommissionProgram CreateDefaultCommissionProgram(string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<SetDefaultCommissionProgramResponse> localVarResponse = CreateDefaultCommissionProgramWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest);
+            Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram> localVarResponse = CreateDefaultCommissionProgramWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest);
             return localVarResponse.Data;
         }
 
@@ -3140,8 +3140,8 @@ namespace Keap.Core.V2.Api
         /// <param name="commissionProgramId"></param>
         /// <param name="createDefaultCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of SetDefaultCommissionProgramResponse</returns>
-        public Keap.Core.V2.Client.ApiResponse<SetDefaultCommissionProgramResponse> CreateDefaultCommissionProgramWithHttpInfo(string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest, int operationIndex = 0)
+        /// <returns>ApiResponse of GetRestCommissionProgram</returns>
+        public Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram> CreateDefaultCommissionProgramWithHttpInfo(string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest, int operationIndex = 0)
         {
             // verify the required parameter 'commissionProgramId' is set
             if (commissionProgramId == null)
@@ -3203,7 +3203,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<SetDefaultCommissionProgramResponse>("/rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<GetRestCommissionProgram>("/rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateDefaultCommissionProgram", localVarResponse);
@@ -3224,10 +3224,10 @@ namespace Keap.Core.V2.Api
         /// <param name="createDefaultCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SetDefaultCommissionProgramResponse</returns>
-        public async System.Threading.Tasks.Task<SetDefaultCommissionProgramResponse> CreateDefaultCommissionProgramAsync(string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of GetRestCommissionProgram</returns>
+        public async System.Threading.Tasks.Task<GetRestCommissionProgram> CreateDefaultCommissionProgramAsync(string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<SetDefaultCommissionProgramResponse> localVarResponse = await CreateDefaultCommissionProgramWithHttpInfoAsync(commissionProgramId, createDefaultCommissionProgramRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram> localVarResponse = await CreateDefaultCommissionProgramWithHttpInfoAsync(commissionProgramId, createDefaultCommissionProgramRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3239,8 +3239,8 @@ namespace Keap.Core.V2.Api
         /// <param name="createDefaultCommissionProgramRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SetDefaultCommissionProgramResponse)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<SetDefaultCommissionProgramResponse>> CreateDefaultCommissionProgramWithHttpInfoAsync(string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (GetRestCommissionProgram)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram>> CreateDefaultCommissionProgramWithHttpInfoAsync(string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'commissionProgramId' is set
             if (commissionProgramId == null)
@@ -3302,7 +3302,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<SetDefaultCommissionProgramResponse>("/rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GetRestCommissionProgram>("/rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -7912,12 +7912,12 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateDefaultCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>SetDefaultCommissionProgramResponse</returns>
-        public SetDefaultCommissionProgramResponse UpdateDefaultCommissionProgram(string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0)
+        /// <returns>GetRestCommissionProgram</returns>
+        public GetRestCommissionProgram UpdateDefaultCommissionProgram(string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<SetDefaultCommissionProgramResponse> localVarResponse = UpdateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
+            Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram> localVarResponse = UpdateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
             return localVarResponse.Data;
         }
 
@@ -7927,10 +7927,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateDefaultCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of SetDefaultCommissionProgramResponse</returns>
-        public Keap.Core.V2.Client.ApiResponse<SetDefaultCommissionProgramResponse> UpdateDefaultCommissionProgramWithHttpInfo(string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0)
+        /// <returns>ApiResponse of GetRestCommissionProgram</returns>
+        public Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram> UpdateDefaultCommissionProgramWithHttpInfo(string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'commissionProgramId' is set
             if (commissionProgramId == null)
@@ -7971,7 +7971,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("commission_program_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(commissionProgramId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateDefaultCommissionProgramRequest;
 
@@ -7996,7 +7996,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Patch<SetDefaultCommissionProgramResponse>("/rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Patch<GetRestCommissionProgram>("/rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateDefaultCommissionProgram", localVarResponse);
@@ -8015,13 +8015,13 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateDefaultCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SetDefaultCommissionProgramResponse</returns>
-        public async System.Threading.Tasks.Task<SetDefaultCommissionProgramResponse> UpdateDefaultCommissionProgramAsync(string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of GetRestCommissionProgram</returns>
+        public async System.Threading.Tasks.Task<GetRestCommissionProgram> UpdateDefaultCommissionProgramAsync(string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<SetDefaultCommissionProgramResponse> localVarResponse = await UpdateDefaultCommissionProgramWithHttpInfoAsync(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram> localVarResponse = await UpdateDefaultCommissionProgramWithHttpInfoAsync(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -8031,11 +8031,11 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateDefaultCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SetDefaultCommissionProgramResponse)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<SetDefaultCommissionProgramResponse>> UpdateDefaultCommissionProgramWithHttpInfoAsync(string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (GetRestCommissionProgram)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram>> UpdateDefaultCommissionProgramWithHttpInfoAsync(string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'commissionProgramId' is set
             if (commissionProgramId == null)
@@ -8076,7 +8076,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("commission_program_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(commissionProgramId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateDefaultCommissionProgramRequest;
 
@@ -8101,7 +8101,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<SetDefaultCommissionProgramResponse>("/rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<GetRestCommissionProgram>("/rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -8121,12 +8121,12 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateProductCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ProductCommissionProgram</returns>
-        public ProductCommissionProgram UpdateProductCommissionProgram(string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0)
+        /// <returns>GetRestCommissionProgram</returns>
+        public GetRestCommissionProgram UpdateProductCommissionProgram(string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<ProductCommissionProgram> localVarResponse = UpdateProductCommissionProgramWithHttpInfo(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
+            Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram> localVarResponse = UpdateProductCommissionProgramWithHttpInfo(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
             return localVarResponse.Data;
         }
 
@@ -8136,10 +8136,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateProductCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ProductCommissionProgram</returns>
-        public Keap.Core.V2.Client.ApiResponse<ProductCommissionProgram> UpdateProductCommissionProgramWithHttpInfo(string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0)
+        /// <returns>ApiResponse of GetRestCommissionProgram</returns>
+        public Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram> UpdateProductCommissionProgramWithHttpInfo(string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'commissionProgramId' is set
             if (commissionProgramId == null)
@@ -8180,7 +8180,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("commission_program_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(commissionProgramId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateProductCommissionProgramRequest;
 
@@ -8205,7 +8205,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Patch<ProductCommissionProgram>("/rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Patch<GetRestCommissionProgram>("/rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateProductCommissionProgram", localVarResponse);
@@ -8224,13 +8224,13 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateProductCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ProductCommissionProgram</returns>
-        public async System.Threading.Tasks.Task<ProductCommissionProgram> UpdateProductCommissionProgramAsync(string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of GetRestCommissionProgram</returns>
+        public async System.Threading.Tasks.Task<GetRestCommissionProgram> UpdateProductCommissionProgramAsync(string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<ProductCommissionProgram> localVarResponse = await UpdateProductCommissionProgramWithHttpInfoAsync(commissionProgramId, updateProductCommissionProgramRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram> localVarResponse = await UpdateProductCommissionProgramWithHttpInfoAsync(commissionProgramId, updateProductCommissionProgramRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -8240,11 +8240,11 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateProductCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ProductCommissionProgram)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ProductCommissionProgram>> UpdateProductCommissionProgramWithHttpInfoAsync(string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (GetRestCommissionProgram)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram>> UpdateProductCommissionProgramWithHttpInfoAsync(string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'commissionProgramId' is set
             if (commissionProgramId == null)
@@ -8285,7 +8285,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("commission_program_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(commissionProgramId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateProductCommissionProgramRequest;
 
@@ -8310,7 +8310,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<ProductCommissionProgram>("/rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<GetRestCommissionProgram>("/rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -8527,12 +8527,12 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateSubscriptionCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>SubscriptionCommissionProgram</returns>
-        public SubscriptionCommissionProgram UpdateSubscriptionCommissionProgram(string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0)
+        /// <returns>GetRestCommissionProgram</returns>
+        public GetRestCommissionProgram UpdateSubscriptionCommissionProgram(string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<SubscriptionCommissionProgram> localVarResponse = UpdateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
+            Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram> localVarResponse = UpdateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
             return localVarResponse.Data;
         }
 
@@ -8542,10 +8542,10 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateSubscriptionCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of SubscriptionCommissionProgram</returns>
-        public Keap.Core.V2.Client.ApiResponse<SubscriptionCommissionProgram> UpdateSubscriptionCommissionProgramWithHttpInfo(string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0)
+        /// <returns>ApiResponse of GetRestCommissionProgram</returns>
+        public Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram> UpdateSubscriptionCommissionProgramWithHttpInfo(string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'commissionProgramId' is set
             if (commissionProgramId == null)
@@ -8586,7 +8586,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("commission_program_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(commissionProgramId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateSubscriptionCommissionProgramRequest;
 
@@ -8611,7 +8611,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Patch<SubscriptionCommissionProgram>("/rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Patch<GetRestCommissionProgram>("/rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateSubscriptionCommissionProgram", localVarResponse);
@@ -8630,13 +8630,13 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateSubscriptionCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SubscriptionCommissionProgram</returns>
-        public async System.Threading.Tasks.Task<SubscriptionCommissionProgram> UpdateSubscriptionCommissionProgramAsync(string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of GetRestCommissionProgram</returns>
+        public async System.Threading.Tasks.Task<GetRestCommissionProgram> UpdateSubscriptionCommissionProgramAsync(string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<SubscriptionCommissionProgram> localVarResponse = await UpdateSubscriptionCommissionProgramWithHttpInfoAsync(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram> localVarResponse = await UpdateSubscriptionCommissionProgramWithHttpInfoAsync(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -8646,11 +8646,11 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="commissionProgramId"></param>
         /// <param name="updateSubscriptionCommissionProgramRequest"></param>
-        /// <param name="updateMask"> (optional)</param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SubscriptionCommissionProgram)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<SubscriptionCommissionProgram>> UpdateSubscriptionCommissionProgramWithHttpInfoAsync(string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (GetRestCommissionProgram)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<GetRestCommissionProgram>> UpdateSubscriptionCommissionProgramWithHttpInfoAsync(string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'commissionProgramId' is set
             if (commissionProgramId == null)
@@ -8691,7 +8691,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("commission_program_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(commissionProgramId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateSubscriptionCommissionProgramRequest;
 
@@ -8716,7 +8716,7 @@ namespace Keap.Core.V2.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<SubscriptionCommissionProgram>("/rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<GetRestCommissionProgram>("/rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

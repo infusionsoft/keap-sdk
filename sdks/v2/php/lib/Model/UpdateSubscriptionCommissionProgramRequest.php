@@ -58,7 +58,11 @@ class UpdateSubscriptionCommissionProgramRequest implements ModelInterface, Arra
       */
     protected static $openAPITypes = [
         'percentage' => 'string',
+        'unused' => '\Keap\Core\V2\Model\CommissionItemRequest',
         'dollar_amount' => 'string',
+        'level_1' => '\Keap\Core\V2\Model\CommissionItemRequest',
+        'level_2' => '\Keap\Core\V2\Model\CommissionItemRequest',
+        'payout_type' => 'string',
         'subscription_id' => 'string'
     ];
 
@@ -71,7 +75,11 @@ class UpdateSubscriptionCommissionProgramRequest implements ModelInterface, Arra
       */
     protected static $openAPIFormats = [
         'percentage' => null,
+        'unused' => null,
         'dollar_amount' => null,
+        'level_1' => null,
+        'level_2' => null,
+        'payout_type' => null,
         'subscription_id' => null
     ];
 
@@ -82,7 +90,11 @@ class UpdateSubscriptionCommissionProgramRequest implements ModelInterface, Arra
       */
     protected static array $openAPINullables = [
         'percentage' => false,
+        'unused' => false,
         'dollar_amount' => false,
+        'level_1' => false,
+        'level_2' => false,
+        'payout_type' => false,
         'subscription_id' => false
     ];
 
@@ -173,7 +185,11 @@ class UpdateSubscriptionCommissionProgramRequest implements ModelInterface, Arra
      */
     protected static $attributeMap = [
         'percentage' => 'percentage',
+        'unused' => 'unused',
         'dollar_amount' => 'dollar_amount',
+        'level_1' => 'level_1',
+        'level_2' => 'level_2',
+        'payout_type' => 'payout_type',
         'subscription_id' => 'subscription_id'
     ];
 
@@ -184,7 +200,11 @@ class UpdateSubscriptionCommissionProgramRequest implements ModelInterface, Arra
      */
     protected static $setters = [
         'percentage' => 'setPercentage',
+        'unused' => 'setUnused',
         'dollar_amount' => 'setDollarAmount',
+        'level_1' => 'setLevel1',
+        'level_2' => 'setLevel2',
+        'payout_type' => 'setPayoutType',
         'subscription_id' => 'setSubscriptionId'
     ];
 
@@ -195,7 +215,11 @@ class UpdateSubscriptionCommissionProgramRequest implements ModelInterface, Arra
      */
     protected static $getters = [
         'percentage' => 'getPercentage',
+        'unused' => 'getUnused',
         'dollar_amount' => 'getDollarAmount',
+        'level_1' => 'getLevel1',
+        'level_2' => 'getLevel2',
+        'payout_type' => 'getPayoutType',
         'subscription_id' => 'getSubscriptionId'
     ];
 
@@ -240,6 +264,21 @@ class UpdateSubscriptionCommissionProgramRequest implements ModelInterface, Arra
         return self::$openAPIModelName;
     }
 
+    public const PAYOUT_TYPE_UPFRONT = 'UPFRONT';
+    public const PAYOUT_TYPE_PAYMENT_RECEIVED = 'PAYMENT_RECEIVED';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPayoutTypeAllowableValues()
+    {
+        return [
+            self::PAYOUT_TYPE_UPFRONT,
+            self::PAYOUT_TYPE_PAYMENT_RECEIVED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -257,7 +296,11 @@ class UpdateSubscriptionCommissionProgramRequest implements ModelInterface, Arra
     public function __construct(?array $data = null)
     {
         $this->setIfExists('percentage', $data ?? [], null);
+        $this->setIfExists('unused', $data ?? [], null);
         $this->setIfExists('dollar_amount', $data ?? [], null);
+        $this->setIfExists('level_1', $data ?? [], null);
+        $this->setIfExists('level_2', $data ?? [], null);
+        $this->setIfExists('payout_type', $data ?? [], 'UPFRONT');
         $this->setIfExists('subscription_id', $data ?? [], null);
     }
 
@@ -288,6 +331,15 @@ class UpdateSubscriptionCommissionProgramRequest implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getPayoutTypeAllowableValues();
+        if (!is_null($this->container['payout_type']) && !in_array($this->container['payout_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'payout_type', must be one of '%s'",
+                $this->container['payout_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -307,6 +359,7 @@ class UpdateSubscriptionCommissionProgramRequest implements ModelInterface, Arra
      * Gets percentage
      *
      * @return string|null
+     * @deprecated
      */
     public function getPercentage()
     {
@@ -316,9 +369,10 @@ class UpdateSubscriptionCommissionProgramRequest implements ModelInterface, Arra
     /**
      * Sets percentage
      *
-     * @param string|null $percentage Commission percentage (0-100). Either percentage or dollar_amount is required
+     * @param string|null $percentage Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for `level_1`
      *
      * @return self
+     * @deprecated
      */
     public function setPercentage($percentage)
     {
@@ -331,9 +385,37 @@ class UpdateSubscriptionCommissionProgramRequest implements ModelInterface, Arra
     }
 
     /**
+     * Gets unused
+     *
+     * @return \Keap\Core\V2\Model\CommissionItemRequest|null
+     */
+    public function getUnused()
+    {
+        return $this->container['unused'];
+    }
+
+    /**
+     * Sets unused
+     *
+     * @param \Keap\Core\V2\Model\CommissionItemRequest|null $unused Payout rules for any unused commissions.
+     *
+     * @return self
+     */
+    public function setUnused($unused)
+    {
+        if (is_null($unused)) {
+            throw new \InvalidArgumentException('non-nullable unused cannot be null');
+        }
+        $this->container['unused'] = $unused;
+
+        return $this;
+    }
+
+    /**
      * Gets dollar_amount
      *
      * @return string|null
+     * @deprecated
      */
     public function getDollarAmount()
     {
@@ -343,9 +425,10 @@ class UpdateSubscriptionCommissionProgramRequest implements ModelInterface, Arra
     /**
      * Sets dollar_amount
      *
-     * @param string|null $dollar_amount Fixed dollar amount. Either percentage or dollar_amount is required
+     * @param string|null $dollar_amount Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for `level_1`
      *
      * @return self
+     * @deprecated
      */
     public function setDollarAmount($dollar_amount)
     {
@@ -353,6 +436,97 @@ class UpdateSubscriptionCommissionProgramRequest implements ModelInterface, Arra
             throw new \InvalidArgumentException('non-nullable dollar_amount cannot be null');
         }
         $this->container['dollar_amount'] = $dollar_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets level_1
+     *
+     * @return \Keap\Core\V2\Model\CommissionItemRequest|null
+     */
+    public function getLevel1()
+    {
+        return $this->container['level_1'];
+    }
+
+    /**
+     * Sets level_1
+     *
+     * @param \Keap\Core\V2\Model\CommissionItemRequest|null $level_1 Payout rules for Level 1 recipients of the commission.
+     *
+     * @return self
+     */
+    public function setLevel1($level_1)
+    {
+        if (is_null($level_1)) {
+            throw new \InvalidArgumentException('non-nullable level_1 cannot be null');
+        }
+        $this->container['level_1'] = $level_1;
+
+        return $this;
+    }
+
+    /**
+     * Gets level_2
+     *
+     * @return \Keap\Core\V2\Model\CommissionItemRequest|null
+     */
+    public function getLevel2()
+    {
+        return $this->container['level_2'];
+    }
+
+    /**
+     * Sets level_2
+     *
+     * @param \Keap\Core\V2\Model\CommissionItemRequest|null $level_2 Payout rules for Level 2 recipients of the commission.
+     *
+     * @return self
+     */
+    public function setLevel2($level_2)
+    {
+        if (is_null($level_2)) {
+            throw new \InvalidArgumentException('non-nullable level_2 cannot be null');
+        }
+        $this->container['level_2'] = $level_2;
+
+        return $this;
+    }
+
+    /**
+     * Gets payout_type
+     *
+     * @return string|null
+     */
+    public function getPayoutType()
+    {
+        return $this->container['payout_type'];
+    }
+
+    /**
+     * Sets payout_type
+     *
+     * @param string|null $payout_type The payout type for this commission.
+     *
+     * @return self
+     */
+    public function setPayoutType($payout_type)
+    {
+        if (is_null($payout_type)) {
+            throw new \InvalidArgumentException('non-nullable payout_type cannot be null');
+        }
+        $allowedValues = $this->getPayoutTypeAllowableValues();
+        if (!in_array($payout_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'payout_type', must be one of '%s'",
+                    $payout_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['payout_type'] = $payout_type;
 
         return $this;
     }

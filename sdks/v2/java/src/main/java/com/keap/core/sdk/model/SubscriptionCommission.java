@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.keap.core.sdk.model.CommissionItem;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Arrays;
 import java.io.Serializable;
@@ -33,21 +34,76 @@ import jakarta.validation.Valid;
  * SubscriptionCommission
  */
 @JsonPropertyOrder({
-  SubscriptionCommission.JSON_PROPERTY_NAME,
+  SubscriptionCommission.JSON_PROPERTY_PAYOUT_TYPE,
+  SubscriptionCommission.JSON_PROPERTY_DOLLAR_AMOUNT,
   SubscriptionCommission.JSON_PROPERTY_PERCENTAGE,
+  SubscriptionCommission.JSON_PROPERTY_UNUSED,
+  SubscriptionCommission.JSON_PROPERTY_LEVEL1,
+  SubscriptionCommission.JSON_PROPERTY_LEVEL2,
+  SubscriptionCommission.JSON_PROPERTY_NAME,
   SubscriptionCommission.JSON_PROPERTY_SUBSCRIPTION_ID,
-  SubscriptionCommission.JSON_PROPERTY_PLAN_PRICE,
-  SubscriptionCommission.JSON_PROPERTY_DOLLAR_AMOUNT
+  SubscriptionCommission.JSON_PROPERTY_PLAN_PRICE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SubscriptionCommission implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  @jakarta.annotation.Nullable  private String name;
+  /**
+   * The payout type for this commission.
+   */
+  public enum PayoutTypeEnum {
+    UPFRONT(String.valueOf("UPFRONT")),
+    
+    PAYMENT_RECEIVED(String.valueOf("PAYMENT_RECEIVED")),
+    
+    UNKNOWN_COULD_NOT_DESERIALIZE(String.valueOf("unknown_default_open_api"));
+
+    private String value;
+
+    PayoutTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static PayoutTypeEnum fromValue(String value) {
+      for (PayoutTypeEnum b : PayoutTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return UNKNOWN_COULD_NOT_DESERIALIZE;
+    }
+  }
+  public static final String JSON_PROPERTY_PAYOUT_TYPE = "payout_type";
+  @jakarta.annotation.Nullable  private PayoutTypeEnum payoutType = PayoutTypeEnum.UPFRONT;
+
+  public static final String JSON_PROPERTY_DOLLAR_AMOUNT = "dollar_amount";
+  @jakarta.annotation.Nullable  private Double dollarAmount;
 
   public static final String JSON_PROPERTY_PERCENTAGE = "percentage";
   @jakarta.annotation.Nullable  private Double percentage;
+
+  public static final String JSON_PROPERTY_UNUSED = "unused";
+  @jakarta.annotation.Nullable  private CommissionItem unused;
+
+  public static final String JSON_PROPERTY_LEVEL1 = "level_1";
+  @jakarta.annotation.Nullable  private CommissionItem level1;
+
+  public static final String JSON_PROPERTY_LEVEL2 = "level_2";
+  @jakarta.annotation.Nullable  private CommissionItem level2;
+
+  public static final String JSON_PROPERTY_NAME = "name";
+  @jakarta.annotation.Nullable  private String name;
 
   public static final String JSON_PROPERTY_SUBSCRIPTION_ID = "subscription_id";
   @jakarta.annotation.Nullable  private String subscriptionId;
@@ -55,11 +111,155 @@ public class SubscriptionCommission implements Serializable {
   public static final String JSON_PROPERTY_PLAN_PRICE = "plan_price";
   @jakarta.annotation.Nullable  private Double planPrice;
 
-  public static final String JSON_PROPERTY_DOLLAR_AMOUNT = "dollar_amount";
-  @jakarta.annotation.Nullable  private Double dollarAmount;
-
   public SubscriptionCommission() { 
   }
+
+  public SubscriptionCommission payoutType(@jakarta.annotation.Nullable PayoutTypeEnum payoutType) {
+    this.payoutType = payoutType;
+    return this;
+  }
+
+  /**
+   * The payout type for this commission.
+   * @return payoutType
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "UPFRONT", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The payout type for this commission.")
+  @JsonProperty(JSON_PROPERTY_PAYOUT_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public PayoutTypeEnum getPayoutType() {
+    return payoutType;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PAYOUT_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPayoutType(@jakarta.annotation.Nullable PayoutTypeEnum payoutType) {
+    this.payoutType = payoutType;
+  }
+
+
+  public SubscriptionCommission dollarAmount(@jakarta.annotation.Nullable Double dollarAmount) {
+    this.dollarAmount = dollarAmount;
+    return this;
+  }
+
+  /**
+   * Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for &#x60;level_1&#x60;
+   * @return dollarAmount
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "10.5", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for `level_1`")
+  @JsonProperty(JSON_PROPERTY_DOLLAR_AMOUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Double getDollarAmount() {
+    return dollarAmount;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DOLLAR_AMOUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDollarAmount(@jakarta.annotation.Nullable Double dollarAmount) {
+    this.dollarAmount = dollarAmount;
+  }
+
+
+  public SubscriptionCommission percentage(@jakarta.annotation.Nullable Double percentage) {
+    this.percentage = percentage;
+    return this;
+  }
+
+  /**
+   * Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for &#x60;level_1&#x60;
+   * @return percentage
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "25", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for `level_1`")
+  @JsonProperty(JSON_PROPERTY_PERCENTAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Double getPercentage() {
+    return percentage;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PERCENTAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPercentage(@jakarta.annotation.Nullable Double percentage) {
+    this.percentage = percentage;
+  }
+
+
+  public SubscriptionCommission unused(@jakarta.annotation.Nullable CommissionItem unused) {
+    this.unused = unused;
+    return this;
+  }
+
+  /**
+   * Payout rules for any unused commissions.
+   * @return unused
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Payout rules for any unused commissions.")
+  @JsonProperty(JSON_PROPERTY_UNUSED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CommissionItem getUnused() {
+    return unused;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_UNUSED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUnused(@jakarta.annotation.Nullable CommissionItem unused) {
+    this.unused = unused;
+  }
+
+
+  public SubscriptionCommission level1(@jakarta.annotation.Nullable CommissionItem level1) {
+    this.level1 = level1;
+    return this;
+  }
+
+  /**
+   * Payout rules for Level 1 recipients of the commission.
+   * @return level1
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Payout rules for Level 1 recipients of the commission.")
+  @JsonProperty(JSON_PROPERTY_LEVEL1)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CommissionItem getLevel1() {
+    return level1;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LEVEL1)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLevel1(@jakarta.annotation.Nullable CommissionItem level1) {
+    this.level1 = level1;
+  }
+
+
+  public SubscriptionCommission level2(@jakarta.annotation.Nullable CommissionItem level2) {
+    this.level2 = level2;
+    return this;
+  }
+
+  /**
+   * Payout rules for Level 2 recipients of the commission.
+   * @return level2
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Payout rules for Level 2 recipients of the commission.")
+  @JsonProperty(JSON_PROPERTY_LEVEL2)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CommissionItem getLevel2() {
+    return level2;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LEVEL2)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLevel2(@jakarta.annotation.Nullable CommissionItem level2) {
+    this.level2 = level2;
+  }
+
 
   public SubscriptionCommission name(@jakarta.annotation.Nullable String name) {
     this.name = name;
@@ -82,30 +282,6 @@ public class SubscriptionCommission implements Serializable {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(@jakarta.annotation.Nullable String name) {
     this.name = name;
-  }
-
-
-  public SubscriptionCommission percentage(@jakarta.annotation.Nullable Double percentage) {
-    this.percentage = percentage;
-    return this;
-  }
-
-  /**
-   * Percentage commission
-   * @return percentage
-   */
-  @jakarta.annotation.Nullable  @Schema(example = "10", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Percentage commission")
-  @JsonProperty(JSON_PROPERTY_PERCENTAGE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Double getPercentage() {
-    return percentage;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PERCENTAGE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPercentage(@jakarta.annotation.Nullable Double percentage) {
-    this.percentage = percentage;
   }
 
 
@@ -156,30 +332,6 @@ public class SubscriptionCommission implements Serializable {
     this.planPrice = planPrice;
   }
 
-
-  public SubscriptionCommission dollarAmount(@jakarta.annotation.Nullable Double dollarAmount) {
-    this.dollarAmount = dollarAmount;
-    return this;
-  }
-
-  /**
-   * Fixed dollar commission
-   * @return dollarAmount
-   */
-  @jakarta.annotation.Nullable  @Schema(example = "5", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Fixed dollar commission")
-  @JsonProperty(JSON_PROPERTY_DOLLAR_AMOUNT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Double getDollarAmount() {
-    return dollarAmount;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DOLLAR_AMOUNT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDollarAmount(@jakarta.annotation.Nullable Double dollarAmount) {
-    this.dollarAmount = dollarAmount;
-  }
-
   /**
    * Return true if this SubscriptionCommission object is equal to o.
    */
@@ -192,27 +344,35 @@ public class SubscriptionCommission implements Serializable {
       return false;
     }
     SubscriptionCommission subscriptionCommission = (SubscriptionCommission) o;
-    return Objects.equals(this.name, subscriptionCommission.name) &&
+    return Objects.equals(this.payoutType, subscriptionCommission.payoutType) &&
+        Objects.equals(this.dollarAmount, subscriptionCommission.dollarAmount) &&
         Objects.equals(this.percentage, subscriptionCommission.percentage) &&
+        Objects.equals(this.unused, subscriptionCommission.unused) &&
+        Objects.equals(this.level1, subscriptionCommission.level1) &&
+        Objects.equals(this.level2, subscriptionCommission.level2) &&
+        Objects.equals(this.name, subscriptionCommission.name) &&
         Objects.equals(this.subscriptionId, subscriptionCommission.subscriptionId) &&
-        Objects.equals(this.planPrice, subscriptionCommission.planPrice) &&
-        Objects.equals(this.dollarAmount, subscriptionCommission.dollarAmount);
+        Objects.equals(this.planPrice, subscriptionCommission.planPrice);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, percentage, subscriptionId, planPrice, dollarAmount);
+    return Objects.hash(payoutType, dollarAmount, percentage, unused, level1, level2, name, subscriptionId, planPrice);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SubscriptionCommission {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    payoutType: ").append(toIndentedString(payoutType)).append("\n");
+    sb.append("    dollarAmount: ").append(toIndentedString(dollarAmount)).append("\n");
     sb.append("    percentage: ").append(toIndentedString(percentage)).append("\n");
+    sb.append("    unused: ").append(toIndentedString(unused)).append("\n");
+    sb.append("    level1: ").append(toIndentedString(level1)).append("\n");
+    sb.append("    level2: ").append(toIndentedString(level2)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    subscriptionId: ").append(toIndentedString(subscriptionId)).append("\n");
     sb.append("    planPrice: ").append(toIndentedString(planPrice)).append("\n");
-    sb.append("    dollarAmount: ").append(toIndentedString(dollarAmount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -240,12 +400,32 @@ public class SubscriptionCommission implements Serializable {
           this.instance = instance;
         }
     
-        public SubscriptionCommission.Builder name(String name) {
-              this.instance.name = name;
+        public SubscriptionCommission.Builder payoutType(PayoutTypeEnum payoutType) {
+              this.instance.payoutType = payoutType;
+          return this;
+        }
+            public SubscriptionCommission.Builder dollarAmount(Double dollarAmount) {
+              this.instance.dollarAmount = dollarAmount;
           return this;
         }
             public SubscriptionCommission.Builder percentage(Double percentage) {
               this.instance.percentage = percentage;
+          return this;
+        }
+            public SubscriptionCommission.Builder unused(CommissionItem unused) {
+              this.instance.unused = unused;
+          return this;
+        }
+            public SubscriptionCommission.Builder level1(CommissionItem level1) {
+              this.instance.level1 = level1;
+          return this;
+        }
+            public SubscriptionCommission.Builder level2(CommissionItem level2) {
+              this.instance.level2 = level2;
+          return this;
+        }
+            public SubscriptionCommission.Builder name(String name) {
+              this.instance.name = name;
           return this;
         }
             public SubscriptionCommission.Builder subscriptionId(String subscriptionId) {
@@ -254,10 +434,6 @@ public class SubscriptionCommission implements Serializable {
         }
             public SubscriptionCommission.Builder planPrice(Double planPrice) {
               this.instance.planPrice = planPrice;
-          return this;
-        }
-            public SubscriptionCommission.Builder dollarAmount(Double dollarAmount) {
-              this.instance.dollarAmount = dollarAmount;
           return this;
         }
         
@@ -294,11 +470,15 @@ public class SubscriptionCommission implements Serializable {
       */
       public SubscriptionCommission.Builder toBuilder() {
         return new SubscriptionCommission.Builder()
-          .name(getName())
+          .payoutType(getPayoutType())
+          .dollarAmount(getDollarAmount())
           .percentage(getPercentage())
+          .unused(getUnused())
+          .level1(getLevel1())
+          .level2(getLevel2())
+          .name(getName())
           .subscriptionId(getSubscriptionId())
-          .planPrice(getPlanPrice())
-          .dollarAmount(getDollarAmount());
+          .planPrice(getPlanPrice());
       }
 }
 

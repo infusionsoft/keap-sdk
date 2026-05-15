@@ -110,6 +110,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -192,6 +193,7 @@ ApiResponse<[**ApplyTagsResponse**](ApplyTagsResponse.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -270,6 +272,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -350,6 +353,7 @@ ApiResponse<[**Tag**](Tag.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -428,6 +432,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -508,6 +513,7 @@ ApiResponse<[**TagCategory**](TagCategory.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -585,6 +591,7 @@ null (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -664,6 +671,7 @@ ApiResponse<Void>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -741,6 +749,7 @@ null (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -820,6 +829,7 @@ ApiResponse<Void>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -898,6 +908,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -978,6 +989,7 @@ ApiResponse<[**GetTagCategoryResponse**](GetTagCategoryResponse.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1056,6 +1068,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1136,6 +1149,7 @@ ApiResponse<[**Tag**](Tag.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1222,6 +1236,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1310,6 +1325,7 @@ ApiResponse<[**ListTaggedCompaniesResponse**](ListTaggedCompaniesResponse.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1396,6 +1412,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1484,6 +1501,7 @@ ApiResponse<[**ListTaggedContactsResponse**](ListTaggedContactsResponse.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1568,6 +1586,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1654,6 +1673,7 @@ ApiResponse<[**ListTagCategoriesResponse**](ListTagCategoriesResponse.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1738,6 +1758,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1824,6 +1845,7 @@ ApiResponse<[**ListTagsResponse**](ListTagsResponse.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1903,6 +1925,7 @@ null (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1984,6 +2007,7 @@ ApiResponse<Void>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2066,6 +2090,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2150,6 +2175,7 @@ ApiResponse<[**UpdateTagResponse**](UpdateTagResponse.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2232,6 +2258,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -2316,6 +2343,7 @@ ApiResponse<[**UpdateTagCategoryResponse**](UpdateTagCategoryResponse.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |

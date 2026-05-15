@@ -5,8 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**percentage** | **str** | Commission percentage (0-100). Either percentage or dollar_amount is required | [optional] 
-**dollar_amount** | **str** | Fixed dollar amount. Either percentage or dollar_amount is required | [optional] 
+**percentage** | **str** | Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for &#x60;level_1&#x60; | [optional] 
+**unused** | [**CommissionItemRequest**](CommissionItemRequest.md) | Payout rules for any unused commissions. | [optional] 
+**dollar_amount** | **str** | Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for &#x60;level_1&#x60; | [optional] 
+**level_1** | [**CommissionItemRequest**](CommissionItemRequest.md) | Payout rules for Level 1 recipients of the commission. | [optional] 
+**level_2** | [**CommissionItemRequest**](CommissionItemRequest.md) | Payout rules for Level 2 recipients of the commission. | [optional] 
+**payout_type** | **str** | The payout type for this commission. | [optional] [default to 'UPFRONT']
 **subscription_id** | **str** | Subscription ID to assign commission | [optional] 
 
 ## Example

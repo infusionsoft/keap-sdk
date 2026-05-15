@@ -66,6 +66,8 @@ import { CategoryDiscountCriteriaResponse } from '../models/CategoryDiscountCrit
 import { CategoryReference } from '../models/CategoryReference';
 import { CheckListItemDetails } from '../models/CheckListItemDetails';
 import { ChecklistItem } from '../models/ChecklistItem';
+import { CommissionItem } from '../models/CommissionItem';
+import { CommissionItemRequest } from '../models/CommissionItemRequest';
 import { Company } from '../models/Company';
 import { Contact } from '../models/Contact';
 import { ContactLink } from '../models/ContactLink';
@@ -255,7 +257,6 @@ import { PaymentResult } from '../models/PaymentResult';
 import { PhoneNumber } from '../models/PhoneNumber';
 import { ProductCategory } from '../models/ProductCategory';
 import { ProductCommission } from '../models/ProductCommission';
-import { ProductCommissionProgram } from '../models/ProductCommissionProgram';
 import { ProductDiscount } from '../models/ProductDiscount';
 import { ProductFixedOptionDetail } from '../models/ProductFixedOptionDetail';
 import { ProductFixedOptionList } from '../models/ProductFixedOptionList';
@@ -290,7 +291,6 @@ import { RestV2User } from '../models/RestV2User';
 import { RunReportRequest } from '../models/RunReportRequest';
 import { Sequence } from '../models/Sequence';
 import { SequencePath } from '../models/SequencePath';
-import { SetDefaultCommissionProgramResponse } from '../models/SetDefaultCommissionProgramResponse';
 import { ShippingDiscount } from '../models/ShippingDiscount';
 import { ShippingInformation } from '../models/ShippingInformation';
 import { ShippingMethod } from '../models/ShippingMethod';
@@ -298,7 +298,6 @@ import { SocialAccount } from '../models/SocialAccount';
 import { StageDetails } from '../models/StageDetails';
 import { Subscription } from '../models/Subscription';
 import { SubscriptionCommission } from '../models/SubscriptionCommission';
-import { SubscriptionCommissionProgram } from '../models/SubscriptionCommissionProgram';
 import { SubscriptionPlan } from '../models/SubscriptionPlan';
 import { SubscriptionPlanDetail } from '../models/SubscriptionPlanDetail';
 import { SubscriptionPlanList } from '../models/SubscriptionPlanList';
@@ -901,12 +900,12 @@ export interface AffiliateApiUpdateDefaultCommissionProgramRequest {
      */
     updateDefaultCommissionProgramRequest: UpdateDefaultCommissionProgramRequest
     /**
-     * 
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Set&lt;string&gt;
+     * @type any
      * @memberof AffiliateApiupdateDefaultCommissionProgram
      */
-    updateMask?: Set<string>
+    updateMask?: any
 }
 
 export interface AffiliateApiUpdateProductCommissionProgramRequest {
@@ -924,12 +923,12 @@ export interface AffiliateApiUpdateProductCommissionProgramRequest {
      */
     updateProductCommissionProgramRequest: UpdateProductCommissionProgramRequest
     /**
-     * 
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Set&lt;string&gt;
+     * @type any
      * @memberof AffiliateApiupdateProductCommissionProgram
      */
-    updateMask?: Set<string>
+    updateMask?: any
 }
 
 export interface AffiliateApiUpdateRedirectLinkRequest {
@@ -963,12 +962,12 @@ export interface AffiliateApiUpdateSubscriptionCommissionProgramRequest {
      */
     updateSubscriptionCommissionProgramRequest: UpdateSubscriptionCommissionProgramRequest
     /**
-     * 
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Set&lt;string&gt;
+     * @type any
      * @memberof AffiliateApiupdateSubscriptionCommissionProgram
      */
-    updateMask?: Set<string>
+    updateMask?: any
 }
 
 export class ObjectAffiliateApi {
@@ -1037,7 +1036,7 @@ export class ObjectAffiliateApi {
      * Assign a Product Commission Program
      * @param param the request object
      */
-    public assignProductCommissionProgramWithHttpInfo(param: AffiliateApiAssignProductCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductCommissionProgram>> {
+    public assignProductCommissionProgramWithHttpInfo(param: AffiliateApiAssignProductCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetRestCommissionProgram>> {
         return this.api.assignProductCommissionProgramWithHttpInfo(param.commissionProgramId, param.createProductCommissionProgramRequest,  options).toPromise();
     }
 
@@ -1046,7 +1045,7 @@ export class ObjectAffiliateApi {
      * Assign a Product Commission Program
      * @param param the request object
      */
-    public assignProductCommissionProgram(param: AffiliateApiAssignProductCommissionProgramRequest, options?: ConfigurationOptions): Promise<ProductCommissionProgram> {
+    public assignProductCommissionProgram(param: AffiliateApiAssignProductCommissionProgramRequest, options?: ConfigurationOptions): Promise<GetRestCommissionProgram> {
         return this.api.assignProductCommissionProgram(param.commissionProgramId, param.createProductCommissionProgramRequest,  options).toPromise();
     }
 
@@ -1055,7 +1054,7 @@ export class ObjectAffiliateApi {
      * Assign a Subscription Commission Program
      * @param param the request object
      */
-    public assignSubscriptionCommissionProgramWithHttpInfo(param: AffiliateApiAssignSubscriptionCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<SubscriptionCommissionProgram>> {
+    public assignSubscriptionCommissionProgramWithHttpInfo(param: AffiliateApiAssignSubscriptionCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetRestCommissionProgram>> {
         return this.api.assignSubscriptionCommissionProgramWithHttpInfo(param.commissionProgramId, param.createSubscriptionCommissionProgramRequest,  options).toPromise();
     }
 
@@ -1064,7 +1063,7 @@ export class ObjectAffiliateApi {
      * Assign a Subscription Commission Program
      * @param param the request object
      */
-    public assignSubscriptionCommissionProgram(param: AffiliateApiAssignSubscriptionCommissionProgramRequest, options?: ConfigurationOptions): Promise<SubscriptionCommissionProgram> {
+    public assignSubscriptionCommissionProgram(param: AffiliateApiAssignSubscriptionCommissionProgramRequest, options?: ConfigurationOptions): Promise<GetRestCommissionProgram> {
         return this.api.assignSubscriptionCommissionProgram(param.commissionProgramId, param.createSubscriptionCommissionProgramRequest,  options).toPromise();
     }
 
@@ -1091,7 +1090,7 @@ export class ObjectAffiliateApi {
      * Create a Default Commission Program
      * @param param the request object
      */
-    public createDefaultCommissionProgramWithHttpInfo(param: AffiliateApiCreateDefaultCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<SetDefaultCommissionProgramResponse>> {
+    public createDefaultCommissionProgramWithHttpInfo(param: AffiliateApiCreateDefaultCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetRestCommissionProgram>> {
         return this.api.createDefaultCommissionProgramWithHttpInfo(param.commissionProgramId, param.createDefaultCommissionProgramRequest,  options).toPromise();
     }
 
@@ -1100,7 +1099,7 @@ export class ObjectAffiliateApi {
      * Create a Default Commission Program
      * @param param the request object
      */
-    public createDefaultCommissionProgram(param: AffiliateApiCreateDefaultCommissionProgramRequest, options?: ConfigurationOptions): Promise<SetDefaultCommissionProgramResponse> {
+    public createDefaultCommissionProgram(param: AffiliateApiCreateDefaultCommissionProgramRequest, options?: ConfigurationOptions): Promise<GetRestCommissionProgram> {
         return this.api.createDefaultCommissionProgram(param.commissionProgramId, param.createDefaultCommissionProgramRequest,  options).toPromise();
     }
 
@@ -1541,7 +1540,7 @@ export class ObjectAffiliateApi {
      * Update a Default Commission Program
      * @param param the request object
      */
-    public updateDefaultCommissionProgramWithHttpInfo(param: AffiliateApiUpdateDefaultCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<SetDefaultCommissionProgramResponse>> {
+    public updateDefaultCommissionProgramWithHttpInfo(param: AffiliateApiUpdateDefaultCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetRestCommissionProgram>> {
         return this.api.updateDefaultCommissionProgramWithHttpInfo(param.commissionProgramId, param.updateDefaultCommissionProgramRequest, param.updateMask,  options).toPromise();
     }
 
@@ -1550,7 +1549,7 @@ export class ObjectAffiliateApi {
      * Update a Default Commission Program
      * @param param the request object
      */
-    public updateDefaultCommissionProgram(param: AffiliateApiUpdateDefaultCommissionProgramRequest, options?: ConfigurationOptions): Promise<SetDefaultCommissionProgramResponse> {
+    public updateDefaultCommissionProgram(param: AffiliateApiUpdateDefaultCommissionProgramRequest, options?: ConfigurationOptions): Promise<GetRestCommissionProgram> {
         return this.api.updateDefaultCommissionProgram(param.commissionProgramId, param.updateDefaultCommissionProgramRequest, param.updateMask,  options).toPromise();
     }
 
@@ -1559,7 +1558,7 @@ export class ObjectAffiliateApi {
      * Update a Product Commission Program
      * @param param the request object
      */
-    public updateProductCommissionProgramWithHttpInfo(param: AffiliateApiUpdateProductCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductCommissionProgram>> {
+    public updateProductCommissionProgramWithHttpInfo(param: AffiliateApiUpdateProductCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetRestCommissionProgram>> {
         return this.api.updateProductCommissionProgramWithHttpInfo(param.commissionProgramId, param.updateProductCommissionProgramRequest, param.updateMask,  options).toPromise();
     }
 
@@ -1568,7 +1567,7 @@ export class ObjectAffiliateApi {
      * Update a Product Commission Program
      * @param param the request object
      */
-    public updateProductCommissionProgram(param: AffiliateApiUpdateProductCommissionProgramRequest, options?: ConfigurationOptions): Promise<ProductCommissionProgram> {
+    public updateProductCommissionProgram(param: AffiliateApiUpdateProductCommissionProgramRequest, options?: ConfigurationOptions): Promise<GetRestCommissionProgram> {
         return this.api.updateProductCommissionProgram(param.commissionProgramId, param.updateProductCommissionProgramRequest, param.updateMask,  options).toPromise();
     }
 
@@ -1595,7 +1594,7 @@ export class ObjectAffiliateApi {
      * Update a Subscription Commission Program
      * @param param the request object
      */
-    public updateSubscriptionCommissionProgramWithHttpInfo(param: AffiliateApiUpdateSubscriptionCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<SubscriptionCommissionProgram>> {
+    public updateSubscriptionCommissionProgramWithHttpInfo(param: AffiliateApiUpdateSubscriptionCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetRestCommissionProgram>> {
         return this.api.updateSubscriptionCommissionProgramWithHttpInfo(param.commissionProgramId, param.updateSubscriptionCommissionProgramRequest, param.updateMask,  options).toPromise();
     }
 
@@ -1604,7 +1603,7 @@ export class ObjectAffiliateApi {
      * Update a Subscription Commission Program
      * @param param the request object
      */
-    public updateSubscriptionCommissionProgram(param: AffiliateApiUpdateSubscriptionCommissionProgramRequest, options?: ConfigurationOptions): Promise<SubscriptionCommissionProgram> {
+    public updateSubscriptionCommissionProgram(param: AffiliateApiUpdateSubscriptionCommissionProgramRequest, options?: ConfigurationOptions): Promise<GetRestCommissionProgram> {
         return this.api.updateSubscriptionCommissionProgram(param.commissionProgramId, param.updateSubscriptionCommissionProgramRequest, param.updateMask,  options).toPromise();
     }
 
@@ -2388,7 +2387,7 @@ export interface CategoryDiscountsApiGetCategoryDiscountRequest {
 
 export interface CategoryDiscountsApiListCategoryDiscountsRequest {
     /**
-     * Filter to apply, the allowed field is: - (String) &#x60;product_category_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of the filter with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_category_id%3D%3D4&#x60; 
+     * Filter to apply, the allowed field is: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;description&#x60; - Wildcard matching allowed - (String) &#x60;product_category_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of the filter with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_category_id%3D%3D4&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;id%3E5&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;description&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;description&#x60; that begins with &#x60;foo&#x60;  
      * Defaults to: undefined
      * @type string
      * @memberof CategoryDiscountsApilistCategoryDiscounts
@@ -5499,6 +5498,13 @@ export interface NoteApiCreateNoteRequest {
      * @memberof NoteApicreateNote
      */
     createNoteRequest: CreateNoteRequest
+    /**
+     * Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof NoteApicreateNote
+     */
+    fields?: Array<string>
 }
 
 export interface NoteApiCreateNoteCustomFieldRequest {
@@ -5662,6 +5668,13 @@ export interface NoteApiUpdateNoteRequest {
      * @memberof NoteApiupdateNote
      */
     updateMask?: any
+    /**
+     * Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof NoteApiupdateNote
+     */
+    fields?: Array<string>
 }
 
 export interface NoteApiUpdateNotesCustomFieldRequest {
@@ -5700,7 +5713,7 @@ export class ObjectNoteApi {
      * @param param the request object
      */
     public createNoteWithHttpInfo(param: NoteApiCreateNoteRequest, options?: ConfigurationOptions): Promise<HttpInfo<Note>> {
-        return this.api.createNoteWithHttpInfo(param.contactId, param.createNoteRequest,  options).toPromise();
+        return this.api.createNoteWithHttpInfo(param.contactId, param.createNoteRequest, param.fields,  options).toPromise();
     }
 
     /**
@@ -5709,7 +5722,7 @@ export class ObjectNoteApi {
      * @param param the request object
      */
     public createNote(param: NoteApiCreateNoteRequest, options?: ConfigurationOptions): Promise<Note> {
-        return this.api.createNote(param.contactId, param.createNoteRequest,  options).toPromise();
+        return this.api.createNote(param.contactId, param.createNoteRequest, param.fields,  options).toPromise();
     }
 
     /**
@@ -5826,7 +5839,7 @@ export class ObjectNoteApi {
      * @param param the request object
      */
     public updateNoteWithHttpInfo(param: NoteApiUpdateNoteRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateNoteResponse>> {
-        return this.api.updateNoteWithHttpInfo(param.contactId, param.noteId, param.updateNoteRequest, param.updateMask,  options).toPromise();
+        return this.api.updateNoteWithHttpInfo(param.contactId, param.noteId, param.updateNoteRequest, param.updateMask, param.fields,  options).toPromise();
     }
 
     /**
@@ -5835,7 +5848,7 @@ export class ObjectNoteApi {
      * @param param the request object
      */
     public updateNote(param: NoteApiUpdateNoteRequest, options?: ConfigurationOptions): Promise<UpdateNoteResponse> {
-        return this.api.updateNote(param.contactId, param.noteId, param.updateNoteRequest, param.updateMask,  options).toPromise();
+        return this.api.updateNote(param.contactId, param.noteId, param.updateNoteRequest, param.updateMask, param.fields,  options).toPromise();
     }
 
     /**
@@ -7439,7 +7452,7 @@ export interface ProductCategoriesApiGetProductCategoryRequest {
 
 export interface ProductCategoriesApiListProductCategoriesRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D29&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;name&#x60; - Wildcard matching allowed - (Number) &#x60;product_category_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;,&#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D29&#x60; - &#x60;filter&#x3D;name%3D%3DTestSearch&#x60; - &#x60;filter&#x3D;name%3D%3DElec*&#x60; (starts with \&quot;Elec\&quot;) - &#x60;filter&#x3D;product_category_id&gt;5&#x60; (category ID greater than 5) - &#x60;filter&#x3D;product_category_id&gt;&#x3D;10&#x60; (category ID greater than or equal to 10) - &#x60;filter&#x3D;product_category_id%3D%3D42&#x60; (category ID equals 42) - &#x60;filter&#x3D;name%3D%3DElec*%3Bproduct_category_id&gt;5&#x60; (multiple filters combined) 
      * Defaults to: undefined
      * @type string
      * @memberof ProductCategoriesApilistProductCategories

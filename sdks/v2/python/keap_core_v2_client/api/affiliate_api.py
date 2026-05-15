@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
-from typing import Any, List, Optional
+from typing import Any, Optional
 from typing_extensions import Annotated
 from keap_core_v2_client.models.affiliate_add_to_program_request import AffiliateAddToProgramRequest
 from keap_core_v2_client.models.affiliate_commission_earned import AffiliateCommissionEarned
@@ -44,10 +44,7 @@ from keap_core_v2_client.models.list_affiliate_summaries_response import ListAff
 from keap_core_v2_client.models.list_affiliates_response import ListAffiliatesResponse
 from keap_core_v2_client.models.list_program_resources_response import ListProgramResourcesResponse
 from keap_core_v2_client.models.object_model import ObjectModel
-from keap_core_v2_client.models.product_commission_program import ProductCommissionProgram
 from keap_core_v2_client.models.rest_affiliate import RestAffiliate
-from keap_core_v2_client.models.set_default_commission_program_response import SetDefaultCommissionProgramResponse
-from keap_core_v2_client.models.subscription_commission_program import SubscriptionCommissionProgram
 from keap_core_v2_client.models.update_affiliate_request import UpdateAffiliateRequest
 from keap_core_v2_client.models.update_commission_program_request import UpdateCommissionProgramRequest
 from keap_core_v2_client.models.update_custom_field_meta_data_request import UpdateCustomFieldMetaDataRequest
@@ -132,6 +129,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -206,6 +204,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -280,6 +279,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -431,6 +431,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -509,6 +510,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -587,6 +589,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -737,6 +740,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -811,6 +815,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -885,6 +890,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -990,7 +996,7 @@ class AffiliateApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ProductCommissionProgram:
+    ) -> GetRestCommissionProgram:
         """Assign a Product Commission Program
 
         Assigns a Product Commission Program to a Product
@@ -1031,11 +1037,12 @@ class AffiliateApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "ProductCommissionProgram",
+            '201': "GetRestCommissionProgram",
             '400': "Error",
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1068,7 +1075,7 @@ class AffiliateApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ProductCommissionProgram]:
+    ) -> ApiResponse[GetRestCommissionProgram]:
         """Assign a Product Commission Program
 
         Assigns a Product Commission Program to a Product
@@ -1109,11 +1116,12 @@ class AffiliateApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "ProductCommissionProgram",
+            '201': "GetRestCommissionProgram",
             '400': "Error",
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1187,11 +1195,12 @@ class AffiliateApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "ProductCommissionProgram",
+            '201': "GetRestCommissionProgram",
             '400': "Error",
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1300,7 +1309,7 @@ class AffiliateApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SubscriptionCommissionProgram:
+    ) -> GetRestCommissionProgram:
         """Assign a Subscription Commission Program
 
         Assigns a Subscription Commission Program to a Subscription
@@ -1341,11 +1350,12 @@ class AffiliateApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SubscriptionCommissionProgram",
+            '201': "GetRestCommissionProgram",
             '400': "Error",
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1378,7 +1388,7 @@ class AffiliateApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SubscriptionCommissionProgram]:
+    ) -> ApiResponse[GetRestCommissionProgram]:
         """Assign a Subscription Commission Program
 
         Assigns a Subscription Commission Program to a Subscription
@@ -1419,11 +1429,12 @@ class AffiliateApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SubscriptionCommissionProgram",
+            '201': "GetRestCommissionProgram",
             '400': "Error",
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1497,11 +1508,12 @@ class AffiliateApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SubscriptionCommissionProgram",
+            '201': "GetRestCommissionProgram",
             '400': "Error",
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1652,6 +1664,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1726,6 +1739,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1800,6 +1814,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1905,7 +1920,7 @@ class AffiliateApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SetDefaultCommissionProgramResponse:
+    ) -> GetRestCommissionProgram:
         """Create a Default Commission Program
 
         Creates a Default Commission Program
@@ -1946,11 +1961,12 @@ class AffiliateApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SetDefaultCommissionProgramResponse",
+            '201': "GetRestCommissionProgram",
             '400': "Error",
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -1983,7 +1999,7 @@ class AffiliateApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SetDefaultCommissionProgramResponse]:
+    ) -> ApiResponse[GetRestCommissionProgram]:
         """Create a Default Commission Program
 
         Creates a Default Commission Program
@@ -2024,11 +2040,12 @@ class AffiliateApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SetDefaultCommissionProgramResponse",
+            '201': "GetRestCommissionProgram",
             '400': "Error",
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2102,11 +2119,12 @@ class AffiliateApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SetDefaultCommissionProgramResponse",
+            '201': "GetRestCommissionProgram",
             '400': "Error",
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2257,6 +2275,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2331,6 +2350,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2405,6 +2425,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2552,6 +2573,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2626,6 +2648,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2700,6 +2723,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2834,6 +2858,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2908,6 +2933,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -2982,6 +3008,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -3116,6 +3143,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -3190,6 +3218,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -3264,6 +3293,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -3398,6 +3428,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -3472,6 +3503,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -3546,6 +3578,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -3680,6 +3713,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -3754,6 +3788,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -3828,6 +3863,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -3962,6 +3998,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -4036,6 +4073,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -4110,6 +4148,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -4260,6 +4299,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -4350,6 +4390,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -4440,6 +4481,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -4590,6 +4632,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -4660,6 +4703,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -4730,6 +4774,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -4861,6 +4906,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -4935,6 +4981,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -5009,6 +5056,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -5143,6 +5191,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -5217,6 +5266,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -5291,6 +5341,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -5425,6 +5476,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -5499,6 +5551,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -5573,6 +5626,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -5719,6 +5773,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -5805,6 +5860,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -5891,6 +5947,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -6054,6 +6111,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -6140,6 +6198,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -6226,6 +6285,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -6389,6 +6449,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -6475,6 +6536,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -6561,6 +6623,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -6728,6 +6791,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -6818,6 +6882,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -6908,6 +6973,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -7062,6 +7128,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -7136,6 +7203,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -7210,6 +7278,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -7356,6 +7425,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -7442,6 +7512,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -7528,6 +7599,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -7683,6 +7755,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -7761,6 +7834,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -7839,6 +7913,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -7993,6 +8068,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -8071,6 +8147,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -8149,6 +8226,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -8303,6 +8381,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -8381,6 +8460,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -8459,6 +8539,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -8617,6 +8698,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -8699,6 +8781,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -8781,6 +8864,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -8944,6 +9028,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -9026,6 +9111,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -9108,6 +9194,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -9271,6 +9358,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -9353,6 +9441,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -9435,6 +9524,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -9536,7 +9626,7 @@ class AffiliateApi:
         self,
         commission_program_id: StrictStr,
         update_default_commission_program_request: UpdateDefaultCommissionProgramRequest,
-        update_mask: Optional[List[StrictStr]] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9549,7 +9639,7 @@ class AffiliateApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SetDefaultCommissionProgramResponse:
+    ) -> GetRestCommissionProgram:
         """Update a Default Commission Program
 
         Updates a Default Commission Program
@@ -9558,8 +9648,8 @@ class AffiliateApi:
         :type commission_program_id: str
         :param update_default_commission_program_request: (required)
         :type update_default_commission_program_request: UpdateDefaultCommissionProgramRequest
-        :param update_mask:
-        :type update_mask: List[str]
+        :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9593,11 +9683,12 @@ class AffiliateApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SetDefaultCommissionProgramResponse",
+            '200': "GetRestCommissionProgram",
             '400': "Error",
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -9618,7 +9709,7 @@ class AffiliateApi:
         self,
         commission_program_id: StrictStr,
         update_default_commission_program_request: UpdateDefaultCommissionProgramRequest,
-        update_mask: Optional[List[StrictStr]] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9631,7 +9722,7 @@ class AffiliateApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SetDefaultCommissionProgramResponse]:
+    ) -> ApiResponse[GetRestCommissionProgram]:
         """Update a Default Commission Program
 
         Updates a Default Commission Program
@@ -9640,8 +9731,8 @@ class AffiliateApi:
         :type commission_program_id: str
         :param update_default_commission_program_request: (required)
         :type update_default_commission_program_request: UpdateDefaultCommissionProgramRequest
-        :param update_mask:
-        :type update_mask: List[str]
+        :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9675,11 +9766,12 @@ class AffiliateApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SetDefaultCommissionProgramResponse",
+            '200': "GetRestCommissionProgram",
             '400': "Error",
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -9700,7 +9792,7 @@ class AffiliateApi:
         self,
         commission_program_id: StrictStr,
         update_default_commission_program_request: UpdateDefaultCommissionProgramRequest,
-        update_mask: Optional[List[StrictStr]] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9722,8 +9814,8 @@ class AffiliateApi:
         :type commission_program_id: str
         :param update_default_commission_program_request: (required)
         :type update_default_commission_program_request: UpdateDefaultCommissionProgramRequest
-        :param update_mask:
-        :type update_mask: List[str]
+        :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9757,11 +9849,12 @@ class AffiliateApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SetDefaultCommissionProgramResponse",
+            '200': "GetRestCommissionProgram",
             '400': "Error",
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -9787,7 +9880,6 @@ class AffiliateApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'update_mask': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -9864,7 +9956,7 @@ class AffiliateApi:
         self,
         commission_program_id: StrictStr,
         update_product_commission_program_request: UpdateProductCommissionProgramRequest,
-        update_mask: Optional[List[StrictStr]] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9877,7 +9969,7 @@ class AffiliateApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ProductCommissionProgram:
+    ) -> GetRestCommissionProgram:
         """Update a Product Commission Program
 
         Updates a Product Commission Program
@@ -9886,8 +9978,8 @@ class AffiliateApi:
         :type commission_program_id: str
         :param update_product_commission_program_request: (required)
         :type update_product_commission_program_request: UpdateProductCommissionProgramRequest
-        :param update_mask:
-        :type update_mask: List[str]
+        :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9921,11 +10013,12 @@ class AffiliateApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProductCommissionProgram",
+            '200': "GetRestCommissionProgram",
             '400': "Error",
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -9946,7 +10039,7 @@ class AffiliateApi:
         self,
         commission_program_id: StrictStr,
         update_product_commission_program_request: UpdateProductCommissionProgramRequest,
-        update_mask: Optional[List[StrictStr]] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9959,7 +10052,7 @@ class AffiliateApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ProductCommissionProgram]:
+    ) -> ApiResponse[GetRestCommissionProgram]:
         """Update a Product Commission Program
 
         Updates a Product Commission Program
@@ -9968,8 +10061,8 @@ class AffiliateApi:
         :type commission_program_id: str
         :param update_product_commission_program_request: (required)
         :type update_product_commission_program_request: UpdateProductCommissionProgramRequest
-        :param update_mask:
-        :type update_mask: List[str]
+        :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -10003,11 +10096,12 @@ class AffiliateApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProductCommissionProgram",
+            '200': "GetRestCommissionProgram",
             '400': "Error",
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -10028,7 +10122,7 @@ class AffiliateApi:
         self,
         commission_program_id: StrictStr,
         update_product_commission_program_request: UpdateProductCommissionProgramRequest,
-        update_mask: Optional[List[StrictStr]] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10050,8 +10144,8 @@ class AffiliateApi:
         :type commission_program_id: str
         :param update_product_commission_program_request: (required)
         :type update_product_commission_program_request: UpdateProductCommissionProgramRequest
-        :param update_mask:
-        :type update_mask: List[str]
+        :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -10085,11 +10179,12 @@ class AffiliateApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProductCommissionProgram",
+            '200': "GetRestCommissionProgram",
             '400': "Error",
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -10115,7 +10210,6 @@ class AffiliateApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'update_mask': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -10250,6 +10344,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -10328,6 +10423,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -10406,6 +10502,7 @@ class AffiliateApi:
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -10502,7 +10599,7 @@ class AffiliateApi:
         self,
         commission_program_id: StrictStr,
         update_subscription_commission_program_request: UpdateSubscriptionCommissionProgramRequest,
-        update_mask: Optional[List[StrictStr]] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10515,7 +10612,7 @@ class AffiliateApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SubscriptionCommissionProgram:
+    ) -> GetRestCommissionProgram:
         """Update a Subscription Commission Program
 
         Updates a Subscription Commission Program
@@ -10524,8 +10621,8 @@ class AffiliateApi:
         :type commission_program_id: str
         :param update_subscription_commission_program_request: (required)
         :type update_subscription_commission_program_request: UpdateSubscriptionCommissionProgramRequest
-        :param update_mask:
-        :type update_mask: List[str]
+        :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -10559,11 +10656,12 @@ class AffiliateApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SubscriptionCommissionProgram",
+            '200': "GetRestCommissionProgram",
             '400': "Error",
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -10584,7 +10682,7 @@ class AffiliateApi:
         self,
         commission_program_id: StrictStr,
         update_subscription_commission_program_request: UpdateSubscriptionCommissionProgramRequest,
-        update_mask: Optional[List[StrictStr]] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10597,7 +10695,7 @@ class AffiliateApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SubscriptionCommissionProgram]:
+    ) -> ApiResponse[GetRestCommissionProgram]:
         """Update a Subscription Commission Program
 
         Updates a Subscription Commission Program
@@ -10606,8 +10704,8 @@ class AffiliateApi:
         :type commission_program_id: str
         :param update_subscription_commission_program_request: (required)
         :type update_subscription_commission_program_request: UpdateSubscriptionCommissionProgramRequest
-        :param update_mask:
-        :type update_mask: List[str]
+        :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -10641,11 +10739,12 @@ class AffiliateApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SubscriptionCommissionProgram",
+            '200': "GetRestCommissionProgram",
             '400': "Error",
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -10666,7 +10765,7 @@ class AffiliateApi:
         self,
         commission_program_id: StrictStr,
         update_subscription_commission_program_request: UpdateSubscriptionCommissionProgramRequest,
-        update_mask: Optional[List[StrictStr]] = None,
+        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10688,8 +10787,8 @@ class AffiliateApi:
         :type commission_program_id: str
         :param update_subscription_commission_program_request: (required)
         :type update_subscription_commission_program_request: UpdateSubscriptionCommissionProgramRequest
-        :param update_mask:
-        :type update_mask: List[str]
+        :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        :type update_mask: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -10723,11 +10822,12 @@ class AffiliateApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SubscriptionCommissionProgram",
+            '200': "GetRestCommissionProgram",
             '400': "Error",
             '401': "Error",
             '403': "Error",
             '404': "Error",
+            '405': "Error",
             '409': "Error",
             '500': "Error",
             '501': "Error",
@@ -10753,7 +10853,6 @@ class AffiliateApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'update_mask': 'multi',
         }
 
         _path_params: Dict[str, str] = {}

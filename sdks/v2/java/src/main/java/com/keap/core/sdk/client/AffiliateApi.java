@@ -43,11 +43,7 @@ import com.keap.core.sdk.model.ListAffiliateSummariesResponse;
 import com.keap.core.sdk.model.ListAffiliatesResponse;
 import com.keap.core.sdk.model.ListProgramResourcesResponse;
 import com.keap.core.sdk.model.ObjectModel;
-import com.keap.core.sdk.model.ProductCommissionProgram;
 import com.keap.core.sdk.model.RestAffiliate;
-import java.util.Set;
-import com.keap.core.sdk.model.SetDefaultCommissionProgramResponse;
-import com.keap.core.sdk.model.SubscriptionCommissionProgram;
 import com.keap.core.sdk.model.UpdateAffiliateRequest;
 import com.keap.core.sdk.model.UpdateCommissionProgramRequest;
 import com.keap.core.sdk.model.UpdateCustomFieldMetaDataRequest;
@@ -416,11 +412,11 @@ import io.github.resilience4j.retry.Retry;
    * Assigns a Product Commission Program to a Product
    * @param commissionProgramId  (required)
    * @param createProductCommissionProgramRequest  (required)
-   * @return ProductCommissionProgram
+   * @return GetRestCommissionProgram
    * @throws ApiException if fails to make API call
    */
-  public ProductCommissionProgram assignProductCommissionProgram(String commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest) throws ApiException {
-    ApiResponse<ProductCommissionProgram> localVarResponse = assignProductCommissionProgramWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest);
+  public GetRestCommissionProgram assignProductCommissionProgram(String commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest) throws ApiException {
+    ApiResponse<GetRestCommissionProgram> localVarResponse = assignProductCommissionProgramWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest);
     return localVarResponse.getData();
   }
 
@@ -429,10 +425,10 @@ import io.github.resilience4j.retry.Retry;
    * Assigns a Product Commission Program to a Product
    * @param commissionProgramId  (required)
    * @param createProductCommissionProgramRequest  (required)
-   * @return ApiResponse&lt;ProductCommissionProgram&gt;
+   * @return ApiResponse&lt;GetRestCommissionProgram&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ProductCommissionProgram> assignProductCommissionProgramWithHttpInfo(String commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest) throws ApiException {
+  public ApiResponse<GetRestCommissionProgram> assignProductCommissionProgramWithHttpInfo(String commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = assignProductCommissionProgramRequestBuilder(commissionProgramId, createProductCommissionProgramRequest);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -451,10 +447,10 @@ import io.github.resilience4j.retry.Retry;
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("assignProductCommissionProgram", localVarResponse);
         }
-        return new ApiResponse<ProductCommissionProgram>(
+        return new ApiResponse<GetRestCommissionProgram>(
           localVarResponse.statusCode(),
           localVarResponse.headers().map(),
-          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ProductCommissionProgram>() {}) // closes the InputStream
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<GetRestCommissionProgram>() {}) // closes the InputStream
         );
       } finally {
       }
@@ -514,11 +510,11 @@ import io.github.resilience4j.retry.Retry;
    * Assigns a Subscription Commission Program to a Subscription
    * @param commissionProgramId  (required)
    * @param createSubscriptionCommissionProgramRequest  (required)
-   * @return SubscriptionCommissionProgram
+   * @return GetRestCommissionProgram
    * @throws ApiException if fails to make API call
    */
-  public SubscriptionCommissionProgram assignSubscriptionCommissionProgram(String commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest) throws ApiException {
-    ApiResponse<SubscriptionCommissionProgram> localVarResponse = assignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest);
+  public GetRestCommissionProgram assignSubscriptionCommissionProgram(String commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest) throws ApiException {
+    ApiResponse<GetRestCommissionProgram> localVarResponse = assignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest);
     return localVarResponse.getData();
   }
 
@@ -527,10 +523,10 @@ import io.github.resilience4j.retry.Retry;
    * Assigns a Subscription Commission Program to a Subscription
    * @param commissionProgramId  (required)
    * @param createSubscriptionCommissionProgramRequest  (required)
-   * @return ApiResponse&lt;SubscriptionCommissionProgram&gt;
+   * @return ApiResponse&lt;GetRestCommissionProgram&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<SubscriptionCommissionProgram> assignSubscriptionCommissionProgramWithHttpInfo(String commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest) throws ApiException {
+  public ApiResponse<GetRestCommissionProgram> assignSubscriptionCommissionProgramWithHttpInfo(String commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = assignSubscriptionCommissionProgramRequestBuilder(commissionProgramId, createSubscriptionCommissionProgramRequest);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -549,10 +545,10 @@ import io.github.resilience4j.retry.Retry;
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("assignSubscriptionCommissionProgram", localVarResponse);
         }
-        return new ApiResponse<SubscriptionCommissionProgram>(
+        return new ApiResponse<GetRestCommissionProgram>(
           localVarResponse.statusCode(),
           localVarResponse.headers().map(),
-          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<SubscriptionCommissionProgram>() {}) // closes the InputStream
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<GetRestCommissionProgram>() {}) // closes the InputStream
         );
       } finally {
       }
@@ -703,11 +699,11 @@ import io.github.resilience4j.retry.Retry;
    * Creates a Default Commission Program
    * @param commissionProgramId  (required)
    * @param createDefaultCommissionProgramRequest  (required)
-   * @return SetDefaultCommissionProgramResponse
+   * @return GetRestCommissionProgram
    * @throws ApiException if fails to make API call
    */
-  public SetDefaultCommissionProgramResponse createDefaultCommissionProgram(String commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest) throws ApiException {
-    ApiResponse<SetDefaultCommissionProgramResponse> localVarResponse = createDefaultCommissionProgramWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest);
+  public GetRestCommissionProgram createDefaultCommissionProgram(String commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest) throws ApiException {
+    ApiResponse<GetRestCommissionProgram> localVarResponse = createDefaultCommissionProgramWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest);
     return localVarResponse.getData();
   }
 
@@ -716,10 +712,10 @@ import io.github.resilience4j.retry.Retry;
    * Creates a Default Commission Program
    * @param commissionProgramId  (required)
    * @param createDefaultCommissionProgramRequest  (required)
-   * @return ApiResponse&lt;SetDefaultCommissionProgramResponse&gt;
+   * @return ApiResponse&lt;GetRestCommissionProgram&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<SetDefaultCommissionProgramResponse> createDefaultCommissionProgramWithHttpInfo(String commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest) throws ApiException {
+  public ApiResponse<GetRestCommissionProgram> createDefaultCommissionProgramWithHttpInfo(String commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = createDefaultCommissionProgramRequestBuilder(commissionProgramId, createDefaultCommissionProgramRequest);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -738,10 +734,10 @@ import io.github.resilience4j.retry.Retry;
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("createDefaultCommissionProgram", localVarResponse);
         }
-        return new ApiResponse<SetDefaultCommissionProgramResponse>(
+        return new ApiResponse<GetRestCommissionProgram>(
           localVarResponse.statusCode(),
           localVarResponse.headers().map(),
-          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<SetDefaultCommissionProgramResponse>() {}) // closes the InputStream
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<GetRestCommissionProgram>() {}) // closes the InputStream
         );
       } finally {
       }
@@ -3153,12 +3149,12 @@ import io.github.resilience4j.retry.Retry;
    * Updates a Default Commission Program
    * @param commissionProgramId  (required)
    * @param updateDefaultCommissionProgramRequest  (required)
-   * @param updateMask  (optional)
-   * @return SetDefaultCommissionProgramResponse
+   * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+   * @return GetRestCommissionProgram
    * @throws ApiException if fails to make API call
    */
-  public SetDefaultCommissionProgramResponse updateDefaultCommissionProgram(String commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Set<String> updateMask) throws ApiException {
-    ApiResponse<SetDefaultCommissionProgramResponse> localVarResponse = updateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
+  public GetRestCommissionProgram updateDefaultCommissionProgram(String commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Object updateMask) throws ApiException {
+    ApiResponse<GetRestCommissionProgram> localVarResponse = updateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
     return localVarResponse.getData();
   }
 
@@ -3167,11 +3163,11 @@ import io.github.resilience4j.retry.Retry;
    * Updates a Default Commission Program
    * @param commissionProgramId  (required)
    * @param updateDefaultCommissionProgramRequest  (required)
-   * @param updateMask  (optional)
-   * @return ApiResponse&lt;SetDefaultCommissionProgramResponse&gt;
+   * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+   * @return ApiResponse&lt;GetRestCommissionProgram&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<SetDefaultCommissionProgramResponse> updateDefaultCommissionProgramWithHttpInfo(String commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Set<String> updateMask) throws ApiException {
+  public ApiResponse<GetRestCommissionProgram> updateDefaultCommissionProgramWithHttpInfo(String commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateDefaultCommissionProgramRequestBuilder(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -3190,10 +3186,10 @@ import io.github.resilience4j.retry.Retry;
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("updateDefaultCommissionProgram", localVarResponse);
         }
-        return new ApiResponse<SetDefaultCommissionProgramResponse>(
+        return new ApiResponse<GetRestCommissionProgram>(
           localVarResponse.statusCode(),
           localVarResponse.headers().map(),
-          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<SetDefaultCommissionProgramResponse>() {}) // closes the InputStream
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<GetRestCommissionProgram>() {}) // closes the InputStream
         );
       } finally {
       }
@@ -3212,7 +3208,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateDefaultCommissionProgramRequestBuilder(String commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Set<String> updateMask) throws ApiException {
+  private HttpRequest.Builder updateDefaultCommissionProgramRequestBuilder(String commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'commissionProgramId' is set
     if (commissionProgramId == null) {
       throw new ApiException(400, "Missing the required parameter 'commissionProgramId' when calling updateDefaultCommissionProgram");
@@ -3231,7 +3227,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -3268,12 +3264,12 @@ import io.github.resilience4j.retry.Retry;
    * Updates a Product Commission Program
    * @param commissionProgramId  (required)
    * @param updateProductCommissionProgramRequest  (required)
-   * @param updateMask  (optional)
-   * @return ProductCommissionProgram
+   * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+   * @return GetRestCommissionProgram
    * @throws ApiException if fails to make API call
    */
-  public ProductCommissionProgram updateProductCommissionProgram(String commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Set<String> updateMask) throws ApiException {
-    ApiResponse<ProductCommissionProgram> localVarResponse = updateProductCommissionProgramWithHttpInfo(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
+  public GetRestCommissionProgram updateProductCommissionProgram(String commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Object updateMask) throws ApiException {
+    ApiResponse<GetRestCommissionProgram> localVarResponse = updateProductCommissionProgramWithHttpInfo(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
     return localVarResponse.getData();
   }
 
@@ -3282,11 +3278,11 @@ import io.github.resilience4j.retry.Retry;
    * Updates a Product Commission Program
    * @param commissionProgramId  (required)
    * @param updateProductCommissionProgramRequest  (required)
-   * @param updateMask  (optional)
-   * @return ApiResponse&lt;ProductCommissionProgram&gt;
+   * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+   * @return ApiResponse&lt;GetRestCommissionProgram&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ProductCommissionProgram> updateProductCommissionProgramWithHttpInfo(String commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Set<String> updateMask) throws ApiException {
+  public ApiResponse<GetRestCommissionProgram> updateProductCommissionProgramWithHttpInfo(String commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateProductCommissionProgramRequestBuilder(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -3305,10 +3301,10 @@ import io.github.resilience4j.retry.Retry;
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("updateProductCommissionProgram", localVarResponse);
         }
-        return new ApiResponse<ProductCommissionProgram>(
+        return new ApiResponse<GetRestCommissionProgram>(
           localVarResponse.statusCode(),
           localVarResponse.headers().map(),
-          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ProductCommissionProgram>() {}) // closes the InputStream
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<GetRestCommissionProgram>() {}) // closes the InputStream
         );
       } finally {
       }
@@ -3327,7 +3323,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateProductCommissionProgramRequestBuilder(String commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Set<String> updateMask) throws ApiException {
+  private HttpRequest.Builder updateProductCommissionProgramRequestBuilder(String commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'commissionProgramId' is set
     if (commissionProgramId == null) {
       throw new ApiException(400, "Missing the required parameter 'commissionProgramId' when calling updateProductCommissionProgram");
@@ -3346,7 +3342,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -3481,12 +3477,12 @@ import io.github.resilience4j.retry.Retry;
    * Updates a Subscription Commission Program
    * @param commissionProgramId  (required)
    * @param updateSubscriptionCommissionProgramRequest  (required)
-   * @param updateMask  (optional)
-   * @return SubscriptionCommissionProgram
+   * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+   * @return GetRestCommissionProgram
    * @throws ApiException if fails to make API call
    */
-  public SubscriptionCommissionProgram updateSubscriptionCommissionProgram(String commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Set<String> updateMask) throws ApiException {
-    ApiResponse<SubscriptionCommissionProgram> localVarResponse = updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
+  public GetRestCommissionProgram updateSubscriptionCommissionProgram(String commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Object updateMask) throws ApiException {
+    ApiResponse<GetRestCommissionProgram> localVarResponse = updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
     return localVarResponse.getData();
   }
 
@@ -3495,11 +3491,11 @@ import io.github.resilience4j.retry.Retry;
    * Updates a Subscription Commission Program
    * @param commissionProgramId  (required)
    * @param updateSubscriptionCommissionProgramRequest  (required)
-   * @param updateMask  (optional)
-   * @return ApiResponse&lt;SubscriptionCommissionProgram&gt;
+   * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+   * @return ApiResponse&lt;GetRestCommissionProgram&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<SubscriptionCommissionProgram> updateSubscriptionCommissionProgramWithHttpInfo(String commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Set<String> updateMask) throws ApiException {
+  public ApiResponse<GetRestCommissionProgram> updateSubscriptionCommissionProgramWithHttpInfo(String commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Object updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateSubscriptionCommissionProgramRequestBuilder(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -3518,10 +3514,10 @@ import io.github.resilience4j.retry.Retry;
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("updateSubscriptionCommissionProgram", localVarResponse);
         }
-        return new ApiResponse<SubscriptionCommissionProgram>(
+        return new ApiResponse<GetRestCommissionProgram>(
           localVarResponse.statusCode(),
           localVarResponse.headers().map(),
-          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<SubscriptionCommissionProgram>() {}) // closes the InputStream
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<GetRestCommissionProgram>() {}) // closes the InputStream
         );
       } finally {
       }
@@ -3540,7 +3536,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateSubscriptionCommissionProgramRequestBuilder(String commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Set<String> updateMask) throws ApiException {
+  private HttpRequest.Builder updateSubscriptionCommissionProgramRequestBuilder(String commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Object updateMask) throws ApiException {
     // verify the required parameter 'commissionProgramId' is set
     if (commissionProgramId == null) {
       throw new ApiException(400, "Missing the required parameter 'commissionProgramId' when calling updateSubscriptionCommissionProgram");
@@ -3559,7 +3555,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

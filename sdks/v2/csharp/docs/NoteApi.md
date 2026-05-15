@@ -16,7 +16,7 @@ All URIs are relative to *https://api.keap.com/crm*
 
 <a id="createnote"></a>
 # **CreateNote**
-> Note CreateNote (string contactId, CreateNoteRequest createNoteRequest)
+> Note CreateNote (string contactId, CreateNoteRequest createNoteRequest, List<string>? fields = null)
 
 Create a Note
 
@@ -44,11 +44,12 @@ namespace Example
             var apiInstance = new NoteApi(config);
             var contactId = "contactId_example";  // string | 
             var createNoteRequest = new CreateNoteRequest(); // CreateNoteRequest | 
+            var fields = new List<string>?(); // List<string>? | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional) 
 
             try
             {
                 // Create a Note
-                Note result = apiInstance.CreateNote(contactId, createNoteRequest);
+                Note result = apiInstance.CreateNote(contactId, createNoteRequest, fields);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -69,7 +70,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Create a Note
-    ApiResponse<Note> response = apiInstance.CreateNoteWithHttpInfo(contactId, createNoteRequest);
+    ApiResponse<Note> response = apiInstance.CreateNoteWithHttpInfo(contactId, createNoteRequest, fields);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -88,6 +89,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **contactId** | **string** |  |  |
 | **createNoteRequest** | [**CreateNoteRequest**](CreateNoteRequest.md) |  |  |
+| **fields** | [**List&lt;string&gt;?**](string.md) | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional]  |
 
 ### Return type
 
@@ -111,6 +113,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -212,6 +215,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -311,6 +315,7 @@ void (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -416,6 +421,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -523,6 +529,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -634,6 +641,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -730,6 +738,7 @@ This endpoint does not need any parameter.
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -738,7 +747,7 @@ This endpoint does not need any parameter.
 
 <a id="updatenote"></a>
 # **UpdateNote**
-> UpdateNoteResponse UpdateNote (string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = null)
+> UpdateNoteResponse UpdateNote (string contactId, string noteId, UpdateNoteRequest updateNoteRequest, Object? updateMask = null, List<string>? fields = null)
 
 Update a Note
 
@@ -768,11 +777,12 @@ namespace Example
             var noteId = "noteId_example";  // string | 
             var updateNoteRequest = new UpdateNoteRequest(); // UpdateNoteRequest | 
             var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var fields = new List<string>?(); // List<string>? | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional) 
 
             try
             {
                 // Update a Note
-                UpdateNoteResponse result = apiInstance.UpdateNote(contactId, noteId, updateNoteRequest, updateMask);
+                UpdateNoteResponse result = apiInstance.UpdateNote(contactId, noteId, updateNoteRequest, updateMask, fields);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -793,7 +803,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Update a Note
-    ApiResponse<UpdateNoteResponse> response = apiInstance.UpdateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask);
+    ApiResponse<UpdateNoteResponse> response = apiInstance.UpdateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask, fields);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -814,6 +824,7 @@ catch (ApiException e)
 | **noteId** | **string** |  |  |
 | **updateNoteRequest** | [**UpdateNoteRequest**](UpdateNoteRequest.md) |  |  |
 | **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **fields** | [**List&lt;string&gt;?**](string.md) | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional]  |
 
 ### Return type
 
@@ -837,6 +848,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -942,6 +954,7 @@ catch (ApiException e)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |

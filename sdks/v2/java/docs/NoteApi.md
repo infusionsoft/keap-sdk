@@ -27,7 +27,7 @@ All URIs are relative to *https://api.keap.com/crm*
 
 ## createNote
 
-> Note createNote(contactId, createNoteRequest)
+> Note createNote(contactId, createNoteRequest, fields)
 
 Create a Note
 
@@ -56,8 +56,9 @@ public class Example {
         NoteApi apiInstance = new NoteApi(defaultClient);
         String contactId = "contactId_example"; // String | 
         CreateNoteRequest createNoteRequest = new CreateNoteRequest(); // CreateNoteRequest | 
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
         try {
-            Note result = apiInstance.createNote(contactId, createNoteRequest);
+            Note result = apiInstance.createNote(contactId, createNoteRequest, fields);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NoteApi#createNote");
@@ -77,6 +78,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **contactId** | **String**|  | |
 | **createNoteRequest** | [**CreateNoteRequest**](CreateNoteRequest.md)|  | |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -100,13 +102,14 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
 
 ## createNoteWithHttpInfo
 
-> ApiResponse<Note> createNote createNoteWithHttpInfo(contactId, createNoteRequest)
+> ApiResponse<Note> createNote createNoteWithHttpInfo(contactId, createNoteRequest, fields)
 
 Create a Note
 
@@ -136,8 +139,9 @@ public class Example {
         NoteApi apiInstance = new NoteApi(defaultClient);
         String contactId = "contactId_example"; // String | 
         CreateNoteRequest createNoteRequest = new CreateNoteRequest(); // CreateNoteRequest | 
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
         try {
-            ApiResponse<Note> response = apiInstance.createNoteWithHttpInfo(contactId, createNoteRequest);
+            ApiResponse<Note> response = apiInstance.createNoteWithHttpInfo(contactId, createNoteRequest, fields);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -159,6 +163,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **contactId** | **String**|  | |
 | **createNoteRequest** | [**CreateNoteRequest**](CreateNoteRequest.md)|  | |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -182,6 +187,7 @@ ApiResponse<[**Note**](Note.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -260,6 +266,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -340,6 +347,7 @@ ApiResponse<[**CustomFieldMetaData**](CustomFieldMetaData.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -419,6 +427,7 @@ null (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -500,6 +509,7 @@ ApiResponse<Void>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -582,6 +592,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -666,6 +677,7 @@ ApiResponse<[**GetNoteResponse**](GetNoteResponse.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -750,6 +762,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -836,6 +849,7 @@ ApiResponse<[**ListNoteTemplateResponse**](ListNoteTemplateResponse.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -924,6 +938,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1014,6 +1029,7 @@ ApiResponse<[**ListNotesResponse**](ListNotesResponse.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1088,6 +1104,7 @@ This endpoint does not need any parameter.
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1164,6 +1181,7 @@ ApiResponse<[**ObjectModel**](ObjectModel.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1171,7 +1189,7 @@ ApiResponse<[**ObjectModel**](ObjectModel.md)>
 
 ## updateNote
 
-> UpdateNoteResponse updateNote(contactId, noteId, updateNoteRequest, updateMask)
+> UpdateNoteResponse updateNote(contactId, noteId, updateNoteRequest, updateMask, fields)
 
 Update a Note
 
@@ -1202,8 +1220,9 @@ public class Example {
         String noteId = "noteId_example"; // String | 
         UpdateNoteRequest updateNoteRequest = new UpdateNoteRequest(); // UpdateNoteRequest | 
         Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
         try {
-            UpdateNoteResponse result = apiInstance.updateNote(contactId, noteId, updateNoteRequest, updateMask);
+            UpdateNoteResponse result = apiInstance.updateNote(contactId, noteId, updateNoteRequest, updateMask, fields);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NoteApi#updateNote");
@@ -1225,6 +1244,7 @@ public class Example {
 | **noteId** | **String**|  | |
 | **updateNoteRequest** | [**UpdateNoteRequest**](UpdateNoteRequest.md)|  | |
 | **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -1248,13 +1268,14 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
 
 ## updateNoteWithHttpInfo
 
-> ApiResponse<UpdateNoteResponse> updateNote updateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask)
+> ApiResponse<UpdateNoteResponse> updateNote updateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask, fields)
 
 Update a Note
 
@@ -1286,8 +1307,9 @@ public class Example {
         String noteId = "noteId_example"; // String | 
         UpdateNoteRequest updateNoteRequest = new UpdateNoteRequest(); // UpdateNoteRequest | 
         Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
         try {
-            ApiResponse<UpdateNoteResponse> response = apiInstance.updateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask);
+            ApiResponse<UpdateNoteResponse> response = apiInstance.updateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask, fields);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1311,6 +1333,7 @@ public class Example {
 | **noteId** | **String**|  | |
 | **updateNoteRequest** | [**UpdateNoteRequest**](UpdateNoteRequest.md)|  | |
 | **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -1334,6 +1357,7 @@ ApiResponse<[**UpdateNoteResponse**](UpdateNoteResponse.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1416,6 +1440,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
@@ -1500,6 +1525,7 @@ ApiResponse<[**CustomFieldMetaData**](CustomFieldMetaData.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |

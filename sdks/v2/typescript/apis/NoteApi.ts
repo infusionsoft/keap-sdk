@@ -30,8 +30,9 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
      * Create a Note
      * @param contactId 
      * @param createNoteRequest 
+     * @param fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      */
-    public async createNote(contactId: string, createNoteRequest: CreateNoteRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createNote(contactId: string, createNoteRequest: CreateNoteRequest, fields?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'contactId' is not null or undefined
@@ -46,6 +47,7 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+
         // Path Params
         const localVarPath = '/rest/v2/contacts/{contact_id}/notes'
             .replace('{' + 'contact_id' + '}', encodeURIComponent(String(contactId)));
@@ -53,6 +55,11 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (fields !== undefined) {
+            requestContext.setQueryParam("fields", ObjectSerializer.serialize(fields, "Array<string>", ""));
+        }
 
 
         // Body Params
@@ -396,8 +403,9 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
      * @param noteId 
      * @param updateNoteRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      */
-    public async updateNote(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateNote(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: any, fields?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'contactId' is not null or undefined
@@ -419,6 +427,7 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
 
 
 
+
         // Path Params
         const localVarPath = '/rest/v2/contacts/{contact_id}/notes/{note_id}'
             .replace('{' + 'contact_id' + '}', encodeURIComponent(String(contactId)))
@@ -434,6 +443,11 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
             for (const key of Object.keys(serializedParams)) {
                 requestContext.setQueryParam(key, serializedParams[key]);
             }
+        }
+
+        // Query Params
+        if (fields !== undefined) {
+            requestContext.setQueryParam("fields", ObjectSerializer.serialize(fields, "Array<string>", ""));
         }
 
 
@@ -577,6 +591,13 @@ export class NoteApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -655,6 +676,13 @@ export class NoteApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -728,6 +756,13 @@ export class NoteApiResponseProcessor {
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
         }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -807,6 +842,13 @@ export class NoteApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -884,6 +926,13 @@ export class NoteApiResponseProcessor {
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
         }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -963,6 +1012,13 @@ export class NoteApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1040,6 +1096,13 @@ export class NoteApiResponseProcessor {
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
         }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -1119,6 +1182,13 @@ export class NoteApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1196,6 +1266,13 @@ export class NoteApiResponseProcessor {
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
         }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(

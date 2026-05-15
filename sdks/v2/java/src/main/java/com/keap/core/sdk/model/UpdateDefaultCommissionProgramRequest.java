@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.keap.core.sdk.model.CommissionItemRequest;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Arrays;
 import java.io.Serializable;
@@ -34,7 +35,11 @@ import jakarta.validation.Valid;
  */
 @JsonPropertyOrder({
   UpdateDefaultCommissionProgramRequest.JSON_PROPERTY_PERCENTAGE,
-  UpdateDefaultCommissionProgramRequest.JSON_PROPERTY_DOLLAR_AMOUNT
+  UpdateDefaultCommissionProgramRequest.JSON_PROPERTY_UNUSED,
+  UpdateDefaultCommissionProgramRequest.JSON_PROPERTY_DOLLAR_AMOUNT,
+  UpdateDefaultCommissionProgramRequest.JSON_PROPERTY_LEVEL1,
+  UpdateDefaultCommissionProgramRequest.JSON_PROPERTY_LEVEL2,
+  UpdateDefaultCommissionProgramRequest.JSON_PROPERTY_PAYOUT_TYPE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateDefaultCommissionProgramRequest implements Serializable {
@@ -43,8 +48,56 @@ public class UpdateDefaultCommissionProgramRequest implements Serializable {
   public static final String JSON_PROPERTY_PERCENTAGE = "percentage";
   @jakarta.annotation.Nullable  private String percentage;
 
+  public static final String JSON_PROPERTY_UNUSED = "unused";
+  @jakarta.annotation.Nullable  private CommissionItemRequest unused;
+
   public static final String JSON_PROPERTY_DOLLAR_AMOUNT = "dollar_amount";
   @jakarta.annotation.Nullable  private String dollarAmount;
+
+  public static final String JSON_PROPERTY_LEVEL1 = "level_1";
+  @jakarta.annotation.Nullable  private CommissionItemRequest level1;
+
+  public static final String JSON_PROPERTY_LEVEL2 = "level_2";
+  @jakarta.annotation.Nullable  private CommissionItemRequest level2;
+
+  /**
+   * The payout type for this commission.
+   */
+  public enum PayoutTypeEnum {
+    UPFRONT(String.valueOf("UPFRONT")),
+    
+    PAYMENT_RECEIVED(String.valueOf("PAYMENT_RECEIVED")),
+    
+    UNKNOWN_COULD_NOT_DESERIALIZE(String.valueOf("unknown_default_open_api"));
+
+    private String value;
+
+    PayoutTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static PayoutTypeEnum fromValue(String value) {
+      for (PayoutTypeEnum b : PayoutTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return UNKNOWN_COULD_NOT_DESERIALIZE;
+    }
+  }
+  public static final String JSON_PROPERTY_PAYOUT_TYPE = "payout_type";
+  @jakarta.annotation.Nullable  private PayoutTypeEnum payoutType = PayoutTypeEnum.UPFRONT;
 
   public UpdateDefaultCommissionProgramRequest() { 
   }
@@ -55,10 +108,12 @@ public class UpdateDefaultCommissionProgramRequest implements Serializable {
   }
 
   /**
-   * Commission percentage (0-100). Either percentage or dollar_amount is required
+   * Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for &#x60;level_1&#x60;
    * @return percentage
+   * @deprecated
    */
-  @jakarta.annotation.Nullable  @Schema(example = "10.5", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Commission percentage (0-100). Either percentage or dollar_amount is required")
+  @Deprecated
+  @jakarta.annotation.Nullable  @Schema(example = "10.5", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for `level_1`")
   @JsonProperty(JSON_PROPERTY_PERCENTAGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPercentage() {
@@ -73,16 +128,43 @@ public class UpdateDefaultCommissionProgramRequest implements Serializable {
   }
 
 
+  public UpdateDefaultCommissionProgramRequest unused(@jakarta.annotation.Nullable CommissionItemRequest unused) {
+    this.unused = unused;
+    return this;
+  }
+
+  /**
+   * Payout rules for any unused commissions.
+   * @return unused
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Payout rules for any unused commissions.")
+  @JsonProperty(JSON_PROPERTY_UNUSED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CommissionItemRequest getUnused() {
+    return unused;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_UNUSED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUnused(@jakarta.annotation.Nullable CommissionItemRequest unused) {
+    this.unused = unused;
+  }
+
+
   public UpdateDefaultCommissionProgramRequest dollarAmount(@jakarta.annotation.Nullable String dollarAmount) {
     this.dollarAmount = dollarAmount;
     return this;
   }
 
   /**
-   * Fixed dollar amount. Either percentage or dollar_amount is required
+   * Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for &#x60;level_1&#x60;
    * @return dollarAmount
+   * @deprecated
    */
-  @jakarta.annotation.Nullable  @Schema(example = "25", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Fixed dollar amount. Either percentage or dollar_amount is required")
+  @Deprecated
+  @jakarta.annotation.Nullable  @Schema(example = "25", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for `level_1`")
   @JsonProperty(JSON_PROPERTY_DOLLAR_AMOUNT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDollarAmount() {
@@ -94,6 +176,80 @@ public class UpdateDefaultCommissionProgramRequest implements Serializable {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDollarAmount(@jakarta.annotation.Nullable String dollarAmount) {
     this.dollarAmount = dollarAmount;
+  }
+
+
+  public UpdateDefaultCommissionProgramRequest level1(@jakarta.annotation.Nullable CommissionItemRequest level1) {
+    this.level1 = level1;
+    return this;
+  }
+
+  /**
+   * Payout rules for Level 1 recipients of the commission.
+   * @return level1
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Payout rules for Level 1 recipients of the commission.")
+  @JsonProperty(JSON_PROPERTY_LEVEL1)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CommissionItemRequest getLevel1() {
+    return level1;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LEVEL1)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLevel1(@jakarta.annotation.Nullable CommissionItemRequest level1) {
+    this.level1 = level1;
+  }
+
+
+  public UpdateDefaultCommissionProgramRequest level2(@jakarta.annotation.Nullable CommissionItemRequest level2) {
+    this.level2 = level2;
+    return this;
+  }
+
+  /**
+   * Payout rules for Level 2 recipients of the commission.
+   * @return level2
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Payout rules for Level 2 recipients of the commission.")
+  @JsonProperty(JSON_PROPERTY_LEVEL2)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CommissionItemRequest getLevel2() {
+    return level2;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LEVEL2)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLevel2(@jakarta.annotation.Nullable CommissionItemRequest level2) {
+    this.level2 = level2;
+  }
+
+
+  public UpdateDefaultCommissionProgramRequest payoutType(@jakarta.annotation.Nullable PayoutTypeEnum payoutType) {
+    this.payoutType = payoutType;
+    return this;
+  }
+
+  /**
+   * The payout type for this commission.
+   * @return payoutType
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "UPFRONT", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The payout type for this commission.")
+  @JsonProperty(JSON_PROPERTY_PAYOUT_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public PayoutTypeEnum getPayoutType() {
+    return payoutType;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PAYOUT_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPayoutType(@jakarta.annotation.Nullable PayoutTypeEnum payoutType) {
+    this.payoutType = payoutType;
   }
 
   /**
@@ -109,12 +265,16 @@ public class UpdateDefaultCommissionProgramRequest implements Serializable {
     }
     UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest = (UpdateDefaultCommissionProgramRequest) o;
     return Objects.equals(this.percentage, updateDefaultCommissionProgramRequest.percentage) &&
-        Objects.equals(this.dollarAmount, updateDefaultCommissionProgramRequest.dollarAmount);
+        Objects.equals(this.unused, updateDefaultCommissionProgramRequest.unused) &&
+        Objects.equals(this.dollarAmount, updateDefaultCommissionProgramRequest.dollarAmount) &&
+        Objects.equals(this.level1, updateDefaultCommissionProgramRequest.level1) &&
+        Objects.equals(this.level2, updateDefaultCommissionProgramRequest.level2) &&
+        Objects.equals(this.payoutType, updateDefaultCommissionProgramRequest.payoutType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(percentage, dollarAmount);
+    return Objects.hash(percentage, unused, dollarAmount, level1, level2, payoutType);
   }
 
   @Override
@@ -122,7 +282,11 @@ public class UpdateDefaultCommissionProgramRequest implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateDefaultCommissionProgramRequest {\n");
     sb.append("    percentage: ").append(toIndentedString(percentage)).append("\n");
+    sb.append("    unused: ").append(toIndentedString(unused)).append("\n");
     sb.append("    dollarAmount: ").append(toIndentedString(dollarAmount)).append("\n");
+    sb.append("    level1: ").append(toIndentedString(level1)).append("\n");
+    sb.append("    level2: ").append(toIndentedString(level2)).append("\n");
+    sb.append("    payoutType: ").append(toIndentedString(payoutType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -154,8 +318,24 @@ public class UpdateDefaultCommissionProgramRequest implements Serializable {
               this.instance.percentage = percentage;
           return this;
         }
+            public UpdateDefaultCommissionProgramRequest.Builder unused(CommissionItemRequest unused) {
+              this.instance.unused = unused;
+          return this;
+        }
             public UpdateDefaultCommissionProgramRequest.Builder dollarAmount(String dollarAmount) {
               this.instance.dollarAmount = dollarAmount;
+          return this;
+        }
+            public UpdateDefaultCommissionProgramRequest.Builder level1(CommissionItemRequest level1) {
+              this.instance.level1 = level1;
+          return this;
+        }
+            public UpdateDefaultCommissionProgramRequest.Builder level2(CommissionItemRequest level2) {
+              this.instance.level2 = level2;
+          return this;
+        }
+            public UpdateDefaultCommissionProgramRequest.Builder payoutType(PayoutTypeEnum payoutType) {
+              this.instance.payoutType = payoutType;
           return this;
         }
         
@@ -193,7 +373,11 @@ public class UpdateDefaultCommissionProgramRequest implements Serializable {
       public UpdateDefaultCommissionProgramRequest.Builder toBuilder() {
         return new UpdateDefaultCommissionProgramRequest.Builder()
           .percentage(getPercentage())
-          .dollarAmount(getDollarAmount());
+          .unused(getUnused())
+          .dollarAmount(getDollarAmount())
+          .level1(getLevel1())
+          .level2(getLevel2())
+          .payoutType(getPayoutType());
       }
 }
 

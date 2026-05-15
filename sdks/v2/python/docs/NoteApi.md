@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **create_note**
-> Note create_note(contact_id, create_note_request)
+> Note create_note(contact_id, create_note_request, fields=fields)
 
 Create a Note
 
@@ -51,10 +51,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.NoteApi(api_client)
     contact_id = 'contact_id_example' # str | 
     create_note_request = keap_core_v2_client.CreateNoteRequest() # CreateNoteRequest | 
+    fields = ['fields_example'] # List[str] | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
 
     try:
         # Create a Note
-        api_response = api_instance.create_note(contact_id, create_note_request)
+        api_response = api_instance.create_note(contact_id, create_note_request, fields=fields)
         print("The response of NoteApi->create_note:\n")
         pprint(api_response)
     except Exception as e:
@@ -69,6 +70,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contact_id** | **str**|  | 
  **create_note_request** | [**CreateNoteRequest**](CreateNoteRequest.md)|  | 
+ **fields** | [**List[str]**](str.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] 
 
 ### Return type
 
@@ -92,6 +94,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -173,6 +176,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -252,6 +256,7 @@ void (empty response body)
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -336,6 +341,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -422,6 +428,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -512,6 +519,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -588,6 +596,7 @@ This endpoint does not need any parameter.
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -595,7 +604,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_note**
-> UpdateNoteResponse update_note(contact_id, note_id, update_note_request, update_mask=update_mask)
+> UpdateNoteResponse update_note(contact_id, note_id, update_note_request, update_mask=update_mask, fields=fields)
 
 Update a Note
 
@@ -632,10 +641,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     note_id = 'note_id_example' # str | 
     update_note_request = keap_core_v2_client.UpdateNoteRequest() # UpdateNoteRequest | 
     update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    fields = ['fields_example'] # List[str] | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
 
     try:
         # Update a Note
-        api_response = api_instance.update_note(contact_id, note_id, update_note_request, update_mask=update_mask)
+        api_response = api_instance.update_note(contact_id, note_id, update_note_request, update_mask=update_mask, fields=fields)
         print("The response of NoteApi->update_note:\n")
         pprint(api_response)
     except Exception as e:
@@ -652,6 +662,7 @@ Name | Type | Description  | Notes
  **note_id** | **str**|  | 
  **update_note_request** | [**UpdateNoteRequest**](UpdateNoteRequest.md)|  | 
  **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **fields** | [**List[str]**](str.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] 
 
 ### Return type
 
@@ -675,6 +686,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |
@@ -760,6 +772,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
 **409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
 **501** | Method Not Implemented |  -  |

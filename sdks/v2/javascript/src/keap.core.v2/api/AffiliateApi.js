@@ -39,10 +39,7 @@ import ListAffiliateSummariesResponse from '../model/ListAffiliateSummariesRespo
 import ListAffiliatesResponse from '../model/ListAffiliatesResponse';
 import ListProgramResourcesResponse from '../model/ListProgramResourcesResponse';
 import ObjectModel from '../model/ObjectModel';
-import ProductCommissionProgram from '../model/ProductCommissionProgram';
 import RestAffiliate from '../model/RestAffiliate';
-import SetDefaultCommissionProgramResponse from '../model/SetDefaultCommissionProgramResponse';
-import SubscriptionCommissionProgram from '../model/SubscriptionCommissionProgram';
 import UpdateAffiliateRequest from '../model/UpdateAffiliateRequest';
 import UpdateCommissionProgramRequest from '../model/UpdateCommissionProgramRequest';
 import UpdateCustomFieldMetaDataRequest from '../model/UpdateCustomFieldMetaDataRequest';
@@ -222,7 +219,7 @@ export default class AffiliateApi {
      * Assigns a Product Commission Program to a Product
      * @param {String} commissionProgramId 
      * @param {module:keap.core.v2/model/CreateProductCommissionProgramRequest} createProductCommissionProgramRequest 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ProductCommissionProgram} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/GetRestCommissionProgram} and HTTP response
      */
     assignProductCommissionProgramWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest) {
       let postBody = createProductCommissionProgramRequest;
@@ -248,7 +245,7 @@ export default class AffiliateApi {
       let authNames = ['oauth2'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = ProductCommissionProgram;
+      let returnType = GetRestCommissionProgram;
       return this.apiClient.callApi(
         '/rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -261,7 +258,7 @@ export default class AffiliateApi {
      * Assigns a Product Commission Program to a Product
      * @param {String} commissionProgramId 
      * @param {module:keap.core.v2/model/CreateProductCommissionProgramRequest} createProductCommissionProgramRequest 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ProductCommissionProgram}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/GetRestCommissionProgram}
      */
     assignProductCommissionProgram(commissionProgramId, createProductCommissionProgramRequest) {
       return this.assignProductCommissionProgramWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest)
@@ -276,7 +273,7 @@ export default class AffiliateApi {
      * Assigns a Subscription Commission Program to a Subscription
      * @param {String} commissionProgramId 
      * @param {module:keap.core.v2/model/CreateSubscriptionCommissionProgramRequest} createSubscriptionCommissionProgramRequest 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/SubscriptionCommissionProgram} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/GetRestCommissionProgram} and HTTP response
      */
     assignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest) {
       let postBody = createSubscriptionCommissionProgramRequest;
@@ -302,7 +299,7 @@ export default class AffiliateApi {
       let authNames = ['oauth2'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = SubscriptionCommissionProgram;
+      let returnType = GetRestCommissionProgram;
       return this.apiClient.callApi(
         '/rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -315,7 +312,7 @@ export default class AffiliateApi {
      * Assigns a Subscription Commission Program to a Subscription
      * @param {String} commissionProgramId 
      * @param {module:keap.core.v2/model/CreateSubscriptionCommissionProgramRequest} createSubscriptionCommissionProgramRequest 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/SubscriptionCommissionProgram}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/GetRestCommissionProgram}
      */
     assignSubscriptionCommissionProgram(commissionProgramId, createSubscriptionCommissionProgramRequest) {
       return this.assignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest)
@@ -377,7 +374,7 @@ export default class AffiliateApi {
      * Creates a Default Commission Program
      * @param {String} commissionProgramId 
      * @param {module:keap.core.v2/model/CreateDefaultCommissionProgramRequest} createDefaultCommissionProgramRequest 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/SetDefaultCommissionProgramResponse} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/GetRestCommissionProgram} and HTTP response
      */
     createDefaultCommissionProgramWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest) {
       let postBody = createDefaultCommissionProgramRequest;
@@ -403,7 +400,7 @@ export default class AffiliateApi {
       let authNames = ['oauth2'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = SetDefaultCommissionProgramResponse;
+      let returnType = GetRestCommissionProgram;
       return this.apiClient.callApi(
         '/rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -416,7 +413,7 @@ export default class AffiliateApi {
      * Creates a Default Commission Program
      * @param {String} commissionProgramId 
      * @param {module:keap.core.v2/model/CreateDefaultCommissionProgramRequest} createDefaultCommissionProgramRequest 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/SetDefaultCommissionProgramResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/GetRestCommissionProgram}
      */
     createDefaultCommissionProgram(commissionProgramId, createDefaultCommissionProgramRequest) {
       return this.createDefaultCommissionProgramWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest)
@@ -1692,8 +1689,8 @@ export default class AffiliateApi {
      * @param {String} commissionProgramId 
      * @param {module:keap.core.v2/model/UpdateDefaultCommissionProgramRequest} updateDefaultCommissionProgramRequest 
      * @param {Object} opts Optional parameters
-     * @param {Array.<String>} [updateMask] 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/SetDefaultCommissionProgramResponse} and HTTP response
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/GetRestCommissionProgram} and HTTP response
      */
     updateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateDefaultCommissionProgramRequest, opts) {
       opts = opts || {};
@@ -1711,7 +1708,7 @@ export default class AffiliateApi {
         'commission_program_id': commissionProgramId
       };
       let queryParams = {
-        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
+        'update_mask': opts['updateMask']
       };
       let headerParams = {
       };
@@ -1721,7 +1718,7 @@ export default class AffiliateApi {
       let authNames = ['oauth2'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = SetDefaultCommissionProgramResponse;
+      let returnType = GetRestCommissionProgram;
       return this.apiClient.callApi(
         '/rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1735,8 +1732,8 @@ export default class AffiliateApi {
      * @param {String} commissionProgramId 
      * @param {module:keap.core.v2/model/UpdateDefaultCommissionProgramRequest} updateDefaultCommissionProgramRequest 
      * @param {Object} opts Optional parameters
-     * @param {Array.<String>} opts.updateMask 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/SetDefaultCommissionProgramResponse}
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/GetRestCommissionProgram}
      */
     updateDefaultCommissionProgram(commissionProgramId, updateDefaultCommissionProgramRequest, opts) {
       return this.updateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateDefaultCommissionProgramRequest, opts)
@@ -1752,8 +1749,8 @@ export default class AffiliateApi {
      * @param {String} commissionProgramId 
      * @param {module:keap.core.v2/model/UpdateProductCommissionProgramRequest} updateProductCommissionProgramRequest 
      * @param {Object} opts Optional parameters
-     * @param {Array.<String>} [updateMask] 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ProductCommissionProgram} and HTTP response
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/GetRestCommissionProgram} and HTTP response
      */
     updateProductCommissionProgramWithHttpInfo(commissionProgramId, updateProductCommissionProgramRequest, opts) {
       opts = opts || {};
@@ -1771,7 +1768,7 @@ export default class AffiliateApi {
         'commission_program_id': commissionProgramId
       };
       let queryParams = {
-        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
+        'update_mask': opts['updateMask']
       };
       let headerParams = {
       };
@@ -1781,7 +1778,7 @@ export default class AffiliateApi {
       let authNames = ['oauth2'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = ProductCommissionProgram;
+      let returnType = GetRestCommissionProgram;
       return this.apiClient.callApi(
         '/rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1795,8 +1792,8 @@ export default class AffiliateApi {
      * @param {String} commissionProgramId 
      * @param {module:keap.core.v2/model/UpdateProductCommissionProgramRequest} updateProductCommissionProgramRequest 
      * @param {Object} opts Optional parameters
-     * @param {Array.<String>} opts.updateMask 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ProductCommissionProgram}
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/GetRestCommissionProgram}
      */
     updateProductCommissionProgram(commissionProgramId, updateProductCommissionProgramRequest, opts) {
       return this.updateProductCommissionProgramWithHttpInfo(commissionProgramId, updateProductCommissionProgramRequest, opts)
@@ -1866,8 +1863,8 @@ export default class AffiliateApi {
      * @param {String} commissionProgramId 
      * @param {module:keap.core.v2/model/UpdateSubscriptionCommissionProgramRequest} updateSubscriptionCommissionProgramRequest 
      * @param {Object} opts Optional parameters
-     * @param {Array.<String>} [updateMask] 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/SubscriptionCommissionProgram} and HTTP response
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/GetRestCommissionProgram} and HTTP response
      */
     updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateSubscriptionCommissionProgramRequest, opts) {
       opts = opts || {};
@@ -1885,7 +1882,7 @@ export default class AffiliateApi {
         'commission_program_id': commissionProgramId
       };
       let queryParams = {
-        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
+        'update_mask': opts['updateMask']
       };
       let headerParams = {
       };
@@ -1895,7 +1892,7 @@ export default class AffiliateApi {
       let authNames = ['oauth2'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = SubscriptionCommissionProgram;
+      let returnType = GetRestCommissionProgram;
       return this.apiClient.callApi(
         '/rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1909,8 +1906,8 @@ export default class AffiliateApi {
      * @param {String} commissionProgramId 
      * @param {module:keap.core.v2/model/UpdateSubscriptionCommissionProgramRequest} updateSubscriptionCommissionProgramRequest 
      * @param {Object} opts Optional parameters
-     * @param {Array.<String>} opts.updateMask 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/SubscriptionCommissionProgram}
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/GetRestCommissionProgram}
      */
     updateSubscriptionCommissionProgram(commissionProgramId, updateSubscriptionCommissionProgramRequest, opts) {
       return this.updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateSubscriptionCommissionProgramRequest, opts)

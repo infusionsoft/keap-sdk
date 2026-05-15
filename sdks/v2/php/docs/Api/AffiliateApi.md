@@ -222,7 +222,7 @@ try {
 ## `assignProductCommissionProgram()`
 
 ```php
-assignProductCommissionProgram($commission_program_id, $create_product_commission_program_request): \Keap\Core\V2\Model\ProductCommissionProgram
+assignProductCommissionProgram($commission_program_id, $create_product_commission_program_request): \Keap\Core\V2\Model\GetRestCommissionProgram
 ```
 
 Assign a Product Commission Program
@@ -265,7 +265,7 @@ try {
 
 ### Return type
 
-[**\Keap\Core\V2\Model\ProductCommissionProgram**](../Model/ProductCommissionProgram.md)
+[**\Keap\Core\V2\Model\GetRestCommissionProgram**](../Model/GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -283,7 +283,7 @@ try {
 ## `assignSubscriptionCommissionProgram()`
 
 ```php
-assignSubscriptionCommissionProgram($commission_program_id, $create_subscription_commission_program_request): \Keap\Core\V2\Model\SubscriptionCommissionProgram
+assignSubscriptionCommissionProgram($commission_program_id, $create_subscription_commission_program_request): \Keap\Core\V2\Model\GetRestCommissionProgram
 ```
 
 Assign a Subscription Commission Program
@@ -326,7 +326,7 @@ try {
 
 ### Return type
 
-[**\Keap\Core\V2\Model\SubscriptionCommissionProgram**](../Model/SubscriptionCommissionProgram.md)
+[**\Keap\Core\V2\Model\GetRestCommissionProgram**](../Model/GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -403,7 +403,7 @@ try {
 ## `createDefaultCommissionProgram()`
 
 ```php
-createDefaultCommissionProgram($commission_program_id, $create_default_commission_program_request): \Keap\Core\V2\Model\SetDefaultCommissionProgramResponse
+createDefaultCommissionProgram($commission_program_id, $create_default_commission_program_request): \Keap\Core\V2\Model\GetRestCommissionProgram
 ```
 
 Create a Default Commission Program
@@ -446,7 +446,7 @@ try {
 
 ### Return type
 
-[**\Keap\Core\V2\Model\SetDefaultCommissionProgramResponse**](../Model/SetDefaultCommissionProgramResponse.md)
+[**\Keap\Core\V2\Model\GetRestCommissionProgram**](../Model/GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -1928,7 +1928,7 @@ try {
 ## `updateDefaultCommissionProgram()`
 
 ```php
-updateDefaultCommissionProgram($commission_program_id, $update_default_commission_program_request, $update_mask): \Keap\Core\V2\Model\SetDefaultCommissionProgramResponse
+updateDefaultCommissionProgram($commission_program_id, $update_default_commission_program_request, $update_mask): \Keap\Core\V2\Model\GetRestCommissionProgram
 ```
 
 Update a Default Commission Program
@@ -1953,7 +1953,7 @@ $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
 );
 $commission_program_id = 'commission_program_id_example'; // string
 $update_default_commission_program_request = new \Keap\Core\V2\Model\UpdateDefaultCommissionProgramRequest(); // \Keap\Core\V2\Model\UpdateDefaultCommissionProgramRequest
-$update_mask = array('update_mask_example'); // string[]
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateDefaultCommissionProgram($commission_program_id, $update_default_commission_program_request, $update_mask);
@@ -1969,11 +1969,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **commission_program_id** | **string**|  | |
 | **update_default_commission_program_request** | [**\Keap\Core\V2\Model\UpdateDefaultCommissionProgramRequest**](../Model/UpdateDefaultCommissionProgramRequest.md)|  | |
-| **update_mask** | [**string[]**](../Model/string.md)|  | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
-[**\Keap\Core\V2\Model\SetDefaultCommissionProgramResponse**](../Model/SetDefaultCommissionProgramResponse.md)
+[**\Keap\Core\V2\Model\GetRestCommissionProgram**](../Model/GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -1991,7 +1991,7 @@ try {
 ## `updateProductCommissionProgram()`
 
 ```php
-updateProductCommissionProgram($commission_program_id, $update_product_commission_program_request, $update_mask): \Keap\Core\V2\Model\ProductCommissionProgram
+updateProductCommissionProgram($commission_program_id, $update_product_commission_program_request, $update_mask): \Keap\Core\V2\Model\GetRestCommissionProgram
 ```
 
 Update a Product Commission Program
@@ -2016,7 +2016,7 @@ $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
 );
 $commission_program_id = 'commission_program_id_example'; // string
 $update_product_commission_program_request = new \Keap\Core\V2\Model\UpdateProductCommissionProgramRequest(); // \Keap\Core\V2\Model\UpdateProductCommissionProgramRequest
-$update_mask = array('update_mask_example'); // string[]
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateProductCommissionProgram($commission_program_id, $update_product_commission_program_request, $update_mask);
@@ -2032,11 +2032,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **commission_program_id** | **string**|  | |
 | **update_product_commission_program_request** | [**\Keap\Core\V2\Model\UpdateProductCommissionProgramRequest**](../Model/UpdateProductCommissionProgramRequest.md)|  | |
-| **update_mask** | [**string[]**](../Model/string.md)|  | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
-[**\Keap\Core\V2\Model\ProductCommissionProgram**](../Model/ProductCommissionProgram.md)
+[**\Keap\Core\V2\Model\GetRestCommissionProgram**](../Model/GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -2115,7 +2115,7 @@ try {
 ## `updateSubscriptionCommissionProgram()`
 
 ```php
-updateSubscriptionCommissionProgram($commission_program_id, $update_subscription_commission_program_request, $update_mask): \Keap\Core\V2\Model\SubscriptionCommissionProgram
+updateSubscriptionCommissionProgram($commission_program_id, $update_subscription_commission_program_request, $update_mask): \Keap\Core\V2\Model\GetRestCommissionProgram
 ```
 
 Update a Subscription Commission Program
@@ -2140,7 +2140,7 @@ $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
 );
 $commission_program_id = 'commission_program_id_example'; // string
 $update_subscription_commission_program_request = new \Keap\Core\V2\Model\UpdateSubscriptionCommissionProgramRequest(); // \Keap\Core\V2\Model\UpdateSubscriptionCommissionProgramRequest
-$update_mask = array('update_mask_example'); // string[]
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateSubscriptionCommissionProgram($commission_program_id, $update_subscription_commission_program_request, $update_mask);
@@ -2156,11 +2156,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **commission_program_id** | **string**|  | |
 | **update_subscription_commission_program_request** | [**\Keap\Core\V2\Model\UpdateSubscriptionCommissionProgramRequest**](../Model/UpdateSubscriptionCommissionProgramRequest.md)|  | |
-| **update_mask** | [**string[]**](../Model/string.md)|  | [optional] |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
-[**\Keap\Core\V2\Model\SubscriptionCommissionProgram**](../Model/SubscriptionCommissionProgram.md)
+[**\Keap\Core\V2\Model\GetRestCommissionProgram**](../Model/GetRestCommissionProgram.md)
 
 ### Authorization
 

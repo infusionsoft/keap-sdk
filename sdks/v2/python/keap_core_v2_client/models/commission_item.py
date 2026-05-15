@@ -17,19 +17,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ProductCommissionProgram(BaseModel):
+class CommissionItem(BaseModel):
     """
-    ProductCommissionProgram
+    CommissionItem
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="Commission program ID")
-    message: Optional[StrictStr] = Field(default=None, description="Response message")
+    sale_percent: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The percentage to be paid for Sale.")
+    sale_amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The fixed dollar amount to be paid for Sale.")
+    lead_percent: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The percentage to be paid for Lead.")
+    lead_amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The fixed dollar amount to be paid for Lead.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "message"]
+    __properties: ClassVar[List[str]] = ["sale_percent", "sale_amount", "lead_percent", "lead_amount"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +51,7 @@ class ProductCommissionProgram(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ProductCommissionProgram from a JSON string"""
+        """Create an instance of CommissionItem from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,7 +83,7 @@ class ProductCommissionProgram(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ProductCommissionProgram from a dict"""
+        """Create an instance of CommissionItem from a dict"""
         if obj is None:
             return None
 
@@ -89,8 +91,10 @@ class ProductCommissionProgram(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "message": obj.get("message")
+            "sale_percent": obj.get("sale_percent"),
+            "sale_amount": obj.get("sale_amount"),
+            "lead_percent": obj.get("lead_percent"),
+            "lead_amount": obj.get("lead_amount")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

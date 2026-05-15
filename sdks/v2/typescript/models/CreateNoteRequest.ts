@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 
+import { CustomFieldValueObject } from '../models/CustomFieldValueObject';
 import { HttpFile } from '../http/http';
 
 export class CreateNoteRequest {
@@ -33,6 +34,10 @@ export class CreateNoteRequest {
     * Whether to pin this note
     */
     'isPinned'?: boolean;
+    /**
+    * Custom field values for the note. An empty array resets all custom fields to their defaults.
+    */
+    'customFields'?: Array<CustomFieldValueObject>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -67,6 +72,12 @@ export class CreateNoteRequest {
             "name": "isPinned",
             "baseName": "is_pinned",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "customFields",
+            "baseName": "custom_fields",
+            "type": "Array<CustomFieldValueObject>",
             "format": ""
         }    ];
 

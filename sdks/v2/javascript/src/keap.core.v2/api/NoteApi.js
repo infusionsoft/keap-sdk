@@ -50,9 +50,12 @@ export default class NoteApi {
      * Creates a new Note.
      * @param {String} contactId 
      * @param {module:keap.core.v2/model/CreateNoteRequest} createNoteRequest 
+     * @param {Object} opts Optional parameters
+     * @param {Array.<String>} [fields] Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/Note} and HTTP response
      */
-    createNoteWithHttpInfo(contactId, createNoteRequest) {
+    createNoteWithHttpInfo(contactId, createNoteRequest, opts) {
+      opts = opts || {};
       let postBody = createNoteRequest;
       // verify the required parameter 'contactId' is set
       if (contactId === undefined || contactId === null) {
@@ -67,6 +70,7 @@ export default class NoteApi {
         'contact_id': contactId
       };
       let queryParams = {
+        'fields': this.apiClient.buildCollectionParam(opts['fields'], 'csv')
       };
       let headerParams = {
       };
@@ -89,10 +93,12 @@ export default class NoteApi {
      * Creates a new Note.
      * @param {String} contactId 
      * @param {module:keap.core.v2/model/CreateNoteRequest} createNoteRequest 
+     * @param {Object} opts Optional parameters
+     * @param {Array.<String>} opts.fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/Note}
      */
-    createNote(contactId, createNoteRequest) {
-      return this.createNoteWithHttpInfo(contactId, createNoteRequest)
+    createNote(contactId, createNoteRequest, opts) {
+      return this.createNoteWithHttpInfo(contactId, createNoteRequest, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -433,6 +439,7 @@ export default class NoteApi {
      * @param {module:keap.core.v2/model/UpdateNoteRequest} updateNoteRequest 
      * @param {Object} opts Optional parameters
      * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<String>} [fields] Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/UpdateNoteResponse} and HTTP response
      */
     updateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, opts) {
@@ -456,7 +463,8 @@ export default class NoteApi {
         'note_id': noteId
       };
       let queryParams = {
-        'update_mask': opts['updateMask']
+        'update_mask': opts['updateMask'],
+        'fields': this.apiClient.buildCollectionParam(opts['fields'], 'csv')
       };
       let headerParams = {
       };
@@ -482,6 +490,7 @@ export default class NoteApi {
      * @param {module:keap.core.v2/model/UpdateNoteRequest} updateNoteRequest 
      * @param {Object} opts Optional parameters
      * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<String>} opts.fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/UpdateNoteResponse}
      */
     updateNote(contactId, noteId, updateNoteRequest, opts) {

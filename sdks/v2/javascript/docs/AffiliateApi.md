@@ -190,7 +190,7 @@ Name | Type | Description  | Notes
 
 ## assignProductCommissionProgram
 
-> ProductCommissionProgram assignProductCommissionProgram(commissionProgramId, createProductCommissionProgramRequest)
+> GetRestCommissionProgram assignProductCommissionProgram(commissionProgramId, createProductCommissionProgramRequest)
 
 Assign a Product Commission Program
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProductCommissionProgram**](ProductCommissionProgram.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 ## assignSubscriptionCommissionProgram
 
-> SubscriptionCommissionProgram assignSubscriptionCommissionProgram(commissionProgramId, createSubscriptionCommissionProgramRequest)
+> GetRestCommissionProgram assignSubscriptionCommissionProgram(commissionProgramId, createSubscriptionCommissionProgramRequest)
 
 Assign a Subscription Commission Program
 
@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SubscriptionCommissionProgram**](SubscriptionCommissionProgram.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ## createDefaultCommissionProgram
 
-> SetDefaultCommissionProgramResponse createDefaultCommissionProgram(commissionProgramId, createDefaultCommissionProgramRequest)
+> GetRestCommissionProgram createDefaultCommissionProgram(commissionProgramId, createDefaultCommissionProgramRequest)
 
 Create a Default Commission Program
 
@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SetDefaultCommissionProgramResponse**](SetDefaultCommissionProgramResponse.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -1612,7 +1612,7 @@ Name | Type | Description  | Notes
 
 ## updateDefaultCommissionProgram
 
-> SetDefaultCommissionProgramResponse updateDefaultCommissionProgram(commissionProgramId, updateDefaultCommissionProgramRequest, opts)
+> GetRestCommissionProgram updateDefaultCommissionProgram(commissionProgramId, updateDefaultCommissionProgramRequest, opts)
 
 Update a Default Commission Program
 
@@ -1631,7 +1631,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let commissionProgramId = "commissionProgramId_example"; // String | 
 let updateDefaultCommissionProgramRequest = new KeapCoreServiceV2Sdk.UpdateDefaultCommissionProgramRequest(); // UpdateDefaultCommissionProgramRequest | 
 let opts = {
-  'updateMask': ["null"] // [String] | 
+  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateDefaultCommissionProgram(commissionProgramId, updateDefaultCommissionProgramRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -1648,11 +1648,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commissionProgramId** | **String**|  | 
  **updateDefaultCommissionProgramRequest** | [**UpdateDefaultCommissionProgramRequest**](UpdateDefaultCommissionProgramRequest.md)|  | 
- **updateMask** | [**[String]**](String.md)|  | [optional] 
+ **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
-[**SetDefaultCommissionProgramResponse**](SetDefaultCommissionProgramResponse.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -1666,7 +1666,7 @@ Name | Type | Description  | Notes
 
 ## updateProductCommissionProgram
 
-> ProductCommissionProgram updateProductCommissionProgram(commissionProgramId, updateProductCommissionProgramRequest, opts)
+> GetRestCommissionProgram updateProductCommissionProgram(commissionProgramId, updateProductCommissionProgramRequest, opts)
 
 Update a Product Commission Program
 
@@ -1685,7 +1685,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let commissionProgramId = "commissionProgramId_example"; // String | 
 let updateProductCommissionProgramRequest = new KeapCoreServiceV2Sdk.UpdateProductCommissionProgramRequest(); // UpdateProductCommissionProgramRequest | 
 let opts = {
-  'updateMask': ["null"] // [String] | 
+  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateProductCommissionProgram(commissionProgramId, updateProductCommissionProgramRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -1702,11 +1702,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commissionProgramId** | **String**|  | 
  **updateProductCommissionProgramRequest** | [**UpdateProductCommissionProgramRequest**](UpdateProductCommissionProgramRequest.md)|  | 
- **updateMask** | [**[String]**](String.md)|  | [optional] 
+ **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
-[**ProductCommissionProgram**](ProductCommissionProgram.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
@@ -1770,7 +1770,7 @@ Name | Type | Description  | Notes
 
 ## updateSubscriptionCommissionProgram
 
-> SubscriptionCommissionProgram updateSubscriptionCommissionProgram(commissionProgramId, updateSubscriptionCommissionProgramRequest, opts)
+> GetRestCommissionProgram updateSubscriptionCommissionProgram(commissionProgramId, updateSubscriptionCommissionProgramRequest, opts)
 
 Update a Subscription Commission Program
 
@@ -1789,7 +1789,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let commissionProgramId = "commissionProgramId_example"; // String | 
 let updateSubscriptionCommissionProgramRequest = new KeapCoreServiceV2Sdk.UpdateSubscriptionCommissionProgramRequest(); // UpdateSubscriptionCommissionProgramRequest | 
 let opts = {
-  'updateMask': ["null"] // [String] | 
+  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateSubscriptionCommissionProgram(commissionProgramId, updateSubscriptionCommissionProgramRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -1806,11 +1806,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commissionProgramId** | **String**|  | 
  **updateSubscriptionCommissionProgramRequest** | [**UpdateSubscriptionCommissionProgramRequest**](UpdateSubscriptionCommissionProgramRequest.md)|  | 
- **updateMask** | [**[String]**](String.md)|  | [optional] 
+ **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
-[**SubscriptionCommissionProgram**](SubscriptionCommissionProgram.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 

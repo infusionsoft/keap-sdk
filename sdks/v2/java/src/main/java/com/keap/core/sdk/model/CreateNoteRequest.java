@@ -21,8 +21,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.keap.core.sdk.model.CustomFieldValueObject;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.validation.constraints.*;
@@ -37,7 +40,8 @@ import jakarta.validation.Valid;
   CreateNoteRequest.JSON_PROPERTY_TEXT,
   CreateNoteRequest.JSON_PROPERTY_TYPE,
   CreateNoteRequest.JSON_PROPERTY_USER_ID,
-  CreateNoteRequest.JSON_PROPERTY_IS_PINNED
+  CreateNoteRequest.JSON_PROPERTY_IS_PINNED,
+  CreateNoteRequest.JSON_PROPERTY_CUSTOM_FIELDS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CreateNoteRequest implements Serializable {
@@ -57,6 +61,9 @@ public class CreateNoteRequest implements Serializable {
 
   public static final String JSON_PROPERTY_IS_PINNED = "is_pinned";
   @jakarta.annotation.Nullable  private Boolean isPinned;
+
+  public static final String JSON_PROPERTY_CUSTOM_FIELDS = "custom_fields";
+  @jakarta.annotation.Nullable  private List<@Valid CustomFieldValueObject> customFields = new ArrayList<>();
 
   public CreateNoteRequest() { 
   }
@@ -181,6 +188,39 @@ public class CreateNoteRequest implements Serializable {
     this.isPinned = isPinned;
   }
 
+
+  public CreateNoteRequest customFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValueObject> customFields) {
+    this.customFields = customFields;
+    return this;
+  }
+
+  public CreateNoteRequest addCustomFieldsItem(CustomFieldValueObject customFieldsItem) {
+    if (this.customFields == null) {
+      this.customFields = new ArrayList<>();
+    }
+    this.customFields.add(customFieldsItem);
+    return this;
+  }
+
+  /**
+   * Custom field values for the note. An empty array resets all custom fields to their defaults.
+   * @return customFields
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "[{id=1, content=Red}]", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Custom field values for the note. An empty array resets all custom fields to their defaults.")
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<@Valid CustomFieldValueObject> getCustomFields() {
+    return customFields;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValueObject> customFields) {
+    this.customFields = customFields;
+  }
+
   /**
    * Return true if this CreateNoteRequest object is equal to o.
    */
@@ -197,12 +237,13 @@ public class CreateNoteRequest implements Serializable {
         Objects.equals(this.text, createNoteRequest.text) &&
         Objects.equals(this.type, createNoteRequest.type) &&
         Objects.equals(this.userId, createNoteRequest.userId) &&
-        Objects.equals(this.isPinned, createNoteRequest.isPinned);
+        Objects.equals(this.isPinned, createNoteRequest.isPinned) &&
+        Objects.equals(this.customFields, createNoteRequest.customFields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, text, type, userId, isPinned);
+    return Objects.hash(title, text, type, userId, isPinned, customFields);
   }
 
   @Override
@@ -214,6 +255,7 @@ public class CreateNoteRequest implements Serializable {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    isPinned: ").append(toIndentedString(isPinned)).append("\n");
+    sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -261,6 +303,10 @@ public class CreateNoteRequest implements Serializable {
               this.instance.isPinned = isPinned;
           return this;
         }
+            public CreateNoteRequest.Builder customFields(List<CustomFieldValueObject> customFields) {
+              this.instance.customFields = customFields;
+          return this;
+        }
         
     
         /**
@@ -299,7 +345,8 @@ public class CreateNoteRequest implements Serializable {
           .text(getText())
           .type(getType())
           .userId(getUserId())
-          .isPinned(getIsPinned());
+          .isPinned(getIsPinned())
+          .customFields(getCustomFields());
       }
 }
 

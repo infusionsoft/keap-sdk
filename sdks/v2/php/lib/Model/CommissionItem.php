@@ -1,6 +1,6 @@
 <?php
 /**
- * SetDefaultCommissionProgramResponse
+ * CommissionItem
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Keap\Core\V2\ObjectSerializer;
 
 /**
- * SetDefaultCommissionProgramResponse Class Doc Comment
+ * CommissionItem Class Doc Comment
  *
  * @category Class
  * @package  Keap\Core\V2
@@ -40,7 +40,7 @@ use \Keap\Core\V2\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SetDefaultCommissionProgramResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CommissionItem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SetDefaultCommissionProgramResponse implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SetDefaultCommissionProgramResponse';
+    protected static $openAPIModelName = 'CommissionItem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,10 @@ class SetDefaultCommissionProgramResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'message' => 'string'
+        'sale_percent' => 'float',
+        'sale_amount' => 'float',
+        'lead_percent' => 'float',
+        'lead_amount' => 'float'
     ];
 
     /**
@@ -69,8 +71,10 @@ class SetDefaultCommissionProgramResponse implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'message' => null
+        'sale_percent' => 'double',
+        'sale_amount' => 'double',
+        'lead_percent' => 'double',
+        'lead_amount' => 'double'
     ];
 
     /**
@@ -79,8 +83,10 @@ class SetDefaultCommissionProgramResponse implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'message' => false
+        'sale_percent' => false,
+        'sale_amount' => false,
+        'lead_percent' => false,
+        'lead_amount' => false
     ];
 
     /**
@@ -169,8 +175,10 @@ class SetDefaultCommissionProgramResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'message' => 'message'
+        'sale_percent' => 'sale_percent',
+        'sale_amount' => 'sale_amount',
+        'lead_percent' => 'lead_percent',
+        'lead_amount' => 'lead_amount'
     ];
 
     /**
@@ -179,8 +187,10 @@ class SetDefaultCommissionProgramResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'message' => 'setMessage'
+        'sale_percent' => 'setSalePercent',
+        'sale_amount' => 'setSaleAmount',
+        'lead_percent' => 'setLeadPercent',
+        'lead_amount' => 'setLeadAmount'
     ];
 
     /**
@@ -189,8 +199,10 @@ class SetDefaultCommissionProgramResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'message' => 'getMessage'
+        'sale_percent' => 'getSalePercent',
+        'sale_amount' => 'getSaleAmount',
+        'lead_percent' => 'getLeadPercent',
+        'lead_amount' => 'getLeadAmount'
     ];
 
     /**
@@ -250,8 +262,10 @@ class SetDefaultCommissionProgramResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('sale_percent', $data ?? [], null);
+        $this->setIfExists('sale_amount', $data ?? [], null);
+        $this->setIfExists('lead_percent', $data ?? [], null);
+        $this->setIfExists('lead_amount', $data ?? [], null);
     }
 
     /**
@@ -297,55 +311,109 @@ class SetDefaultCommissionProgramResponse implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets sale_percent
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getId()
+    public function getSalePercent()
     {
-        return $this->container['id'];
+        return $this->container['sale_percent'];
     }
 
     /**
-     * Sets id
+     * Sets sale_percent
      *
-     * @param string|null $id Commission program ID
+     * @param float|null $sale_percent The percentage to be paid for Sale.
      *
      * @return self
      */
-    public function setId($id)
+    public function setSalePercent($sale_percent)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($sale_percent)) {
+            throw new \InvalidArgumentException('non-nullable sale_percent cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['sale_percent'] = $sale_percent;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets sale_amount
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getMessage()
+    public function getSaleAmount()
     {
-        return $this->container['message'];
+        return $this->container['sale_amount'];
     }
 
     /**
-     * Sets message
+     * Sets sale_amount
      *
-     * @param string|null $message Response message
+     * @param float|null $sale_amount The fixed dollar amount to be paid for Sale.
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setSaleAmount($sale_amount)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($sale_amount)) {
+            throw new \InvalidArgumentException('non-nullable sale_amount cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['sale_amount'] = $sale_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets lead_percent
+     *
+     * @return float|null
+     */
+    public function getLeadPercent()
+    {
+        return $this->container['lead_percent'];
+    }
+
+    /**
+     * Sets lead_percent
+     *
+     * @param float|null $lead_percent The percentage to be paid for Lead.
+     *
+     * @return self
+     */
+    public function setLeadPercent($lead_percent)
+    {
+        if (is_null($lead_percent)) {
+            throw new \InvalidArgumentException('non-nullable lead_percent cannot be null');
+        }
+        $this->container['lead_percent'] = $lead_percent;
+
+        return $this;
+    }
+
+    /**
+     * Gets lead_amount
+     *
+     * @return float|null
+     */
+    public function getLeadAmount()
+    {
+        return $this->container['lead_amount'];
+    }
+
+    /**
+     * Sets lead_amount
+     *
+     * @param float|null $lead_amount The fixed dollar amount to be paid for Lead.
+     *
+     * @return self
+     */
+    public function setLeadAmount($lead_amount)
+    {
+        if (is_null($lead_amount)) {
+            throw new \InvalidArgumentException('non-nullable lead_amount cannot be null');
+        }
+        $this->container['lead_amount'] = $lead_amount;
 
         return $this;
     }

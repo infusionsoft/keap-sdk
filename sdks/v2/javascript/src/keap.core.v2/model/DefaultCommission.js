@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CommissionItem from './CommissionItem';
 
 /**
  * The DefaultCommission model module.
@@ -33,6 +34,7 @@ class DefaultCommission {
      * Only for internal use.
      */
     static initialize(obj) { 
+        obj['payout_type'] = 'UPFRONT';
     }
 
     /**
@@ -46,11 +48,23 @@ class DefaultCommission {
         if (data) {
             obj = obj || new DefaultCommission();
 
-            if (data.hasOwnProperty('percentage')) {
-                obj['percentage'] = ApiClient.convertToType(data['percentage'], 'Number');
+            if (data.hasOwnProperty('payout_type')) {
+                obj['payout_type'] = ApiClient.convertToType(data['payout_type'], 'String');
             }
             if (data.hasOwnProperty('dollar_amount')) {
                 obj['dollar_amount'] = ApiClient.convertToType(data['dollar_amount'], 'Number');
+            }
+            if (data.hasOwnProperty('percentage')) {
+                obj['percentage'] = ApiClient.convertToType(data['percentage'], 'Number');
+            }
+            if (data.hasOwnProperty('unused')) {
+                obj['unused'] = CommissionItem.constructFromObject(data['unused']);
+            }
+            if (data.hasOwnProperty('level_1')) {
+                obj['level_1'] = CommissionItem.constructFromObject(data['level_1']);
+            }
+            if (data.hasOwnProperty('level_2')) {
+                obj['level_2'] = CommissionItem.constructFromObject(data['level_2']);
             }
         }
         return obj;
@@ -62,6 +76,22 @@ class DefaultCommission {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>DefaultCommission</code>.
      */
     static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['payout_type'] && !(typeof data['payout_type'] === 'string' || data['payout_type'] instanceof String)) {
+            throw new Error("Expected the field `payout_type` to be a primitive type in the JSON string but got " + data['payout_type']);
+        }
+        // validate the optional field `unused`
+        if (data['unused']) { // data not null
+          CommissionItem.validateJSON(data['unused']);
+        }
+        // validate the optional field `level_1`
+        if (data['level_1']) { // data not null
+          CommissionItem.validateJSON(data['level_1']);
+        }
+        // validate the optional field `level_2`
+        if (data['level_2']) { // data not null
+          CommissionItem.validateJSON(data['level_2']);
+        }
 
         return true;
     }
@@ -72,20 +102,71 @@ class DefaultCommission {
 
 
 /**
- * Percentage commission (0-100)
+ * The payout type for this commission.
+ * @member {module:keap.core.v2/model/DefaultCommission.PayoutTypeEnum} payout_type
+ * @default 'UPFRONT'
+ */
+DefaultCommission.prototype['payout_type'] = 'UPFRONT';
+
+/**
+ * Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for `level_1`
+ * @member {Number} dollar_amount
+ */
+DefaultCommission.prototype['dollar_amount'] = undefined;
+
+/**
+ * Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for `level_1`
  * @member {Number} percentage
  */
 DefaultCommission.prototype['percentage'] = undefined;
 
 /**
- * Fixed dollar amount commission
- * @member {Number} dollar_amount
+ * Payout rules for any unused commissions.
+ * @member {module:keap.core.v2/model/CommissionItem} unused
  */
-DefaultCommission.prototype['dollar_amount'] = undefined;
+DefaultCommission.prototype['unused'] = undefined;
+
+/**
+ * Payout rules for Level 1 recipients of the commission.
+ * @member {module:keap.core.v2/model/CommissionItem} level_1
+ */
+DefaultCommission.prototype['level_1'] = undefined;
+
+/**
+ * Payout rules for Level 2 recipients of the commission.
+ * @member {module:keap.core.v2/model/CommissionItem} level_2
+ */
+DefaultCommission.prototype['level_2'] = undefined;
 
 
 
 
+
+/**
+ * Allowed values for the <code>payout_type</code> property.
+ * @enum {String}
+ * @readonly
+ */
+DefaultCommission['PayoutTypeEnum'] = {
+
+    /**
+     * value: "UPFRONT"
+     * @const
+     */
+    "UPFRONT": "UPFRONT",
+
+    /**
+     * value: "PAYMENT_RECEIVED"
+     * @const
+     */
+    "PAYMENT_RECEIVED": "PAYMENT_RECEIVED",
+
+    /**
+     * value: "unknown_default_open_api"
+     * @const
+     */
+    "unknown_default_open_api": "unknown_default_open_api"
+};
 
 
 export default DefaultCommission;

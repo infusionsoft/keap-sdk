@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CommissionItem from './CommissionItem';
 
 /**
  * The ProductCommission model module.
@@ -33,6 +34,7 @@ class ProductCommission {
      * Only for internal use.
      */
     static initialize(obj) { 
+        obj['payout_type'] = 'UPFRONT';
     }
 
     /**
@@ -46,8 +48,23 @@ class ProductCommission {
         if (data) {
             obj = obj || new ProductCommission();
 
+            if (data.hasOwnProperty('payout_type')) {
+                obj['payout_type'] = ApiClient.convertToType(data['payout_type'], 'String');
+            }
+            if (data.hasOwnProperty('dollar_amount')) {
+                obj['dollar_amount'] = ApiClient.convertToType(data['dollar_amount'], 'Number');
+            }
             if (data.hasOwnProperty('percentage')) {
                 obj['percentage'] = ApiClient.convertToType(data['percentage'], 'Number');
+            }
+            if (data.hasOwnProperty('unused')) {
+                obj['unused'] = CommissionItem.constructFromObject(data['unused']);
+            }
+            if (data.hasOwnProperty('level_1')) {
+                obj['level_1'] = CommissionItem.constructFromObject(data['level_1']);
+            }
+            if (data.hasOwnProperty('level_2')) {
+                obj['level_2'] = CommissionItem.constructFromObject(data['level_2']);
             }
             if (data.hasOwnProperty('product_id')) {
                 obj['product_id'] = ApiClient.convertToType(data['product_id'], 'String');
@@ -57,9 +74,6 @@ class ProductCommission {
             }
             if (data.hasOwnProperty('product_price')) {
                 obj['product_price'] = ApiClient.convertToType(data['product_price'], 'Number');
-            }
-            if (data.hasOwnProperty('dollar_amount')) {
-                obj['dollar_amount'] = ApiClient.convertToType(data['dollar_amount'], 'Number');
             }
         }
         return obj;
@@ -71,6 +85,22 @@ class ProductCommission {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ProductCommission</code>.
      */
     static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['payout_type'] && !(typeof data['payout_type'] === 'string' || data['payout_type'] instanceof String)) {
+            throw new Error("Expected the field `payout_type` to be a primitive type in the JSON string but got " + data['payout_type']);
+        }
+        // validate the optional field `unused`
+        if (data['unused']) { // data not null
+          CommissionItem.validateJSON(data['unused']);
+        }
+        // validate the optional field `level_1`
+        if (data['level_1']) { // data not null
+          CommissionItem.validateJSON(data['level_1']);
+        }
+        // validate the optional field `level_2`
+        if (data['level_2']) { // data not null
+          CommissionItem.validateJSON(data['level_2']);
+        }
         // ensure the json data is a string
         if (data['product_id'] && !(typeof data['product_id'] === 'string' || data['product_id'] instanceof String)) {
             throw new Error("Expected the field `product_id` to be a primitive type in the JSON string but got " + data['product_id']);
@@ -89,10 +119,41 @@ class ProductCommission {
 
 
 /**
- * Percentage commission
+ * The payout type for this commission.
+ * @member {module:keap.core.v2/model/ProductCommission.PayoutTypeEnum} payout_type
+ * @default 'UPFRONT'
+ */
+ProductCommission.prototype['payout_type'] = 'UPFRONT';
+
+/**
+ * Level 1 fixed dollar amount to be paid for commission. This will be set for the Sale. This is deprecated for `level_1`
+ * @member {Number} dollar_amount
+ */
+ProductCommission.prototype['dollar_amount'] = undefined;
+
+/**
+ * Level 1 percentage to be paid for commission (0-100). This will be set for the Sale. This is deprecated for `level_1`
  * @member {Number} percentage
  */
 ProductCommission.prototype['percentage'] = undefined;
+
+/**
+ * Payout rules for any unused commissions.
+ * @member {module:keap.core.v2/model/CommissionItem} unused
+ */
+ProductCommission.prototype['unused'] = undefined;
+
+/**
+ * Payout rules for Level 1 recipients of the commission.
+ * @member {module:keap.core.v2/model/CommissionItem} level_1
+ */
+ProductCommission.prototype['level_1'] = undefined;
+
+/**
+ * Payout rules for Level 2 recipients of the commission.
+ * @member {module:keap.core.v2/model/CommissionItem} level_2
+ */
+ProductCommission.prototype['level_2'] = undefined;
 
 /**
  * Product ID
@@ -112,15 +173,35 @@ ProductCommission.prototype['product_name'] = undefined;
  */
 ProductCommission.prototype['product_price'] = undefined;
 
+
+
+
+
 /**
- * Fixed dollar commission
- * @member {Number} dollar_amount
+ * Allowed values for the <code>payout_type</code> property.
+ * @enum {String}
+ * @readonly
  */
-ProductCommission.prototype['dollar_amount'] = undefined;
+ProductCommission['PayoutTypeEnum'] = {
 
+    /**
+     * value: "UPFRONT"
+     * @const
+     */
+    "UPFRONT": "UPFRONT",
 
+    /**
+     * value: "PAYMENT_RECEIVED"
+     * @const
+     */
+    "PAYMENT_RECEIVED": "PAYMENT_RECEIVED",
 
-
+    /**
+     * value: "unknown_default_open_api"
+     * @const
+     */
+    "unknown_default_open_api": "unknown_default_open_api"
+};
 
 
 export default ProductCommission;

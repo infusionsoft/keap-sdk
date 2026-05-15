@@ -67,6 +67,8 @@ import { CategoryDiscountCriteriaResponse } from '../models/CategoryDiscountCrit
 import { CategoryReference } from '../models/CategoryReference';
 import { CheckListItemDetails } from '../models/CheckListItemDetails';
 import { ChecklistItem } from '../models/ChecklistItem';
+import { CommissionItem } from '../models/CommissionItem';
+import { CommissionItemRequest } from '../models/CommissionItemRequest';
 import { Company } from '../models/Company';
 import { Contact } from '../models/Contact';
 import { ContactLink } from '../models/ContactLink';
@@ -256,7 +258,6 @@ import { PaymentResult } from '../models/PaymentResult';
 import { PhoneNumber } from '../models/PhoneNumber';
 import { ProductCategory } from '../models/ProductCategory';
 import { ProductCommission } from '../models/ProductCommission';
-import { ProductCommissionProgram } from '../models/ProductCommissionProgram';
 import { ProductDiscount } from '../models/ProductDiscount';
 import { ProductFixedOptionDetail } from '../models/ProductFixedOptionDetail';
 import { ProductFixedOptionList } from '../models/ProductFixedOptionList';
@@ -291,7 +292,6 @@ import { RestV2User } from '../models/RestV2User';
 import { RunReportRequest } from '../models/RunReportRequest';
 import { Sequence } from '../models/Sequence';
 import { SequencePath } from '../models/SequencePath';
-import { SetDefaultCommissionProgramResponse } from '../models/SetDefaultCommissionProgramResponse';
 import { ShippingDiscount } from '../models/ShippingDiscount';
 import { ShippingInformation } from '../models/ShippingInformation';
 import { ShippingMethod } from '../models/ShippingMethod';
@@ -299,7 +299,6 @@ import { SocialAccount } from '../models/SocialAccount';
 import { StageDetails } from '../models/StageDetails';
 import { Subscription } from '../models/Subscription';
 import { SubscriptionCommission } from '../models/SubscriptionCommission';
-import { SubscriptionCommissionProgram } from '../models/SubscriptionCommissionProgram';
 import { SubscriptionPlan } from '../models/SubscriptionPlan';
 import { SubscriptionPlanDetail } from '../models/SubscriptionPlanDetail';
 import { SubscriptionPlanList } from '../models/SubscriptionPlanList';
@@ -478,7 +477,7 @@ export class ObservableAffiliateApi {
      * @param commissionProgramId
      * @param createProductCommissionProgramRequest
      */
-    public assignProductCommissionProgramWithHttpInfo(commissionProgramId: string, createProductCommissionProgramRequest: CreateProductCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ProductCommissionProgram>> {
+    public assignProductCommissionProgramWithHttpInfo(commissionProgramId: string, createProductCommissionProgramRequest: CreateProductCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<GetRestCommissionProgram>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.assignProductCommissionProgram(commissionProgramId, createProductCommissionProgramRequest, _config);
@@ -504,8 +503,8 @@ export class ObservableAffiliateApi {
      * @param commissionProgramId
      * @param createProductCommissionProgramRequest
      */
-    public assignProductCommissionProgram(commissionProgramId: string, createProductCommissionProgramRequest: CreateProductCommissionProgramRequest, _options?: ConfigurationOptions): Observable<ProductCommissionProgram> {
-        return this.assignProductCommissionProgramWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<ProductCommissionProgram>) => apiResponse.data));
+    public assignProductCommissionProgram(commissionProgramId: string, createProductCommissionProgramRequest: CreateProductCommissionProgramRequest, _options?: ConfigurationOptions): Observable<GetRestCommissionProgram> {
+        return this.assignProductCommissionProgramWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<GetRestCommissionProgram>) => apiResponse.data));
     }
 
     /**
@@ -514,7 +513,7 @@ export class ObservableAffiliateApi {
      * @param commissionProgramId
      * @param createSubscriptionCommissionProgramRequest
      */
-    public assignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId: string, createSubscriptionCommissionProgramRequest: CreateSubscriptionCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<SubscriptionCommissionProgram>> {
+    public assignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId: string, createSubscriptionCommissionProgramRequest: CreateSubscriptionCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<GetRestCommissionProgram>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.assignSubscriptionCommissionProgram(commissionProgramId, createSubscriptionCommissionProgramRequest, _config);
@@ -540,8 +539,8 @@ export class ObservableAffiliateApi {
      * @param commissionProgramId
      * @param createSubscriptionCommissionProgramRequest
      */
-    public assignSubscriptionCommissionProgram(commissionProgramId: string, createSubscriptionCommissionProgramRequest: CreateSubscriptionCommissionProgramRequest, _options?: ConfigurationOptions): Observable<SubscriptionCommissionProgram> {
-        return this.assignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<SubscriptionCommissionProgram>) => apiResponse.data));
+    public assignSubscriptionCommissionProgram(commissionProgramId: string, createSubscriptionCommissionProgramRequest: CreateSubscriptionCommissionProgramRequest, _options?: ConfigurationOptions): Observable<GetRestCommissionProgram> {
+        return this.assignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<GetRestCommissionProgram>) => apiResponse.data));
     }
 
     /**
@@ -584,7 +583,7 @@ export class ObservableAffiliateApi {
      * @param commissionProgramId
      * @param createDefaultCommissionProgramRequest
      */
-    public createDefaultCommissionProgramWithHttpInfo(commissionProgramId: string, createDefaultCommissionProgramRequest: CreateDefaultCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<SetDefaultCommissionProgramResponse>> {
+    public createDefaultCommissionProgramWithHttpInfo(commissionProgramId: string, createDefaultCommissionProgramRequest: CreateDefaultCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<GetRestCommissionProgram>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.createDefaultCommissionProgram(commissionProgramId, createDefaultCommissionProgramRequest, _config);
@@ -610,8 +609,8 @@ export class ObservableAffiliateApi {
      * @param commissionProgramId
      * @param createDefaultCommissionProgramRequest
      */
-    public createDefaultCommissionProgram(commissionProgramId: string, createDefaultCommissionProgramRequest: CreateDefaultCommissionProgramRequest, _options?: ConfigurationOptions): Observable<SetDefaultCommissionProgramResponse> {
-        return this.createDefaultCommissionProgramWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<SetDefaultCommissionProgramResponse>) => apiResponse.data));
+    public createDefaultCommissionProgram(commissionProgramId: string, createDefaultCommissionProgramRequest: CreateDefaultCommissionProgramRequest, _options?: ConfigurationOptions): Observable<GetRestCommissionProgram> {
+        return this.createDefaultCommissionProgramWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<GetRestCommissionProgram>) => apiResponse.data));
     }
 
     /**
@@ -1491,9 +1490,9 @@ export class ObservableAffiliateApi {
      * Update a Default Commission Program
      * @param commissionProgramId
      * @param updateDefaultCommissionProgramRequest
-     * @param [updateMask]
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateDefaultCommissionProgramWithHttpInfo(commissionProgramId: string, updateDefaultCommissionProgramRequest: UpdateDefaultCommissionProgramRequest, updateMask?: Set<string>, _options?: ConfigurationOptions): Observable<HttpInfo<SetDefaultCommissionProgramResponse>> {
+    public updateDefaultCommissionProgramWithHttpInfo(commissionProgramId: string, updateDefaultCommissionProgramRequest: UpdateDefaultCommissionProgramRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<GetRestCommissionProgram>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateDefaultCommissionProgram(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask, _config);
@@ -1518,10 +1517,10 @@ export class ObservableAffiliateApi {
      * Update a Default Commission Program
      * @param commissionProgramId
      * @param updateDefaultCommissionProgramRequest
-     * @param [updateMask]
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateDefaultCommissionProgram(commissionProgramId: string, updateDefaultCommissionProgramRequest: UpdateDefaultCommissionProgramRequest, updateMask?: Set<string>, _options?: ConfigurationOptions): Observable<SetDefaultCommissionProgramResponse> {
-        return this.updateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<SetDefaultCommissionProgramResponse>) => apiResponse.data));
+    public updateDefaultCommissionProgram(commissionProgramId: string, updateDefaultCommissionProgramRequest: UpdateDefaultCommissionProgramRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<GetRestCommissionProgram> {
+        return this.updateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<GetRestCommissionProgram>) => apiResponse.data));
     }
 
     /**
@@ -1529,9 +1528,9 @@ export class ObservableAffiliateApi {
      * Update a Product Commission Program
      * @param commissionProgramId
      * @param updateProductCommissionProgramRequest
-     * @param [updateMask]
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductCommissionProgramWithHttpInfo(commissionProgramId: string, updateProductCommissionProgramRequest: UpdateProductCommissionProgramRequest, updateMask?: Set<string>, _options?: ConfigurationOptions): Observable<HttpInfo<ProductCommissionProgram>> {
+    public updateProductCommissionProgramWithHttpInfo(commissionProgramId: string, updateProductCommissionProgramRequest: UpdateProductCommissionProgramRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<GetRestCommissionProgram>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateProductCommissionProgram(commissionProgramId, updateProductCommissionProgramRequest, updateMask, _config);
@@ -1556,10 +1555,10 @@ export class ObservableAffiliateApi {
      * Update a Product Commission Program
      * @param commissionProgramId
      * @param updateProductCommissionProgramRequest
-     * @param [updateMask]
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductCommissionProgram(commissionProgramId: string, updateProductCommissionProgramRequest: UpdateProductCommissionProgramRequest, updateMask?: Set<string>, _options?: ConfigurationOptions): Observable<ProductCommissionProgram> {
-        return this.updateProductCommissionProgramWithHttpInfo(commissionProgramId, updateProductCommissionProgramRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ProductCommissionProgram>) => apiResponse.data));
+    public updateProductCommissionProgram(commissionProgramId: string, updateProductCommissionProgramRequest: UpdateProductCommissionProgramRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<GetRestCommissionProgram> {
+        return this.updateProductCommissionProgramWithHttpInfo(commissionProgramId, updateProductCommissionProgramRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<GetRestCommissionProgram>) => apiResponse.data));
     }
 
     /**
@@ -1603,9 +1602,9 @@ export class ObservableAffiliateApi {
      * Update a Subscription Commission Program
      * @param commissionProgramId
      * @param updateSubscriptionCommissionProgramRequest
-     * @param [updateMask]
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId: string, updateSubscriptionCommissionProgramRequest: UpdateSubscriptionCommissionProgramRequest, updateMask?: Set<string>, _options?: ConfigurationOptions): Observable<HttpInfo<SubscriptionCommissionProgram>> {
+    public updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId: string, updateSubscriptionCommissionProgramRequest: UpdateSubscriptionCommissionProgramRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<GetRestCommissionProgram>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateSubscriptionCommissionProgram(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask, _config);
@@ -1630,10 +1629,10 @@ export class ObservableAffiliateApi {
      * Update a Subscription Commission Program
      * @param commissionProgramId
      * @param updateSubscriptionCommissionProgramRequest
-     * @param [updateMask]
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscriptionCommissionProgram(commissionProgramId: string, updateSubscriptionCommissionProgramRequest: UpdateSubscriptionCommissionProgramRequest, updateMask?: Set<string>, _options?: ConfigurationOptions): Observable<SubscriptionCommissionProgram> {
-        return this.updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<SubscriptionCommissionProgram>) => apiResponse.data));
+    public updateSubscriptionCommissionProgram(commissionProgramId: string, updateSubscriptionCommissionProgramRequest: UpdateSubscriptionCommissionProgramRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<GetRestCommissionProgram> {
+        return this.updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<GetRestCommissionProgram>) => apiResponse.data));
     }
 
 }
@@ -2577,7 +2576,7 @@ export class ObservableCategoryDiscountsApi {
     /**
      * Retrieves a list of Category Discounts
      * List Category Discounts
-     * @param [filter] Filter to apply, the allowed field is: - (String) &#x60;product_category_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of the filter with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_category_id%3D%3D4&#x60; 
+     * @param [filter] Filter to apply, the allowed field is: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;description&#x60; - Wildcard matching allowed - (String) &#x60;product_category_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of the filter with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_category_id%3D%3D4&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;id%3E5&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;description&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;description&#x60; that begins with &#x60;foo&#x60;  
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -2605,7 +2604,7 @@ export class ObservableCategoryDiscountsApi {
     /**
      * Retrieves a list of Category Discounts
      * List Category Discounts
-     * @param [filter] Filter to apply, the allowed field is: - (String) &#x60;product_category_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of the filter with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_category_id%3D%3D4&#x60; 
+     * @param [filter] Filter to apply, the allowed field is: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;description&#x60; - Wildcard matching allowed - (String) &#x60;product_category_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of the filter with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_category_id%3D%3D4&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;id%3E5&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;description&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;description&#x60; that begins with &#x60;foo&#x60;  
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -5669,11 +5668,12 @@ export class ObservableNoteApi {
      * Create a Note
      * @param contactId
      * @param createNoteRequest
+     * @param [fields] Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      */
-    public createNoteWithHttpInfo(contactId: string, createNoteRequest: CreateNoteRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Note>> {
+    public createNoteWithHttpInfo(contactId: string, createNoteRequest: CreateNoteRequest, fields?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<Note>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createNote(contactId, createNoteRequest, _config);
+        const requestContextPromise = this.requestFactory.createNote(contactId, createNoteRequest, fields, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5695,9 +5695,10 @@ export class ObservableNoteApi {
      * Create a Note
      * @param contactId
      * @param createNoteRequest
+     * @param [fields] Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      */
-    public createNote(contactId: string, createNoteRequest: CreateNoteRequest, _options?: ConfigurationOptions): Observable<Note> {
-        return this.createNoteWithHttpInfo(contactId, createNoteRequest, _options).pipe(map((apiResponse: HttpInfo<Note>) => apiResponse.data));
+    public createNote(contactId: string, createNoteRequest: CreateNoteRequest, fields?: Array<string>, _options?: ConfigurationOptions): Observable<Note> {
+        return this.createNoteWithHttpInfo(contactId, createNoteRequest, fields, _options).pipe(map((apiResponse: HttpInfo<Note>) => apiResponse.data));
     }
 
     /**
@@ -5931,11 +5932,12 @@ export class ObservableNoteApi {
      * @param noteId
      * @param updateNoteRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param [fields] Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      */
-    public updateNoteWithHttpInfo(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<HttpInfo<UpdateNoteResponse>> {
+    public updateNoteWithHttpInfo(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: any, fields?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<UpdateNoteResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateNote(contactId, noteId, updateNoteRequest, updateMask, _config);
+        const requestContextPromise = this.requestFactory.updateNote(contactId, noteId, updateNoteRequest, updateMask, fields, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5959,9 +5961,10 @@ export class ObservableNoteApi {
      * @param noteId
      * @param updateNoteRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param [fields] Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      */
-    public updateNote(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: any, _options?: ConfigurationOptions): Observable<UpdateNoteResponse> {
-        return this.updateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<UpdateNoteResponse>) => apiResponse.data));
+    public updateNote(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: any, fields?: Array<string>, _options?: ConfigurationOptions): Observable<UpdateNoteResponse> {
+        return this.updateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask, fields, _options).pipe(map((apiResponse: HttpInfo<UpdateNoteResponse>) => apiResponse.data));
     }
 
     /**
@@ -7775,7 +7778,7 @@ export class ObservableProductCategoriesApi {
     /**
      * Retrieves a list of Product Categories
      * List all Product Categories
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D29&#x60; 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;name&#x60; - Wildcard matching allowed - (Number) &#x60;product_category_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;,&#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D29&#x60; - &#x60;filter&#x3D;name%3D%3DTestSearch&#x60; - &#x60;filter&#x3D;name%3D%3DElec*&#x60; (starts with \&quot;Elec\&quot;) - &#x60;filter&#x3D;product_category_id&gt;5&#x60; (category ID greater than 5) - &#x60;filter&#x3D;product_category_id&gt;&#x3D;10&#x60; (category ID greater than or equal to 10) - &#x60;filter&#x3D;product_category_id%3D%3D42&#x60; (category ID equals 42) - &#x60;filter&#x3D;name%3D%3DElec*%3Bproduct_category_id&gt;5&#x60; (multiple filters combined) 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -7803,7 +7806,7 @@ export class ObservableProductCategoriesApi {
     /**
      * Retrieves a list of Product Categories
      * List all Product Categories
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D29&#x60; 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;name&#x60; - Wildcard matching allowed - (Number) &#x60;product_category_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;,&#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D29&#x60; - &#x60;filter&#x3D;name%3D%3DTestSearch&#x60; - &#x60;filter&#x3D;name%3D%3DElec*&#x60; (starts with \&quot;Elec\&quot;) - &#x60;filter&#x3D;product_category_id&gt;5&#x60; (category ID greater than 5) - &#x60;filter&#x3D;product_category_id&gt;&#x3D;10&#x60; (category ID greater than or equal to 10) - &#x60;filter&#x3D;product_category_id%3D%3D42&#x60; (category ID equals 42) - &#x60;filter&#x3D;name%3D%3DElec*%3Bproduct_category_id&gt;5&#x60; (multiple filters combined) 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token

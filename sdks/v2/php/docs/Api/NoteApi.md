@@ -18,7 +18,7 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 ## `createNote()`
 
 ```php
-createNote($contact_id, $create_note_request): \Keap\Core\V2\Model\Note
+createNote($contact_id, $create_note_request, $fields): \Keap\Core\V2\Model\Note
 ```
 
 Create a Note
@@ -43,9 +43,10 @@ $apiInstance = new Keap\Core\V2\Api\NoteApi(
 );
 $contact_id = 'contact_id_example'; // string
 $create_note_request = new \Keap\Core\V2\Model\CreateNoteRequest(); // \Keap\Core\V2\Model\CreateNoteRequest
+$fields = array('fields_example'); // string[] | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
 
 try {
-    $result = $apiInstance->createNote($contact_id, $create_note_request);
+    $result = $apiInstance->createNote($contact_id, $create_note_request, $fields);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NoteApi->createNote: ', $e->getMessage(), PHP_EOL;
@@ -58,6 +59,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **contact_id** | **string**|  | |
 | **create_note_request** | [**\Keap\Core\V2\Model\CreateNoteRequest**](../Model/CreateNoteRequest.md)|  | |
+| **fields** | [**string[]**](../Model/string.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
@@ -451,7 +453,7 @@ This endpoint does not need any parameter.
 ## `updateNote()`
 
 ```php
-updateNote($contact_id, $note_id, $update_note_request, $update_mask): \Keap\Core\V2\Model\UpdateNoteResponse
+updateNote($contact_id, $note_id, $update_note_request, $update_mask, $fields): \Keap\Core\V2\Model\UpdateNoteResponse
 ```
 
 Update a Note
@@ -478,9 +480,10 @@ $contact_id = 'contact_id_example'; // string
 $note_id = 'note_id_example'; // string
 $update_note_request = new \Keap\Core\V2\Model\UpdateNoteRequest(); // \Keap\Core\V2\Model\UpdateNoteRequest
 $update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$fields = array('fields_example'); // string[] | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
 
 try {
-    $result = $apiInstance->updateNote($contact_id, $note_id, $update_note_request, $update_mask);
+    $result = $apiInstance->updateNote($contact_id, $note_id, $update_note_request, $update_mask, $fields);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NoteApi->updateNote: ', $e->getMessage(), PHP_EOL;
@@ -495,6 +498,7 @@ try {
 | **note_id** | **string**|  | |
 | **update_note_request** | [**\Keap\Core\V2\Model\UpdateNoteRequest**](../Model/UpdateNoteRequest.md)|  | |
 | **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **fields** | [**string[]**](../Model/string.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
 
