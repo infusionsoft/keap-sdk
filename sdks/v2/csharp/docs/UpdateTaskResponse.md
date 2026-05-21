@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Task ID | [optional] 
 **Title** | **string** | Task title | [optional] 
-**Description** | **string** | Task description | [optional] 
+**Description** | **string** | Task description. Legacy XML-RPC name for this field was &#x60;CreationNotes&#x60; | [optional] 
 **Type** | **string** | Task type | [optional] 
 **Priority** | **string** | Task priority | [optional] 
 **Completed** | **bool** | Whether task is completed | [optional] 
@@ -17,7 +17,10 @@ Name | Type | Description | Notes
 **RemindTimeMins** | **int** | Reminder minutes before due. | [optional] 
 **AssignedToUserId** | **string** | Assigned user ID | [optional] 
 **CreatedByUserId** | **string** | Creator user ID | [optional] 
+**LastUpdatedByUserId** | **string** | User who last updated the task. | [optional] 
 **ContactId** | **string** | Associated contact ID | [optional] 
+**OpportunityId** | **string** | Associated opportunity ID | [optional] 
+**Accepted** | **bool** | Whether the task has been accepted | [optional] 
 **CustomFields** | [**List&lt;CustomFieldValueObject&gt;**](CustomFieldValueObject.md) | Custom field values for the task | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

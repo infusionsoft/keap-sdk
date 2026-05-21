@@ -20,6 +20,7 @@ import CustomFieldMetaData from '../model/CustomFieldMetaData';
 import Error from '../model/Error';
 import ListOpportunitiesResponse from '../model/ListOpportunitiesResponse';
 import ListOpportunityStagesResponse from '../model/ListOpportunityStagesResponse';
+import ObjectModel from '../model/ObjectModel';
 import RestOpportunityStage from '../model/RestOpportunityStage';
 import RestV2Opportunity from '../model/RestV2Opportunity';
 import UpdateCustomFieldMetaDataRequest from '../model/UpdateCustomFieldMetaDataRequest';
@@ -487,6 +488,47 @@ export default class OpportunityApi {
      */
     listOpportunityStages(opts) {
       return this.listOpportunityStagesWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Retrieve Opportunity Custom Field Model
+     * Get the custom fields for the Opportunity object
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ObjectModel} and HTTP response
+     */
+    retrieveOpportunityCustomFieldModelWithHttpInfo() {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ObjectModel;
+      return this.apiClient.callApi(
+        '/rest/v2/opportunities/model', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Retrieve Opportunity Custom Field Model
+     * Get the custom fields for the Opportunity object
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ObjectModel}
+     */
+    retrieveOpportunityCustomFieldModel() {
+      return this.retrieveOpportunityCustomFieldModelWithHttpInfo()
         .then(function(response_and_data) {
           return response_and_data.data;
         });

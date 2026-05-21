@@ -47,6 +47,8 @@ import jakarta.validation.Valid;
   CreateUpdateTaskRequest.JSON_PROPERTY_REMIND_TIME_MINS,
   CreateUpdateTaskRequest.JSON_PROPERTY_ASSIGNED_TO_USER_ID,
   CreateUpdateTaskRequest.JSON_PROPERTY_CONTACT_ID,
+  CreateUpdateTaskRequest.JSON_PROPERTY_OPPORTUNITY_ID,
+  CreateUpdateTaskRequest.JSON_PROPERTY_ACCEPTED,
   CreateUpdateTaskRequest.JSON_PROPERTY_CUSTOM_FIELDS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
@@ -172,6 +174,12 @@ public class CreateUpdateTaskRequest implements Serializable {
 
   public static final String JSON_PROPERTY_CONTACT_ID = "contact_id";
   @jakarta.annotation.Nullable  private String contactId;
+
+  public static final String JSON_PROPERTY_OPPORTUNITY_ID = "opportunity_id";
+  @jakarta.annotation.Nullable  private String opportunityId;
+
+  public static final String JSON_PROPERTY_ACCEPTED = "accepted";
+  @jakarta.annotation.Nullable  private Boolean accepted;
 
   public static final String JSON_PROPERTY_CUSTOM_FIELDS = "custom_fields";
   @jakarta.annotation.Nullable  private List<@Valid CustomFieldValueObject> customFields = new ArrayList<>();
@@ -419,6 +427,54 @@ public class CreateUpdateTaskRequest implements Serializable {
   }
 
 
+  public CreateUpdateTaskRequest opportunityId(@jakarta.annotation.Nullable String opportunityId) {
+    this.opportunityId = opportunityId;
+    return this;
+  }
+
+  /**
+   * Associated opportunity ID
+   * @return opportunityId
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "77", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Associated opportunity ID")
+  @JsonProperty(JSON_PROPERTY_OPPORTUNITY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getOpportunityId() {
+    return opportunityId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OPPORTUNITY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOpportunityId(@jakarta.annotation.Nullable String opportunityId) {
+    this.opportunityId = opportunityId;
+  }
+
+
+  public CreateUpdateTaskRequest accepted(@jakarta.annotation.Nullable Boolean accepted) {
+    this.accepted = accepted;
+    return this;
+  }
+
+  /**
+   * Whether the task has been accepted. Defaults to false
+   * @return accepted
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Whether the task has been accepted. Defaults to false")
+  @JsonProperty(JSON_PROPERTY_ACCEPTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getAccepted() {
+    return accepted;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ACCEPTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAccepted(@jakarta.annotation.Nullable Boolean accepted) {
+    this.accepted = accepted;
+  }
+
+
   public CreateUpdateTaskRequest customFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValueObject> customFields) {
     this.customFields = customFields;
     return this;
@@ -473,12 +529,14 @@ public class CreateUpdateTaskRequest implements Serializable {
         Objects.equals(this.remindTimeMins, createUpdateTaskRequest.remindTimeMins) &&
         Objects.equals(this.assignedToUserId, createUpdateTaskRequest.assignedToUserId) &&
         Objects.equals(this.contactId, createUpdateTaskRequest.contactId) &&
+        Objects.equals(this.opportunityId, createUpdateTaskRequest.opportunityId) &&
+        Objects.equals(this.accepted, createUpdateTaskRequest.accepted) &&
         Objects.equals(this.customFields, createUpdateTaskRequest.customFields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, description, type, priority, completed, completionTime, dueTime, remindTimeMins, assignedToUserId, contactId, customFields);
+    return Objects.hash(title, description, type, priority, completed, completionTime, dueTime, remindTimeMins, assignedToUserId, contactId, opportunityId, accepted, customFields);
   }
 
   @Override
@@ -495,6 +553,8 @@ public class CreateUpdateTaskRequest implements Serializable {
     sb.append("    remindTimeMins: ").append(toIndentedString(remindTimeMins)).append("\n");
     sb.append("    assignedToUserId: ").append(toIndentedString(assignedToUserId)).append("\n");
     sb.append("    contactId: ").append(toIndentedString(contactId)).append("\n");
+    sb.append("    opportunityId: ").append(toIndentedString(opportunityId)).append("\n");
+    sb.append("    accepted: ").append(toIndentedString(accepted)).append("\n");
     sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -563,6 +623,14 @@ public class CreateUpdateTaskRequest implements Serializable {
               this.instance.contactId = contactId;
           return this;
         }
+            public CreateUpdateTaskRequest.Builder opportunityId(String opportunityId) {
+              this.instance.opportunityId = opportunityId;
+          return this;
+        }
+            public CreateUpdateTaskRequest.Builder accepted(Boolean accepted) {
+              this.instance.accepted = accepted;
+          return this;
+        }
             public CreateUpdateTaskRequest.Builder customFields(List<CustomFieldValueObject> customFields) {
               this.instance.customFields = customFields;
           return this;
@@ -611,6 +679,8 @@ public class CreateUpdateTaskRequest implements Serializable {
           .remindTimeMins(getRemindTimeMins())
           .assignedToUserId(getAssignedToUserId())
           .contactId(getContactId())
+          .opportunityId(getOpportunityId())
+          .accepted(getAccepted())
           .customFields(getCustomFields());
       }
 }

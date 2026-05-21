@@ -1,5 +1,7 @@
 export * from '../models/AchieveGoalRequest';
 export * from '../models/AchieveGoalResponse';
+export * from '../models/AchieveIntegrationsWordPressOptInOptionGoalRequest';
+export * from '../models/AchieveWordPressOptInGoalResult';
 export * from '../models/AddContactsToSequenceRequest';
 export * from '../models/AddContactsToSequenceResponse';
 export * from '../models/AddProductInterestRequest';
@@ -44,6 +46,7 @@ export * from '../models/ApplyRemoveTagRequest';
 export * from '../models/ApplyTagsResponse';
 export * from '../models/AssignAutomationCategoryRequest';
 export * from '../models/AssignProductsRequest';
+export * from '../models/AssignedProducts';
 export * from '../models/Automation';
 export * from '../models/AutomationCategory';
 export * from '../models/AutomationLockStatus';
@@ -176,6 +179,7 @@ export * from '../models/ListAffiliatePaymentsResponse';
 export * from '../models/ListAffiliateReferralsResponse';
 export * from '../models/ListAffiliateSummariesResponse';
 export * from '../models/ListAffiliatesResponse';
+export * from '../models/ListAssignedProductsResponse';
 export * from '../models/ListAutomationCategoryResponse';
 export * from '../models/ListAutomationIdsResponse';
 export * from '../models/ListAutomationResponse';
@@ -231,6 +235,7 @@ export * from '../models/ListTransactions';
 export * from '../models/ListUserGroupsResponse';
 export * from '../models/ListUsersPaginatedResponse';
 export * from '../models/ListWebformsResponse';
+export * from '../models/ListWordPressOptInOptionsResponse';
 export * from '../models/ModelError';
 export * from '../models/Note';
 export * from '../models/NoteTemplate';
@@ -348,6 +353,8 @@ export * from '../models/WordPressOptInOption';
 
 import { AchieveGoalRequest } from '../models/AchieveGoalRequest';
 import { AchieveGoalResponse } from '../models/AchieveGoalResponse';
+import { AchieveIntegrationsWordPressOptInOptionGoalRequest } from '../models/AchieveIntegrationsWordPressOptInOptionGoalRequest';
+import { AchieveWordPressOptInGoalResult } from '../models/AchieveWordPressOptInGoalResult';
 import { AddContactsToSequenceRequest } from '../models/AddContactsToSequenceRequest';
 import { AddContactsToSequenceResponse, AddContactsToSequenceResponseAddToSequenceResultsEnum   } from '../models/AddContactsToSequenceResponse';
 import { AddProductInterestRequest, AddProductInterestRequestTypeEnum       } from '../models/AddProductInterestRequest';
@@ -392,6 +399,7 @@ import { ApplyRemoveTagRequest } from '../models/ApplyRemoveTagRequest';
 import { ApplyTagsResponse } from '../models/ApplyTagsResponse';
 import { AssignAutomationCategoryRequest } from '../models/AssignAutomationCategoryRequest';
 import { AssignProductsRequest } from '../models/AssignProductsRequest';
+import { AssignedProducts } from '../models/AssignedProducts';
 import { Automation   , AutomationStatusEnum          } from '../models/Automation';
 import { AutomationCategory } from '../models/AutomationCategory';
 import { AutomationLockStatus } from '../models/AutomationLockStatus';
@@ -458,17 +466,17 @@ import { CreateShippingDiscountRequest   , CreateShippingDiscountRequestDiscount
 import { CreateSubscriptionCommissionProgramRequest     , CreateSubscriptionCommissionProgramRequestPayoutTypeEnum    } from '../models/CreateSubscriptionCommissionProgramRequest';
 import { CreateSubscriptionPlanRequest   , CreateSubscriptionPlanRequestCycleTypeEnum      } from '../models/CreateSubscriptionPlanRequest';
 import { CreateSubscriptionRequest } from '../models/CreateSubscriptionRequest';
-import { CreateTaskRequest   , CreateTaskRequestPriorityEnum     , CreateTaskRequestRemindTimeMinsEnum      } from '../models/CreateTaskRequest';
+import { CreateTaskRequest   , CreateTaskRequestPriorityEnum     , CreateTaskRequestRemindTimeMinsEnum        } from '../models/CreateTaskRequest';
 import { CreateUpdateContactRequest                       , CreateUpdateContactRequestSourceTypeEnum         } from '../models/CreateUpdateContactRequest';
 import { CreateUpdateLeadSourceCategoryRequest } from '../models/CreateUpdateLeadSourceCategoryRequest';
 import { CreateUpdateTagCategoryRequest } from '../models/CreateUpdateTagCategoryRequest';
 import { CreateUpdateTagRequest } from '../models/CreateUpdateTagRequest';
-import { CreateUpdateTaskRequest   , CreateUpdateTaskRequestPriorityEnum     , CreateUpdateTaskRequestRemindTimeMinsEnum      } from '../models/CreateUpdateTaskRequest';
+import { CreateUpdateTaskRequest   , CreateUpdateTaskRequestPriorityEnum     , CreateUpdateTaskRequestRemindTimeMinsEnum        } from '../models/CreateUpdateTaskRequest';
 import { CurrencyValue } from '../models/CurrencyValue';
 import { CurrencyValueDetail } from '../models/CurrencyValueDetail';
 import { CurrencyValueList } from '../models/CurrencyValueList';
 import { CustomField } from '../models/CustomField';
-import { CustomFieldMetaData   , CustomFieldMetaDataRecordTypeEnum  , CustomFieldMetaDataFieldTypeEnum      } from '../models/CustomFieldMetaData';
+import { CustomFieldMetaData   , CustomFieldMetaDataRecordTypeEnum  , CustomFieldMetaDataFieldTypeEnum       } from '../models/CustomFieldMetaData';
 import { CustomFieldOption } from '../models/CustomFieldOption';
 import { CustomFieldValue } from '../models/CustomFieldValue';
 import { CustomFieldValueObject } from '../models/CustomFieldValueObject';
@@ -524,6 +532,7 @@ import { ListAffiliatePaymentsResponse } from '../models/ListAffiliatePaymentsRe
 import { ListAffiliateReferralsResponse } from '../models/ListAffiliateReferralsResponse';
 import { ListAffiliateSummariesResponse } from '../models/ListAffiliateSummariesResponse';
 import { ListAffiliatesResponse } from '../models/ListAffiliatesResponse';
+import { ListAssignedProductsResponse } from '../models/ListAssignedProductsResponse';
 import { ListAutomationCategoryResponse } from '../models/ListAutomationCategoryResponse';
 import { ListAutomationIdsResponse } from '../models/ListAutomationIdsResponse';
 import { ListAutomationResponse } from '../models/ListAutomationResponse';
@@ -579,6 +588,7 @@ import { ListTransactions } from '../models/ListTransactions';
 import { ListUserGroupsResponse } from '../models/ListUserGroupsResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { ListWebformsResponse } from '../models/ListWebformsResponse';
+import { ListWordPressOptInOptionsResponse } from '../models/ListWordPressOptInOptionsResponse';
 import { ModelError } from '../models/ModelError';
 import { Note } from '../models/Note';
 import { NoteTemplate   , NoteTemplateActionTypeEnum     } from '../models/NoteTemplate';
@@ -649,7 +659,7 @@ import { Tag } from '../models/Tag';
 import { TagCategory } from '../models/TagCategory';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { TaggedContact } from '../models/TaggedContact';
-import { Task    , TaskPriorityEnum       , TaskRemindTimeMinsEnum       } from '../models/Task';
+import { Task    , TaskPriorityEnum       , TaskRemindTimeMinsEnum          } from '../models/Task';
 import { TextOption   , TextOptionOnlyStartsWithEnum  , TextOptionOnlyEndsWithEnum  , TextOptionOnlyContainsEnum    } from '../models/TextOption';
 import { TransactionV2 , TransactionV2StatusEnum      , TransactionV2TransactionMethodEnum         , TransactionV2MerchantAccountTypeEnum    } from '../models/TransactionV2';
 import { UnpublishAutomationRequest } from '../models/UnpublishAutomationRequest';
@@ -686,7 +696,7 @@ import { UpdateSubscriptionPlanRequest   , UpdateSubscriptionPlanRequestCycleTyp
 import { UpdateSubscriptionRequest         , UpdateSubscriptionRequestBillingCycleEnum              } from '../models/UpdateSubscriptionRequest';
 import { UpdateTagCategoryResponse } from '../models/UpdateTagCategoryResponse';
 import { UpdateTagResponse } from '../models/UpdateTagResponse';
-import { UpdateTaskResponse    , UpdateTaskResponsePriorityEnum       , UpdateTaskResponseRemindTimeMinsEnum       } from '../models/UpdateTaskResponse';
+import { UpdateTaskResponse    , UpdateTaskResponsePriorityEnum       , UpdateTaskResponseRemindTimeMinsEnum          } from '../models/UpdateTaskResponse';
 import { UpdateUserRequest } from '../models/UpdateUserRequest';
 import { UpdatedPaymentPlan } from '../models/UpdatedPaymentPlan';
 import { User     , UserStatusEnum                 } from '../models/User';
@@ -835,6 +845,8 @@ let enumsMap: Set<string> = new Set<string>([
 let typeMap: {[index: string]: any} = {
     "AchieveGoalRequest": AchieveGoalRequest,
     "AchieveGoalResponse": AchieveGoalResponse,
+    "AchieveIntegrationsWordPressOptInOptionGoalRequest": AchieveIntegrationsWordPressOptInOptionGoalRequest,
+    "AchieveWordPressOptInGoalResult": AchieveWordPressOptInGoalResult,
     "AddContactsToSequenceRequest": AddContactsToSequenceRequest,
     "AddContactsToSequenceResponse": AddContactsToSequenceResponse,
     "AddProductInterestRequest": AddProductInterestRequest,
@@ -879,6 +891,7 @@ let typeMap: {[index: string]: any} = {
     "ApplyTagsResponse": ApplyTagsResponse,
     "AssignAutomationCategoryRequest": AssignAutomationCategoryRequest,
     "AssignProductsRequest": AssignProductsRequest,
+    "AssignedProducts": AssignedProducts,
     "Automation": Automation,
     "AutomationCategory": AutomationCategory,
     "AutomationLockStatus": AutomationLockStatus,
@@ -1011,6 +1024,7 @@ let typeMap: {[index: string]: any} = {
     "ListAffiliateReferralsResponse": ListAffiliateReferralsResponse,
     "ListAffiliateSummariesResponse": ListAffiliateSummariesResponse,
     "ListAffiliatesResponse": ListAffiliatesResponse,
+    "ListAssignedProductsResponse": ListAssignedProductsResponse,
     "ListAutomationCategoryResponse": ListAutomationCategoryResponse,
     "ListAutomationIdsResponse": ListAutomationIdsResponse,
     "ListAutomationResponse": ListAutomationResponse,
@@ -1066,6 +1080,7 @@ let typeMap: {[index: string]: any} = {
     "ListUserGroupsResponse": ListUserGroupsResponse,
     "ListUsersPaginatedResponse": ListUsersPaginatedResponse,
     "ListWebformsResponse": ListWebformsResponse,
+    "ListWordPressOptInOptionsResponse": ListWordPressOptInOptionsResponse,
     "ModelError": ModelError,
     "Note": Note,
     "NoteTemplate": NoteTemplate,

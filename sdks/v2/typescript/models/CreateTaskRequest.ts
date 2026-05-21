@@ -58,6 +58,14 @@ export class CreateTaskRequest {
     */
     'contactId'?: string;
     /**
+    * Associated opportunity ID
+    */
+    'opportunityId'?: string;
+    /**
+    * Whether the task has been accepted.
+    */
+    'accepted'?: boolean;
+    /**
     * Custom field values for the task. An empty array resets all custom fields to their defaults.
     */
     'customFields'?: Array<CustomFieldValueObject>;
@@ -125,6 +133,18 @@ export class CreateTaskRequest {
             "name": "contactId",
             "baseName": "contact_id",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "opportunityId",
+            "baseName": "opportunity_id",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "accepted",
+            "baseName": "accepted",
+            "type": "boolean",
             "format": ""
         },
         {

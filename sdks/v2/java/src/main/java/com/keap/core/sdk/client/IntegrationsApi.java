@@ -17,8 +17,11 @@ import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Pair;
 
+import com.keap.core.sdk.model.AchieveIntegrationsWordPressOptInOptionGoalRequest;
+import com.keap.core.sdk.model.AchieveWordPressOptInGoalResult;
 import com.keap.core.sdk.model.CreateIntegrationsWordPressOptInOption;
 import com.keap.core.sdk.model.Error;
+import com.keap.core.sdk.model.ListWordPressOptInOptionsResponse;
 import com.keap.core.sdk.model.WordPressOptInOption;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -98,6 +101,104 @@ import io.github.resilience4j.retry.Retry;
       body = "[no body]";
     }
     return operationId + " call failed with: " + statusCode + " - " + body;
+  }
+
+  /**
+   * Achieve a WordPress Opt-In Goal
+   * Achieves a WordPress Opt-In Option Goal
+   * @param optionKey  (required)
+   * @param achieveIntegrationsWordPressOptInOptionGoalRequest  (required)
+   * @return AchieveWordPressOptInGoalResult
+   * @throws ApiException if fails to make API call
+   */
+  public AchieveWordPressOptInGoalResult achieveIntegrationsWordPressOptInGoal(String optionKey, AchieveIntegrationsWordPressOptInOptionGoalRequest achieveIntegrationsWordPressOptInOptionGoalRequest) throws ApiException {
+    ApiResponse<AchieveWordPressOptInGoalResult> localVarResponse = achieveIntegrationsWordPressOptInGoalWithHttpInfo(optionKey, achieveIntegrationsWordPressOptInOptionGoalRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Achieve a WordPress Opt-In Goal
+   * Achieves a WordPress Opt-In Option Goal
+   * @param optionKey  (required)
+   * @param achieveIntegrationsWordPressOptInOptionGoalRequest  (required)
+   * @return ApiResponse&lt;AchieveWordPressOptInGoalResult&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AchieveWordPressOptInGoalResult> achieveIntegrationsWordPressOptInGoalWithHttpInfo(String optionKey, AchieveIntegrationsWordPressOptInOptionGoalRequest achieveIntegrationsWordPressOptInOptionGoalRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = achieveIntegrationsWordPressOptInGoalRequestBuilder(optionKey, achieveIntegrationsWordPressOptInOptionGoalRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("achieveIntegrationsWordPressOptInGoal", localVarResponse);
+        }
+        return new ApiResponse<AchieveWordPressOptInGoalResult>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<AchieveWordPressOptInGoalResult>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder achieveIntegrationsWordPressOptInGoalRequestBuilder(String optionKey, AchieveIntegrationsWordPressOptInOptionGoalRequest achieveIntegrationsWordPressOptInOptionGoalRequest) throws ApiException {
+    // verify the required parameter 'optionKey' is set
+    if (optionKey == null) {
+      throw new ApiException(400, "Missing the required parameter 'optionKey' when calling achieveIntegrationsWordPressOptInGoal");
+    }
+    // verify the required parameter 'achieveIntegrationsWordPressOptInOptionGoalRequest' is set
+    if (achieveIntegrationsWordPressOptInOptionGoalRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'achieveIntegrationsWordPressOptInOptionGoalRequest' when calling achieveIntegrationsWordPressOptInGoal");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/integrations/wordpress/options/{option_key}:achieve"
+        .replace("{option_key}", ApiClient.urlEncode(optionKey.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(achieveIntegrationsWordPressOptInOptionGoalRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
   }
 
   /**
@@ -271,6 +372,85 @@ import io.github.resilience4j.retry.Retry;
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
 
     localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * List WordPress Opt-In Options
+   * Retrieves the list of WordPress Opt-In Options available
+   * @return ListWordPressOptInOptionsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ListWordPressOptInOptionsResponse listIntegrationsWordPressOptInOptions() throws ApiException {
+    ApiResponse<ListWordPressOptInOptionsResponse> localVarResponse = listIntegrationsWordPressOptInOptionsWithHttpInfo();
+    return localVarResponse.getData();
+  }
+
+  /**
+   * List WordPress Opt-In Options
+   * Retrieves the list of WordPress Opt-In Options available
+   * @return ApiResponse&lt;ListWordPressOptInOptionsResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ListWordPressOptInOptionsResponse> listIntegrationsWordPressOptInOptionsWithHttpInfo() throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listIntegrationsWordPressOptInOptionsRequestBuilder();
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("listIntegrationsWordPressOptInOptions", localVarResponse);
+        }
+        return new ApiResponse<ListWordPressOptInOptionsResponse>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ListWordPressOptInOptionsResponse>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder listIntegrationsWordPressOptInOptionsRequestBuilder() throws ApiException {
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/integrations/wordpress/options";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }

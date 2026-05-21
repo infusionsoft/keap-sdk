@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.10</version>
+  <version>2.0.11</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.10"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.11"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.10.jar`
+- `target/core-service-v2-java-sdk-2.0.11.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -322,10 +322,14 @@ Class | Method | HTTP request | Description
 *FreeTrialDiscountsApi* | [**listFreeTrialDiscountsWithHttpInfo**](docs/FreeTrialDiscountsApi.md#listFreeTrialDiscountsWithHttpInfo) | **GET** /rest/v2/discounts/freeTrials | List all Subscription Free Trial Discounts
 *FreeTrialDiscountsApi* | [**updateFreeTrialDiscount**](docs/FreeTrialDiscountsApi.md#updateFreeTrialDiscount) | **PATCH** /rest/v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount
 *FreeTrialDiscountsApi* | [**updateFreeTrialDiscountWithHttpInfo**](docs/FreeTrialDiscountsApi.md#updateFreeTrialDiscountWithHttpInfo) | **PATCH** /rest/v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount
+*IntegrationsApi* | [**achieveIntegrationsWordPressOptInGoal**](docs/IntegrationsApi.md#achieveIntegrationsWordPressOptInGoal) | **POST** /rest/v2/integrations/wordpress/options/{option_key}:achieve | Achieve a WordPress Opt-In Goal
+*IntegrationsApi* | [**achieveIntegrationsWordPressOptInGoalWithHttpInfo**](docs/IntegrationsApi.md#achieveIntegrationsWordPressOptInGoalWithHttpInfo) | **POST** /rest/v2/integrations/wordpress/options/{option_key}:achieve | Achieve a WordPress Opt-In Goal
 *IntegrationsApi* | [**addIntegrationsWordPressOptIn**](docs/IntegrationsApi.md#addIntegrationsWordPressOptIn) | **POST** /rest/v2/integrations/wordpress/options | Add a WordPress Opt-In Option
 *IntegrationsApi* | [**addIntegrationsWordPressOptInWithHttpInfo**](docs/IntegrationsApi.md#addIntegrationsWordPressOptInWithHttpInfo) | **POST** /rest/v2/integrations/wordpress/options | Add a WordPress Opt-In Option
 *IntegrationsApi* | [**deleteIntegrationsWordPressOptIn**](docs/IntegrationsApi.md#deleteIntegrationsWordPressOptIn) | **DELETE** /rest/v2/integrations/wordpress/options/{option_key} | Delete a WordPress Opt-In Option
 *IntegrationsApi* | [**deleteIntegrationsWordPressOptInWithHttpInfo**](docs/IntegrationsApi.md#deleteIntegrationsWordPressOptInWithHttpInfo) | **DELETE** /rest/v2/integrations/wordpress/options/{option_key} | Delete a WordPress Opt-In Option
+*IntegrationsApi* | [**listIntegrationsWordPressOptInOptions**](docs/IntegrationsApi.md#listIntegrationsWordPressOptInOptions) | **GET** /rest/v2/integrations/wordpress/options | List WordPress Opt-In Options
+*IntegrationsApi* | [**listIntegrationsWordPressOptInOptionsWithHttpInfo**](docs/IntegrationsApi.md#listIntegrationsWordPressOptInOptionsWithHttpInfo) | **GET** /rest/v2/integrations/wordpress/options | List WordPress Opt-In Options
 *LeadScoreApi* | [**getLeadScoreDetails**](docs/LeadScoreApi.md#getLeadScoreDetails) | **GET** /rest/v2/contacts/{contact_id}/leadScore | Retrieve Lead Score of a Contact
 *LeadScoreApi* | [**getLeadScoreDetailsWithHttpInfo**](docs/LeadScoreApi.md#getLeadScoreDetailsWithHttpInfo) | **GET** /rest/v2/contacts/{contact_id}/leadScore | Retrieve Lead Score of a Contact
 *LeadSourceCategoriesApi* | [**createLeadSourceCategory**](docs/LeadSourceCategoriesApi.md#createLeadSourceCategory) | **POST** /rest/v2/leadSourceCategories | Create a Lead Source Category
@@ -388,6 +392,8 @@ Class | Method | HTTP request | Description
 *NoteApi* | [**deleteNoteWithHttpInfo**](docs/NoteApi.md#deleteNoteWithHttpInfo) | **DELETE** /rest/v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
 *NoteApi* | [**getNote**](docs/NoteApi.md#getNote) | **GET** /rest/v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
 *NoteApi* | [**getNoteWithHttpInfo**](docs/NoteApi.md#getNoteWithHttpInfo) | **GET** /rest/v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
+*NoteApi* | [**listAllNotes**](docs/NoteApi.md#listAllNotes) | **GET** /rest/v2/notes | List All Notes
+*NoteApi* | [**listAllNotesWithHttpInfo**](docs/NoteApi.md#listAllNotesWithHttpInfo) | **GET** /rest/v2/notes | List All Notes
 *NoteApi* | [**listNoteTemplates**](docs/NoteApi.md#listNoteTemplates) | **GET** /rest/v2/notes/templates | Retrieve Note Templates
 *NoteApi* | [**listNoteTemplatesWithHttpInfo**](docs/NoteApi.md#listNoteTemplatesWithHttpInfo) | **GET** /rest/v2/notes/templates | Retrieve Note Templates
 *NoteApi* | [**listNotes**](docs/NoteApi.md#listNotes) | **GET** /rest/v2/contacts/{contact_id}/notes | List Notes
@@ -416,6 +422,8 @@ Class | Method | HTTP request | Description
 *OpportunityApi* | [**listOpportunitiesWithHttpInfo**](docs/OpportunityApi.md#listOpportunitiesWithHttpInfo) | **GET** /rest/v2/opportunities | List Opportunities
 *OpportunityApi* | [**listOpportunityStages**](docs/OpportunityApi.md#listOpportunityStages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages
 *OpportunityApi* | [**listOpportunityStagesWithHttpInfo**](docs/OpportunityApi.md#listOpportunityStagesWithHttpInfo) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages
+*OpportunityApi* | [**retrieveOpportunityCustomFieldModel**](docs/OpportunityApi.md#retrieveOpportunityCustomFieldModel) | **GET** /rest/v2/opportunities/model | Retrieve Opportunity Custom Field Model
+*OpportunityApi* | [**retrieveOpportunityCustomFieldModelWithHttpInfo**](docs/OpportunityApi.md#retrieveOpportunityCustomFieldModelWithHttpInfo) | **GET** /rest/v2/opportunities/model | Retrieve Opportunity Custom Field Model
 *OpportunityApi* | [**updateOpportunity**](docs/OpportunityApi.md#updateOpportunity) | **PATCH** /rest/v2/opportunities/{opportunity_id} | Update an opportunity
 *OpportunityApi* | [**updateOpportunityWithHttpInfo**](docs/OpportunityApi.md#updateOpportunityWithHttpInfo) | **PATCH** /rest/v2/opportunities/{opportunity_id} | Update an opportunity
 *OpportunityApi* | [**updateOpportunityCustomField**](docs/OpportunityApi.md#updateOpportunityCustomField) | **PATCH** /rest/v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field
@@ -490,6 +498,8 @@ Class | Method | HTTP request | Description
 *ProductCategoriesApi* | [**deleteProductCategoryWithHttpInfo**](docs/ProductCategoriesApi.md#deleteProductCategoryWithHttpInfo) | **DELETE** /rest/v2/productCategories/{category_id} | Delete a Product Category
 *ProductCategoriesApi* | [**getProductCategory**](docs/ProductCategoriesApi.md#getProductCategory) | **GET** /rest/v2/productCategories/{category_id} | Get a Product Category
 *ProductCategoriesApi* | [**getProductCategoryWithHttpInfo**](docs/ProductCategoriesApi.md#getProductCategoryWithHttpInfo) | **GET** /rest/v2/productCategories/{category_id} | Get a Product Category
+*ProductCategoriesApi* | [**listAssignedProducts**](docs/ProductCategoriesApi.md#listAssignedProducts) | **GET** /rest/v2/productCategories/assignedProducts | List Assigned Products to Categories
+*ProductCategoriesApi* | [**listAssignedProductsWithHttpInfo**](docs/ProductCategoriesApi.md#listAssignedProductsWithHttpInfo) | **GET** /rest/v2/productCategories/assignedProducts | List Assigned Products to Categories
 *ProductCategoriesApi* | [**listProductCategories**](docs/ProductCategoriesApi.md#listProductCategories) | **GET** /rest/v2/productCategories | List all Product Categories
 *ProductCategoriesApi* | [**listProductCategoriesWithHttpInfo**](docs/ProductCategoriesApi.md#listProductCategoriesWithHttpInfo) | **GET** /rest/v2/productCategories | List all Product Categories
 *ProductCategoriesApi* | [**updateProductCategory**](docs/ProductCategoriesApi.md#updateProductCategory) | **PATCH** /rest/v2/productCategories/{category_id} | Update a Product Category
@@ -684,6 +694,8 @@ Class | Method | HTTP request | Description
 
  - [AchieveGoalRequest](docs/AchieveGoalRequest.md)
  - [AchieveGoalResponse](docs/AchieveGoalResponse.md)
+ - [AchieveIntegrationsWordPressOptInOptionGoalRequest](docs/AchieveIntegrationsWordPressOptInOptionGoalRequest.md)
+ - [AchieveWordPressOptInGoalResult](docs/AchieveWordPressOptInGoalResult.md)
  - [AddContactsToSequenceRequest](docs/AddContactsToSequenceRequest.md)
  - [AddContactsToSequenceResponse](docs/AddContactsToSequenceResponse.md)
  - [AddProductInterestRequest](docs/AddProductInterestRequest.md)
@@ -728,6 +740,7 @@ Class | Method | HTTP request | Description
  - [ApplyTagsResponse](docs/ApplyTagsResponse.md)
  - [AssignAutomationCategoryRequest](docs/AssignAutomationCategoryRequest.md)
  - [AssignProductsRequest](docs/AssignProductsRequest.md)
+ - [AssignedProducts](docs/AssignedProducts.md)
  - [Automation](docs/Automation.md)
  - [AutomationCategory](docs/AutomationCategory.md)
  - [AutomationLockStatus](docs/AutomationLockStatus.md)
@@ -861,6 +874,7 @@ Class | Method | HTTP request | Description
  - [ListAffiliateReferralsResponse](docs/ListAffiliateReferralsResponse.md)
  - [ListAffiliateSummariesResponse](docs/ListAffiliateSummariesResponse.md)
  - [ListAffiliatesResponse](docs/ListAffiliatesResponse.md)
+ - [ListAssignedProductsResponse](docs/ListAssignedProductsResponse.md)
  - [ListAutomationCategoryResponse](docs/ListAutomationCategoryResponse.md)
  - [ListAutomationIdsResponse](docs/ListAutomationIdsResponse.md)
  - [ListAutomationResponse](docs/ListAutomationResponse.md)
@@ -916,6 +930,7 @@ Class | Method | HTTP request | Description
  - [ListUserGroupsResponse](docs/ListUserGroupsResponse.md)
  - [ListUsersPaginatedResponse](docs/ListUsersPaginatedResponse.md)
  - [ListWebformsResponse](docs/ListWebformsResponse.md)
+ - [ListWordPressOptInOptionsResponse](docs/ListWordPressOptInOptionsResponse.md)
  - [Note](docs/Note.md)
  - [NoteTemplate](docs/NoteTemplate.md)
  - [ObjectModel](docs/ObjectModel.md)

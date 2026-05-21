@@ -922,7 +922,7 @@ Name | Type | Description  | Notes
 
 ## getReferralsByAffiliateId
 
-> ListAffiliateReferralsResponse getReferralsByAffiliateId(affiliateId)
+> ListAffiliateReferralsResponse getReferralsByAffiliateId(affiliateId, opts)
 
 Retrieve Affiliate Referrals
 
@@ -939,7 +939,13 @@ oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let affiliateId = "affiliateId_example"; // String | 
-apiInstance.getReferralsByAffiliateId(affiliateId).then((data) => {
+let opts = {
+  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `source` - Wildcard matching allowed  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  For the filters listed above, here are some examples: - `filter=source%3D%3DEmail Marketing` - `filter=source%3D%3DEmail*` (starts with \"Email\") 
+  'pageToken': "pageToken_example", // String | Page token
+  'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `id` - `referral_time`  One of the following directions: - `asc` - `desc`
+  'pageSize': 0 // Number | Total number of items to return per page
+};
+apiInstance.getReferralsByAffiliateId(affiliateId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -953,6 +959,10 @@ apiInstance.getReferralsByAffiliateId(affiliateId).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **affiliateId** | **String**|  | 
+ **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;)  | [optional] 
+ **pageToken** | **String**| Page token | [optional] 
+ **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
+ **pageSize** | **Number**| Total number of items to return per page | [optional] 
 
 ### Return type
 

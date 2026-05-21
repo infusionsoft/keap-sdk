@@ -16,6 +16,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**deleteProductCategoryWithHttpInfo**](ProductCategoriesApi.md#deleteProductCategoryWithHttpInfo) | **DELETE** /rest/v2/productCategories/{category_id} | Delete a Product Category |
 | [**getProductCategory**](ProductCategoriesApi.md#getProductCategory) | **GET** /rest/v2/productCategories/{category_id} | Get a Product Category |
 | [**getProductCategoryWithHttpInfo**](ProductCategoriesApi.md#getProductCategoryWithHttpInfo) | **GET** /rest/v2/productCategories/{category_id} | Get a Product Category |
+| [**listAssignedProducts**](ProductCategoriesApi.md#listAssignedProducts) | **GET** /rest/v2/productCategories/assignedProducts | List Assigned Products to Categories |
+| [**listAssignedProductsWithHttpInfo**](ProductCategoriesApi.md#listAssignedProductsWithHttpInfo) | **GET** /rest/v2/productCategories/assignedProducts | List Assigned Products to Categories |
 | [**listProductCategories**](ProductCategoriesApi.md#listProductCategories) | **GET** /rest/v2/productCategories | List all Product Categories |
 | [**listProductCategoriesWithHttpInfo**](ProductCategoriesApi.md#listProductCategoriesWithHttpInfo) | **GET** /rest/v2/productCategories | List all Product Categories |
 | [**updateProductCategory**](ProductCategoriesApi.md#updateProductCategory) | **PATCH** /rest/v2/productCategories/{category_id} | Update a Product Category |
@@ -958,6 +960,178 @@ public class Example {
 ### Return type
 
 ApiResponse<[**ProductCategory**](ProductCategory.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## listAssignedProducts
+
+> ListAssignedProductsResponse listAssignedProducts(filter, pageToken, orderBy, pageSize)
+
+List Assigned Products to Categories
+
+Retrieves a list of Products assigned to Product Categories
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ProductCategoriesApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (List[String]) `product_ids` - (List[String]) `product_category_ids` 
+        String pageToken = "pageToken_example"; // String | Page token
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `product_category_id`  One of the following directions: - `asc` - `desc`
+        Integer pageSize = 0; // Integer | Total number of items to return per page
+        try {
+            ListAssignedProductsResponse result = apiInstance.listAssignedProducts(filter, pageToken, orderBy, pageSize);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ProductCategoriesApi#listAssignedProducts");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **filter** | **String**| Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60;  | [optional] |
+| **pageToken** | **String**| Page token | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **pageSize** | **Integer**| Total number of items to return per page | [optional] |
+
+### Return type
+
+[**ListAssignedProductsResponse**](ListAssignedProductsResponse.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## listAssignedProductsWithHttpInfo
+
+> ApiResponse<ListAssignedProductsResponse> listAssignedProducts listAssignedProductsWithHttpInfo(filter, pageToken, orderBy, pageSize)
+
+List Assigned Products to Categories
+
+Retrieves a list of Products assigned to Product Categories
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ProductCategoriesApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (List[String]) `product_ids` - (List[String]) `product_category_ids` 
+        String pageToken = "pageToken_example"; // String | Page token
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `product_category_id`  One of the following directions: - `asc` - `desc`
+        Integer pageSize = 0; // Integer | Total number of items to return per page
+        try {
+            ApiResponse<ListAssignedProductsResponse> response = apiInstance.listAssignedProductsWithHttpInfo(filter, pageToken, orderBy, pageSize);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ProductCategoriesApi#listAssignedProducts");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **filter** | **String**| Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60;  | [optional] |
+| **pageToken** | **String**| Page token | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **pageSize** | **Integer**| Total number of items to return per page | [optional] |
+
+### Return type
+
+ApiResponse<[**ListAssignedProductsResponse**](ListAssignedProductsResponse.md)>
 
 
 ### Authorization

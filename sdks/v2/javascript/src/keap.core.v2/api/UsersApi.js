@@ -180,7 +180,7 @@ export default class UsersApi {
      * Retrieves a list of users
      * @param {Object} opts Optional parameters
      * @param {String} [filter] Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith` 
-     * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `create_time` - `email`  One of the following directions: - `asc` - `desc`
+     * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `create_time` - `email` - `name` (sorts by family name / last name; uses User ID as tiebreaker for stable pagination)  One of the following directions: - `asc` - `desc`
      * @param {Number} [pageSize] Total number of items to return per page
      * @param {String} [pageToken] Page token
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListUsersPaginatedResponse} and HTTP response
@@ -218,7 +218,7 @@ export default class UsersApi {
      * Retrieves a list of users
      * @param {Object} opts Optional parameters
      * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith` 
-     * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `create_time` - `email`  One of the following directions: - `asc` - `desc`
+     * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `create_time` - `email` - `name` (sorts by family name / last name; uses User ID as tiebreaker for stable pagination)  One of the following directions: - `asc` - `desc`
      * @param {Number} opts.pageSize Total number of items to return per page
      * @param {String} opts.pageToken Page token
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListUsersPaginatedResponse}

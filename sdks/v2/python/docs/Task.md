@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Task ID | [optional] 
 **title** | **str** | Task title | [optional] 
-**description** | **str** | Task description | [optional] 
+**description** | **str** | Task description. Legacy XML-RPC name for this field was &#x60;CreationNotes&#x60; | [optional] 
 **type** | **str** | Task type | [optional] 
 **priority** | **str** | Task priority | [optional] 
 **completed** | **bool** | Whether task is completed | [optional] 
@@ -18,7 +18,10 @@ Name | Type | Description | Notes
 **remind_time_mins** | **int** | Reminder minutes before due. | [optional] 
 **assigned_to_user_id** | **str** | Assigned user ID | [optional] 
 **created_by_user_id** | **str** | Creator user ID | [optional] 
+**last_updated_by_user_id** | **str** | User who last updated the task. | [optional] 
 **contact_id** | **str** | Associated contact ID | [optional] 
+**opportunity_id** | **str** | Associated opportunity ID | [optional] 
+**accepted** | **bool** | Whether the task has been accepted | [optional] 
 **custom_fields** | [**List[CustomFieldValueObject]**](CustomFieldValueObject.md) | Custom field values for the task | [optional] 
 
 ## Example

@@ -138,7 +138,7 @@ namespace Keap.Core.V2.Model
         /// </summary>
         /// <param name="id">Task ID.</param>
         /// <param name="title">Task title.</param>
-        /// <param name="description">Task description.</param>
+        /// <param name="description">Task description. Legacy XML-RPC name for this field was &#x60;CreationNotes&#x60;.</param>
         /// <param name="type">Task type.</param>
         /// <param name="priority">Task priority.</param>
         /// <param name="completed">Whether task is completed.</param>
@@ -149,9 +149,12 @@ namespace Keap.Core.V2.Model
         /// <param name="remindTimeMins">Reminder minutes before due..</param>
         /// <param name="assignedToUserId">Assigned user ID.</param>
         /// <param name="createdByUserId">Creator user ID.</param>
+        /// <param name="lastUpdatedByUserId">User who last updated the task..</param>
         /// <param name="contactId">Associated contact ID.</param>
+        /// <param name="opportunityId">Associated opportunity ID.</param>
+        /// <param name="accepted">Whether the task has been accepted.</param>
         /// <param name="customFields">Custom field values for the task.</param>
-        public Task(string id = default, string title = default, string description = default, string type = default, PriorityEnum? priority = default, bool completed = default, string createTime = default, string modificationTime = default, string completionTime = default, string dueTime = default, RemindTimeMinsEnum? remindTimeMins = default, string assignedToUserId = default, string createdByUserId = default, string contactId = default, List<CustomFieldValueObject> customFields = default)
+        public Task(string id = default, string title = default, string description = default, string type = default, PriorityEnum? priority = default, bool completed = default, string createTime = default, string modificationTime = default, string completionTime = default, string dueTime = default, RemindTimeMinsEnum? remindTimeMins = default, string assignedToUserId = default, string createdByUserId = default, string lastUpdatedByUserId = default, string contactId = default, string opportunityId = default, bool accepted = default, List<CustomFieldValueObject> customFields = default)
         {
             this.Id = id;
             this.Title = title;
@@ -166,7 +169,10 @@ namespace Keap.Core.V2.Model
             this.RemindTimeMins = remindTimeMins;
             this.AssignedToUserId = assignedToUserId;
             this.CreatedByUserId = createdByUserId;
+            this.LastUpdatedByUserId = lastUpdatedByUserId;
             this.ContactId = contactId;
+            this.OpportunityId = opportunityId;
+            this.Accepted = accepted;
             this.CustomFields = customFields;
         }
 
@@ -191,11 +197,11 @@ namespace Keap.Core.V2.Model
         public string Title { get; set; }
 
         /// <summary>
-        /// Task description
+        /// Task description. Legacy XML-RPC name for this field was &#x60;CreationNotes&#x60;
         /// </summary>
-        /// <value>Task description</value>
+        /// <value>Task description. Legacy XML-RPC name for this field was &#x60;CreationNotes&#x60;</value>
         /*
-        <example>Review and respond to client feedback</example>
+        <example>Review and respond to client feedback.</example>
         */
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
@@ -281,6 +287,16 @@ namespace Keap.Core.V2.Model
         public string CreatedByUserId { get; set; }
 
         /// <summary>
+        /// User who last updated the task.
+        /// </summary>
+        /// <value>User who last updated the task.</value>
+        /*
+        <example>77</example>
+        */
+        [DataMember(Name = "last_updated_by_user_id", EmitDefaultValue = false)]
+        public string LastUpdatedByUserId { get; set; }
+
+        /// <summary>
         /// Associated contact ID
         /// </summary>
         /// <value>Associated contact ID</value>
@@ -289,6 +305,26 @@ namespace Keap.Core.V2.Model
         */
         [DataMember(Name = "contact_id", EmitDefaultValue = false)]
         public string ContactId { get; set; }
+
+        /// <summary>
+        /// Associated opportunity ID
+        /// </summary>
+        /// <value>Associated opportunity ID</value>
+        /*
+        <example>321</example>
+        */
+        [DataMember(Name = "opportunity_id", EmitDefaultValue = false)]
+        public string OpportunityId { get; set; }
+
+        /// <summary>
+        /// Whether the task has been accepted
+        /// </summary>
+        /// <value>Whether the task has been accepted</value>
+        /*
+        <example>true</example>
+        */
+        [DataMember(Name = "accepted", EmitDefaultValue = true)]
+        public bool Accepted { get; set; }
 
         /// <summary>
         /// Custom field values for the task
@@ -321,7 +357,10 @@ namespace Keap.Core.V2.Model
             sb.Append("  RemindTimeMins: ").Append(RemindTimeMins).Append("\n");
             sb.Append("  AssignedToUserId: ").Append(AssignedToUserId).Append("\n");
             sb.Append("  CreatedByUserId: ").Append(CreatedByUserId).Append("\n");
+            sb.Append("  LastUpdatedByUserId: ").Append(LastUpdatedByUserId).Append("\n");
             sb.Append("  ContactId: ").Append(ContactId).Append("\n");
+            sb.Append("  OpportunityId: ").Append(OpportunityId).Append("\n");
+            sb.Append("  Accepted: ").Append(Accepted).Append("\n");
             sb.Append("  CustomFields: ").Append(CustomFields).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

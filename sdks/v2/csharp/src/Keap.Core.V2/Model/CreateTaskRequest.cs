@@ -151,8 +151,10 @@ namespace Keap.Core.V2.Model
         /// <param name="remindTimeMins">Value in minutes before start_date to show pop-up reminder..</param>
         /// <param name="assignedToUserId">Assigned user ID (required).</param>
         /// <param name="contactId">Associated contact ID.</param>
+        /// <param name="opportunityId">Associated opportunity ID.</param>
+        /// <param name="accepted">Whether the task has been accepted..</param>
         /// <param name="customFields">Custom field values for the task. An empty array resets all custom fields to their defaults..</param>
-        public CreateTaskRequest(string title = default, string description = default, string type = default, PriorityEnum? priority = default, bool completed = default, string completionTime = default, string dueTime = default, RemindTimeMinsEnum? remindTimeMins = default, string assignedToUserId = default, string contactId = default, List<CustomFieldValueObject> customFields = default)
+        public CreateTaskRequest(string title = default, string description = default, string type = default, PriorityEnum? priority = default, bool completed = default, string completionTime = default, string dueTime = default, RemindTimeMinsEnum? remindTimeMins = default, string assignedToUserId = default, string contactId = default, string opportunityId = default, bool accepted = default, List<CustomFieldValueObject> customFields = default)
         {
             // to ensure "assignedToUserId" is required (not null)
             if (assignedToUserId == null)
@@ -169,6 +171,8 @@ namespace Keap.Core.V2.Model
             this.DueTime = dueTime;
             this.RemindTimeMins = remindTimeMins;
             this.ContactId = contactId;
+            this.OpportunityId = opportunityId;
+            this.Accepted = accepted;
             this.CustomFields = customFields;
         }
 
@@ -253,6 +257,26 @@ namespace Keap.Core.V2.Model
         public string ContactId { get; set; }
 
         /// <summary>
+        /// Associated opportunity ID
+        /// </summary>
+        /// <value>Associated opportunity ID</value>
+        /*
+        <example>553</example>
+        */
+        [DataMember(Name = "opportunity_id", EmitDefaultValue = false)]
+        public string OpportunityId { get; set; }
+
+        /// <summary>
+        /// Whether the task has been accepted.
+        /// </summary>
+        /// <value>Whether the task has been accepted.</value>
+        /*
+        <example>true</example>
+        */
+        [DataMember(Name = "accepted", EmitDefaultValue = true)]
+        public bool Accepted { get; set; }
+
+        /// <summary>
         /// Custom field values for the task. An empty array resets all custom fields to their defaults.
         /// </summary>
         /// <value>Custom field values for the task. An empty array resets all custom fields to their defaults.</value>
@@ -280,6 +304,8 @@ namespace Keap.Core.V2.Model
             sb.Append("  RemindTimeMins: ").Append(RemindTimeMins).Append("\n");
             sb.Append("  AssignedToUserId: ").Append(AssignedToUserId).Append("\n");
             sb.Append("  ContactId: ").Append(ContactId).Append("\n");
+            sb.Append("  OpportunityId: ").Append(OpportunityId).Append("\n");
+            sb.Append("  Accepted: ").Append(Accepted).Append("\n");
             sb.Append("  CustomFields: ").Append(CustomFields).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

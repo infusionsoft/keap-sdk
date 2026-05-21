@@ -104,6 +104,7 @@ paths:
           - (String) `has_due_date`
           - (String) `is_completed`
           - (String) `user_id`
+          - (String) `opportunity_id`
           - (String) `task_ids`
           - (String) `since_time`
           - (String) `until_time`
@@ -114,6 +115,7 @@ paths:
           - `filter=has_due_date%3D%3Dtrue`
           - `filter=is_completed%3D%3Dtrue`
           - `filter=user_id%3D%3D321`
+          - `filter=opportunity_id%3D%3D321`
           - `filter=task_ids%3D%3D1,2,3`
           - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;`
           - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`
@@ -5041,6 +5043,67 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
   /rest/v2/integrations/wordpress/options:
+    get:
+      tags:
+      - Integrations
+      summary: List WordPress Opt-In Options
+      description: Retrieves the list of WordPress Opt-In Options available
+      operationId: listIntegrationsWordPressOptInOptions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListWordPressOptInOptionsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
       tags:
       - Integrations
@@ -5060,6 +5123,80 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/WordPressOptInOption'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/integrations/wordpress/options/{option_key}:achieve:
+    post:
+      tags:
+      - Integrations
+      summary: Achieve a WordPress Opt-In Goal
+      description: Achieves a WordPress Opt-In Option Goal
+      operationId: achieveIntegrationsWordPressOptInGoal
+      parameters:
+      - name: option_key
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AchieveIntegrationsWordPressOptInOptionGoalRequest'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AchieveWordPressOptInGoalResult'
         '400':
           description: Bad Request
           content:
@@ -7399,7 +7536,7 @@ paths:
       tags:
       - Note
       summary: List Notes
-      description: Retrieves a list of Notes
+      description: Retrieves a list of Notes for a given contact
       operationId: listNotes
       parameters:
       - name: contact_id
@@ -7411,6 +7548,7 @@ paths:
         in: query
         description: |
           Filter to apply, allowed fields are:
+          - (String) `contact_id`
           - (String) `assigned_to_user_id`
           - (String) `title`
           - (String) `since_time`
@@ -7418,7 +7556,8 @@ paths:
 
           You will need to apply the `==` operator to check the equality of one of the filters with your searched
           word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
-          - `filter=assigned_to_user_id%3D%3DUserId`
+          - `filter=contact_id%3D%3D1001`
+          - `filter=assigned_to_user_id%3D%3D42`
           - `filter=title%3D%3DexpectedTitle`
           - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;`
           - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`
@@ -10582,7 +10721,10 @@ paths:
             - due_time
             - remind_time_mins
             - assigned_to_user_id
+            - last_updated_by_user_id
             - contact_id
+            - opportunity_id
+            - accepted
             - completed
             - custom_fields
           uniqueItems: true
@@ -18534,6 +18676,7 @@ paths:
           One of the following fields:
           - `create_time`
           - `email`
+          - `name` (sorts by family name / last name; uses User ID as tiebreaker for stable pagination)
 
           One of the following directions:
           - `asc`
@@ -19931,6 +20074,107 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/productCategories/assignedProducts:
+    get:
+      tags:
+      - Product Categories
+      summary: List Assigned Products to Categories
+      description: Retrieves a list of Products assigned to Product Categories
+      operationId: listAssignedProducts
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (List[String]) `product_ids`
+          - (List[String]) `product_category_ids`
+        required: false
+        schema:
+          type: string
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `product_category_id`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          maximum: 1000
+          minimum: 0
+        example: 0
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAssignedProductsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/paymentMethods:
     get:
       tags:
@@ -20106,6 +20350,68 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/opportunities/model:
+    get:
+      tags:
+      - Opportunity
+      summary: Retrieve Opportunity Custom Field Model
+      description: Get the custom fields for the Opportunity object
+      operationId: retrieveOpportunityCustomFieldModel
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectModel'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/oauth/connect/userinfo:
     get:
       tags:
@@ -20121,6 +20427,129 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetUserInfoResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/notes:
+    get:
+      tags:
+      - Note
+      summary: List All Notes
+      description: Retrieves a list of all notes
+      operationId: listAllNotes
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) `contact_id`
+          - (String) `assigned_to_user_id`
+          - (String) `title`
+          - (String) `since_time`
+          - (String) `until_time`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          - `filter=contact_id%3D%3D1001`
+          - `filter=assigned_to_user_id%3D%3D42`
+          - `filter=title%3D%3DexpectedTitle`
+          - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;`
+          - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`
+        required: false
+        schema:
+          type: string
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `id`
+          - `create_time`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          maximum: 1000
+          minimum: 0
+        example: 0
+      - name: fields
+        in: query
+        description: 'Comma-delimited list of optional Note properties to include
+          in the response. Allowed values: custom_fields'
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        explode: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListNotesResponse'
         '400':
           description: Bad Request
           content:
@@ -22517,6 +22946,55 @@ paths:
         required: true
         schema:
           type: string
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) `source` - Wildcard matching allowed
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`.
+
+          For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A)
+          for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage:
+          - `field==foo*` finds anything in `field` that begins with `foo`
+
+          For the filters listed above, here are some examples:
+          - `filter=source%3D%3DEmail Marketing`
+          - `filter=source%3D%3DEmail*` (starts with "Email")
+        required: false
+        schema:
+          type: string
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `id`
+          - `referral_time`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          maximum: 1000
+          minimum: 0
+        example: 0
       responses:
         '200':
           description: OK
@@ -23221,6 +23699,14 @@ components:
           type: string
           description: Associated contact ID
           example: 1001
+        opportunity_id:
+          type: string
+          description: Associated opportunity ID
+          example: 553
+        accepted:
+          type: boolean
+          description: Whether the task has been accepted.
+          example: true
         custom_fields:
           type: array
           description: Custom field values for the task. An empty array resets all
@@ -23252,8 +23738,8 @@ components:
           example: Follow up on proposal
         description:
           type: string
-          description: Task description
-          example: Review and respond to client feedback
+          description: Task description. Legacy XML-RPC name for this field was `CreationNotes`
+          example: Review and respond to client feedback.
         type:
           type: string
           description: Task type
@@ -23310,10 +23796,22 @@ components:
           type: string
           description: Creator user ID
           example: 789
+        last_updated_by_user_id:
+          type: string
+          description: User who last updated the task.
+          example: 77
         contact_id:
           type: string
           description: Associated contact ID
           example: 1001
+        opportunity_id:
+          type: string
+          description: Associated opportunity ID
+          example: 321
+        accepted:
+          type: boolean
+          description: Whether the task has been accepted
+          example: true
         custom_fields:
           type: array
           description: Custom field values for the task
@@ -23432,6 +23930,8 @@ components:
         default_value:
           type: string
         group_id:
+          type: string
+        group_name:
           type: string
         field_name:
           type: string
@@ -26199,6 +26699,18 @@ components:
           type: string
         name:
           type: string
+    AchieveIntegrationsWordPressOptInOptionGoalRequest:
+      type: object
+      properties:
+        contact_id:
+          type: string
+          description: The Contact Id to Opt-In
+          example: d05dc112-3c92-4aaf-b2fa-00cc6cb452ec
+    AchieveWordPressOptInGoalResult:
+      type: object
+      properties:
+        successful:
+          type: boolean
     FileMetadata:
       type: object
       properties:
@@ -26512,7 +27024,15 @@ components:
       properties:
         file_name:
           type: string
-          description: The filename of the attached file, including extension
+          description: |
+            The filename of the attached file, including extension. The extension determines whether the attachment is accepted; only the following extensions are supported (case-insensitive):
+            - Image: bmp, cdr, fpx, gif, jif, jiff, jp2, jpeg, jpg, jpx, j2k, pcd, pdf, png, psd, pspimage, thm, tif, tiff, yuv
+            - Text/Document: doc, docx, err, log, msg, notes, pages, pwd, rtf, text, txt, vcf, wp, wp4, wp5, wp7, wpd, wps, wsd, xdl
+            - Audio: mid, mp3, mp4, wav, wma
+            - Video: avi, divx, f4p, flv, gvi, hdmov, hdv, m2ts, m4v, mnv, mov, movie, mp4, mp4v, mpeg, mpeg1, mpeg4, mpg, qt, rm, vob, wm, wmv
+            - Data: csv, ics, key, pps, ppt, pptx, xlr, xls, xlsx, xml, zip
+
+            Requests including an attachment with any other extension return `400 Bad Request` with the message "attachment type is invalid".
           example: document.pdf
         file_data:
           type: string
@@ -29032,6 +29552,14 @@ components:
           type: string
           description: Associated contact ID
           example: 1001
+        opportunity_id:
+          type: string
+          description: Associated opportunity ID
+          example: 77
+        accepted:
+          type: boolean
+          description: Whether the task has been accepted. Defaults to false
+          example: true
         custom_fields:
           type: array
           description: Custom field values for the task. An empty array resets all
@@ -29054,8 +29582,8 @@ components:
           example: Follow up on proposal
         description:
           type: string
-          description: Task description
-          example: Review and respond to client feedback
+          description: Task description. Legacy XML-RPC name for this field was `CreationNotes`
+          example: Review and respond to client feedback.
         type:
           type: string
           description: Task type
@@ -29112,10 +29640,22 @@ components:
           type: string
           description: Creator user ID
           example: 789
+        last_updated_by_user_id:
+          type: string
+          description: User who last updated the task.
+          example: 77
         contact_id:
           type: string
           description: Associated contact ID
           example: 1001
+        opportunity_id:
+          type: string
+          description: Associated opportunity ID
+          example: 321
+        accepted:
+          type: boolean
+          description: Whether the task has been accepted
+          example: true
         custom_fields:
           type: array
           description: Custom field values for the task
@@ -31776,6 +32316,27 @@ components:
             $ref: '#/components/schemas/ProductCategory'
         next_page_token:
           type: string
+    AssignedProducts:
+      type: object
+      properties:
+        product_category_id:
+          type: string
+          description: The product category ID
+          example: 123
+        product_ids:
+          type: array
+          description: Assigned product IDs
+          items:
+            type: string
+    ListAssignedProductsResponse:
+      type: object
+      properties:
+        assigned_product_categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssignedProducts'
+        next_page_token:
+          type: string
     ListPaymentMethodsResponse:
       type: object
       properties:
@@ -31919,6 +32480,15 @@ components:
           type: string
           description: The tenant ID the user belongs to
           example: xyz789
+    ListNotesResponse:
+      type: object
+      properties:
+        notes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Note'
+        next_page_token:
+          type: string
     ListNoteTemplateResponse:
       type: object
       properties:
@@ -32079,6 +32649,15 @@ components:
           description: The lead source categories in the current page
           items:
             $ref: '#/components/schemas/LeadSourceCategory'
+        next_page_token:
+          type: string
+    ListWordPressOptInOptionsResponse:
+      type: object
+      properties:
+        wordpress_opt_in_options:
+          type: array
+          items:
+            $ref: '#/components/schemas/WordPressOptInOption'
         next_page_token:
           type: string
     ListFilesResponse:
@@ -32322,15 +32901,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PaymentMethod'
-        next_page_token:
-          type: string
-    ListNotesResponse:
-      type: object
-      properties:
-        notes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Note'
         next_page_token:
           type: string
     GetNoteResponse:

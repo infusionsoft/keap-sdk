@@ -13,6 +13,7 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**getOpportunityStage()**](OpportunityApi.md#getOpportunityStage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage |
 | [**listOpportunities()**](OpportunityApi.md#listOpportunities) | **GET** /rest/v2/opportunities | List Opportunities |
 | [**listOpportunityStages()**](OpportunityApi.md#listOpportunityStages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages |
+| [**retrieveOpportunityCustomFieldModel()**](OpportunityApi.md#retrieveOpportunityCustomFieldModel) | **GET** /rest/v2/opportunities/model | Retrieve Opportunity Custom Field Model |
 | [**updateOpportunity()**](OpportunityApi.md#updateOpportunity) | **PATCH** /rest/v2/opportunities/{opportunity_id} | Update an opportunity |
 | [**updateOpportunityCustomField()**](OpportunityApi.md#updateOpportunityCustomField) | **PATCH** /rest/v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field |
 | [**updateOpportunityStage()**](OpportunityApi.md#updateOpportunityStage) | **PATCH** /rest/v2/opportunities/stages/{stage_id} | Update an Opportunity Stage |
@@ -547,6 +548,62 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\ListOpportunityStagesResponse**](../Model/ListOpportunityStagesResponse.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `retrieveOpportunityCustomFieldModel()`
+
+```php
+retrieveOpportunityCustomFieldModel(): \Keap\Core\V2\Model\ObjectModel
+```
+
+Retrieve Opportunity Custom Field Model
+
+Get the custom fields for the Opportunity object
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\OpportunityApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->retrieveOpportunityCustomFieldModel();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OpportunityApi->retrieveOpportunityCustomFieldModel: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Keap\Core\V2\Model\ObjectModel**](../Model/ObjectModel.md)
 
 ### Authorization
 

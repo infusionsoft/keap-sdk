@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**deleteImageFile**](ProductCategoriesApi.md#deleteImageFile) | **DELETE** /rest/v2/productCategories/{category_id}/images | Delete the image from a product category
 [**deleteProductCategory**](ProductCategoriesApi.md#deleteProductCategory) | **DELETE** /rest/v2/productCategories/{category_id} | Delete a Product Category
 [**getProductCategory**](ProductCategoriesApi.md#getProductCategory) | **GET** /rest/v2/productCategories/{category_id} | Get a Product Category
+[**listAssignedProducts**](ProductCategoriesApi.md#listAssignedProducts) | **GET** /rest/v2/productCategories/assignedProducts | List Assigned Products to Categories
 [**listProductCategories**](ProductCategoriesApi.md#listProductCategories) | **GET** /rest/v2/productCategories | List all Product Categories
 [**updateProductCategory**](ProductCategoriesApi.md#updateProductCategory) | **PATCH** /rest/v2/productCategories/{category_id} | Update a Product Category
 
@@ -368,6 +369,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 **ProductCategory**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listAssignedProducts**
+> ListAssignedProductsResponse listAssignedProducts()
+
+Retrieves a list of Products assigned to Product Categories
+
+### Example
+
+
+```typescript
+import { createConfiguration, ProductCategoriesApi } from '';
+import type { ProductCategoriesApiListAssignedProductsRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new ProductCategoriesApi(configuration);
+
+const request: ProductCategoriesApiListAssignedProductsRequest = {
+    // Filter to apply, allowed fields are: - (List[String]) `product_ids` - (List[String]) `product_category_ids`  (optional)
+  filter: "filter_example",
+    // Page token (optional)
+  pageToken: "page_token_example",
+    // Attribute and direction to order items. One of the following fields: - `product_category_id`  One of the following directions: - `asc` - `desc` (optional)
+  orderBy: "order_by_example",
+    // Total number of items to return per page (optional)
+  pageSize: 0,
+};
+
+const data = await apiInstance.listAssignedProducts(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | [**string**] | Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60;  | (optional) defaults to undefined
+ **pageToken** | [**string**] | Page token | (optional) defaults to undefined
+ **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
+ **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
+
+
+### Return type
+
+**ListAssignedProductsResponse**
 
 ### Authorization
 

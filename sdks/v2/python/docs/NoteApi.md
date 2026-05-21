@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**create_note_custom_field**](NoteApi.md#create_note_custom_field) | **POST** /rest/v2/notes/model/customFields | Create a Custom Field
 [**delete_note**](NoteApi.md#delete_note) | **DELETE** /rest/v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
 [**get_note**](NoteApi.md#get_note) | **GET** /rest/v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
+[**list_all_notes**](NoteApi.md#list_all_notes) | **GET** /rest/v2/notes | List All Notes
 [**list_note_templates**](NoteApi.md#list_note_templates) | **GET** /rest/v2/notes/templates | Retrieve Note Templates
 [**list_notes**](NoteApi.md#list_notes) | **GET** /rest/v2/contacts/{contact_id}/notes | List Notes
 [**retrieve_note_model**](NoteApi.md#retrieve_note_model) | **GET** /rest/v2/notes/model | Retrieve Note Model
@@ -348,6 +349,95 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **list_all_notes**
+> ListNotesResponse list_all_notes(filter=filter, page_token=page_token, order_by=order_by, page_size=page_size, fields=fields)
+
+List All Notes
+
+Retrieves a list of all notes
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_notes_response import ListNotesResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.NoteApi(api_client)
+    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `assigned_to_user_id` - (String) `title` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D1001` - `filter=assigned_to_user_id%3D%3D42` - `filter=title%3D%3DexpectedTitle` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`  (optional)
+    page_token = 'page_token_example' # str | Page token (optional)
+    order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc` (optional)
+    page_size = 0 # int | Total number of items to return per page (optional)
+    fields = ['fields_example'] # List[str] | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
+
+    try:
+        # List All Notes
+        api_response = api_instance.list_all_notes(filter=filter, page_token=page_token, order_by=order_by, page_size=page_size, fields=fields)
+        print("The response of NoteApi->list_all_notes:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling NoteApi->list_all_notes: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;assigned_to_user_id%3D%3D42&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] 
+ **page_token** | **str**| Page token | [optional] 
+ **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
+ **page_size** | **int**| Total number of items to return per page | [optional] 
+ **fields** | [**List[str]**](str.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] 
+
+### Return type
+
+[**ListNotesResponse**](ListNotesResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_note_templates**
 > ListNoteTemplateResponse list_note_templates(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
 
@@ -440,7 +530,7 @@ Name | Type | Description  | Notes
 
 List Notes
 
-Retrieves a list of Notes
+Retrieves a list of Notes for a given contact
 
 ### Example
 
@@ -469,7 +559,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.NoteApi(api_client)
     contact_id = 'contact_id_example' # str | 
-    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `assigned_to_user_id` - (String) `title` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=assigned_to_user_id%3D%3DUserId` - `filter=title%3D%3DexpectedTitle` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`  (optional)
+    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `assigned_to_user_id` - (String) `title` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D1001` - `filter=assigned_to_user_id%3D%3D42` - `filter=title%3D%3DexpectedTitle` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`  (optional)
     order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc` (optional)
     page_size = 0 # int | Total number of items to return per page (optional)
     page_token = 'page_token_example' # str | Page token (optional)
@@ -491,7 +581,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contact_id** | **str**|  | 
- **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;assigned_to_user_id%3D%3DUserId&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] 
+ **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;assigned_to_user_id%3D%3D42&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] 
  **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
  **page_token** | **str**| Page token | [optional] 

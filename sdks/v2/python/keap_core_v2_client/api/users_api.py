@@ -886,7 +886,7 @@ class UsersApi:
     def list_paginated_users(
         self,
         filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith` ")] = None,
-        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `create_time` - `email`  One of the following directions: - `asc` - `desc`")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `create_time` - `email` - `name` (sorts by family name / last name; uses User ID as tiebreaker for stable pagination)  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=100, strict=True, ge=1)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
         _request_timeout: Union[
@@ -908,7 +908,7 @@ class UsersApi:
 
         :param filter: Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith` 
         :type filter: str
-        :param order_by: Attribute and direction to order items. One of the following fields: - `create_time` - `email`  One of the following directions: - `asc` - `desc`
+        :param order_by: Attribute and direction to order items. One of the following fields: - `create_time` - `email` - `name` (sorts by family name / last name; uses User ID as tiebreaker for stable pagination)  One of the following directions: - `asc` - `desc`
         :type order_by: str
         :param page_size: Total number of items to return per page
         :type page_size: int
@@ -973,7 +973,7 @@ class UsersApi:
     def list_paginated_users_with_http_info(
         self,
         filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith` ")] = None,
-        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `create_time` - `email`  One of the following directions: - `asc` - `desc`")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `create_time` - `email` - `name` (sorts by family name / last name; uses User ID as tiebreaker for stable pagination)  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=100, strict=True, ge=1)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
         _request_timeout: Union[
@@ -995,7 +995,7 @@ class UsersApi:
 
         :param filter: Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith` 
         :type filter: str
-        :param order_by: Attribute and direction to order items. One of the following fields: - `create_time` - `email`  One of the following directions: - `asc` - `desc`
+        :param order_by: Attribute and direction to order items. One of the following fields: - `create_time` - `email` - `name` (sorts by family name / last name; uses User ID as tiebreaker for stable pagination)  One of the following directions: - `asc` - `desc`
         :type order_by: str
         :param page_size: Total number of items to return per page
         :type page_size: int
@@ -1060,7 +1060,7 @@ class UsersApi:
     def list_paginated_users_without_preload_content(
         self,
         filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith` ")] = None,
-        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `create_time` - `email`  One of the following directions: - `asc` - `desc`")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `create_time` - `email` - `name` (sorts by family name / last name; uses User ID as tiebreaker for stable pagination)  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=100, strict=True, ge=1)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
         _request_timeout: Union[
@@ -1082,7 +1082,7 @@ class UsersApi:
 
         :param filter: Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith` 
         :type filter: str
-        :param order_by: Attribute and direction to order items. One of the following fields: - `create_time` - `email`  One of the following directions: - `asc` - `desc`
+        :param order_by: Attribute and direction to order items. One of the following fields: - `create_time` - `email` - `name` (sorts by family name / last name; uses User ID as tiebreaker for stable pagination)  One of the following directions: - `asc` - `desc`
         :type order_by: str
         :param page_size: Total number of items to return per page
         :type page_size: int

@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**deleteImageFile**](ProductCategoriesApi.md#deleteImageFile) | **DELETE** /rest/v2/productCategories/{category_id}/images | Delete the image from a product category
 [**deleteProductCategory**](ProductCategoriesApi.md#deleteProductCategory) | **DELETE** /rest/v2/productCategories/{category_id} | Delete a Product Category
 [**getProductCategory**](ProductCategoriesApi.md#getProductCategory) | **GET** /rest/v2/productCategories/{category_id} | Get a Product Category
+[**listAssignedProducts**](ProductCategoriesApi.md#listAssignedProducts) | **GET** /rest/v2/productCategories/assignedProducts | List Assigned Products to Categories
 [**listProductCategories**](ProductCategoriesApi.md#listProductCategories) | **GET** /rest/v2/productCategories | List all Product Categories
 [**updateProductCategory**](ProductCategoriesApi.md#updateProductCategory) | **PATCH** /rest/v2/productCategories/{category_id} | Update a Product Category
 
@@ -296,6 +297,62 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ProductCategory**](ProductCategory.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## listAssignedProducts
+
+> ListAssignedProductsResponse listAssignedProducts(opts)
+
+List Assigned Products to Categories
+
+Retrieves a list of Products assigned to Product Categories
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.ProductCategoriesApi();
+let opts = {
+  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (List[String]) `product_ids` - (List[String]) `product_category_ids` 
+  'pageToken': "pageToken_example", // String | Page token
+  'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `product_category_id`  One of the following directions: - `asc` - `desc`
+  'pageSize': 0 // Number | Total number of items to return per page
+};
+apiInstance.listAssignedProducts(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | **String**| Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60;  | [optional] 
+ **pageToken** | **String**| Page token | [optional] 
+ **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
+ **pageSize** | **Number**| Total number of items to return per page | [optional] 
+
+### Return type
+
+[**ListAssignedProductsResponse**](ListAssignedProductsResponse.md)
 
 ### Authorization
 

@@ -182,8 +182,10 @@ Class | Method | HTTP request | Description
 *FreeTrialDiscountsApi* | [**getFreeTrialDiscount**](docs/Api/FreeTrialDiscountsApi.md#getfreetrialdiscount) | **GET** /rest/v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount
 *FreeTrialDiscountsApi* | [**listFreeTrialDiscounts**](docs/Api/FreeTrialDiscountsApi.md#listfreetrialdiscounts) | **GET** /rest/v2/discounts/freeTrials | List all Subscription Free Trial Discounts
 *FreeTrialDiscountsApi* | [**updateFreeTrialDiscount**](docs/Api/FreeTrialDiscountsApi.md#updatefreetrialdiscount) | **PATCH** /rest/v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount
+*IntegrationsApi* | [**achieveIntegrationsWordPressOptInGoal**](docs/Api/IntegrationsApi.md#achieveintegrationswordpressoptingoal) | **POST** /rest/v2/integrations/wordpress/options/{option_key}:achieve | Achieve a WordPress Opt-In Goal
 *IntegrationsApi* | [**addIntegrationsWordPressOptIn**](docs/Api/IntegrationsApi.md#addintegrationswordpressoptin) | **POST** /rest/v2/integrations/wordpress/options | Add a WordPress Opt-In Option
 *IntegrationsApi* | [**deleteIntegrationsWordPressOptIn**](docs/Api/IntegrationsApi.md#deleteintegrationswordpressoptin) | **DELETE** /rest/v2/integrations/wordpress/options/{option_key} | Delete a WordPress Opt-In Option
+*IntegrationsApi* | [**listIntegrationsWordPressOptInOptions**](docs/Api/IntegrationsApi.md#listintegrationswordpressoptinoptions) | **GET** /rest/v2/integrations/wordpress/options | List WordPress Opt-In Options
 *LeadScoreApi* | [**getLeadScoreDetails**](docs/Api/LeadScoreApi.md#getleadscoredetails) | **GET** /rest/v2/contacts/{contact_id}/leadScore | Retrieve Lead Score of a Contact
 *LeadSourceCategoriesApi* | [**createLeadSourceCategory**](docs/Api/LeadSourceCategoriesApi.md#createleadsourcecategory) | **POST** /rest/v2/leadSourceCategories | Create a Lead Source Category
 *LeadSourceCategoriesApi* | [**deleteLeadSourceCategory**](docs/Api/LeadSourceCategoriesApi.md#deleteleadsourcecategory) | **DELETE** /rest/v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category
@@ -215,6 +217,7 @@ Class | Method | HTTP request | Description
 *NoteApi* | [**createNoteCustomField**](docs/Api/NoteApi.md#createnotecustomfield) | **POST** /rest/v2/notes/model/customFields | Create a Custom Field
 *NoteApi* | [**deleteNote**](docs/Api/NoteApi.md#deletenote) | **DELETE** /rest/v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
 *NoteApi* | [**getNote**](docs/Api/NoteApi.md#getnote) | **GET** /rest/v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
+*NoteApi* | [**listAllNotes**](docs/Api/NoteApi.md#listallnotes) | **GET** /rest/v2/notes | List All Notes
 *NoteApi* | [**listNoteTemplates**](docs/Api/NoteApi.md#listnotetemplates) | **GET** /rest/v2/notes/templates | Retrieve Note Templates
 *NoteApi* | [**listNotes**](docs/Api/NoteApi.md#listnotes) | **GET** /rest/v2/contacts/{contact_id}/notes | List Notes
 *NoteApi* | [**retrieveNoteModel**](docs/Api/NoteApi.md#retrievenotemodel) | **GET** /rest/v2/notes/model | Retrieve Note Model
@@ -229,6 +232,7 @@ Class | Method | HTTP request | Description
 *OpportunityApi* | [**getOpportunityStage**](docs/Api/OpportunityApi.md#getopportunitystage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
 *OpportunityApi* | [**listOpportunities**](docs/Api/OpportunityApi.md#listopportunities) | **GET** /rest/v2/opportunities | List Opportunities
 *OpportunityApi* | [**listOpportunityStages**](docs/Api/OpportunityApi.md#listopportunitystages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages
+*OpportunityApi* | [**retrieveOpportunityCustomFieldModel**](docs/Api/OpportunityApi.md#retrieveopportunitycustomfieldmodel) | **GET** /rest/v2/opportunities/model | Retrieve Opportunity Custom Field Model
 *OpportunityApi* | [**updateOpportunity**](docs/Api/OpportunityApi.md#updateopportunity) | **PATCH** /rest/v2/opportunities/{opportunity_id} | Update an opportunity
 *OpportunityApi* | [**updateOpportunityCustomField**](docs/Api/OpportunityApi.md#updateopportunitycustomfield) | **PATCH** /rest/v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field
 *OpportunityApi* | [**updateOpportunityStage**](docs/Api/OpportunityApi.md#updateopportunitystage) | **PATCH** /rest/v2/opportunities/stages/{stage_id} | Update an Opportunity Stage
@@ -266,6 +270,7 @@ Class | Method | HTTP request | Description
 *ProductCategoriesApi* | [**deleteImageFile**](docs/Api/ProductCategoriesApi.md#deleteimagefile) | **DELETE** /rest/v2/productCategories/{category_id}/images | Delete the image from a product category
 *ProductCategoriesApi* | [**deleteProductCategory**](docs/Api/ProductCategoriesApi.md#deleteproductcategory) | **DELETE** /rest/v2/productCategories/{category_id} | Delete a Product Category
 *ProductCategoriesApi* | [**getProductCategory**](docs/Api/ProductCategoriesApi.md#getproductcategory) | **GET** /rest/v2/productCategories/{category_id} | Get a Product Category
+*ProductCategoriesApi* | [**listAssignedProducts**](docs/Api/ProductCategoriesApi.md#listassignedproducts) | **GET** /rest/v2/productCategories/assignedProducts | List Assigned Products to Categories
 *ProductCategoriesApi* | [**listProductCategories**](docs/Api/ProductCategoriesApi.md#listproductcategories) | **GET** /rest/v2/productCategories | List all Product Categories
 *ProductCategoriesApi* | [**updateProductCategory**](docs/Api/ProductCategoriesApi.md#updateproductcategory) | **PATCH** /rest/v2/productCategories/{category_id} | Update a Product Category
 *ProductDiscountsApi* | [**createProductDiscount**](docs/Api/ProductDiscountsApi.md#createproductdiscount) | **POST** /rest/v2/discounts/products | Create a Product Discount
@@ -365,6 +370,8 @@ Class | Method | HTTP request | Description
 
 - [AchieveGoalRequest](docs/Model/AchieveGoalRequest.md)
 - [AchieveGoalResponse](docs/Model/AchieveGoalResponse.md)
+- [AchieveIntegrationsWordPressOptInOptionGoalRequest](docs/Model/AchieveIntegrationsWordPressOptInOptionGoalRequest.md)
+- [AchieveWordPressOptInGoalResult](docs/Model/AchieveWordPressOptInGoalResult.md)
 - [AddContactsToSequenceRequest](docs/Model/AddContactsToSequenceRequest.md)
 - [AddContactsToSequenceResponse](docs/Model/AddContactsToSequenceResponse.md)
 - [AddProductInterestRequest](docs/Model/AddProductInterestRequest.md)
@@ -409,6 +416,7 @@ Class | Method | HTTP request | Description
 - [ApplyTagsResponse](docs/Model/ApplyTagsResponse.md)
 - [AssignAutomationCategoryRequest](docs/Model/AssignAutomationCategoryRequest.md)
 - [AssignProductsRequest](docs/Model/AssignProductsRequest.md)
+- [AssignedProducts](docs/Model/AssignedProducts.md)
 - [Automation](docs/Model/Automation.md)
 - [AutomationCategory](docs/Model/AutomationCategory.md)
 - [AutomationLockStatus](docs/Model/AutomationLockStatus.md)
@@ -542,6 +550,7 @@ Class | Method | HTTP request | Description
 - [ListAffiliateReferralsResponse](docs/Model/ListAffiliateReferralsResponse.md)
 - [ListAffiliateSummariesResponse](docs/Model/ListAffiliateSummariesResponse.md)
 - [ListAffiliatesResponse](docs/Model/ListAffiliatesResponse.md)
+- [ListAssignedProductsResponse](docs/Model/ListAssignedProductsResponse.md)
 - [ListAutomationCategoryResponse](docs/Model/ListAutomationCategoryResponse.md)
 - [ListAutomationIdsResponse](docs/Model/ListAutomationIdsResponse.md)
 - [ListAutomationResponse](docs/Model/ListAutomationResponse.md)
@@ -597,6 +606,7 @@ Class | Method | HTTP request | Description
 - [ListUserGroupsResponse](docs/Model/ListUserGroupsResponse.md)
 - [ListUsersPaginatedResponse](docs/Model/ListUsersPaginatedResponse.md)
 - [ListWebformsResponse](docs/Model/ListWebformsResponse.md)
+- [ListWordPressOptInOptionsResponse](docs/Model/ListWordPressOptInOptionsResponse.md)
 - [Note](docs/Model/Note.md)
 - [NoteTemplate](docs/Model/NoteTemplate.md)
 - [ObjectModel](docs/Model/ObjectModel.md)
@@ -739,6 +749,6 @@ api.keap@thryv.com
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `v2`
-    - Package version: `2.0.10`
+    - Package version: `2.0.11`
     - Generator version: `7.13.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

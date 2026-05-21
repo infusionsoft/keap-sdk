@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**get_opportunity_stage**](OpportunityApi.md#get_opportunity_stage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
 [**list_opportunities**](OpportunityApi.md#list_opportunities) | **GET** /rest/v2/opportunities | List Opportunities
 [**list_opportunity_stages**](OpportunityApi.md#list_opportunity_stages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages
+[**retrieve_opportunity_custom_field_model**](OpportunityApi.md#retrieve_opportunity_custom_field_model) | **GET** /rest/v2/opportunities/model | Retrieve Opportunity Custom Field Model
 [**update_opportunity**](OpportunityApi.md#update_opportunity) | **PATCH** /rest/v2/opportunities/{opportunity_id} | Update an opportunity
 [**update_opportunity_custom_field**](OpportunityApi.md#update_opportunity_custom_field) | **PATCH** /rest/v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field
 [**update_opportunity_stage**](OpportunityApi.md#update_opportunity_stage) | **PATCH** /rest/v2/opportunities/stages/{stage_id} | Update an Opportunity Stage
@@ -732,6 +733,83 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListOpportunityStagesResponse**](ListOpportunityStagesResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_opportunity_custom_field_model**
+> ObjectModel retrieve_opportunity_custom_field_model()
+
+Retrieve Opportunity Custom Field Model
+
+Get the custom fields for the Opportunity object
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.object_model import ObjectModel
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.OpportunityApi(api_client)
+
+    try:
+        # Retrieve Opportunity Custom Field Model
+        api_response = api_instance.retrieve_opportunity_custom_field_model()
+        print("The response of OpportunityApi->retrieve_opportunity_custom_field_model:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OpportunityApi->retrieve_opportunity_custom_field_model: %s\n" % e)
+```
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ObjectModel**](ObjectModel.md)
 
 ### Authorization
 

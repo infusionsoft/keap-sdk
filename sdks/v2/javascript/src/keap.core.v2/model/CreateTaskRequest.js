@@ -80,6 +80,12 @@ class CreateTaskRequest {
             if (data.hasOwnProperty('contact_id')) {
                 obj['contact_id'] = ApiClient.convertToType(data['contact_id'], 'String');
             }
+            if (data.hasOwnProperty('opportunity_id')) {
+                obj['opportunity_id'] = ApiClient.convertToType(data['opportunity_id'], 'String');
+            }
+            if (data.hasOwnProperty('accepted')) {
+                obj['accepted'] = ApiClient.convertToType(data['accepted'], 'Boolean');
+            }
             if (data.hasOwnProperty('custom_fields')) {
                 obj['custom_fields'] = ApiClient.convertToType(data['custom_fields'], [CustomFieldValueObject]);
             }
@@ -130,6 +136,10 @@ class CreateTaskRequest {
         // ensure the json data is a string
         if (data['contact_id'] && !(typeof data['contact_id'] === 'string' || data['contact_id'] instanceof String)) {
             throw new Error("Expected the field `contact_id` to be a primitive type in the JSON string but got " + data['contact_id']);
+        }
+        // ensure the json data is a string
+        if (data['opportunity_id'] && !(typeof data['opportunity_id'] === 'string' || data['opportunity_id'] instanceof String)) {
+            throw new Error("Expected the field `opportunity_id` to be a primitive type in the JSON string but got " + data['opportunity_id']);
         }
         if (data['custom_fields']) { // data not null
             // ensure the json data is an array
@@ -209,6 +219,18 @@ CreateTaskRequest.prototype['assigned_to_user_id'] = undefined;
  * @member {String} contact_id
  */
 CreateTaskRequest.prototype['contact_id'] = undefined;
+
+/**
+ * Associated opportunity ID
+ * @member {String} opportunity_id
+ */
+CreateTaskRequest.prototype['opportunity_id'] = undefined;
+
+/**
+ * Whether the task has been accepted.
+ * @member {Boolean} accepted
+ */
+CreateTaskRequest.prototype['accepted'] = undefined;
 
 /**
  * Custom field values for the task. An empty array resets all custom fields to their defaults.

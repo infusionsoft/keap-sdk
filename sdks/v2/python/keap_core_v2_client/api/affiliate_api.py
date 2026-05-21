@@ -5421,6 +5421,10 @@ class AffiliateApi:
     def get_referrals_by_affiliate_id(
         self,
         affiliate_id: StrictStr,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `source` - Wildcard matching allowed  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  For the filters listed above, here are some examples: - `filter=source%3D%3DEmail Marketing` - `filter=source%3D%3DEmail*` (starts with \"Email\") ")] = None,
+        page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `referral_time`  One of the following directions: - `asc` - `desc`")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5440,6 +5444,14 @@ class AffiliateApi:
 
         :param affiliate_id: (required)
         :type affiliate_id: str
+        :param filter: Filter to apply, allowed fields are: - (String) `source` - Wildcard matching allowed  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  For the filters listed above, here are some examples: - `filter=source%3D%3DEmail Marketing` - `filter=source%3D%3DEmail*` (starts with \"Email\") 
+        :type filter: str
+        :param page_token: Page token
+        :type page_token: str
+        :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `referral_time`  One of the following directions: - `asc` - `desc`
+        :type order_by: str
+        :param page_size: Total number of items to return per page
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5464,6 +5476,10 @@ class AffiliateApi:
 
         _param = self._get_referrals_by_affiliate_id_serialize(
             affiliate_id=affiliate_id,
+            filter=filter,
+            page_token=page_token,
+            order_by=order_by,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5496,6 +5512,10 @@ class AffiliateApi:
     def get_referrals_by_affiliate_id_with_http_info(
         self,
         affiliate_id: StrictStr,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `source` - Wildcard matching allowed  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  For the filters listed above, here are some examples: - `filter=source%3D%3DEmail Marketing` - `filter=source%3D%3DEmail*` (starts with \"Email\") ")] = None,
+        page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `referral_time`  One of the following directions: - `asc` - `desc`")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5515,6 +5535,14 @@ class AffiliateApi:
 
         :param affiliate_id: (required)
         :type affiliate_id: str
+        :param filter: Filter to apply, allowed fields are: - (String) `source` - Wildcard matching allowed  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  For the filters listed above, here are some examples: - `filter=source%3D%3DEmail Marketing` - `filter=source%3D%3DEmail*` (starts with \"Email\") 
+        :type filter: str
+        :param page_token: Page token
+        :type page_token: str
+        :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `referral_time`  One of the following directions: - `asc` - `desc`
+        :type order_by: str
+        :param page_size: Total number of items to return per page
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5539,6 +5567,10 @@ class AffiliateApi:
 
         _param = self._get_referrals_by_affiliate_id_serialize(
             affiliate_id=affiliate_id,
+            filter=filter,
+            page_token=page_token,
+            order_by=order_by,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5571,6 +5603,10 @@ class AffiliateApi:
     def get_referrals_by_affiliate_id_without_preload_content(
         self,
         affiliate_id: StrictStr,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `source` - Wildcard matching allowed  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  For the filters listed above, here are some examples: - `filter=source%3D%3DEmail Marketing` - `filter=source%3D%3DEmail*` (starts with \"Email\") ")] = None,
+        page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `referral_time`  One of the following directions: - `asc` - `desc`")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5590,6 +5626,14 @@ class AffiliateApi:
 
         :param affiliate_id: (required)
         :type affiliate_id: str
+        :param filter: Filter to apply, allowed fields are: - (String) `source` - Wildcard matching allowed  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  For the filters listed above, here are some examples: - `filter=source%3D%3DEmail Marketing` - `filter=source%3D%3DEmail*` (starts with \"Email\") 
+        :type filter: str
+        :param page_token: Page token
+        :type page_token: str
+        :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `referral_time`  One of the following directions: - `asc` - `desc`
+        :type order_by: str
+        :param page_size: Total number of items to return per page
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5614,6 +5658,10 @@ class AffiliateApi:
 
         _param = self._get_referrals_by_affiliate_id_serialize(
             affiliate_id=affiliate_id,
+            filter=filter,
+            page_token=page_token,
+            order_by=order_by,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5641,6 +5689,10 @@ class AffiliateApi:
     def _get_referrals_by_affiliate_id_serialize(
         self,
         affiliate_id,
+        filter,
+        page_token,
+        order_by,
+        page_size,
         _request_auth,
         _content_type,
         _headers,
@@ -5665,6 +5717,22 @@ class AffiliateApi:
         if affiliate_id is not None:
             _path_params['affiliate_id'] = affiliate_id
         # process the query parameters
+        if filter is not None:
+            
+            _query_params.append(('filter', filter))
+            
+        if page_token is not None:
+            
+            _query_params.append(('page_token', page_token))
+            
+        if order_by is not None:
+            
+            _query_params.append(('order_by', order_by))
+            
+        if page_size is not None:
+            
+            _query_params.append(('page_size', page_size))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter

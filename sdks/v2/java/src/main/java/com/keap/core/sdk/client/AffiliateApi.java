@@ -1781,11 +1781,15 @@ import io.github.resilience4j.retry.Retry;
    * Retrieve Affiliate Referrals
    * Retrieves all referrals belonging to the given affiliate
    * @param affiliateId  (required)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;)  (optional)
+   * @param pageToken Page token (optional)
+   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+   * @param pageSize Total number of items to return per page (optional)
    * @return ListAffiliateReferralsResponse
    * @throws ApiException if fails to make API call
    */
-  public ListAffiliateReferralsResponse getReferralsByAffiliateId(String affiliateId) throws ApiException {
-    ApiResponse<ListAffiliateReferralsResponse> localVarResponse = getReferralsByAffiliateIdWithHttpInfo(affiliateId);
+  public ListAffiliateReferralsResponse getReferralsByAffiliateId(String affiliateId, String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
+    ApiResponse<ListAffiliateReferralsResponse> localVarResponse = getReferralsByAffiliateIdWithHttpInfo(affiliateId, filter, pageToken, orderBy, pageSize);
     return localVarResponse.getData();
   }
 
@@ -1793,11 +1797,15 @@ import io.github.resilience4j.retry.Retry;
    * Retrieve Affiliate Referrals
    * Retrieves all referrals belonging to the given affiliate
    * @param affiliateId  (required)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;)  (optional)
+   * @param pageToken Page token (optional)
+   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+   * @param pageSize Total number of items to return per page (optional)
    * @return ApiResponse&lt;ListAffiliateReferralsResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ListAffiliateReferralsResponse> getReferralsByAffiliateIdWithHttpInfo(String affiliateId) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getReferralsByAffiliateIdRequestBuilder(affiliateId);
+  public ApiResponse<ListAffiliateReferralsResponse> getReferralsByAffiliateIdWithHttpInfo(String affiliateId, String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getReferralsByAffiliateIdRequestBuilder(affiliateId, filter, pageToken, orderBy, pageSize);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -1837,7 +1845,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder getReferralsByAffiliateIdRequestBuilder(String affiliateId) throws ApiException {
+  private HttpRequest.Builder getReferralsByAffiliateIdRequestBuilder(String affiliateId, String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
     // verify the required parameter 'affiliateId' is set
     if (affiliateId == null) {
       throw new ApiException(400, "Missing the required parameter 'affiliateId' when calling getReferralsByAffiliateId");
@@ -1848,7 +1856,28 @@ import io.github.resilience4j.retry.Retry;
     String localVarPath = "/rest/v2/affiliates/{affiliate_id}/referrals"
         .replace("{affiliate_id}", ApiClient.urlEncode(affiliateId.toString()));
 
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "filter";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("filter", filter));
+    localVarQueryParameterBaseName = "page_token";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page_token", pageToken));
+    localVarQueryParameterBaseName = "order_by";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("order_by", orderBy));
+    localVarQueryParameterBaseName = "page_size";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page_size", pageSize));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
 
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());

@@ -252,8 +252,9 @@ namespace Keap.Core.V2.Model
         /// <param name="fieldType">fieldType.</param>
         /// <param name="defaultValue">defaultValue.</param>
         /// <param name="groupId">groupId.</param>
+        /// <param name="groupName">groupName.</param>
         /// <param name="fieldName">fieldName.</param>
-        public CustomFieldMetaData(string id = default, string label = default, List<CustomFieldOption> options = default, RecordTypeEnum? recordType = default, FieldTypeEnum? fieldType = default, string defaultValue = default, string groupId = default, string fieldName = default)
+        public CustomFieldMetaData(string id = default, string label = default, List<CustomFieldOption> options = default, RecordTypeEnum? recordType = default, FieldTypeEnum? fieldType = default, string defaultValue = default, string groupId = default, string groupName = default, string fieldName = default)
         {
             this.Id = id;
             this.Label = label;
@@ -262,6 +263,7 @@ namespace Keap.Core.V2.Model
             this.FieldType = fieldType;
             this.DefaultValue = defaultValue;
             this.GroupId = groupId;
+            this.GroupName = groupName;
             this.FieldName = fieldName;
         }
 
@@ -296,6 +298,12 @@ namespace Keap.Core.V2.Model
         public string GroupId { get; set; }
 
         /// <summary>
+        /// Gets or Sets GroupName
+        /// </summary>
+        [DataMember(Name = "group_name", EmitDefaultValue = false)]
+        public string GroupName { get; set; }
+
+        /// <summary>
         /// Gets or Sets FieldName
         /// </summary>
         [DataMember(Name = "field_name", EmitDefaultValue = false)]
@@ -316,6 +324,7 @@ namespace Keap.Core.V2.Model
             sb.Append("  FieldType: ").Append(FieldType).Append("\n");
             sb.Append("  DefaultValue: ").Append(DefaultValue).Append("\n");
             sb.Append("  GroupId: ").Append(GroupId).Append("\n");
+            sb.Append("  GroupName: ").Append(GroupName).Append("\n");
             sb.Append("  FieldName: ").Append(FieldName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

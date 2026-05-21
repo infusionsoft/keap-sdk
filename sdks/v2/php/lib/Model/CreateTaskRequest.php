@@ -68,6 +68,8 @@ class CreateTaskRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'remind_time_mins' => 'int',
         'assigned_to_user_id' => 'string',
         'contact_id' => 'string',
+        'opportunity_id' => 'string',
+        'accepted' => 'bool',
         'custom_fields' => '\Keap\Core\V2\Model\CustomFieldValueObject[]'
     ];
 
@@ -89,6 +91,8 @@ class CreateTaskRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'remind_time_mins' => 'int32',
         'assigned_to_user_id' => null,
         'contact_id' => null,
+        'opportunity_id' => null,
+        'accepted' => null,
         'custom_fields' => null
     ];
 
@@ -108,6 +112,8 @@ class CreateTaskRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'remind_time_mins' => false,
         'assigned_to_user_id' => false,
         'contact_id' => false,
+        'opportunity_id' => false,
+        'accepted' => false,
         'custom_fields' => false
     ];
 
@@ -207,6 +213,8 @@ class CreateTaskRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'remind_time_mins' => 'remind_time_mins',
         'assigned_to_user_id' => 'assigned_to_user_id',
         'contact_id' => 'contact_id',
+        'opportunity_id' => 'opportunity_id',
+        'accepted' => 'accepted',
         'custom_fields' => 'custom_fields'
     ];
 
@@ -226,6 +234,8 @@ class CreateTaskRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'remind_time_mins' => 'setRemindTimeMins',
         'assigned_to_user_id' => 'setAssignedToUserId',
         'contact_id' => 'setContactId',
+        'opportunity_id' => 'setOpportunityId',
+        'accepted' => 'setAccepted',
         'custom_fields' => 'setCustomFields'
     ];
 
@@ -245,6 +255,8 @@ class CreateTaskRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'remind_time_mins' => 'getRemindTimeMins',
         'assigned_to_user_id' => 'getAssignedToUserId',
         'contact_id' => 'getContactId',
+        'opportunity_id' => 'getOpportunityId',
+        'accepted' => 'getAccepted',
         'custom_fields' => 'getCustomFields'
     ];
 
@@ -363,6 +375,8 @@ class CreateTaskRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('remind_time_mins', $data ?? [], null);
         $this->setIfExists('assigned_to_user_id', $data ?? [], null);
         $this->setIfExists('contact_id', $data ?? [], null);
+        $this->setIfExists('opportunity_id', $data ?? [], null);
+        $this->setIfExists('accepted', $data ?? [], null);
         $this->setIfExists('custom_fields', $data ?? [], null);
     }
 
@@ -715,6 +729,60 @@ class CreateTaskRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable contact_id cannot be null');
         }
         $this->container['contact_id'] = $contact_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets opportunity_id
+     *
+     * @return string|null
+     */
+    public function getOpportunityId()
+    {
+        return $this->container['opportunity_id'];
+    }
+
+    /**
+     * Sets opportunity_id
+     *
+     * @param string|null $opportunity_id Associated opportunity ID
+     *
+     * @return self
+     */
+    public function setOpportunityId($opportunity_id)
+    {
+        if (is_null($opportunity_id)) {
+            throw new \InvalidArgumentException('non-nullable opportunity_id cannot be null');
+        }
+        $this->container['opportunity_id'] = $opportunity_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets accepted
+     *
+     * @return bool|null
+     */
+    public function getAccepted()
+    {
+        return $this->container['accepted'];
+    }
+
+    /**
+     * Sets accepted
+     *
+     * @param bool|null $accepted Whether the task has been accepted.
+     *
+     * @return self
+     */
+    public function setAccepted($accepted)
+    {
+        if (is_null($accepted)) {
+            throw new \InvalidArgumentException('non-nullable accepted cannot be null');
+        }
+        $this->container['accepted'] = $accepted;
 
         return $this;
     }

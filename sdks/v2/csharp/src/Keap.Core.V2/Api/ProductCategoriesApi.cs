@@ -171,6 +171,35 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of ProductCategory</returns>
         ApiResponse<ProductCategory> GetProductCategoryWithHttpInfo(string categoryId, int operationIndex = 0);
         /// <summary>
+        /// List Assigned Products to Categories
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of Products assigned to Product Categories
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="filter">Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ListAssignedProductsResponse</returns>
+        ListAssignedProductsResponse ListAssignedProducts(string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0);
+
+        /// <summary>
+        /// List Assigned Products to Categories
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of Products assigned to Product Categories
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="filter">Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ListAssignedProductsResponse</returns>
+        ApiResponse<ListAssignedProductsResponse> ListAssignedProductsWithHttpInfo(string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0);
+        /// <summary>
         /// List all Product Categories
         /// </summary>
         /// <remarks>
@@ -389,6 +418,37 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ProductCategory)</returns>
         System.Threading.Tasks.Task<ApiResponse<ProductCategory>> GetProductCategoryWithHttpInfoAsync(string categoryId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// List Assigned Products to Categories
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of Products assigned to Product Categories
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="filter">Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListAssignedProductsResponse</returns>
+        System.Threading.Tasks.Task<ListAssignedProductsResponse> ListAssignedProductsAsync(string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// List Assigned Products to Categories
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of Products assigned to Product Categories
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="filter">Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListAssignedProductsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListAssignedProductsResponse>> ListAssignedProductsWithHttpInfoAsync(string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List all Product Categories
         /// </summary>
@@ -1656,6 +1716,213 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetProductCategory", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List Assigned Products to Categories Retrieves a list of Products assigned to Product Categories
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="filter">Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ListAssignedProductsResponse</returns>
+        public ListAssignedProductsResponse ListAssignedProducts(string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<ListAssignedProductsResponse> localVarResponse = ListAssignedProductsWithHttpInfo(filter, pageToken, orderBy, pageSize);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Assigned Products to Categories Retrieves a list of Products assigned to Product Categories
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="filter">Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ListAssignedProductsResponse</returns>
+        public Keap.Core.V2.Client.ApiResponse<ListAssignedProductsResponse> ListAssignedProductsWithHttpInfo(string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (pageToken != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken));
+            }
+            if (orderBy != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "order_by", orderBy));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
+
+            localVarRequestOptions.Operation = "ProductCategoriesApi.ListAssignedProducts";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListAssignedProductsResponse>("/rest/v2/productCategories/assignedProducts", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListAssignedProducts", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List Assigned Products to Categories Retrieves a list of Products assigned to Product Categories
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="filter">Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListAssignedProductsResponse</returns>
+        public async System.Threading.Tasks.Task<ListAssignedProductsResponse> ListAssignedProductsAsync(string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<ListAssignedProductsResponse> localVarResponse = await ListAssignedProductsWithHttpInfoAsync(filter, pageToken, orderBy, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Assigned Products to Categories Retrieves a list of Products assigned to Product Categories
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="filter">Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListAssignedProductsResponse)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ListAssignedProductsResponse>> ListAssignedProductsWithHttpInfoAsync(string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (pageToken != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken));
+            }
+            if (orderBy != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "order_by", orderBy));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
+
+            localVarRequestOptions.Operation = "ProductCategoriesApi.ListAssignedProducts";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListAssignedProductsResponse>("/rest/v2/productCategories/assignedProducts", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListAssignedProducts", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

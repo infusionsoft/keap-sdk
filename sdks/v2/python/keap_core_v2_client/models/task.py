@@ -29,7 +29,7 @@ class Task(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Task ID")
     title: Optional[StrictStr] = Field(default=None, description="Task title")
-    description: Optional[StrictStr] = Field(default=None, description="Task description")
+    description: Optional[StrictStr] = Field(default=None, description="Task description. Legacy XML-RPC name for this field was `CreationNotes`")
     type: Optional[StrictStr] = Field(default=None, description="Task type")
     priority: Optional[StrictStr] = Field(default=None, description="Task priority")
     completed: Optional[StrictBool] = Field(default=None, description="Whether task is completed")
@@ -40,10 +40,13 @@ class Task(BaseModel):
     remind_time_mins: Optional[StrictInt] = Field(default=None, description="Reminder minutes before due.")
     assigned_to_user_id: Optional[StrictStr] = Field(default=None, description="Assigned user ID")
     created_by_user_id: Optional[StrictStr] = Field(default=None, description="Creator user ID")
+    last_updated_by_user_id: Optional[StrictStr] = Field(default=None, description="User who last updated the task.")
     contact_id: Optional[StrictStr] = Field(default=None, description="Associated contact ID")
+    opportunity_id: Optional[StrictStr] = Field(default=None, description="Associated opportunity ID")
+    accepted: Optional[StrictBool] = Field(default=None, description="Whether the task has been accepted")
     custom_fields: Optional[List[CustomFieldValueObject]] = Field(default=None, description="Custom field values for the task")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "title", "description", "type", "priority", "completed", "create_time", "modification_time", "completion_time", "due_time", "remind_time_mins", "assigned_to_user_id", "created_by_user_id", "contact_id", "custom_fields"]
+    __properties: ClassVar[List[str]] = ["id", "title", "description", "type", "priority", "completed", "create_time", "modification_time", "completion_time", "due_time", "remind_time_mins", "assigned_to_user_id", "created_by_user_id", "last_updated_by_user_id", "contact_id", "opportunity_id", "accepted", "custom_fields"]
 
     @field_validator('priority')
     def priority_validate_enum(cls, value):
@@ -143,7 +146,10 @@ class Task(BaseModel):
             "remind_time_mins": obj.get("remind_time_mins"),
             "assigned_to_user_id": obj.get("assigned_to_user_id"),
             "created_by_user_id": obj.get("created_by_user_id"),
+            "last_updated_by_user_id": obj.get("last_updated_by_user_id"),
             "contact_id": obj.get("contact_id"),
+            "opportunity_id": obj.get("opportunity_id"),
+            "accepted": obj.get("accepted"),
             "custom_fields": [CustomFieldValueObject.from_dict(_item) for _item in obj["custom_fields"]] if obj.get("custom_fields") is not None else None
         })
         # store additional fields in additional_properties

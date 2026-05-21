@@ -13,8 +13,11 @@
 
 
 import ApiClient from "../ApiClient";
+import AchieveIntegrationsWordPressOptInOptionGoalRequest from '../model/AchieveIntegrationsWordPressOptInOptionGoalRequest';
+import AchieveWordPressOptInGoalResult from '../model/AchieveWordPressOptInGoalResult';
 import CreateIntegrationsWordPressOptInOption from '../model/CreateIntegrationsWordPressOptInOption';
 import Error from '../model/Error';
+import ListWordPressOptInOptionsResponse from '../model/ListWordPressOptInOptionsResponse';
 import WordPressOptInOption from '../model/WordPressOptInOption';
 
 /**
@@ -34,6 +37,60 @@ export default class IntegrationsApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+
+
+    /**
+     * Achieve a WordPress Opt-In Goal
+     * Achieves a WordPress Opt-In Option Goal
+     * @param {String} optionKey 
+     * @param {module:keap.core.v2/model/AchieveIntegrationsWordPressOptInOptionGoalRequest} achieveIntegrationsWordPressOptInOptionGoalRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/AchieveWordPressOptInGoalResult} and HTTP response
+     */
+    achieveIntegrationsWordPressOptInGoalWithHttpInfo(optionKey, achieveIntegrationsWordPressOptInOptionGoalRequest) {
+      let postBody = achieveIntegrationsWordPressOptInOptionGoalRequest;
+      // verify the required parameter 'optionKey' is set
+      if (optionKey === undefined || optionKey === null) {
+        throw new Error("Missing the required parameter 'optionKey' when calling achieveIntegrationsWordPressOptInGoal");
+      }
+      // verify the required parameter 'achieveIntegrationsWordPressOptInOptionGoalRequest' is set
+      if (achieveIntegrationsWordPressOptInOptionGoalRequest === undefined || achieveIntegrationsWordPressOptInOptionGoalRequest === null) {
+        throw new Error("Missing the required parameter 'achieveIntegrationsWordPressOptInOptionGoalRequest' when calling achieveIntegrationsWordPressOptInGoal");
+      }
+
+      let pathParams = {
+        'option_key': optionKey
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = AchieveWordPressOptInGoalResult;
+      return this.apiClient.callApi(
+        '/rest/v2/integrations/wordpress/options/{option_key}:achieve', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Achieve a WordPress Opt-In Goal
+     * Achieves a WordPress Opt-In Option Goal
+     * @param {String} optionKey 
+     * @param {module:keap.core.v2/model/AchieveIntegrationsWordPressOptInOptionGoalRequest} achieveIntegrationsWordPressOptInOptionGoalRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/AchieveWordPressOptInGoalResult}
+     */
+    achieveIntegrationsWordPressOptInGoal(optionKey, achieveIntegrationsWordPressOptInOptionGoalRequest) {
+      return this.achieveIntegrationsWordPressOptInGoalWithHttpInfo(optionKey, achieveIntegrationsWordPressOptInOptionGoalRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
 
 
     /**
@@ -125,6 +182,47 @@ export default class IntegrationsApi {
      */
     deleteIntegrationsWordPressOptIn(optionKey) {
       return this.deleteIntegrationsWordPressOptInWithHttpInfo(optionKey)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List WordPress Opt-In Options
+     * Retrieves the list of WordPress Opt-In Options available
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListWordPressOptInOptionsResponse} and HTTP response
+     */
+    listIntegrationsWordPressOptInOptionsWithHttpInfo() {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListWordPressOptInOptionsResponse;
+      return this.apiClient.callApi(
+        '/rest/v2/integrations/wordpress/options', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List WordPress Opt-In Options
+     * Retrieves the list of WordPress Opt-In Options available
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListWordPressOptInOptionsResponse}
+     */
+    listIntegrationsWordPressOptInOptions() {
+      return this.listIntegrationsWordPressOptInOptionsWithHttpInfo()
         .then(function(response_and_data) {
           return response_and_data.data;
         });

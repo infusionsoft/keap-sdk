@@ -16,6 +16,7 @@ import ApiClient from "../ApiClient";
 import AssignProductsRequest from '../model/AssignProductsRequest';
 import CreateProductCategoryRequest from '../model/CreateProductCategoryRequest';
 import Error from '../model/Error';
+import ListAssignedProductsResponse from '../model/ListAssignedProductsResponse';
 import ListProductCategoriesResponse from '../model/ListProductCategoriesResponse';
 import ProductCategory from '../model/ProductCategory';
 import UpdateProductCategoryRequest from '../model/UpdateProductCategoryRequest';
@@ -333,6 +334,62 @@ export default class ProductCategoriesApi {
      */
     getProductCategory(categoryId) {
       return this.getProductCategoryWithHttpInfo(categoryId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List Assigned Products to Categories
+     * Retrieves a list of Products assigned to Product Categories
+     * @param {Object} opts Optional parameters
+     * @param {String} [filter] Filter to apply, allowed fields are: - (List[String]) `product_ids` - (List[String]) `product_category_ids` 
+     * @param {String} [pageToken] Page token
+     * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `product_category_id`  One of the following directions: - `asc` - `desc`
+     * @param {Number} [pageSize] Total number of items to return per page
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListAssignedProductsResponse} and HTTP response
+     */
+    listAssignedProductsWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'filter': opts['filter'],
+        'page_token': opts['pageToken'],
+        'order_by': opts['orderBy'],
+        'page_size': opts['pageSize']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListAssignedProductsResponse;
+      return this.apiClient.callApi(
+        '/rest/v2/productCategories/assignedProducts', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List Assigned Products to Categories
+     * Retrieves a list of Products assigned to Product Categories
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.filter Filter to apply, allowed fields are: - (List[String]) `product_ids` - (List[String]) `product_category_ids` 
+     * @param {String} opts.pageToken Page token
+     * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `product_category_id`  One of the following directions: - `asc` - `desc`
+     * @param {Number} opts.pageSize Total number of items to return per page
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListAssignedProductsResponse}
+     */
+    listAssignedProducts(opts) {
+      return this.listAssignedProductsWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

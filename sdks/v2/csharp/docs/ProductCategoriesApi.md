@@ -10,6 +10,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**DeleteImageFile**](ProductCategoriesApi.md#deleteimagefile) | **DELETE** /rest/v2/productCategories/{category_id}/images | Delete the image from a product category |
 | [**DeleteProductCategory**](ProductCategoriesApi.md#deleteproductcategory) | **DELETE** /rest/v2/productCategories/{category_id} | Delete a Product Category |
 | [**GetProductCategory**](ProductCategoriesApi.md#getproductcategory) | **GET** /rest/v2/productCategories/{category_id} | Get a Product Category |
+| [**ListAssignedProducts**](ProductCategoriesApi.md#listassignedproducts) | **GET** /rest/v2/productCategories/assignedProducts | List Assigned Products to Categories |
 | [**ListProductCategories**](ProductCategoriesApi.md#listproductcategories) | **GET** /rest/v2/productCategories | List all Product Categories |
 | [**UpdateProductCategory**](ProductCategoriesApi.md#updateproductcategory) | **PATCH** /rest/v2/productCategories/{category_id} | Update a Product Category |
 
@@ -587,6 +588,114 @@ catch (ApiException e)
 ### Return type
 
 [**ProductCategory**](ProductCategory.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listassignedproducts"></a>
+# **ListAssignedProducts**
+> ListAssignedProductsResponse ListAssignedProducts (string? filter = null, string? pageToken = null, string? orderBy = null, int? pageSize = null)
+
+List Assigned Products to Categories
+
+Retrieves a list of Products assigned to Product Categories
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListAssignedProductsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ProductCategoriesApi(config);
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (List[String]) `product_ids` - (List[String]) `product_category_ids`  (optional) 
+            var pageToken = "pageToken_example";  // string? | Page token (optional) 
+            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `product_category_id`  One of the following directions: - `asc` - `desc` (optional) 
+            var pageSize = 0;  // int? | Total number of items to return per page (optional) 
+
+            try
+            {
+                // List Assigned Products to Categories
+                ListAssignedProductsResponse result = apiInstance.ListAssignedProducts(filter, pageToken, orderBy, pageSize);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ProductCategoriesApi.ListAssignedProducts: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListAssignedProductsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Assigned Products to Categories
+    ApiResponse<ListAssignedProductsResponse> response = apiInstance.ListAssignedProductsWithHttpInfo(filter, pageToken, orderBy, pageSize);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ProductCategoriesApi.ListAssignedProductsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **filter** | **string?** | Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60;  | [optional]  |
+| **pageToken** | **string?** | Page token | [optional]  |
+| **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
+| **pageSize** | **int?** | Total number of items to return per page | [optional]  |
+
+### Return type
+
+[**ListAssignedProductsResponse**](ListAssignedProductsResponse.md)
 
 ### Authorization
 

@@ -866,14 +866,22 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * Retrieves all referrals belonging to the given affiliate
      * Retrieve Affiliate Referrals
      * @param affiliateId 
+     * @param filter Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;) 
+     * @param pageToken Page token
+     * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param pageSize Total number of items to return per page
      */
-    public async getReferralsByAffiliateId(affiliateId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getReferralsByAffiliateId(affiliateId: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'affiliateId' is not null or undefined
         if (affiliateId === null || affiliateId === undefined) {
             throw new RequiredError("AffiliateApi", "getReferralsByAffiliateId", "affiliateId");
         }
+
+
+
+
 
 
         // Path Params
@@ -883,6 +891,26 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (filter !== undefined) {
+            requestContext.setQueryParam("filter", ObjectSerializer.serialize(filter, "string", ""));
+        }
+
+        // Query Params
+        if (pageToken !== undefined) {
+            requestContext.setQueryParam("page_token", ObjectSerializer.serialize(pageToken, "string", ""));
+        }
+
+        // Query Params
+        if (orderBy !== undefined) {
+            requestContext.setQueryParam("order_by", ObjectSerializer.serialize(orderBy, "string", ""));
+        }
+
+        // Query Params
+        if (pageSize !== undefined) {
+            requestContext.setQueryParam("page_size", ObjectSerializer.serialize(pageSize, "number", "int32"));
+        }
 
 
         let authMethod: SecurityAuthentication | undefined;

@@ -250,6 +250,27 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of ListOpportunityStagesResponse</returns>
         ApiResponse<ListOpportunityStagesResponse> ListOpportunityStagesWithHttpInfo(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0);
         /// <summary>
+        /// Retrieve Opportunity Custom Field Model
+        /// </summary>
+        /// <remarks>
+        /// Get the custom fields for the Opportunity object
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ObjectModel</returns>
+        ObjectModel RetrieveOpportunityCustomFieldModel(int operationIndex = 0);
+
+        /// <summary>
+        /// Retrieve Opportunity Custom Field Model
+        /// </summary>
+        /// <remarks>
+        /// Get the custom fields for the Opportunity object
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ObjectModel</returns>
+        ApiResponse<ObjectModel> RetrieveOpportunityCustomFieldModelWithHttpInfo(int operationIndex = 0);
+        /// <summary>
         /// Update an opportunity
         /// </summary>
         /// <remarks>
@@ -578,6 +599,29 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListOpportunityStagesResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListOpportunityStagesResponse>> ListOpportunityStagesWithHttpInfoAsync(string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Retrieve Opportunity Custom Field Model
+        /// </summary>
+        /// <remarks>
+        /// Get the custom fields for the Opportunity object
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ObjectModel</returns>
+        System.Threading.Tasks.Task<ObjectModel> RetrieveOpportunityCustomFieldModelAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Retrieve Opportunity Custom Field Model
+        /// </summary>
+        /// <remarks>
+        /// Get the custom fields for the Opportunity object
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ObjectModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ObjectModel>> RetrieveOpportunityCustomFieldModelWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update an opportunity
         /// </summary>
@@ -2443,6 +2487,165 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListOpportunityStages", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Retrieve Opportunity Custom Field Model Get the custom fields for the Opportunity object
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ObjectModel</returns>
+        public ObjectModel RetrieveOpportunityCustomFieldModel(int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<ObjectModel> localVarResponse = RetrieveOpportunityCustomFieldModelWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve Opportunity Custom Field Model Get the custom fields for the Opportunity object
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ObjectModel</returns>
+        public Keap.Core.V2.Client.ApiResponse<ObjectModel> RetrieveOpportunityCustomFieldModelWithHttpInfo(int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            localVarRequestOptions.Operation = "OpportunityApi.RetrieveOpportunityCustomFieldModel";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ObjectModel>("/rest/v2/opportunities/model", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RetrieveOpportunityCustomFieldModel", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Retrieve Opportunity Custom Field Model Get the custom fields for the Opportunity object
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ObjectModel</returns>
+        public async System.Threading.Tasks.Task<ObjectModel> RetrieveOpportunityCustomFieldModelAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<ObjectModel> localVarResponse = await RetrieveOpportunityCustomFieldModelWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve Opportunity Custom Field Model Get the custom fields for the Opportunity object
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ObjectModel)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ObjectModel>> RetrieveOpportunityCustomFieldModelWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            localVarRequestOptions.Operation = "OpportunityApi.RetrieveOpportunityCustomFieldModel";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ObjectModel>("/rest/v2/opportunities/model", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RetrieveOpportunityCustomFieldModel", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

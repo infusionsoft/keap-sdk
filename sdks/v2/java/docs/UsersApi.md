@@ -519,7 +519,7 @@ public class Example {
 
         UsersApi apiInstance = new UsersApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith` 
-        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `create_time` - `email`  One of the following directions: - `asc` - `desc`
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `create_time` - `email` - `name` (sorts by family name / last name; uses User ID as tiebreaker for stable pagination)  One of the following directions: - `asc` - `desc`
         Integer pageSize = 10; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
@@ -542,7 +542,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (Boolean) &#x60;include_inactive&#x60; - (Boolean) &#x60;include_partners&#x60; - (Set[String]) &#x60;user_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;user_ids%3D%3D123%3Bgiven_name%3D%3DSmith&#x60;  | [optional] |
-| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;name&#x60; (sorts by family name / last name; uses User ID as tiebreaker for stable pagination)  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
 
@@ -604,7 +604,7 @@ public class Example {
 
         UsersApi apiInstance = new UsersApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith` 
-        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `create_time` - `email`  One of the following directions: - `asc` - `desc`
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `create_time` - `email` - `name` (sorts by family name / last name; uses User ID as tiebreaker for stable pagination)  One of the following directions: - `asc` - `desc`
         Integer pageSize = 10; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
@@ -629,7 +629,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (Boolean) &#x60;include_inactive&#x60; - (Boolean) &#x60;include_partners&#x60; - (Set[String]) &#x60;user_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;user_ids%3D%3D123%3Bgiven_name%3D%3DSmith&#x60;  | [optional] |
-| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;name&#x60; (sorts by family name / last name; uses User ID as tiebreaker for stable pagination)  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
 

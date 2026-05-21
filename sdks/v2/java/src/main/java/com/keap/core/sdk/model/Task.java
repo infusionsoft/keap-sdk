@@ -49,7 +49,10 @@ import jakarta.validation.Valid;
   Task.JSON_PROPERTY_REMIND_TIME_MINS,
   Task.JSON_PROPERTY_ASSIGNED_TO_USER_ID,
   Task.JSON_PROPERTY_CREATED_BY_USER_ID,
+  Task.JSON_PROPERTY_LAST_UPDATED_BY_USER_ID,
   Task.JSON_PROPERTY_CONTACT_ID,
+  Task.JSON_PROPERTY_OPPORTUNITY_ID,
+  Task.JSON_PROPERTY_ACCEPTED,
   Task.JSON_PROPERTY_CUSTOM_FIELDS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
@@ -185,8 +188,17 @@ public class Task implements Serializable {
   public static final String JSON_PROPERTY_CREATED_BY_USER_ID = "created_by_user_id";
   @jakarta.annotation.Nullable  private String createdByUserId;
 
+  public static final String JSON_PROPERTY_LAST_UPDATED_BY_USER_ID = "last_updated_by_user_id";
+  @jakarta.annotation.Nullable  private String lastUpdatedByUserId;
+
   public static final String JSON_PROPERTY_CONTACT_ID = "contact_id";
   @jakarta.annotation.Nullable  private String contactId;
+
+  public static final String JSON_PROPERTY_OPPORTUNITY_ID = "opportunity_id";
+  @jakarta.annotation.Nullable  private String opportunityId;
+
+  public static final String JSON_PROPERTY_ACCEPTED = "accepted";
+  @jakarta.annotation.Nullable  private Boolean accepted;
 
   public static final String JSON_PROPERTY_CUSTOM_FIELDS = "custom_fields";
   @jakarta.annotation.Nullable  private List<@Valid CustomFieldValueObject> customFields = new ArrayList<>();
@@ -248,10 +260,10 @@ public class Task implements Serializable {
   }
 
   /**
-   * Task description
+   * Task description. Legacy XML-RPC name for this field was &#x60;CreationNotes&#x60;
    * @return description
    */
-  @jakarta.annotation.Nullable  @Schema(example = "Review and respond to client feedback", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Task description")
+  @jakarta.annotation.Nullable  @Schema(example = "Review and respond to client feedback.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Task description. Legacy XML-RPC name for this field was `CreationNotes`")
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDescription() {
@@ -506,6 +518,30 @@ public class Task implements Serializable {
   }
 
 
+  public Task lastUpdatedByUserId(@jakarta.annotation.Nullable String lastUpdatedByUserId) {
+    this.lastUpdatedByUserId = lastUpdatedByUserId;
+    return this;
+  }
+
+  /**
+   * User who last updated the task.
+   * @return lastUpdatedByUserId
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "77", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "User who last updated the task.")
+  @JsonProperty(JSON_PROPERTY_LAST_UPDATED_BY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getLastUpdatedByUserId() {
+    return lastUpdatedByUserId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LAST_UPDATED_BY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLastUpdatedByUserId(@jakarta.annotation.Nullable String lastUpdatedByUserId) {
+    this.lastUpdatedByUserId = lastUpdatedByUserId;
+  }
+
+
   public Task contactId(@jakarta.annotation.Nullable String contactId) {
     this.contactId = contactId;
     return this;
@@ -527,6 +563,54 @@ public class Task implements Serializable {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setContactId(@jakarta.annotation.Nullable String contactId) {
     this.contactId = contactId;
+  }
+
+
+  public Task opportunityId(@jakarta.annotation.Nullable String opportunityId) {
+    this.opportunityId = opportunityId;
+    return this;
+  }
+
+  /**
+   * Associated opportunity ID
+   * @return opportunityId
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "321", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Associated opportunity ID")
+  @JsonProperty(JSON_PROPERTY_OPPORTUNITY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getOpportunityId() {
+    return opportunityId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OPPORTUNITY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOpportunityId(@jakarta.annotation.Nullable String opportunityId) {
+    this.opportunityId = opportunityId;
+  }
+
+
+  public Task accepted(@jakarta.annotation.Nullable Boolean accepted) {
+    this.accepted = accepted;
+    return this;
+  }
+
+  /**
+   * Whether the task has been accepted
+   * @return accepted
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Whether the task has been accepted")
+  @JsonProperty(JSON_PROPERTY_ACCEPTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getAccepted() {
+    return accepted;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ACCEPTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAccepted(@jakarta.annotation.Nullable Boolean accepted) {
+    this.accepted = accepted;
   }
 
 
@@ -587,13 +671,16 @@ public class Task implements Serializable {
         Objects.equals(this.remindTimeMins, task.remindTimeMins) &&
         Objects.equals(this.assignedToUserId, task.assignedToUserId) &&
         Objects.equals(this.createdByUserId, task.createdByUserId) &&
+        Objects.equals(this.lastUpdatedByUserId, task.lastUpdatedByUserId) &&
         Objects.equals(this.contactId, task.contactId) &&
+        Objects.equals(this.opportunityId, task.opportunityId) &&
+        Objects.equals(this.accepted, task.accepted) &&
         Objects.equals(this.customFields, task.customFields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, title, description, type, priority, completed, createTime, modificationTime, completionTime, dueTime, remindTimeMins, assignedToUserId, createdByUserId, contactId, customFields);
+    return Objects.hash(id, title, description, type, priority, completed, createTime, modificationTime, completionTime, dueTime, remindTimeMins, assignedToUserId, createdByUserId, lastUpdatedByUserId, contactId, opportunityId, accepted, customFields);
   }
 
   @Override
@@ -613,7 +700,10 @@ public class Task implements Serializable {
     sb.append("    remindTimeMins: ").append(toIndentedString(remindTimeMins)).append("\n");
     sb.append("    assignedToUserId: ").append(toIndentedString(assignedToUserId)).append("\n");
     sb.append("    createdByUserId: ").append(toIndentedString(createdByUserId)).append("\n");
+    sb.append("    lastUpdatedByUserId: ").append(toIndentedString(lastUpdatedByUserId)).append("\n");
     sb.append("    contactId: ").append(toIndentedString(contactId)).append("\n");
+    sb.append("    opportunityId: ").append(toIndentedString(opportunityId)).append("\n");
+    sb.append("    accepted: ").append(toIndentedString(accepted)).append("\n");
     sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -694,8 +784,20 @@ public class Task implements Serializable {
               this.instance.createdByUserId = createdByUserId;
           return this;
         }
+            public Task.Builder lastUpdatedByUserId(String lastUpdatedByUserId) {
+              this.instance.lastUpdatedByUserId = lastUpdatedByUserId;
+          return this;
+        }
             public Task.Builder contactId(String contactId) {
               this.instance.contactId = contactId;
+          return this;
+        }
+            public Task.Builder opportunityId(String opportunityId) {
+              this.instance.opportunityId = opportunityId;
+          return this;
+        }
+            public Task.Builder accepted(Boolean accepted) {
+              this.instance.accepted = accepted;
           return this;
         }
             public Task.Builder customFields(List<CustomFieldValueObject> customFields) {
@@ -749,7 +851,10 @@ public class Task implements Serializable {
           .remindTimeMins(getRemindTimeMins())
           .assignedToUserId(getAssignedToUserId())
           .createdByUserId(getCreatedByUserId())
+          .lastUpdatedByUserId(getLastUpdatedByUserId())
           .contactId(getContactId())
+          .opportunityId(getOpportunityId())
+          .accepted(getAccepted())
           .customFields(getCustomFields());
       }
 }

@@ -4,6 +4,8 @@ import { PromiseMiddleware, Middleware, PromiseMiddlewareWrapper } from '../midd
 
 import { AchieveGoalRequest } from '../models/AchieveGoalRequest';
 import { AchieveGoalResponse } from '../models/AchieveGoalResponse';
+import { AchieveIntegrationsWordPressOptInOptionGoalRequest } from '../models/AchieveIntegrationsWordPressOptInOptionGoalRequest';
+import { AchieveWordPressOptInGoalResult } from '../models/AchieveWordPressOptInGoalResult';
 import { AddContactsToSequenceRequest } from '../models/AddContactsToSequenceRequest';
 import { AddContactsToSequenceResponse } from '../models/AddContactsToSequenceResponse';
 import { AddProductInterestRequest } from '../models/AddProductInterestRequest';
@@ -48,6 +50,7 @@ import { ApplyRemoveTagRequest } from '../models/ApplyRemoveTagRequest';
 import { ApplyTagsResponse } from '../models/ApplyTagsResponse';
 import { AssignAutomationCategoryRequest } from '../models/AssignAutomationCategoryRequest';
 import { AssignProductsRequest } from '../models/AssignProductsRequest';
+import { AssignedProducts } from '../models/AssignedProducts';
 import { Automation } from '../models/Automation';
 import { AutomationCategory } from '../models/AutomationCategory';
 import { AutomationLockStatus } from '../models/AutomationLockStatus';
@@ -180,6 +183,7 @@ import { ListAffiliatePaymentsResponse } from '../models/ListAffiliatePaymentsRe
 import { ListAffiliateReferralsResponse } from '../models/ListAffiliateReferralsResponse';
 import { ListAffiliateSummariesResponse } from '../models/ListAffiliateSummariesResponse';
 import { ListAffiliatesResponse } from '../models/ListAffiliatesResponse';
+import { ListAssignedProductsResponse } from '../models/ListAssignedProductsResponse';
 import { ListAutomationCategoryResponse } from '../models/ListAutomationCategoryResponse';
 import { ListAutomationIdsResponse } from '../models/ListAutomationIdsResponse';
 import { ListAutomationResponse } from '../models/ListAutomationResponse';
@@ -235,6 +239,7 @@ import { ListTransactions } from '../models/ListTransactions';
 import { ListUserGroupsResponse } from '../models/ListUserGroupsResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { ListWebformsResponse } from '../models/ListWebformsResponse';
+import { ListWordPressOptInOptionsResponse } from '../models/ListWordPressOptInOptionsResponse';
 import { ModelError } from '../models/ModelError';
 import { Note } from '../models/Note';
 import { NoteTemplate } from '../models/NoteTemplate';
@@ -777,10 +782,14 @@ export class PromiseAffiliateApi {
      * Retrieves all referrals belonging to the given affiliate
      * Retrieve Affiliate Referrals
      * @param affiliateId
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;) 
+     * @param [pageToken] Page token
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
      */
-    public getReferralsByAffiliateIdWithHttpInfo(affiliateId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAffiliateReferralsResponse>> {
+    public getReferralsByAffiliateIdWithHttpInfo(affiliateId: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAffiliateReferralsResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getReferralsByAffiliateIdWithHttpInfo(affiliateId, observableOptions);
+        const result = this.api.getReferralsByAffiliateIdWithHttpInfo(affiliateId, filter, pageToken, orderBy, pageSize, observableOptions);
         return result.toPromise();
     }
 
@@ -788,10 +797,14 @@ export class PromiseAffiliateApi {
      * Retrieves all referrals belonging to the given affiliate
      * Retrieve Affiliate Referrals
      * @param affiliateId
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;) 
+     * @param [pageToken] Page token
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
      */
-    public getReferralsByAffiliateId(affiliateId: string, _options?: PromiseConfigurationOptions): Promise<ListAffiliateReferralsResponse> {
+    public getReferralsByAffiliateId(affiliateId: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<ListAffiliateReferralsResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getReferralsByAffiliateId(affiliateId, observableOptions);
+        const result = this.api.getReferralsByAffiliateId(affiliateId, filter, pageToken, orderBy, pageSize, observableOptions);
         return result.toPromise();
     }
 
@@ -3182,6 +3195,30 @@ export class PromiseIntegrationsApi {
     }
 
     /**
+     * Achieves a WordPress Opt-In Option Goal
+     * Achieve a WordPress Opt-In Goal
+     * @param optionKey
+     * @param achieveIntegrationsWordPressOptInOptionGoalRequest
+     */
+    public achieveIntegrationsWordPressOptInGoalWithHttpInfo(optionKey: string, achieveIntegrationsWordPressOptInOptionGoalRequest: AchieveIntegrationsWordPressOptInOptionGoalRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AchieveWordPressOptInGoalResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.achieveIntegrationsWordPressOptInGoalWithHttpInfo(optionKey, achieveIntegrationsWordPressOptInOptionGoalRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Achieves a WordPress Opt-In Option Goal
+     * Achieve a WordPress Opt-In Goal
+     * @param optionKey
+     * @param achieveIntegrationsWordPressOptInOptionGoalRequest
+     */
+    public achieveIntegrationsWordPressOptInGoal(optionKey: string, achieveIntegrationsWordPressOptInOptionGoalRequest: AchieveIntegrationsWordPressOptInOptionGoalRequest, _options?: PromiseConfigurationOptions): Promise<AchieveWordPressOptInGoalResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.achieveIntegrationsWordPressOptInGoal(optionKey, achieveIntegrationsWordPressOptInOptionGoalRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Adds a value to the list of WordPress Opt-In Options Available
      * Add a WordPress Opt-In Option
      * @param createIntegrationsWordPressOptInOption
@@ -3222,6 +3259,26 @@ export class PromiseIntegrationsApi {
     public deleteIntegrationsWordPressOptIn(optionKey: string, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteIntegrationsWordPressOptIn(optionKey, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves the list of WordPress Opt-In Options available
+     * List WordPress Opt-In Options
+     */
+    public listIntegrationsWordPressOptInOptionsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ListWordPressOptInOptionsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listIntegrationsWordPressOptInOptionsWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves the list of WordPress Opt-In Options available
+     * List WordPress Opt-In Options
+     */
+    public listIntegrationsWordPressOptInOptions(_options?: PromiseConfigurationOptions): Promise<ListWordPressOptInOptionsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listIntegrationsWordPressOptInOptions(observableOptions);
         return result.toPromise();
     }
 
@@ -4146,6 +4203,36 @@ export class PromiseNoteApi {
     }
 
     /**
+     * Retrieves a list of all notes
+     * List All Notes
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;assigned_to_user_id%3D%3D42&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * @param [pageToken] Page token
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [fields] Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+     */
+    public listAllNotesWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListNotesResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAllNotesWithHttpInfo(filter, pageToken, orderBy, pageSize, fields, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of all notes
+     * List All Notes
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;assigned_to_user_id%3D%3D42&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * @param [pageToken] Page token
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [fields] Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+     */
+    public listAllNotes(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<ListNotesResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAllNotes(filter, pageToken, orderBy, pageSize, fields, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a list of Note Templates
      * Retrieve Note Templates
      * @param [filter] Search filter to apply to results
@@ -4174,10 +4261,10 @@ export class PromiseNoteApi {
     }
 
     /**
-     * Retrieves a list of Notes
+     * Retrieves a list of Notes for a given contact
      * List Notes
      * @param contactId
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;assigned_to_user_id%3D%3DUserId&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;assigned_to_user_id%3D%3D42&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -4190,10 +4277,10 @@ export class PromiseNoteApi {
     }
 
     /**
-     * Retrieves a list of Notes
+     * Retrieves a list of Notes for a given contact
      * List Notes
      * @param contactId
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;assigned_to_user_id%3D%3DUserId&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;assigned_to_user_id%3D%3D42&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -4509,6 +4596,26 @@ export class PromiseOpportunityApi {
     public listOpportunityStages(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListOpportunityStagesResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listOpportunityStages(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Get the custom fields for the Opportunity object
+     * Retrieve Opportunity Custom Field Model
+     */
+    public retrieveOpportunityCustomFieldModelWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.retrieveOpportunityCustomFieldModelWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Get the custom fields for the Opportunity object
+     * Retrieve Opportunity Custom Field Model
+     */
+    public retrieveOpportunityCustomFieldModel(_options?: PromiseConfigurationOptions): Promise<ObjectModel> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.retrieveOpportunityCustomFieldModel(observableOptions);
         return result.toPromise();
     }
 
@@ -5502,6 +5609,34 @@ export class PromiseProductCategoriesApi {
     public getProductCategory(categoryId: string, _options?: PromiseConfigurationOptions): Promise<ProductCategory> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getProductCategory(categoryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Products assigned to Product Categories
+     * List Assigned Products to Categories
+     * @param [filter] Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60; 
+     * @param [pageToken] Page token
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     */
+    public listAssignedProductsWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAssignedProductsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAssignedProductsWithHttpInfo(filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Products assigned to Product Categories
+     * List Assigned Products to Categories
+     * @param [filter] Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60; 
+     * @param [pageToken] Page token
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     */
+    public listAssignedProducts(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<ListAssignedProductsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAssignedProducts(filter, pageToken, orderBy, pageSize, observableOptions);
         return result.toPromise();
     }
 
@@ -7723,7 +7858,7 @@ export class PromiseTaskApi {
     /**
      * Retrieves a list of tasks based on the provided filter. Tasks which are not assigned to a User may be queried with user_id==UNASSIGNED.
      * List Tasks
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -7738,7 +7873,7 @@ export class PromiseTaskApi {
     /**
      * Retrieves a list of tasks based on the provided filter. Tasks which are not assigned to a User may be queried with user_id==UNASSIGNED.
      * List Tasks
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -7972,7 +8107,7 @@ export class PromiseUsersApi {
      * Retrieves a list of users
      * List Users
      * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (Boolean) &#x60;include_inactive&#x60; - (Boolean) &#x60;include_partners&#x60; - (Set[String]) &#x60;user_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;user_ids%3D%3D123%3Bgiven_name%3D%3DSmith&#x60; 
-     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;name&#x60; (sorts by family name / last name; uses User ID as tiebreaker for stable pagination)  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
@@ -7986,7 +8121,7 @@ export class PromiseUsersApi {
      * Retrieves a list of users
      * List Users
      * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (Boolean) &#x60;include_inactive&#x60; - (Boolean) &#x60;include_partners&#x60; - (Set[String]) &#x60;user_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;user_ids%3D%3D123%3Bgiven_name%3D%3DSmith&#x60; 
-     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;name&#x60; (sorts by family name / last name; uses User ID as tiebreaker for stable pagination)  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */

@@ -10,6 +10,7 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**deleteImageFile()**](ProductCategoriesApi.md#deleteImageFile) | **DELETE** /rest/v2/productCategories/{category_id}/images | Delete the image from a product category |
 | [**deleteProductCategory()**](ProductCategoriesApi.md#deleteProductCategory) | **DELETE** /rest/v2/productCategories/{category_id} | Delete a Product Category |
 | [**getProductCategory()**](ProductCategoriesApi.md#getProductCategory) | **GET** /rest/v2/productCategories/{category_id} | Get a Product Category |
+| [**listAssignedProducts()**](ProductCategoriesApi.md#listAssignedProducts) | **GET** /rest/v2/productCategories/assignedProducts | List Assigned Products to Categories |
 | [**listProductCategories()**](ProductCategoriesApi.md#listProductCategories) | **GET** /rest/v2/productCategories | List all Product Categories |
 | [**updateProductCategory()**](ProductCategoriesApi.md#updateProductCategory) | **PATCH** /rest/v2/productCategories/{category_id} | Update a Product Category |
 
@@ -354,6 +355,71 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\ProductCategory**](../Model/ProductCategory.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAssignedProducts()`
+
+```php
+listAssignedProducts($filter, $page_token, $order_by, $page_size): \Keap\Core\V2\Model\ListAssignedProductsResponse
+```
+
+List Assigned Products to Categories
+
+Retrieves a list of Products assigned to Product Categories
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\ProductCategoriesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (List[String]) `product_ids` - (List[String]) `product_category_ids`
+$page_token = 'page_token_example'; // string | Page token
+$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `product_category_id`  One of the following directions: - `asc` - `desc`
+$page_size = 0; // int | Total number of items to return per page
+
+try {
+    $result = $apiInstance->listAssignedProducts($filter, $page_token, $order_by, $page_size);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ProductCategoriesApi->listAssignedProducts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **filter** | **string**| Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60; | [optional] |
+| **page_token** | **string**| Page token | [optional] |
+| **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **page_size** | **int**| Total number of items to return per page | [optional] |
+
+### Return type
+
+[**\Keap\Core\V2\Model\ListAssignedProductsResponse**](../Model/ListAssignedProductsResponse.md)
 
 ### Authorization
 

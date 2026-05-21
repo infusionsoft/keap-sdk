@@ -14,6 +14,7 @@
 |**fieldType** | [**FieldTypeEnum**](#FieldTypeEnum) |  |  [optional] |
 |**defaultValue** | **String** |  |  [optional] |
 |**groupId** | **String** |  |  [optional] |
+|**groupName** | **String** |  |  [optional] |
 |**fieldName** | **String** |  |  [optional] |
 
 

@@ -4,6 +4,8 @@ import type { Middleware } from '../middleware';
 
 import { AchieveGoalRequest } from '../models/AchieveGoalRequest';
 import { AchieveGoalResponse } from '../models/AchieveGoalResponse';
+import { AchieveIntegrationsWordPressOptInOptionGoalRequest } from '../models/AchieveIntegrationsWordPressOptInOptionGoalRequest';
+import { AchieveWordPressOptInGoalResult } from '../models/AchieveWordPressOptInGoalResult';
 import { AddContactsToSequenceRequest } from '../models/AddContactsToSequenceRequest';
 import { AddContactsToSequenceResponse } from '../models/AddContactsToSequenceResponse';
 import { AddProductInterestRequest } from '../models/AddProductInterestRequest';
@@ -48,6 +50,7 @@ import { ApplyRemoveTagRequest } from '../models/ApplyRemoveTagRequest';
 import { ApplyTagsResponse } from '../models/ApplyTagsResponse';
 import { AssignAutomationCategoryRequest } from '../models/AssignAutomationCategoryRequest';
 import { AssignProductsRequest } from '../models/AssignProductsRequest';
+import { AssignedProducts } from '../models/AssignedProducts';
 import { Automation } from '../models/Automation';
 import { AutomationCategory } from '../models/AutomationCategory';
 import { AutomationLockStatus } from '../models/AutomationLockStatus';
@@ -180,6 +183,7 @@ import { ListAffiliatePaymentsResponse } from '../models/ListAffiliatePaymentsRe
 import { ListAffiliateReferralsResponse } from '../models/ListAffiliateReferralsResponse';
 import { ListAffiliateSummariesResponse } from '../models/ListAffiliateSummariesResponse';
 import { ListAffiliatesResponse } from '../models/ListAffiliatesResponse';
+import { ListAssignedProductsResponse } from '../models/ListAssignedProductsResponse';
 import { ListAutomationCategoryResponse } from '../models/ListAutomationCategoryResponse';
 import { ListAutomationIdsResponse } from '../models/ListAutomationIdsResponse';
 import { ListAutomationResponse } from '../models/ListAutomationResponse';
@@ -235,6 +239,7 @@ import { ListTransactions } from '../models/ListTransactions';
 import { ListUserGroupsResponse } from '../models/ListUserGroupsResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { ListWebformsResponse } from '../models/ListWebformsResponse';
+import { ListWordPressOptInOptionsResponse } from '../models/ListWordPressOptInOptionsResponse';
 import { ModelError } from '../models/ModelError';
 import { Note } from '../models/Note';
 import { NoteTemplate } from '../models/NoteTemplate';
@@ -584,6 +589,36 @@ export interface AffiliateApiGetReferralsByAffiliateIdRequest {
      * @memberof AffiliateApigetReferralsByAffiliateId
      */
     affiliateId: string
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;) 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApigetReferralsByAffiliateId
+     */
+    filter?: string
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApigetReferralsByAffiliateId
+     */
+    pageToken?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApigetReferralsByAffiliateId
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 0
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof AffiliateApigetReferralsByAffiliateId
+     */
+    pageSize?: number
 }
 
 export interface AffiliateApiListAffiliateRequest {
@@ -1307,7 +1342,7 @@ export class ObjectAffiliateApi {
      * @param param the request object
      */
     public getReferralsByAffiliateIdWithHttpInfo(param: AffiliateApiGetReferralsByAffiliateIdRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListAffiliateReferralsResponse>> {
-        return this.api.getReferralsByAffiliateIdWithHttpInfo(param.affiliateId,  options).toPromise();
+        return this.api.getReferralsByAffiliateIdWithHttpInfo(param.affiliateId, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
     }
 
     /**
@@ -1316,7 +1351,7 @@ export class ObjectAffiliateApi {
      * @param param the request object
      */
     public getReferralsByAffiliateId(param: AffiliateApiGetReferralsByAffiliateIdRequest, options?: ConfigurationOptions): Promise<ListAffiliateReferralsResponse> {
-        return this.api.getReferralsByAffiliateId(param.affiliateId,  options).toPromise();
+        return this.api.getReferralsByAffiliateId(param.affiliateId, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
     }
 
     /**
@@ -4307,6 +4342,22 @@ export class ObjectFreeTrialDiscountsApi {
 import { ObservableIntegrationsApi } from "./ObservableAPI";
 import { IntegrationsApiRequestFactory, IntegrationsApiResponseProcessor} from "../apis/IntegrationsApi";
 
+export interface IntegrationsApiAchieveIntegrationsWordPressOptInGoalRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof IntegrationsApiachieveIntegrationsWordPressOptInGoal
+     */
+    optionKey: string
+    /**
+     * 
+     * @type AchieveIntegrationsWordPressOptInOptionGoalRequest
+     * @memberof IntegrationsApiachieveIntegrationsWordPressOptInGoal
+     */
+    achieveIntegrationsWordPressOptInOptionGoalRequest: AchieveIntegrationsWordPressOptInOptionGoalRequest
+}
+
 export interface IntegrationsApiAddIntegrationsWordPressOptInRequest {
     /**
      * 
@@ -4326,11 +4377,32 @@ export interface IntegrationsApiDeleteIntegrationsWordPressOptInRequest {
     optionKey: string
 }
 
+export interface IntegrationsApiListIntegrationsWordPressOptInOptionsRequest {
+}
+
 export class ObjectIntegrationsApi {
     private api: ObservableIntegrationsApi
 
     public constructor(configuration: Configuration, requestFactory?: IntegrationsApiRequestFactory, responseProcessor?: IntegrationsApiResponseProcessor) {
         this.api = new ObservableIntegrationsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Achieves a WordPress Opt-In Option Goal
+     * Achieve a WordPress Opt-In Goal
+     * @param param the request object
+     */
+    public achieveIntegrationsWordPressOptInGoalWithHttpInfo(param: IntegrationsApiAchieveIntegrationsWordPressOptInGoalRequest, options?: ConfigurationOptions): Promise<HttpInfo<AchieveWordPressOptInGoalResult>> {
+        return this.api.achieveIntegrationsWordPressOptInGoalWithHttpInfo(param.optionKey, param.achieveIntegrationsWordPressOptInOptionGoalRequest,  options).toPromise();
+    }
+
+    /**
+     * Achieves a WordPress Opt-In Option Goal
+     * Achieve a WordPress Opt-In Goal
+     * @param param the request object
+     */
+    public achieveIntegrationsWordPressOptInGoal(param: IntegrationsApiAchieveIntegrationsWordPressOptInGoalRequest, options?: ConfigurationOptions): Promise<AchieveWordPressOptInGoalResult> {
+        return this.api.achieveIntegrationsWordPressOptInGoal(param.optionKey, param.achieveIntegrationsWordPressOptInOptionGoalRequest,  options).toPromise();
     }
 
     /**
@@ -4367,6 +4439,24 @@ export class ObjectIntegrationsApi {
      */
     public deleteIntegrationsWordPressOptIn(param: IntegrationsApiDeleteIntegrationsWordPressOptInRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.deleteIntegrationsWordPressOptIn(param.optionKey,  options).toPromise();
+    }
+
+    /**
+     * Retrieves the list of WordPress Opt-In Options available
+     * List WordPress Opt-In Options
+     * @param param the request object
+     */
+    public listIntegrationsWordPressOptInOptionsWithHttpInfo(param: IntegrationsApiListIntegrationsWordPressOptInOptionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListWordPressOptInOptionsResponse>> {
+        return this.api.listIntegrationsWordPressOptInOptionsWithHttpInfo( options).toPromise();
+    }
+
+    /**
+     * Retrieves the list of WordPress Opt-In Options available
+     * List WordPress Opt-In Options
+     * @param param the request object
+     */
+    public listIntegrationsWordPressOptInOptions(param: IntegrationsApiListIntegrationsWordPressOptInOptionsRequest = {}, options?: ConfigurationOptions): Promise<ListWordPressOptInOptionsResponse> {
+        return this.api.listIntegrationsWordPressOptInOptions( options).toPromise();
     }
 
 }
@@ -5557,6 +5647,46 @@ export interface NoteApiGetNoteRequest {
     fields?: Array<string>
 }
 
+export interface NoteApiListAllNotesRequest {
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;assigned_to_user_id%3D%3D42&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof NoteApilistAllNotes
+     */
+    filter?: string
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof NoteApilistAllNotes
+     */
+    pageToken?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof NoteApilistAllNotes
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 0
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof NoteApilistAllNotes
+     */
+    pageSize?: number
+    /**
+     * Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof NoteApilistAllNotes
+     */
+    fields?: Array<string>
+}
+
 export interface NoteApiListNoteTemplatesRequest {
     /**
      * Search filter to apply to results
@@ -5599,7 +5729,7 @@ export interface NoteApiListNotesRequest {
      */
     contactId: string
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;assigned_to_user_id%3D%3DUserId&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;assigned_to_user_id%3D%3D42&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof NoteApilistNotes
@@ -5780,6 +5910,24 @@ export class ObjectNoteApi {
     }
 
     /**
+     * Retrieves a list of all notes
+     * List All Notes
+     * @param param the request object
+     */
+    public listAllNotesWithHttpInfo(param: NoteApiListAllNotesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListNotesResponse>> {
+        return this.api.listAllNotesWithHttpInfo(param.filter, param.pageToken, param.orderBy, param.pageSize, param.fields,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of all notes
+     * List All Notes
+     * @param param the request object
+     */
+    public listAllNotes(param: NoteApiListAllNotesRequest = {}, options?: ConfigurationOptions): Promise<ListNotesResponse> {
+        return this.api.listAllNotes(param.filter, param.pageToken, param.orderBy, param.pageSize, param.fields,  options).toPromise();
+    }
+
+    /**
      * Retrieves a list of Note Templates
      * Retrieve Note Templates
      * @param param the request object
@@ -5798,7 +5946,7 @@ export class ObjectNoteApi {
     }
 
     /**
-     * Retrieves a list of Notes
+     * Retrieves a list of Notes for a given contact
      * List Notes
      * @param param the request object
      */
@@ -5807,7 +5955,7 @@ export class ObjectNoteApi {
     }
 
     /**
-     * Retrieves a list of Notes
+     * Retrieves a list of Notes for a given contact
      * List Notes
      * @param param the request object
      */
@@ -6012,6 +6160,9 @@ export interface OpportunityApiListOpportunityStagesRequest {
      * @memberof OpportunityApilistOpportunityStages
      */
     pageToken?: string
+}
+
+export interface OpportunityApiRetrieveOpportunityCustomFieldModelRequest {
 }
 
 export interface OpportunityApiUpdateOpportunityRequest {
@@ -6250,6 +6401,24 @@ export class ObjectOpportunityApi {
      */
     public listOpportunityStages(param: OpportunityApiListOpportunityStagesRequest = {}, options?: ConfigurationOptions): Promise<ListOpportunityStagesResponse> {
         return this.api.listOpportunityStages(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Get the custom fields for the Opportunity object
+     * Retrieve Opportunity Custom Field Model
+     * @param param the request object
+     */
+    public retrieveOpportunityCustomFieldModelWithHttpInfo(param: OpportunityApiRetrieveOpportunityCustomFieldModelRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
+        return this.api.retrieveOpportunityCustomFieldModelWithHttpInfo( options).toPromise();
+    }
+
+    /**
+     * Get the custom fields for the Opportunity object
+     * Retrieve Opportunity Custom Field Model
+     * @param param the request object
+     */
+    public retrieveOpportunityCustomFieldModel(param: OpportunityApiRetrieveOpportunityCustomFieldModelRequest = {}, options?: ConfigurationOptions): Promise<ObjectModel> {
+        return this.api.retrieveOpportunityCustomFieldModel( options).toPromise();
     }
 
     /**
@@ -7450,6 +7619,39 @@ export interface ProductCategoriesApiGetProductCategoryRequest {
     categoryId: string
 }
 
+export interface ProductCategoriesApiListAssignedProductsRequest {
+    /**
+     * Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductCategoriesApilistAssignedProducts
+     */
+    filter?: string
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductCategoriesApilistAssignedProducts
+     */
+    pageToken?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductCategoriesApilistAssignedProducts
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 0
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof ProductCategoriesApilistAssignedProducts
+     */
+    pageSize?: number
+}
+
 export interface ProductCategoriesApiListProductCategoriesRequest {
     /**
      * Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;name&#x60; - Wildcard matching allowed - (Number) &#x60;product_category_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;,&#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D29&#x60; - &#x60;filter&#x3D;name%3D%3DTestSearch&#x60; - &#x60;filter&#x3D;name%3D%3DElec*&#x60; (starts with \&quot;Elec\&quot;) - &#x60;filter&#x3D;product_category_id&gt;5&#x60; (category ID greater than 5) - &#x60;filter&#x3D;product_category_id&gt;&#x3D;10&#x60; (category ID greater than or equal to 10) - &#x60;filter&#x3D;product_category_id%3D%3D42&#x60; (category ID equals 42) - &#x60;filter&#x3D;name%3D%3DElec*%3Bproduct_category_id&gt;5&#x60; (multiple filters combined) 
@@ -7619,6 +7821,24 @@ export class ObjectProductCategoriesApi {
      */
     public getProductCategory(param: ProductCategoriesApiGetProductCategoryRequest, options?: ConfigurationOptions): Promise<ProductCategory> {
         return this.api.getProductCategory(param.categoryId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Products assigned to Product Categories
+     * List Assigned Products to Categories
+     * @param param the request object
+     */
+    public listAssignedProductsWithHttpInfo(param: ProductCategoriesApiListAssignedProductsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListAssignedProductsResponse>> {
+        return this.api.listAssignedProductsWithHttpInfo(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Products assigned to Product Categories
+     * List Assigned Products to Categories
+     * @param param the request object
+     */
+    public listAssignedProducts(param: ProductCategoriesApiListAssignedProductsRequest = {}, options?: ConfigurationOptions): Promise<ListAssignedProductsResponse> {
+        return this.api.listAssignedProducts(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
     }
 
     /**
@@ -10541,7 +10761,7 @@ export interface TaskApiGetTaskRequest {
 
 export interface TaskApiListTasksRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof TaskApilistTasks
@@ -10902,7 +11122,7 @@ export interface UsersApiListPaginatedUsersRequest {
      */
     filter?: string
     /**
-     * Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;name&#x60; (sorts by family name / last name; uses User ID as tiebreaker for stable pagination)  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof UsersApilistPaginatedUsers

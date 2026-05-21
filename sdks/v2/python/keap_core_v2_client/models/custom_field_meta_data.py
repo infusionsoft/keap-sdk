@@ -34,9 +34,10 @@ class CustomFieldMetaData(BaseModel):
     field_type: Optional[StrictStr] = None
     default_value: Optional[StrictStr] = None
     group_id: Optional[StrictStr] = None
+    group_name: Optional[StrictStr] = None
     field_name: Optional[StrictStr] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "label", "options", "record_type", "field_type", "default_value", "group_id", "field_name"]
+    __properties: ClassVar[List[str]] = ["id", "label", "options", "record_type", "field_type", "default_value", "group_id", "group_name", "field_name"]
 
     @field_validator('record_type')
     def record_type_validate_enum(cls, value):
@@ -130,6 +131,7 @@ class CustomFieldMetaData(BaseModel):
             "field_type": obj.get("field_type"),
             "default_value": obj.get("default_value"),
             "group_id": obj.get("group_id"),
+            "group_name": obj.get("group_name"),
             "field_name": obj.get("field_name")
         })
         # store additional fields in additional_properties

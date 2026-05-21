@@ -29,6 +29,31 @@ namespace Keap.Core.V2.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Achieve a WordPress Opt-In Goal
+        /// </summary>
+        /// <remarks>
+        /// Achieves a WordPress Opt-In Option Goal
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="optionKey"></param>
+        /// <param name="achieveIntegrationsWordPressOptInOptionGoalRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>AchieveWordPressOptInGoalResult</returns>
+        AchieveWordPressOptInGoalResult AchieveIntegrationsWordPressOptInGoal(string optionKey, AchieveIntegrationsWordPressOptInOptionGoalRequest achieveIntegrationsWordPressOptInOptionGoalRequest, int operationIndex = 0);
+
+        /// <summary>
+        /// Achieve a WordPress Opt-In Goal
+        /// </summary>
+        /// <remarks>
+        /// Achieves a WordPress Opt-In Option Goal
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="optionKey"></param>
+        /// <param name="achieveIntegrationsWordPressOptInOptionGoalRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of AchieveWordPressOptInGoalResult</returns>
+        ApiResponse<AchieveWordPressOptInGoalResult> AchieveIntegrationsWordPressOptInGoalWithHttpInfo(string optionKey, AchieveIntegrationsWordPressOptInOptionGoalRequest achieveIntegrationsWordPressOptInOptionGoalRequest, int operationIndex = 0);
+        /// <summary>
         /// Add a WordPress Opt-In Option
         /// </summary>
         /// <remarks>
@@ -74,6 +99,27 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteIntegrationsWordPressOptInWithHttpInfo(string optionKey, int operationIndex = 0);
+        /// <summary>
+        /// List WordPress Opt-In Options
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the list of WordPress Opt-In Options available
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ListWordPressOptInOptionsResponse</returns>
+        ListWordPressOptInOptionsResponse ListIntegrationsWordPressOptInOptions(int operationIndex = 0);
+
+        /// <summary>
+        /// List WordPress Opt-In Options
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the list of WordPress Opt-In Options available
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ListWordPressOptInOptionsResponse</returns>
+        ApiResponse<ListWordPressOptInOptionsResponse> ListIntegrationsWordPressOptInOptionsWithHttpInfo(int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -83,6 +129,33 @@ namespace Keap.Core.V2.Api
     public interface IIntegrationsApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
+        /// <summary>
+        /// Achieve a WordPress Opt-In Goal
+        /// </summary>
+        /// <remarks>
+        /// Achieves a WordPress Opt-In Option Goal
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="optionKey"></param>
+        /// <param name="achieveIntegrationsWordPressOptInOptionGoalRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AchieveWordPressOptInGoalResult</returns>
+        System.Threading.Tasks.Task<AchieveWordPressOptInGoalResult> AchieveIntegrationsWordPressOptInGoalAsync(string optionKey, AchieveIntegrationsWordPressOptInOptionGoalRequest achieveIntegrationsWordPressOptInOptionGoalRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Achieve a WordPress Opt-In Goal
+        /// </summary>
+        /// <remarks>
+        /// Achieves a WordPress Opt-In Option Goal
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="optionKey"></param>
+        /// <param name="achieveIntegrationsWordPressOptInOptionGoalRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AchieveWordPressOptInGoalResult)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AchieveWordPressOptInGoalResult>> AchieveIntegrationsWordPressOptInGoalWithHttpInfoAsync(string optionKey, AchieveIntegrationsWordPressOptInOptionGoalRequest achieveIntegrationsWordPressOptInOptionGoalRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Add a WordPress Opt-In Option
         /// </summary>
@@ -133,6 +206,29 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteIntegrationsWordPressOptInWithHttpInfoAsync(string optionKey, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// List WordPress Opt-In Options
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the list of WordPress Opt-In Options available
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWordPressOptInOptionsResponse</returns>
+        System.Threading.Tasks.Task<ListWordPressOptInOptionsResponse> ListIntegrationsWordPressOptInOptionsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// List WordPress Opt-In Options
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the list of WordPress Opt-In Options available
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWordPressOptInOptionsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListWordPressOptInOptionsResponse>> ListIntegrationsWordPressOptInOptionsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -251,6 +347,203 @@ namespace Keap.Core.V2.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
+        }
+
+        /// <summary>
+        /// Achieve a WordPress Opt-In Goal Achieves a WordPress Opt-In Option Goal
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="optionKey"></param>
+        /// <param name="achieveIntegrationsWordPressOptInOptionGoalRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>AchieveWordPressOptInGoalResult</returns>
+        public AchieveWordPressOptInGoalResult AchieveIntegrationsWordPressOptInGoal(string optionKey, AchieveIntegrationsWordPressOptInOptionGoalRequest achieveIntegrationsWordPressOptInOptionGoalRequest, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<AchieveWordPressOptInGoalResult> localVarResponse = AchieveIntegrationsWordPressOptInGoalWithHttpInfo(optionKey, achieveIntegrationsWordPressOptInOptionGoalRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Achieve a WordPress Opt-In Goal Achieves a WordPress Opt-In Option Goal
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="optionKey"></param>
+        /// <param name="achieveIntegrationsWordPressOptInOptionGoalRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of AchieveWordPressOptInGoalResult</returns>
+        public Keap.Core.V2.Client.ApiResponse<AchieveWordPressOptInGoalResult> AchieveIntegrationsWordPressOptInGoalWithHttpInfo(string optionKey, AchieveIntegrationsWordPressOptInOptionGoalRequest achieveIntegrationsWordPressOptInOptionGoalRequest, int operationIndex = 0)
+        {
+            // verify the required parameter 'optionKey' is set
+            if (optionKey == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'optionKey' when calling IntegrationsApi->AchieveIntegrationsWordPressOptInGoal");
+            }
+
+            // verify the required parameter 'achieveIntegrationsWordPressOptInOptionGoalRequest' is set
+            if (achieveIntegrationsWordPressOptInOptionGoalRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'achieveIntegrationsWordPressOptInOptionGoalRequest' when calling IntegrationsApi->AchieveIntegrationsWordPressOptInGoal");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("option_key", Keap.Core.V2.Client.ClientUtils.ParameterToString(optionKey)); // path parameter
+            localVarRequestOptions.Data = achieveIntegrationsWordPressOptInOptionGoalRequest;
+
+            localVarRequestOptions.Operation = "IntegrationsApi.AchieveIntegrationsWordPressOptInGoal";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<AchieveWordPressOptInGoalResult>("/rest/v2/integrations/wordpress/options/{option_key}:achieve", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("AchieveIntegrationsWordPressOptInGoal", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Achieve a WordPress Opt-In Goal Achieves a WordPress Opt-In Option Goal
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="optionKey"></param>
+        /// <param name="achieveIntegrationsWordPressOptInOptionGoalRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AchieveWordPressOptInGoalResult</returns>
+        public async System.Threading.Tasks.Task<AchieveWordPressOptInGoalResult> AchieveIntegrationsWordPressOptInGoalAsync(string optionKey, AchieveIntegrationsWordPressOptInOptionGoalRequest achieveIntegrationsWordPressOptInOptionGoalRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<AchieveWordPressOptInGoalResult> localVarResponse = await AchieveIntegrationsWordPressOptInGoalWithHttpInfoAsync(optionKey, achieveIntegrationsWordPressOptInOptionGoalRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Achieve a WordPress Opt-In Goal Achieves a WordPress Opt-In Option Goal
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="optionKey"></param>
+        /// <param name="achieveIntegrationsWordPressOptInOptionGoalRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AchieveWordPressOptInGoalResult)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<AchieveWordPressOptInGoalResult>> AchieveIntegrationsWordPressOptInGoalWithHttpInfoAsync(string optionKey, AchieveIntegrationsWordPressOptInOptionGoalRequest achieveIntegrationsWordPressOptInOptionGoalRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'optionKey' is set
+            if (optionKey == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'optionKey' when calling IntegrationsApi->AchieveIntegrationsWordPressOptInGoal");
+            }
+
+            // verify the required parameter 'achieveIntegrationsWordPressOptInOptionGoalRequest' is set
+            if (achieveIntegrationsWordPressOptInOptionGoalRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'achieveIntegrationsWordPressOptInOptionGoalRequest' when calling IntegrationsApi->AchieveIntegrationsWordPressOptInGoal");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("option_key", Keap.Core.V2.Client.ClientUtils.ParameterToString(optionKey)); // path parameter
+            localVarRequestOptions.Data = achieveIntegrationsWordPressOptInOptionGoalRequest;
+
+            localVarRequestOptions.Operation = "IntegrationsApi.AchieveIntegrationsWordPressOptInGoal";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<AchieveWordPressOptInGoalResult>("/rest/v2/integrations/wordpress/options/{option_key}:achieve", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("AchieveIntegrationsWordPressOptInGoal", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
         }
 
         /// <summary>
@@ -598,6 +891,165 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DeleteIntegrationsWordPressOptIn", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List WordPress Opt-In Options Retrieves the list of WordPress Opt-In Options available
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ListWordPressOptInOptionsResponse</returns>
+        public ListWordPressOptInOptionsResponse ListIntegrationsWordPressOptInOptions(int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<ListWordPressOptInOptionsResponse> localVarResponse = ListIntegrationsWordPressOptInOptionsWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List WordPress Opt-In Options Retrieves the list of WordPress Opt-In Options available
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ListWordPressOptInOptionsResponse</returns>
+        public Keap.Core.V2.Client.ApiResponse<ListWordPressOptInOptionsResponse> ListIntegrationsWordPressOptInOptionsWithHttpInfo(int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            localVarRequestOptions.Operation = "IntegrationsApi.ListIntegrationsWordPressOptInOptions";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListWordPressOptInOptionsResponse>("/rest/v2/integrations/wordpress/options", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListIntegrationsWordPressOptInOptions", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List WordPress Opt-In Options Retrieves the list of WordPress Opt-In Options available
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWordPressOptInOptionsResponse</returns>
+        public async System.Threading.Tasks.Task<ListWordPressOptInOptionsResponse> ListIntegrationsWordPressOptInOptionsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<ListWordPressOptInOptionsResponse> localVarResponse = await ListIntegrationsWordPressOptInOptionsWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List WordPress Opt-In Options Retrieves the list of WordPress Opt-In Options available
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWordPressOptInOptionsResponse)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ListWordPressOptInOptionsResponse>> ListIntegrationsWordPressOptInOptionsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            localVarRequestOptions.Operation = "IntegrationsApi.ListIntegrationsWordPressOptInOptions";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListWordPressOptInOptionsResponse>("/rest/v2/integrations/wordpress/options", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListIntegrationsWordPressOptInOptions", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

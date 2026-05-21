@@ -64,6 +64,7 @@ class CustomFieldMetaData implements ModelInterface, ArrayAccess, \JsonSerializa
         'field_type' => 'string',
         'default_value' => 'string',
         'group_id' => 'string',
+        'group_name' => 'string',
         'field_name' => 'string'
     ];
 
@@ -82,6 +83,7 @@ class CustomFieldMetaData implements ModelInterface, ArrayAccess, \JsonSerializa
         'field_type' => null,
         'default_value' => null,
         'group_id' => null,
+        'group_name' => null,
         'field_name' => null
     ];
 
@@ -98,6 +100,7 @@ class CustomFieldMetaData implements ModelInterface, ArrayAccess, \JsonSerializa
         'field_type' => false,
         'default_value' => false,
         'group_id' => false,
+        'group_name' => false,
         'field_name' => false
     ];
 
@@ -194,6 +197,7 @@ class CustomFieldMetaData implements ModelInterface, ArrayAccess, \JsonSerializa
         'field_type' => 'field_type',
         'default_value' => 'default_value',
         'group_id' => 'group_id',
+        'group_name' => 'group_name',
         'field_name' => 'field_name'
     ];
 
@@ -210,6 +214,7 @@ class CustomFieldMetaData implements ModelInterface, ArrayAccess, \JsonSerializa
         'field_type' => 'setFieldType',
         'default_value' => 'setDefaultValue',
         'group_id' => 'setGroupId',
+        'group_name' => 'setGroupName',
         'field_name' => 'setFieldName'
     ];
 
@@ -226,6 +231,7 @@ class CustomFieldMetaData implements ModelInterface, ArrayAccess, \JsonSerializa
         'field_type' => 'getFieldType',
         'default_value' => 'getDefaultValue',
         'group_id' => 'getGroupId',
+        'group_name' => 'getGroupName',
         'field_name' => 'getFieldName'
     ];
 
@@ -377,6 +383,7 @@ class CustomFieldMetaData implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('field_type', $data ?? [], null);
         $this->setIfExists('default_value', $data ?? [], null);
         $this->setIfExists('group_id', $data ?? [], null);
+        $this->setIfExists('group_name', $data ?? [], null);
         $this->setIfExists('field_name', $data ?? [], null);
     }
 
@@ -645,6 +652,33 @@ class CustomFieldMetaData implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable group_id cannot be null');
         }
         $this->container['group_id'] = $group_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_name
+     *
+     * @return string|null
+     */
+    public function getGroupName()
+    {
+        return $this->container['group_name'];
+    }
+
+    /**
+     * Sets group_name
+     *
+     * @param string|null $group_name group_name
+     *
+     * @return self
+     */
+    public function setGroupName($group_name)
+    {
+        if (is_null($group_name)) {
+            throw new \InvalidArgumentException('non-nullable group_name cannot be null');
+        }
+        $this->container['group_name'] = $group_name;
 
         return $this;
     }

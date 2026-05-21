@@ -22,6 +22,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**listOpportunitiesWithHttpInfo**](OpportunityApi.md#listOpportunitiesWithHttpInfo) | **GET** /rest/v2/opportunities | List Opportunities |
 | [**listOpportunityStages**](OpportunityApi.md#listOpportunityStages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages |
 | [**listOpportunityStagesWithHttpInfo**](OpportunityApi.md#listOpportunityStagesWithHttpInfo) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages |
+| [**retrieveOpportunityCustomFieldModel**](OpportunityApi.md#retrieveOpportunityCustomFieldModel) | **GET** /rest/v2/opportunities/model | Retrieve Opportunity Custom Field Model |
+| [**retrieveOpportunityCustomFieldModelWithHttpInfo**](OpportunityApi.md#retrieveOpportunityCustomFieldModelWithHttpInfo) | **GET** /rest/v2/opportunities/model | Retrieve Opportunity Custom Field Model |
 | [**updateOpportunity**](OpportunityApi.md#updateOpportunity) | **PATCH** /rest/v2/opportunities/{opportunity_id} | Update an opportunity |
 | [**updateOpportunityWithHttpInfo**](OpportunityApi.md#updateOpportunityWithHttpInfo) | **PATCH** /rest/v2/opportunities/{opportunity_id} | Update an opportunity |
 | [**updateOpportunityCustomField**](OpportunityApi.md#updateOpportunityCustomField) | **PATCH** /rest/v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field |
@@ -1470,6 +1472,158 @@ public class Example {
 ### Return type
 
 ApiResponse<[**ListOpportunityStagesResponse**](ListOpportunityStagesResponse.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## retrieveOpportunityCustomFieldModel
+
+> ObjectModel retrieveOpportunityCustomFieldModel()
+
+Retrieve Opportunity Custom Field Model
+
+Get the custom fields for the Opportunity object
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        try {
+            ObjectModel result = apiInstance.retrieveOpportunityCustomFieldModel();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#retrieveOpportunityCustomFieldModel");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ObjectModel**](ObjectModel.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## retrieveOpportunityCustomFieldModelWithHttpInfo
+
+> ApiResponse<ObjectModel> retrieveOpportunityCustomFieldModel retrieveOpportunityCustomFieldModelWithHttpInfo()
+
+Retrieve Opportunity Custom Field Model
+
+Get the custom fields for the Opportunity object
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        try {
+            ApiResponse<ObjectModel> response = apiInstance.retrieveOpportunityCustomFieldModelWithHttpInfo();
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#retrieveOpportunityCustomFieldModel");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+ApiResponse<[**ObjectModel**](ObjectModel.md)>
 
 
 ### Authorization

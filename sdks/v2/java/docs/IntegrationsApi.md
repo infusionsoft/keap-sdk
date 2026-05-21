@@ -4,11 +4,179 @@ All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**achieveIntegrationsWordPressOptInGoal**](IntegrationsApi.md#achieveIntegrationsWordPressOptInGoal) | **POST** /rest/v2/integrations/wordpress/options/{option_key}:achieve | Achieve a WordPress Opt-In Goal |
+| [**achieveIntegrationsWordPressOptInGoalWithHttpInfo**](IntegrationsApi.md#achieveIntegrationsWordPressOptInGoalWithHttpInfo) | **POST** /rest/v2/integrations/wordpress/options/{option_key}:achieve | Achieve a WordPress Opt-In Goal |
 | [**addIntegrationsWordPressOptIn**](IntegrationsApi.md#addIntegrationsWordPressOptIn) | **POST** /rest/v2/integrations/wordpress/options | Add a WordPress Opt-In Option |
 | [**addIntegrationsWordPressOptInWithHttpInfo**](IntegrationsApi.md#addIntegrationsWordPressOptInWithHttpInfo) | **POST** /rest/v2/integrations/wordpress/options | Add a WordPress Opt-In Option |
 | [**deleteIntegrationsWordPressOptIn**](IntegrationsApi.md#deleteIntegrationsWordPressOptIn) | **DELETE** /rest/v2/integrations/wordpress/options/{option_key} | Delete a WordPress Opt-In Option |
 | [**deleteIntegrationsWordPressOptInWithHttpInfo**](IntegrationsApi.md#deleteIntegrationsWordPressOptInWithHttpInfo) | **DELETE** /rest/v2/integrations/wordpress/options/{option_key} | Delete a WordPress Opt-In Option |
+| [**listIntegrationsWordPressOptInOptions**](IntegrationsApi.md#listIntegrationsWordPressOptInOptions) | **GET** /rest/v2/integrations/wordpress/options | List WordPress Opt-In Options |
+| [**listIntegrationsWordPressOptInOptionsWithHttpInfo**](IntegrationsApi.md#listIntegrationsWordPressOptInOptionsWithHttpInfo) | **GET** /rest/v2/integrations/wordpress/options | List WordPress Opt-In Options |
 
+
+
+## achieveIntegrationsWordPressOptInGoal
+
+> AchieveWordPressOptInGoalResult achieveIntegrationsWordPressOptInGoal(optionKey, achieveIntegrationsWordPressOptInOptionGoalRequest)
+
+Achieve a WordPress Opt-In Goal
+
+Achieves a WordPress Opt-In Option Goal
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.IntegrationsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
+        String optionKey = "optionKey_example"; // String | 
+        AchieveIntegrationsWordPressOptInOptionGoalRequest achieveIntegrationsWordPressOptInOptionGoalRequest = new AchieveIntegrationsWordPressOptInOptionGoalRequest(); // AchieveIntegrationsWordPressOptInOptionGoalRequest | 
+        try {
+            AchieveWordPressOptInGoalResult result = apiInstance.achieveIntegrationsWordPressOptInGoal(optionKey, achieveIntegrationsWordPressOptInOptionGoalRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IntegrationsApi#achieveIntegrationsWordPressOptInGoal");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **optionKey** | **String**|  | |
+| **achieveIntegrationsWordPressOptInOptionGoalRequest** | [**AchieveIntegrationsWordPressOptInOptionGoalRequest**](AchieveIntegrationsWordPressOptInOptionGoalRequest.md)|  | |
+
+### Return type
+
+[**AchieveWordPressOptInGoalResult**](AchieveWordPressOptInGoalResult.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **202** | Accepted |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## achieveIntegrationsWordPressOptInGoalWithHttpInfo
+
+> ApiResponse<AchieveWordPressOptInGoalResult> achieveIntegrationsWordPressOptInGoal achieveIntegrationsWordPressOptInGoalWithHttpInfo(optionKey, achieveIntegrationsWordPressOptInOptionGoalRequest)
+
+Achieve a WordPress Opt-In Goal
+
+Achieves a WordPress Opt-In Option Goal
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.IntegrationsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
+        String optionKey = "optionKey_example"; // String | 
+        AchieveIntegrationsWordPressOptInOptionGoalRequest achieveIntegrationsWordPressOptInOptionGoalRequest = new AchieveIntegrationsWordPressOptInOptionGoalRequest(); // AchieveIntegrationsWordPressOptInOptionGoalRequest | 
+        try {
+            ApiResponse<AchieveWordPressOptInGoalResult> response = apiInstance.achieveIntegrationsWordPressOptInGoalWithHttpInfo(optionKey, achieveIntegrationsWordPressOptInOptionGoalRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IntegrationsApi#achieveIntegrationsWordPressOptInGoal");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **optionKey** | **String**|  | |
+| **achieveIntegrationsWordPressOptInOptionGoalRequest** | [**AchieveIntegrationsWordPressOptInOptionGoalRequest**](AchieveIntegrationsWordPressOptInOptionGoalRequest.md)|  | |
+
+### Return type
+
+ApiResponse<[**AchieveWordPressOptInGoalResult**](AchieveWordPressOptInGoalResult.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **202** | Accepted |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## addIntegrationsWordPressOptIn
@@ -319,6 +487,158 @@ ApiResponse<Void>
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## listIntegrationsWordPressOptInOptions
+
+> ListWordPressOptInOptionsResponse listIntegrationsWordPressOptInOptions()
+
+List WordPress Opt-In Options
+
+Retrieves the list of WordPress Opt-In Options available
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.IntegrationsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
+        try {
+            ListWordPressOptInOptionsResponse result = apiInstance.listIntegrationsWordPressOptInOptions();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IntegrationsApi#listIntegrationsWordPressOptInOptions");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ListWordPressOptInOptionsResponse**](ListWordPressOptInOptionsResponse.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## listIntegrationsWordPressOptInOptionsWithHttpInfo
+
+> ApiResponse<ListWordPressOptInOptionsResponse> listIntegrationsWordPressOptInOptions listIntegrationsWordPressOptInOptionsWithHttpInfo()
+
+List WordPress Opt-In Options
+
+Retrieves the list of WordPress Opt-In Options available
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.IntegrationsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
+        try {
+            ApiResponse<ListWordPressOptInOptionsResponse> response = apiInstance.listIntegrationsWordPressOptInOptionsWithHttpInfo();
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IntegrationsApi#listIntegrationsWordPressOptInOptions");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+ApiResponse<[**ListWordPressOptInOptionsResponse**](ListWordPressOptInOptionsResponse.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |

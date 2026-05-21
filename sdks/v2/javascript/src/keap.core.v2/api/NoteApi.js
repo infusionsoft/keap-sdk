@@ -269,6 +269,65 @@ export default class NoteApi {
 
 
     /**
+     * List All Notes
+     * Retrieves a list of all notes
+     * @param {Object} opts Optional parameters
+     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `contact_id` - (String) `assigned_to_user_id` - (String) `title` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D1001` - `filter=assigned_to_user_id%3D%3D42` - `filter=title%3D%3DexpectedTitle` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+     * @param {String} [pageToken] Page token
+     * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc`
+     * @param {Number} [pageSize] Total number of items to return per page
+     * @param {Array.<String>} [fields] Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListNotesResponse} and HTTP response
+     */
+    listAllNotesWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'filter': opts['filter'],
+        'page_token': opts['pageToken'],
+        'order_by': opts['orderBy'],
+        'page_size': opts['pageSize'],
+        'fields': this.apiClient.buildCollectionParam(opts['fields'], 'csv')
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListNotesResponse;
+      return this.apiClient.callApi(
+        '/rest/v2/notes', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List All Notes
+     * Retrieves a list of all notes
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `contact_id` - (String) `assigned_to_user_id` - (String) `title` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D1001` - `filter=assigned_to_user_id%3D%3D42` - `filter=title%3D%3DexpectedTitle` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+     * @param {String} opts.pageToken Page token
+     * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc`
+     * @param {Number} opts.pageSize Total number of items to return per page
+     * @param {Array.<String>} opts.fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListNotesResponse}
+     */
+    listAllNotes(opts) {
+      return this.listAllNotesWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Retrieve Note Templates
      * Retrieves a list of Note Templates
      * @param {Object} opts Optional parameters
@@ -326,10 +385,10 @@ export default class NoteApi {
 
     /**
      * List Notes
-     * Retrieves a list of Notes
+     * Retrieves a list of Notes for a given contact
      * @param {String} contactId 
      * @param {Object} opts Optional parameters
-     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `assigned_to_user_id` - (String) `title` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=assigned_to_user_id%3D%3DUserId` - `filter=title%3D%3DexpectedTitle` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `contact_id` - (String) `assigned_to_user_id` - (String) `title` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D1001` - `filter=assigned_to_user_id%3D%3D42` - `filter=title%3D%3DexpectedTitle` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
      * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} [pageSize] Total number of items to return per page
      * @param {String} [pageToken] Page token
@@ -372,10 +431,10 @@ export default class NoteApi {
 
     /**
      * List Notes
-     * Retrieves a list of Notes
+     * Retrieves a list of Notes for a given contact
      * @param {String} contactId 
      * @param {Object} opts Optional parameters
-     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `assigned_to_user_id` - (String) `title` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=assigned_to_user_id%3D%3DUserId` - `filter=title%3D%3DexpectedTitle` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `contact_id` - (String) `assigned_to_user_id` - (String) `title` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D1001` - `filter=assigned_to_user_id%3D%3D42` - `filter=title%3D%3DexpectedTitle` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
      * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} opts.pageSize Total number of items to return per page
      * @param {String} opts.pageToken Page token

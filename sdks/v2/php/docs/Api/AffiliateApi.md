@@ -1114,7 +1114,7 @@ try {
 ## `getReferralsByAffiliateId()`
 
 ```php
-getReferralsByAffiliateId($affiliate_id): \Keap\Core\V2\Model\ListAffiliateReferralsResponse
+getReferralsByAffiliateId($affiliate_id, $filter, $page_token, $order_by, $page_size): \Keap\Core\V2\Model\ListAffiliateReferralsResponse
 ```
 
 Retrieve Affiliate Referrals
@@ -1138,9 +1138,13 @@ $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     $config
 );
 $affiliate_id = 'affiliate_id_example'; // string
+$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `source` - Wildcard matching allowed  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  For the filters listed above, here are some examples: - `filter=source%3D%3DEmail Marketing` - `filter=source%3D%3DEmail*` (starts with \"Email\")
+$page_token = 'page_token_example'; // string | Page token
+$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `id` - `referral_time`  One of the following directions: - `asc` - `desc`
+$page_size = 0; // int | Total number of items to return per page
 
 try {
-    $result = $apiInstance->getReferralsByAffiliateId($affiliate_id);
+    $result = $apiInstance->getReferralsByAffiliateId($affiliate_id, $filter, $page_token, $order_by, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AffiliateApi->getReferralsByAffiliateId: ', $e->getMessage(), PHP_EOL;
@@ -1152,6 +1156,10 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **affiliate_id** | **string**|  | |
+| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;) | [optional] |
+| **page_token** | **string**| Page token | [optional] |
+| **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **page_size** | **int**| Total number of items to return per page | [optional] |
 
 ### Return type
 

@@ -68,6 +68,9 @@ class CustomFieldMetaData {
             if (data.hasOwnProperty('group_id')) {
                 obj['group_id'] = ApiClient.convertToType(data['group_id'], 'String');
             }
+            if (data.hasOwnProperty('group_name')) {
+                obj['group_name'] = ApiClient.convertToType(data['group_name'], 'String');
+            }
             if (data.hasOwnProperty('field_name')) {
                 obj['field_name'] = ApiClient.convertToType(data['field_name'], 'String');
             }
@@ -116,6 +119,10 @@ class CustomFieldMetaData {
             throw new Error("Expected the field `group_id` to be a primitive type in the JSON string but got " + data['group_id']);
         }
         // ensure the json data is a string
+        if (data['group_name'] && !(typeof data['group_name'] === 'string' || data['group_name'] instanceof String)) {
+            throw new Error("Expected the field `group_name` to be a primitive type in the JSON string but got " + data['group_name']);
+        }
+        // ensure the json data is a string
         if (data['field_name'] && !(typeof data['field_name'] === 'string' || data['field_name'] instanceof String)) {
             throw new Error("Expected the field `field_name` to be a primitive type in the JSON string but got " + data['field_name']);
         }
@@ -162,6 +169,11 @@ CustomFieldMetaData.prototype['default_value'] = undefined;
  * @member {String} group_id
  */
 CustomFieldMetaData.prototype['group_id'] = undefined;
+
+/**
+ * @member {String} group_name
+ */
+CustomFieldMetaData.prototype['group_name'] = undefined;
 
 /**
  * @member {String} field_name

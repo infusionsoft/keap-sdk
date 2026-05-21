@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **FieldType** | **string** |  | [optional] 
 **DefaultValue** | **string** |  | [optional] 
 **GroupId** | **string** |  | [optional] 
+**GroupName** | **string** |  | [optional] 
 **FieldName** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

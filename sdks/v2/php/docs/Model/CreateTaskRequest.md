@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **remind_time_mins** | **int** | Value in minutes before start_date to show pop-up reminder. | [optional]
 **assigned_to_user_id** | **string** | Assigned user ID |
 **contact_id** | **string** | Associated contact ID | [optional]
+**opportunity_id** | **string** | Associated opportunity ID | [optional]
+**accepted** | **bool** | Whether the task has been accepted. | [optional]
 **custom_fields** | [**\Keap\Core\V2\Model\CustomFieldValueObject[]**](CustomFieldValueObject.md) | Custom field values for the task. An empty array resets all custom fields to their defaults. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

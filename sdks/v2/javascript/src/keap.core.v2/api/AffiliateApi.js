@@ -962,9 +962,15 @@ export default class AffiliateApi {
      * Retrieve Affiliate Referrals
      * Retrieves all referrals belonging to the given affiliate
      * @param {String} affiliateId 
+     * @param {Object} opts Optional parameters
+     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `source` - Wildcard matching allowed  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  For the filters listed above, here are some examples: - `filter=source%3D%3DEmail Marketing` - `filter=source%3D%3DEmail*` (starts with \"Email\") 
+     * @param {String} [pageToken] Page token
+     * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `id` - `referral_time`  One of the following directions: - `asc` - `desc`
+     * @param {Number} [pageSize] Total number of items to return per page
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListAffiliateReferralsResponse} and HTTP response
      */
-    getReferralsByAffiliateIdWithHttpInfo(affiliateId) {
+    getReferralsByAffiliateIdWithHttpInfo(affiliateId, opts) {
+      opts = opts || {};
       let postBody = null;
       // verify the required parameter 'affiliateId' is set
       if (affiliateId === undefined || affiliateId === null) {
@@ -975,6 +981,10 @@ export default class AffiliateApi {
         'affiliate_id': affiliateId
       };
       let queryParams = {
+        'filter': opts['filter'],
+        'page_token': opts['pageToken'],
+        'order_by': opts['orderBy'],
+        'page_size': opts['pageSize']
       };
       let headerParams = {
       };
@@ -996,10 +1006,15 @@ export default class AffiliateApi {
      * Retrieve Affiliate Referrals
      * Retrieves all referrals belonging to the given affiliate
      * @param {String} affiliateId 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `source` - Wildcard matching allowed  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  For the filters listed above, here are some examples: - `filter=source%3D%3DEmail Marketing` - `filter=source%3D%3DEmail*` (starts with \"Email\") 
+     * @param {String} opts.pageToken Page token
+     * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `id` - `referral_time`  One of the following directions: - `asc` - `desc`
+     * @param {Number} opts.pageSize Total number of items to return per page
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListAffiliateReferralsResponse}
      */
-    getReferralsByAffiliateId(affiliateId) {
-      return this.getReferralsByAffiliateIdWithHttpInfo(affiliateId)
+    getReferralsByAffiliateId(affiliateId, opts) {
+      return this.getReferralsByAffiliateIdWithHttpInfo(affiliateId, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

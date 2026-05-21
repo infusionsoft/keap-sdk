@@ -4,8 +4,114 @@ All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
+| [**AchieveIntegrationsWordPressOptInGoal**](IntegrationsApi.md#achieveintegrationswordpressoptingoal) | **POST** /rest/v2/integrations/wordpress/options/{option_key}:achieve | Achieve a WordPress Opt-In Goal |
 | [**AddIntegrationsWordPressOptIn**](IntegrationsApi.md#addintegrationswordpressoptin) | **POST** /rest/v2/integrations/wordpress/options | Add a WordPress Opt-In Option |
 | [**DeleteIntegrationsWordPressOptIn**](IntegrationsApi.md#deleteintegrationswordpressoptin) | **DELETE** /rest/v2/integrations/wordpress/options/{option_key} | Delete a WordPress Opt-In Option |
+| [**ListIntegrationsWordPressOptInOptions**](IntegrationsApi.md#listintegrationswordpressoptinoptions) | **GET** /rest/v2/integrations/wordpress/options | List WordPress Opt-In Options |
+
+<a id="achieveintegrationswordpressoptingoal"></a>
+# **AchieveIntegrationsWordPressOptInGoal**
+> AchieveWordPressOptInGoalResult AchieveIntegrationsWordPressOptInGoal (string optionKey, AchieveIntegrationsWordPressOptInOptionGoalRequest achieveIntegrationsWordPressOptInOptionGoalRequest)
+
+Achieve a WordPress Opt-In Goal
+
+Achieves a WordPress Opt-In Option Goal
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class AchieveIntegrationsWordPressOptInGoalExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new IntegrationsApi(config);
+            var optionKey = "optionKey_example";  // string | 
+            var achieveIntegrationsWordPressOptInOptionGoalRequest = new AchieveIntegrationsWordPressOptInOptionGoalRequest(); // AchieveIntegrationsWordPressOptInOptionGoalRequest | 
+
+            try
+            {
+                // Achieve a WordPress Opt-In Goal
+                AchieveWordPressOptInGoalResult result = apiInstance.AchieveIntegrationsWordPressOptInGoal(optionKey, achieveIntegrationsWordPressOptInOptionGoalRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling IntegrationsApi.AchieveIntegrationsWordPressOptInGoal: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the AchieveIntegrationsWordPressOptInGoalWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Achieve a WordPress Opt-In Goal
+    ApiResponse<AchieveWordPressOptInGoalResult> response = apiInstance.AchieveIntegrationsWordPressOptInGoalWithHttpInfo(optionKey, achieveIntegrationsWordPressOptInOptionGoalRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling IntegrationsApi.AchieveIntegrationsWordPressOptInGoalWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **optionKey** | **string** |  |  |
+| **achieveIntegrationsWordPressOptInOptionGoalRequest** | [**AchieveIntegrationsWordPressOptInOptionGoalRequest**](AchieveIntegrationsWordPressOptInOptionGoalRequest.md) |  |  |
+
+### Return type
+
+[**AchieveWordPressOptInGoalResult**](AchieveWordPressOptInGoalResult.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **202** | Accepted |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="addintegrationswordpressoptin"></a>
 # **AddIntegrationsWordPressOptIn**
@@ -196,6 +302,103 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listintegrationswordpressoptinoptions"></a>
+# **ListIntegrationsWordPressOptInOptions**
+> ListWordPressOptInOptionsResponse ListIntegrationsWordPressOptInOptions ()
+
+List WordPress Opt-In Options
+
+Retrieves the list of WordPress Opt-In Options available
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListIntegrationsWordPressOptInOptionsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new IntegrationsApi(config);
+
+            try
+            {
+                // List WordPress Opt-In Options
+                ListWordPressOptInOptionsResponse result = apiInstance.ListIntegrationsWordPressOptInOptions();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling IntegrationsApi.ListIntegrationsWordPressOptInOptions: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListIntegrationsWordPressOptInOptionsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List WordPress Opt-In Options
+    ApiResponse<ListWordPressOptInOptionsResponse> response = apiInstance.ListIntegrationsWordPressOptInOptionsWithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling IntegrationsApi.ListIntegrationsWordPressOptInOptionsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+### Return type
+
+[**ListWordPressOptInOptionsResponse**](ListWordPressOptInOptionsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |

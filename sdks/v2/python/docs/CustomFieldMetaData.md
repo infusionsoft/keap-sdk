@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **field_type** | **str** |  | [optional] 
 **default_value** | **str** |  | [optional] 
 **group_id** | **str** |  | [optional] 
+**group_name** | **str** |  | [optional] 
 **field_name** | **str** |  | [optional] 
 
 ## Example

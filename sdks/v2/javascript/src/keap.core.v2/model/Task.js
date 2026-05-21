@@ -86,8 +86,17 @@ class Task {
             if (data.hasOwnProperty('created_by_user_id')) {
                 obj['created_by_user_id'] = ApiClient.convertToType(data['created_by_user_id'], 'String');
             }
+            if (data.hasOwnProperty('last_updated_by_user_id')) {
+                obj['last_updated_by_user_id'] = ApiClient.convertToType(data['last_updated_by_user_id'], 'String');
+            }
             if (data.hasOwnProperty('contact_id')) {
                 obj['contact_id'] = ApiClient.convertToType(data['contact_id'], 'String');
+            }
+            if (data.hasOwnProperty('opportunity_id')) {
+                obj['opportunity_id'] = ApiClient.convertToType(data['opportunity_id'], 'String');
+            }
+            if (data.hasOwnProperty('accepted')) {
+                obj['accepted'] = ApiClient.convertToType(data['accepted'], 'Boolean');
             }
             if (data.hasOwnProperty('custom_fields')) {
                 obj['custom_fields'] = ApiClient.convertToType(data['custom_fields'], [CustomFieldValueObject]);
@@ -147,8 +156,16 @@ class Task {
             throw new Error("Expected the field `created_by_user_id` to be a primitive type in the JSON string but got " + data['created_by_user_id']);
         }
         // ensure the json data is a string
+        if (data['last_updated_by_user_id'] && !(typeof data['last_updated_by_user_id'] === 'string' || data['last_updated_by_user_id'] instanceof String)) {
+            throw new Error("Expected the field `last_updated_by_user_id` to be a primitive type in the JSON string but got " + data['last_updated_by_user_id']);
+        }
+        // ensure the json data is a string
         if (data['contact_id'] && !(typeof data['contact_id'] === 'string' || data['contact_id'] instanceof String)) {
             throw new Error("Expected the field `contact_id` to be a primitive type in the JSON string but got " + data['contact_id']);
+        }
+        // ensure the json data is a string
+        if (data['opportunity_id'] && !(typeof data['opportunity_id'] === 'string' || data['opportunity_id'] instanceof String)) {
+            throw new Error("Expected the field `opportunity_id` to be a primitive type in the JSON string but got " + data['opportunity_id']);
         }
         if (data['custom_fields']) { // data not null
             // ensure the json data is an array
@@ -182,7 +199,7 @@ Task.prototype['id'] = undefined;
 Task.prototype['title'] = undefined;
 
 /**
- * Task description
+ * Task description. Legacy XML-RPC name for this field was `CreationNotes`
  * @member {String} description
  */
 Task.prototype['description'] = undefined;
@@ -248,10 +265,28 @@ Task.prototype['assigned_to_user_id'] = undefined;
 Task.prototype['created_by_user_id'] = undefined;
 
 /**
+ * User who last updated the task.
+ * @member {String} last_updated_by_user_id
+ */
+Task.prototype['last_updated_by_user_id'] = undefined;
+
+/**
  * Associated contact ID
  * @member {String} contact_id
  */
 Task.prototype['contact_id'] = undefined;
+
+/**
+ * Associated opportunity ID
+ * @member {String} opportunity_id
+ */
+Task.prototype['opportunity_id'] = undefined;
+
+/**
+ * Whether the task has been accepted
+ * @member {Boolean} accepted
+ */
+Task.prototype['accepted'] = undefined;
 
 /**
  * Custom field values for the task

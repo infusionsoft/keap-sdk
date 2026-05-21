@@ -13,6 +13,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**GetOpportunityStage**](OpportunityApi.md#getopportunitystage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage |
 | [**ListOpportunities**](OpportunityApi.md#listopportunities) | **GET** /rest/v2/opportunities | List Opportunities |
 | [**ListOpportunityStages**](OpportunityApi.md#listopportunitystages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages |
+| [**RetrieveOpportunityCustomFieldModel**](OpportunityApi.md#retrieveopportunitycustomfieldmodel) | **GET** /rest/v2/opportunities/model | Retrieve Opportunity Custom Field Model |
 | [**UpdateOpportunity**](OpportunityApi.md#updateopportunity) | **PATCH** /rest/v2/opportunities/{opportunity_id} | Update an opportunity |
 | [**UpdateOpportunityCustomField**](OpportunityApi.md#updateopportunitycustomfield) | **PATCH** /rest/v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field |
 | [**UpdateOpportunityStage**](OpportunityApi.md#updateopportunitystage) | **PATCH** /rest/v2/opportunities/stages/{stage_id} | Update an Opportunity Stage |
@@ -915,6 +916,103 @@ catch (ApiException e)
 ### Return type
 
 [**ListOpportunityStagesResponse**](ListOpportunityStagesResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="retrieveopportunitycustomfieldmodel"></a>
+# **RetrieveOpportunityCustomFieldModel**
+> ObjectModel RetrieveOpportunityCustomFieldModel ()
+
+Retrieve Opportunity Custom Field Model
+
+Get the custom fields for the Opportunity object
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class RetrieveOpportunityCustomFieldModelExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new OpportunityApi(config);
+
+            try
+            {
+                // Retrieve Opportunity Custom Field Model
+                ObjectModel result = apiInstance.RetrieveOpportunityCustomFieldModel();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OpportunityApi.RetrieveOpportunityCustomFieldModel: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RetrieveOpportunityCustomFieldModelWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve Opportunity Custom Field Model
+    ApiResponse<ObjectModel> response = apiInstance.RetrieveOpportunityCustomFieldModelWithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OpportunityApi.RetrieveOpportunityCustomFieldModelWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+### Return type
+
+[**ObjectModel**](ObjectModel.md)
 
 ### Authorization
 

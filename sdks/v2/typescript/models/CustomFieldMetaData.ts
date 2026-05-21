@@ -21,6 +21,7 @@ export class CustomFieldMetaData {
     'fieldType'?: CustomFieldMetaDataFieldTypeEnum;
     'defaultValue'?: string;
     'groupId'?: string;
+    'groupName'?: string;
     'fieldName'?: string;
 
     static readonly discriminator: string | undefined = undefined;
@@ -67,6 +68,12 @@ export class CustomFieldMetaData {
         {
             "name": "groupId",
             "baseName": "group_id",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "groupName",
+            "baseName": "group_name",
             "type": "string",
             "format": ""
         },

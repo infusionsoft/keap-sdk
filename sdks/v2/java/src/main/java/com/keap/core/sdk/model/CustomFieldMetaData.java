@@ -43,6 +43,7 @@ import jakarta.validation.Valid;
   CustomFieldMetaData.JSON_PROPERTY_FIELD_TYPE,
   CustomFieldMetaData.JSON_PROPERTY_DEFAULT_VALUE,
   CustomFieldMetaData.JSON_PROPERTY_GROUP_ID,
+  CustomFieldMetaData.JSON_PROPERTY_GROUP_NAME,
   CustomFieldMetaData.JSON_PROPERTY_FIELD_NAME
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
@@ -195,6 +196,9 @@ public class CustomFieldMetaData implements Serializable {
 
   public static final String JSON_PROPERTY_GROUP_ID = "group_id";
   @jakarta.annotation.Nullable  private String groupId;
+
+  public static final String JSON_PROPERTY_GROUP_NAME = "group_name";
+  @jakarta.annotation.Nullable  private String groupName;
 
   public static final String JSON_PROPERTY_FIELD_NAME = "field_name";
   @jakarta.annotation.Nullable  private String fieldName;
@@ -379,6 +383,30 @@ public class CustomFieldMetaData implements Serializable {
   }
 
 
+  public CustomFieldMetaData groupName(@jakarta.annotation.Nullable String groupName) {
+    this.groupName = groupName;
+    return this;
+  }
+
+  /**
+   * Get groupName
+   * @return groupName
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_GROUP_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getGroupName() {
+    return groupName;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_GROUP_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setGroupName(@jakarta.annotation.Nullable String groupName) {
+    this.groupName = groupName;
+  }
+
+
   public CustomFieldMetaData fieldName(@jakarta.annotation.Nullable String fieldName) {
     this.fieldName = fieldName;
     return this;
@@ -421,12 +449,13 @@ public class CustomFieldMetaData implements Serializable {
         Objects.equals(this.fieldType, customFieldMetaData.fieldType) &&
         Objects.equals(this.defaultValue, customFieldMetaData.defaultValue) &&
         Objects.equals(this.groupId, customFieldMetaData.groupId) &&
+        Objects.equals(this.groupName, customFieldMetaData.groupName) &&
         Objects.equals(this.fieldName, customFieldMetaData.fieldName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, label, options, recordType, fieldType, defaultValue, groupId, fieldName);
+    return Objects.hash(id, label, options, recordType, fieldType, defaultValue, groupId, groupName, fieldName);
   }
 
   @Override
@@ -440,6 +469,7 @@ public class CustomFieldMetaData implements Serializable {
     sb.append("    fieldType: ").append(toIndentedString(fieldType)).append("\n");
     sb.append("    defaultValue: ").append(toIndentedString(defaultValue)).append("\n");
     sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
+    sb.append("    groupName: ").append(toIndentedString(groupName)).append("\n");
     sb.append("    fieldName: ").append(toIndentedString(fieldName)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -496,6 +526,10 @@ public class CustomFieldMetaData implements Serializable {
               this.instance.groupId = groupId;
           return this;
         }
+            public CustomFieldMetaData.Builder groupName(String groupName) {
+              this.instance.groupName = groupName;
+          return this;
+        }
             public CustomFieldMetaData.Builder fieldName(String fieldName) {
               this.instance.fieldName = fieldName;
           return this;
@@ -541,6 +575,7 @@ public class CustomFieldMetaData implements Serializable {
           .fieldType(getFieldType())
           .defaultValue(getDefaultValue())
           .groupId(getGroupId())
+          .groupName(getGroupName())
           .fieldName(getFieldName());
       }
 }

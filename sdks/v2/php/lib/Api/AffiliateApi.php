@@ -6773,15 +6773,19 @@ class AffiliateApi
      * Retrieve Affiliate Referrals
      *
      * @param  string $affiliate_id affiliate_id (required)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;) (optional)
+     * @param  string|null $page_token Page token (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+     * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReferralsByAffiliateId'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Keap\Core\V2\Model\ListAffiliateReferralsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
-    public function getReferralsByAffiliateId($affiliate_id, string $contentType = self::contentTypes['getReferralsByAffiliateId'][0])
+    public function getReferralsByAffiliateId($affiliate_id, $filter = null, $page_token = null, $order_by = null, $page_size = null, string $contentType = self::contentTypes['getReferralsByAffiliateId'][0])
     {
-        list($response) = $this->getReferralsByAffiliateIdWithHttpInfo($affiliate_id, $contentType);
+        list($response) = $this->getReferralsByAffiliateIdWithHttpInfo($affiliate_id, $filter, $page_token, $order_by, $page_size, $contentType);
         return $response;
     }
 
@@ -6791,15 +6795,19 @@ class AffiliateApi
      * Retrieve Affiliate Referrals
      *
      * @param  string $affiliate_id (required)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;) (optional)
+     * @param  string|null $page_token Page token (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+     * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReferralsByAffiliateId'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Keap\Core\V2\Model\ListAffiliateReferralsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getReferralsByAffiliateIdWithHttpInfo($affiliate_id, string $contentType = self::contentTypes['getReferralsByAffiliateId'][0])
+    public function getReferralsByAffiliateIdWithHttpInfo($affiliate_id, $filter = null, $page_token = null, $order_by = null, $page_size = null, string $contentType = self::contentTypes['getReferralsByAffiliateId'][0])
     {
-        $request = $this->getReferralsByAffiliateIdRequest($affiliate_id, $contentType);
+        $request = $this->getReferralsByAffiliateIdRequest($affiliate_id, $filter, $page_token, $order_by, $page_size, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6988,14 +6996,18 @@ class AffiliateApi
      * Retrieve Affiliate Referrals
      *
      * @param  string $affiliate_id (required)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;) (optional)
+     * @param  string|null $page_token Page token (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+     * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReferralsByAffiliateId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getReferralsByAffiliateIdAsync($affiliate_id, string $contentType = self::contentTypes['getReferralsByAffiliateId'][0])
+    public function getReferralsByAffiliateIdAsync($affiliate_id, $filter = null, $page_token = null, $order_by = null, $page_size = null, string $contentType = self::contentTypes['getReferralsByAffiliateId'][0])
     {
-        return $this->getReferralsByAffiliateIdAsyncWithHttpInfo($affiliate_id, $contentType)
+        return $this->getReferralsByAffiliateIdAsyncWithHttpInfo($affiliate_id, $filter, $page_token, $order_by, $page_size, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7009,15 +7021,19 @@ class AffiliateApi
      * Retrieve Affiliate Referrals
      *
      * @param  string $affiliate_id (required)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;) (optional)
+     * @param  string|null $page_token Page token (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+     * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReferralsByAffiliateId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getReferralsByAffiliateIdAsyncWithHttpInfo($affiliate_id, string $contentType = self::contentTypes['getReferralsByAffiliateId'][0])
+    public function getReferralsByAffiliateIdAsyncWithHttpInfo($affiliate_id, $filter = null, $page_token = null, $order_by = null, $page_size = null, string $contentType = self::contentTypes['getReferralsByAffiliateId'][0])
     {
         $returnType = '\Keap\Core\V2\Model\ListAffiliateReferralsResponse';
-        $request = $this->getReferralsByAffiliateIdRequest($affiliate_id, $contentType);
+        $request = $this->getReferralsByAffiliateIdRequest($affiliate_id, $filter, $page_token, $order_by, $page_size, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7059,12 +7075,16 @@ class AffiliateApi
      * Create request for operation 'getReferralsByAffiliateId'
      *
      * @param  string $affiliate_id (required)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;) (optional)
+     * @param  string|null $page_token Page token (optional)
+     * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+     * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReferralsByAffiliateId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getReferralsByAffiliateIdRequest($affiliate_id, string $contentType = self::contentTypes['getReferralsByAffiliateId'][0])
+    public function getReferralsByAffiliateIdRequest($affiliate_id, $filter = null, $page_token = null, $order_by = null, $page_size = null, string $contentType = self::contentTypes['getReferralsByAffiliateId'][0])
     {
 
         // verify the required parameter 'affiliate_id' is set
@@ -7075,6 +7095,16 @@ class AffiliateApi
         }
 
 
+
+
+        if ($page_size !== null && $page_size > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling AffiliateApi.getReferralsByAffiliateId, must be smaller than or equal to 1000.');
+        }
+        if ($page_size !== null && $page_size < 0) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling AffiliateApi.getReferralsByAffiliateId, must be bigger than or equal to 0.');
+        }
+        
+
         $resourcePath = '/rest/v2/affiliates/{affiliate_id}/referrals';
         $formParams = [];
         $queryParams = [];
@@ -7082,6 +7112,42 @@ class AffiliateApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $filter,
+            'filter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_token,
+            'page_token', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $order_by,
+            'order_by', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_size,
+            'page_size', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params

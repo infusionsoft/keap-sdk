@@ -21,6 +21,7 @@ import com.keap.core.sdk.model.AssignProductsRequest;
 import com.keap.core.sdk.model.CreateProductCategoryRequest;
 import com.keap.core.sdk.model.Error;
 import java.io.File;
+import com.keap.core.sdk.model.ListAssignedProductsResponse;
 import com.keap.core.sdk.model.ListProductCategoriesResponse;
 import com.keap.core.sdk.model.ProductCategory;
 import com.keap.core.sdk.model.UpdateProductCategoryRequest;
@@ -674,6 +675,114 @@ import io.github.resilience4j.retry.Retry;
         .replace("{category_id}", ApiClient.urlEncode(categoryId.toString()));
 
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * List Assigned Products to Categories
+   * Retrieves a list of Products assigned to Product Categories
+   * @param filter Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60;  (optional)
+   * @param pageToken Page token (optional)
+   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+   * @param pageSize Total number of items to return per page (optional)
+   * @return ListAssignedProductsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ListAssignedProductsResponse listAssignedProducts(String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
+    ApiResponse<ListAssignedProductsResponse> localVarResponse = listAssignedProductsWithHttpInfo(filter, pageToken, orderBy, pageSize);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * List Assigned Products to Categories
+   * Retrieves a list of Products assigned to Product Categories
+   * @param filter Filter to apply, allowed fields are: - (List[String]) &#x60;product_ids&#x60; - (List[String]) &#x60;product_category_ids&#x60;  (optional)
+   * @param pageToken Page token (optional)
+   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;product_category_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+   * @param pageSize Total number of items to return per page (optional)
+   * @return ApiResponse&lt;ListAssignedProductsResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ListAssignedProductsResponse> listAssignedProductsWithHttpInfo(String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listAssignedProductsRequestBuilder(filter, pageToken, orderBy, pageSize);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("listAssignedProducts", localVarResponse);
+        }
+        return new ApiResponse<ListAssignedProductsResponse>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ListAssignedProductsResponse>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder listAssignedProductsRequestBuilder(String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/productCategories/assignedProducts";
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "filter";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("filter", filter));
+    localVarQueryParameterBaseName = "page_token";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page_token", pageToken));
+    localVarQueryParameterBaseName = "order_by";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("order_by", orderBy));
+    localVarQueryParameterBaseName = "page_size";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page_size", pageSize));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
 
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());

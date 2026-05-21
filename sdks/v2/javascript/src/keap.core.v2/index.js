@@ -15,6 +15,8 @@
 import ApiClient from './ApiClient';
 import AchieveGoalRequest from './model/AchieveGoalRequest';
 import AchieveGoalResponse from './model/AchieveGoalResponse';
+import AchieveIntegrationsWordPressOptInOptionGoalRequest from './model/AchieveIntegrationsWordPressOptInOptionGoalRequest';
+import AchieveWordPressOptInGoalResult from './model/AchieveWordPressOptInGoalResult';
 import AddContactsToSequenceRequest from './model/AddContactsToSequenceRequest';
 import AddContactsToSequenceResponse from './model/AddContactsToSequenceResponse';
 import AddProductInterestRequest from './model/AddProductInterestRequest';
@@ -59,6 +61,7 @@ import ApplyRemoveTagRequest from './model/ApplyRemoveTagRequest';
 import ApplyTagsResponse from './model/ApplyTagsResponse';
 import AssignAutomationCategoryRequest from './model/AssignAutomationCategoryRequest';
 import AssignProductsRequest from './model/AssignProductsRequest';
+import AssignedProducts from './model/AssignedProducts';
 import Automation from './model/Automation';
 import AutomationCategory from './model/AutomationCategory';
 import AutomationLockStatus from './model/AutomationLockStatus';
@@ -192,6 +195,7 @@ import ListAffiliatePaymentsResponse from './model/ListAffiliatePaymentsResponse
 import ListAffiliateReferralsResponse from './model/ListAffiliateReferralsResponse';
 import ListAffiliateSummariesResponse from './model/ListAffiliateSummariesResponse';
 import ListAffiliatesResponse from './model/ListAffiliatesResponse';
+import ListAssignedProductsResponse from './model/ListAssignedProductsResponse';
 import ListAutomationCategoryResponse from './model/ListAutomationCategoryResponse';
 import ListAutomationIdsResponse from './model/ListAutomationIdsResponse';
 import ListAutomationResponse from './model/ListAutomationResponse';
@@ -247,6 +251,7 @@ import ListTransactions from './model/ListTransactions';
 import ListUserGroupsResponse from './model/ListUserGroupsResponse';
 import ListUsersPaginatedResponse from './model/ListUsersPaginatedResponse';
 import ListWebformsResponse from './model/ListWebformsResponse';
+import ListWordPressOptInOptionsResponse from './model/ListWordPressOptInOptionsResponse';
 import Note from './model/Note';
 import NoteTemplate from './model/NoteTemplate';
 import ObjectModel from './model/ObjectModel';
@@ -434,7 +439,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.10
+* @version 2.0.11
 */
 export {
     /**
@@ -454,6 +459,18 @@ export {
      * @property {module:keap.core.v2/model/AchieveGoalResponse}
      */
     AchieveGoalResponse,
+
+    /**
+     * The AchieveIntegrationsWordPressOptInOptionGoalRequest model constructor.
+     * @property {module:keap.core.v2/model/AchieveIntegrationsWordPressOptInOptionGoalRequest}
+     */
+    AchieveIntegrationsWordPressOptInOptionGoalRequest,
+
+    /**
+     * The AchieveWordPressOptInGoalResult model constructor.
+     * @property {module:keap.core.v2/model/AchieveWordPressOptInGoalResult}
+     */
+    AchieveWordPressOptInGoalResult,
 
     /**
      * The AddContactsToSequenceRequest model constructor.
@@ -718,6 +735,12 @@ export {
      * @property {module:keap.core.v2/model/AssignProductsRequest}
      */
     AssignProductsRequest,
+
+    /**
+     * The AssignedProducts model constructor.
+     * @property {module:keap.core.v2/model/AssignedProducts}
+     */
+    AssignedProducts,
 
     /**
      * The Automation model constructor.
@@ -1518,6 +1541,12 @@ export {
     ListAffiliatesResponse,
 
     /**
+     * The ListAssignedProductsResponse model constructor.
+     * @property {module:keap.core.v2/model/ListAssignedProductsResponse}
+     */
+    ListAssignedProductsResponse,
+
+    /**
      * The ListAutomationCategoryResponse model constructor.
      * @property {module:keap.core.v2/model/ListAutomationCategoryResponse}
      */
@@ -1846,6 +1875,12 @@ export {
      * @property {module:keap.core.v2/model/ListWebformsResponse}
      */
     ListWebformsResponse,
+
+    /**
+     * The ListWordPressOptInOptionsResponse model constructor.
+     * @property {module:keap.core.v2/model/ListWordPressOptInOptionsResponse}
+     */
+    ListWordPressOptInOptionsResponse,
 
     /**
      * The Note model constructor.

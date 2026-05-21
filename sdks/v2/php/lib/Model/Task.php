@@ -70,7 +70,10 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
         'remind_time_mins' => 'int',
         'assigned_to_user_id' => 'string',
         'created_by_user_id' => 'string',
+        'last_updated_by_user_id' => 'string',
         'contact_id' => 'string',
+        'opportunity_id' => 'string',
+        'accepted' => 'bool',
         'custom_fields' => '\Keap\Core\V2\Model\CustomFieldValueObject[]'
     ];
 
@@ -95,7 +98,10 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
         'remind_time_mins' => 'int32',
         'assigned_to_user_id' => null,
         'created_by_user_id' => null,
+        'last_updated_by_user_id' => null,
         'contact_id' => null,
+        'opportunity_id' => null,
+        'accepted' => null,
         'custom_fields' => null
     ];
 
@@ -118,7 +124,10 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
         'remind_time_mins' => false,
         'assigned_to_user_id' => false,
         'created_by_user_id' => false,
+        'last_updated_by_user_id' => false,
         'contact_id' => false,
+        'opportunity_id' => false,
+        'accepted' => false,
         'custom_fields' => false
     ];
 
@@ -221,7 +230,10 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
         'remind_time_mins' => 'remind_time_mins',
         'assigned_to_user_id' => 'assigned_to_user_id',
         'created_by_user_id' => 'created_by_user_id',
+        'last_updated_by_user_id' => 'last_updated_by_user_id',
         'contact_id' => 'contact_id',
+        'opportunity_id' => 'opportunity_id',
+        'accepted' => 'accepted',
         'custom_fields' => 'custom_fields'
     ];
 
@@ -244,7 +256,10 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
         'remind_time_mins' => 'setRemindTimeMins',
         'assigned_to_user_id' => 'setAssignedToUserId',
         'created_by_user_id' => 'setCreatedByUserId',
+        'last_updated_by_user_id' => 'setLastUpdatedByUserId',
         'contact_id' => 'setContactId',
+        'opportunity_id' => 'setOpportunityId',
+        'accepted' => 'setAccepted',
         'custom_fields' => 'setCustomFields'
     ];
 
@@ -267,7 +282,10 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
         'remind_time_mins' => 'getRemindTimeMins',
         'assigned_to_user_id' => 'getAssignedToUserId',
         'created_by_user_id' => 'getCreatedByUserId',
+        'last_updated_by_user_id' => 'getLastUpdatedByUserId',
         'contact_id' => 'getContactId',
+        'opportunity_id' => 'getOpportunityId',
+        'accepted' => 'getAccepted',
         'custom_fields' => 'getCustomFields'
     ];
 
@@ -389,7 +407,10 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('remind_time_mins', $data ?? [], null);
         $this->setIfExists('assigned_to_user_id', $data ?? [], null);
         $this->setIfExists('created_by_user_id', $data ?? [], null);
+        $this->setIfExists('last_updated_by_user_id', $data ?? [], null);
         $this->setIfExists('contact_id', $data ?? [], null);
+        $this->setIfExists('opportunity_id', $data ?? [], null);
+        $this->setIfExists('accepted', $data ?? [], null);
         $this->setIfExists('custom_fields', $data ?? [], null);
     }
 
@@ -520,7 +541,7 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description Task description
+     * @param string|null $description Task description. Legacy XML-RPC name for this field was `CreationNotes`
      *
      * @return self
      */
@@ -825,6 +846,33 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets last_updated_by_user_id
+     *
+     * @return string|null
+     */
+    public function getLastUpdatedByUserId()
+    {
+        return $this->container['last_updated_by_user_id'];
+    }
+
+    /**
+     * Sets last_updated_by_user_id
+     *
+     * @param string|null $last_updated_by_user_id User who last updated the task.
+     *
+     * @return self
+     */
+    public function setLastUpdatedByUserId($last_updated_by_user_id)
+    {
+        if (is_null($last_updated_by_user_id)) {
+            throw new \InvalidArgumentException('non-nullable last_updated_by_user_id cannot be null');
+        }
+        $this->container['last_updated_by_user_id'] = $last_updated_by_user_id;
+
+        return $this;
+    }
+
+    /**
      * Gets contact_id
      *
      * @return string|null
@@ -847,6 +895,60 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable contact_id cannot be null');
         }
         $this->container['contact_id'] = $contact_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets opportunity_id
+     *
+     * @return string|null
+     */
+    public function getOpportunityId()
+    {
+        return $this->container['opportunity_id'];
+    }
+
+    /**
+     * Sets opportunity_id
+     *
+     * @param string|null $opportunity_id Associated opportunity ID
+     *
+     * @return self
+     */
+    public function setOpportunityId($opportunity_id)
+    {
+        if (is_null($opportunity_id)) {
+            throw new \InvalidArgumentException('non-nullable opportunity_id cannot be null');
+        }
+        $this->container['opportunity_id'] = $opportunity_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets accepted
+     *
+     * @return bool|null
+     */
+    public function getAccepted()
+    {
+        return $this->container['accepted'];
+    }
+
+    /**
+     * Sets accepted
+     *
+     * @param bool|null $accepted Whether the task has been accepted
+     *
+     * @return self
+     */
+    public function setAccepted($accepted)
+    {
+        if (is_null($accepted)) {
+            throw new \InvalidArgumentException('non-nullable accepted cannot be null');
+        }
+        $this->container['accepted'] = $accepted;
 
         return $this;
     }

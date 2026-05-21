@@ -464,9 +464,13 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="affiliateId"></param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;)  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ListAffiliateReferralsResponse</returns>
-        ListAffiliateReferralsResponse GetReferralsByAffiliateId(string affiliateId, int operationIndex = 0);
+        ListAffiliateReferralsResponse GetReferralsByAffiliateId(string affiliateId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve Affiliate Referrals
@@ -476,9 +480,13 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="affiliateId"></param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;)  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ListAffiliateReferralsResponse</returns>
-        ApiResponse<ListAffiliateReferralsResponse> GetReferralsByAffiliateIdWithHttpInfo(string affiliateId, int operationIndex = 0);
+        ApiResponse<ListAffiliateReferralsResponse> GetReferralsByAffiliateIdWithHttpInfo(string affiliateId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0);
         /// <summary>
         /// List Affiliates
         /// </summary>
@@ -1392,10 +1400,14 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="affiliateId"></param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;)  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAffiliateReferralsResponse</returns>
-        System.Threading.Tasks.Task<ListAffiliateReferralsResponse> GetReferralsByAffiliateIdAsync(string affiliateId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListAffiliateReferralsResponse> GetReferralsByAffiliateIdAsync(string affiliateId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieve Affiliate Referrals
@@ -1405,10 +1417,14 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="affiliateId"></param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;)  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAffiliateReferralsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListAffiliateReferralsResponse>> GetReferralsByAffiliateIdWithHttpInfoAsync(string affiliateId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListAffiliateReferralsResponse>> GetReferralsByAffiliateIdWithHttpInfoAsync(string affiliateId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List Affiliates
         /// </summary>
@@ -5292,11 +5308,15 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="affiliateId"></param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;)  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ListAffiliateReferralsResponse</returns>
-        public ListAffiliateReferralsResponse GetReferralsByAffiliateId(string affiliateId, int operationIndex = 0)
+        public ListAffiliateReferralsResponse GetReferralsByAffiliateId(string affiliateId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<ListAffiliateReferralsResponse> localVarResponse = GetReferralsByAffiliateIdWithHttpInfo(affiliateId);
+            Keap.Core.V2.Client.ApiResponse<ListAffiliateReferralsResponse> localVarResponse = GetReferralsByAffiliateIdWithHttpInfo(affiliateId, filter, pageToken, orderBy, pageSize);
             return localVarResponse.Data;
         }
 
@@ -5305,9 +5325,13 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="affiliateId"></param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;)  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ListAffiliateReferralsResponse</returns>
-        public Keap.Core.V2.Client.ApiResponse<ListAffiliateReferralsResponse> GetReferralsByAffiliateIdWithHttpInfo(string affiliateId, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<ListAffiliateReferralsResponse> GetReferralsByAffiliateIdWithHttpInfo(string affiliateId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0)
         {
             // verify the required parameter 'affiliateId' is set
             if (affiliateId == null)
@@ -5339,6 +5363,22 @@ namespace Keap.Core.V2.Api
             }
 
             localVarRequestOptions.PathParameters.Add("affiliate_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(affiliateId)); // path parameter
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (pageToken != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken));
+            }
+            if (orderBy != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "order_by", orderBy));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
 
             localVarRequestOptions.Operation = "AffiliateApi.GetReferralsByAffiliateId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -5379,12 +5419,16 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="affiliateId"></param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;)  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAffiliateReferralsResponse</returns>
-        public async System.Threading.Tasks.Task<ListAffiliateReferralsResponse> GetReferralsByAffiliateIdAsync(string affiliateId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListAffiliateReferralsResponse> GetReferralsByAffiliateIdAsync(string affiliateId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<ListAffiliateReferralsResponse> localVarResponse = await GetReferralsByAffiliateIdWithHttpInfoAsync(affiliateId, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<ListAffiliateReferralsResponse> localVarResponse = await GetReferralsByAffiliateIdWithHttpInfoAsync(affiliateId, filter, pageToken, orderBy, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5393,10 +5437,14 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="affiliateId"></param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;source&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples: - &#x60;filter&#x3D;source%3D%3DEmail Marketing&#x60; - &#x60;filter&#x3D;source%3D%3DEmail*&#x60; (starts with \&quot;Email\&quot;)  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;referral_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAffiliateReferralsResponse)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ListAffiliateReferralsResponse>> GetReferralsByAffiliateIdWithHttpInfoAsync(string affiliateId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ListAffiliateReferralsResponse>> GetReferralsByAffiliateIdWithHttpInfoAsync(string affiliateId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'affiliateId' is set
             if (affiliateId == null)
@@ -5428,6 +5476,22 @@ namespace Keap.Core.V2.Api
             }
 
             localVarRequestOptions.PathParameters.Add("affiliate_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(affiliateId)); // path parameter
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (pageToken != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken));
+            }
+            if (orderBy != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "order_by", orderBy));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
 
             localVarRequestOptions.Operation = "AffiliateApi.GetReferralsByAffiliateId";
             localVarRequestOptions.OperationIndex = operationIndex;

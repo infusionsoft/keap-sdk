@@ -24,6 +24,7 @@ import com.keap.core.sdk.model.CustomFieldMetaData;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.ListOpportunitiesResponse;
 import com.keap.core.sdk.model.ListOpportunityStagesResponse;
+import com.keap.core.sdk.model.ObjectModel;
 import com.keap.core.sdk.model.RestOpportunityStage;
 import com.keap.core.sdk.model.RestV2Opportunity;
 import java.util.Set;
@@ -939,6 +940,85 @@ import io.github.resilience4j.retry.Retry;
     } else {
       localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     }
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Retrieve Opportunity Custom Field Model
+   * Get the custom fields for the Opportunity object
+   * @return ObjectModel
+   * @throws ApiException if fails to make API call
+   */
+  public ObjectModel retrieveOpportunityCustomFieldModel() throws ApiException {
+    ApiResponse<ObjectModel> localVarResponse = retrieveOpportunityCustomFieldModelWithHttpInfo();
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Retrieve Opportunity Custom Field Model
+   * Get the custom fields for the Opportunity object
+   * @return ApiResponse&lt;ObjectModel&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ObjectModel> retrieveOpportunityCustomFieldModelWithHttpInfo() throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = retrieveOpportunityCustomFieldModelRequestBuilder();
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("retrieveOpportunityCustomFieldModel", localVarResponse);
+        }
+        return new ApiResponse<ObjectModel>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ObjectModel>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder retrieveOpportunityCustomFieldModelRequestBuilder() throws ApiException {
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/opportunities/model";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
 
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());

@@ -23,7 +23,7 @@ export class UpdateTaskResponse {
     */
     'title'?: string;
     /**
-    * Task description
+    * Task description. Legacy XML-RPC name for this field was `CreationNotes`
     */
     'description'?: string;
     /**
@@ -67,9 +67,21 @@ export class UpdateTaskResponse {
     */
     'createdByUserId'?: string;
     /**
+    * User who last updated the task.
+    */
+    'lastUpdatedByUserId'?: string;
+    /**
     * Associated contact ID
     */
     'contactId'?: string;
+    /**
+    * Associated opportunity ID
+    */
+    'opportunityId'?: string;
+    /**
+    * Whether the task has been accepted
+    */
+    'accepted'?: boolean;
     /**
     * Custom field values for the task
     */
@@ -159,9 +171,27 @@ export class UpdateTaskResponse {
             "format": ""
         },
         {
+            "name": "lastUpdatedByUserId",
+            "baseName": "last_updated_by_user_id",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "contactId",
             "baseName": "contact_id",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "opportunityId",
+            "baseName": "opportunity_id",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "accepted",
+            "baseName": "accepted",
+            "type": "boolean",
             "format": ""
         },
         {

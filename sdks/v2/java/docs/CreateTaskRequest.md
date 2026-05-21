@@ -18,6 +18,8 @@ task
 |**remindTimeMins** | [**RemindTimeMinsEnum**](#RemindTimeMinsEnum) | Value in minutes before start_date to show pop-up reminder. |  [optional] |
 |**assignedToUserId** | **String** | Assigned user ID |  |
 |**contactId** | **String** | Associated contact ID |  [optional] |
+|**opportunityId** | **String** | Associated opportunity ID |  [optional] |
+|**accepted** | **Boolean** | Whether the task has been accepted. |  [optional] |
 |**customFields** | [**List&lt;CustomFieldValueObject&gt;**](CustomFieldValueObject.md) | Custom field values for the task. An empty array resets all custom fields to their defaults. |  [optional] |
 
 
