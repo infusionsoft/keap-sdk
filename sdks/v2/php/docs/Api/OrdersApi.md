@@ -16,6 +16,7 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**deleteOrderItem()**](OrdersApi.md#deleteOrderItem) | **DELETE** /rest/v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item |
 | [**detachFileFromOrder()**](OrdersApi.md#detachFileFromOrder) | **POST** /rest/v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice |
 | [**getOrder()**](OrdersApi.md#getOrder) | **GET** /rest/v2/orders/{order_id} | Retrieve an Order |
+| [**getOrderItem()**](OrdersApi.md#getOrderItem) | **GET** /rest/v2/orders/{order_id}/items/{order_item_id} | Retrieve an Order Item |
 | [**listOrderPayments()**](OrdersApi.md#listOrderPayments) | **GET** /rest/v2/orders/{order_id}/payments | Retrieve Order Payments |
 | [**listOrders()**](OrdersApi.md#listOrders) | **GET** /rest/v2/orders | List orders |
 | [**retrieveOrderCustomFieldModel()**](OrdersApi.md#retrieveOrderCustomFieldModel) | **GET** /rest/v2/orders/model | Retrieve Order Custom Field Model |
@@ -729,6 +730,67 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\OrderV2**](../Model/OrderV2.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getOrderItem()`
+
+```php
+getOrderItem($order_id, $order_item_id): \Keap\Core\V2\Model\OrderItem
+```
+
+Retrieve an Order Item
+
+Retrieves a single order item from an existing order
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\OrdersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$order_id = 'order_id_example'; // string
+$order_item_id = 'order_item_id_example'; // string
+
+try {
+    $result = $apiInstance->getOrderItem($order_id, $order_item_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OrdersApi->getOrderItem: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **order_id** | **string**|  | |
+| **order_item_id** | **string**|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\OrderItem**](../Model/OrderItem.md)
 
 ### Authorization
 

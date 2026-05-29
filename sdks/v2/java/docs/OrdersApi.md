@@ -28,6 +28,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**detachFileFromOrderWithHttpInfo**](OrdersApi.md#detachFileFromOrderWithHttpInfo) | **POST** /rest/v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice |
 | [**getOrder**](OrdersApi.md#getOrder) | **GET** /rest/v2/orders/{order_id} | Retrieve an Order |
 | [**getOrderWithHttpInfo**](OrdersApi.md#getOrderWithHttpInfo) | **GET** /rest/v2/orders/{order_id} | Retrieve an Order |
+| [**getOrderItem**](OrdersApi.md#getOrderItem) | **GET** /rest/v2/orders/{order_id}/items/{order_item_id} | Retrieve an Order Item |
+| [**getOrderItemWithHttpInfo**](OrdersApi.md#getOrderItemWithHttpInfo) | **GET** /rest/v2/orders/{order_id}/items/{order_item_id} | Retrieve an Order Item |
 | [**listOrderPayments**](OrdersApi.md#listOrderPayments) | **GET** /rest/v2/orders/{order_id}/payments | Retrieve Order Payments |
 | [**listOrderPaymentsWithHttpInfo**](OrdersApi.md#listOrderPaymentsWithHttpInfo) | **GET** /rest/v2/orders/{order_id}/payments | Retrieve Order Payments |
 | [**listOrders**](OrdersApi.md#listOrders) | **GET** /rest/v2/orders | List orders |
@@ -1960,6 +1962,170 @@ public class Example {
 ### Return type
 
 ApiResponse<[**OrderV2**](OrderV2.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## getOrderItem
+
+> OrderItem getOrderItem(orderId, orderItemId)
+
+Retrieve an Order Item
+
+Retrieves a single order item from an existing order
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OrdersApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OrdersApi apiInstance = new OrdersApi(defaultClient);
+        String orderId = "orderId_example"; // String | 
+        String orderItemId = "orderItemId_example"; // String | 
+        try {
+            OrderItem result = apiInstance.getOrderItem(orderId, orderItemId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrdersApi#getOrderItem");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **orderId** | **String**|  | |
+| **orderItemId** | **String**|  | |
+
+### Return type
+
+[**OrderItem**](OrderItem.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## getOrderItemWithHttpInfo
+
+> ApiResponse<OrderItem> getOrderItem getOrderItemWithHttpInfo(orderId, orderItemId)
+
+Retrieve an Order Item
+
+Retrieves a single order item from an existing order
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OrdersApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OrdersApi apiInstance = new OrdersApi(defaultClient);
+        String orderId = "orderId_example"; // String | 
+        String orderItemId = "orderItemId_example"; // String | 
+        try {
+            ApiResponse<OrderItem> response = apiInstance.getOrderItemWithHttpInfo(orderId, orderItemId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrdersApi#getOrderItem");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **orderId** | **String**|  | |
+| **orderItemId** | **String**|  | |
+
+### Return type
+
+ApiResponse<[**OrderItem**](OrderItem.md)>
 
 
 ### Authorization

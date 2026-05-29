@@ -16,6 +16,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**DeleteOrderItem**](OrdersApi.md#deleteorderitem) | **DELETE** /rest/v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item |
 | [**DetachFileFromOrder**](OrdersApi.md#detachfilefromorder) | **POST** /rest/v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice |
 | [**GetOrder**](OrdersApi.md#getorder) | **GET** /rest/v2/orders/{order_id} | Retrieve an Order |
+| [**GetOrderItem**](OrdersApi.md#getorderitem) | **GET** /rest/v2/orders/{order_id}/items/{order_item_id} | Retrieve an Order Item |
 | [**ListOrderPayments**](OrdersApi.md#listorderpayments) | **GET** /rest/v2/orders/{order_id}/payments | Retrieve Order Payments |
 | [**ListOrders**](OrdersApi.md#listorders) | **GET** /rest/v2/orders | List orders |
 | [**RetrieveOrderCustomFieldModel**](OrdersApi.md#retrieveordercustomfieldmodel) | **GET** /rest/v2/orders/model | Retrieve Order Custom Field Model |
@@ -1223,6 +1224,110 @@ catch (ApiException e)
 ### Return type
 
 [**OrderV2**](OrderV2.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="getorderitem"></a>
+# **GetOrderItem**
+> OrderItem GetOrderItem (string orderId, string orderItemId)
+
+Retrieve an Order Item
+
+Retrieves a single order item from an existing order
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class GetOrderItemExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new OrdersApi(config);
+            var orderId = "orderId_example";  // string | 
+            var orderItemId = "orderItemId_example";  // string | 
+
+            try
+            {
+                // Retrieve an Order Item
+                OrderItem result = apiInstance.GetOrderItem(orderId, orderItemId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OrdersApi.GetOrderItem: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetOrderItemWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve an Order Item
+    ApiResponse<OrderItem> response = apiInstance.GetOrderItemWithHttpInfo(orderId, orderItemId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OrdersApi.GetOrderItemWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **orderId** | **string** |  |  |
+| **orderItemId** | **string** |  |  |
+
+### Return type
+
+[**OrderItem**](OrderItem.md)
 
 ### Authorization
 

@@ -1240,6 +1240,99 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Retrieve an Order Item
+   * Retrieves a single order item from an existing order
+   * @param orderId  (required)
+   * @param orderItemId  (required)
+   * @return OrderItem
+   * @throws ApiException if fails to make API call
+   */
+  public OrderItem getOrderItem(String orderId, String orderItemId) throws ApiException {
+    ApiResponse<OrderItem> localVarResponse = getOrderItemWithHttpInfo(orderId, orderItemId);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Retrieve an Order Item
+   * Retrieves a single order item from an existing order
+   * @param orderId  (required)
+   * @param orderItemId  (required)
+   * @return ApiResponse&lt;OrderItem&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<OrderItem> getOrderItemWithHttpInfo(String orderId, String orderItemId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getOrderItemRequestBuilder(orderId, orderItemId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getOrderItem", localVarResponse);
+        }
+        return new ApiResponse<OrderItem>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<OrderItem>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getOrderItemRequestBuilder(String orderId, String orderItemId) throws ApiException {
+    // verify the required parameter 'orderId' is set
+    if (orderId == null) {
+      throw new ApiException(400, "Missing the required parameter 'orderId' when calling getOrderItem");
+    }
+    // verify the required parameter 'orderItemId' is set
+    if (orderItemId == null) {
+      throw new ApiException(400, "Missing the required parameter 'orderItemId' when calling getOrderItem");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/orders/{order_id}/items/{order_item_id}"
+        .replace("{order_id}", ApiClient.urlEncode(orderId.toString()))
+        .replace("{order_item_id}", ApiClient.urlEncode(orderItemId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Retrieve Order Payments
    * Retrieves a list of payments made against a given order, including historical or external payments of cash or credit card
    * @param orderId  (required)

@@ -319,6 +319,31 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of OrderV2</returns>
         ApiResponse<OrderV2> GetOrderWithHttpInfo(string orderId, int operationIndex = 0);
         /// <summary>
+        /// Retrieve an Order Item
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single order item from an existing order
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"></param>
+        /// <param name="orderItemId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>OrderItem</returns>
+        OrderItem GetOrderItem(string orderId, string orderItemId, int operationIndex = 0);
+
+        /// <summary>
+        /// Retrieve an Order Item
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single order item from an existing order
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"></param>
+        /// <param name="orderItemId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of OrderItem</returns>
+        ApiResponse<OrderItem> GetOrderItemWithHttpInfo(string orderId, string orderItemId, int operationIndex = 0);
+        /// <summary>
         /// Retrieve Order Payments
         /// </summary>
         /// <remarks>
@@ -805,6 +830,33 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OrderV2)</returns>
         System.Threading.Tasks.Task<ApiResponse<OrderV2>> GetOrderWithHttpInfoAsync(string orderId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Retrieve an Order Item
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single order item from an existing order
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"></param>
+        /// <param name="orderItemId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of OrderItem</returns>
+        System.Threading.Tasks.Task<OrderItem> GetOrderItemAsync(string orderId, string orderItemId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Retrieve an Order Item
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single order item from an existing order
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"></param>
+        /// <param name="orderItemId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (OrderItem)</returns>
+        System.Threading.Tasks.Task<ApiResponse<OrderItem>> GetOrderItemWithHttpInfoAsync(string orderId, string orderItemId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieve Order Payments
         /// </summary>
@@ -3350,6 +3402,201 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetOrder", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Retrieve an Order Item Retrieves a single order item from an existing order
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"></param>
+        /// <param name="orderItemId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>OrderItem</returns>
+        public OrderItem GetOrderItem(string orderId, string orderItemId, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<OrderItem> localVarResponse = GetOrderItemWithHttpInfo(orderId, orderItemId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve an Order Item Retrieves a single order item from an existing order
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"></param>
+        /// <param name="orderItemId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of OrderItem</returns>
+        public Keap.Core.V2.Client.ApiResponse<OrderItem> GetOrderItemWithHttpInfo(string orderId, string orderItemId, int operationIndex = 0)
+        {
+            // verify the required parameter 'orderId' is set
+            if (orderId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'orderId' when calling OrdersApi->GetOrderItem");
+            }
+
+            // verify the required parameter 'orderItemId' is set
+            if (orderItemId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'orderItemId' when calling OrdersApi->GetOrderItem");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("order_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(orderId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("order_item_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(orderItemId)); // path parameter
+
+            localVarRequestOptions.Operation = "OrdersApi.GetOrderItem";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<OrderItem>("/rest/v2/orders/{order_id}/items/{order_item_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderItem", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Retrieve an Order Item Retrieves a single order item from an existing order
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"></param>
+        /// <param name="orderItemId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of OrderItem</returns>
+        public async System.Threading.Tasks.Task<OrderItem> GetOrderItemAsync(string orderId, string orderItemId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<OrderItem> localVarResponse = await GetOrderItemWithHttpInfoAsync(orderId, orderItemId, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve an Order Item Retrieves a single order item from an existing order
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"></param>
+        /// <param name="orderItemId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (OrderItem)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<OrderItem>> GetOrderItemWithHttpInfoAsync(string orderId, string orderItemId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'orderId' is set
+            if (orderId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'orderId' when calling OrdersApi->GetOrderItem");
+            }
+
+            // verify the required parameter 'orderItemId' is set
+            if (orderItemId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'orderItemId' when calling OrdersApi->GetOrderItem");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("order_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(orderId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("order_item_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(orderItemId)); // path parameter
+
+            localVarRequestOptions.Operation = "OrdersApi.GetOrderItem";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<OrderItem>("/rest/v2/orders/{order_id}/items/{order_item_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderItem", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

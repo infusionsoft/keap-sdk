@@ -100,6 +100,29 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of AffiliateCommissionProgramResponse</returns>
         ApiResponse<AffiliateCommissionProgramResponse> AddCommissionProgramWithHttpInfo(CreateCommissionProgramRequest createCommissionProgramRequest, int operationIndex = 0);
         /// <summary>
+        /// Create Commission Program Resource
+        /// </summary>
+        /// <remarks>
+        /// Creates a resource for a commission program
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProgramResourceRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>AffiliateProgramResource</returns>
+        AffiliateProgramResource AddCommissionProgramResource(CreateProgramResourceRequest createProgramResourceRequest, int operationIndex = 0);
+
+        /// <summary>
+        /// Create Commission Program Resource
+        /// </summary>
+        /// <remarks>
+        /// Creates a resource for a commission program
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProgramResourceRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of AffiliateProgramResource</returns>
+        ApiResponse<AffiliateProgramResource> AddCommissionProgramResourceWithHttpInfo(CreateProgramResourceRequest createProgramResourceRequest, int operationIndex = 0);
+        /// <summary>
         /// Assign a Product Commission Program
         /// </summary>
         /// <remarks>
@@ -289,6 +312,29 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteAffiliateCustomFieldWithHttpInfo(string customFieldId, int operationIndex = 0);
+        /// <summary>
+        /// Remove Commission Program Resource
+        /// </summary>
+        /// <remarks>
+        /// Removes a resource from a commission program
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        void DeleteCommissionProgramResource(string resourceId, int operationIndex = 0);
+
+        /// <summary>
+        /// Remove Commission Program Resource
+        /// </summary>
+        /// <remarks>
+        /// Removes a resource from a commission program
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteCommissionProgramResourceWithHttpInfo(string resourceId, int operationIndex = 0);
         /// <summary>
         /// Delete an Affiliate Link
         /// </summary>
@@ -814,6 +860,33 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of AffiliateCommissionProgramResponse</returns>
         ApiResponse<AffiliateCommissionProgramResponse> UpdateCommissionProgramWithHttpInfo(string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0);
         /// <summary>
+        /// Update Commission Program Resource
+        /// </summary>
+        /// <remarks>
+        /// Updates a resource for a commission program
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId"></param>
+        /// <param name="updateProgramResourceRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>AffiliateProgramResource</returns>
+        AffiliateProgramResource UpdateCommissionProgramResource(string resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Object? updateMask = default, int operationIndex = 0);
+
+        /// <summary>
+        /// Update Commission Program Resource
+        /// </summary>
+        /// <remarks>
+        /// Updates a resource for a commission program
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId"></param>
+        /// <param name="updateProgramResourceRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of AffiliateProgramResource</returns>
+        ApiResponse<AffiliateProgramResource> UpdateCommissionProgramResourceWithHttpInfo(string resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Object? updateMask = default, int operationIndex = 0);
+        /// <summary>
         /// Update a Default Commission Program
         /// </summary>
         /// <remarks>
@@ -1005,6 +1078,31 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AffiliateCommissionProgramResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<AffiliateCommissionProgramResponse>> AddCommissionProgramWithHttpInfoAsync(CreateCommissionProgramRequest createCommissionProgramRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Create Commission Program Resource
+        /// </summary>
+        /// <remarks>
+        /// Creates a resource for a commission program
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProgramResourceRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AffiliateProgramResource</returns>
+        System.Threading.Tasks.Task<AffiliateProgramResource> AddCommissionProgramResourceAsync(CreateProgramResourceRequest createProgramResourceRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Create Commission Program Resource
+        /// </summary>
+        /// <remarks>
+        /// Creates a resource for a commission program
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProgramResourceRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AffiliateProgramResource)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AffiliateProgramResource>> AddCommissionProgramResourceWithHttpInfoAsync(CreateProgramResourceRequest createProgramResourceRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Assign a Product Commission Program
         /// </summary>
@@ -1211,6 +1309,31 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAffiliateCustomFieldWithHttpInfoAsync(string customFieldId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Remove Commission Program Resource
+        /// </summary>
+        /// <remarks>
+        /// Removes a resource from a commission program
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteCommissionProgramResourceAsync(string resourceId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Remove Commission Program Resource
+        /// </summary>
+        /// <remarks>
+        /// Removes a resource from a commission program
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteCommissionProgramResourceWithHttpInfoAsync(string resourceId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Delete an Affiliate Link
         /// </summary>
@@ -1775,6 +1898,35 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AffiliateCommissionProgramResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<AffiliateCommissionProgramResponse>> UpdateCommissionProgramWithHttpInfoAsync(string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Update Commission Program Resource
+        /// </summary>
+        /// <remarks>
+        /// Updates a resource for a commission program
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId"></param>
+        /// <param name="updateProgramResourceRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AffiliateProgramResource</returns>
+        System.Threading.Tasks.Task<AffiliateProgramResource> UpdateCommissionProgramResourceAsync(string resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Update Commission Program Resource
+        /// </summary>
+        /// <remarks>
+        /// Updates a resource for a commission program
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId"></param>
+        /// <param name="updateProgramResourceRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AffiliateProgramResource)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AffiliateProgramResource>> UpdateCommissionProgramResourceWithHttpInfoAsync(string resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update a Default Commission Program
         /// </summary>
@@ -2553,6 +2705,185 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("AddCommissionProgram", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Create Commission Program Resource Creates a resource for a commission program
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProgramResourceRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>AffiliateProgramResource</returns>
+        public AffiliateProgramResource AddCommissionProgramResource(CreateProgramResourceRequest createProgramResourceRequest, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<AffiliateProgramResource> localVarResponse = AddCommissionProgramResourceWithHttpInfo(createProgramResourceRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create Commission Program Resource Creates a resource for a commission program
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProgramResourceRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of AffiliateProgramResource</returns>
+        public Keap.Core.V2.Client.ApiResponse<AffiliateProgramResource> AddCommissionProgramResourceWithHttpInfo(CreateProgramResourceRequest createProgramResourceRequest, int operationIndex = 0)
+        {
+            // verify the required parameter 'createProgramResourceRequest' is set
+            if (createProgramResourceRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'createProgramResourceRequest' when calling AffiliateApi->AddCommissionProgramResource");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createProgramResourceRequest;
+
+            localVarRequestOptions.Operation = "AffiliateApi.AddCommissionProgramResource";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<AffiliateProgramResource>("/rest/v2/affiliates/commissionPrograms/resources", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("AddCommissionProgramResource", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Create Commission Program Resource Creates a resource for a commission program
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProgramResourceRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AffiliateProgramResource</returns>
+        public async System.Threading.Tasks.Task<AffiliateProgramResource> AddCommissionProgramResourceAsync(CreateProgramResourceRequest createProgramResourceRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<AffiliateProgramResource> localVarResponse = await AddCommissionProgramResourceWithHttpInfoAsync(createProgramResourceRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create Commission Program Resource Creates a resource for a commission program
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProgramResourceRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AffiliateProgramResource)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<AffiliateProgramResource>> AddCommissionProgramResourceWithHttpInfoAsync(CreateProgramResourceRequest createProgramResourceRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'createProgramResourceRequest' is set
+            if (createProgramResourceRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'createProgramResourceRequest' when calling AffiliateApi->AddCommissionProgramResource");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createProgramResourceRequest;
+
+            localVarRequestOptions.Operation = "AffiliateApi.AddCommissionProgramResource";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<AffiliateProgramResource>("/rest/v2/affiliates/commissionPrograms/resources", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("AddCommissionProgramResource", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -4027,6 +4358,181 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DeleteAffiliateCustomField", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Remove Commission Program Resource Removes a resource from a commission program
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        public void DeleteCommissionProgramResource(string resourceId, int operationIndex = 0)
+        {
+            DeleteCommissionProgramResourceWithHttpInfo(resourceId);
+        }
+
+        /// <summary>
+        /// Remove Commission Program Resource Removes a resource from a commission program
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Keap.Core.V2.Client.ApiResponse<Object> DeleteCommissionProgramResourceWithHttpInfo(string resourceId, int operationIndex = 0)
+        {
+            // verify the required parameter 'resourceId' is set
+            if (resourceId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'resourceId' when calling AffiliateApi->DeleteCommissionProgramResource");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("resource_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(resourceId)); // path parameter
+
+            localVarRequestOptions.Operation = "AffiliateApi.DeleteCommissionProgramResource";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<Object>("/rest/v2/affiliates/commissionPrograms/resources/{resource_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteCommissionProgramResource", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Remove Commission Program Resource Removes a resource from a commission program
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteCommissionProgramResourceAsync(string resourceId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            await DeleteCommissionProgramResourceWithHttpInfoAsync(resourceId, operationIndex, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Remove Commission Program Resource Removes a resource from a commission program
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Object>> DeleteCommissionProgramResourceWithHttpInfoAsync(string resourceId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'resourceId' is set
+            if (resourceId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'resourceId' when calling AffiliateApi->DeleteCommissionProgramResource");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("resource_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(resourceId)); // path parameter
+
+            localVarRequestOptions.Operation = "AffiliateApi.DeleteCommissionProgramResource";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/rest/v2/affiliates/commissionPrograms/resources/{resource_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteCommissionProgramResource", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -7961,6 +8467,215 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateCommissionProgram", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update Commission Program Resource Updates a resource for a commission program
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId"></param>
+        /// <param name="updateProgramResourceRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>AffiliateProgramResource</returns>
+        public AffiliateProgramResource UpdateCommissionProgramResource(string resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Object? updateMask = default, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<AffiliateProgramResource> localVarResponse = UpdateCommissionProgramResourceWithHttpInfo(resourceId, updateProgramResourceRequest, updateMask);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update Commission Program Resource Updates a resource for a commission program
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId"></param>
+        /// <param name="updateProgramResourceRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of AffiliateProgramResource</returns>
+        public Keap.Core.V2.Client.ApiResponse<AffiliateProgramResource> UpdateCommissionProgramResourceWithHttpInfo(string resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Object? updateMask = default, int operationIndex = 0)
+        {
+            // verify the required parameter 'resourceId' is set
+            if (resourceId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'resourceId' when calling AffiliateApi->UpdateCommissionProgramResource");
+            }
+
+            // verify the required parameter 'updateProgramResourceRequest' is set
+            if (updateProgramResourceRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateProgramResourceRequest' when calling AffiliateApi->UpdateCommissionProgramResource");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("resource_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(resourceId)); // path parameter
+            if (updateMask != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+            }
+            localVarRequestOptions.Data = updateProgramResourceRequest;
+
+            localVarRequestOptions.Operation = "AffiliateApi.UpdateCommissionProgramResource";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<AffiliateProgramResource>("/rest/v2/affiliates/commissionPrograms/resources/{resource_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateCommissionProgramResource", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update Commission Program Resource Updates a resource for a commission program
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId"></param>
+        /// <param name="updateProgramResourceRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AffiliateProgramResource</returns>
+        public async System.Threading.Tasks.Task<AffiliateProgramResource> UpdateCommissionProgramResourceAsync(string resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<AffiliateProgramResource> localVarResponse = await UpdateCommissionProgramResourceWithHttpInfoAsync(resourceId, updateProgramResourceRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update Commission Program Resource Updates a resource for a commission program
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId"></param>
+        /// <param name="updateProgramResourceRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AffiliateProgramResource)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<AffiliateProgramResource>> UpdateCommissionProgramResourceWithHttpInfoAsync(string resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'resourceId' is set
+            if (resourceId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'resourceId' when calling AffiliateApi->UpdateCommissionProgramResource");
+            }
+
+            // verify the required parameter 'updateProgramResourceRequest' is set
+            if (updateProgramResourceRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateProgramResourceRequest' when calling AffiliateApi->UpdateCommissionProgramResource");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("resource_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(resourceId)); // path parameter
+            if (updateMask != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+            }
+            localVarRequestOptions.Data = updateProgramResourceRequest;
+
+            localVarRequestOptions.Operation = "AffiliateApi.UpdateCommissionProgramResource";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<AffiliateProgramResource>("/rest/v2/affiliates/commissionPrograms/resources/{resource_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateCommissionProgramResource", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

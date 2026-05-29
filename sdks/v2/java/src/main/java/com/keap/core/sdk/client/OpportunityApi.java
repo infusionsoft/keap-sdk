@@ -563,6 +563,95 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Delete an Opportunity Custom Field
+   * Deletes a Custom Field from Opportunity.
+   * @param customFieldId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteOpportunityesCustomField(String customFieldId) throws ApiException {
+    deleteOpportunityesCustomFieldWithHttpInfo(customFieldId);
+  }
+
+  /**
+   * Delete an Opportunity Custom Field
+   * Deletes a Custom Field from Opportunity.
+   * @param customFieldId  (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteOpportunityesCustomFieldWithHttpInfo(String customFieldId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteOpportunityesCustomFieldRequestBuilder(customFieldId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteOpportunityesCustomField", localVarResponse);
+        }
+        return new ApiResponse<Void>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          null
+        );
+      } finally {
+        // Drain the InputStream
+        while (localVarResponse.body().read() != -1) {
+            // Ignore
+        }
+        localVarResponse.body().close();
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteOpportunityesCustomFieldRequestBuilder(String customFieldId) throws ApiException {
+    // verify the required parameter 'customFieldId' is set
+    if (customFieldId == null) {
+      throw new ApiException(400, "Missing the required parameter 'customFieldId' when calling deleteOpportunityesCustomField");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/opportunities/model/customFields/{custom_field_id}"
+        .replace("{custom_field_id}", ApiClient.urlEncode(customFieldId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Retrieve a Opportunity
    * Retrieves the specified Opportunity
    * @param opportunityId  (required)

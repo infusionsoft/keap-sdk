@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**add_affiliate**](AffiliateApi.md#add_affiliate) | **POST** /rest/v2/affiliates | Create an Affiliate
 [**add_affiliate_to_program**](AffiliateApi.md#add_affiliate_to_program) | **POST** /rest/v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program
 [**add_commission_program**](AffiliateApi.md#add_commission_program) | **POST** /rest/v2/affiliates/commissionPrograms | Create an Affiliate Commission Program
+[**add_commission_program_resource**](AffiliateApi.md#add_commission_program_resource) | **POST** /rest/v2/affiliates/commissionPrograms/resources | Create Commission Program Resource
 [**assign_product_commission_program**](AffiliateApi.md#assign_product_commission_program) | **POST** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program
 [**assign_subscription_commission_program**](AffiliateApi.md#assign_subscription_commission_program) | **POST** /rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program
 [**create_affiliate_custom_field**](AffiliateApi.md#create_affiliate_custom_field) | **POST** /rest/v2/affiliates/model/customFields | Create an Affiliate Custom Field
@@ -15,6 +16,7 @@ Method | HTTP request | Description
 [**delete_affiliate**](AffiliateApi.md#delete_affiliate) | **DELETE** /rest/v2/affiliates/{id} | Delete Affiliate
 [**delete_affiliate_commission_program**](AffiliateApi.md#delete_affiliate_commission_program) | **DELETE** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program
 [**delete_affiliate_custom_field**](AffiliateApi.md#delete_affiliate_custom_field) | **DELETE** /rest/v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field
+[**delete_commission_program_resource**](AffiliateApi.md#delete_commission_program_resource) | **DELETE** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Remove Commission Program Resource
 [**delete_redirect_link**](AffiliateApi.md#delete_redirect_link) | **DELETE** /rest/v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link
 [**get_affiliate**](AffiliateApi.md#get_affiliate) | **GET** /rest/v2/affiliates/{id} | Retrieve an Affiliate
 [**get_affiliate_commission_total**](AffiliateApi.md#get_affiliate_commission_total) | **GET** /rest/v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal
@@ -35,6 +37,7 @@ Method | HTTP request | Description
 [**update_affiliate**](AffiliateApi.md#update_affiliate) | **PATCH** /rest/v2/affiliates/{id} | Update an Affiliate
 [**update_affiliate_custom_field**](AffiliateApi.md#update_affiliate_custom_field) | **PATCH** /rest/v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field
 [**update_commission_program**](AffiliateApi.md#update_commission_program) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
+[**update_commission_program_resource**](AffiliateApi.md#update_commission_program_resource) | **PATCH** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Update Commission Program Resource
 [**update_default_commission_program**](AffiliateApi.md#update_default_commission_program) | **PATCH** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program
 [**update_product_commission_program**](AffiliateApi.md#update_product_commission_program) | **PATCH** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program
 [**update_redirect_link**](AffiliateApi.md#update_redirect_link) | **PATCH** /rest/v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link
@@ -260,6 +263,88 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AffiliateCommissionProgramResponse**](AffiliateCommissionProgramResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **add_commission_program_resource**
+> AffiliateProgramResource add_commission_program_resource(create_program_resource_request)
+
+Create Commission Program Resource
+
+Creates a resource for a commission program
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.affiliate_program_resource import AffiliateProgramResource
+from keap_core_v2_client.models.create_program_resource_request import CreateProgramResourceRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+    create_program_resource_request = keap_core_v2_client.CreateProgramResourceRequest() # CreateProgramResourceRequest | 
+
+    try:
+        # Create Commission Program Resource
+        api_response = api_instance.add_commission_program_resource(create_program_resource_request)
+        print("The response of AffiliateApi->add_commission_program_resource:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->add_commission_program_resource: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_program_resource_request** | [**CreateProgramResourceRequest**](CreateProgramResourceRequest.md)|  | 
+
+### Return type
+
+[**AffiliateProgramResource**](AffiliateProgramResource.md)
 
 ### Authorization
 
@@ -906,6 +991,84 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **custom_field_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_commission_program_resource**
+> delete_commission_program_resource(resource_id)
+
+Remove Commission Program Resource
+
+Removes a resource from a commission program
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+    resource_id = 'resource_id_example' # str | 
+
+    try:
+        # Remove Commission Program Resource
+        api_instance.delete_commission_program_resource(resource_id)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->delete_commission_program_resource: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource_id** | **str**|  | 
 
 ### Return type
 
@@ -2586,6 +2749,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AffiliateCommissionProgramResponse**](AffiliateCommissionProgramResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_commission_program_resource**
+> AffiliateProgramResource update_commission_program_resource(resource_id, update_program_resource_request, update_mask=update_mask)
+
+Update Commission Program Resource
+
+Updates a resource for a commission program
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.affiliate_program_resource import AffiliateProgramResource
+from keap_core_v2_client.models.update_program_resource_request import UpdateProgramResourceRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+    resource_id = 'resource_id_example' # str | 
+    update_program_resource_request = keap_core_v2_client.UpdateProgramResourceRequest() # UpdateProgramResourceRequest | 
+    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+
+    try:
+        # Update Commission Program Resource
+        api_response = api_instance.update_commission_program_resource(resource_id, update_program_resource_request, update_mask=update_mask)
+        print("The response of AffiliateApi->update_commission_program_resource:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->update_commission_program_resource: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource_id** | **str**|  | 
+ **update_program_resource_request** | [**UpdateProgramResourceRequest**](UpdateProgramResourceRequest.md)|  | 
+ **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+
+### Return type
+
+[**AffiliateProgramResource**](AffiliateProgramResource.md)
 
 ### Authorization
 

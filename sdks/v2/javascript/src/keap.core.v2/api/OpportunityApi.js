@@ -284,6 +284,54 @@ export default class OpportunityApi {
 
 
     /**
+     * Delete an Opportunity Custom Field
+     * Deletes a Custom Field from Opportunity.
+     * @param {String} customFieldId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteOpportunityesCustomFieldWithHttpInfo(customFieldId) {
+      let postBody = null;
+      // verify the required parameter 'customFieldId' is set
+      if (customFieldId === undefined || customFieldId === null) {
+        throw new Error("Missing the required parameter 'customFieldId' when calling deleteOpportunityesCustomField");
+      }
+
+      let pathParams = {
+        'custom_field_id': customFieldId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/opportunities/model/customFields/{custom_field_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete an Opportunity Custom Field
+     * Deletes a Custom Field from Opportunity.
+     * @param {String} customFieldId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteOpportunityesCustomField(customFieldId) {
+      return this.deleteOpportunityesCustomFieldWithHttpInfo(customFieldId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Retrieve a Opportunity
      * Retrieves the specified Opportunity
      * @param {String} opportunityId 

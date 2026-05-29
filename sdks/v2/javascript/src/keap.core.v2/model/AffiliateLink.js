@@ -52,6 +52,9 @@ class AffiliateLink {
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
+            if (data.hasOwnProperty('code')) {
+                obj['code'] = ApiClient.convertToType(data['code'], 'String');
+            }
             if (data.hasOwnProperty('affiliate_id')) {
                 obj['affiliate_id'] = ApiClient.convertToType(data['affiliate_id'], 'String');
             }
@@ -60,6 +63,9 @@ class AffiliateLink {
             }
             if (data.hasOwnProperty('redirect_url')) {
                 obj['redirect_url'] = ApiClient.convertToType(data['redirect_url'], 'String');
+            }
+            if (data.hasOwnProperty('website_address')) {
+                obj['website_address'] = ApiClient.convertToType(data['website_address'], 'String');
             }
             if (data.hasOwnProperty('program_ids')) {
                 obj['program_ids'] = ApiClient.convertToType(data['program_ids'], ['String']);
@@ -86,6 +92,10 @@ class AffiliateLink {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
         }
         // ensure the json data is a string
+        if (data['code'] && !(typeof data['code'] === 'string' || data['code'] instanceof String)) {
+            throw new Error("Expected the field `code` to be a primitive type in the JSON string but got " + data['code']);
+        }
+        // ensure the json data is a string
         if (data['affiliate_id'] && !(typeof data['affiliate_id'] === 'string' || data['affiliate_id'] instanceof String)) {
             throw new Error("Expected the field `affiliate_id` to be a primitive type in the JSON string but got " + data['affiliate_id']);
         }
@@ -96,6 +106,10 @@ class AffiliateLink {
         // ensure the json data is a string
         if (data['redirect_url'] && !(typeof data['redirect_url'] === 'string' || data['redirect_url'] instanceof String)) {
             throw new Error("Expected the field `redirect_url` to be a primitive type in the JSON string but got " + data['redirect_url']);
+        }
+        // ensure the json data is a string
+        if (data['website_address'] && !(typeof data['website_address'] === 'string' || data['website_address'] instanceof String)) {
+            throw new Error("Expected the field `website_address` to be a primitive type in the JSON string but got " + data['website_address']);
         }
         // ensure the json data is an array
         if (!Array.isArray(data['program_ids'])) {
@@ -127,22 +141,34 @@ AffiliateLink.prototype['id'] = undefined;
 AffiliateLink.prototype['name'] = undefined;
 
 /**
+ * URL code for tracking
+ * @member {String} code
+ */
+AffiliateLink.prototype['code'] = undefined;
+
+/**
  * Associated affiliate ID
  * @member {String} affiliate_id
  */
 AffiliateLink.prototype['affiliate_id'] = undefined;
 
 /**
- * URL code for tracking
+ * URL code for tracking. Deprecated: use 'code' instead.
  * @member {String} local_url_code
  */
 AffiliateLink.prototype['local_url_code'] = undefined;
 
 /**
- * Destination URL
+ * Destination URL. This field is deprecated. Use 'website_address' instead.
  * @member {String} redirect_url
  */
 AffiliateLink.prototype['redirect_url'] = undefined;
+
+/**
+ * Destination URL
+ * @member {String} website_address
+ */
+AffiliateLink.prototype['website_address'] = undefined;
 
 /**
  * Associated program IDs

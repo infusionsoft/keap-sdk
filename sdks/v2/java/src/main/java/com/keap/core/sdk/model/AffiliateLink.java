@@ -37,9 +37,11 @@ import jakarta.validation.Valid;
 @JsonPropertyOrder({
   AffiliateLink.JSON_PROPERTY_ID,
   AffiliateLink.JSON_PROPERTY_NAME,
+  AffiliateLink.JSON_PROPERTY_CODE,
   AffiliateLink.JSON_PROPERTY_AFFILIATE_ID,
   AffiliateLink.JSON_PROPERTY_LOCAL_URL_CODE,
   AffiliateLink.JSON_PROPERTY_REDIRECT_URL,
+  AffiliateLink.JSON_PROPERTY_WEBSITE_ADDRESS,
   AffiliateLink.JSON_PROPERTY_PROGRAM_IDS,
   AffiliateLink.JSON_PROPERTY_DATE_CREATED
 })
@@ -53,6 +55,9 @@ public class AffiliateLink implements Serializable {
   public static final String JSON_PROPERTY_NAME = "name";
   @jakarta.annotation.Nullable  private String name;
 
+  public static final String JSON_PROPERTY_CODE = "code";
+  @jakarta.annotation.Nullable  private String code;
+
   public static final String JSON_PROPERTY_AFFILIATE_ID = "affiliate_id";
   @jakarta.annotation.Nullable  private String affiliateId;
 
@@ -61,6 +66,9 @@ public class AffiliateLink implements Serializable {
 
   public static final String JSON_PROPERTY_REDIRECT_URL = "redirect_url";
   @jakarta.annotation.Nullable  private String redirectUrl;
+
+  public static final String JSON_PROPERTY_WEBSITE_ADDRESS = "website_address";
+  @jakarta.annotation.Nullable  private String websiteAddress;
 
   public static final String JSON_PROPERTY_PROGRAM_IDS = "program_ids";
   @jakarta.annotation.Nullable  private List<String> programIds = new ArrayList<>();
@@ -119,6 +127,30 @@ public class AffiliateLink implements Serializable {
   }
 
 
+  public AffiliateLink code(@jakarta.annotation.Nullable String code) {
+    this.code = code;
+    return this;
+  }
+
+  /**
+   * URL code for tracking
+   * @return code
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "fP100", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "URL code for tracking")
+  @JsonProperty(JSON_PROPERTY_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getCode() {
+    return code;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCode(@jakarta.annotation.Nullable String code) {
+    this.code = code;
+  }
+
+
   public AffiliateLink affiliateId(@jakarta.annotation.Nullable String affiliateId) {
     this.affiliateId = affiliateId;
     return this;
@@ -149,10 +181,12 @@ public class AffiliateLink implements Serializable {
   }
 
   /**
-   * URL code for tracking
+   * URL code for tracking. Deprecated: use &#39;code&#39; instead.
    * @return localUrlCode
+   * @deprecated
    */
-  @jakarta.annotation.Nullable  @Schema(example = "fP100", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "URL code for tracking")
+  @Deprecated
+  @jakarta.annotation.Nullable  @Schema(example = "fP100", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "URL code for tracking. Deprecated: use 'code' instead.")
   @JsonProperty(JSON_PROPERTY_LOCAL_URL_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLocalUrlCode() {
@@ -173,10 +207,12 @@ public class AffiliateLink implements Serializable {
   }
 
   /**
-   * Destination URL
+   * Destination URL. This field is deprecated. Use &#39;website_address&#39; instead.
    * @return redirectUrl
+   * @deprecated
    */
-  @jakarta.annotation.Nullable  @Schema(example = "https://thryv.com/fitness", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Destination URL")
+  @Deprecated
+  @jakarta.annotation.Nullable  @Schema(example = "https://thryv.com/fitness", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Destination URL. This field is deprecated. Use 'website_address' instead.")
   @JsonProperty(JSON_PROPERTY_REDIRECT_URL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getRedirectUrl() {
@@ -188,6 +224,30 @@ public class AffiliateLink implements Serializable {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRedirectUrl(@jakarta.annotation.Nullable String redirectUrl) {
     this.redirectUrl = redirectUrl;
+  }
+
+
+  public AffiliateLink websiteAddress(@jakarta.annotation.Nullable String websiteAddress) {
+    this.websiteAddress = websiteAddress;
+    return this;
+  }
+
+  /**
+   * Destination URL
+   * @return websiteAddress
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "https://thryv.com/fitness", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Destination URL")
+  @JsonProperty(JSON_PROPERTY_WEBSITE_ADDRESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getWebsiteAddress() {
+    return websiteAddress;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_WEBSITE_ADDRESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setWebsiteAddress(@jakarta.annotation.Nullable String websiteAddress) {
+    this.websiteAddress = websiteAddress;
   }
 
 
@@ -260,16 +320,18 @@ public class AffiliateLink implements Serializable {
     AffiliateLink affiliateLink = (AffiliateLink) o;
     return Objects.equals(this.id, affiliateLink.id) &&
         Objects.equals(this.name, affiliateLink.name) &&
+        Objects.equals(this.code, affiliateLink.code) &&
         Objects.equals(this.affiliateId, affiliateLink.affiliateId) &&
         Objects.equals(this.localUrlCode, affiliateLink.localUrlCode) &&
         Objects.equals(this.redirectUrl, affiliateLink.redirectUrl) &&
+        Objects.equals(this.websiteAddress, affiliateLink.websiteAddress) &&
         Objects.equals(this.programIds, affiliateLink.programIds) &&
         Objects.equals(this.dateCreated, affiliateLink.dateCreated);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, affiliateId, localUrlCode, redirectUrl, programIds, dateCreated);
+    return Objects.hash(id, name, code, affiliateId, localUrlCode, redirectUrl, websiteAddress, programIds, dateCreated);
   }
 
   @Override
@@ -278,9 +340,11 @@ public class AffiliateLink implements Serializable {
     sb.append("class AffiliateLink {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    affiliateId: ").append(toIndentedString(affiliateId)).append("\n");
     sb.append("    localUrlCode: ").append(toIndentedString(localUrlCode)).append("\n");
     sb.append("    redirectUrl: ").append(toIndentedString(redirectUrl)).append("\n");
+    sb.append("    websiteAddress: ").append(toIndentedString(websiteAddress)).append("\n");
     sb.append("    programIds: ").append(toIndentedString(programIds)).append("\n");
     sb.append("    dateCreated: ").append(toIndentedString(dateCreated)).append("\n");
     sb.append("}");
@@ -318,6 +382,10 @@ public class AffiliateLink implements Serializable {
               this.instance.name = name;
           return this;
         }
+            public AffiliateLink.Builder code(String code) {
+              this.instance.code = code;
+          return this;
+        }
             public AffiliateLink.Builder affiliateId(String affiliateId) {
               this.instance.affiliateId = affiliateId;
           return this;
@@ -328,6 +396,10 @@ public class AffiliateLink implements Serializable {
         }
             public AffiliateLink.Builder redirectUrl(String redirectUrl) {
               this.instance.redirectUrl = redirectUrl;
+          return this;
+        }
+            public AffiliateLink.Builder websiteAddress(String websiteAddress) {
+              this.instance.websiteAddress = websiteAddress;
           return this;
         }
             public AffiliateLink.Builder programIds(List<String> programIds) {
@@ -374,9 +446,11 @@ public class AffiliateLink implements Serializable {
         return new AffiliateLink.Builder()
           .id(getId())
           .name(getName())
+          .code(getCode())
           .affiliateId(getAffiliateId())
           .localUrlCode(getLocalUrlCode())
           .redirectUrl(getRedirectUrl())
+          .websiteAddress(getWebsiteAddress())
           .programIds(getProgramIds())
           .dateCreated(getDateCreated());
       }

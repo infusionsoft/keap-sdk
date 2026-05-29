@@ -108,9 +108,11 @@ paths:
           - (String) `task_ids`
           - (String) `since_time`
           - (String) `until_time`
+          - (String)   `id`     — supports `==`, `>`, `<`, `>=`, `<=`
+          - (String) `title`  — supports prefix wildcard (`title==Foo*`)
 
-          You will need to apply the `==` operator to check the equality of one of the filters with your searched
-          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          Operators must be URL-encoded (`==` → `%3D%3D`, `>` → `%3E`, `<` → `%3C`).
+          For the filters listed above, here are some examples:
           - `filter=contact_id%3D%3D123`
           - `filter=has_due_date%3D%3Dtrue`
           - `filter=is_completed%3D%3Dtrue`
@@ -119,6 +121,9 @@ paths:
           - `filter=task_ids%3D%3D1,2,3`
           - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;`
           - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`
+          - `filter=id%3E5`                  (id > 5)
+          - `filter=id%3C%3D100`              (id <= 100)
+          - `filter=title%3D%3DFollow%2A`     (title starts with "Follow")
         required: false
         schema:
           type: string
@@ -130,6 +135,7 @@ paths:
           - `id`
           - `create_time`
           - `due_time`
+          - `update_time`
 
           One of the following directions:
           - `asc`
@@ -1350,6 +1356,127 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
   /rest/v2/referrals:
+    get:
+      tags:
+      - Referral
+      summary: List Referrals
+      description: Retrieves a list of all referrals with optional filtering and sorting
+      operationId: listReferrals
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) `referral_partner_id` - Allowable operators: "==", "<=", "<", ">=", ">", "!="
+          - (String) `contact_id` - Allowable operators: "==", "<=", "<", ">=", ">", "!="
+          - (String) `source` - Wildcard matching allowed
+          - (String) `description` - Wildcard matching allowed
+          - (String) `type` (Allowed values: `COOKIE`, `PERMANENT`, `MANUAL`)
+
+          You will need to apply the `==` operator (or other supported operators) to check the equality
+          of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above,
+          here are some examples:
+          - `filter=referral_partner_id%3D%3D123`
+          - `filter=referral_partner_id%3E10` (referral_partner_id > 10)
+          - `filter=contact_id%3D%3D456`
+          - `filter=contact_id%3C%3D100` (contact_id <= 100)
+          - `filter=source%3D%3DEmail Marketing`
+          - `filter=source%3D%3DEmail*` (starts with "Email")
+          - `filter=description%3D%3DReferred*` (starts with "Referred")
+          - `filter=type%3D%3DCOOKIE`
+          - `filter=referral_partner_id%3D%3D123%3Bcontact_id%3D%3D456`
+
+          For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A)
+          for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage:
+          - `field==foo*` finds anything in `field` that begins with `foo`
+        required: false
+        schema:
+          type: string
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `id`
+          - `referral_time`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          maximum: 1000
+          minimum: 0
+        example: 0
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListReferralsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
       tags:
       - Referral
@@ -7547,20 +7674,34 @@ paths:
       - name: filter
         in: query
         description: |
-          Filter to apply, allowed fields are:
+          Filter to apply. Allowed fields and operators:
+          - (String) `id` — supports `==`, `!=`, `>`, `<`, `>=`, `<=`
+          - (String list) `ids` — comma-separated note ids, supports `==` only (e.g. `ids==1,2,3`)
+          - (String) `title` — supports `==`. Bare value matches anywhere in the title (contains).
+             Wildcard prefix match also supported (e.g. `title==Follow*`)
           - (String) `contact_id`
           - (String) `assigned_to_user_id`
-          - (String) `title`
-          - (String) `since_time`
-          - (String) `until_time`
+          - (String) `since_time` — ISO-8601 date/time
+          - (String) `until_time` — ISO-8601 date/time
 
-          You will need to apply the `==` operator to check the equality of one of the filters with your searched
-          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          Operators must be URL-encoded. Common encodings:
+          `==` → `%3D%3D`, `!=` → `!%3D`, `>` → `%3E`, `<` → `%3C`,
+          `>=` → `%3E%3D`, `<=` → `%3C%3D`, `*` → `%2A`.
+
+          Multiple filters are combined with AND using `;`.
+
+          Examples:
           - `filter=contact_id%3D%3D1001`
-          - `filter=assigned_to_user_id%3D%3D42`
-          - `filter=title%3D%3DexpectedTitle`
-          - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;`
-          - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`
+          - `filter=id%3E5`
+          - `filter=ids%3D%3D1,2,3`
+          - `filter=title%3D%3DFollow%2A`
+          - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z`
+          - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`
+
+          Notes:
+          - `id` and `ids` cannot be combined in the same request.
+          - Wildcard `*` may only appear at the end of the value (prefix match).
+             Leading wildcards (`*foo`, `*foo*`) are rejected for performance reasons.
         required: false
         schema:
           type: string
@@ -7571,6 +7712,7 @@ paths:
           One of the following fields:
           - `id`
           - `create_time`
+          - `update_time`
 
           One of the following directions:
           - `asc`
@@ -10015,6 +10157,74 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetRestCommissionProgram'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/affiliates/commissionPrograms/resources:
+    post:
+      tags:
+      - Affiliate
+      summary: Create Commission Program Resource
+      description: Creates a resource for a commission program
+      operationId: addCommissionProgramResource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProgramResourceRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AffiliateProgramResource'
         '400':
           description: Bad Request
           content:
@@ -13435,6 +13645,78 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
   /rest/v2/orders/{order_id}/items/{order_item_id}:
+    get:
+      tags:
+      - Orders
+      summary: Retrieve an Order Item
+      description: Retrieves a single order item from an existing order
+      operationId: getOrderItem
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: order_item_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderItem'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     delete:
       tags:
       - Orders
@@ -14198,6 +14480,69 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
   /rest/v2/opportunities/model/customFields/{custom_field_id}:
+    delete:
+      tags:
+      - Opportunity
+      summary: Delete an Opportunity Custom Field
+      description: Deletes a Custom Field from Opportunity.
+      operationId: deleteOpportunityesCustomField
+      parameters:
+      - name: custom_field_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     patch:
       tags:
       - Opportunity
@@ -14286,6 +14631,70 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
   /rest/v2/notes/model/customFields/{custom_field_id}:
+    delete:
+      tags:
+      - Note
+      summary: Delete a Note Custom Field
+      description: 'Deletes a Custom Field from the Note object<br/>Note: Custom Fields
+        for Tasks, Classic Appointments and Notes are combined.'
+      operationId: deleteNotesCustomField
+      parameters:
+      - name: custom_field_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     patch:
       tags:
       - Note
@@ -18461,6 +18870,161 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/affiliates/commissionPrograms/resources/{resource_id}:
+    delete:
+      tags:
+      - Affiliate
+      summary: Remove Commission Program Resource
+      description: Removes a resource from a commission program
+      operationId: deleteCommissionProgramResource
+      parameters:
+      - name: resource_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Affiliate
+      summary: Update Commission Program Resource
+      description: Updates a resource for a commission program
+      operationId: updateCommissionProgramResource
+      parameters:
+      - name: resource_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        schema:
+          items:
+            type: string
+            enum:
+            - title
+            - notes
+            - url
+            - order
+            - content_html
+            - page_width
+            - page_height
+            - commission_program_ids
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProgramResourceRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AffiliateProgramResource'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/webforms:
     get:
       tags:
@@ -19719,6 +20283,7 @@ paths:
         description: |-
           Filter to apply, allowed fields are:
           - (String) `id`
+          - (List[String]) `ids`
           - (String) `amount` - Allowable operators: "==","<=", "<", ">=", ">", "!="
           - (String) `order_id`
           - (String) `contact_id`
@@ -19730,6 +20295,7 @@ paths:
           You will need to apply the `==` operator to check the equality of one of the filters with your searched
           word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
           - `filter=id%3D%3D123`
+          - `filter=ids%3D%3D1,10,4,24`
           - `filter=order_id%3D%3D123%3Bcontact_id%3D%3D567`
         required: false
         schema:
@@ -20486,20 +21052,34 @@ paths:
       - name: filter
         in: query
         description: |
-          Filter to apply, allowed fields are:
+          Filter to apply. Allowed fields and operators:
+          - (String) `id` — supports `==`, `!=`, `>`, `<`, `>=`, `<=`
+          - (String list) `ids` — comma-separated note ids, supports `==` only (e.g. `ids==1,2,3`)
+          - (String) `title` — supports `==`. Bare value matches anywhere in the title (contains).
+             Wildcard prefix match also supported (e.g. `title==Follow*`)
           - (String) `contact_id`
           - (String) `assigned_to_user_id`
-          - (String) `title`
-          - (String) `since_time`
-          - (String) `until_time`
+          - (String) `since_time` — ISO-8601 date/time
+          - (String) `until_time` — ISO-8601 date/time
 
-          You will need to apply the `==` operator to check the equality of one of the filters with your searched
-          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          Operators must be URL-encoded. Common encodings:
+          `==` → `%3D%3D`, `!=` → `!%3D`, `>` → `%3E`, `<` → `%3C`,
+          `>=` → `%3E%3D`, `<=` → `%3C%3D`, `*` → `%2A`.
+
+          Multiple filters are combined with AND using `;`.
+
+          Examples:
           - `filter=contact_id%3D%3D1001`
-          - `filter=assigned_to_user_id%3D%3D42`
-          - `filter=title%3D%3DexpectedTitle`
-          - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;`
-          - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`
+          - `filter=id%3E5`
+          - `filter=ids%3D%3D1,2,3`
+          - `filter=title%3D%3DFollow%2A`
+          - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z`
+          - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`
+
+          Notes:
+          - `id` and `ids` cannot be combined in the same request.
+          - Wildcard `*` may only appear at the end of the value (prefix match).
+             Leading wildcards (`*foo`, `*foo*`) are rejected for performance reasons.
         required: false
         schema:
           type: string
@@ -20516,6 +21096,7 @@ paths:
           One of the following fields:
           - `id`
           - `create_time`
+          - `update_time`
 
           One of the following directions:
           - `asc`
@@ -28968,15 +29549,26 @@ components:
           type: string
           description: Link name
           example: Fitness Program
+        code:
+          type: string
+          description: URL code for tracking
+          example: fP100
         affiliate_id:
           type: string
           description: Associated affiliate ID
           example: 123
         local_url_code:
           type: string
-          description: URL code for tracking
+          deprecated: true
+          description: 'URL code for tracking. Deprecated: use ''code'' instead.'
           example: fP100
         redirect_url:
+          type: string
+          deprecated: true
+          description: Destination URL. This field is deprecated. Use 'website_address'
+            instead.
+          example: https://thryv.com/fitness
+        website_address:
           type: string
           description: Destination URL
           example: https://thryv.com/fitness
@@ -29284,6 +29876,122 @@ components:
           format: double
           description: Plan price
           example: 49.99
+    CreateProgramResourceRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          description: The program resource title
+          example: Summer Sale Banner
+        type:
+          type: string
+          description: The type of resource
+          enum:
+          - EMAIL
+          - BANNER
+          - PAGE
+          example: BANNER
+        notes:
+          type: string
+          description: The resource notes.
+          example: Use this banner for summer promotions
+        url:
+          type: string
+          description: The URL to the resource.
+          example: https://thryv.com/banners/summer-sale.jpg
+        order:
+          type: integer
+          format: int32
+          description: The order in which the resource is displayed. Minimum value
+            is 0. Defaults to 0. Lower values indicate higher priority.
+          example: 1
+        content_html:
+          type: string
+          description: The contents of the PAGE or EMAIL. In HTML format.
+          example: <h1>Summer Sale</h1><p>Get 20% off!</p>
+        page_width:
+          type: integer
+          format: int32
+          description: The width of the page for PAGE types, in pixels. Minimum value
+            is 0. Defaults to 0
+          example: 728
+        page_height:
+          type: integer
+          format: int32
+          description: The height of the page for PAGE types, in pixels. Minimum value
+            is 0. Defaults to 0
+          example: 90
+        commission_program_ids:
+          type: array
+          description: A list of commission program ids that will use this resource.
+          example:
+          - '123'
+          - '456'
+          items:
+            type: string
+      required:
+      - commission_program_ids
+      - title
+      - type
+    AffiliateProgramResource:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The program resource identifier
+          example: 101
+        title:
+          type: string
+          description: The program resource title
+          example: Summer Sale Banner
+        type:
+          type: string
+          description: The type of resource
+          enum:
+          - EMAIL
+          - BANNER
+          - PAGE
+          example: BANNER
+        notes:
+          type: string
+          description: The resource notes.
+          example: Use this banner for summer promotions
+        url:
+          type: string
+          description: The URL to the resource.
+          example: https://thryv.com/banners/summer-sale.jpg
+        order:
+          type: integer
+          format: int32
+          description: The order which the resource to be displayed. Minimum value
+            is 0. Lower values indicate higher priority.
+          example: 1
+        content_html:
+          type: string
+          description: The contents of the PAGE or EMAIL. In HTML format.
+          example: <h1>Summer Sale</h1><p>Get 20% off!</p>
+        page_width:
+          type: integer
+          format: int32
+          description: The width of the page for PAGE types, in pixels.
+          example: 728
+        page_height:
+          type: integer
+          format: int32
+          description: The height of the page for PAGE types, in pixels.
+          example: 90
+        commission_programs:
+          type: array
+          description: A list of commission programs using this resource.
+          items:
+            $ref: '#/components/schemas/ResourceCommissionProgram'
+    ResourceCommissionProgram:
+      type: object
+      properties:
+        commission_program_id:
+          type: string
+          description: The commission program identifier
+          example: 100
     CreateProductCommissionProgramRequest:
       type: object
       properties:
@@ -31081,6 +31789,53 @@ components:
           type: string
           description: Subscription ID to assign commission
           example: 456
+    UpdateProgramResourceRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          description: The program resource title
+          example: Summer Sale Banner
+        notes:
+          type: string
+          description: The resource notes.
+          example: Use this banner for summer promotions
+        url:
+          type: string
+          description: The URL to the resource.
+          example: https://thryv.com/banners/summer-sale.jpg
+        order:
+          type: integer
+          format: int32
+          description: The order in which the resource is displayed. Minimum value
+            is 0. Lower values indicate higher priority.
+          example: 1
+        content_html:
+          type: string
+          description: The contents of the PAGE or EMAIL. In HTML format.
+          example: <h1>Summer Sale</h1><p>Get 20% off!</p>
+        page_width:
+          type: integer
+          format: int32
+          description: The width of the page for PAGE types, in pixels. Minimum value
+            is 0.
+          example: 728
+        page_height:
+          type: integer
+          format: int32
+          description: The height of the page for PAGE types, in pixels. Minimum value
+            is 0.
+          example: 90
+        commission_program_ids:
+          type: array
+          description: A list of commission program ids to use this resource. The
+            values in this list will replace the existing list of commission program
+            ids.
+          example:
+          - '123'
+          - '456'
+          items:
+            type: string
     UpdateProductCommissionProgramRequest:
       type: object
       properties:
@@ -32005,6 +32760,15 @@ components:
           - ALL_USERS
           items:
             type: string
+    ListReferralsResponse:
+      type: object
+      properties:
+        referrals:
+          type: array
+          items:
+            $ref: '#/components/schemas/Referral'
+        next_page_token:
+          type: string
     CurrencyValue_List:
       type: object
       properties:
@@ -33610,58 +34374,6 @@ components:
             $ref: '#/components/schemas/AffiliateProgramV2'
         next_page_token:
           type: string
-    AffiliateProgramResource:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The program resource identifier
-          example: 101
-        title:
-          type: string
-          description: The program resource title
-          example: Summer Sale Banner
-        type:
-          type: string
-          description: The type of resource
-          enum:
-          - EMAIL
-          - BANNER
-          - PAGE
-          example: BANNER
-        notes:
-          type: string
-          description: The resource notes.
-          example: Use this banner for summer promotions
-        url:
-          type: string
-          description: The URL to the resource.
-          example: https://thryv.com/banners/summer-sale.jpg
-        order:
-          type: integer
-          format: int32
-          description: The order which the resource to be displayed. Minimum value
-            is 0. Lower values indicate higher priority.
-          example: 1
-        content_html:
-          type: string
-          description: The contents of the PAGE or EMAIL. In HTML format.
-          example: <h1>Summer Sale</h1><p>Get 20% off!</p>
-        page_width:
-          type: integer
-          format: int32
-          description: The width of the page for PAGE types, in pixels.
-          example: 728
-        page_height:
-          type: integer
-          format: int32
-          description: The height of the page for PAGE types, in pixels.
-          example: 90
-        commission_programs:
-          type: array
-          description: A list of commission programs using this resource.
-          items:
-            $ref: '#/components/schemas/ResourceCommissionProgram'
     ListProgramResourcesResponse:
       type: object
       properties:
@@ -33671,13 +34383,6 @@ components:
             $ref: '#/components/schemas/AffiliateProgramResource'
         next_page_token:
           type: string
-    ResourceCommissionProgram:
-      type: object
-      properties:
-        commission_program_id:
-          type: string
-          description: The commission program identifier
-          example: 100
   securitySchemes:
     oauth2:
       type: oauth2

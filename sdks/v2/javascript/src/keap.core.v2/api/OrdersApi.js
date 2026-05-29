@@ -669,6 +669,61 @@ export default class OrdersApi {
 
 
     /**
+     * Retrieve an Order Item
+     * Retrieves a single order item from an existing order
+     * @param {String} orderId 
+     * @param {String} orderItemId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/OrderItem} and HTTP response
+     */
+    getOrderItemWithHttpInfo(orderId, orderItemId) {
+      let postBody = null;
+      // verify the required parameter 'orderId' is set
+      if (orderId === undefined || orderId === null) {
+        throw new Error("Missing the required parameter 'orderId' when calling getOrderItem");
+      }
+      // verify the required parameter 'orderItemId' is set
+      if (orderItemId === undefined || orderItemId === null) {
+        throw new Error("Missing the required parameter 'orderItemId' when calling getOrderItem");
+      }
+
+      let pathParams = {
+        'order_id': orderId,
+        'order_item_id': orderItemId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = OrderItem;
+      return this.apiClient.callApi(
+        '/rest/v2/orders/{order_id}/items/{order_item_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Retrieve an Order Item
+     * Retrieves a single order item from an existing order
+     * @param {String} orderId 
+     * @param {String} orderItemId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/OrderItem}
+     */
+    getOrderItem(orderId, orderItemId) {
+      return this.getOrderItemWithHttpInfo(orderId, orderItemId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Retrieve Order Payments
      * Retrieves a list of payments made against a given order, including historical or external payments of cash or credit card
      * @param {String} orderId 

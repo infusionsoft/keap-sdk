@@ -17,6 +17,7 @@ import AffiliateAddToProgramRequest from '../model/AffiliateAddToProgramRequest'
 import AffiliateCommissionEarned from '../model/AffiliateCommissionEarned';
 import AffiliateCommissionProgramResponse from '../model/AffiliateCommissionProgramResponse';
 import AffiliateLink from '../model/AffiliateLink';
+import AffiliateProgramResource from '../model/AffiliateProgramResource';
 import AffiliateRemoveFromProgramRequest from '../model/AffiliateRemoveFromProgramRequest';
 import CreateAffiliateRequest from '../model/CreateAffiliateRequest';
 import CreateCommissionProgramRequest from '../model/CreateCommissionProgramRequest';
@@ -24,6 +25,7 @@ import CreateCustomFieldRequest from '../model/CreateCustomFieldRequest';
 import CreateDefaultCommissionProgramRequest from '../model/CreateDefaultCommissionProgramRequest';
 import CreateOrUpdateAffiliateLinkRequest from '../model/CreateOrUpdateAffiliateLinkRequest';
 import CreateProductCommissionProgramRequest from '../model/CreateProductCommissionProgramRequest';
+import CreateProgramResourceRequest from '../model/CreateProgramResourceRequest';
 import CreateSubscriptionCommissionProgramRequest from '../model/CreateSubscriptionCommissionProgramRequest';
 import CustomFieldMetaData from '../model/CustomFieldMetaData';
 import DeleteProgramCommissionRequest from '../model/DeleteProgramCommissionRequest';
@@ -45,6 +47,7 @@ import UpdateCommissionProgramRequest from '../model/UpdateCommissionProgramRequ
 import UpdateCustomFieldMetaDataRequest from '../model/UpdateCustomFieldMetaDataRequest';
 import UpdateDefaultCommissionProgramRequest from '../model/UpdateDefaultCommissionProgramRequest';
 import UpdateProductCommissionProgramRequest from '../model/UpdateProductCommissionProgramRequest';
+import UpdateProgramResourceRequest from '../model/UpdateProgramResourceRequest';
 import UpdateSubscriptionCommissionProgramRequest from '../model/UpdateSubscriptionCommissionProgramRequest';
 
 /**
@@ -208,6 +211,53 @@ export default class AffiliateApi {
      */
     addCommissionProgram(createCommissionProgramRequest) {
       return this.addCommissionProgramWithHttpInfo(createCommissionProgramRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Create Commission Program Resource
+     * Creates a resource for a commission program
+     * @param {module:keap.core.v2/model/CreateProgramResourceRequest} createProgramResourceRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/AffiliateProgramResource} and HTTP response
+     */
+    addCommissionProgramResourceWithHttpInfo(createProgramResourceRequest) {
+      let postBody = createProgramResourceRequest;
+      // verify the required parameter 'createProgramResourceRequest' is set
+      if (createProgramResourceRequest === undefined || createProgramResourceRequest === null) {
+        throw new Error("Missing the required parameter 'createProgramResourceRequest' when calling addCommissionProgramResource");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = AffiliateProgramResource;
+      return this.apiClient.callApi(
+        '/rest/v2/affiliates/commissionPrograms/resources', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create Commission Program Resource
+     * Creates a resource for a commission program
+     * @param {module:keap.core.v2/model/CreateProgramResourceRequest} createProgramResourceRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/AffiliateProgramResource}
+     */
+    addCommissionProgramResource(createProgramResourceRequest) {
+      return this.addCommissionProgramResourceWithHttpInfo(createProgramResourceRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -608,6 +658,54 @@ export default class AffiliateApi {
      */
     deleteAffiliateCustomField(customFieldId) {
       return this.deleteAffiliateCustomFieldWithHttpInfo(customFieldId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Remove Commission Program Resource
+     * Removes a resource from a commission program
+     * @param {String} resourceId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteCommissionProgramResourceWithHttpInfo(resourceId) {
+      let postBody = null;
+      // verify the required parameter 'resourceId' is set
+      if (resourceId === undefined || resourceId === null) {
+        throw new Error("Missing the required parameter 'resourceId' when calling deleteCommissionProgramResource");
+      }
+
+      let pathParams = {
+        'resource_id': resourceId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/affiliates/commissionPrograms/resources/{resource_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Remove Commission Program Resource
+     * Removes a resource from a commission program
+     * @param {String} resourceId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteCommissionProgramResource(resourceId) {
+      return this.deleteCommissionProgramResourceWithHttpInfo(resourceId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1692,6 +1790,66 @@ export default class AffiliateApi {
      */
     updateCommissionProgram(commissionProgramId, updateCommissionProgramRequest, opts) {
       return this.updateCommissionProgramWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update Commission Program Resource
+     * Updates a resource for a commission program
+     * @param {String} resourceId 
+     * @param {module:keap.core.v2/model/UpdateProgramResourceRequest} updateProgramResourceRequest 
+     * @param {Object} opts Optional parameters
+     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/AffiliateProgramResource} and HTTP response
+     */
+    updateCommissionProgramResourceWithHttpInfo(resourceId, updateProgramResourceRequest, opts) {
+      opts = opts || {};
+      let postBody = updateProgramResourceRequest;
+      // verify the required parameter 'resourceId' is set
+      if (resourceId === undefined || resourceId === null) {
+        throw new Error("Missing the required parameter 'resourceId' when calling updateCommissionProgramResource");
+      }
+      // verify the required parameter 'updateProgramResourceRequest' is set
+      if (updateProgramResourceRequest === undefined || updateProgramResourceRequest === null) {
+        throw new Error("Missing the required parameter 'updateProgramResourceRequest' when calling updateCommissionProgramResource");
+      }
+
+      let pathParams = {
+        'resource_id': resourceId
+      };
+      let queryParams = {
+        'update_mask': opts['updateMask']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = AffiliateProgramResource;
+      return this.apiClient.callApi(
+        '/rest/v2/affiliates/commissionPrograms/resources/{resource_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Update Commission Program Resource
+     * Updates a resource for a commission program
+     * @param {String} resourceId 
+     * @param {module:keap.core.v2/model/UpdateProgramResourceRequest} updateProgramResourceRequest 
+     * @param {Object} opts Optional parameters
+     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/AffiliateProgramResource}
+     */
+    updateCommissionProgramResource(resourceId, updateProgramResourceRequest, opts) {
+      return this.updateCommissionProgramResourceWithHttpInfo(resourceId, updateProgramResourceRequest, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

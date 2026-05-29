@@ -7,6 +7,7 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**addAffiliate()**](AffiliateApi.md#addAffiliate) | **POST** /rest/v2/affiliates | Create an Affiliate |
 | [**addAffiliateToProgram()**](AffiliateApi.md#addAffiliateToProgram) | **POST** /rest/v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program |
 | [**addCommissionProgram()**](AffiliateApi.md#addCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms | Create an Affiliate Commission Program |
+| [**addCommissionProgramResource()**](AffiliateApi.md#addCommissionProgramResource) | **POST** /rest/v2/affiliates/commissionPrograms/resources | Create Commission Program Resource |
 | [**assignProductCommissionProgram()**](AffiliateApi.md#assignProductCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program |
 | [**assignSubscriptionCommissionProgram()**](AffiliateApi.md#assignSubscriptionCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program |
 | [**createAffiliateCustomField()**](AffiliateApi.md#createAffiliateCustomField) | **POST** /rest/v2/affiliates/model/customFields | Create an Affiliate Custom Field |
@@ -15,6 +16,7 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**deleteAffiliate()**](AffiliateApi.md#deleteAffiliate) | **DELETE** /rest/v2/affiliates/{id} | Delete Affiliate |
 | [**deleteAffiliateCommissionProgram()**](AffiliateApi.md#deleteAffiliateCommissionProgram) | **DELETE** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
 | [**deleteAffiliateCustomField()**](AffiliateApi.md#deleteAffiliateCustomField) | **DELETE** /rest/v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field |
+| [**deleteCommissionProgramResource()**](AffiliateApi.md#deleteCommissionProgramResource) | **DELETE** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Remove Commission Program Resource |
 | [**deleteRedirectLink()**](AffiliateApi.md#deleteRedirectLink) | **DELETE** /rest/v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
 | [**getAffiliate()**](AffiliateApi.md#getAffiliate) | **GET** /rest/v2/affiliates/{id} | Retrieve an Affiliate |
 | [**getAffiliateCommissionTotal()**](AffiliateApi.md#getAffiliateCommissionTotal) | **GET** /rest/v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal |
@@ -35,6 +37,7 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**updateAffiliate()**](AffiliateApi.md#updateAffiliate) | **PATCH** /rest/v2/affiliates/{id} | Update an Affiliate |
 | [**updateAffiliateCustomField()**](AffiliateApi.md#updateAffiliateCustomField) | **PATCH** /rest/v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field |
 | [**updateCommissionProgram()**](AffiliateApi.md#updateCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
+| [**updateCommissionProgramResource()**](AffiliateApi.md#updateCommissionProgramResource) | **PATCH** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Update Commission Program Resource |
 | [**updateDefaultCommissionProgram()**](AffiliateApi.md#updateDefaultCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
 | [**updateProductCommissionProgram()**](AffiliateApi.md#updateProductCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program |
 | [**updateRedirectLink()**](AffiliateApi.md#updateRedirectLink) | **PATCH** /rest/v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link |
@@ -205,6 +208,65 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\AffiliateCommissionProgramResponse**](../Model/AffiliateCommissionProgramResponse.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `addCommissionProgramResource()`
+
+```php
+addCommissionProgramResource($create_program_resource_request): \Keap\Core\V2\Model\AffiliateProgramResource
+```
+
+Create Commission Program Resource
+
+Creates a resource for a commission program
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\AffiliateApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_program_resource_request = new \Keap\Core\V2\Model\CreateProgramResourceRequest(); // \Keap\Core\V2\Model\CreateProgramResourceRequest
+
+try {
+    $result = $apiInstance->addCommissionProgramResource($create_program_resource_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AffiliateApi->addCommissionProgramResource: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_program_resource_request** | [**\Keap\Core\V2\Model\CreateProgramResourceRequest**](../Model/CreateProgramResourceRequest.md)|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\AffiliateProgramResource**](../Model/AffiliateProgramResource.md)
 
 ### Authorization
 
@@ -676,6 +738,64 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **custom_field_id** | **string**|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteCommissionProgramResource()`
+
+```php
+deleteCommissionProgramResource($resource_id)
+```
+
+Remove Commission Program Resource
+
+Removes a resource from a commission program
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\AffiliateApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$resource_id = 'resource_id_example'; // string
+
+try {
+    $apiInstance->deleteCommissionProgramResource($resource_id);
+} catch (Exception $e) {
+    echo 'Exception when calling AffiliateApi->deleteCommissionProgramResource: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **resource_id** | **string**|  | |
 
 ### Return type
 
@@ -1919,6 +2039,69 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\AffiliateCommissionProgramResponse**](../Model/AffiliateCommissionProgramResponse.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateCommissionProgramResource()`
+
+```php
+updateCommissionProgramResource($resource_id, $update_program_resource_request, $update_mask): \Keap\Core\V2\Model\AffiliateProgramResource
+```
+
+Update Commission Program Resource
+
+Updates a resource for a commission program
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\AffiliateApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$resource_id = 'resource_id_example'; // string
+$update_program_resource_request = new \Keap\Core\V2\Model\UpdateProgramResourceRequest(); // \Keap\Core\V2\Model\UpdateProgramResourceRequest
+$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+
+try {
+    $result = $apiInstance->updateCommissionProgramResource($resource_id, $update_program_resource_request, $update_mask);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AffiliateApi->updateCommissionProgramResource: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **resource_id** | **string**|  | |
+| **update_program_resource_request** | [**\Keap\Core\V2\Model\UpdateProgramResourceRequest**](../Model/UpdateProgramResourceRequest.md)|  | |
+| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+
+### Return type
+
+[**\Keap\Core\V2\Model\AffiliateProgramResource**](../Model/AffiliateProgramResource.md)
 
 ### Authorization
 

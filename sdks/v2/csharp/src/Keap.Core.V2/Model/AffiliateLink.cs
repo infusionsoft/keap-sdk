@@ -37,18 +37,22 @@ namespace Keap.Core.V2.Model
         /// </summary>
         /// <param name="id">Affiliate link ID.</param>
         /// <param name="name">Link name.</param>
+        /// <param name="code">URL code for tracking.</param>
         /// <param name="affiliateId">Associated affiliate ID.</param>
-        /// <param name="localUrlCode">URL code for tracking.</param>
-        /// <param name="redirectUrl">Destination URL.</param>
+        /// <param name="localUrlCode">URL code for tracking. Deprecated: use &#39;code&#39; instead..</param>
+        /// <param name="redirectUrl">Destination URL. This field is deprecated. Use &#39;website_address&#39; instead..</param>
+        /// <param name="websiteAddress">Destination URL.</param>
         /// <param name="programIds">Associated program IDs.</param>
         /// <param name="dateCreated">Date link was created (ISO-8601).</param>
-        public AffiliateLink(string id = default, string name = default, string affiliateId = default, string localUrlCode = default, string redirectUrl = default, List<string> programIds = default, string dateCreated = default)
+        public AffiliateLink(string id = default, string name = default, string code = default, string affiliateId = default, string localUrlCode = default, string redirectUrl = default, string websiteAddress = default, List<string> programIds = default, string dateCreated = default)
         {
             this.Id = id;
             this.Name = name;
+            this.Code = code;
             this.AffiliateId = affiliateId;
             this.LocalUrlCode = localUrlCode;
             this.RedirectUrl = redirectUrl;
+            this.WebsiteAddress = websiteAddress;
             this.ProgramIds = programIds;
             this.DateCreated = dateCreated;
         }
@@ -74,6 +78,16 @@ namespace Keap.Core.V2.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// URL code for tracking
+        /// </summary>
+        /// <value>URL code for tracking</value>
+        /*
+        <example>fP100</example>
+        */
+        [DataMember(Name = "code", EmitDefaultValue = false)]
+        public string Code { get; set; }
+
+        /// <summary>
         /// Associated affiliate ID
         /// </summary>
         /// <value>Associated affiliate ID</value>
@@ -84,14 +98,26 @@ namespace Keap.Core.V2.Model
         public string AffiliateId { get; set; }
 
         /// <summary>
-        /// URL code for tracking
+        /// URL code for tracking. Deprecated: use &#39;code&#39; instead.
         /// </summary>
-        /// <value>URL code for tracking</value>
+        /// <value>URL code for tracking. Deprecated: use &#39;code&#39; instead.</value>
         /*
         <example>fP100</example>
         */
         [DataMember(Name = "local_url_code", EmitDefaultValue = false)]
+        [Obsolete]
         public string LocalUrlCode { get; set; }
+
+        /// <summary>
+        /// Destination URL. This field is deprecated. Use &#39;website_address&#39; instead.
+        /// </summary>
+        /// <value>Destination URL. This field is deprecated. Use &#39;website_address&#39; instead.</value>
+        /*
+        <example>https://thryv.com/fitness</example>
+        */
+        [DataMember(Name = "redirect_url", EmitDefaultValue = false)]
+        [Obsolete]
+        public string RedirectUrl { get; set; }
 
         /// <summary>
         /// Destination URL
@@ -100,8 +126,8 @@ namespace Keap.Core.V2.Model
         /*
         <example>https://thryv.com/fitness</example>
         */
-        [DataMember(Name = "redirect_url", EmitDefaultValue = false)]
-        public string RedirectUrl { get; set; }
+        [DataMember(Name = "website_address", EmitDefaultValue = false)]
+        public string WebsiteAddress { get; set; }
 
         /// <summary>
         /// Associated program IDs
@@ -133,9 +159,11 @@ namespace Keap.Core.V2.Model
             sb.Append("class AffiliateLink {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("  AffiliateId: ").Append(AffiliateId).Append("\n");
             sb.Append("  LocalUrlCode: ").Append(LocalUrlCode).Append("\n");
             sb.Append("  RedirectUrl: ").Append(RedirectUrl).Append("\n");
+            sb.Append("  WebsiteAddress: ").Append(WebsiteAddress).Append("\n");
             sb.Append("  ProgramIds: ").Append(ProgramIds).Append("\n");
             sb.Append("  DateCreated: ").Append(DateCreated).Append("\n");
             sb.Append("}\n");

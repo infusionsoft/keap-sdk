@@ -22,17 +22,25 @@ export class AffiliateLink {
     */
     'name'?: string;
     /**
+    * URL code for tracking
+    */
+    'code'?: string;
+    /**
     * Associated affiliate ID
     */
     'affiliateId'?: string;
     /**
-    * URL code for tracking
+    * URL code for tracking. Deprecated: use \'code\' instead.
     */
     'localUrlCode'?: string;
     /**
-    * Destination URL
+    * Destination URL. This field is deprecated. Use \'website_address\' instead.
     */
     'redirectUrl'?: string;
+    /**
+    * Destination URL
+    */
+    'websiteAddress'?: string;
     /**
     * Associated program IDs
     */
@@ -60,6 +68,12 @@ export class AffiliateLink {
             "format": ""
         },
         {
+            "name": "code",
+            "baseName": "code",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "affiliateId",
             "baseName": "affiliate_id",
             "type": "string",
@@ -74,6 +88,12 @@ export class AffiliateLink {
         {
             "name": "redirectUrl",
             "baseName": "redirect_url",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "websiteAddress",
+            "baseName": "website_address",
             "type": "string",
             "format": ""
         },

@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.11</version>
+  <version>2.0.12</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.11"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.12"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.11.jar`
+- `target/core-service-v2-java-sdk-2.0.12.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -114,6 +114,8 @@ Class | Method | HTTP request | Description
 *AffiliateApi* | [**addAffiliateToProgramWithHttpInfo**](docs/AffiliateApi.md#addAffiliateToProgramWithHttpInfo) | **POST** /rest/v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program
 *AffiliateApi* | [**addCommissionProgram**](docs/AffiliateApi.md#addCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms | Create an Affiliate Commission Program
 *AffiliateApi* | [**addCommissionProgramWithHttpInfo**](docs/AffiliateApi.md#addCommissionProgramWithHttpInfo) | **POST** /rest/v2/affiliates/commissionPrograms | Create an Affiliate Commission Program
+*AffiliateApi* | [**addCommissionProgramResource**](docs/AffiliateApi.md#addCommissionProgramResource) | **POST** /rest/v2/affiliates/commissionPrograms/resources | Create Commission Program Resource
+*AffiliateApi* | [**addCommissionProgramResourceWithHttpInfo**](docs/AffiliateApi.md#addCommissionProgramResourceWithHttpInfo) | **POST** /rest/v2/affiliates/commissionPrograms/resources | Create Commission Program Resource
 *AffiliateApi* | [**assignProductCommissionProgram**](docs/AffiliateApi.md#assignProductCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program
 *AffiliateApi* | [**assignProductCommissionProgramWithHttpInfo**](docs/AffiliateApi.md#assignProductCommissionProgramWithHttpInfo) | **POST** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program
 *AffiliateApi* | [**assignSubscriptionCommissionProgram**](docs/AffiliateApi.md#assignSubscriptionCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program
@@ -130,6 +132,8 @@ Class | Method | HTTP request | Description
 *AffiliateApi* | [**deleteAffiliateCommissionProgramWithHttpInfo**](docs/AffiliateApi.md#deleteAffiliateCommissionProgramWithHttpInfo) | **DELETE** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program
 *AffiliateApi* | [**deleteAffiliateCustomField**](docs/AffiliateApi.md#deleteAffiliateCustomField) | **DELETE** /rest/v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field
 *AffiliateApi* | [**deleteAffiliateCustomFieldWithHttpInfo**](docs/AffiliateApi.md#deleteAffiliateCustomFieldWithHttpInfo) | **DELETE** /rest/v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field
+*AffiliateApi* | [**deleteCommissionProgramResource**](docs/AffiliateApi.md#deleteCommissionProgramResource) | **DELETE** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Remove Commission Program Resource
+*AffiliateApi* | [**deleteCommissionProgramResourceWithHttpInfo**](docs/AffiliateApi.md#deleteCommissionProgramResourceWithHttpInfo) | **DELETE** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Remove Commission Program Resource
 *AffiliateApi* | [**deleteRedirectLink**](docs/AffiliateApi.md#deleteRedirectLink) | **DELETE** /rest/v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link
 *AffiliateApi* | [**deleteRedirectLinkWithHttpInfo**](docs/AffiliateApi.md#deleteRedirectLinkWithHttpInfo) | **DELETE** /rest/v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link
 *AffiliateApi* | [**getAffiliate**](docs/AffiliateApi.md#getAffiliate) | **GET** /rest/v2/affiliates/{id} | Retrieve an Affiliate
@@ -170,6 +174,8 @@ Class | Method | HTTP request | Description
 *AffiliateApi* | [**updateAffiliateCustomFieldWithHttpInfo**](docs/AffiliateApi.md#updateAffiliateCustomFieldWithHttpInfo) | **PATCH** /rest/v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field
 *AffiliateApi* | [**updateCommissionProgram**](docs/AffiliateApi.md#updateCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
 *AffiliateApi* | [**updateCommissionProgramWithHttpInfo**](docs/AffiliateApi.md#updateCommissionProgramWithHttpInfo) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
+*AffiliateApi* | [**updateCommissionProgramResource**](docs/AffiliateApi.md#updateCommissionProgramResource) | **PATCH** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Update Commission Program Resource
+*AffiliateApi* | [**updateCommissionProgramResourceWithHttpInfo**](docs/AffiliateApi.md#updateCommissionProgramResourceWithHttpInfo) | **PATCH** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Update Commission Program Resource
 *AffiliateApi* | [**updateDefaultCommissionProgram**](docs/AffiliateApi.md#updateDefaultCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program
 *AffiliateApi* | [**updateDefaultCommissionProgramWithHttpInfo**](docs/AffiliateApi.md#updateDefaultCommissionProgramWithHttpInfo) | **PATCH** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program
 *AffiliateApi* | [**updateProductCommissionProgram**](docs/AffiliateApi.md#updateProductCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program
@@ -390,6 +396,8 @@ Class | Method | HTTP request | Description
 *NoteApi* | [**createNoteCustomFieldWithHttpInfo**](docs/NoteApi.md#createNoteCustomFieldWithHttpInfo) | **POST** /rest/v2/notes/model/customFields | Create a Custom Field
 *NoteApi* | [**deleteNote**](docs/NoteApi.md#deleteNote) | **DELETE** /rest/v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
 *NoteApi* | [**deleteNoteWithHttpInfo**](docs/NoteApi.md#deleteNoteWithHttpInfo) | **DELETE** /rest/v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
+*NoteApi* | [**deleteNotesCustomField**](docs/NoteApi.md#deleteNotesCustomField) | **DELETE** /rest/v2/notes/model/customFields/{custom_field_id} | Delete a Note Custom Field
+*NoteApi* | [**deleteNotesCustomFieldWithHttpInfo**](docs/NoteApi.md#deleteNotesCustomFieldWithHttpInfo) | **DELETE** /rest/v2/notes/model/customFields/{custom_field_id} | Delete a Note Custom Field
 *NoteApi* | [**getNote**](docs/NoteApi.md#getNote) | **GET** /rest/v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
 *NoteApi* | [**getNoteWithHttpInfo**](docs/NoteApi.md#getNoteWithHttpInfo) | **GET** /rest/v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
 *NoteApi* | [**listAllNotes**](docs/NoteApi.md#listAllNotes) | **GET** /rest/v2/notes | List All Notes
@@ -414,6 +422,8 @@ Class | Method | HTTP request | Description
 *OpportunityApi* | [**deleteOpportunityWithHttpInfo**](docs/OpportunityApi.md#deleteOpportunityWithHttpInfo) | **DELETE** /rest/v2/opportunities/{opportunity_id} | Delete an Opportunity
 *OpportunityApi* | [**deleteOpportunityStage**](docs/OpportunityApi.md#deleteOpportunityStage) | **DELETE** /rest/v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage
 *OpportunityApi* | [**deleteOpportunityStageWithHttpInfo**](docs/OpportunityApi.md#deleteOpportunityStageWithHttpInfo) | **DELETE** /rest/v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage
+*OpportunityApi* | [**deleteOpportunityesCustomField**](docs/OpportunityApi.md#deleteOpportunityesCustomField) | **DELETE** /rest/v2/opportunities/model/customFields/{custom_field_id} | Delete an Opportunity Custom Field
+*OpportunityApi* | [**deleteOpportunityesCustomFieldWithHttpInfo**](docs/OpportunityApi.md#deleteOpportunityesCustomFieldWithHttpInfo) | **DELETE** /rest/v2/opportunities/model/customFields/{custom_field_id} | Delete an Opportunity Custom Field
 *OpportunityApi* | [**getOpportunity**](docs/OpportunityApi.md#getOpportunity) | **GET** /rest/v2/opportunities/{opportunity_id} | Retrieve a Opportunity
 *OpportunityApi* | [**getOpportunityWithHttpInfo**](docs/OpportunityApi.md#getOpportunityWithHttpInfo) | **GET** /rest/v2/opportunities/{opportunity_id} | Retrieve a Opportunity
 *OpportunityApi* | [**getOpportunityStage**](docs/OpportunityApi.md#getOpportunityStage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
@@ -464,6 +474,8 @@ Class | Method | HTTP request | Description
 *OrdersApi* | [**detachFileFromOrderWithHttpInfo**](docs/OrdersApi.md#detachFileFromOrderWithHttpInfo) | **POST** /rest/v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice
 *OrdersApi* | [**getOrder**](docs/OrdersApi.md#getOrder) | **GET** /rest/v2/orders/{order_id} | Retrieve an Order
 *OrdersApi* | [**getOrderWithHttpInfo**](docs/OrdersApi.md#getOrderWithHttpInfo) | **GET** /rest/v2/orders/{order_id} | Retrieve an Order
+*OrdersApi* | [**getOrderItem**](docs/OrdersApi.md#getOrderItem) | **GET** /rest/v2/orders/{order_id}/items/{order_item_id} | Retrieve an Order Item
+*OrdersApi* | [**getOrderItemWithHttpInfo**](docs/OrdersApi.md#getOrderItemWithHttpInfo) | **GET** /rest/v2/orders/{order_id}/items/{order_item_id} | Retrieve an Order Item
 *OrdersApi* | [**listOrderPayments**](docs/OrdersApi.md#listOrderPayments) | **GET** /rest/v2/orders/{order_id}/payments | Retrieve Order Payments
 *OrdersApi* | [**listOrderPaymentsWithHttpInfo**](docs/OrdersApi.md#listOrderPaymentsWithHttpInfo) | **GET** /rest/v2/orders/{order_id}/payments | Retrieve Order Payments
 *OrdersApi* | [**listOrders**](docs/OrdersApi.md#listOrders) | **GET** /rest/v2/orders | List orders
@@ -566,6 +578,8 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**updateProductOptionListOptionValueWithHttpInfo**](docs/ProductsApi.md#updateProductOptionListOptionValueWithHttpInfo) | **PATCH** /rest/v2/products/{product_id}/options/{product_option_id}/listItems/{item_id} | Updates a Product Option List Option Value
 *ReferralApi* | [**createReferral**](docs/ReferralApi.md#createReferral) | **POST** /rest/v2/referrals | Create a Referral
 *ReferralApi* | [**createReferralWithHttpInfo**](docs/ReferralApi.md#createReferralWithHttpInfo) | **POST** /rest/v2/referrals | Create a Referral
+*ReferralApi* | [**listReferrals**](docs/ReferralApi.md#listReferrals) | **GET** /rest/v2/referrals | List Referrals
+*ReferralApi* | [**listReferralsWithHttpInfo**](docs/ReferralApi.md#listReferralsWithHttpInfo) | **GET** /rest/v2/referrals | List Referrals
 *ReportingApi* | [**listReports**](docs/ReportingApi.md#listReports) | **GET** /rest/v2/reporting/reports | List Reports
 *ReportingApi* | [**listReportsWithHttpInfo**](docs/ReportingApi.md#listReportsWithHttpInfo) | **GET** /rest/v2/reporting/reports | List Reports
 *ReportingApi* | [**retrieveReport**](docs/ReportingApi.md#retrieveReport) | **GET** /rest/v2/reporting/reports/{report_id} | Retrieve Report
@@ -802,6 +816,7 @@ Class | Method | HTTP request | Description
  - [CreateProductOptionRequest](docs/CreateProductOptionRequest.md)
  - [CreateProductOptionTextOption](docs/CreateProductOptionTextOption.md)
  - [CreateProductRequestDetail](docs/CreateProductRequestDetail.md)
+ - [CreateProgramResourceRequest](docs/CreateProgramResourceRequest.md)
  - [CreateReferralRequest](docs/CreateReferralRequest.md)
  - [CreateShippingDiscountRequest](docs/CreateShippingDiscountRequest.md)
  - [CreateSubscriptionCommissionProgramRequest](docs/CreateSubscriptionCommissionProgramRequest.md)
@@ -916,6 +931,7 @@ Class | Method | HTTP request | Description
  - [ListProductsResponseList](docs/ListProductsResponseList.md)
  - [ListProgramResourcesResponse](docs/ListProgramResourcesResponse.md)
  - [ListProvincesResponse](docs/ListProvincesResponse.md)
+ - [ListReferralsResponse](docs/ListReferralsResponse.md)
  - [ListReportsResponse](docs/ListReportsResponse.md)
  - [ListRestShippingMethodsResponse](docs/ListRestShippingMethodsResponse.md)
  - [ListShippingDiscountsResponse](docs/ListShippingDiscountsResponse.md)
@@ -1031,6 +1047,7 @@ Class | Method | HTTP request | Description
  - [UpdateProductOptionListOption](docs/UpdateProductOptionListOption.md)
  - [UpdateProductOptionRequest](docs/UpdateProductOptionRequest.md)
  - [UpdateProductRequestDetail](docs/UpdateProductRequestDetail.md)
+ - [UpdateProgramResourceRequest](docs/UpdateProgramResourceRequest.md)
  - [UpdateShippingDiscountRequest](docs/UpdateShippingDiscountRequest.md)
  - [UpdateSubscriptionCommissionProgramRequest](docs/UpdateSubscriptionCommissionProgramRequest.md)
  - [UpdateSubscriptionPlanRequest](docs/UpdateSubscriptionPlanRequest.md)

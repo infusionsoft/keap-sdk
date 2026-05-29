@@ -123,6 +123,7 @@ import CreateProductOptionListOption from './model/CreateProductOptionListOption
 import CreateProductOptionRequest from './model/CreateProductOptionRequest';
 import CreateProductOptionTextOption from './model/CreateProductOptionTextOption';
 import CreateProductRequestDetail from './model/CreateProductRequestDetail';
+import CreateProgramResourceRequest from './model/CreateProgramResourceRequest';
 import CreateReferralRequest from './model/CreateReferralRequest';
 import CreateShippingDiscountRequest from './model/CreateShippingDiscountRequest';
 import CreateSubscriptionCommissionProgramRequest from './model/CreateSubscriptionCommissionProgramRequest';
@@ -237,6 +238,7 @@ import ListProductOptionsResponse from './model/ListProductOptionsResponse';
 import ListProductsResponseList from './model/ListProductsResponseList';
 import ListProgramResourcesResponse from './model/ListProgramResourcesResponse';
 import ListProvincesResponse from './model/ListProvincesResponse';
+import ListReferralsResponse from './model/ListReferralsResponse';
 import ListReportsResponse from './model/ListReportsResponse';
 import ListRestShippingMethodsResponse from './model/ListRestShippingMethodsResponse';
 import ListShippingDiscountsResponse from './model/ListShippingDiscountsResponse';
@@ -352,6 +354,7 @@ import UpdateProductInventoryRequestDetail from './model/UpdateProductInventoryR
 import UpdateProductOptionListOption from './model/UpdateProductOptionListOption';
 import UpdateProductOptionRequest from './model/UpdateProductOptionRequest';
 import UpdateProductRequestDetail from './model/UpdateProductRequestDetail';
+import UpdateProgramResourceRequest from './model/UpdateProgramResourceRequest';
 import UpdateShippingDiscountRequest from './model/UpdateShippingDiscountRequest';
 import UpdateSubscriptionCommissionProgramRequest from './model/UpdateSubscriptionCommissionProgramRequest';
 import UpdateSubscriptionPlanRequest from './model/UpdateSubscriptionPlanRequest';
@@ -439,7 +442,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.11
+* @version 2.0.12
 */
 export {
     /**
@@ -1107,6 +1110,12 @@ export {
      * @property {module:keap.core.v2/model/CreateProductRequestDetail}
      */
     CreateProductRequestDetail,
+
+    /**
+     * The CreateProgramResourceRequest model constructor.
+     * @property {module:keap.core.v2/model/CreateProgramResourceRequest}
+     */
+    CreateProgramResourceRequest,
 
     /**
      * The CreateReferralRequest model constructor.
@@ -1791,6 +1800,12 @@ export {
      * @property {module:keap.core.v2/model/ListProvincesResponse}
      */
     ListProvincesResponse,
+
+    /**
+     * The ListReferralsResponse model constructor.
+     * @property {module:keap.core.v2/model/ListReferralsResponse}
+     */
+    ListReferralsResponse,
 
     /**
      * The ListReportsResponse model constructor.
@@ -2481,6 +2496,12 @@ export {
      * @property {module:keap.core.v2/model/UpdateProductRequestDetail}
      */
     UpdateProductRequestDetail,
+
+    /**
+     * The UpdateProgramResourceRequest model constructor.
+     * @property {module:keap.core.v2/model/UpdateProgramResourceRequest}
+     */
+    UpdateProgramResourceRequest,
 
     /**
      * The UpdateShippingDiscountRequest model constructor.

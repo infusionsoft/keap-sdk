@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**deleteOrderItem**](OrdersApi.md#deleteOrderItem) | **DELETE** /rest/v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item
 [**detachFileFromOrder**](OrdersApi.md#detachFileFromOrder) | **POST** /rest/v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice
 [**getOrder**](OrdersApi.md#getOrder) | **GET** /rest/v2/orders/{order_id} | Retrieve an Order
+[**getOrderItem**](OrdersApi.md#getOrderItem) | **GET** /rest/v2/orders/{order_id}/items/{order_item_id} | Retrieve an Order Item
 [**listOrderPayments**](OrdersApi.md#listOrderPayments) | **GET** /rest/v2/orders/{order_id}/payments | Retrieve Order Payments
 [**listOrders**](OrdersApi.md#listOrders) | **GET** /rest/v2/orders | List orders
 [**retrieveOrderCustomFieldModel**](OrdersApi.md#retrieveOrderCustomFieldModel) | **GET** /rest/v2/orders/model | Retrieve Order Custom Field Model
@@ -835,6 +836,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 **OrderV2**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getOrderItem**
+> OrderItem getOrderItem()
+
+Retrieves a single order item from an existing order
+
+### Example
+
+
+```typescript
+import { createConfiguration, OrdersApi } from '';
+import type { OrdersApiGetOrderItemRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new OrdersApi(configuration);
+
+const request: OrdersApiGetOrderItemRequest = {
+  
+  orderId: "order_id_example",
+  
+  orderItemId: "order_item_id_example",
+};
+
+const data = await apiInstance.getOrderItem(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderId** | [**string**] |  | defaults to undefined
+ **orderItemId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**OrderItem**
 
 ### Authorization
 

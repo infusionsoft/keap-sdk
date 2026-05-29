@@ -59,9 +59,11 @@ class AffiliateLink implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
+        'code' => 'string',
         'affiliate_id' => 'string',
         'local_url_code' => 'string',
         'redirect_url' => 'string',
+        'website_address' => 'string',
         'program_ids' => 'string[]',
         'date_created' => 'string'
     ];
@@ -76,9 +78,11 @@ class AffiliateLink implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'id' => null,
         'name' => null,
+        'code' => null,
         'affiliate_id' => null,
         'local_url_code' => null,
         'redirect_url' => null,
+        'website_address' => null,
         'program_ids' => null,
         'date_created' => null
     ];
@@ -91,9 +95,11 @@ class AffiliateLink implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'id' => false,
         'name' => false,
+        'code' => false,
         'affiliate_id' => false,
         'local_url_code' => false,
         'redirect_url' => false,
+        'website_address' => false,
         'program_ids' => false,
         'date_created' => false
     ];
@@ -186,9 +192,11 @@ class AffiliateLink implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
+        'code' => 'code',
         'affiliate_id' => 'affiliate_id',
         'local_url_code' => 'local_url_code',
         'redirect_url' => 'redirect_url',
+        'website_address' => 'website_address',
         'program_ids' => 'program_ids',
         'date_created' => 'date_created'
     ];
@@ -201,9 +209,11 @@ class AffiliateLink implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
+        'code' => 'setCode',
         'affiliate_id' => 'setAffiliateId',
         'local_url_code' => 'setLocalUrlCode',
         'redirect_url' => 'setRedirectUrl',
+        'website_address' => 'setWebsiteAddress',
         'program_ids' => 'setProgramIds',
         'date_created' => 'setDateCreated'
     ];
@@ -216,9 +226,11 @@ class AffiliateLink implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
+        'code' => 'getCode',
         'affiliate_id' => 'getAffiliateId',
         'local_url_code' => 'getLocalUrlCode',
         'redirect_url' => 'getRedirectUrl',
+        'website_address' => 'getWebsiteAddress',
         'program_ids' => 'getProgramIds',
         'date_created' => 'getDateCreated'
     ];
@@ -282,9 +294,11 @@ class AffiliateLink implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('affiliate_id', $data ?? [], null);
         $this->setIfExists('local_url_code', $data ?? [], null);
         $this->setIfExists('redirect_url', $data ?? [], null);
+        $this->setIfExists('website_address', $data ?? [], null);
         $this->setIfExists('program_ids', $data ?? [], null);
         $this->setIfExists('date_created', $data ?? [], null);
     }
@@ -386,6 +400,33 @@ class AffiliateLink implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets code
+     *
+     * @return string|null
+     */
+    public function getCode()
+    {
+        return $this->container['code'];
+    }
+
+    /**
+     * Sets code
+     *
+     * @param string|null $code URL code for tracking
+     *
+     * @return self
+     */
+    public function setCode($code)
+    {
+        if (is_null($code)) {
+            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        }
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
      * Gets affiliate_id
      *
      * @return string|null
@@ -416,6 +457,7 @@ class AffiliateLink implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets local_url_code
      *
      * @return string|null
+     * @deprecated
      */
     public function getLocalUrlCode()
     {
@@ -425,9 +467,10 @@ class AffiliateLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets local_url_code
      *
-     * @param string|null $local_url_code URL code for tracking
+     * @param string|null $local_url_code URL code for tracking. Deprecated: use 'code' instead.
      *
      * @return self
+     * @deprecated
      */
     public function setLocalUrlCode($local_url_code)
     {
@@ -443,6 +486,7 @@ class AffiliateLink implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets redirect_url
      *
      * @return string|null
+     * @deprecated
      */
     public function getRedirectUrl()
     {
@@ -452,9 +496,10 @@ class AffiliateLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets redirect_url
      *
-     * @param string|null $redirect_url Destination URL
+     * @param string|null $redirect_url Destination URL. This field is deprecated. Use 'website_address' instead.
      *
      * @return self
+     * @deprecated
      */
     public function setRedirectUrl($redirect_url)
     {
@@ -462,6 +507,33 @@ class AffiliateLink implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable redirect_url cannot be null');
         }
         $this->container['redirect_url'] = $redirect_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets website_address
+     *
+     * @return string|null
+     */
+    public function getWebsiteAddress()
+    {
+        return $this->container['website_address'];
+    }
+
+    /**
+     * Sets website_address
+     *
+     * @param string|null $website_address Destination URL
+     *
+     * @return self
+     */
+    public function setWebsiteAddress($website_address)
+    {
+        if (is_null($website_address)) {
+            throw new \InvalidArgumentException('non-nullable website_address cannot be null');
+        }
+        $this->container['website_address'] = $website_address;
 
         return $this;
     }

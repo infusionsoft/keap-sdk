@@ -7,6 +7,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**AddAffiliate**](AffiliateApi.md#addaffiliate) | **POST** /rest/v2/affiliates | Create an Affiliate |
 | [**AddAffiliateToProgram**](AffiliateApi.md#addaffiliatetoprogram) | **POST** /rest/v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program |
 | [**AddCommissionProgram**](AffiliateApi.md#addcommissionprogram) | **POST** /rest/v2/affiliates/commissionPrograms | Create an Affiliate Commission Program |
+| [**AddCommissionProgramResource**](AffiliateApi.md#addcommissionprogramresource) | **POST** /rest/v2/affiliates/commissionPrograms/resources | Create Commission Program Resource |
 | [**AssignProductCommissionProgram**](AffiliateApi.md#assignproductcommissionprogram) | **POST** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program |
 | [**AssignSubscriptionCommissionProgram**](AffiliateApi.md#assignsubscriptioncommissionprogram) | **POST** /rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program |
 | [**CreateAffiliateCustomField**](AffiliateApi.md#createaffiliatecustomfield) | **POST** /rest/v2/affiliates/model/customFields | Create an Affiliate Custom Field |
@@ -15,6 +16,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**DeleteAffiliate**](AffiliateApi.md#deleteaffiliate) | **DELETE** /rest/v2/affiliates/{id} | Delete Affiliate |
 | [**DeleteAffiliateCommissionProgram**](AffiliateApi.md#deleteaffiliatecommissionprogram) | **DELETE** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
 | [**DeleteAffiliateCustomField**](AffiliateApi.md#deleteaffiliatecustomfield) | **DELETE** /rest/v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field |
+| [**DeleteCommissionProgramResource**](AffiliateApi.md#deletecommissionprogramresource) | **DELETE** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Remove Commission Program Resource |
 | [**DeleteRedirectLink**](AffiliateApi.md#deleteredirectlink) | **DELETE** /rest/v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
 | [**GetAffiliate**](AffiliateApi.md#getaffiliate) | **GET** /rest/v2/affiliates/{id} | Retrieve an Affiliate |
 | [**GetAffiliateCommissionTotal**](AffiliateApi.md#getaffiliatecommissiontotal) | **GET** /rest/v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal |
@@ -35,6 +37,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**UpdateAffiliate**](AffiliateApi.md#updateaffiliate) | **PATCH** /rest/v2/affiliates/{id} | Update an Affiliate |
 | [**UpdateAffiliateCustomField**](AffiliateApi.md#updateaffiliatecustomfield) | **PATCH** /rest/v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field |
 | [**UpdateCommissionProgram**](AffiliateApi.md#updatecommissionprogram) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
+| [**UpdateCommissionProgramResource**](AffiliateApi.md#updatecommissionprogramresource) | **PATCH** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Update Commission Program Resource |
 | [**UpdateDefaultCommissionProgram**](AffiliateApi.md#updatedefaultcommissionprogram) | **PATCH** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
 | [**UpdateProductCommissionProgram**](AffiliateApi.md#updateproductcommissionprogram) | **PATCH** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program |
 | [**UpdateRedirectLink**](AffiliateApi.md#updateredirectlink) | **PATCH** /rest/v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link |
@@ -318,6 +321,108 @@ catch (ApiException e)
 ### Return type
 
 [**AffiliateCommissionProgramResponse**](AffiliateCommissionProgramResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="addcommissionprogramresource"></a>
+# **AddCommissionProgramResource**
+> AffiliateProgramResource AddCommissionProgramResource (CreateProgramResourceRequest createProgramResourceRequest)
+
+Create Commission Program Resource
+
+Creates a resource for a commission program
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class AddCommissionProgramResourceExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AffiliateApi(config);
+            var createProgramResourceRequest = new CreateProgramResourceRequest(); // CreateProgramResourceRequest | 
+
+            try
+            {
+                // Create Commission Program Resource
+                AffiliateProgramResource result = apiInstance.AddCommissionProgramResource(createProgramResourceRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.AddCommissionProgramResource: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the AddCommissionProgramResourceWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create Commission Program Resource
+    ApiResponse<AffiliateProgramResource> response = apiInstance.AddCommissionProgramResourceWithHttpInfo(createProgramResourceRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.AddCommissionProgramResourceWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createProgramResourceRequest** | [**CreateProgramResourceRequest**](CreateProgramResourceRequest.md) |  |  |
+
+### Return type
+
+[**AffiliateProgramResource**](AffiliateProgramResource.md)
 
 ### Authorization
 
@@ -1124,6 +1229,104 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **customFieldId** | **string** |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deletecommissionprogramresource"></a>
+# **DeleteCommissionProgramResource**
+> void DeleteCommissionProgramResource (string resourceId)
+
+Remove Commission Program Resource
+
+Removes a resource from a commission program
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteCommissionProgramResourceExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AffiliateApi(config);
+            var resourceId = "resourceId_example";  // string | 
+
+            try
+            {
+                // Remove Commission Program Resource
+                apiInstance.DeleteCommissionProgramResource(resourceId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.DeleteCommissionProgramResource: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteCommissionProgramResourceWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Remove Commission Program Resource
+    apiInstance.DeleteCommissionProgramResourceWithHttpInfo(resourceId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.DeleteCommissionProgramResourceWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **resourceId** | **string** |  |  |
 
 ### Return type
 
@@ -3213,6 +3416,112 @@ catch (ApiException e)
 ### Return type
 
 [**AffiliateCommissionProgramResponse**](AffiliateCommissionProgramResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updatecommissionprogramresource"></a>
+# **UpdateCommissionProgramResource**
+> AffiliateProgramResource UpdateCommissionProgramResource (string resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Object? updateMask = null)
+
+Update Commission Program Resource
+
+Updates a resource for a commission program
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class UpdateCommissionProgramResourceExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AffiliateApi(config);
+            var resourceId = "resourceId_example";  // string | 
+            var updateProgramResourceRequest = new UpdateProgramResourceRequest(); // UpdateProgramResourceRequest | 
+            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+
+            try
+            {
+                // Update Commission Program Resource
+                AffiliateProgramResource result = apiInstance.UpdateCommissionProgramResource(resourceId, updateProgramResourceRequest, updateMask);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.UpdateCommissionProgramResource: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateCommissionProgramResourceWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Update Commission Program Resource
+    ApiResponse<AffiliateProgramResource> response = apiInstance.UpdateCommissionProgramResourceWithHttpInfo(resourceId, updateProgramResourceRequest, updateMask);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.UpdateCommissionProgramResourceWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **resourceId** | **string** |  |  |
+| **updateProgramResourceRequest** | [**UpdateProgramResourceRequest**](UpdateProgramResourceRequest.md) |  |  |
+| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+
+### Return type
+
+[**AffiliateProgramResource**](AffiliateProgramResource.md)
 
 ### Authorization
 

@@ -28,13 +28,15 @@ class AffiliateLink(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Affiliate link ID")
     name: Optional[StrictStr] = Field(default=None, description="Link name")
+    code: Optional[StrictStr] = Field(default=None, description="URL code for tracking")
     affiliate_id: Optional[StrictStr] = Field(default=None, description="Associated affiliate ID")
-    local_url_code: Optional[StrictStr] = Field(default=None, description="URL code for tracking")
-    redirect_url: Optional[StrictStr] = Field(default=None, description="Destination URL")
+    local_url_code: Optional[StrictStr] = Field(default=None, description="URL code for tracking. Deprecated: use 'code' instead.")
+    redirect_url: Optional[StrictStr] = Field(default=None, description="Destination URL. This field is deprecated. Use 'website_address' instead.")
+    website_address: Optional[StrictStr] = Field(default=None, description="Destination URL")
     program_ids: Optional[List[StrictStr]] = Field(default=None, description="Associated program IDs")
     date_created: Optional[StrictStr] = Field(default=None, description="Date link was created (ISO-8601)")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "name", "affiliate_id", "local_url_code", "redirect_url", "program_ids", "date_created"]
+    __properties: ClassVar[List[str]] = ["id", "name", "code", "affiliate_id", "local_url_code", "redirect_url", "website_address", "program_ids", "date_created"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,9 +98,11 @@ class AffiliateLink(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "name": obj.get("name"),
+            "code": obj.get("code"),
             "affiliate_id": obj.get("affiliate_id"),
             "local_url_code": obj.get("local_url_code"),
             "redirect_url": obj.get("redirect_url"),
+            "website_address": obj.get("website_address"),
             "program_ids": obj.get("program_ids"),
             "date_created": obj.get("date_created")
         })

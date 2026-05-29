@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**create_opportunity_stage**](OpportunityApi.md#create_opportunity_stage) | **POST** /rest/v2/opportunities/stages | Create an Opportunity Stage
 [**delete_opportunity**](OpportunityApi.md#delete_opportunity) | **DELETE** /rest/v2/opportunities/{opportunity_id} | Delete an Opportunity
 [**delete_opportunity_stage**](OpportunityApi.md#delete_opportunity_stage) | **DELETE** /rest/v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage
+[**delete_opportunityes_custom_field**](OpportunityApi.md#delete_opportunityes_custom_field) | **DELETE** /rest/v2/opportunities/model/customFields/{custom_field_id} | Delete an Opportunity Custom Field
 [**get_opportunity**](OpportunityApi.md#get_opportunity) | **GET** /rest/v2/opportunities/{opportunity_id} | Retrieve a Opportunity
 [**get_opportunity_stage**](OpportunityApi.md#get_opportunity_stage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
 [**list_opportunities**](OpportunityApi.md#list_opportunities) | **GET** /rest/v2/opportunities | List Opportunities
@@ -391,6 +392,84 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **stage_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_opportunityes_custom_field**
+> delete_opportunityes_custom_field(custom_field_id)
+
+Delete an Opportunity Custom Field
+
+Deletes a Custom Field from Opportunity.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.OpportunityApi(api_client)
+    custom_field_id = 'custom_field_id_example' # str | 
+
+    try:
+        # Delete an Opportunity Custom Field
+        api_instance.delete_opportunityes_custom_field(custom_field_id)
+    except Exception as e:
+        print("Exception when calling OpportunityApi->delete_opportunityes_custom_field: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **custom_field_id** | **str**|  | 
 
 ### Return type
 

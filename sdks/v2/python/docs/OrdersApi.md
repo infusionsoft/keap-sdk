@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**delete_order_item**](OrdersApi.md#delete_order_item) | **DELETE** /rest/v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item
 [**detach_file_from_order**](OrdersApi.md#detach_file_from_order) | **POST** /rest/v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice
 [**get_order**](OrdersApi.md#get_order) | **GET** /rest/v2/orders/{order_id} | Retrieve an Order
+[**get_order_item**](OrdersApi.md#get_order_item) | **GET** /rest/v2/orders/{order_id}/items/{order_item_id} | Retrieve an Order Item
 [**list_order_payments**](OrdersApi.md#list_order_payments) | **GET** /rest/v2/orders/{order_id}/payments | Retrieve Order Payments
 [**list_orders**](OrdersApi.md#list_orders) | **GET** /rest/v2/orders | List orders
 [**retrieve_order_custom_field_model**](OrdersApi.md#retrieve_order_custom_field_model) | **GET** /rest/v2/orders/model | Retrieve Order Custom Field Model
@@ -984,6 +985,89 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OrderV2**](OrderV2.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_order_item**
+> OrderItem get_order_item(order_id, order_item_id)
+
+Retrieve an Order Item
+
+Retrieves a single order item from an existing order
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.order_item import OrderItem
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.OrdersApi(api_client)
+    order_id = 'order_id_example' # str | 
+    order_item_id = 'order_item_id_example' # str | 
+
+    try:
+        # Retrieve an Order Item
+        api_response = api_instance.get_order_item(order_id, order_item_id)
+        print("The response of OrdersApi->get_order_item:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrdersApi->get_order_item: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **str**|  | 
+ **order_item_id** | **str**|  | 
+
+### Return type
+
+[**OrderItem**](OrderItem.md)
 
 ### Authorization
 

@@ -21,6 +21,7 @@ import com.keap.core.sdk.model.AffiliateAddToProgramRequest;
 import com.keap.core.sdk.model.AffiliateCommissionEarned;
 import com.keap.core.sdk.model.AffiliateCommissionProgramResponse;
 import com.keap.core.sdk.model.AffiliateLink;
+import com.keap.core.sdk.model.AffiliateProgramResource;
 import com.keap.core.sdk.model.AffiliateRemoveFromProgramRequest;
 import com.keap.core.sdk.model.CreateAffiliateRequest;
 import com.keap.core.sdk.model.CreateCommissionProgramRequest;
@@ -28,6 +29,7 @@ import com.keap.core.sdk.model.CreateCustomFieldRequest;
 import com.keap.core.sdk.model.CreateDefaultCommissionProgramRequest;
 import com.keap.core.sdk.model.CreateOrUpdateAffiliateLinkRequest;
 import com.keap.core.sdk.model.CreateProductCommissionProgramRequest;
+import com.keap.core.sdk.model.CreateProgramResourceRequest;
 import com.keap.core.sdk.model.CreateSubscriptionCommissionProgramRequest;
 import com.keap.core.sdk.model.CustomFieldMetaData;
 import com.keap.core.sdk.model.DeleteProgramCommissionRequest;
@@ -49,6 +51,7 @@ import com.keap.core.sdk.model.UpdateCommissionProgramRequest;
 import com.keap.core.sdk.model.UpdateCustomFieldMetaDataRequest;
 import com.keap.core.sdk.model.UpdateDefaultCommissionProgramRequest;
 import com.keap.core.sdk.model.UpdateProductCommissionProgramRequest;
+import com.keap.core.sdk.model.UpdateProgramResourceRequest;
 import com.keap.core.sdk.model.UpdateSubscriptionCommissionProgramRequest;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -394,6 +397,97 @@ import io.github.resilience4j.retry.Retry;
 
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(createCommissionProgramRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Create Commission Program Resource
+   * Creates a resource for a commission program
+   * @param createProgramResourceRequest  (required)
+   * @return AffiliateProgramResource
+   * @throws ApiException if fails to make API call
+   */
+  public AffiliateProgramResource addCommissionProgramResource(CreateProgramResourceRequest createProgramResourceRequest) throws ApiException {
+    ApiResponse<AffiliateProgramResource> localVarResponse = addCommissionProgramResourceWithHttpInfo(createProgramResourceRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Create Commission Program Resource
+   * Creates a resource for a commission program
+   * @param createProgramResourceRequest  (required)
+   * @return ApiResponse&lt;AffiliateProgramResource&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AffiliateProgramResource> addCommissionProgramResourceWithHttpInfo(CreateProgramResourceRequest createProgramResourceRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = addCommissionProgramResourceRequestBuilder(createProgramResourceRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("addCommissionProgramResource", localVarResponse);
+        }
+        return new ApiResponse<AffiliateProgramResource>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<AffiliateProgramResource>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder addCommissionProgramResourceRequestBuilder(CreateProgramResourceRequest createProgramResourceRequest) throws ApiException {
+    // verify the required parameter 'createProgramResourceRequest' is set
+    if (createProgramResourceRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'createProgramResourceRequest' when calling addCommissionProgramResource");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/affiliates/commissionPrograms/resources";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(createProgramResourceRequest);
       localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);
@@ -1134,6 +1228,95 @@ import io.github.resilience4j.retry.Retry;
 
     String localVarPath = "/rest/v2/affiliates/model/customFields/{custom_field_id}"
         .replace("{custom_field_id}", ApiClient.urlEncode(customFieldId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Remove Commission Program Resource
+   * Removes a resource from a commission program
+   * @param resourceId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteCommissionProgramResource(String resourceId) throws ApiException {
+    deleteCommissionProgramResourceWithHttpInfo(resourceId);
+  }
+
+  /**
+   * Remove Commission Program Resource
+   * Removes a resource from a commission program
+   * @param resourceId  (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteCommissionProgramResourceWithHttpInfo(String resourceId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteCommissionProgramResourceRequestBuilder(resourceId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteCommissionProgramResource", localVarResponse);
+        }
+        return new ApiResponse<Void>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          null
+        );
+      } finally {
+        // Drain the InputStream
+        while (localVarResponse.body().read() != -1) {
+            // Ignore
+        }
+        localVarResponse.body().close();
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteCommissionProgramResourceRequestBuilder(String resourceId) throws ApiException {
+    // verify the required parameter 'resourceId' is set
+    if (resourceId == null) {
+      throw new ApiException(400, "Missing the required parameter 'resourceId' when calling deleteCommissionProgramResource");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/affiliates/commissionPrograms/resources/{resource_id}"
+        .replace("{resource_id}", ApiClient.urlEncode(resourceId.toString()));
 
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
 
@@ -3160,6 +3343,121 @@ import io.github.resilience4j.retry.Retry;
 
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCommissionProgramRequest);
+      localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Update Commission Program Resource
+   * Updates a resource for a commission program
+   * @param resourceId  (required)
+   * @param updateProgramResourceRequest  (required)
+   * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+   * @return AffiliateProgramResource
+   * @throws ApiException if fails to make API call
+   */
+  public AffiliateProgramResource updateCommissionProgramResource(String resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Object updateMask) throws ApiException {
+    ApiResponse<AffiliateProgramResource> localVarResponse = updateCommissionProgramResourceWithHttpInfo(resourceId, updateProgramResourceRequest, updateMask);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Update Commission Program Resource
+   * Updates a resource for a commission program
+   * @param resourceId  (required)
+   * @param updateProgramResourceRequest  (required)
+   * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+   * @return ApiResponse&lt;AffiliateProgramResource&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AffiliateProgramResource> updateCommissionProgramResourceWithHttpInfo(String resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Object updateMask) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateCommissionProgramResourceRequestBuilder(resourceId, updateProgramResourceRequest, updateMask);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updateCommissionProgramResource", localVarResponse);
+        }
+        return new ApiResponse<AffiliateProgramResource>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<AffiliateProgramResource>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updateCommissionProgramResourceRequestBuilder(String resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Object updateMask) throws ApiException {
+    // verify the required parameter 'resourceId' is set
+    if (resourceId == null) {
+      throw new ApiException(400, "Missing the required parameter 'resourceId' when calling updateCommissionProgramResource");
+    }
+    // verify the required parameter 'updateProgramResourceRequest' is set
+    if (updateProgramResourceRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateProgramResourceRequest' when calling updateCommissionProgramResource");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/affiliates/commissionPrograms/resources/{resource_id}"
+        .replace("{resource_id}", ApiClient.urlEncode(resourceId.toString()));
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "update_mask";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateProgramResourceRequest);
       localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);

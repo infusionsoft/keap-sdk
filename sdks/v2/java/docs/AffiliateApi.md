@@ -10,6 +10,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**addAffiliateToProgramWithHttpInfo**](AffiliateApi.md#addAffiliateToProgramWithHttpInfo) | **POST** /rest/v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program |
 | [**addCommissionProgram**](AffiliateApi.md#addCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms | Create an Affiliate Commission Program |
 | [**addCommissionProgramWithHttpInfo**](AffiliateApi.md#addCommissionProgramWithHttpInfo) | **POST** /rest/v2/affiliates/commissionPrograms | Create an Affiliate Commission Program |
+| [**addCommissionProgramResource**](AffiliateApi.md#addCommissionProgramResource) | **POST** /rest/v2/affiliates/commissionPrograms/resources | Create Commission Program Resource |
+| [**addCommissionProgramResourceWithHttpInfo**](AffiliateApi.md#addCommissionProgramResourceWithHttpInfo) | **POST** /rest/v2/affiliates/commissionPrograms/resources | Create Commission Program Resource |
 | [**assignProductCommissionProgram**](AffiliateApi.md#assignProductCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program |
 | [**assignProductCommissionProgramWithHttpInfo**](AffiliateApi.md#assignProductCommissionProgramWithHttpInfo) | **POST** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program |
 | [**assignSubscriptionCommissionProgram**](AffiliateApi.md#assignSubscriptionCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program |
@@ -26,6 +28,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**deleteAffiliateCommissionProgramWithHttpInfo**](AffiliateApi.md#deleteAffiliateCommissionProgramWithHttpInfo) | **DELETE** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
 | [**deleteAffiliateCustomField**](AffiliateApi.md#deleteAffiliateCustomField) | **DELETE** /rest/v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field |
 | [**deleteAffiliateCustomFieldWithHttpInfo**](AffiliateApi.md#deleteAffiliateCustomFieldWithHttpInfo) | **DELETE** /rest/v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field |
+| [**deleteCommissionProgramResource**](AffiliateApi.md#deleteCommissionProgramResource) | **DELETE** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Remove Commission Program Resource |
+| [**deleteCommissionProgramResourceWithHttpInfo**](AffiliateApi.md#deleteCommissionProgramResourceWithHttpInfo) | **DELETE** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Remove Commission Program Resource |
 | [**deleteRedirectLink**](AffiliateApi.md#deleteRedirectLink) | **DELETE** /rest/v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
 | [**deleteRedirectLinkWithHttpInfo**](AffiliateApi.md#deleteRedirectLinkWithHttpInfo) | **DELETE** /rest/v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
 | [**getAffiliate**](AffiliateApi.md#getAffiliate) | **GET** /rest/v2/affiliates/{id} | Retrieve an Affiliate |
@@ -66,6 +70,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**updateAffiliateCustomFieldWithHttpInfo**](AffiliateApi.md#updateAffiliateCustomFieldWithHttpInfo) | **PATCH** /rest/v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field |
 | [**updateCommissionProgram**](AffiliateApi.md#updateCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
 | [**updateCommissionProgramWithHttpInfo**](AffiliateApi.md#updateCommissionProgramWithHttpInfo) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
+| [**updateCommissionProgramResource**](AffiliateApi.md#updateCommissionProgramResource) | **PATCH** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Update Commission Program Resource |
+| [**updateCommissionProgramResourceWithHttpInfo**](AffiliateApi.md#updateCommissionProgramResourceWithHttpInfo) | **PATCH** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Update Commission Program Resource |
 | [**updateDefaultCommissionProgram**](AffiliateApi.md#updateDefaultCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
 | [**updateDefaultCommissionProgramWithHttpInfo**](AffiliateApi.md#updateDefaultCommissionProgramWithHttpInfo) | **PATCH** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
 | [**updateProductCommissionProgram**](AffiliateApi.md#updateProductCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program |
@@ -534,6 +540,166 @@ public class Example {
 ### Return type
 
 ApiResponse<[**AffiliateCommissionProgramResponse**](AffiliateCommissionProgramResponse.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## addCommissionProgramResource
+
+> AffiliateProgramResource addCommissionProgramResource(createProgramResourceRequest)
+
+Create Commission Program Resource
+
+Creates a resource for a commission program
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        CreateProgramResourceRequest createProgramResourceRequest = new CreateProgramResourceRequest(); // CreateProgramResourceRequest | 
+        try {
+            AffiliateProgramResource result = apiInstance.addCommissionProgramResource(createProgramResourceRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#addCommissionProgramResource");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createProgramResourceRequest** | [**CreateProgramResourceRequest**](CreateProgramResourceRequest.md)|  | |
+
+### Return type
+
+[**AffiliateProgramResource**](AffiliateProgramResource.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## addCommissionProgramResourceWithHttpInfo
+
+> ApiResponse<AffiliateProgramResource> addCommissionProgramResource addCommissionProgramResourceWithHttpInfo(createProgramResourceRequest)
+
+Create Commission Program Resource
+
+Creates a resource for a commission program
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        CreateProgramResourceRequest createProgramResourceRequest = new CreateProgramResourceRequest(); // CreateProgramResourceRequest | 
+        try {
+            ApiResponse<AffiliateProgramResource> response = apiInstance.addCommissionProgramResourceWithHttpInfo(createProgramResourceRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#addCommissionProgramResource");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createProgramResourceRequest** | [**CreateProgramResourceRequest**](CreateProgramResourceRequest.md)|  | |
+
+### Return type
+
+ApiResponse<[**AffiliateProgramResource**](AffiliateProgramResource.md)>
 
 
 ### Authorization
@@ -1816,6 +1982,164 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **customFieldId** | **String**|  | |
+
+### Return type
+
+
+ApiResponse<Void>
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## deleteCommissionProgramResource
+
+> void deleteCommissionProgramResource(resourceId)
+
+Remove Commission Program Resource
+
+Removes a resource from a commission program
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        String resourceId = "resourceId_example"; // String | 
+        try {
+            apiInstance.deleteCommissionProgramResource(resourceId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#deleteCommissionProgramResource");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **resourceId** | **String**|  | |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## deleteCommissionProgramResourceWithHttpInfo
+
+> ApiResponse<Void> deleteCommissionProgramResource deleteCommissionProgramResourceWithHttpInfo(resourceId)
+
+Remove Commission Program Resource
+
+Removes a resource from a commission program
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        String resourceId = "resourceId_example"; // String | 
+        try {
+            ApiResponse<Void> response = apiInstance.deleteCommissionProgramResourceWithHttpInfo(resourceId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#deleteCommissionProgramResource");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **resourceId** | **String**|  | |
 
 ### Return type
 
@@ -5136,6 +5460,174 @@ public class Example {
 ### Return type
 
 ApiResponse<[**AffiliateCommissionProgramResponse**](AffiliateCommissionProgramResponse.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## updateCommissionProgramResource
+
+> AffiliateProgramResource updateCommissionProgramResource(resourceId, updateProgramResourceRequest, updateMask)
+
+Update Commission Program Resource
+
+Updates a resource for a commission program
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        String resourceId = "resourceId_example"; // String | 
+        UpdateProgramResourceRequest updateProgramResourceRequest = new UpdateProgramResourceRequest(); // UpdateProgramResourceRequest | 
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        try {
+            AffiliateProgramResource result = apiInstance.updateCommissionProgramResource(resourceId, updateProgramResourceRequest, updateMask);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#updateCommissionProgramResource");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **resourceId** | **String**|  | |
+| **updateProgramResourceRequest** | [**UpdateProgramResourceRequest**](UpdateProgramResourceRequest.md)|  | |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+
+### Return type
+
+[**AffiliateProgramResource**](AffiliateProgramResource.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## updateCommissionProgramResourceWithHttpInfo
+
+> ApiResponse<AffiliateProgramResource> updateCommissionProgramResource updateCommissionProgramResourceWithHttpInfo(resourceId, updateProgramResourceRequest, updateMask)
+
+Update Commission Program Resource
+
+Updates a resource for a commission program
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        String resourceId = "resourceId_example"; // String | 
+        UpdateProgramResourceRequest updateProgramResourceRequest = new UpdateProgramResourceRequest(); // UpdateProgramResourceRequest | 
+        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        try {
+            ApiResponse<AffiliateProgramResource> response = apiInstance.updateCommissionProgramResourceWithHttpInfo(resourceId, updateProgramResourceRequest, updateMask);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#updateCommissionProgramResource");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **resourceId** | **String**|  | |
+| **updateProgramResourceRequest** | [**UpdateProgramResourceRequest**](UpdateProgramResourceRequest.md)|  | |
+| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+
+### Return type
+
+ApiResponse<[**AffiliateProgramResource**](AffiliateProgramResource.md)>
 
 
 ### Authorization

@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**addAffiliate**](AffiliateApi.md#addAffiliate) | **POST** /rest/v2/affiliates | Create an Affiliate
 [**addAffiliateToProgram**](AffiliateApi.md#addAffiliateToProgram) | **POST** /rest/v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program
 [**addCommissionProgram**](AffiliateApi.md#addCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms | Create an Affiliate Commission Program
+[**addCommissionProgramResource**](AffiliateApi.md#addCommissionProgramResource) | **POST** /rest/v2/affiliates/commissionPrograms/resources | Create Commission Program Resource
 [**assignProductCommissionProgram**](AffiliateApi.md#assignProductCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program
 [**assignSubscriptionCommissionProgram**](AffiliateApi.md#assignSubscriptionCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program
 [**createAffiliateCustomField**](AffiliateApi.md#createAffiliateCustomField) | **POST** /rest/v2/affiliates/model/customFields | Create an Affiliate Custom Field
@@ -15,6 +16,7 @@ Method | HTTP request | Description
 [**deleteAffiliate**](AffiliateApi.md#deleteAffiliate) | **DELETE** /rest/v2/affiliates/{id} | Delete Affiliate
 [**deleteAffiliateCommissionProgram**](AffiliateApi.md#deleteAffiliateCommissionProgram) | **DELETE** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program
 [**deleteAffiliateCustomField**](AffiliateApi.md#deleteAffiliateCustomField) | **DELETE** /rest/v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field
+[**deleteCommissionProgramResource**](AffiliateApi.md#deleteCommissionProgramResource) | **DELETE** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Remove Commission Program Resource
 [**deleteRedirectLink**](AffiliateApi.md#deleteRedirectLink) | **DELETE** /rest/v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link
 [**getAffiliate**](AffiliateApi.md#getAffiliate) | **GET** /rest/v2/affiliates/{id} | Retrieve an Affiliate
 [**getAffiliateCommissionTotal**](AffiliateApi.md#getAffiliateCommissionTotal) | **GET** /rest/v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal
@@ -35,6 +37,7 @@ Method | HTTP request | Description
 [**updateAffiliate**](AffiliateApi.md#updateAffiliate) | **PATCH** /rest/v2/affiliates/{id} | Update an Affiliate
 [**updateAffiliateCustomField**](AffiliateApi.md#updateAffiliateCustomField) | **PATCH** /rest/v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field
 [**updateCommissionProgram**](AffiliateApi.md#updateCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
+[**updateCommissionProgramResource**](AffiliateApi.md#updateCommissionProgramResource) | **PATCH** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Update Commission Program Resource
 [**updateDefaultCommissionProgram**](AffiliateApi.md#updateDefaultCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program
 [**updateProductCommissionProgram**](AffiliateApi.md#updateProductCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program
 [**updateRedirectLink**](AffiliateApi.md#updateRedirectLink) | **PATCH** /rest/v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link
@@ -223,6 +226,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 **AffiliateCommissionProgramResponse**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **addCommissionProgramResource**
+> AffiliateProgramResource addCommissionProgramResource(createProgramResourceRequest)
+
+Creates a resource for a commission program
+
+### Example
+
+
+```typescript
+import { createConfiguration, AffiliateApi } from '';
+import type { AffiliateApiAddCommissionProgramResourceRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AffiliateApi(configuration);
+
+const request: AffiliateApiAddCommissionProgramResourceRequest = {
+  
+  createProgramResourceRequest: {
+    title: "Summer Sale Banner",
+    type: "BANNER",
+    notes: "Use this banner for summer promotions",
+    url: "https://thryv.com/banners/summer-sale.jpg",
+    order: 1,
+    contentHtml: "<h1>Summer Sale</h1><p>Get 20% off!</p>",
+    pageWidth: 728,
+    pageHeight: 90,
+    commissionProgramIds: [123, 456],
+  },
+};
+
+const data = await apiInstance.addCommissionProgramResource(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createProgramResourceRequest** | **CreateProgramResourceRequest**|  |
+
+
+### Return type
+
+**AffiliateProgramResource**
 
 ### Authorization
 
@@ -799,6 +873,67 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customFieldId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **deleteCommissionProgramResource**
+> void deleteCommissionProgramResource()
+
+Removes a resource from a commission program
+
+### Example
+
+
+```typescript
+import { createConfiguration, AffiliateApi } from '';
+import type { AffiliateApiDeleteCommissionProgramResourceRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AffiliateApi(configuration);
+
+const request: AffiliateApiDeleteCommissionProgramResourceRequest = {
+  
+  resourceId: "resource_id_example",
+};
+
+const data = await apiInstance.deleteCommissionProgramResource(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -2152,6 +2287,82 @@ Name | Type | Description  | Notes
 ### Return type
 
 **AffiliateCommissionProgramResponse**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **updateCommissionProgramResource**
+> AffiliateProgramResource updateCommissionProgramResource(updateProgramResourceRequest)
+
+Updates a resource for a commission program
+
+### Example
+
+
+```typescript
+import { createConfiguration, AffiliateApi } from '';
+import type { AffiliateApiUpdateCommissionProgramResourceRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AffiliateApi(configuration);
+
+const request: AffiliateApiUpdateCommissionProgramResourceRequest = {
+  
+  resourceId: "resource_id_example",
+  
+  updateProgramResourceRequest: {
+    title: "Summer Sale Banner",
+    notes: "Use this banner for summer promotions",
+    url: "https://thryv.com/banners/summer-sale.jpg",
+    order: 1,
+    contentHtml: "<h1>Summer Sale</h1><p>Get 20% off!</p>",
+    pageWidth: 728,
+    pageHeight: 90,
+    commissionProgramIds: [123, 456],
+  },
+    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+  updateMask: null,
+};
+
+const data = await apiInstance.updateCommissionProgramResource(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateProgramResourceRequest** | **UpdateProgramResourceRequest**|  |
+ **resourceId** | [**string**] |  | defaults to undefined
+ **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+
+
+### Return type
+
+**AffiliateProgramResource**
 
 ### Authorization
 

@@ -108,6 +108,7 @@ export * from '../models/CreateProductOptionListOption';
 export * from '../models/CreateProductOptionRequest';
 export * from '../models/CreateProductOptionTextOption';
 export * from '../models/CreateProductRequestDetail';
+export * from '../models/CreateProgramResourceRequest';
 export * from '../models/CreateReferralRequest';
 export * from '../models/CreateShippingDiscountRequest';
 export * from '../models/CreateSubscriptionCommissionProgramRequest';
@@ -221,6 +222,7 @@ export * from '../models/ListProductOptionsResponse';
 export * from '../models/ListProductsResponseList';
 export * from '../models/ListProgramResourcesResponse';
 export * from '../models/ListProvincesResponse';
+export * from '../models/ListReferralsResponse';
 export * from '../models/ListReportsResponse';
 export * from '../models/ListRestShippingMethodsResponse';
 export * from '../models/ListShippingDiscountsResponse';
@@ -337,6 +339,7 @@ export * from '../models/UpdateProductInventoryRequestDetail';
 export * from '../models/UpdateProductOptionListOption';
 export * from '../models/UpdateProductOptionRequest';
 export * from '../models/UpdateProductRequestDetail';
+export * from '../models/UpdateProgramResourceRequest';
 export * from '../models/UpdateShippingDiscountRequest';
 export * from '../models/UpdateSubscriptionCommissionProgramRequest';
 export * from '../models/UpdateSubscriptionPlanRequest';
@@ -461,6 +464,7 @@ import { CreateProductOptionListOption } from '../models/CreateProductOptionList
 import { CreateProductOptionRequest , CreateProductOptionRequestOptionTypeEnum       } from '../models/CreateProductOptionRequest';
 import { CreateProductOptionTextOption   , CreateProductOptionTextOptionOnlyStartsWithEnum  , CreateProductOptionTextOptionOnlyEndsWithEnum  , CreateProductOptionTextOptionOnlyContainsEnum    } from '../models/CreateProductOptionTextOption';
 import { CreateProductRequestDetail } from '../models/CreateProductRequestDetail';
+import { CreateProgramResourceRequest , CreateProgramResourceRequestTypeEnum          } from '../models/CreateProgramResourceRequest';
 import { CreateReferralRequest       , CreateReferralRequestReferralTypeEnum   } from '../models/CreateReferralRequest';
 import { CreateShippingDiscountRequest   , CreateShippingDiscountRequestDiscountTypeEnum    } from '../models/CreateShippingDiscountRequest';
 import { CreateSubscriptionCommissionProgramRequest     , CreateSubscriptionCommissionProgramRequestPayoutTypeEnum    } from '../models/CreateSubscriptionCommissionProgramRequest';
@@ -574,6 +578,7 @@ import { ListProductOptionsResponse } from '../models/ListProductOptionsResponse
 import { ListProductsResponseList } from '../models/ListProductsResponseList';
 import { ListProgramResourcesResponse } from '../models/ListProgramResourcesResponse';
 import { ListProvincesResponse } from '../models/ListProvincesResponse';
+import { ListReferralsResponse } from '../models/ListReferralsResponse';
 import { ListReportsResponse } from '../models/ListReportsResponse';
 import { ListRestShippingMethodsResponse } from '../models/ListRestShippingMethodsResponse';
 import { ListShippingDiscountsResponse } from '../models/ListShippingDiscountsResponse';
@@ -690,6 +695,7 @@ import { UpdateProductInventoryRequestDetail, UpdateProductInventoryRequestDetai
 import { UpdateProductOptionListOption } from '../models/UpdateProductOptionListOption';
 import { UpdateProductOptionRequest      , UpdateProductOptionRequestOnlyStartsWithEnum  , UpdateProductOptionRequestOnlyEndsWithEnum  , UpdateProductOptionRequestOnlyContainsEnum    } from '../models/UpdateProductOptionRequest';
 import { UpdateProductRequestDetail } from '../models/UpdateProductRequestDetail';
+import { UpdateProgramResourceRequest } from '../models/UpdateProgramResourceRequest';
 import { UpdateShippingDiscountRequest   , UpdateShippingDiscountRequestDiscountTypeEnum    } from '../models/UpdateShippingDiscountRequest';
 import { UpdateSubscriptionCommissionProgramRequest     , UpdateSubscriptionCommissionProgramRequestPayoutTypeEnum    } from '../models/UpdateSubscriptionCommissionProgramRequest';
 import { UpdateSubscriptionPlanRequest   , UpdateSubscriptionPlanRequestCycleTypeEnum      } from '../models/UpdateSubscriptionPlanRequest';
@@ -743,6 +749,7 @@ let enumsMap: Set<string> = new Set<string>([
     "CreateProductOptionTextOptionOnlyStartsWithEnum",
     "CreateProductOptionTextOptionOnlyEndsWithEnum",
     "CreateProductOptionTextOptionOnlyContainsEnum",
+    "CreateProgramResourceRequestTypeEnum",
     "CreateReferralRequestReferralTypeEnum",
     "CreateShippingDiscountRequestDiscountTypeEnum",
     "CreateSubscriptionCommissionProgramRequestPayoutTypeEnum",
@@ -953,6 +960,7 @@ let typeMap: {[index: string]: any} = {
     "CreateProductOptionRequest": CreateProductOptionRequest,
     "CreateProductOptionTextOption": CreateProductOptionTextOption,
     "CreateProductRequestDetail": CreateProductRequestDetail,
+    "CreateProgramResourceRequest": CreateProgramResourceRequest,
     "CreateReferralRequest": CreateReferralRequest,
     "CreateShippingDiscountRequest": CreateShippingDiscountRequest,
     "CreateSubscriptionCommissionProgramRequest": CreateSubscriptionCommissionProgramRequest,
@@ -1066,6 +1074,7 @@ let typeMap: {[index: string]: any} = {
     "ListProductsResponseList": ListProductsResponseList,
     "ListProgramResourcesResponse": ListProgramResourcesResponse,
     "ListProvincesResponse": ListProvincesResponse,
+    "ListReferralsResponse": ListReferralsResponse,
     "ListReportsResponse": ListReportsResponse,
     "ListRestShippingMethodsResponse": ListRestShippingMethodsResponse,
     "ListShippingDiscountsResponse": ListShippingDiscountsResponse,
@@ -1182,6 +1191,7 @@ let typeMap: {[index: string]: any} = {
     "UpdateProductOptionListOption": UpdateProductOptionListOption,
     "UpdateProductOptionRequest": UpdateProductOptionRequest,
     "UpdateProductRequestDetail": UpdateProductRequestDetail,
+    "UpdateProgramResourceRequest": UpdateProgramResourceRequest,
     "UpdateShippingDiscountRequest": UpdateShippingDiscountRequest,
     "UpdateSubscriptionCommissionProgramRequest": UpdateSubscriptionCommissionProgramRequest,
     "UpdateSubscriptionPlanRequest": UpdateSubscriptionPlanRequest,
