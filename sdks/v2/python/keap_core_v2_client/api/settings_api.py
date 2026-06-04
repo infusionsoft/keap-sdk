@@ -16,8 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field
-from typing import Any, Optional
+from pydantic import Field, StrictStr, field_validator
+from typing import List, Optional
 from typing_extensions import Annotated
 from keap_core_v2_client.models.get_application_enabled_status_response import GetApplicationEnabledStatusResponse
 from keap_core_v2_client.models.get_contact_option_types_response import GetContactOptionTypesResponse
@@ -44,7 +44,7 @@ class SettingsApi:
     @validate_call
     def get_application_configurations(
         self,
-        fields: Annotated[Optional[Any], Field(description="By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.")] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,7 +63,7 @@ class SettingsApi:
         Get configuration values for the application instance.
 
         :param fields: By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
-        :type fields: object
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -119,7 +119,7 @@ class SettingsApi:
     @validate_call
     def get_application_configurations_with_http_info(
         self,
-        fields: Annotated[Optional[Any], Field(description="By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.")] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -138,7 +138,7 @@ class SettingsApi:
         Get configuration values for the application instance.
 
         :param fields: By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
-        :type fields: object
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -194,7 +194,7 @@ class SettingsApi:
     @validate_call
     def get_application_configurations_without_preload_content(
         self,
-        fields: Annotated[Optional[Any], Field(description="By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.")] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -213,7 +213,7 @@ class SettingsApi:
         Get configuration values for the application instance.
 
         :param fields: By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
-        :type fields: object
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -274,6 +274,7 @@ class SettingsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'fields': 'multi',
         }
 
         _path_params: Dict[str, str] = {}

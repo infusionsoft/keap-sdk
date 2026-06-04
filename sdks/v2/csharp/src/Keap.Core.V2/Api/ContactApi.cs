@@ -343,7 +343,7 @@ namespace Keap.Core.V2.Api
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Contact</returns>
-        Contact UpdateContact(string contactId, CreateUpdateContactRequest createUpdateContactRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0);
+        Contact UpdateContact(string contactId, CreateUpdateContactRequest createUpdateContactRequest, List<string>? updateMask = default, List<string>? fields = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Contact
@@ -358,7 +358,7 @@ namespace Keap.Core.V2.Api
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Contact</returns>
-        ApiResponse<Contact> UpdateContactWithHttpInfo(string contactId, CreateUpdateContactRequest createUpdateContactRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0);
+        ApiResponse<Contact> UpdateContactWithHttpInfo(string contactId, CreateUpdateContactRequest createUpdateContactRequest, List<string>? updateMask = default, List<string>? fields = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -708,7 +708,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Contact</returns>
-        System.Threading.Tasks.Task<Contact> UpdateContactAsync(string contactId, CreateUpdateContactRequest createUpdateContactRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Contact> UpdateContactAsync(string contactId, CreateUpdateContactRequest createUpdateContactRequest, List<string>? updateMask = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Contact
@@ -724,7 +724,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Contact)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Contact>> UpdateContactWithHttpInfoAsync(string contactId, CreateUpdateContactRequest createUpdateContactRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Contact>> UpdateContactWithHttpInfoAsync(string contactId, CreateUpdateContactRequest createUpdateContactRequest, List<string>? updateMask = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -3123,7 +3123,7 @@ namespace Keap.Core.V2.Api
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Contact</returns>
-        public Contact UpdateContact(string contactId, CreateUpdateContactRequest createUpdateContactRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0)
+        public Contact UpdateContact(string contactId, CreateUpdateContactRequest createUpdateContactRequest, List<string>? updateMask = default, List<string>? fields = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<Contact> localVarResponse = UpdateContactWithHttpInfo(contactId, createUpdateContactRequest, updateMask, fields);
             return localVarResponse.Data;
@@ -3139,7 +3139,7 @@ namespace Keap.Core.V2.Api
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Contact</returns>
-        public Keap.Core.V2.Client.ApiResponse<Contact> UpdateContactWithHttpInfo(string contactId, CreateUpdateContactRequest createUpdateContactRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<Contact> UpdateContactWithHttpInfo(string contactId, CreateUpdateContactRequest createUpdateContactRequest, List<string>? updateMask = default, List<string>? fields = default, int operationIndex = 0)
         {
             // verify the required parameter 'contactId' is set
             if (contactId == null)
@@ -3180,7 +3180,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("contact_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(contactId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             if (fields != null)
             {
@@ -3233,7 +3233,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Contact</returns>
-        public async System.Threading.Tasks.Task<Contact> UpdateContactAsync(string contactId, CreateUpdateContactRequest createUpdateContactRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Contact> UpdateContactAsync(string contactId, CreateUpdateContactRequest createUpdateContactRequest, List<string>? updateMask = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<Contact> localVarResponse = await UpdateContactWithHttpInfoAsync(contactId, createUpdateContactRequest, updateMask, fields, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -3250,7 +3250,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Contact)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Contact>> UpdateContactWithHttpInfoAsync(string contactId, CreateUpdateContactRequest createUpdateContactRequest, Object? updateMask = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Contact>> UpdateContactWithHttpInfoAsync(string contactId, CreateUpdateContactRequest createUpdateContactRequest, List<string>? updateMask = default, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'contactId' is set
             if (contactId == null)
@@ -3291,7 +3291,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("contact_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(contactId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             if (fields != null)
             {

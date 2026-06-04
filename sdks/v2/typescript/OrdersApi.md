@@ -1186,7 +1186,9 @@ const request: OrdersApiUpdateOrderRequest = {
     ],
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "contact_id",
+  ],
 };
 
 const data = await apiInstance.updateOrder(request);
@@ -1200,7 +1202,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateOrderRequest** | **UpdateOrderRequest**|  |
  **orderId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;contact_id&#39; &#124; &#39;order_items&#39; &#124; &#39;order_title&#39; &#124; &#39;order_time&#39; &#124; &#39;order_type&#39; &#124; &#39;promo_codes&#39; &#124; &#39;lead_affiliate_id&#39; &#124; &#39;sales_affiliate_id&#39; &#124; &#39;shipping_address&#39; &#124; &#39;notes&#39; &#124; &#39;terms&#39; &#124; &#39;payment_plan&#39; &#124; &#39;custom_fields&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -1262,7 +1264,9 @@ const request: OrdersApiUpdateOrderCustomFieldRequest = {
     groupId: "groupId_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "group_id",
+  ],
 };
 
 const data = await apiInstance.updateOrderCustomField(request);
@@ -1276,7 +1280,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**|  |
  **customFieldId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;group_id&#39; &#124; &#39;label&#39; &#124; &#39;options&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -1341,7 +1345,9 @@ const request: OrdersApiUpdateOrderItemRequest = {
     costPerUnit: 15,
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "name",
+  ],
 };
 
 const data = await apiInstance.updateOrderItem(request);
@@ -1356,7 +1362,7 @@ Name | Type | Description  | Notes
  **updateOrderItemRequest** | **UpdateOrderItemRequest**|  |
  **orderId** | [**string**] |  | defaults to undefined
  **orderItemId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;name&#39; &#124; &#39;description&#39; &#124; &#39;notes&#39; &#124; &#39;quantity&#39; &#124; &#39;price_per_unit&#39; &#124; &#39;cost_per_unit&#39; &#124; &#39;product_id&#39; &#124; &#39;subscription_plan_id&#39; &#124; &#39;subscription_plan_description&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

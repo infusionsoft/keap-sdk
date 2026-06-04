@@ -146,6 +146,29 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of Subscription</returns>
         ApiResponse<Subscription> GetSubscriptionWithHttpInfo(string subscriptionId, int operationIndex = 0);
         /// <summary>
+        /// Invoice a Subscription
+        /// </summary>
+        /// <remarks>
+        /// Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subscriptionId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>OrderV2</returns>
+        OrderV2 InvoiceSubscription(string subscriptionId, int operationIndex = 0);
+
+        /// <summary>
+        /// Invoice a Subscription
+        /// </summary>
+        /// <remarks>
+        /// Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subscriptionId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of OrderV2</returns>
+        ApiResponse<OrderV2> InvoiceSubscriptionWithHttpInfo(string subscriptionId, int operationIndex = 0);
+        /// <summary>
         /// List Subscriptions
         /// </summary>
         /// <remarks>
@@ -207,7 +230,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Subscription</returns>
-        Subscription UpdateSubscription(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object? updateMask = default, int operationIndex = 0);
+        Subscription UpdateSubscription(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, List<string>? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Subscription
@@ -221,7 +244,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Subscription</returns>
-        ApiResponse<Subscription> UpdateSubscriptionWithHttpInfo(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object? updateMask = default, int operationIndex = 0);
+        ApiResponse<Subscription> UpdateSubscriptionWithHttpInfo(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, List<string>? updateMask = default, int operationIndex = 0);
         /// <summary>
         /// Update a Subscription Custom Field
         /// </summary>
@@ -234,7 +257,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CustomFieldMetaData</returns>
-        CustomFieldMetaData UpdateSubscriptionCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0);
+        CustomFieldMetaData UpdateSubscriptionCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Subscription Custom Field
@@ -248,7 +271,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomFieldMetaData</returns>
-        ApiResponse<CustomFieldMetaData> UpdateSubscriptionCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0);
+        ApiResponse<CustomFieldMetaData> UpdateSubscriptionCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -386,6 +409,31 @@ namespace Keap.Core.V2.Api
         /// <returns>Task of ApiResponse (Subscription)</returns>
         System.Threading.Tasks.Task<ApiResponse<Subscription>> GetSubscriptionWithHttpInfoAsync(string subscriptionId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Invoice a Subscription
+        /// </summary>
+        /// <remarks>
+        /// Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subscriptionId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of OrderV2</returns>
+        System.Threading.Tasks.Task<OrderV2> InvoiceSubscriptionAsync(string subscriptionId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Invoice a Subscription
+        /// </summary>
+        /// <remarks>
+        /// Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subscriptionId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (OrderV2)</returns>
+        System.Threading.Tasks.Task<ApiResponse<OrderV2>> InvoiceSubscriptionWithHttpInfoAsync(string subscriptionId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// List Subscriptions
         /// </summary>
         /// <remarks>
@@ -452,7 +500,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Subscription</returns>
-        System.Threading.Tasks.Task<Subscription> UpdateSubscriptionAsync(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Subscription> UpdateSubscriptionAsync(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Subscription
@@ -467,7 +515,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Subscription)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Subscription>> UpdateSubscriptionWithHttpInfoAsync(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Subscription>> UpdateSubscriptionWithHttpInfoAsync(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update a Subscription Custom Field
         /// </summary>
@@ -481,7 +529,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CustomFieldMetaData</returns>
-        System.Threading.Tasks.Task<CustomFieldMetaData> UpdateSubscriptionCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CustomFieldMetaData> UpdateSubscriptionCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Subscription Custom Field
@@ -496,7 +544,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CustomFieldMetaData)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CustomFieldMetaData>> UpdateSubscriptionCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CustomFieldMetaData>> UpdateSubscriptionCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -1523,6 +1571,183 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
+        /// Invoice a Subscription Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subscriptionId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>OrderV2</returns>
+        public OrderV2 InvoiceSubscription(string subscriptionId, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<OrderV2> localVarResponse = InvoiceSubscriptionWithHttpInfo(subscriptionId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Invoice a Subscription Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subscriptionId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of OrderV2</returns>
+        public Keap.Core.V2.Client.ApiResponse<OrderV2> InvoiceSubscriptionWithHttpInfo(string subscriptionId, int operationIndex = 0)
+        {
+            // verify the required parameter 'subscriptionId' is set
+            if (subscriptionId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'subscriptionId' when calling SubscriptionsApi->InvoiceSubscription");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("subscription_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(subscriptionId)); // path parameter
+
+            localVarRequestOptions.Operation = "SubscriptionsApi.InvoiceSubscription";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<OrderV2>("/rest/v2/subscriptions/{subscription_id}:invoice", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("InvoiceSubscription", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Invoice a Subscription Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subscriptionId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of OrderV2</returns>
+        public async System.Threading.Tasks.Task<OrderV2> InvoiceSubscriptionAsync(string subscriptionId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<OrderV2> localVarResponse = await InvoiceSubscriptionWithHttpInfoAsync(subscriptionId, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Invoice a Subscription Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subscriptionId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (OrderV2)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<OrderV2>> InvoiceSubscriptionWithHttpInfoAsync(string subscriptionId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'subscriptionId' is set
+            if (subscriptionId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'subscriptionId' when calling SubscriptionsApi->InvoiceSubscription");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("subscription_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(subscriptionId)); // path parameter
+
+            localVarRequestOptions.Operation = "SubscriptionsApi.InvoiceSubscription";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<OrderV2>("/rest/v2/subscriptions/{subscription_id}:invoice", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("InvoiceSubscription", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// List Subscriptions Retrieves a list of subscriptions using the specified search criteria.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1897,7 +2122,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Subscription</returns>
-        public Subscription UpdateSubscription(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object? updateMask = default, int operationIndex = 0)
+        public Subscription UpdateSubscription(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, List<string>? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<Subscription> localVarResponse = UpdateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequest, updateMask);
             return localVarResponse.Data;
@@ -1912,7 +2137,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Subscription</returns>
-        public Keap.Core.V2.Client.ApiResponse<Subscription> UpdateSubscriptionWithHttpInfo(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<Subscription> UpdateSubscriptionWithHttpInfo(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, List<string>? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'subscriptionId' is set
             if (subscriptionId == null)
@@ -1953,7 +2178,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("subscription_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(subscriptionId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateSubscriptionRequest;
 
@@ -2001,7 +2226,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Subscription</returns>
-        public async System.Threading.Tasks.Task<Subscription> UpdateSubscriptionAsync(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Subscription> UpdateSubscriptionAsync(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<Subscription> localVarResponse = await UpdateSubscriptionWithHttpInfoAsync(subscriptionId, updateSubscriptionRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2017,7 +2242,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Subscription)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Subscription>> UpdateSubscriptionWithHttpInfoAsync(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Subscription>> UpdateSubscriptionWithHttpInfoAsync(string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'subscriptionId' is set
             if (subscriptionId == null)
@@ -2058,7 +2283,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("subscription_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(subscriptionId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateSubscriptionRequest;
 
@@ -2106,7 +2331,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CustomFieldMetaData</returns>
-        public CustomFieldMetaData UpdateSubscriptionCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0)
+        public CustomFieldMetaData UpdateSubscriptionCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> localVarResponse = UpdateSubscriptionCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             return localVarResponse.Data;
@@ -2121,7 +2346,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomFieldMetaData</returns>
-        public Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> UpdateSubscriptionCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> UpdateSubscriptionCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'customFieldId' is set
             if (customFieldId == null)
@@ -2162,7 +2387,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("custom_field_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(customFieldId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateCustomFieldMetaDataRequest;
 
@@ -2210,7 +2435,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CustomFieldMetaData</returns>
-        public async System.Threading.Tasks.Task<CustomFieldMetaData> UpdateSubscriptionCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CustomFieldMetaData> UpdateSubscriptionCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> localVarResponse = await UpdateSubscriptionCustomFieldWithHttpInfoAsync(customFieldId, updateCustomFieldMetaDataRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2226,7 +2451,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CustomFieldMetaData)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData>> UpdateSubscriptionCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData>> UpdateSubscriptionCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'customFieldId' is set
             if (customFieldId == null)
@@ -2267,7 +2492,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("custom_field_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(customFieldId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateCustomFieldMetaDataRequest;
 

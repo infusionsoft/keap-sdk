@@ -5305,7 +5305,7 @@ class ProductsApi
      *
      * @param  string $product_id product_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductRequestDetail $update_product_request_detail update_product_request_detail (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5325,7 +5325,7 @@ class ProductsApi
      *
      * @param  string $product_id product_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductRequestDetail $update_product_request_detail (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5524,7 +5524,7 @@ class ProductsApi
      *
      * @param  string $product_id product_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductRequestDetail $update_product_request_detail (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5547,7 +5547,7 @@ class ProductsApi
      *
      * @param  string $product_id product_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductRequestDetail $update_product_request_detail (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5599,7 +5599,7 @@ class ProductsApi
      *
      * @param  string $product_id product_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductRequestDetail $update_product_request_detail (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5622,7 +5622,7 @@ class ProductsApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/products/{product_id}';
         $formParams = [];
@@ -5635,7 +5635,7 @@ class ProductsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -5724,7 +5724,7 @@ class ProductsApi
      * @param  string $product_id product_id (required)
      * @param  string $product_option_id product_option_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionRequest $update_product_option_request update_product_option_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOption'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5745,7 +5745,7 @@ class ProductsApi
      * @param  string $product_id product_id (required)
      * @param  string $product_option_id product_option_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionRequest $update_product_option_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOption'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5945,7 +5945,7 @@ class ProductsApi
      * @param  string $product_id product_id (required)
      * @param  string $product_option_id product_option_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionRequest $update_product_option_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOption'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5969,7 +5969,7 @@ class ProductsApi
      * @param  string $product_id product_id (required)
      * @param  string $product_option_id product_option_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionRequest $update_product_option_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOption'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6022,7 +6022,7 @@ class ProductsApi
      * @param  string $product_id product_id (required)
      * @param  string $product_option_id product_option_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionRequest $update_product_option_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOption'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6052,7 +6052,7 @@ class ProductsApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/products/{product_id}/options/{product_option_id}';
         $formParams = [];
@@ -6065,7 +6065,7 @@ class ProductsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -6163,7 +6163,7 @@ class ProductsApi
      * @param  string $product_option_id product_option_id (required)
      * @param  string $item_id item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionListOption $update_product_option_list_option update_product_option_list_option (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOptionListOptionValue'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6185,7 +6185,7 @@ class ProductsApi
      * @param  string $product_option_id product_option_id (required)
      * @param  string $item_id item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionListOption $update_product_option_list_option (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOptionListOptionValue'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6386,7 +6386,7 @@ class ProductsApi
      * @param  string $product_option_id product_option_id (required)
      * @param  string $item_id item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionListOption $update_product_option_list_option (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOptionListOptionValue'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6411,7 +6411,7 @@ class ProductsApi
      * @param  string $product_option_id product_option_id (required)
      * @param  string $item_id item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionListOption $update_product_option_list_option (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOptionListOptionValue'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6465,7 +6465,7 @@ class ProductsApi
      * @param  string $product_option_id product_option_id (required)
      * @param  string $item_id item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductOptionListOption $update_product_option_list_option (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductOptionListOptionValue'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6502,7 +6502,7 @@ class ProductsApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/products/{product_id}/options/{product_option_id}/listItems/{item_id}';
         $formParams = [];
@@ -6515,7 +6515,7 @@ class ProductsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required

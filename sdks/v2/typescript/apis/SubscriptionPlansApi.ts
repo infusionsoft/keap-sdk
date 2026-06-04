@@ -240,7 +240,7 @@ export class SubscriptionPlansApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateSubscriptionPlanRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateSubscriptionPlan(productId: string, subscriptionPlanId: string, updateSubscriptionPlanRequest: UpdateSubscriptionPlanRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateSubscriptionPlan(productId: string, subscriptionPlanId: string, updateSubscriptionPlanRequest: UpdateSubscriptionPlanRequest, updateMask?: Set<'active' | 'allow_prorating' | 'cycle_type' | 'display_order_index' | 'frequency' | 'plan_price' | 'total_cycles'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'productId' is not null or undefined
@@ -273,9 +273,9 @@ export class SubscriptionPlansApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'active' | 'allow_prorating' | 'cycle_type' | 'display_order_index' | 'frequency' | 'plan_price' | 'total_cycles'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 

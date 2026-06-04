@@ -5,16 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | Id of the subscription plan. | [optional] 
+**id** | **str** | Subscription plan ID | [optional] 
+**frequency** | **int** | Interval at which a customer receives a product or service as part of a subscription plan. | [optional] 
 **active** | **bool** | If the subscription plan is active or not. | [optional] 
-**frequency** | **int** | Total number of times of a cycle type which constitutes a plan cycle. Minimum value is 1. | [optional] 
-**allow_prorating** | **bool** | Whether or not the plan will allow prorating. | [optional] 
-**product_id** | **str** | The product ID this plan belongs to. | [optional] 
+**subscription_plan_name** | **str** | Plan name | [optional] 
 **cycle_type** | **str** | The cycle type of the subscription plan. | [optional] 
-**display_order_index** | **int** | The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list. | [optional] 
 **total_cycles** | **int** | Total number of cycles the plan will run before ending. Value of 0 indicates plan will never end. | [optional] 
-**plan_price** | [**CurrencyValue**](CurrencyValue.md) | The price of the subscription plan. | [optional] 
-**preauthorize_amount** | **float** | The pre-authorize amount for the subscription plan. If null, this field is omitted from the response. | [optional] 
+**plan_price** | [**CurrencyValue**](CurrencyValue.md) | Price of the plan | [optional] 
+**display_order_index** | **int** | The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list. | [optional] 
 
 ## Example
 

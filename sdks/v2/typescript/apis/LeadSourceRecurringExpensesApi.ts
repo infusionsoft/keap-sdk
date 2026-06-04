@@ -315,7 +315,7 @@ export class LeadSourceRecurringExpensesApiRequestFactory extends BaseAPIRequest
      * @param leadSourceRecurringExpenseUpdateRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateLeadSourceRecurringExpense(leadSourceId: string, leadSourceRecurringExpenseId: string, leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateLeadSourceRecurringExpense(leadSourceId: string, leadSourceRecurringExpenseId: string, leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest, updateMask?: Set<'title' | 'notes' | 'amount' | 'start_time' | 'end_time'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceId' is not null or undefined
@@ -348,9 +348,9 @@ export class LeadSourceRecurringExpensesApiRequestFactory extends BaseAPIRequest
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'title' | 'notes' | 'amount' | 'start_time' | 'end_time'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 

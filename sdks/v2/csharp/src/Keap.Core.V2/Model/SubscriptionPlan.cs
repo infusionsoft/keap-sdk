@@ -40,28 +40,28 @@ namespace Keap.Core.V2.Model
         public enum CycleTypeEnum
         {
             /// <summary>
-            /// Enum DAILY for value: DAILY
+            /// Enum YEARLY for value: YEARLY
             /// </summary>
-            [EnumMember(Value = "DAILY")]
-            DAILY = 1,
-
-            /// <summary>
-            /// Enum WEEKLY for value: WEEKLY
-            /// </summary>
-            [EnumMember(Value = "WEEKLY")]
-            WEEKLY = 2,
+            [EnumMember(Value = "YEARLY")]
+            YEARLY = 1,
 
             /// <summary>
             /// Enum MONTHLY for value: MONTHLY
             /// </summary>
             [EnumMember(Value = "MONTHLY")]
-            MONTHLY = 3,
+            MONTHLY = 2,
 
             /// <summary>
-            /// Enum YEARLY for value: YEARLY
+            /// Enum WEEKLY for value: WEEKLY
             /// </summary>
-            [EnumMember(Value = "YEARLY")]
-            YEARLY = 4
+            [EnumMember(Value = "WEEKLY")]
+            WEEKLY = 3,
+
+            /// <summary>
+            /// Enum DAILY for value: DAILY
+            /// </summary>
+            [EnumMember(Value = "DAILY")]
+            DAILY = 4
         }
 
         /// <summary>
@@ -76,39 +76,45 @@ namespace Keap.Core.V2.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionPlan" /> class.
         /// </summary>
-        /// <param name="id">Id of the subscription plan..</param>
+        /// <param name="id">Subscription plan ID.</param>
+        /// <param name="frequency">Interval at which a customer receives a product or service as part of a subscription plan..</param>
         /// <param name="active">If the subscription plan is active or not..</param>
-        /// <param name="frequency">Total number of times of a cycle type which constitutes a plan cycle. Minimum value is 1..</param>
-        /// <param name="allowProrating">Whether or not the plan will allow prorating..</param>
-        /// <param name="productId">The product ID this plan belongs to..</param>
+        /// <param name="subscriptionPlanName">Plan name.</param>
         /// <param name="cycleType">The cycle type of the subscription plan..</param>
-        /// <param name="displayOrderIndex">The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list..</param>
         /// <param name="totalCycles">Total number of cycles the plan will run before ending. Value of 0 indicates plan will never end..</param>
-        /// <param name="planPrice">The price of the subscription plan..</param>
-        /// <param name="preauthorizeAmount">The pre-authorize amount for the subscription plan. If null, this field is omitted from the response..</param>
-        public SubscriptionPlan(string id = default, bool active = default, int frequency = default, bool allowProrating = default, string productId = default, CycleTypeEnum? cycleType = default, int displayOrderIndex = default, int totalCycles = default, CurrencyValue planPrice = default, double preauthorizeAmount = default)
+        /// <param name="planPrice">Price of the plan.</param>
+        /// <param name="displayOrderIndex">The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list..</param>
+        public SubscriptionPlan(string id = default, int frequency = default, bool active = default, string subscriptionPlanName = default, CycleTypeEnum? cycleType = default, int totalCycles = default, CurrencyValue planPrice = default, int displayOrderIndex = default)
         {
             this.Id = id;
-            this.Active = active;
             this.Frequency = frequency;
-            this.AllowProrating = allowProrating;
-            this.ProductId = productId;
+            this.Active = active;
+            this.SubscriptionPlanName = subscriptionPlanName;
             this.CycleType = cycleType;
-            this.DisplayOrderIndex = displayOrderIndex;
             this.TotalCycles = totalCycles;
             this.PlanPrice = planPrice;
-            this.PreauthorizeAmount = preauthorizeAmount;
+            this.DisplayOrderIndex = displayOrderIndex;
         }
 
         /// <summary>
-        /// Id of the subscription plan.
+        /// Subscription plan ID
         /// </summary>
-        /// <value>Id of the subscription plan.</value>
+        /// <value>Subscription plan ID</value>
         /*
-        <example>1</example>
+        <example>123</example>
         */
         [DataMember(Name = "id", EmitDefaultValue = false)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Interval at which a customer receives a product or service as part of a subscription plan.
+        /// </summary>
+        /// <value>Interval at which a customer receives a product or service as part of a subscription plan.</value>
+        /*
+        <example>1</example>
+        */
+        [DataMember(Name = "frequency", EmitDefaultValue = false)]
+        public int Frequency { get; set; }
 
         /// <summary>
         /// If the subscription plan is active or not.
@@ -121,44 +127,14 @@ namespace Keap.Core.V2.Model
         public bool Active { get; set; }
 
         /// <summary>
-        /// Total number of times of a cycle type which constitutes a plan cycle. Minimum value is 1.
+        /// Plan name
         /// </summary>
-        /// <value>Total number of times of a cycle type which constitutes a plan cycle. Minimum value is 1.</value>
+        /// <value>Plan name</value>
         /*
-        <example>1</example>
+        <example>Premium Monthly</example>
         */
-        [DataMember(Name = "frequency", EmitDefaultValue = false)]
-        public int Frequency { get; set; }
-
-        /// <summary>
-        /// Whether or not the plan will allow prorating.
-        /// </summary>
-        /// <value>Whether or not the plan will allow prorating.</value>
-        /*
-        <example>false</example>
-        */
-        [DataMember(Name = "allow_prorating", EmitDefaultValue = true)]
-        public bool AllowProrating { get; set; }
-
-        /// <summary>
-        /// The product ID this plan belongs to.
-        /// </summary>
-        /// <value>The product ID this plan belongs to.</value>
-        /*
-        <example>123</example>
-        */
-        [DataMember(Name = "product_id", EmitDefaultValue = false)]
-        public string ProductId { get; set; }
-
-        /// <summary>
-        /// The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list.
-        /// </summary>
-        /// <value>The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list.</value>
-        /*
-        <example>0</example>
-        */
-        [DataMember(Name = "display_order_index", EmitDefaultValue = false)]
-        public int DisplayOrderIndex { get; set; }
+        [DataMember(Name = "subscription_plan_name", EmitDefaultValue = false)]
+        public string SubscriptionPlanName { get; set; }
 
         /// <summary>
         /// Total number of cycles the plan will run before ending. Value of 0 indicates plan will never end.
@@ -171,21 +147,21 @@ namespace Keap.Core.V2.Model
         public int TotalCycles { get; set; }
 
         /// <summary>
-        /// The price of the subscription plan.
+        /// Price of the plan
         /// </summary>
-        /// <value>The price of the subscription plan.</value>
+        /// <value>Price of the plan</value>
         [DataMember(Name = "plan_price", EmitDefaultValue = false)]
         public CurrencyValue PlanPrice { get; set; }
 
         /// <summary>
-        /// The pre-authorize amount for the subscription plan. If null, this field is omitted from the response.
+        /// The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list.
         /// </summary>
-        /// <value>The pre-authorize amount for the subscription plan. If null, this field is omitted from the response.</value>
+        /// <value>The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list.</value>
         /*
-        <example>13</example>
+        <example>1</example>
         */
-        [DataMember(Name = "preauthorize_amount", EmitDefaultValue = false)]
-        public double PreauthorizeAmount { get; set; }
+        [DataMember(Name = "display_order_index", EmitDefaultValue = false)]
+        public int DisplayOrderIndex { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -196,15 +172,13 @@ namespace Keap.Core.V2.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class SubscriptionPlan {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Active: ").Append(Active).Append("\n");
             sb.Append("  Frequency: ").Append(Frequency).Append("\n");
-            sb.Append("  AllowProrating: ").Append(AllowProrating).Append("\n");
-            sb.Append("  ProductId: ").Append(ProductId).Append("\n");
+            sb.Append("  Active: ").Append(Active).Append("\n");
+            sb.Append("  SubscriptionPlanName: ").Append(SubscriptionPlanName).Append("\n");
             sb.Append("  CycleType: ").Append(CycleType).Append("\n");
-            sb.Append("  DisplayOrderIndex: ").Append(DisplayOrderIndex).Append("\n");
             sb.Append("  TotalCycles: ").Append(TotalCycles).Append("\n");
             sb.Append("  PlanPrice: ").Append(PlanPrice).Append("\n");
-            sb.Append("  PreauthorizeAmount: ").Append(PreauthorizeAmount).Append("\n");
+            sb.Append("  DisplayOrderIndex: ").Append(DisplayOrderIndex).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

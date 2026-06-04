@@ -747,7 +747,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.ProductsApi();
 let productId = "productId_example"; // String | product_id
 let updateProductRequestDetail = new KeapCoreServiceV2Sdk.UpdateProductRequestDetail(); // UpdateProductRequestDetail | 
 let opts = {
-  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateProduct(productId, updateProductRequestDetail, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -764,7 +764,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **productId** | **String**| product_id | 
  **updateProductRequestDetail** | [**UpdateProductRequestDetail**](UpdateProductRequestDetail.md)|  | 
- **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -802,7 +802,7 @@ let productId = "productId_example"; // String | product_id
 let productOptionId = "productOptionId_example"; // String | product_option_id
 let updateProductOptionRequest = new KeapCoreServiceV2Sdk.UpdateProductOptionRequest(); // UpdateProductOptionRequest | 
 let opts = {
-  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateProductOption(productId, productOptionId, updateProductOptionRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -820,7 +820,7 @@ Name | Type | Description  | Notes
  **productId** | **String**| product_id | 
  **productOptionId** | **String**| product_option_id | 
  **updateProductOptionRequest** | [**UpdateProductOptionRequest**](UpdateProductOptionRequest.md)|  | 
- **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -859,7 +859,7 @@ let productOptionId = "productOptionId_example"; // String | product_option_id
 let itemId = "itemId_example"; // String | item_id
 let updateProductOptionListOption = new KeapCoreServiceV2Sdk.UpdateProductOptionListOption(); // UpdateProductOptionListOption | 
 let opts = {
-  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateProductOptionListOptionValue(productId, productOptionId, itemId, updateProductOptionListOption, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -878,7 +878,7 @@ Name | Type | Description  | Notes
  **productOptionId** | **String**| product_option_id | 
  **itemId** | **String**| item_id | 
  **updateProductOptionListOption** | [**UpdateProductOptionListOption**](UpdateProductOptionListOption.md)|  | 
- **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

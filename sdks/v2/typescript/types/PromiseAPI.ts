@@ -1098,7 +1098,7 @@ export class PromiseAffiliateApi {
      * @param updateAffiliateRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateAffiliateWithHttpInfo(id: string, updateAffiliateRequest: UpdateAffiliateRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestAffiliate>> {
+    public updateAffiliateWithHttpInfo(id: string, updateAffiliateRequest: UpdateAffiliateRequest, updateMask?: Set<'contact_id' | 'code' | 'name' | 'status' | 'parent_affiliate_id' | 'notify_on_sale' | 'notify_on_lead' | 'track_leads_days' | 'password' | 'custom_fields'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestAffiliate>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateAffiliateWithHttpInfo(id, updateAffiliateRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -1111,7 +1111,7 @@ export class PromiseAffiliateApi {
      * @param updateAffiliateRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateAffiliate(id: string, updateAffiliateRequest: UpdateAffiliateRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<RestAffiliate> {
+    public updateAffiliate(id: string, updateAffiliateRequest: UpdateAffiliateRequest, updateMask?: Set<'contact_id' | 'code' | 'name' | 'status' | 'parent_affiliate_id' | 'notify_on_sale' | 'notify_on_lead' | 'track_leads_days' | 'password' | 'custom_fields'>, _options?: PromiseConfigurationOptions): Promise<RestAffiliate> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateAffiliate(id, updateAffiliateRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -1124,7 +1124,7 @@ export class PromiseAffiliateApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateAffiliateCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+    public updateAffiliateCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateAffiliateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -1137,7 +1137,7 @@ export class PromiseAffiliateApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateAffiliateCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
+    public updateAffiliateCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateAffiliateCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -1150,7 +1150,7 @@ export class PromiseAffiliateApi {
      * @param updateCommissionProgramRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCommissionProgramWithHttpInfo(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AffiliateCommissionProgramResponse>> {
+    public updateCommissionProgramWithHttpInfo(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: Set<'name' | 'notes' | 'priority'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AffiliateCommissionProgramResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateCommissionProgramWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -1163,7 +1163,7 @@ export class PromiseAffiliateApi {
      * @param updateCommissionProgramRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCommissionProgram(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<AffiliateCommissionProgramResponse> {
+    public updateCommissionProgram(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: Set<'name' | 'notes' | 'priority'>, _options?: PromiseConfigurationOptions): Promise<AffiliateCommissionProgramResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateCommissionProgram(commissionProgramId, updateCommissionProgramRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -1176,7 +1176,7 @@ export class PromiseAffiliateApi {
      * @param updateProgramResourceRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCommissionProgramResourceWithHttpInfo(resourceId: string, updateProgramResourceRequest: UpdateProgramResourceRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AffiliateProgramResource>> {
+    public updateCommissionProgramResourceWithHttpInfo(resourceId: string, updateProgramResourceRequest: UpdateProgramResourceRequest, updateMask?: Set<'title' | 'notes' | 'url' | 'order' | 'content_html' | 'page_width' | 'page_height' | 'commission_program_ids'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AffiliateProgramResource>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateCommissionProgramResourceWithHttpInfo(resourceId, updateProgramResourceRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -1189,7 +1189,7 @@ export class PromiseAffiliateApi {
      * @param updateProgramResourceRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCommissionProgramResource(resourceId: string, updateProgramResourceRequest: UpdateProgramResourceRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<AffiliateProgramResource> {
+    public updateCommissionProgramResource(resourceId: string, updateProgramResourceRequest: UpdateProgramResourceRequest, updateMask?: Set<'title' | 'notes' | 'url' | 'order' | 'content_html' | 'page_width' | 'page_height' | 'commission_program_ids'>, _options?: PromiseConfigurationOptions): Promise<AffiliateProgramResource> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateCommissionProgramResource(resourceId, updateProgramResourceRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -1202,7 +1202,7 @@ export class PromiseAffiliateApi {
      * @param updateDefaultCommissionProgramRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateDefaultCommissionProgramWithHttpInfo(commissionProgramId: string, updateDefaultCommissionProgramRequest: UpdateDefaultCommissionProgramRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetRestCommissionProgram>> {
+    public updateDefaultCommissionProgramWithHttpInfo(commissionProgramId: string, updateDefaultCommissionProgramRequest: UpdateDefaultCommissionProgramRequest, updateMask?: Set<'percentage' | 'dollar_amount' | 'payout_type' | 'level_1' | 'level_2' | 'unused'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetRestCommissionProgram>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -1215,7 +1215,7 @@ export class PromiseAffiliateApi {
      * @param updateDefaultCommissionProgramRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateDefaultCommissionProgram(commissionProgramId: string, updateDefaultCommissionProgramRequest: UpdateDefaultCommissionProgramRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<GetRestCommissionProgram> {
+    public updateDefaultCommissionProgram(commissionProgramId: string, updateDefaultCommissionProgramRequest: UpdateDefaultCommissionProgramRequest, updateMask?: Set<'percentage' | 'dollar_amount' | 'payout_type' | 'level_1' | 'level_2' | 'unused'>, _options?: PromiseConfigurationOptions): Promise<GetRestCommissionProgram> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateDefaultCommissionProgram(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -1228,7 +1228,7 @@ export class PromiseAffiliateApi {
      * @param updateProductCommissionProgramRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductCommissionProgramWithHttpInfo(commissionProgramId: string, updateProductCommissionProgramRequest: UpdateProductCommissionProgramRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetRestCommissionProgram>> {
+    public updateProductCommissionProgramWithHttpInfo(commissionProgramId: string, updateProductCommissionProgramRequest: UpdateProductCommissionProgramRequest, updateMask?: Set<'percentage' | 'dollar_amount' | 'payout_type' | 'level_1' | 'level_2' | 'unused'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetRestCommissionProgram>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateProductCommissionProgramWithHttpInfo(commissionProgramId, updateProductCommissionProgramRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -1241,7 +1241,7 @@ export class PromiseAffiliateApi {
      * @param updateProductCommissionProgramRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductCommissionProgram(commissionProgramId: string, updateProductCommissionProgramRequest: UpdateProductCommissionProgramRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<GetRestCommissionProgram> {
+    public updateProductCommissionProgram(commissionProgramId: string, updateProductCommissionProgramRequest: UpdateProductCommissionProgramRequest, updateMask?: Set<'percentage' | 'dollar_amount' | 'payout_type' | 'level_1' | 'level_2' | 'unused'>, _options?: PromiseConfigurationOptions): Promise<GetRestCommissionProgram> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateProductCommissionProgram(commissionProgramId, updateProductCommissionProgramRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -1278,7 +1278,7 @@ export class PromiseAffiliateApi {
      * @param updateSubscriptionCommissionProgramRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId: string, updateSubscriptionCommissionProgramRequest: UpdateSubscriptionCommissionProgramRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetRestCommissionProgram>> {
+    public updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId: string, updateSubscriptionCommissionProgramRequest: UpdateSubscriptionCommissionProgramRequest, updateMask?: Set<'percentage' | 'dollar_amount' | 'payout_type' | 'level_1' | 'level_2' | 'unused'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetRestCommissionProgram>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -1291,7 +1291,7 @@ export class PromiseAffiliateApi {
      * @param updateSubscriptionCommissionProgramRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscriptionCommissionProgram(commissionProgramId: string, updateSubscriptionCommissionProgramRequest: UpdateSubscriptionCommissionProgramRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<GetRestCommissionProgram> {
+    public updateSubscriptionCommissionProgram(commissionProgramId: string, updateSubscriptionCommissionProgramRequest: UpdateSubscriptionCommissionProgramRequest, updateMask?: Set<'percentage' | 'dollar_amount' | 'payout_type' | 'level_1' | 'level_2' | 'unused'>, _options?: PromiseConfigurationOptions): Promise<GetRestCommissionProgram> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateSubscriptionCommissionProgram(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -1684,7 +1684,7 @@ export class PromiseBusinessProfileApi {
      * @param updateBusinessProfileRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateBusinessProfileWithHttpInfo(updateBusinessProfileRequest: UpdateBusinessProfileRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetBusinessProfileResponse>> {
+    public updateBusinessProfileWithHttpInfo(updateBusinessProfileRequest: UpdateBusinessProfileRequest, updateMask?: Set<'name' | 'email' | 'website' | 'phone' | 'address' | 'currency_code' | 'business_goals' | 'business_primary_color' | 'business_secondary_color'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetBusinessProfileResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateBusinessProfileWithHttpInfo(updateBusinessProfileRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -1696,7 +1696,7 @@ export class PromiseBusinessProfileApi {
      * @param updateBusinessProfileRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateBusinessProfile(updateBusinessProfileRequest: UpdateBusinessProfileRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<GetBusinessProfileResponse> {
+    public updateBusinessProfile(updateBusinessProfileRequest: UpdateBusinessProfileRequest, updateMask?: Set<'name' | 'email' | 'website' | 'phone' | 'address' | 'currency_code' | 'business_goals' | 'business_primary_color' | 'business_secondary_color'>, _options?: PromiseConfigurationOptions): Promise<GetBusinessProfileResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateBusinessProfile(updateBusinessProfileRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -1987,7 +1987,7 @@ export class PromiseCategoryDiscountsApi {
      * @param updateCategoryDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCategoryDiscountWithHttpInfo(discountId: string, updateCategoryDiscountRequest: UpdateCategoryDiscountRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CategoryDiscount>> {
+    public updateCategoryDiscountWithHttpInfo(discountId: string, updateCategoryDiscountRequest: UpdateCategoryDiscountRequest, updateMask?: Set<'name' | 'description' | 'discount_percent' | 'apply_to_commissions' | 'criteria' | 'product_category_ids'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CategoryDiscount>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateCategoryDiscountWithHttpInfo(discountId, updateCategoryDiscountRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -2000,7 +2000,7 @@ export class PromiseCategoryDiscountsApi {
      * @param updateCategoryDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCategoryDiscount(discountId: string, updateCategoryDiscountRequest: UpdateCategoryDiscountRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<CategoryDiscount> {
+    public updateCategoryDiscount(discountId: string, updateCategoryDiscountRequest: UpdateCategoryDiscountRequest, updateMask?: Set<'name' | 'description' | 'discount_percent' | 'apply_to_commissions' | 'criteria' | 'product_category_ids'>, _options?: PromiseConfigurationOptions): Promise<CategoryDiscount> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateCategoryDiscount(discountId, updateCategoryDiscountRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -2250,7 +2250,7 @@ export class PromiseCompanyApi {
      * @param updateCompanyRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCompanyWithHttpInfo(companyId: string, updateCompanyRequest: UpdateCompanyRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Company>> {
+    public updateCompanyWithHttpInfo(companyId: string, updateCompanyRequest: UpdateCompanyRequest, updateMask?: Set<'id' | 'company_name' | 'address' | 'phone_number' | 'fax_number' | 'email_address' | 'notes' | 'website' | 'custom_fields' | 'create_time' | 'update_time' | 'anniversary_date' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'birth_date' | 'contact_type' | 'first_name' | 'job_title' | 'last_name' | 'middle_name' | 'preferred_name' | 'owner_id' | 'referral_code' | 'spouse_name' | 'suffix' | 'title' | 'account_id' | 'created_by' | 'groups' | 'last_updated_by'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Company>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateCompanyWithHttpInfo(companyId, updateCompanyRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -2263,7 +2263,7 @@ export class PromiseCompanyApi {
      * @param updateCompanyRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCompany(companyId: string, updateCompanyRequest: UpdateCompanyRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<Company> {
+    public updateCompany(companyId: string, updateCompanyRequest: UpdateCompanyRequest, updateMask?: Set<'id' | 'company_name' | 'address' | 'phone_number' | 'fax_number' | 'email_address' | 'notes' | 'website' | 'custom_fields' | 'create_time' | 'update_time' | 'anniversary_date' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'birth_date' | 'contact_type' | 'first_name' | 'job_title' | 'last_name' | 'middle_name' | 'preferred_name' | 'owner_id' | 'referral_code' | 'spouse_name' | 'suffix' | 'title' | 'account_id' | 'created_by' | 'groups' | 'last_updated_by'>, _options?: PromiseConfigurationOptions): Promise<Company> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateCompany(companyId, updateCompanyRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -2276,7 +2276,7 @@ export class PromiseCompanyApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCompanyCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+    public updateCompanyCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateCompanyCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -2289,7 +2289,7 @@ export class PromiseCompanyApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCompanyCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
+    public updateCompanyCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateCompanyCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -2612,7 +2612,7 @@ export class PromiseContactApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      */
-    public updateContactWithHttpInfo(contactId: string, createUpdateContactRequest: CreateUpdateContactRequest, updateMask?: any, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Contact>> {
+    public updateContactWithHttpInfo(contactId: string, createUpdateContactRequest: CreateUpdateContactRequest, updateMask?: Set<'addresses' | 'anniversary_date' | 'birth_date' | 'company' | 'contact_type' | 'create_time' | 'custom_fields' | 'email_addresses' | 'family_name' | 'fax_numbers' | 'given_name' | 'id' | 'job_title' | 'leadsource_id' | 'links' | 'middle_name' | 'notes' | 'origin' | 'owner_id' | 'phone_numbers' | 'preferred_locale' | 'preferred_name' | 'prefix' | 'referral_code' | 'score_value' | 'social_accounts' | 'source_type' | 'spouse_name' | 'suffix' | 'tag_ids' | 'time_zone' | 'update_time' | 'utm_parameters' | 'website' | 'account_id' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'created_by' | 'groups' | 'last_updated_by'>, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Contact>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateContactWithHttpInfo(contactId, createUpdateContactRequest, updateMask, fields, observableOptions);
         return result.toPromise();
@@ -2626,7 +2626,7 @@ export class PromiseContactApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      */
-    public updateContact(contactId: string, createUpdateContactRequest: CreateUpdateContactRequest, updateMask?: any, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<Contact> {
+    public updateContact(contactId: string, createUpdateContactRequest: CreateUpdateContactRequest, updateMask?: Set<'addresses' | 'anniversary_date' | 'birth_date' | 'company' | 'contact_type' | 'create_time' | 'custom_fields' | 'email_addresses' | 'family_name' | 'fax_numbers' | 'given_name' | 'id' | 'job_title' | 'leadsource_id' | 'links' | 'middle_name' | 'notes' | 'origin' | 'owner_id' | 'phone_numbers' | 'preferred_locale' | 'preferred_name' | 'prefix' | 'referral_code' | 'score_value' | 'social_accounts' | 'source_type' | 'spouse_name' | 'suffix' | 'tag_ids' | 'time_zone' | 'update_time' | 'utm_parameters' | 'website' | 'account_id' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'created_by' | 'groups' | 'last_updated_by'>, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<Contact> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateContact(contactId, createUpdateContactRequest, updateMask, fields, observableOptions);
         return result.toPromise();
@@ -2940,42 +2940,32 @@ export class PromiseFilesApi {
     }
 
     /**
-     * Creates a file and uploads it
+     * Uploads a file using multipart/form-data. The `file` part contains the binary file content; `file_name`, `is_public`, `file_association`, and optionally `contact_id` are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
      * Create a file
-     * @param file File to upload. This is a file sent as multi-part (not a string)
+     * @param file File to upload
      * @param fileName File name
-     * @param isPublic Is public
      * @param fileAssociation File association
-     * @param file2 File to upload
-     * @param fileName2 File name
-     * @param isPublic2 Is public
-     * @param fileAssociation2 File association
-     * @param [contactId] Contact ID
-     * @param [contactId2] Contact ID. Required if the &#x60;file_association&#x60; is CONTACT
+     * @param [contactId] Contact ID. Required if the &#x60;file_association&#x60; is CONTACT
+     * @param [isPublic] Is public
      */
-    public createFileWithHttpInfo(file: HttpFile, fileName: string, isPublic: boolean, fileAssociation: string, file2: HttpFile, fileName2: string, isPublic2: string, fileAssociation2: string, contactId?: string, contactId2?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FileMetadata>> {
+    public createFileWithHttpInfo(file: HttpFile, fileName: string, fileAssociation: string, contactId?: string, isPublic?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FileMetadata>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createFileWithHttpInfo(file, fileName, isPublic, fileAssociation, file2, fileName2, isPublic2, fileAssociation2, contactId, contactId2, observableOptions);
+        const result = this.api.createFileWithHttpInfo(file, fileName, fileAssociation, contactId, isPublic, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Creates a file and uploads it
+     * Uploads a file using multipart/form-data. The `file` part contains the binary file content; `file_name`, `is_public`, `file_association`, and optionally `contact_id` are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
      * Create a file
-     * @param file File to upload. This is a file sent as multi-part (not a string)
+     * @param file File to upload
      * @param fileName File name
-     * @param isPublic Is public
      * @param fileAssociation File association
-     * @param file2 File to upload
-     * @param fileName2 File name
-     * @param isPublic2 Is public
-     * @param fileAssociation2 File association
-     * @param [contactId] Contact ID
-     * @param [contactId2] Contact ID. Required if the &#x60;file_association&#x60; is CONTACT
+     * @param [contactId] Contact ID. Required if the &#x60;file_association&#x60; is CONTACT
+     * @param [isPublic] Is public
      */
-    public createFile(file: HttpFile, fileName: string, isPublic: boolean, fileAssociation: string, file2: HttpFile, fileName2: string, isPublic2: string, fileAssociation2: string, contactId?: string, contactId2?: string, _options?: PromiseConfigurationOptions): Promise<FileMetadata> {
+    public createFile(file: HttpFile, fileName: string, fileAssociation: string, contactId?: string, isPublic?: string, _options?: PromiseConfigurationOptions): Promise<FileMetadata> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createFile(file, fileName, isPublic, fileAssociation, file2, fileName2, isPublic2, fileAssociation2, contactId, contactId2, observableOptions);
+        const result = this.api.createFile(file, fileName, fileAssociation, contactId, isPublic, observableOptions);
         return result.toPromise();
     }
 
@@ -3074,38 +3064,32 @@ export class PromiseFilesApi {
     }
 
     /**
-     * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+     * Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
      * Update a file
      * @param fileId
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * @param [file] File to upload. This is a file sent as multi-part (not a string)
+     * @param [file] File to upload
      * @param [fileName] File name
      * @param [isPublic] Is public
-     * @param [file2] File to upload
-     * @param [fileName2] File name
-     * @param [isPublic2] Is public
      */
-    public updateFileWithHttpInfo(fileId: string, updateMask?: any, file?: HttpFile, fileName?: string, isPublic?: boolean, file2?: HttpFile, fileName2?: string, isPublic2?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FileMetadata>> {
+    public updateFileWithHttpInfo(fileId: string, updateMask?: Set<'file' | 'file_name' | 'is_public'>, file?: HttpFile, fileName?: string, isPublic?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FileMetadata>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateFileWithHttpInfo(fileId, updateMask, file, fileName, isPublic, file2, fileName2, isPublic2, observableOptions);
+        const result = this.api.updateFileWithHttpInfo(fileId, updateMask, file, fileName, isPublic, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+     * Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
      * Update a file
      * @param fileId
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * @param [file] File to upload. This is a file sent as multi-part (not a string)
+     * @param [file] File to upload
      * @param [fileName] File name
      * @param [isPublic] Is public
-     * @param [file2] File to upload
-     * @param [fileName2] File name
-     * @param [isPublic2] Is public
      */
-    public updateFile(fileId: string, updateMask?: any, file?: HttpFile, fileName?: string, isPublic?: boolean, file2?: HttpFile, fileName2?: string, isPublic2?: boolean, _options?: PromiseConfigurationOptions): Promise<FileMetadata> {
+    public updateFile(fileId: string, updateMask?: Set<'file' | 'file_name' | 'is_public'>, file?: HttpFile, fileName?: string, isPublic?: boolean, _options?: PromiseConfigurationOptions): Promise<FileMetadata> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateFile(fileId, updateMask, file, fileName, isPublic, file2, fileName2, isPublic2, observableOptions);
+        const result = this.api.updateFile(fileId, updateMask, file, fileName, isPublic, observableOptions);
         return result.toPromise();
     }
 
@@ -3229,7 +3213,7 @@ export class PromiseFreeTrialDiscountsApi {
      * @param updateFreeTrialDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateFreeTrialDiscountWithHttpInfo(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FreeTrialDiscount>> {
+    public updateFreeTrialDiscountWithHttpInfo(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: Set<'name' | 'description' | 'free_trial_days' | 'hide_price' | 'subscription_plan_id' | 'criteria'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FreeTrialDiscount>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateFreeTrialDiscountWithHttpInfo(discountId, updateFreeTrialDiscountRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -3242,7 +3226,7 @@ export class PromiseFreeTrialDiscountsApi {
      * @param updateFreeTrialDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateFreeTrialDiscount(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<FreeTrialDiscount> {
+    public updateFreeTrialDiscount(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: Set<'name' | 'description' | 'free_trial_days' | 'hide_price' | 'subscription_plan_id' | 'criteria'>, _options?: PromiseConfigurationOptions): Promise<FreeTrialDiscount> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateFreeTrialDiscount(discountId, updateFreeTrialDiscountRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -3516,7 +3500,7 @@ export class PromiseLeadSourceCategoriesApi {
      * @param createUpdateLeadSourceCategoryRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceCategoryWithHttpInfo(leadSourceCategoryId: string, createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSourceCategory>> {
+    public updateLeadSourceCategoryWithHttpInfo(leadSourceCategoryId: string, createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, updateMask?: Set<'name' | 'description'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSourceCategory>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateLeadSourceCategoryWithHttpInfo(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -3529,7 +3513,7 @@ export class PromiseLeadSourceCategoriesApi {
      * @param createUpdateLeadSourceCategoryRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceCategory(leadSourceCategoryId: string, createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<LeadSourceCategory> {
+    public updateLeadSourceCategory(leadSourceCategoryId: string, createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, updateMask?: Set<'name' | 'description'>, _options?: PromiseConfigurationOptions): Promise<LeadSourceCategory> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateLeadSourceCategory(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -3664,7 +3648,7 @@ export class PromiseLeadSourceExpensesApi {
      * @param updateLeadSourceExpenseRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceExpenseWithHttpInfo(leadSourceExpenseId: string, leadSourceId: string, updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSourceExpense>> {
+    public updateLeadSourceExpenseWithHttpInfo(leadSourceExpenseId: string, leadSourceId: string, updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest, updateMask?: Set<'title' | 'notes' | 'amount' | 'incurred_time'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSourceExpense>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -3678,7 +3662,7 @@ export class PromiseLeadSourceExpensesApi {
      * @param updateLeadSourceExpenseRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceExpense(leadSourceExpenseId: string, leadSourceId: string, updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<LeadSourceExpense> {
+    public updateLeadSourceExpense(leadSourceExpenseId: string, leadSourceId: string, updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest, updateMask?: Set<'title' | 'notes' | 'amount' | 'incurred_time'>, _options?: PromiseConfigurationOptions): Promise<LeadSourceExpense> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateLeadSourceExpense(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -3845,7 +3829,7 @@ export class PromiseLeadSourceRecurringExpensesApi {
      * @param leadSourceRecurringExpenseUpdateRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceRecurringExpenseWithHttpInfo(leadSourceId: string, leadSourceRecurringExpenseId: string, leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSourceRecurringExpense>> {
+    public updateLeadSourceRecurringExpenseWithHttpInfo(leadSourceId: string, leadSourceRecurringExpenseId: string, leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest, updateMask?: Set<'title' | 'notes' | 'amount' | 'start_time' | 'end_time'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSourceRecurringExpense>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -3859,7 +3843,7 @@ export class PromiseLeadSourceRecurringExpensesApi {
      * @param leadSourceRecurringExpenseUpdateRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceRecurringExpense(leadSourceId: string, leadSourceRecurringExpenseId: string, leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<LeadSourceRecurringExpense> {
+    public updateLeadSourceRecurringExpense(leadSourceId: string, leadSourceRecurringExpenseId: string, leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest, updateMask?: Set<'title' | 'notes' | 'amount' | 'start_time' | 'end_time'>, _options?: PromiseConfigurationOptions): Promise<LeadSourceRecurringExpense> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -3985,7 +3969,7 @@ export class PromiseLeadSourcesApi {
      * @param createLeadSourceRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceWithHttpInfo(leadSourceId: string, createLeadSourceRequest: CreateLeadSourceRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSource>> {
+    public updateLeadSourceWithHttpInfo(leadSourceId: string, createLeadSourceRequest: CreateLeadSourceRequest, updateMask?: Set<'name' | 'description' | 'vendor' | 'medium' | 'message' | 'start_time' | 'end_time' | 'status' | 'lead_source_category_id'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSource>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateLeadSourceWithHttpInfo(leadSourceId, createLeadSourceRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -3998,7 +3982,7 @@ export class PromiseLeadSourcesApi {
      * @param createLeadSourceRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSource(leadSourceId: string, createLeadSourceRequest: CreateLeadSourceRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<LeadSource> {
+    public updateLeadSource(leadSourceId: string, createLeadSourceRequest: CreateLeadSourceRequest, updateMask?: Set<'name' | 'description' | 'vendor' | 'medium' | 'message' | 'start_time' | 'end_time' | 'status' | 'lead_source_category_id'>, _options?: PromiseConfigurationOptions): Promise<LeadSource> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateLeadSource(leadSourceId, createLeadSourceRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -4416,7 +4400,7 @@ export class PromiseNoteApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [fields] Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      */
-    public updateNoteWithHttpInfo(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: any, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpdateNoteResponse>> {
+    public updateNoteWithHttpInfo(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: Set<'contact_id' | 'title' | 'text' | 'type' | 'user_id' | 'is_pinned' | 'custom_fields'>, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpdateNoteResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask, fields, observableOptions);
         return result.toPromise();
@@ -4431,7 +4415,7 @@ export class PromiseNoteApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [fields] Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      */
-    public updateNote(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: any, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<UpdateNoteResponse> {
+    public updateNote(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: Set<'contact_id' | 'title' | 'text' | 'type' | 'user_id' | 'is_pinned' | 'custom_fields'>, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<UpdateNoteResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateNote(contactId, noteId, updateNoteRequest, updateMask, fields, observableOptions);
         return result.toPromise();
@@ -4444,7 +4428,7 @@ export class PromiseNoteApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateNotesCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+    public updateNotesCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateNotesCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -4457,7 +4441,7 @@ export class PromiseNoteApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateNotesCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
+    public updateNotesCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateNotesCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -4486,10 +4470,11 @@ export class PromiseOpportunityApi {
      * Creates a new opportunity as the authenticated user.
      * Create an Opportunity
      * @param createOpportunityRequest
+     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      */
-    public createOpportunityWithHttpInfo(createOpportunityRequest: CreateOpportunityRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
+    public createOpportunityWithHttpInfo(createOpportunityRequest: CreateOpportunityRequest, fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createOpportunityWithHttpInfo(createOpportunityRequest, observableOptions);
+        const result = this.api.createOpportunityWithHttpInfo(createOpportunityRequest, fields, observableOptions);
         return result.toPromise();
     }
 
@@ -4497,10 +4482,11 @@ export class PromiseOpportunityApi {
      * Creates a new opportunity as the authenticated user.
      * Create an Opportunity
      * @param createOpportunityRequest
+     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      */
-    public createOpportunity(createOpportunityRequest: CreateOpportunityRequest, _options?: PromiseConfigurationOptions): Promise<RestV2Opportunity> {
+    public createOpportunity(createOpportunityRequest: CreateOpportunityRequest, fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<RestV2Opportunity> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createOpportunity(createOpportunityRequest, observableOptions);
+        const result = this.api.createOpportunity(createOpportunityRequest, fields, observableOptions);
         return result.toPromise();
     }
 
@@ -4618,10 +4604,11 @@ export class PromiseOpportunityApi {
      * Retrieves the specified Opportunity
      * Retrieve a Opportunity
      * @param opportunityId
+     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      */
-    public getOpportunityWithHttpInfo(opportunityId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
+    public getOpportunityWithHttpInfo(opportunityId: string, fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getOpportunityWithHttpInfo(opportunityId, observableOptions);
+        const result = this.api.getOpportunityWithHttpInfo(opportunityId, fields, observableOptions);
         return result.toPromise();
     }
 
@@ -4629,10 +4616,11 @@ export class PromiseOpportunityApi {
      * Retrieves the specified Opportunity
      * Retrieve a Opportunity
      * @param opportunityId
+     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      */
-    public getOpportunity(opportunityId: string, _options?: PromiseConfigurationOptions): Promise<RestV2Opportunity> {
+    public getOpportunity(opportunityId: string, fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<RestV2Opportunity> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getOpportunity(opportunityId, observableOptions);
+        const result = this.api.getOpportunity(opportunityId, fields, observableOptions);
         return result.toPromise();
     }
 
@@ -4661,13 +4649,13 @@ export class PromiseOpportunityApi {
     /**
      * Retrieves a list of all Opportunities.
      * List Opportunities
-     * @param [fields]
+     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. 
      * @param [orderBy] Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listOpportunitiesWithHttpInfo(fields?: Set<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListOpportunitiesResponse>> {
+    public listOpportunitiesWithHttpInfo(fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListOpportunitiesResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listOpportunitiesWithHttpInfo(fields, filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
@@ -4676,13 +4664,13 @@ export class PromiseOpportunityApi {
     /**
      * Retrieves a list of all Opportunities.
      * List Opportunities
-     * @param [fields]
+     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. 
      * @param [orderBy] Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listOpportunities(fields?: Set<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListOpportunitiesResponse> {
+    public listOpportunities(fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListOpportunitiesResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listOpportunities(fields, filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
@@ -4691,7 +4679,7 @@ export class PromiseOpportunityApi {
     /**
      * Retrieves a list of Opportunity Stages.
      * List of Opportunity Stages
-     * @param [filter] Search filter to apply to results
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;opportunity_stage_name&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_stage_name&#x3D;&#x3D;Qualified*&#x60;) - (String) &#x60;opportunity_stage_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;opportunity_stage_id&gt;5&#x60;) 
      * @param [orderBy] Attribute and direction to order stage items. One of the following fields: - &#x60;stage_order&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -4705,7 +4693,7 @@ export class PromiseOpportunityApi {
     /**
      * Retrieves a list of Opportunity Stages.
      * List of Opportunity Stages
-     * @param [filter] Search filter to apply to results
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;opportunity_stage_name&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_stage_name&#x3D;&#x3D;Qualified*&#x60;) - (String) &#x60;opportunity_stage_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;opportunity_stage_id&gt;5&#x60;) 
      * @param [orderBy] Attribute and direction to order stage items. One of the following fields: - &#x60;stage_order&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -4742,10 +4730,11 @@ export class PromiseOpportunityApi {
      * @param opportunityId
      * @param updateOpportunityRequestV2
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      */
-    public updateOpportunityWithHttpInfo(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
+    public updateOpportunityWithHttpInfo(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: Set<'opportunity_title' | 'next_action_time' | 'next_action_notes' | 'opportunity_notes' | 'estimated_close_time' | 'include_in_forecast' | 'projected_revenue_low' | 'projected_revenue_high' | 'contact_id' | 'stage_id' | 'user_id' | 'custom_fields' | 'affiliate_id'>, fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateOpportunityWithHttpInfo(opportunityId, updateOpportunityRequestV2, updateMask, observableOptions);
+        const result = this.api.updateOpportunityWithHttpInfo(opportunityId, updateOpportunityRequestV2, updateMask, fields, observableOptions);
         return result.toPromise();
     }
 
@@ -4755,10 +4744,11 @@ export class PromiseOpportunityApi {
      * @param opportunityId
      * @param updateOpportunityRequestV2
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      */
-    public updateOpportunity(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<RestV2Opportunity> {
+    public updateOpportunity(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: Set<'opportunity_title' | 'next_action_time' | 'next_action_notes' | 'opportunity_notes' | 'estimated_close_time' | 'include_in_forecast' | 'projected_revenue_low' | 'projected_revenue_high' | 'contact_id' | 'stage_id' | 'user_id' | 'custom_fields' | 'affiliate_id'>, fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<RestV2Opportunity> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateOpportunity(opportunityId, updateOpportunityRequestV2, updateMask, observableOptions);
+        const result = this.api.updateOpportunity(opportunityId, updateOpportunityRequestV2, updateMask, fields, observableOptions);
         return result.toPromise();
     }
 
@@ -4769,7 +4759,7 @@ export class PromiseOpportunityApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOpportunityCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+    public updateOpportunityCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOpportunityCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -4782,7 +4772,7 @@ export class PromiseOpportunityApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOpportunityCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
+    public updateOpportunityCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOpportunityCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -4795,7 +4785,7 @@ export class PromiseOpportunityApi {
      * @param updateOpportunityStageRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOpportunityStageWithHttpInfo(stageId: string, updateOpportunityStageRequest: UpdateOpportunityStageRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestOpportunityStage>> {
+    public updateOpportunityStageWithHttpInfo(stageId: string, updateOpportunityStageRequest: UpdateOpportunityStageRequest, updateMask?: Set<'name' | 'order' | 'target_number_days' | 'probability' | 'checklist_items'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestOpportunityStage>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOpportunityStageWithHttpInfo(stageId, updateOpportunityStageRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -4808,7 +4798,7 @@ export class PromiseOpportunityApi {
      * @param updateOpportunityStageRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOpportunityStage(stageId: string, updateOpportunityStageRequest: UpdateOpportunityStageRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<RestOpportunityStage> {
+    public updateOpportunityStage(stageId: string, updateOpportunityStageRequest: UpdateOpportunityStageRequest, updateMask?: Set<'name' | 'order' | 'target_number_days' | 'probability' | 'checklist_items'>, _options?: PromiseConfigurationOptions): Promise<RestOpportunityStage> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOpportunityStage(stageId, updateOpportunityStageRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -4934,7 +4924,7 @@ export class PromiseOrderTotalDiscountsApi {
      * @param updateOrderTotalDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderTotalDiscountWithHttpInfo(discountId: string, updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OrderTotalDiscount>> {
+    public updateOrderTotalDiscountWithHttpInfo(discountId: string, updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest, updateMask?: Set<'name' | 'description' | 'apply_to_commissions' | 'discount_type' | 'discount_value' | 'discount_strategy' | 'criteria'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OrderTotalDiscount>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOrderTotalDiscountWithHttpInfo(discountId, updateOrderTotalDiscountRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -4947,7 +4937,7 @@ export class PromiseOrderTotalDiscountsApi {
      * @param updateOrderTotalDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderTotalDiscount(discountId: string, updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<OrderTotalDiscount> {
+    public updateOrderTotalDiscount(discountId: string, updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest, updateMask?: Set<'name' | 'description' | 'apply_to_commissions' | 'discount_type' | 'discount_value' | 'discount_strategy' | 'criteria'>, _options?: PromiseConfigurationOptions): Promise<OrderTotalDiscount> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOrderTotalDiscount(discountId, updateOrderTotalDiscountRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -5359,7 +5349,7 @@ export class PromiseOrdersApi {
      * @param updateOrderRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderWithHttpInfo(orderId: string, updateOrderRequest: UpdateOrderRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OrderV2>> {
+    public updateOrderWithHttpInfo(orderId: string, updateOrderRequest: UpdateOrderRequest, updateMask?: Set<'contact_id' | 'order_items' | 'order_title' | 'order_time' | 'order_type' | 'promo_codes' | 'lead_affiliate_id' | 'sales_affiliate_id' | 'shipping_address' | 'notes' | 'terms' | 'payment_plan' | 'custom_fields'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OrderV2>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOrderWithHttpInfo(orderId, updateOrderRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -5372,7 +5362,7 @@ export class PromiseOrdersApi {
      * @param updateOrderRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrder(orderId: string, updateOrderRequest: UpdateOrderRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<OrderV2> {
+    public updateOrder(orderId: string, updateOrderRequest: UpdateOrderRequest, updateMask?: Set<'contact_id' | 'order_items' | 'order_title' | 'order_time' | 'order_type' | 'promo_codes' | 'lead_affiliate_id' | 'sales_affiliate_id' | 'shipping_address' | 'notes' | 'terms' | 'payment_plan' | 'custom_fields'>, _options?: PromiseConfigurationOptions): Promise<OrderV2> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOrder(orderId, updateOrderRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -5385,7 +5375,7 @@ export class PromiseOrdersApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+    public updateOrderCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOrderCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -5398,7 +5388,7 @@ export class PromiseOrdersApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
+    public updateOrderCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOrderCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -5412,7 +5402,7 @@ export class PromiseOrdersApi {
      * @param updateOrderItemRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderItemWithHttpInfo(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OrderItem>> {
+    public updateOrderItemWithHttpInfo(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: Set<'name' | 'description' | 'notes' | 'quantity' | 'price_per_unit' | 'cost_per_unit' | 'product_id' | 'subscription_plan_id' | 'subscription_plan_description'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OrderItem>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOrderItemWithHttpInfo(orderId, orderItemId, updateOrderItemRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -5426,7 +5416,7 @@ export class PromiseOrdersApi {
      * @param updateOrderItemRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderItem(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<OrderItem> {
+    public updateOrderItem(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: Set<'name' | 'description' | 'notes' | 'quantity' | 'price_per_unit' | 'cost_per_unit' | 'product_id' | 'subscription_plan_id' | 'subscription_plan_description'>, _options?: PromiseConfigurationOptions): Promise<OrderItem> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOrderItem(orderId, orderItemId, updateOrderItemRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -5816,7 +5806,7 @@ export class PromiseProductCategoriesApi {
      * @param updateProductCategoryRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductCategoryWithHttpInfo(categoryId: string, updateProductCategoryRequest: UpdateProductCategoryRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductCategory>> {
+    public updateProductCategoryWithHttpInfo(categoryId: string, updateProductCategoryRequest: UpdateProductCategoryRequest, updateMask?: Set<'name' | 'display_order_index' | 'parent_category_id'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductCategory>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateProductCategoryWithHttpInfo(categoryId, updateProductCategoryRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -5829,7 +5819,7 @@ export class PromiseProductCategoriesApi {
      * @param updateProductCategoryRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductCategory(categoryId: string, updateProductCategoryRequest: UpdateProductCategoryRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<ProductCategory> {
+    public updateProductCategory(categoryId: string, updateProductCategoryRequest: UpdateProductCategoryRequest, updateMask?: Set<'name' | 'display_order_index' | 'parent_category_id'>, _options?: PromiseConfigurationOptions): Promise<ProductCategory> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateProductCategory(categoryId, updateProductCategoryRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -5955,7 +5945,7 @@ export class PromiseProductDiscountsApi {
      * @param updateProductDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductDiscountWithHttpInfo(discountId: string, updateProductDiscountRequest: UpdateProductDiscountRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductDiscount>> {
+    public updateProductDiscountWithHttpInfo(discountId: string, updateProductDiscountRequest: UpdateProductDiscountRequest, updateMask?: Set<'name' | 'description' | 'apply_to_commissions' | 'discount_type' | 'discount_value' | 'product_id' | 'criteria'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductDiscount>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateProductDiscountWithHttpInfo(discountId, updateProductDiscountRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -5968,7 +5958,7 @@ export class PromiseProductDiscountsApi {
      * @param updateProductDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductDiscount(discountId: string, updateProductDiscountRequest: UpdateProductDiscountRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<ProductDiscount> {
+    public updateProductDiscount(discountId: string, updateProductDiscountRequest: UpdateProductDiscountRequest, updateMask?: Set<'name' | 'description' | 'apply_to_commissions' | 'discount_type' | 'discount_value' | 'product_id' | 'criteria'>, _options?: PromiseConfigurationOptions): Promise<ProductDiscount> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateProductDiscount(discountId, updateProductDiscountRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -6143,7 +6133,7 @@ export class PromiseProductInterestBundlesApi {
      * @param updateProductInterestRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductInterestWithHttpInfo(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductInterest>> {
+    public updateProductInterestWithHttpInfo(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: Set<'quantity' | 'price' | 'discount_percent'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductInterest>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateProductInterestWithHttpInfo(id, interestId, updateProductInterestRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -6157,7 +6147,7 @@ export class PromiseProductInterestBundlesApi {
      * @param updateProductInterestRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductInterest(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<ProductInterest> {
+    public updateProductInterest(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: Set<'quantity' | 'price' | 'discount_percent'>, _options?: PromiseConfigurationOptions): Promise<ProductInterest> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateProductInterest(id, interestId, updateProductInterestRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -6170,7 +6160,7 @@ export class PromiseProductInterestBundlesApi {
      * @param updateProductInterestBundleRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductInterestBundleWithHttpInfo(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductInterestBundle>> {
+    public updateProductInterestBundleWithHttpInfo(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: Set<'name' | 'description'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductInterestBundle>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateProductInterestBundleWithHttpInfo(id, updateProductInterestBundleRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -6183,7 +6173,7 @@ export class PromiseProductInterestBundlesApi {
      * @param updateProductInterestBundleRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductInterestBundle(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<ProductInterestBundle> {
+    public updateProductInterestBundle(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: Set<'name' | 'description'>, _options?: PromiseConfigurationOptions): Promise<ProductInterestBundle> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateProductInterestBundle(id, updateProductInterestBundleRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -6549,7 +6539,7 @@ export class PromiseProductsApi {
      * @param updateProductRequestDetail
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductWithHttpInfo(productId: string, updateProductRequestDetail: UpdateProductRequestDetail, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestV2ProductDetail>> {
+    public updateProductWithHttpInfo(productId: string, updateProductRequestDetail: UpdateProductRequestDetail, updateMask?: Set<'active' | 'name' | 'description' | 'price' | 'sku' | 'shippable' | 'short_description' | 'subscription_only' | 'storefront_hidden' | 'weight' | 'taxable' | 'country_taxable' | 'city_taxable' | 'state_taxable' | 'inventory_limit' | 'out_of_stock_enabled' | 'email_for_inventory_notifications' | 'top_html' | 'bottom_html' | 'is_package' | 'needs_digital_delivery' | 'delivery_description'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestV2ProductDetail>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateProductWithHttpInfo(productId, updateProductRequestDetail, updateMask, observableOptions);
         return result.toPromise();
@@ -6562,7 +6552,7 @@ export class PromiseProductsApi {
      * @param updateProductRequestDetail
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProduct(productId: string, updateProductRequestDetail: UpdateProductRequestDetail, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<RestV2ProductDetail> {
+    public updateProduct(productId: string, updateProductRequestDetail: UpdateProductRequestDetail, updateMask?: Set<'active' | 'name' | 'description' | 'price' | 'sku' | 'shippable' | 'short_description' | 'subscription_only' | 'storefront_hidden' | 'weight' | 'taxable' | 'country_taxable' | 'city_taxable' | 'state_taxable' | 'inventory_limit' | 'out_of_stock_enabled' | 'email_for_inventory_notifications' | 'top_html' | 'bottom_html' | 'is_package' | 'needs_digital_delivery' | 'delivery_description'>, _options?: PromiseConfigurationOptions): Promise<RestV2ProductDetail> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateProduct(productId, updateProductRequestDetail, updateMask, observableOptions);
         return result.toPromise();
@@ -6576,7 +6566,7 @@ export class PromiseProductsApi {
      * @param updateProductOptionRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductOptionWithHttpInfo(productId: string, productOptionId: string, updateProductOptionRequest: UpdateProductOptionRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductOption>> {
+    public updateProductOptionWithHttpInfo(productId: string, productOptionId: string, updateProductOptionRequest: UpdateProductOptionRequest, updateMask?: Set<'option_label' | 'display_order' | 'required' | 'minimum_characters' | 'maximum_characters' | 'allow_spaces' | 'only_starts_with' | 'only_ends_with' | 'only_contains' | 'error_message'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductOption>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateProductOptionWithHttpInfo(productId, productOptionId, updateProductOptionRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -6590,7 +6580,7 @@ export class PromiseProductsApi {
      * @param updateProductOptionRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductOption(productId: string, productOptionId: string, updateProductOptionRequest: UpdateProductOptionRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<ProductOption> {
+    public updateProductOption(productId: string, productOptionId: string, updateProductOptionRequest: UpdateProductOptionRequest, updateMask?: Set<'option_label' | 'display_order' | 'required' | 'minimum_characters' | 'maximum_characters' | 'allow_spaces' | 'only_starts_with' | 'only_ends_with' | 'only_contains' | 'error_message'>, _options?: PromiseConfigurationOptions): Promise<ProductOption> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateProductOption(productId, productOptionId, updateProductOptionRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -6605,7 +6595,7 @@ export class PromiseProductsApi {
      * @param updateProductOptionListOption
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductOptionListOptionValueWithHttpInfo(productId: string, productOptionId: string, itemId: string, updateProductOptionListOption: UpdateProductOptionListOption, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductOption>> {
+    public updateProductOptionListOptionValueWithHttpInfo(productId: string, productOptionId: string, itemId: string, updateProductOptionListOption: UpdateProductOptionListOption, updateMask?: Set<'item_label' | 'item_code' | 'item_display_order' | 'price_adjustment'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductOption>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateProductOptionListOptionValueWithHttpInfo(productId, productOptionId, itemId, updateProductOptionListOption, updateMask, observableOptions);
         return result.toPromise();
@@ -6620,7 +6610,7 @@ export class PromiseProductsApi {
      * @param updateProductOptionListOption
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductOptionListOptionValue(productId: string, productOptionId: string, itemId: string, updateProductOptionListOption: UpdateProductOptionListOption, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<ProductOption> {
+    public updateProductOptionListOptionValue(productId: string, productOptionId: string, itemId: string, updateProductOptionListOption: UpdateProductOptionListOption, updateMask?: Set<'item_label' | 'item_code' | 'item_display_order' | 'price_adjustment'>, _options?: PromiseConfigurationOptions): Promise<ProductOption> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateProductOptionListOptionValue(productId, productOptionId, itemId, updateProductOptionListOption, updateMask, observableOptions);
         return result.toPromise();
@@ -6909,7 +6899,7 @@ export class PromiseSettingsApi {
      * Get Application Configuration
      * @param [fields] By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
      */
-    public getApplicationConfigurationsWithHttpInfo(fields?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetSettingsResponse>> {
+    public getApplicationConfigurationsWithHttpInfo(fields?: Set<'AFFILIATE' | 'APPOINTMENT' | 'CONTACT' | 'ECOMMERCE' | 'EMAIL' | 'FORMS' | 'FULFILLMENT' | 'INVOICE' | 'NOTE' | 'OPPORTUNITY' | 'TASK' | 'TEMPLATE'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetSettingsResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getApplicationConfigurationsWithHttpInfo(fields, observableOptions);
         return result.toPromise();
@@ -6920,7 +6910,7 @@ export class PromiseSettingsApi {
      * Get Application Configuration
      * @param [fields] By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
      */
-    public getApplicationConfigurations(fields?: any, _options?: PromiseConfigurationOptions): Promise<GetSettingsResponse> {
+    public getApplicationConfigurations(fields?: Set<'AFFILIATE' | 'APPOINTMENT' | 'CONTACT' | 'ECOMMERCE' | 'EMAIL' | 'FORMS' | 'FULFILLMENT' | 'INVOICE' | 'NOTE' | 'OPPORTUNITY' | 'TASK' | 'TEMPLATE'>, _options?: PromiseConfigurationOptions): Promise<GetSettingsResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getApplicationConfigurations(fields, observableOptions);
         return result.toPromise();
@@ -7125,7 +7115,7 @@ export class PromiseShippingDiscountsApi {
      * @param updateShippingDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateShippingDiscountWithHttpInfo(discountId: string, updateShippingDiscountRequest: UpdateShippingDiscountRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ShippingDiscount>> {
+    public updateShippingDiscountWithHttpInfo(discountId: string, updateShippingDiscountRequest: UpdateShippingDiscountRequest, updateMask?: Set<'name' | 'description' | 'discount_type' | 'discount_value' | 'criteria'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ShippingDiscount>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateShippingDiscountWithHttpInfo(discountId, updateShippingDiscountRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -7138,7 +7128,7 @@ export class PromiseShippingDiscountsApi {
      * @param updateShippingDiscountRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateShippingDiscount(discountId: string, updateShippingDiscountRequest: UpdateShippingDiscountRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<ShippingDiscount> {
+    public updateShippingDiscount(discountId: string, updateShippingDiscountRequest: UpdateShippingDiscountRequest, updateMask?: Set<'name' | 'description' | 'discount_type' | 'discount_value' | 'criteria'>, _options?: PromiseConfigurationOptions): Promise<ShippingDiscount> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateShippingDiscount(discountId, updateShippingDiscountRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -7273,7 +7263,7 @@ export class PromiseSubscriptionPlansApi {
      * @param updateSubscriptionPlanRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscriptionPlanWithHttpInfo(productId: string, subscriptionPlanId: string, updateSubscriptionPlanRequest: UpdateSubscriptionPlanRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SubscriptionPlan>> {
+    public updateSubscriptionPlanWithHttpInfo(productId: string, subscriptionPlanId: string, updateSubscriptionPlanRequest: UpdateSubscriptionPlanRequest, updateMask?: Set<'active' | 'allow_prorating' | 'cycle_type' | 'display_order_index' | 'frequency' | 'plan_price' | 'total_cycles'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SubscriptionPlan>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateSubscriptionPlanWithHttpInfo(productId, subscriptionPlanId, updateSubscriptionPlanRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -7287,7 +7277,7 @@ export class PromiseSubscriptionPlansApi {
      * @param updateSubscriptionPlanRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscriptionPlan(productId: string, subscriptionPlanId: string, updateSubscriptionPlanRequest: UpdateSubscriptionPlanRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<SubscriptionPlan> {
+    public updateSubscriptionPlan(productId: string, subscriptionPlanId: string, updateSubscriptionPlanRequest: UpdateSubscriptionPlanRequest, updateMask?: Set<'active' | 'allow_prorating' | 'cycle_type' | 'display_order_index' | 'frequency' | 'plan_price' | 'total_cycles'>, _options?: PromiseConfigurationOptions): Promise<SubscriptionPlan> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateSubscriptionPlan(productId, subscriptionPlanId, updateSubscriptionPlanRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -7425,6 +7415,28 @@ export class PromiseSubscriptionsApi {
     }
 
     /**
+     * Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
+     * Invoice a Subscription
+     * @param subscriptionId
+     */
+    public invoiceSubscriptionWithHttpInfo(subscriptionId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OrderV2>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.invoiceSubscriptionWithHttpInfo(subscriptionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
+     * Invoice a Subscription
+     * @param subscriptionId
+     */
+    public invoiceSubscription(subscriptionId: string, _options?: PromiseConfigurationOptions): Promise<OrderV2> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.invoiceSubscription(subscriptionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a list of subscriptions using the specified search criteria.
      * List Subscriptions
      * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60; 
@@ -7479,7 +7491,7 @@ export class PromiseSubscriptionsApi {
      * @param updateSubscriptionRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscriptionWithHttpInfo(subscriptionId: string, updateSubscriptionRequest: UpdateSubscriptionRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Subscription>> {
+    public updateSubscriptionWithHttpInfo(subscriptionId: string, updateSubscriptionRequest: UpdateSubscriptionRequest, updateMask?: Set<'contact_id' | 'subscription_plan_id' | 'quantity' | 'billing_amount' | 'auto_charge' | 'max_charge_attempts' | 'days_between_retries' | 'active' | 'billing_frequency' | 'billing_cycle' | 'next_bill_date' | 'end_date' | 'payment_method_id' | 'allow_tax' | 'lead_affiliate_id' | 'sale_affiliate_id' | 'promo_code' | 'shipping_option_id' | 'reason_stopped' | 'shipping_address' | 'custom_fields'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Subscription>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -7492,7 +7504,7 @@ export class PromiseSubscriptionsApi {
      * @param updateSubscriptionRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscription(subscriptionId: string, updateSubscriptionRequest: UpdateSubscriptionRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<Subscription> {
+    public updateSubscription(subscriptionId: string, updateSubscriptionRequest: UpdateSubscriptionRequest, updateMask?: Set<'contact_id' | 'subscription_plan_id' | 'quantity' | 'billing_amount' | 'auto_charge' | 'max_charge_attempts' | 'days_between_retries' | 'active' | 'billing_frequency' | 'billing_cycle' | 'next_bill_date' | 'end_date' | 'payment_method_id' | 'allow_tax' | 'lead_affiliate_id' | 'sale_affiliate_id' | 'promo_code' | 'shipping_option_id' | 'reason_stopped' | 'shipping_address' | 'custom_fields'>, _options?: PromiseConfigurationOptions): Promise<Subscription> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateSubscription(subscriptionId, updateSubscriptionRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -7505,7 +7517,7 @@ export class PromiseSubscriptionsApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscriptionCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+    public updateSubscriptionCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateSubscriptionCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -7518,7 +7530,7 @@ export class PromiseSubscriptionsApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscriptionCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
+    public updateSubscriptionCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateSubscriptionCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -7846,7 +7858,7 @@ export class PromiseTagsApi {
      * @param createUpdateTagRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateTagWithHttpInfo(tagId: string, createUpdateTagRequest: CreateUpdateTagRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpdateTagResponse>> {
+    public updateTagWithHttpInfo(tagId: string, createUpdateTagRequest: CreateUpdateTagRequest, updateMask?: Set<'name' | 'description' | 'category'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpdateTagResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateTagWithHttpInfo(tagId, createUpdateTagRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -7859,7 +7871,7 @@ export class PromiseTagsApi {
      * @param createUpdateTagRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateTag(tagId: string, createUpdateTagRequest: CreateUpdateTagRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<UpdateTagResponse> {
+    public updateTag(tagId: string, createUpdateTagRequest: CreateUpdateTagRequest, updateMask?: Set<'name' | 'description' | 'category'>, _options?: PromiseConfigurationOptions): Promise<UpdateTagResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateTag(tagId, createUpdateTagRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -7872,7 +7884,7 @@ export class PromiseTagsApi {
      * @param createUpdateTagCategoryRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateTagCategoryWithHttpInfo(tagCategoryId: string, createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpdateTagCategoryResponse>> {
+    public updateTagCategoryWithHttpInfo(tagCategoryId: string, createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, updateMask?: Set<'name' | 'description'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpdateTagCategoryResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateTagCategoryWithHttpInfo(tagCategoryId, createUpdateTagCategoryRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -7885,7 +7897,7 @@ export class PromiseTagsApi {
      * @param createUpdateTagCategoryRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateTagCategory(tagCategoryId: string, createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<UpdateTagCategoryResponse> {
+    public updateTagCategory(tagCategoryId: string, createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, updateMask?: Set<'name' | 'description'>, _options?: PromiseConfigurationOptions): Promise<UpdateTagCategoryResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateTagCategory(tagCategoryId, createUpdateTagCategoryRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -8082,7 +8094,7 @@ export class PromiseTaskApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [fields] Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
      */
-    public updateTaskWithHttpInfo(taskId: string, createUpdateTaskRequest: CreateUpdateTaskRequest, updateMask?: any, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpdateTaskResponse>> {
+    public updateTaskWithHttpInfo(taskId: string, createUpdateTaskRequest: CreateUpdateTaskRequest, updateMask?: Set<'id' | 'title' | 'description' | 'type' | 'priority' | 'completion_time' | 'due_time' | 'remind_time_mins' | 'assigned_to_user_id' | 'last_updated_by_user_id' | 'contact_id' | 'opportunity_id' | 'accepted' | 'completed' | 'custom_fields'>, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpdateTaskResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateTaskWithHttpInfo(taskId, createUpdateTaskRequest, updateMask, fields, observableOptions);
         return result.toPromise();
@@ -8096,7 +8108,7 @@ export class PromiseTaskApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [fields] Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
      */
-    public updateTask(taskId: string, createUpdateTaskRequest: CreateUpdateTaskRequest, updateMask?: any, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<UpdateTaskResponse> {
+    public updateTask(taskId: string, createUpdateTaskRequest: CreateUpdateTaskRequest, updateMask?: Set<'id' | 'title' | 'description' | 'type' | 'priority' | 'completion_time' | 'due_time' | 'remind_time_mins' | 'assigned_to_user_id' | 'last_updated_by_user_id' | 'contact_id' | 'opportunity_id' | 'accepted' | 'completed' | 'custom_fields'>, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<UpdateTaskResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateTask(taskId, createUpdateTaskRequest, updateMask, fields, observableOptions);
         return result.toPromise();
@@ -8109,7 +8121,7 @@ export class PromiseTaskApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateTaskCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+    public updateTaskCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateTaskCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -8122,7 +8134,7 @@ export class PromiseTaskApi {
      * @param updateCustomFieldMetaDataRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateTaskCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
+    public updateTaskCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateTaskCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -8307,7 +8319,7 @@ export class PromiseUsersApi {
      * @param updateUserRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateUserWithHttpInfo(userId: string, updateUserRequest: UpdateUserRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<HttpInfo<User>> {
+    public updateUserWithHttpInfo(userId: string, updateUserRequest: UpdateUserRequest, updateMask?: Set<'address' | 'company_name' | 'email_address' | 'family_name' | 'fax_numbers' | 'given_name' | 'job_title' | 'phone_numbers' | 'time_zone' | 'website'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<User>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateUserWithHttpInfo(userId, updateUserRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -8320,7 +8332,7 @@ export class PromiseUsersApi {
      * @param updateUserRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateUser(userId: string, updateUserRequest: UpdateUserRequest, updateMask?: any, _options?: PromiseConfigurationOptions): Promise<User> {
+    public updateUser(userId: string, updateUserRequest: UpdateUserRequest, updateMask?: Set<'address' | 'company_name' | 'email_address' | 'family_name' | 'fax_numbers' | 'given_name' | 'job_title' | 'phone_numbers' | 'time_zone' | 'website'>, _options?: PromiseConfigurationOptions): Promise<User> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateUser(userId, updateUserRequest, updateMask, observableOptions);
         return result.toPromise();

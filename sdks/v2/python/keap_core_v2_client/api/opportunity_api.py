@@ -16,8 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr
-from typing import Any, List, Optional
+from pydantic import Field, StrictStr, field_validator
+from typing import List, Optional
 from typing_extensions import Annotated
 from keap_core_v2_client.models.create_custom_field_request import CreateCustomFieldRequest
 from keap_core_v2_client.models.create_opportunity_request import CreateOpportunityRequest
@@ -54,6 +54,7 @@ class OpportunityApi:
     def create_opportunity(
         self,
         create_opportunity_request: CreateOpportunityRequest,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -73,6 +74,8 @@ class OpportunityApi:
 
         :param create_opportunity_request: (required)
         :type create_opportunity_request: CreateOpportunityRequest
+        :param fields: Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -97,6 +100,7 @@ class OpportunityApi:
 
         _param = self._create_opportunity_serialize(
             create_opportunity_request=create_opportunity_request,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -129,6 +133,7 @@ class OpportunityApi:
     def create_opportunity_with_http_info(
         self,
         create_opportunity_request: CreateOpportunityRequest,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -148,6 +153,8 @@ class OpportunityApi:
 
         :param create_opportunity_request: (required)
         :type create_opportunity_request: CreateOpportunityRequest
+        :param fields: Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -172,6 +179,7 @@ class OpportunityApi:
 
         _param = self._create_opportunity_serialize(
             create_opportunity_request=create_opportunity_request,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -204,6 +212,7 @@ class OpportunityApi:
     def create_opportunity_without_preload_content(
         self,
         create_opportunity_request: CreateOpportunityRequest,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -223,6 +232,8 @@ class OpportunityApi:
 
         :param create_opportunity_request: (required)
         :type create_opportunity_request: CreateOpportunityRequest
+        :param fields: Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -247,6 +258,7 @@ class OpportunityApi:
 
         _param = self._create_opportunity_serialize(
             create_opportunity_request=create_opportunity_request,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -274,6 +286,7 @@ class OpportunityApi:
     def _create_opportunity_serialize(
         self,
         create_opportunity_request,
+        fields,
         _request_auth,
         _content_type,
         _headers,
@@ -283,6 +296,7 @@ class OpportunityApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'fields': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -296,6 +310,10 @@ class OpportunityApi:
 
         # process the path parameters
         # process the query parameters
+        if fields is not None:
+            
+            _query_params.append(('fields', fields))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1803,6 +1821,7 @@ class OpportunityApi:
     def get_opportunity(
         self,
         opportunity_id: StrictStr,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1822,6 +1841,8 @@ class OpportunityApi:
 
         :param opportunity_id: (required)
         :type opportunity_id: str
+        :param fields: Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1846,6 +1867,7 @@ class OpportunityApi:
 
         _param = self._get_opportunity_serialize(
             opportunity_id=opportunity_id,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1878,6 +1900,7 @@ class OpportunityApi:
     def get_opportunity_with_http_info(
         self,
         opportunity_id: StrictStr,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1897,6 +1920,8 @@ class OpportunityApi:
 
         :param opportunity_id: (required)
         :type opportunity_id: str
+        :param fields: Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1921,6 +1946,7 @@ class OpportunityApi:
 
         _param = self._get_opportunity_serialize(
             opportunity_id=opportunity_id,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1953,6 +1979,7 @@ class OpportunityApi:
     def get_opportunity_without_preload_content(
         self,
         opportunity_id: StrictStr,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1972,6 +1999,8 @@ class OpportunityApi:
 
         :param opportunity_id: (required)
         :type opportunity_id: str
+        :param fields: Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1996,6 +2025,7 @@ class OpportunityApi:
 
         _param = self._get_opportunity_serialize(
             opportunity_id=opportunity_id,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2023,6 +2053,7 @@ class OpportunityApi:
     def _get_opportunity_serialize(
         self,
         opportunity_id,
+        fields,
         _request_auth,
         _content_type,
         _headers,
@@ -2032,6 +2063,7 @@ class OpportunityApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'fields': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2047,6 +2079,10 @@ class OpportunityApi:
         if opportunity_id is not None:
             _path_params['opportunity_id'] = opportunity_id
         # process the query parameters
+        if fields is not None:
+            
+            _query_params.append(('fields', fields))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -2372,7 +2408,7 @@ class OpportunityApi:
     @validate_call
     def list_opportunities(
         self,
-        fields: Optional[List[StrictStr]] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time")] = None,
         filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs Note: `opportunity_id` and `ids` cannot be used together in the same request. ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to opportunities items. One of the following fields: - `next_action_time` - `contact_name` - `opportunity_title` - `created_time` - `update_time`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
@@ -2394,7 +2430,7 @@ class OpportunityApi:
 
         Retrieves a list of all Opportunities.
 
-        :param fields:
+        :param fields: Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
         :type fields: List[str]
         :param filter: Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs Note: `opportunity_id` and `ids` cannot be used together in the same request. 
         :type filter: str
@@ -2463,7 +2499,7 @@ class OpportunityApi:
     @validate_call
     def list_opportunities_with_http_info(
         self,
-        fields: Optional[List[StrictStr]] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time")] = None,
         filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs Note: `opportunity_id` and `ids` cannot be used together in the same request. ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to opportunities items. One of the following fields: - `next_action_time` - `contact_name` - `opportunity_title` - `created_time` - `update_time`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
@@ -2485,7 +2521,7 @@ class OpportunityApi:
 
         Retrieves a list of all Opportunities.
 
-        :param fields:
+        :param fields: Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
         :type fields: List[str]
         :param filter: Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs Note: `opportunity_id` and `ids` cannot be used together in the same request. 
         :type filter: str
@@ -2554,7 +2590,7 @@ class OpportunityApi:
     @validate_call
     def list_opportunities_without_preload_content(
         self,
-        fields: Optional[List[StrictStr]] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time")] = None,
         filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs Note: `opportunity_id` and `ids` cannot be used together in the same request. ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to opportunities items. One of the following fields: - `next_action_time` - `contact_name` - `opportunity_title` - `created_time` - `update_time`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
@@ -2576,7 +2612,7 @@ class OpportunityApi:
 
         Retrieves a list of all Opportunities.
 
-        :param fields:
+        :param fields: Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
         :type fields: List[str]
         :param filter: Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs Note: `opportunity_id` and `ids` cannot be used together in the same request. 
         :type filter: str
@@ -2728,7 +2764,7 @@ class OpportunityApi:
     @validate_call
     def list_opportunity_stages(
         self,
-        filter: Annotated[Optional[StrictStr], Field(description="Search filter to apply to results")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `opportunity_stage_name` — supports wildcard prefix search (e.g. `opportunity_stage_name==Qualified*`) - (String) `opportunity_stage_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `opportunity_stage_id>5`) ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order stage items. One of the following fields: - `stage_order`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -2749,7 +2785,7 @@ class OpportunityApi:
 
         Retrieves a list of Opportunity Stages.
 
-        :param filter: Search filter to apply to results
+        :param filter: Filter to apply, allowed fields are: - (String) `opportunity_stage_name` — supports wildcard prefix search (e.g. `opportunity_stage_name==Qualified*`) - (String) `opportunity_stage_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `opportunity_stage_id>5`) 
         :type filter: str
         :param order_by: Attribute and direction to order stage items. One of the following fields: - `stage_order`  One of the following directions: - `asc` - `desc`
         :type order_by: str
@@ -2815,7 +2851,7 @@ class OpportunityApi:
     @validate_call
     def list_opportunity_stages_with_http_info(
         self,
-        filter: Annotated[Optional[StrictStr], Field(description="Search filter to apply to results")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `opportunity_stage_name` — supports wildcard prefix search (e.g. `opportunity_stage_name==Qualified*`) - (String) `opportunity_stage_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `opportunity_stage_id>5`) ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order stage items. One of the following fields: - `stage_order`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -2836,7 +2872,7 @@ class OpportunityApi:
 
         Retrieves a list of Opportunity Stages.
 
-        :param filter: Search filter to apply to results
+        :param filter: Filter to apply, allowed fields are: - (String) `opportunity_stage_name` — supports wildcard prefix search (e.g. `opportunity_stage_name==Qualified*`) - (String) `opportunity_stage_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `opportunity_stage_id>5`) 
         :type filter: str
         :param order_by: Attribute and direction to order stage items. One of the following fields: - `stage_order`  One of the following directions: - `asc` - `desc`
         :type order_by: str
@@ -2902,7 +2938,7 @@ class OpportunityApi:
     @validate_call
     def list_opportunity_stages_without_preload_content(
         self,
-        filter: Annotated[Optional[StrictStr], Field(description="Search filter to apply to results")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `opportunity_stage_name` — supports wildcard prefix search (e.g. `opportunity_stage_name==Qualified*`) - (String) `opportunity_stage_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `opportunity_stage_id>5`) ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order stage items. One of the following fields: - `stage_order`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -2923,7 +2959,7 @@ class OpportunityApi:
 
         Retrieves a list of Opportunity Stages.
 
-        :param filter: Search filter to apply to results
+        :param filter: Filter to apply, allowed fields are: - (String) `opportunity_stage_name` — supports wildcard prefix search (e.g. `opportunity_stage_name==Qualified*`) - (String) `opportunity_stage_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `opportunity_stage_id>5`) 
         :type filter: str
         :param order_by: Attribute and direction to order stage items. One of the following fields: - `stage_order`  One of the following directions: - `asc` - `desc`
         :type order_by: str
@@ -3338,7 +3374,8 @@ class OpportunityApi:
         self,
         opportunity_id: StrictStr,
         update_opportunity_request_v2: UpdateOpportunityRequestV2,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3361,7 +3398,9 @@ class OpportunityApi:
         :param update_opportunity_request_v2: (required)
         :type update_opportunity_request_v2: UpdateOpportunityRequestV2
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
+        :param fields: Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3388,6 +3427,7 @@ class OpportunityApi:
             opportunity_id=opportunity_id,
             update_opportunity_request_v2=update_opportunity_request_v2,
             update_mask=update_mask,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3421,7 +3461,8 @@ class OpportunityApi:
         self,
         opportunity_id: StrictStr,
         update_opportunity_request_v2: UpdateOpportunityRequestV2,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3444,7 +3485,9 @@ class OpportunityApi:
         :param update_opportunity_request_v2: (required)
         :type update_opportunity_request_v2: UpdateOpportunityRequestV2
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
+        :param fields: Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3471,6 +3514,7 @@ class OpportunityApi:
             opportunity_id=opportunity_id,
             update_opportunity_request_v2=update_opportunity_request_v2,
             update_mask=update_mask,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3504,7 +3548,8 @@ class OpportunityApi:
         self,
         opportunity_id: StrictStr,
         update_opportunity_request_v2: UpdateOpportunityRequestV2,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3527,7 +3572,9 @@ class OpportunityApi:
         :param update_opportunity_request_v2: (required)
         :type update_opportunity_request_v2: UpdateOpportunityRequestV2
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
+        :param fields: Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+        :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3554,6 +3601,7 @@ class OpportunityApi:
             opportunity_id=opportunity_id,
             update_opportunity_request_v2=update_opportunity_request_v2,
             update_mask=update_mask,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3583,6 +3631,7 @@ class OpportunityApi:
         opportunity_id,
         update_opportunity_request_v2,
         update_mask,
+        fields,
         _request_auth,
         _content_type,
         _headers,
@@ -3592,6 +3641,8 @@ class OpportunityApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'update_mask': 'multi',
+            'fields': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -3610,6 +3661,10 @@ class OpportunityApi:
         if update_mask is not None:
             
             _query_params.append(('update_mask', update_mask))
+            
+        if fields is not None:
+            
+            _query_params.append(('fields', fields))
             
         # process the header parameters
         # process the form parameters
@@ -3668,7 +3723,7 @@ class OpportunityApi:
         self,
         custom_field_id: StrictStr,
         update_custom_field_meta_data_request: UpdateCustomFieldMetaDataRequest,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3691,7 +3746,7 @@ class OpportunityApi:
         :param update_custom_field_meta_data_request: (required)
         :type update_custom_field_meta_data_request: UpdateCustomFieldMetaDataRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3751,7 +3806,7 @@ class OpportunityApi:
         self,
         custom_field_id: StrictStr,
         update_custom_field_meta_data_request: UpdateCustomFieldMetaDataRequest,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3774,7 +3829,7 @@ class OpportunityApi:
         :param update_custom_field_meta_data_request: (required)
         :type update_custom_field_meta_data_request: UpdateCustomFieldMetaDataRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3834,7 +3889,7 @@ class OpportunityApi:
         self,
         custom_field_id: StrictStr,
         update_custom_field_meta_data_request: UpdateCustomFieldMetaDataRequest,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3857,7 +3912,7 @@ class OpportunityApi:
         :param update_custom_field_meta_data_request: (required)
         :type update_custom_field_meta_data_request: UpdateCustomFieldMetaDataRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3922,6 +3977,7 @@ class OpportunityApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'update_mask': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -3998,7 +4054,7 @@ class OpportunityApi:
         self,
         stage_id: StrictStr,
         update_opportunity_stage_request: UpdateOpportunityStageRequest,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4021,7 +4077,7 @@ class OpportunityApi:
         :param update_opportunity_stage_request: (required)
         :type update_opportunity_stage_request: UpdateOpportunityStageRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4081,7 +4137,7 @@ class OpportunityApi:
         self,
         stage_id: StrictStr,
         update_opportunity_stage_request: UpdateOpportunityStageRequest,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4104,7 +4160,7 @@ class OpportunityApi:
         :param update_opportunity_stage_request: (required)
         :type update_opportunity_stage_request: UpdateOpportunityStageRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4164,7 +4220,7 @@ class OpportunityApi:
         self,
         stage_id: StrictStr,
         update_opportunity_stage_request: UpdateOpportunityStageRequest,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4187,7 +4243,7 @@ class OpportunityApi:
         :param update_opportunity_stage_request: (required)
         :type update_opportunity_stage_request: UpdateOpportunityStageRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4252,6 +4308,7 @@ class OpportunityApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'update_mask': 'multi',
         }
 
         _path_params: Dict[str, str] = {}

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**createSubscriptionCustomField**](SubscriptionsApi.md#createSubscriptionCustomField) | **POST** /rest/v2/subscriptions/model/customFields | Create a Subscription Custom Field
 [**deleteSubscriptionCustomField**](SubscriptionsApi.md#deleteSubscriptionCustomField) | **DELETE** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
 [**getSubscription**](SubscriptionsApi.md#getSubscription) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription
+[**invoiceSubscription**](SubscriptionsApi.md#invoiceSubscription) | **POST** /rest/v2/subscriptions/{subscription_id}:invoice | Invoice a Subscription
 [**listSubscriptions**](SubscriptionsApi.md#listSubscriptions) | **GET** /rest/v2/subscriptions | List Subscriptions
 [**retrieveSubscriptionCustomFieldModel**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /rest/v2/subscriptions/model | Retrieve Subscription Custom Field Model
 [**updateSubscription**](SubscriptionsApi.md#updateSubscription) | **PATCH** /rest/v2/subscriptions/{subscription_id} | Update a Subscription
@@ -368,6 +369,67 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **invoiceSubscription**
+> OrderV2 invoiceSubscription()
+
+Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
+
+### Example
+
+
+```typescript
+import { createConfiguration, SubscriptionsApi } from '';
+import type { SubscriptionsApiInvoiceSubscriptionRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new SubscriptionsApi(configuration);
+
+const request: SubscriptionsApiInvoiceSubscriptionRequest = {
+  
+  subscriptionId: "subscription_id_example",
+};
+
+const data = await apiInstance.invoiceSubscription(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscriptionId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**OrderV2**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **listSubscriptions**
 > ListSubscriptionsResponse listSubscriptions()
 
@@ -548,7 +610,9 @@ const request: SubscriptionsApiUpdateSubscriptionRequest = {
     ],
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "contact_id",
+  ],
 };
 
 const data = await apiInstance.updateSubscription(request);
@@ -562,7 +626,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateSubscriptionRequest** | **UpdateSubscriptionRequest**|  |
  **subscriptionId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;contact_id&#39; &#124; &#39;subscription_plan_id&#39; &#124; &#39;quantity&#39; &#124; &#39;billing_amount&#39; &#124; &#39;auto_charge&#39; &#124; &#39;max_charge_attempts&#39; &#124; &#39;days_between_retries&#39; &#124; &#39;active&#39; &#124; &#39;billing_frequency&#39; &#124; &#39;billing_cycle&#39; &#124; &#39;next_bill_date&#39; &#124; &#39;end_date&#39; &#124; &#39;payment_method_id&#39; &#124; &#39;allow_tax&#39; &#124; &#39;lead_affiliate_id&#39; &#124; &#39;sale_affiliate_id&#39; &#124; &#39;promo_code&#39; &#124; &#39;shipping_option_id&#39; &#124; &#39;reason_stopped&#39; &#124; &#39;shipping_address&#39; &#124; &#39;custom_fields&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -624,7 +688,9 @@ const request: SubscriptionsApiUpdateSubscriptionCustomFieldRequest = {
     groupId: "groupId_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "group_id",
+  ],
 };
 
 const data = await apiInstance.updateSubscriptionCustomField(request);
@@ -638,7 +704,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**|  |
  **customFieldId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;group_id&#39; &#124; &#39;label&#39; &#124; &#39;options&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

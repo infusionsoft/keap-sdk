@@ -422,7 +422,7 @@ catch (ApiException e)
 
 <a id="updateleadsourcecategory"></a>
 # **UpdateLeadSourceCategory**
-> LeadSourceCategory UpdateLeadSourceCategory (string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, Object? updateMask = null)
+> LeadSourceCategory UpdateLeadSourceCategory (string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, List<string>? updateMask = null)
 
 Update a Lead Source Category
 
@@ -450,7 +450,7 @@ namespace Example
             var apiInstance = new LeadSourceCategoriesApi(config);
             var leadSourceCategoryId = "leadSourceCategoryId_example";  // string | The ID of a lead source category
             var createUpdateLeadSourceCategoryRequest = new CreateUpdateLeadSourceCategoryRequest(); // CreateUpdateLeadSourceCategoryRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -495,7 +495,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **leadSourceCategoryId** | **string** | The ID of a lead source category |  |
 | **createUpdateLeadSourceCategoryRequest** | [**CreateUpdateLeadSourceCategoryRequest**](CreateUpdateLeadSourceCategoryRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

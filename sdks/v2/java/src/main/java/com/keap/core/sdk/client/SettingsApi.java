@@ -21,6 +21,7 @@ import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.GetApplicationEnabledStatusResponse;
 import com.keap.core.sdk.model.GetContactOptionTypesResponse;
 import com.keap.core.sdk.model.GetSettingsResponse;
+import java.util.Set;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -108,7 +109,7 @@ import io.github.resilience4j.retry.Retry;
    * @return GetSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public GetSettingsResponse getApplicationConfigurations(Object fields) throws ApiException {
+  public GetSettingsResponse getApplicationConfigurations(Set<String> fields) throws ApiException {
     ApiResponse<GetSettingsResponse> localVarResponse = getApplicationConfigurationsWithHttpInfo(fields);
     return localVarResponse.getData();
   }
@@ -120,7 +121,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;GetSettingsResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<GetSettingsResponse> getApplicationConfigurationsWithHttpInfo(Object fields) throws ApiException {
+  public ApiResponse<GetSettingsResponse> getApplicationConfigurationsWithHttpInfo(Set<String> fields) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getApplicationConfigurationsRequestBuilder(fields);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -161,7 +162,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder getApplicationConfigurationsRequestBuilder(Object fields) throws ApiException {
+  private HttpRequest.Builder getApplicationConfigurationsRequestBuilder(Set<String> fields) throws ApiException {
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
 
@@ -171,7 +172,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "fields";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("fields", fields));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "fields", fields));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

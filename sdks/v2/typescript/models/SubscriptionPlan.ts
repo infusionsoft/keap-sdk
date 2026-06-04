@@ -15,45 +15,37 @@ import { HttpFile } from '../http/http';
 
 export class SubscriptionPlan {
     /**
-    * Id of the subscription plan.
+    * Subscription plan ID
     */
     'id'?: string;
+    /**
+    * Interval at which a customer receives a product or service as part of a subscription plan.
+    */
+    'frequency'?: number;
     /**
     * If the subscription plan is active or not.
     */
     'active'?: boolean;
     /**
-    * Total number of times of a cycle type which constitutes a plan cycle. Minimum value is 1.
+    * Plan name
     */
-    'frequency'?: number;
-    /**
-    * Whether or not the plan will allow prorating.
-    */
-    'allowProrating'?: boolean;
-    /**
-    * The product ID this plan belongs to.
-    */
-    'productId'?: string;
+    'subscriptionPlanName'?: string;
     /**
     * The cycle type of the subscription plan.
     */
     'cycleType'?: SubscriptionPlanCycleTypeEnum;
     /**
-    * The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list.
-    */
-    'displayOrderIndex'?: number;
-    /**
     * Total number of cycles the plan will run before ending. Value of 0 indicates plan will never end.
     */
     'totalCycles'?: number;
     /**
-    * The price of the subscription plan.
+    * Price of the plan
     */
     'planPrice'?: CurrencyValue;
     /**
-    * The pre-authorize amount for the subscription plan. If null, this field is omitted from the response.
+    * The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list.
     */
-    'preauthorizeAmount'?: number;
+    'displayOrderIndex'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -67,26 +59,20 @@ export class SubscriptionPlan {
             "format": ""
         },
         {
-            "name": "active",
-            "baseName": "active",
-            "type": "boolean",
-            "format": ""
-        },
-        {
             "name": "frequency",
             "baseName": "frequency",
             "type": "number",
             "format": "int32"
         },
         {
-            "name": "allowProrating",
-            "baseName": "allow_prorating",
+            "name": "active",
+            "baseName": "active",
             "type": "boolean",
             "format": ""
         },
         {
-            "name": "productId",
-            "baseName": "product_id",
+            "name": "subscriptionPlanName",
+            "baseName": "subscription_plan_name",
             "type": "string",
             "format": ""
         },
@@ -95,12 +81,6 @@ export class SubscriptionPlan {
             "baseName": "cycle_type",
             "type": "SubscriptionPlanCycleTypeEnum",
             "format": ""
-        },
-        {
-            "name": "displayOrderIndex",
-            "baseName": "display_order_index",
-            "type": "number",
-            "format": "int32"
         },
         {
             "name": "totalCycles",
@@ -115,10 +95,10 @@ export class SubscriptionPlan {
             "format": ""
         },
         {
-            "name": "preauthorizeAmount",
-            "baseName": "preauthorize_amount",
+            "name": "displayOrderIndex",
+            "baseName": "display_order_index",
             "type": "number",
-            "format": "double"
+            "format": "int32"
         }    ];
 
     static getAttributeTypeMap() {
@@ -130,9 +110,9 @@ export class SubscriptionPlan {
 }
 
 export enum SubscriptionPlanCycleTypeEnum {
-    Daily = 'DAILY',
-    Weekly = 'WEEKLY',
+    Yearly = 'YEARLY',
     Monthly = 'MONTHLY',
-    Yearly = 'YEARLY'
+    Weekly = 'WEEKLY',
+    Daily = 'DAILY'
 }
 

@@ -305,7 +305,9 @@ const request: LeadSourcesApiUpdateLeadSourceRequest = {
     endTime: new Date('2024-12-31T23:59:59Z'),
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "name",
+  ],
 };
 
 const data = await apiInstance.updateLeadSource(request);
@@ -319,7 +321,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createLeadSourceRequest** | **CreateLeadSourceRequest**|  |
  **leadSourceId** | [**string**] | The ID of a lead source | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;name&#39; &#124; &#39;description&#39; &#124; &#39;vendor&#39; &#124; &#39;medium&#39; &#124; &#39;message&#39; &#124; &#39;start_time&#39; &#124; &#39;end_time&#39; &#124; &#39;status&#39; &#124; &#39;lead_source_category_id&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

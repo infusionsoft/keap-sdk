@@ -21,5 +21,10 @@ Name | Type | Description | Notes
 **last_updated_time** | **string** | Last update timestamp (ISO-8601) | [optional]
 **affiliate_id** | **string** | Affiliate ID | [optional]
 **lead_source** | **string** | Lead source | [optional]
+**monthly_revenue** | **float** | Monthly recurring revenue | [optional]
+**order_revenue** | **float** | Order revenue | [optional]
+**objection** | **string** | Objection reason | [optional]
+**status** | **string** | Status name | [optional]
+**stage_entrance_time** | **string** | Timestamp when the opportunity entered its current stage (ISO-8601) | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

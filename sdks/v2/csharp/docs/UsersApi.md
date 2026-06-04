@@ -421,7 +421,7 @@ catch (ApiException e)
 
 <a id="updateuser"></a>
 # **UpdateUser**
-> User UpdateUser (string userId, UpdateUserRequest updateUserRequest, Object? updateMask = null)
+> User UpdateUser (string userId, UpdateUserRequest updateUserRequest, List<string>? updateMask = null)
 
 Update User
 
@@ -449,7 +449,7 @@ namespace Example
             var apiInstance = new UsersApi(config);
             var userId = "userId_example";  // string | 
             var updateUserRequest = new UpdateUserRequest(); // UpdateUserRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -494,7 +494,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **userId** | **string** |  |  |
 | **updateUserRequest** | [**UpdateUserRequest**](UpdateUserRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

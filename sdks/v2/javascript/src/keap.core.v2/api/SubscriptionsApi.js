@@ -20,6 +20,7 @@ import CustomFieldMetaData from '../model/CustomFieldMetaData';
 import Error from '../model/Error';
 import ListSubscriptionsResponse from '../model/ListSubscriptionsResponse';
 import ObjectModel from '../model/ObjectModel';
+import OrderV2 from '../model/OrderV2';
 import Subscription from '../model/Subscription';
 import UpdateCustomFieldMetaDataRequest from '../model/UpdateCustomFieldMetaDataRequest';
 import UpdateSubscriptionRequest from '../model/UpdateSubscriptionRequest';
@@ -288,6 +289,54 @@ export default class SubscriptionsApi {
 
 
     /**
+     * Invoice a Subscription
+     * Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
+     * @param {String} subscriptionId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/OrderV2} and HTTP response
+     */
+    invoiceSubscriptionWithHttpInfo(subscriptionId) {
+      let postBody = null;
+      // verify the required parameter 'subscriptionId' is set
+      if (subscriptionId === undefined || subscriptionId === null) {
+        throw new Error("Missing the required parameter 'subscriptionId' when calling invoiceSubscription");
+      }
+
+      let pathParams = {
+        'subscription_id': subscriptionId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = OrderV2;
+      return this.apiClient.callApi(
+        '/rest/v2/subscriptions/{subscription_id}:invoice', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Invoice a Subscription
+     * Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
+     * @param {String} subscriptionId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/OrderV2}
+     */
+    invoiceSubscription(subscriptionId) {
+      return this.invoiceSubscriptionWithHttpInfo(subscriptionId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * List Subscriptions
      * Retrieves a list of subscriptions using the specified search criteria.
      * @param {Object} opts Optional parameters
@@ -390,7 +439,7 @@ export default class SubscriptionsApi {
      * @param {String} subscriptionId 
      * @param {module:keap.core.v2/model/UpdateSubscriptionRequest} updateSubscriptionRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/Subscription} and HTTP response
      */
     updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequest, opts) {
@@ -409,7 +458,7 @@ export default class SubscriptionsApi {
         'subscription_id': subscriptionId
       };
       let queryParams = {
-        'update_mask': opts['updateMask']
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
       };
       let headerParams = {
       };
@@ -433,7 +482,7 @@ export default class SubscriptionsApi {
      * @param {String} subscriptionId 
      * @param {module:keap.core.v2/model/UpdateSubscriptionRequest} updateSubscriptionRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/Subscription}
      */
     updateSubscription(subscriptionId, updateSubscriptionRequest, opts) {
@@ -450,7 +499,7 @@ export default class SubscriptionsApi {
      * @param {String} customFieldId 
      * @param {module:keap.core.v2/model/UpdateCustomFieldMetaDataRequest} updateCustomFieldMetaDataRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldMetaData} and HTTP response
      */
     updateSubscriptionCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, opts) {
@@ -469,7 +518,7 @@ export default class SubscriptionsApi {
         'custom_field_id': customFieldId
       };
       let queryParams = {
-        'update_mask': opts['updateMask']
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
       };
       let headerParams = {
       };
@@ -493,7 +542,7 @@ export default class SubscriptionsApi {
      * @param {String} customFieldId 
      * @param {module:keap.core.v2/model/UpdateCustomFieldMetaDataRequest} updateCustomFieldMetaDataRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldMetaData}
      */
     updateSubscriptionCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts) {

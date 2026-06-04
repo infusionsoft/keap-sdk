@@ -23,6 +23,7 @@ import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.ListProductInterestBundleResponse;
 import com.keap.core.sdk.model.ProductInterest;
 import com.keap.core.sdk.model.ProductInterestBundle;
+import java.util.Set;
 import com.keap.core.sdk.model.UpdateProductInterestBundleRequest;
 import com.keap.core.sdk.model.UpdateProductInterestRequest;
 
@@ -683,7 +684,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ProductInterest
    * @throws ApiException if fails to make API call
    */
-  public ProductInterest updateProductInterest(String id, String interestId, UpdateProductInterestRequest updateProductInterestRequest, Object updateMask) throws ApiException {
+  public ProductInterest updateProductInterest(String id, String interestId, UpdateProductInterestRequest updateProductInterestRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<ProductInterest> localVarResponse = updateProductInterestWithHttpInfo(id, interestId, updateProductInterestRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -698,7 +699,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;ProductInterest&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ProductInterest> updateProductInterestWithHttpInfo(String id, String interestId, UpdateProductInterestRequest updateProductInterestRequest, Object updateMask) throws ApiException {
+  public ApiResponse<ProductInterest> updateProductInterestWithHttpInfo(String id, String interestId, UpdateProductInterestRequest updateProductInterestRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateProductInterestRequestBuilder(id, interestId, updateProductInterestRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -739,7 +740,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateProductInterestRequestBuilder(String id, String interestId, UpdateProductInterestRequest updateProductInterestRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateProductInterestRequestBuilder(String id, String interestId, UpdateProductInterestRequest updateProductInterestRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling updateProductInterest");
@@ -763,7 +764,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -804,7 +805,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ProductInterestBundle
    * @throws ApiException if fails to make API call
    */
-  public ProductInterestBundle updateProductInterestBundle(String id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, Object updateMask) throws ApiException {
+  public ProductInterestBundle updateProductInterestBundle(String id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<ProductInterestBundle> localVarResponse = updateProductInterestBundleWithHttpInfo(id, updateProductInterestBundleRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -818,7 +819,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;ProductInterestBundle&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ProductInterestBundle> updateProductInterestBundleWithHttpInfo(String id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, Object updateMask) throws ApiException {
+  public ApiResponse<ProductInterestBundle> updateProductInterestBundleWithHttpInfo(String id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateProductInterestBundleRequestBuilder(id, updateProductInterestBundleRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -859,7 +860,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateProductInterestBundleRequestBuilder(String id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateProductInterestBundleRequestBuilder(String id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling updateProductInterestBundle");
@@ -878,7 +879,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

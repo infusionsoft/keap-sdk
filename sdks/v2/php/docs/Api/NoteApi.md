@@ -606,7 +606,7 @@ $apiInstance = new Keap\Core\V2\Api\NoteApi(
 $contact_id = 'contact_id_example'; // string
 $note_id = 'note_id_example'; // string
 $update_note_request = new \Keap\Core\V2\Model\UpdateNoteRequest(); // \Keap\Core\V2\Model\UpdateNoteRequest
-$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 $fields = array('fields_example'); // string[] | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
 
 try {
@@ -624,7 +624,7 @@ try {
 | **contact_id** | **string**|  | |
 | **note_id** | **string**|  | |
 | **update_note_request** | [**\Keap\Core\V2\Model\UpdateNoteRequest**](../Model/UpdateNoteRequest.md)|  | |
-| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 | **fields** | [**string[]**](../Model/string.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
@@ -672,7 +672,7 @@ $apiInstance = new Keap\Core\V2\Api\NoteApi(
 );
 $custom_field_id = 'custom_field_id_example'; // string
 $update_custom_field_meta_data_request = new \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest(); // \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest
-$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateNotesCustomField($custom_field_id, $update_custom_field_meta_data_request, $update_mask);
@@ -688,7 +688,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **custom_field_id** | **string**|  | |
 | **update_custom_field_meta_data_request** | [**\Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest**](../Model/UpdateCustomFieldMetaDataRequest.md)|  | |
-| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

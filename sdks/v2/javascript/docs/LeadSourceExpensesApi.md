@@ -242,7 +242,7 @@ let leadSourceExpenseId = "leadSourceExpenseId_example"; // String | The ID of a
 let leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this expense belongs to
 let updateLeadSourceExpenseRequest = new KeapCoreServiceV2Sdk.UpdateLeadSourceExpenseRequest(); // UpdateLeadSourceExpenseRequest | 
 let opts = {
-  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateLeadSourceExpense(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
  **leadSourceExpenseId** | **String**| The ID of a lead source expense | 
  **leadSourceId** | **String**| The ID of the lead source this expense belongs to | 
  **updateLeadSourceExpenseRequest** | [**UpdateLeadSourceExpenseRequest**](UpdateLeadSourceExpenseRequest.md)|  | 
- **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

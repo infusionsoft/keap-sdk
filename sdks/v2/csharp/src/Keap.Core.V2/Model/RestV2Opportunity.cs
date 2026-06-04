@@ -57,7 +57,12 @@ namespace Keap.Core.V2.Model
         /// <param name="lastUpdatedTime">Last update timestamp (ISO-8601).</param>
         /// <param name="affiliateId">Affiliate ID.</param>
         /// <param name="leadSource">Lead source.</param>
-        public RestV2Opportunity(string id = default, OpportunityContact contact = default, OpportunityStage stage = default, RestV2User user = default, string opportunityTitle = default, string nextActionTime = default, string nextActionNotes = default, string opportunityNotes = default, string estimatedCloseTime = default, bool includeInForecast = default, double projectedRevenueLow = default, double projectedRevenueHigh = default, List<CustomField> customFields = default, string createdTime = default, string lastUpdatedTime = default, string affiliateId = default, string leadSource = default)
+        /// <param name="monthlyRevenue">Monthly recurring revenue.</param>
+        /// <param name="orderRevenue">Order revenue.</param>
+        /// <param name="objection">Objection reason.</param>
+        /// <param name="status">Status name.</param>
+        /// <param name="stageEntranceTime">Timestamp when the opportunity entered its current stage (ISO-8601).</param>
+        public RestV2Opportunity(string id = default, OpportunityContact contact = default, OpportunityStage stage = default, RestV2User user = default, string opportunityTitle = default, string nextActionTime = default, string nextActionNotes = default, string opportunityNotes = default, string estimatedCloseTime = default, bool includeInForecast = default, double projectedRevenueLow = default, double projectedRevenueHigh = default, List<CustomField> customFields = default, string createdTime = default, string lastUpdatedTime = default, string affiliateId = default, string leadSource = default, double monthlyRevenue = default, double orderRevenue = default, string objection = default, string status = default, string stageEntranceTime = default)
         {
             // to ensure "contact" is required (not null)
             if (contact == null)
@@ -91,6 +96,11 @@ namespace Keap.Core.V2.Model
             this.LastUpdatedTime = lastUpdatedTime;
             this.AffiliateId = affiliateId;
             this.LeadSource = leadSource;
+            this.MonthlyRevenue = monthlyRevenue;
+            this.OrderRevenue = orderRevenue;
+            this.Objection = objection;
+            this.Status = status;
+            this.StageEntranceTime = stageEntranceTime;
         }
 
         /// <summary>
@@ -248,6 +258,56 @@ namespace Keap.Core.V2.Model
         public string LeadSource { get; set; }
 
         /// <summary>
+        /// Monthly recurring revenue
+        /// </summary>
+        /// <value>Monthly recurring revenue</value>
+        /*
+        <example>500</example>
+        */
+        [DataMember(Name = "monthly_revenue", EmitDefaultValue = false)]
+        public double MonthlyRevenue { get; set; }
+
+        /// <summary>
+        /// Order revenue
+        /// </summary>
+        /// <value>Order revenue</value>
+        /*
+        <example>2500</example>
+        */
+        [DataMember(Name = "order_revenue", EmitDefaultValue = false)]
+        public double OrderRevenue { get; set; }
+
+        /// <summary>
+        /// Objection reason
+        /// </summary>
+        /// <value>Objection reason</value>
+        /*
+        <example>Price</example>
+        */
+        [DataMember(Name = "objection", EmitDefaultValue = false)]
+        public string Objection { get; set; }
+
+        /// <summary>
+        /// Status name
+        /// </summary>
+        /// <value>Status name</value>
+        /*
+        <example>Active</example>
+        */
+        [DataMember(Name = "status", EmitDefaultValue = false)]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Timestamp when the opportunity entered its current stage (ISO-8601)
+        /// </summary>
+        /// <value>Timestamp when the opportunity entered its current stage (ISO-8601)</value>
+        /*
+        <example>2024-03-20T10:00:00Z</example>
+        */
+        [DataMember(Name = "stage_entrance_time", EmitDefaultValue = false)]
+        public string StageEntranceTime { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -272,6 +332,11 @@ namespace Keap.Core.V2.Model
             sb.Append("  LastUpdatedTime: ").Append(LastUpdatedTime).Append("\n");
             sb.Append("  AffiliateId: ").Append(AffiliateId).Append("\n");
             sb.Append("  LeadSource: ").Append(LeadSource).Append("\n");
+            sb.Append("  MonthlyRevenue: ").Append(MonthlyRevenue).Append("\n");
+            sb.Append("  OrderRevenue: ").Append(OrderRevenue).Append("\n");
+            sb.Append("  Objection: ").Append(Objection).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  StageEntranceTime: ").Append(StageEntranceTime).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

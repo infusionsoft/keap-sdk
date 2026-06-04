@@ -1708,7 +1708,7 @@ class SubscriptionPlansApi
      * @param  string $product_id product_id (required)
      * @param  string $subscription_plan_id subscription_plan_id (required)
      * @param  \Keap\Core\V2\Model\UpdateSubscriptionPlanRequest $update_subscription_plan_request update_subscription_plan_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscriptionPlan'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1729,7 +1729,7 @@ class SubscriptionPlansApi
      * @param  string $product_id product_id (required)
      * @param  string $subscription_plan_id subscription_plan_id (required)
      * @param  \Keap\Core\V2\Model\UpdateSubscriptionPlanRequest $update_subscription_plan_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscriptionPlan'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1929,7 +1929,7 @@ class SubscriptionPlansApi
      * @param  string $product_id product_id (required)
      * @param  string $subscription_plan_id subscription_plan_id (required)
      * @param  \Keap\Core\V2\Model\UpdateSubscriptionPlanRequest $update_subscription_plan_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscriptionPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1953,7 +1953,7 @@ class SubscriptionPlansApi
      * @param  string $product_id product_id (required)
      * @param  string $subscription_plan_id subscription_plan_id (required)
      * @param  \Keap\Core\V2\Model\UpdateSubscriptionPlanRequest $update_subscription_plan_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscriptionPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2006,7 +2006,7 @@ class SubscriptionPlansApi
      * @param  string $product_id product_id (required)
      * @param  string $subscription_plan_id subscription_plan_id (required)
      * @param  \Keap\Core\V2\Model\UpdateSubscriptionPlanRequest $update_subscription_plan_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscriptionPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2036,7 +2036,7 @@ class SubscriptionPlansApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/products/{product_id}/subscriptions/{subscription_plan_id}';
         $formParams = [];
@@ -2049,7 +2049,7 @@ class SubscriptionPlansApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required

@@ -375,7 +375,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.LeadSourcesApi(api_client)
     lead_source_id = 'lead_source_id_example' # str | The ID of a lead source
     create_lead_source_request = keap_core_v2_client.CreateLeadSourceRequest() # CreateLeadSourceRequest | 
-    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Lead Source
@@ -394,7 +394,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **lead_source_id** | **str**| The ID of a lead source | 
  **create_lead_source_request** | [**CreateLeadSourceRequest**](CreateLeadSourceRequest.md)|  | 
- **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

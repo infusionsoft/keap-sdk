@@ -21,6 +21,7 @@ import com.keap.core.sdk.model.CreateLeadSourceExpenseRequest;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.LeadSourceExpense;
 import com.keap.core.sdk.model.ListLeadSourceExpensesResponse;
+import java.util.Set;
 import com.keap.core.sdk.model.UpdateLeadSourceExpenseRequest;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -514,7 +515,7 @@ import io.github.resilience4j.retry.Retry;
    * @return LeadSourceExpense
    * @throws ApiException if fails to make API call
    */
-  public LeadSourceExpense updateLeadSourceExpense(String leadSourceExpenseId, String leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object updateMask) throws ApiException {
+  public LeadSourceExpense updateLeadSourceExpense(String leadSourceExpenseId, String leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<LeadSourceExpense> localVarResponse = updateLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -529,7 +530,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;LeadSourceExpense&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LeadSourceExpense> updateLeadSourceExpenseWithHttpInfo(String leadSourceExpenseId, String leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object updateMask) throws ApiException {
+  public ApiResponse<LeadSourceExpense> updateLeadSourceExpenseWithHttpInfo(String leadSourceExpenseId, String leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateLeadSourceExpenseRequestBuilder(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -570,7 +571,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateLeadSourceExpenseRequestBuilder(String leadSourceExpenseId, String leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateLeadSourceExpenseRequestBuilder(String leadSourceExpenseId, String leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'leadSourceExpenseId' is set
     if (leadSourceExpenseId == null) {
       throw new ApiException(400, "Missing the required parameter 'leadSourceExpenseId' when calling updateLeadSourceExpense");
@@ -594,7 +595,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

@@ -436,7 +436,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>OrderV2</returns>
-        OrderV2 UpdateOrder(string orderId, UpdateOrderRequest updateOrderRequest, Object? updateMask = default, int operationIndex = 0);
+        OrderV2 UpdateOrder(string orderId, UpdateOrderRequest updateOrderRequest, List<string>? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update an Order
@@ -450,7 +450,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of OrderV2</returns>
-        ApiResponse<OrderV2> UpdateOrderWithHttpInfo(string orderId, UpdateOrderRequest updateOrderRequest, Object? updateMask = default, int operationIndex = 0);
+        ApiResponse<OrderV2> UpdateOrderWithHttpInfo(string orderId, UpdateOrderRequest updateOrderRequest, List<string>? updateMask = default, int operationIndex = 0);
         /// <summary>
         /// Update an Order Custom Field
         /// </summary>
@@ -463,7 +463,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CustomFieldMetaData</returns>
-        CustomFieldMetaData UpdateOrderCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0);
+        CustomFieldMetaData UpdateOrderCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update an Order Custom Field
@@ -477,7 +477,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomFieldMetaData</returns>
-        ApiResponse<CustomFieldMetaData> UpdateOrderCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0);
+        ApiResponse<CustomFieldMetaData> UpdateOrderCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = default, int operationIndex = 0);
         /// <summary>
         /// Update an Order Item
         /// </summary>
@@ -491,7 +491,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>OrderItem</returns>
-        OrderItem UpdateOrderItem(string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, Object? updateMask = default, int operationIndex = 0);
+        OrderItem UpdateOrderItem(string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, List<string>? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update an Order Item
@@ -506,7 +506,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of OrderItem</returns>
-        ApiResponse<OrderItem> UpdateOrderItemWithHttpInfo(string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, Object? updateMask = default, int operationIndex = 0);
+        ApiResponse<OrderItem> UpdateOrderItemWithHttpInfo(string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, List<string>? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -957,7 +957,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OrderV2</returns>
-        System.Threading.Tasks.Task<OrderV2> UpdateOrderAsync(string orderId, UpdateOrderRequest updateOrderRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<OrderV2> UpdateOrderAsync(string orderId, UpdateOrderRequest updateOrderRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update an Order
@@ -972,7 +972,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OrderV2)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OrderV2>> UpdateOrderWithHttpInfoAsync(string orderId, UpdateOrderRequest updateOrderRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<OrderV2>> UpdateOrderWithHttpInfoAsync(string orderId, UpdateOrderRequest updateOrderRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update an Order Custom Field
         /// </summary>
@@ -986,7 +986,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CustomFieldMetaData</returns>
-        System.Threading.Tasks.Task<CustomFieldMetaData> UpdateOrderCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CustomFieldMetaData> UpdateOrderCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update an Order Custom Field
@@ -1001,7 +1001,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CustomFieldMetaData)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CustomFieldMetaData>> UpdateOrderCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CustomFieldMetaData>> UpdateOrderCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update an Order Item
         /// </summary>
@@ -1016,7 +1016,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OrderItem</returns>
-        System.Threading.Tasks.Task<OrderItem> UpdateOrderItemAsync(string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<OrderItem> UpdateOrderItemAsync(string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update an Order Item
@@ -1032,7 +1032,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OrderItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OrderItem>> UpdateOrderItemWithHttpInfoAsync(string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<OrderItem>> UpdateOrderItemWithHttpInfoAsync(string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -4206,7 +4206,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>OrderV2</returns>
-        public OrderV2 UpdateOrder(string orderId, UpdateOrderRequest updateOrderRequest, Object? updateMask = default, int operationIndex = 0)
+        public OrderV2 UpdateOrder(string orderId, UpdateOrderRequest updateOrderRequest, List<string>? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<OrderV2> localVarResponse = UpdateOrderWithHttpInfo(orderId, updateOrderRequest, updateMask);
             return localVarResponse.Data;
@@ -4221,7 +4221,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of OrderV2</returns>
-        public Keap.Core.V2.Client.ApiResponse<OrderV2> UpdateOrderWithHttpInfo(string orderId, UpdateOrderRequest updateOrderRequest, Object? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<OrderV2> UpdateOrderWithHttpInfo(string orderId, UpdateOrderRequest updateOrderRequest, List<string>? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'orderId' is set
             if (orderId == null)
@@ -4262,7 +4262,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("order_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(orderId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateOrderRequest;
 
@@ -4310,7 +4310,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OrderV2</returns>
-        public async System.Threading.Tasks.Task<OrderV2> UpdateOrderAsync(string orderId, UpdateOrderRequest updateOrderRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<OrderV2> UpdateOrderAsync(string orderId, UpdateOrderRequest updateOrderRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<OrderV2> localVarResponse = await UpdateOrderWithHttpInfoAsync(orderId, updateOrderRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -4326,7 +4326,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OrderV2)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<OrderV2>> UpdateOrderWithHttpInfoAsync(string orderId, UpdateOrderRequest updateOrderRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<OrderV2>> UpdateOrderWithHttpInfoAsync(string orderId, UpdateOrderRequest updateOrderRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'orderId' is set
             if (orderId == null)
@@ -4367,7 +4367,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("order_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(orderId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateOrderRequest;
 
@@ -4415,7 +4415,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CustomFieldMetaData</returns>
-        public CustomFieldMetaData UpdateOrderCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0)
+        public CustomFieldMetaData UpdateOrderCustomField(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> localVarResponse = UpdateOrderCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             return localVarResponse.Data;
@@ -4430,7 +4430,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomFieldMetaData</returns>
-        public Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> UpdateOrderCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> UpdateOrderCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'customFieldId' is set
             if (customFieldId == null)
@@ -4471,7 +4471,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("custom_field_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(customFieldId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateCustomFieldMetaDataRequest;
 
@@ -4519,7 +4519,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CustomFieldMetaData</returns>
-        public async System.Threading.Tasks.Task<CustomFieldMetaData> UpdateOrderCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CustomFieldMetaData> UpdateOrderCustomFieldAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData> localVarResponse = await UpdateOrderCustomFieldWithHttpInfoAsync(customFieldId, updateCustomFieldMetaDataRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -4535,7 +4535,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CustomFieldMetaData)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData>> UpdateOrderCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldMetaData>> UpdateOrderCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'customFieldId' is set
             if (customFieldId == null)
@@ -4576,7 +4576,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("custom_field_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(customFieldId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateCustomFieldMetaDataRequest;
 
@@ -4625,7 +4625,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>OrderItem</returns>
-        public OrderItem UpdateOrderItem(string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, Object? updateMask = default, int operationIndex = 0)
+        public OrderItem UpdateOrderItem(string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, List<string>? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<OrderItem> localVarResponse = UpdateOrderItemWithHttpInfo(orderId, orderItemId, updateOrderItemRequest, updateMask);
             return localVarResponse.Data;
@@ -4641,7 +4641,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of OrderItem</returns>
-        public Keap.Core.V2.Client.ApiResponse<OrderItem> UpdateOrderItemWithHttpInfo(string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, Object? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<OrderItem> UpdateOrderItemWithHttpInfo(string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, List<string>? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'orderId' is set
             if (orderId == null)
@@ -4689,7 +4689,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("order_item_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(orderItemId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateOrderItemRequest;
 
@@ -4738,7 +4738,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OrderItem</returns>
-        public async System.Threading.Tasks.Task<OrderItem> UpdateOrderItemAsync(string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<OrderItem> UpdateOrderItemAsync(string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<OrderItem> localVarResponse = await UpdateOrderItemWithHttpInfoAsync(orderId, orderItemId, updateOrderItemRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -4755,7 +4755,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OrderItem)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<OrderItem>> UpdateOrderItemWithHttpInfoAsync(string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<OrderItem>> UpdateOrderItemWithHttpInfoAsync(string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'orderId' is set
             if (orderId == null)
@@ -4803,7 +4803,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("order_item_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(orderItemId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateOrderItemRequest;
 

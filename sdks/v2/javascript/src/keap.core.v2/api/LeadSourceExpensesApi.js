@@ -272,7 +272,7 @@ export default class LeadSourceExpensesApi {
      * @param {String} leadSourceId The ID of the lead source this expense belongs to
      * @param {module:keap.core.v2/model/UpdateLeadSourceExpenseRequest} updateLeadSourceExpenseRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/LeadSourceExpense} and HTTP response
      */
     updateLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, opts) {
@@ -296,7 +296,7 @@ export default class LeadSourceExpensesApi {
         'lead_source_id': leadSourceId
       };
       let queryParams = {
-        'update_mask': opts['updateMask']
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
       };
       let headerParams = {
       };
@@ -321,7 +321,7 @@ export default class LeadSourceExpensesApi {
      * @param {String} leadSourceId The ID of the lead source this expense belongs to
      * @param {module:keap.core.v2/model/UpdateLeadSourceExpenseRequest} updateLeadSourceExpenseRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/LeadSourceExpense}
      */
     updateLeadSourceExpense(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, opts) {

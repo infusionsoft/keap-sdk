@@ -388,7 +388,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RestV2ProductDetail</returns>
-        RestV2ProductDetail UpdateProduct(string productId, UpdateProductRequestDetail updateProductRequestDetail, Object? updateMask = default, int operationIndex = 0);
+        RestV2ProductDetail UpdateProduct(string productId, UpdateProductRequestDetail updateProductRequestDetail, List<string>? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Product
@@ -402,7 +402,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RestV2ProductDetail</returns>
-        ApiResponse<RestV2ProductDetail> UpdateProductWithHttpInfo(string productId, UpdateProductRequestDetail updateProductRequestDetail, Object? updateMask = default, int operationIndex = 0);
+        ApiResponse<RestV2ProductDetail> UpdateProductWithHttpInfo(string productId, UpdateProductRequestDetail updateProductRequestDetail, List<string>? updateMask = default, int operationIndex = 0);
         /// <summary>
         /// Updates a Product Option
         /// </summary>
@@ -416,7 +416,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductOption</returns>
-        ProductOption UpdateProductOption(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object? updateMask = default, int operationIndex = 0);
+        ProductOption UpdateProductOption(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, List<string>? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Updates a Product Option
@@ -431,7 +431,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductOption</returns>
-        ApiResponse<ProductOption> UpdateProductOptionWithHttpInfo(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object? updateMask = default, int operationIndex = 0);
+        ApiResponse<ProductOption> UpdateProductOptionWithHttpInfo(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, List<string>? updateMask = default, int operationIndex = 0);
         /// <summary>
         /// Updates a Product Option List Option Value
         /// </summary>
@@ -446,7 +446,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductOption</returns>
-        ProductOption UpdateProductOptionListOptionValue(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, Object? updateMask = default, int operationIndex = 0);
+        ProductOption UpdateProductOptionListOptionValue(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, List<string>? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Updates a Product Option List Option Value
@@ -462,7 +462,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductOption</returns>
-        ApiResponse<ProductOption> UpdateProductOptionListOptionValueWithHttpInfo(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, Object? updateMask = default, int operationIndex = 0);
+        ApiResponse<ProductOption> UpdateProductOptionListOptionValueWithHttpInfo(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, List<string>? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -861,7 +861,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RestV2ProductDetail</returns>
-        System.Threading.Tasks.Task<RestV2ProductDetail> UpdateProductAsync(string productId, UpdateProductRequestDetail updateProductRequestDetail, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<RestV2ProductDetail> UpdateProductAsync(string productId, UpdateProductRequestDetail updateProductRequestDetail, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Product
@@ -876,7 +876,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RestV2ProductDetail)</returns>
-        System.Threading.Tasks.Task<ApiResponse<RestV2ProductDetail>> UpdateProductWithHttpInfoAsync(string productId, UpdateProductRequestDetail updateProductRequestDetail, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<RestV2ProductDetail>> UpdateProductWithHttpInfoAsync(string productId, UpdateProductRequestDetail updateProductRequestDetail, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a Product Option
         /// </summary>
@@ -891,7 +891,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ProductOption</returns>
-        System.Threading.Tasks.Task<ProductOption> UpdateProductOptionAsync(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ProductOption> UpdateProductOptionAsync(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a Product Option
@@ -907,7 +907,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ProductOption)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ProductOption>> UpdateProductOptionWithHttpInfoAsync(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ProductOption>> UpdateProductOptionWithHttpInfoAsync(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a Product Option List Option Value
         /// </summary>
@@ -923,7 +923,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ProductOption</returns>
-        System.Threading.Tasks.Task<ProductOption> UpdateProductOptionListOptionValueAsync(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ProductOption> UpdateProductOptionListOptionValueAsync(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a Product Option List Option Value
@@ -940,7 +940,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ProductOption)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ProductOption>> UpdateProductOptionListOptionValueWithHttpInfoAsync(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ProductOption>> UpdateProductOptionListOptionValueWithHttpInfoAsync(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -3752,7 +3752,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RestV2ProductDetail</returns>
-        public RestV2ProductDetail UpdateProduct(string productId, UpdateProductRequestDetail updateProductRequestDetail, Object? updateMask = default, int operationIndex = 0)
+        public RestV2ProductDetail UpdateProduct(string productId, UpdateProductRequestDetail updateProductRequestDetail, List<string>? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<RestV2ProductDetail> localVarResponse = UpdateProductWithHttpInfo(productId, updateProductRequestDetail, updateMask);
             return localVarResponse.Data;
@@ -3767,7 +3767,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RestV2ProductDetail</returns>
-        public Keap.Core.V2.Client.ApiResponse<RestV2ProductDetail> UpdateProductWithHttpInfo(string productId, UpdateProductRequestDetail updateProductRequestDetail, Object? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<RestV2ProductDetail> UpdateProductWithHttpInfo(string productId, UpdateProductRequestDetail updateProductRequestDetail, List<string>? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'productId' is set
             if (productId == null)
@@ -3808,7 +3808,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("product_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(productId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateProductRequestDetail;
 
@@ -3856,7 +3856,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RestV2ProductDetail</returns>
-        public async System.Threading.Tasks.Task<RestV2ProductDetail> UpdateProductAsync(string productId, UpdateProductRequestDetail updateProductRequestDetail, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<RestV2ProductDetail> UpdateProductAsync(string productId, UpdateProductRequestDetail updateProductRequestDetail, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<RestV2ProductDetail> localVarResponse = await UpdateProductWithHttpInfoAsync(productId, updateProductRequestDetail, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -3872,7 +3872,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RestV2ProductDetail)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<RestV2ProductDetail>> UpdateProductWithHttpInfoAsync(string productId, UpdateProductRequestDetail updateProductRequestDetail, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<RestV2ProductDetail>> UpdateProductWithHttpInfoAsync(string productId, UpdateProductRequestDetail updateProductRequestDetail, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'productId' is set
             if (productId == null)
@@ -3913,7 +3913,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("product_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(productId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateProductRequestDetail;
 
@@ -3962,7 +3962,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductOption</returns>
-        public ProductOption UpdateProductOption(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object? updateMask = default, int operationIndex = 0)
+        public ProductOption UpdateProductOption(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, List<string>? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<ProductOption> localVarResponse = UpdateProductOptionWithHttpInfo(productId, productOptionId, updateProductOptionRequest, updateMask);
             return localVarResponse.Data;
@@ -3978,7 +3978,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductOption</returns>
-        public Keap.Core.V2.Client.ApiResponse<ProductOption> UpdateProductOptionWithHttpInfo(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<ProductOption> UpdateProductOptionWithHttpInfo(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, List<string>? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'productId' is set
             if (productId == null)
@@ -4026,7 +4026,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("product_option_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(productOptionId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateProductOptionRequest;
 
@@ -4075,7 +4075,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ProductOption</returns>
-        public async System.Threading.Tasks.Task<ProductOption> UpdateProductOptionAsync(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ProductOption> UpdateProductOptionAsync(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<ProductOption> localVarResponse = await UpdateProductOptionWithHttpInfoAsync(productId, productOptionId, updateProductOptionRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -4092,7 +4092,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ProductOption)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ProductOption>> UpdateProductOptionWithHttpInfoAsync(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ProductOption>> UpdateProductOptionWithHttpInfoAsync(string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'productId' is set
             if (productId == null)
@@ -4140,7 +4140,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("product_option_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(productOptionId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateProductOptionRequest;
 
@@ -4190,7 +4190,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductOption</returns>
-        public ProductOption UpdateProductOptionListOptionValue(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, Object? updateMask = default, int operationIndex = 0)
+        public ProductOption UpdateProductOptionListOptionValue(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, List<string>? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<ProductOption> localVarResponse = UpdateProductOptionListOptionValueWithHttpInfo(productId, productOptionId, itemId, updateProductOptionListOption, updateMask);
             return localVarResponse.Data;
@@ -4207,7 +4207,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductOption</returns>
-        public Keap.Core.V2.Client.ApiResponse<ProductOption> UpdateProductOptionListOptionValueWithHttpInfo(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, Object? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<ProductOption> UpdateProductOptionListOptionValueWithHttpInfo(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, List<string>? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'productId' is set
             if (productId == null)
@@ -4262,7 +4262,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("item_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(itemId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateProductOptionListOption;
 
@@ -4312,7 +4312,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ProductOption</returns>
-        public async System.Threading.Tasks.Task<ProductOption> UpdateProductOptionListOptionValueAsync(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ProductOption> UpdateProductOptionListOptionValueAsync(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<ProductOption> localVarResponse = await UpdateProductOptionListOptionValueWithHttpInfoAsync(productId, productOptionId, itemId, updateProductOptionListOption, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -4330,7 +4330,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ProductOption)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ProductOption>> UpdateProductOptionListOptionValueWithHttpInfoAsync(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ProductOption>> UpdateProductOptionListOptionValueWithHttpInfoAsync(string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'productId' is set
             if (productId == null)
@@ -4385,7 +4385,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("item_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(itemId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateProductOptionListOption;
 

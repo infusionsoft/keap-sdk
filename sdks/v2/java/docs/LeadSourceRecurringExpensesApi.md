@@ -897,7 +897,7 @@ public class Example {
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
         String leadSourceRecurringExpenseId = "leadSourceRecurringExpenseId_example"; // String | The ID of a lead source recurring expense
         LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest = new LeadSourceRecurringExpenseUpdateRequest(); // LeadSourceRecurringExpenseUpdateRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             LeadSourceRecurringExpense result = apiInstance.updateLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask);
             System.out.println(result);
@@ -920,7 +920,7 @@ public class Example {
 | **leadSourceId** | **String**| The ID of the lead source this recurring expense belongs to | |
 | **leadSourceRecurringExpenseId** | **String**| The ID of a lead source recurring expense | |
 | **leadSourceRecurringExpenseUpdateRequest** | [**LeadSourceRecurringExpenseUpdateRequest**](LeadSourceRecurringExpenseUpdateRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: title, notes, amount, start_time, end_time] |
 
 ### Return type
 
@@ -982,7 +982,7 @@ public class Example {
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
         String leadSourceRecurringExpenseId = "leadSourceRecurringExpenseId_example"; // String | The ID of a lead source recurring expense
         LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest = new LeadSourceRecurringExpenseUpdateRequest(); // LeadSourceRecurringExpenseUpdateRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<LeadSourceRecurringExpense> response = apiInstance.updateLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1007,7 +1007,7 @@ public class Example {
 | **leadSourceId** | **String**| The ID of the lead source this recurring expense belongs to | |
 | **leadSourceRecurringExpenseId** | **String**| The ID of a lead source recurring expense | |
 | **leadSourceRecurringExpenseUpdateRequest** | [**LeadSourceRecurringExpenseUpdateRequest**](LeadSourceRecurringExpenseUpdateRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: title, notes, amount, start_time, end_time] |
 
 ### Return type
 

@@ -115,11 +115,12 @@ import io.github.resilience4j.retry.Retry;
    * Create an Opportunity
    * Creates a new opportunity as the authenticated user.
    * @param createOpportunityRequest  (required)
+   * @param fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
    * @return RestV2Opportunity
    * @throws ApiException if fails to make API call
    */
-  public RestV2Opportunity createOpportunity(CreateOpportunityRequest createOpportunityRequest) throws ApiException {
-    ApiResponse<RestV2Opportunity> localVarResponse = createOpportunityWithHttpInfo(createOpportunityRequest);
+  public RestV2Opportunity createOpportunity(CreateOpportunityRequest createOpportunityRequest, Set<String> fields) throws ApiException {
+    ApiResponse<RestV2Opportunity> localVarResponse = createOpportunityWithHttpInfo(createOpportunityRequest, fields);
     return localVarResponse.getData();
   }
 
@@ -127,11 +128,12 @@ import io.github.resilience4j.retry.Retry;
    * Create an Opportunity
    * Creates a new opportunity as the authenticated user.
    * @param createOpportunityRequest  (required)
+   * @param fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
    * @return ApiResponse&lt;RestV2Opportunity&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RestV2Opportunity> createOpportunityWithHttpInfo(CreateOpportunityRequest createOpportunityRequest) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = createOpportunityRequestBuilder(createOpportunityRequest);
+  public ApiResponse<RestV2Opportunity> createOpportunityWithHttpInfo(CreateOpportunityRequest createOpportunityRequest, Set<String> fields) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createOpportunityRequestBuilder(createOpportunityRequest, fields);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -171,7 +173,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder createOpportunityRequestBuilder(CreateOpportunityRequest createOpportunityRequest) throws ApiException {
+  private HttpRequest.Builder createOpportunityRequestBuilder(CreateOpportunityRequest createOpportunityRequest, Set<String> fields) throws ApiException {
     // verify the required parameter 'createOpportunityRequest' is set
     if (createOpportunityRequest == null) {
       throw new ApiException(400, "Missing the required parameter 'createOpportunityRequest' when calling createOpportunity");
@@ -181,7 +183,22 @@ import io.github.resilience4j.retry.Retry;
 
     String localVarPath = "/rest/v2/opportunities";
 
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "fields";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "fields", fields));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
 
     localVarRequestBuilder.header("Content-Type", "application/json");
     localVarRequestBuilder.header("Accept", "application/json");
@@ -655,11 +672,12 @@ import io.github.resilience4j.retry.Retry;
    * Retrieve a Opportunity
    * Retrieves the specified Opportunity
    * @param opportunityId  (required)
+   * @param fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
    * @return RestV2Opportunity
    * @throws ApiException if fails to make API call
    */
-  public RestV2Opportunity getOpportunity(String opportunityId) throws ApiException {
-    ApiResponse<RestV2Opportunity> localVarResponse = getOpportunityWithHttpInfo(opportunityId);
+  public RestV2Opportunity getOpportunity(String opportunityId, Set<String> fields) throws ApiException {
+    ApiResponse<RestV2Opportunity> localVarResponse = getOpportunityWithHttpInfo(opportunityId, fields);
     return localVarResponse.getData();
   }
 
@@ -667,11 +685,12 @@ import io.github.resilience4j.retry.Retry;
    * Retrieve a Opportunity
    * Retrieves the specified Opportunity
    * @param opportunityId  (required)
+   * @param fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
    * @return ApiResponse&lt;RestV2Opportunity&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RestV2Opportunity> getOpportunityWithHttpInfo(String opportunityId) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getOpportunityRequestBuilder(opportunityId);
+  public ApiResponse<RestV2Opportunity> getOpportunityWithHttpInfo(String opportunityId, Set<String> fields) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getOpportunityRequestBuilder(opportunityId, fields);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -711,7 +730,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder getOpportunityRequestBuilder(String opportunityId) throws ApiException {
+  private HttpRequest.Builder getOpportunityRequestBuilder(String opportunityId, Set<String> fields) throws ApiException {
     // verify the required parameter 'opportunityId' is set
     if (opportunityId == null) {
       throw new ApiException(400, "Missing the required parameter 'opportunityId' when calling getOpportunity");
@@ -722,7 +741,22 @@ import io.github.resilience4j.retry.Retry;
     String localVarPath = "/rest/v2/opportunities/{opportunity_id}"
         .replace("{opportunity_id}", ApiClient.urlEncode(opportunityId.toString()));
 
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "fields";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "fields", fields));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
 
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
@@ -826,7 +860,7 @@ import io.github.resilience4j.retry.Retry;
   /**
    * List Opportunities
    * Retrieves a list of all Opportunities.
-   * @param fields  (optional)
+   * @param fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
    * @param filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  (optional)
    * @param orderBy Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
@@ -842,7 +876,7 @@ import io.github.resilience4j.retry.Retry;
   /**
    * List Opportunities
    * Retrieves a list of all Opportunities.
-   * @param fields  (optional)
+   * @param fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
    * @param filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  (optional)
    * @param orderBy Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
@@ -938,7 +972,7 @@ import io.github.resilience4j.retry.Retry;
   /**
    * List of Opportunity Stages
    * Retrieves a list of Opportunity Stages.
-   * @param filter Search filter to apply to results (optional)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;opportunity_stage_name&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_stage_name&#x3D;&#x3D;Qualified*&#x60;) - (String) &#x60;opportunity_stage_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;opportunity_stage_id&gt;5&#x60;)  (optional)
    * @param orderBy Attribute and direction to order stage items. One of the following fields: - &#x60;stage_order&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
@@ -953,7 +987,7 @@ import io.github.resilience4j.retry.Retry;
   /**
    * List of Opportunity Stages
    * Retrieves a list of Opportunity Stages.
-   * @param filter Search filter to apply to results (optional)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;opportunity_stage_name&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_stage_name&#x3D;&#x3D;Qualified*&#x60;) - (String) &#x60;opportunity_stage_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;opportunity_stage_id&gt;5&#x60;)  (optional)
    * @param orderBy Attribute and direction to order stage items. One of the following fields: - &#x60;stage_order&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
@@ -1128,11 +1162,12 @@ import io.github.resilience4j.retry.Retry;
    * @param opportunityId  (required)
    * @param updateOpportunityRequestV2  (required)
    * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+   * @param fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
    * @return RestV2Opportunity
    * @throws ApiException if fails to make API call
    */
-  public RestV2Opportunity updateOpportunity(String opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Object updateMask) throws ApiException {
-    ApiResponse<RestV2Opportunity> localVarResponse = updateOpportunityWithHttpInfo(opportunityId, updateOpportunityRequestV2, updateMask);
+  public RestV2Opportunity updateOpportunity(String opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Set<String> updateMask, Set<String> fields) throws ApiException {
+    ApiResponse<RestV2Opportunity> localVarResponse = updateOpportunityWithHttpInfo(opportunityId, updateOpportunityRequestV2, updateMask, fields);
     return localVarResponse.getData();
   }
 
@@ -1142,11 +1177,12 @@ import io.github.resilience4j.retry.Retry;
    * @param opportunityId  (required)
    * @param updateOpportunityRequestV2  (required)
    * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+   * @param fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
    * @return ApiResponse&lt;RestV2Opportunity&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RestV2Opportunity> updateOpportunityWithHttpInfo(String opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Object updateMask) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = updateOpportunityRequestBuilder(opportunityId, updateOpportunityRequestV2, updateMask);
+  public ApiResponse<RestV2Opportunity> updateOpportunityWithHttpInfo(String opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Set<String> updateMask, Set<String> fields) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateOpportunityRequestBuilder(opportunityId, updateOpportunityRequestV2, updateMask, fields);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -1186,7 +1222,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateOpportunityRequestBuilder(String opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateOpportunityRequestBuilder(String opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Set<String> updateMask, Set<String> fields) throws ApiException {
     // verify the required parameter 'opportunityId' is set
     if (opportunityId == null) {
       throw new ApiException(400, "Missing the required parameter 'opportunityId' when calling updateOpportunity");
@@ -1205,7 +1241,9 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
+    localVarQueryParameterBaseName = "fields";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "fields", fields));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -1246,7 +1284,7 @@ import io.github.resilience4j.retry.Retry;
    * @return CustomFieldMetaData
    * @throws ApiException if fails to make API call
    */
-  public CustomFieldMetaData updateOpportunityCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
+  public CustomFieldMetaData updateOpportunityCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<CustomFieldMetaData> localVarResponse = updateOpportunityCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -1260,7 +1298,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;CustomFieldMetaData&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CustomFieldMetaData> updateOpportunityCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
+  public ApiResponse<CustomFieldMetaData> updateOpportunityCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateOpportunityCustomFieldRequestBuilder(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1301,7 +1339,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateOpportunityCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateOpportunityCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'customFieldId' is set
     if (customFieldId == null) {
       throw new ApiException(400, "Missing the required parameter 'customFieldId' when calling updateOpportunityCustomField");
@@ -1320,7 +1358,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -1361,7 +1399,7 @@ import io.github.resilience4j.retry.Retry;
    * @return RestOpportunityStage
    * @throws ApiException if fails to make API call
    */
-  public RestOpportunityStage updateOpportunityStage(String stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Object updateMask) throws ApiException {
+  public RestOpportunityStage updateOpportunityStage(String stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<RestOpportunityStage> localVarResponse = updateOpportunityStageWithHttpInfo(stageId, updateOpportunityStageRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -1375,7 +1413,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;RestOpportunityStage&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RestOpportunityStage> updateOpportunityStageWithHttpInfo(String stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Object updateMask) throws ApiException {
+  public ApiResponse<RestOpportunityStage> updateOpportunityStageWithHttpInfo(String stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateOpportunityStageRequestBuilder(stageId, updateOpportunityStageRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1416,7 +1454,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateOpportunityStageRequestBuilder(String stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateOpportunityStageRequestBuilder(String stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'stageId' is set
     if (stageId == null) {
       throw new ApiException(400, "Missing the required parameter 'stageId' when calling updateOpportunityStage");
@@ -1435,7 +1473,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

@@ -458,7 +458,7 @@ export default class ProductCategoriesApi {
      * @param {String} categoryId 
      * @param {module:keap.core.v2/model/UpdateProductCategoryRequest} updateProductCategoryRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ProductCategory} and HTTP response
      */
     updateProductCategoryWithHttpInfo(categoryId, updateProductCategoryRequest, opts) {
@@ -477,7 +477,7 @@ export default class ProductCategoriesApi {
         'category_id': categoryId
       };
       let queryParams = {
-        'update_mask': opts['updateMask']
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
       };
       let headerParams = {
       };
@@ -501,7 +501,7 @@ export default class ProductCategoriesApi {
      * @param {String} categoryId 
      * @param {module:keap.core.v2/model/UpdateProductCategoryRequest} updateProductCategoryRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ProductCategory}
      */
     updateProductCategory(categoryId, updateProductCategoryRequest, opts) {

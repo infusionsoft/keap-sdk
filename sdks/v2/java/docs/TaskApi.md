@@ -1188,7 +1188,7 @@ public class Example {
         TaskApi apiInstance = new TaskApi(defaultClient);
         String taskId = "taskId_example"; // String | 
         CreateUpdateTaskRequest createUpdateTaskRequest = new CreateUpdateTaskRequest(); // CreateUpdateTaskRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
         try {
             UpdateTaskResponse result = apiInstance.updateTask(taskId, createUpdateTaskRequest, updateMask, fields);
@@ -1211,7 +1211,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **taskId** | **String**|  | |
 | **createUpdateTaskRequest** | [**CreateUpdateTaskRequest**](CreateUpdateTaskRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: id, title, description, type, priority, completion_time, due_time, remind_time_mins, assigned_to_user_id, last_updated_by_user_id, contact_id, opportunity_id, accepted, completed, custom_fields] |
 | **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
@@ -1273,7 +1273,7 @@ public class Example {
         TaskApi apiInstance = new TaskApi(defaultClient);
         String taskId = "taskId_example"; // String | 
         CreateUpdateTaskRequest createUpdateTaskRequest = new CreateUpdateTaskRequest(); // CreateUpdateTaskRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
         try {
             ApiResponse<UpdateTaskResponse> response = apiInstance.updateTaskWithHttpInfo(taskId, createUpdateTaskRequest, updateMask, fields);
@@ -1298,7 +1298,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **taskId** | **String**|  | |
 | **createUpdateTaskRequest** | [**CreateUpdateTaskRequest**](CreateUpdateTaskRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: id, title, description, type, priority, completion_time, due_time, remind_time_mins, assigned_to_user_id, last_updated_by_user_id, contact_id, opportunity_id, accepted, completed, custom_fields] |
 | **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional] |
 
 ### Return type
@@ -1360,7 +1360,7 @@ public class Example {
         TaskApi apiInstance = new TaskApi(defaultClient);
         String customFieldId = "customFieldId_example"; // String | 
         UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             CustomFieldMetaData result = apiInstance.updateTaskCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println(result);
@@ -1382,7 +1382,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **customFieldId** | **String**|  | |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id, label, options] |
 
 ### Return type
 
@@ -1443,7 +1443,7 @@ public class Example {
         TaskApi apiInstance = new TaskApi(defaultClient);
         String customFieldId = "customFieldId_example"; // String | 
         UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<CustomFieldMetaData> response = apiInstance.updateTaskCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1467,7 +1467,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **customFieldId** | **String**|  | |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id, label, options] |
 
 ### Return type
 

@@ -42,7 +42,7 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SettingsApi apiInstance = new SettingsApi(defaultClient);
-        Object fields = null; // Object | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
+        Set<String> fields = Arrays.asList(); // Set<String> | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
         try {
             GetSettingsResponse result = apiInstance.getApplicationConfigurations(fields);
             System.out.println(result);
@@ -62,7 +62,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **fields** | [**Object**](.md)| By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | [optional] |
+| **fields** | [**Set&lt;String&gt;**](String.md)| By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | [optional] [enum: AFFILIATE, APPOINTMENT, CONTACT, ECOMMERCE, EMAIL, FORMS, FULFILLMENT, INVOICE, NOTE, OPPORTUNITY, TASK, TEMPLATE] |
 
 ### Return type
 
@@ -121,7 +121,7 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SettingsApi apiInstance = new SettingsApi(defaultClient);
-        Object fields = null; // Object | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
+        Set<String> fields = Arrays.asList(); // Set<String> | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
         try {
             ApiResponse<GetSettingsResponse> response = apiInstance.getApplicationConfigurationsWithHttpInfo(fields);
             System.out.println("Status code: " + response.getStatusCode());
@@ -143,7 +143,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **fields** | [**Object**](.md)| By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | [optional] |
+| **fields** | [**Set&lt;String&gt;**](String.md)| By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | [optional] [enum: AFFILIATE, APPOINTMENT, CONTACT, ECOMMERCE, EMAIL, FORMS, FULFILLMENT, INVOICE, NOTE, OPPORTUNITY, TASK, TEMPLATE] |
 
 ### Return type
 

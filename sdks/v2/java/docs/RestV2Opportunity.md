@@ -24,6 +24,11 @@
 |**lastUpdatedTime** | **String** | Last update timestamp (ISO-8601) |  [optional] |
 |**affiliateId** | **String** | Affiliate ID |  [optional] |
 |**leadSource** | **String** | Lead source |  [optional] |
+|**monthlyRevenue** | **Double** | Monthly recurring revenue |  [optional] |
+|**orderRevenue** | **Double** | Order revenue |  [optional] |
+|**objection** | **String** | Objection reason |  [optional] |
+|**status** | **String** | Status name |  [optional] |
+|**stageEntranceTime** | **String** | Timestamp when the opportunity entered its current stage (ISO-8601) |  [optional] |
 
 
 ## Implemented Interfaces

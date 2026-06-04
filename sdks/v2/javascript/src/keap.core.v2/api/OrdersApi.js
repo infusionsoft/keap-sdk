@@ -889,7 +889,7 @@ export default class OrdersApi {
      * @param {String} orderId 
      * @param {module:keap.core.v2/model/UpdateOrderRequest} updateOrderRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/OrderV2} and HTTP response
      */
     updateOrderWithHttpInfo(orderId, updateOrderRequest, opts) {
@@ -908,7 +908,7 @@ export default class OrdersApi {
         'order_id': orderId
       };
       let queryParams = {
-        'update_mask': opts['updateMask']
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
       };
       let headerParams = {
       };
@@ -932,7 +932,7 @@ export default class OrdersApi {
      * @param {String} orderId 
      * @param {module:keap.core.v2/model/UpdateOrderRequest} updateOrderRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/OrderV2}
      */
     updateOrder(orderId, updateOrderRequest, opts) {
@@ -949,7 +949,7 @@ export default class OrdersApi {
      * @param {String} customFieldId 
      * @param {module:keap.core.v2/model/UpdateCustomFieldMetaDataRequest} updateCustomFieldMetaDataRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldMetaData} and HTTP response
      */
     updateOrderCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, opts) {
@@ -968,7 +968,7 @@ export default class OrdersApi {
         'custom_field_id': customFieldId
       };
       let queryParams = {
-        'update_mask': opts['updateMask']
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
       };
       let headerParams = {
       };
@@ -992,7 +992,7 @@ export default class OrdersApi {
      * @param {String} customFieldId 
      * @param {module:keap.core.v2/model/UpdateCustomFieldMetaDataRequest} updateCustomFieldMetaDataRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldMetaData}
      */
     updateOrderCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts) {
@@ -1010,7 +1010,7 @@ export default class OrdersApi {
      * @param {String} orderItemId 
      * @param {module:keap.core.v2/model/UpdateOrderItemRequest} updateOrderItemRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/OrderItem} and HTTP response
      */
     updateOrderItemWithHttpInfo(orderId, orderItemId, updateOrderItemRequest, opts) {
@@ -1034,7 +1034,7 @@ export default class OrdersApi {
         'order_item_id': orderItemId
       };
       let queryParams = {
-        'update_mask': opts['updateMask']
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
       };
       let headerParams = {
       };
@@ -1059,7 +1059,7 @@ export default class OrdersApi {
      * @param {String} orderItemId 
      * @param {module:keap.core.v2/model/UpdateOrderItemRequest} updateOrderItemRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/OrderItem}
      */
     updateOrderItem(orderId, orderItemId, updateOrderItemRequest, opts) {

@@ -309,7 +309,9 @@ const request: LeadSourceExpensesApiUpdateLeadSourceExpenseRequest = {
     incurredTime: new Date('2024-03-15T00:00:00Z'),
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "title",
+  ],
 };
 
 const data = await apiInstance.updateLeadSourceExpense(request);
@@ -324,7 +326,7 @@ Name | Type | Description  | Notes
  **updateLeadSourceExpenseRequest** | **UpdateLeadSourceExpenseRequest**|  |
  **leadSourceExpenseId** | [**string**] | The ID of a lead source expense | defaults to undefined
  **leadSourceId** | [**string**] | The ID of the lead source this expense belongs to | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;title&#39; &#124; &#39;notes&#39; &#124; &#39;amount&#39; &#124; &#39;incurred_time&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

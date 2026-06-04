@@ -16,8 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr
-from typing import Any, Optional
+from pydantic import Field, StrictStr, field_validator
+from typing import List, Optional
 from typing_extensions import Annotated
 from keap_core_v2_client.models.create_lead_source_recurring_expense_request import CreateLeadSourceRecurringExpenseRequest
 from keap_core_v2_client.models.lead_source_recurring_expense import LeadSourceRecurringExpense
@@ -1683,7 +1683,7 @@ class LeadSourceRecurringExpensesApi:
         lead_source_id: Annotated[StrictStr, Field(description="The ID of the lead source this recurring expense belongs to")],
         lead_source_recurring_expense_id: Annotated[StrictStr, Field(description="The ID of a lead source recurring expense")],
         lead_source_recurring_expense_update_request: LeadSourceRecurringExpenseUpdateRequest,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1708,7 +1708,7 @@ class LeadSourceRecurringExpensesApi:
         :param lead_source_recurring_expense_update_request: (required)
         :type lead_source_recurring_expense_update_request: LeadSourceRecurringExpenseUpdateRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1770,7 +1770,7 @@ class LeadSourceRecurringExpensesApi:
         lead_source_id: Annotated[StrictStr, Field(description="The ID of the lead source this recurring expense belongs to")],
         lead_source_recurring_expense_id: Annotated[StrictStr, Field(description="The ID of a lead source recurring expense")],
         lead_source_recurring_expense_update_request: LeadSourceRecurringExpenseUpdateRequest,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1795,7 +1795,7 @@ class LeadSourceRecurringExpensesApi:
         :param lead_source_recurring_expense_update_request: (required)
         :type lead_source_recurring_expense_update_request: LeadSourceRecurringExpenseUpdateRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1857,7 +1857,7 @@ class LeadSourceRecurringExpensesApi:
         lead_source_id: Annotated[StrictStr, Field(description="The ID of the lead source this recurring expense belongs to")],
         lead_source_recurring_expense_id: Annotated[StrictStr, Field(description="The ID of a lead source recurring expense")],
         lead_source_recurring_expense_update_request: LeadSourceRecurringExpenseUpdateRequest,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1882,7 +1882,7 @@ class LeadSourceRecurringExpensesApi:
         :param lead_source_recurring_expense_update_request: (required)
         :type lead_source_recurring_expense_update_request: LeadSourceRecurringExpenseUpdateRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1949,6 +1949,7 @@ class LeadSourceRecurringExpensesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'update_mask': 'multi',
         }
 
         _path_params: Dict[str, str] = {}

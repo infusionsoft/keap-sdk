@@ -4,29 +4,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Id of the subscription plan. | [optional] 
+**id** | **String** | Subscription plan ID | [optional] 
+**frequency** | **Number** | Interval at which a customer receives a product or service as part of a subscription plan. | [optional] 
 **active** | **Boolean** | If the subscription plan is active or not. | [optional] 
-**frequency** | **Number** | Total number of times of a cycle type which constitutes a plan cycle. Minimum value is 1. | [optional] 
-**allowProrating** | **Boolean** | Whether or not the plan will allow prorating. | [optional] 
-**productId** | **String** | The product ID this plan belongs to. | [optional] 
+**subscriptionPlanName** | **String** | Plan name | [optional] 
 **cycleType** | **String** | The cycle type of the subscription plan. | [optional] 
-**displayOrderIndex** | **Number** | The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list. | [optional] 
 **totalCycles** | **Number** | Total number of cycles the plan will run before ending. Value of 0 indicates plan will never end. | [optional] 
-**planPrice** | [**CurrencyValue**](CurrencyValue.md) | The price of the subscription plan. | [optional] 
-**preauthorizeAmount** | **Number** | The pre-authorize amount for the subscription plan. If null, this field is omitted from the response. | [optional] 
+**planPrice** | [**CurrencyValue**](CurrencyValue.md) | Price of the plan | [optional] 
+**displayOrderIndex** | **Number** | The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list. | [optional] 
 
 
 
 ## Enum: CycleTypeEnum
 
 
-* `DAILY` (value: `"DAILY"`)
-
-* `WEEKLY` (value: `"WEEKLY"`)
+* `YEARLY` (value: `"YEARLY"`)
 
 * `MONTHLY` (value: `"MONTHLY"`)
 
-* `YEARLY` (value: `"YEARLY"`)
+* `WEEKLY` (value: `"WEEKLY"`)
+
+* `DAILY` (value: `"DAILY"`)
 
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 

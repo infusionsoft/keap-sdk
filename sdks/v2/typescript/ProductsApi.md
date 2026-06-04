@@ -1018,7 +1018,9 @@ const request: ProductsApiUpdateProductRequest = {
     deliveryDescription: "deliveryDescription_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "active",
+  ],
 };
 
 const data = await apiInstance.updateProduct(request);
@@ -1032,7 +1034,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateProductRequestDetail** | **UpdateProductRequestDetail**|  |
  **productId** | [**string**] | product_id | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;active&#39; &#124; &#39;name&#39; &#124; &#39;description&#39; &#124; &#39;price&#39; &#124; &#39;sku&#39; &#124; &#39;shippable&#39; &#124; &#39;short_description&#39; &#124; &#39;subscription_only&#39; &#124; &#39;storefront_hidden&#39; &#124; &#39;weight&#39; &#124; &#39;taxable&#39; &#124; &#39;country_taxable&#39; &#124; &#39;city_taxable&#39; &#124; &#39;state_taxable&#39; &#124; &#39;inventory_limit&#39; &#124; &#39;out_of_stock_enabled&#39; &#124; &#39;email_for_inventory_notifications&#39; &#124; &#39;top_html&#39; &#124; &#39;bottom_html&#39; &#124; &#39;is_package&#39; &#124; &#39;needs_digital_delivery&#39; &#124; &#39;delivery_description&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -1098,7 +1100,9 @@ const request: ProductsApiUpdateProductOptionRequest = {
     errorMessage: "errorMessage_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "option_label",
+  ],
 };
 
 const data = await apiInstance.updateProductOption(request);
@@ -1113,7 +1117,7 @@ Name | Type | Description  | Notes
  **updateProductOptionRequest** | **UpdateProductOptionRequest**|  |
  **productId** | [**string**] | product_id | defaults to undefined
  **productOptionId** | [**string**] | product_option_id | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;option_label&#39; &#124; &#39;display_order&#39; &#124; &#39;required&#39; &#124; &#39;minimum_characters&#39; &#124; &#39;maximum_characters&#39; &#124; &#39;allow_spaces&#39; &#124; &#39;only_starts_with&#39; &#124; &#39;only_ends_with&#39; &#124; &#39;only_contains&#39; &#124; &#39;error_message&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -1175,7 +1179,9 @@ const request: ProductsApiUpdateProductOptionListOptionValueRequest = {
     priceAdjustment: 3.14,
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "item_label",
+  ],
 };
 
 const data = await apiInstance.updateProductOptionListOptionValue(request);
@@ -1191,7 +1197,7 @@ Name | Type | Description  | Notes
  **productId** | [**string**] | product_id | defaults to undefined
  **productOptionId** | [**string**] | product_option_id | defaults to undefined
  **itemId** | [**string**] | item_id | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;item_label&#39; &#124; &#39;item_code&#39; &#124; &#39;item_display_order&#39; &#124; &#39;price_adjustment&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

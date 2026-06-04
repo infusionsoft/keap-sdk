@@ -715,7 +715,7 @@ public class Example {
         String productId = "productId_example"; // String | product_id
         String subscriptionPlanId = "subscriptionPlanId_example"; // String | subscription_plan_id
         UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest = new UpdateSubscriptionPlanRequest(); // UpdateSubscriptionPlanRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             SubscriptionPlan result = apiInstance.updateSubscriptionPlan(productId, subscriptionPlanId, updateSubscriptionPlanRequest, updateMask);
             System.out.println(result);
@@ -738,7 +738,7 @@ public class Example {
 | **productId** | **String**| product_id | |
 | **subscriptionPlanId** | **String**| subscription_plan_id | |
 | **updateSubscriptionPlanRequest** | [**UpdateSubscriptionPlanRequest**](UpdateSubscriptionPlanRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: active, allow_prorating, cycle_type, display_order_index, frequency, plan_price, total_cycles] |
 
 ### Return type
 
@@ -800,7 +800,7 @@ public class Example {
         String productId = "productId_example"; // String | product_id
         String subscriptionPlanId = "subscriptionPlanId_example"; // String | subscription_plan_id
         UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest = new UpdateSubscriptionPlanRequest(); // UpdateSubscriptionPlanRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<SubscriptionPlan> response = apiInstance.updateSubscriptionPlanWithHttpInfo(productId, subscriptionPlanId, updateSubscriptionPlanRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -825,7 +825,7 @@ public class Example {
 | **productId** | **String**| product_id | |
 | **subscriptionPlanId** | **String**| subscription_plan_id | |
 | **updateSubscriptionPlanRequest** | [**UpdateSubscriptionPlanRequest**](UpdateSubscriptionPlanRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: active, allow_prorating, cycle_type, display_order_index, frequency, plan_price, total_cycles] |
 
 ### Return type
 

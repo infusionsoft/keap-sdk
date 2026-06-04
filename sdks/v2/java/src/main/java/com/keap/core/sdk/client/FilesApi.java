@@ -21,6 +21,7 @@ import com.keap.core.sdk.model.Error;
 import java.io.File;
 import com.keap.core.sdk.model.FileMetadata;
 import com.keap.core.sdk.model.ListFilesResponse;
+import java.util.Set;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -103,43 +104,33 @@ import io.github.resilience4j.retry.Retry;
 
   /**
    * Create a file
-   * Creates a file and uploads it
-   * @param _file File to upload. This is a file sent as multi-part (not a string) (required)
+   * Uploads a file using multipart/form-data. The &#x60;file&#x60; part contains the binary file content; &#x60;file_name&#x60;, &#x60;is_public&#x60;, &#x60;file_association&#x60;, and optionally &#x60;contact_id&#x60; are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
+   * @param _file File to upload (required)
    * @param fileName File name (required)
-   * @param isPublic Is public (required)
    * @param fileAssociation File association (required)
-   * @param _file2 File to upload (required)
-   * @param fileName2 File name (required)
-   * @param isPublic2 Is public (required)
-   * @param fileAssociation2 File association (required)
-   * @param contactId Contact ID (optional)
-   * @param contactId2 Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)
+   * @param contactId Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)
+   * @param isPublic Is public (optional)
    * @return FileMetadata
    * @throws ApiException if fails to make API call
    */
-  public FileMetadata createFile(File _file, String fileName, Boolean isPublic, String fileAssociation, File _file2, String fileName2, String isPublic2, String fileAssociation2, String contactId, String contactId2) throws ApiException {
-    ApiResponse<FileMetadata> localVarResponse = createFileWithHttpInfo(_file, fileName, isPublic, fileAssociation, _file2, fileName2, isPublic2, fileAssociation2, contactId, contactId2);
+  public FileMetadata createFile(File _file, String fileName, String fileAssociation, String contactId, String isPublic) throws ApiException {
+    ApiResponse<FileMetadata> localVarResponse = createFileWithHttpInfo(_file, fileName, fileAssociation, contactId, isPublic);
     return localVarResponse.getData();
   }
 
   /**
    * Create a file
-   * Creates a file and uploads it
-   * @param _file File to upload. This is a file sent as multi-part (not a string) (required)
+   * Uploads a file using multipart/form-data. The &#x60;file&#x60; part contains the binary file content; &#x60;file_name&#x60;, &#x60;is_public&#x60;, &#x60;file_association&#x60;, and optionally &#x60;contact_id&#x60; are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
+   * @param _file File to upload (required)
    * @param fileName File name (required)
-   * @param isPublic Is public (required)
    * @param fileAssociation File association (required)
-   * @param _file2 File to upload (required)
-   * @param fileName2 File name (required)
-   * @param isPublic2 Is public (required)
-   * @param fileAssociation2 File association (required)
-   * @param contactId Contact ID (optional)
-   * @param contactId2 Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)
+   * @param contactId Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)
+   * @param isPublic Is public (optional)
    * @return ApiResponse&lt;FileMetadata&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<FileMetadata> createFileWithHttpInfo(File _file, String fileName, Boolean isPublic, String fileAssociation, File _file2, String fileName2, String isPublic2, String fileAssociation2, String contactId, String contactId2) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = createFileRequestBuilder(_file, fileName, isPublic, fileAssociation, _file2, fileName2, isPublic2, fileAssociation2, contactId, contactId2);
+  public ApiResponse<FileMetadata> createFileWithHttpInfo(File _file, String fileName, String fileAssociation, String contactId, String isPublic) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createFileRequestBuilder(_file, fileName, fileAssociation, contactId, isPublic);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -179,7 +170,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder createFileRequestBuilder(File _file, String fileName, Boolean isPublic, String fileAssociation, File _file2, String fileName2, String isPublic2, String fileAssociation2, String contactId, String contactId2) throws ApiException {
+  private HttpRequest.Builder createFileRequestBuilder(File _file, String fileName, String fileAssociation, String contactId, String isPublic) throws ApiException {
     // verify the required parameter '_file' is set
     if (_file == null) {
       throw new ApiException(400, "Missing the required parameter '_file' when calling createFile");
@@ -188,71 +179,28 @@ import io.github.resilience4j.retry.Retry;
     if (fileName == null) {
       throw new ApiException(400, "Missing the required parameter 'fileName' when calling createFile");
     }
-    // verify the required parameter 'isPublic' is set
-    if (isPublic == null) {
-      throw new ApiException(400, "Missing the required parameter 'isPublic' when calling createFile");
-    }
     // verify the required parameter 'fileAssociation' is set
     if (fileAssociation == null) {
       throw new ApiException(400, "Missing the required parameter 'fileAssociation' when calling createFile");
-    }
-    // verify the required parameter '_file2' is set
-    if (_file2 == null) {
-      throw new ApiException(400, "Missing the required parameter '_file2' when calling createFile");
-    }
-    // verify the required parameter 'fileName2' is set
-    if (fileName2 == null) {
-      throw new ApiException(400, "Missing the required parameter 'fileName2' when calling createFile");
-    }
-    // verify the required parameter 'isPublic2' is set
-    if (isPublic2 == null) {
-      throw new ApiException(400, "Missing the required parameter 'isPublic2' when calling createFile");
-    }
-    // verify the required parameter 'fileAssociation2' is set
-    if (fileAssociation2 == null) {
-      throw new ApiException(400, "Missing the required parameter 'fileAssociation2' when calling createFile");
     }
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
 
     String localVarPath = "/rest/v2/files";
 
-    List<Pair> localVarQueryParams = new ArrayList<>();
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "file";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("file", _file));
-    localVarQueryParameterBaseName = "file_name";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("file_name", fileName));
-    localVarQueryParameterBaseName = "contact_id";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("contact_id", contactId));
-    localVarQueryParameterBaseName = "is_public";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("is_public", isPublic));
-    localVarQueryParameterBaseName = "file_association";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("file_association", fileAssociation));
-
-    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
-      StringJoiner queryJoiner = new StringJoiner("&");
-      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
-      if (localVarQueryStringJoiner.length() != 0) {
-        queryJoiner.add(localVarQueryStringJoiner.toString());
-      }
-      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
-    } else {
-      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    }
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
 
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
 
     MultipartEntityBuilder multiPartBuilder = MultipartEntityBuilder.create();
     boolean hasFiles = false;
-    multiPartBuilder.addBinaryBody("file", _file2);
+    multiPartBuilder.addBinaryBody("file", _file);
     hasFiles = true;
-    multiPartBuilder.addTextBody("file_name", fileName2.toString());
-    multiPartBuilder.addTextBody("contact_id", contactId2.toString());
-    multiPartBuilder.addTextBody("is_public", isPublic2.toString());
-    multiPartBuilder.addTextBody("file_association", fileAssociation2.toString());
+    multiPartBuilder.addTextBody("file_name", fileName.toString());
+    multiPartBuilder.addTextBody("contact_id", contactId.toString());
+    multiPartBuilder.addTextBody("is_public", isPublic.toString());
+    multiPartBuilder.addTextBody("file_association", fileAssociation.toString());
     HttpEntity entity = multiPartBuilder.build();
     HttpRequest.BodyPublisher formDataPublisher;
     if (hasFiles) {
@@ -663,39 +611,33 @@ import io.github.resilience4j.retry.Retry;
 
   /**
    * Update a file
-   * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+   * Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
    * @param fileId  (required)
    * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-   * @param _file File to upload. This is a file sent as multi-part (not a string) (optional)
+   * @param _file File to upload (optional)
    * @param fileName File name (optional)
    * @param isPublic Is public (optional)
-   * @param _file2 File to upload (optional)
-   * @param fileName2 File name (optional)
-   * @param isPublic2 Is public (optional)
    * @return FileMetadata
    * @throws ApiException if fails to make API call
    */
-  public FileMetadata updateFile(String fileId, Object updateMask, File _file, String fileName, Boolean isPublic, File _file2, String fileName2, Boolean isPublic2) throws ApiException {
-    ApiResponse<FileMetadata> localVarResponse = updateFileWithHttpInfo(fileId, updateMask, _file, fileName, isPublic, _file2, fileName2, isPublic2);
+  public FileMetadata updateFile(String fileId, Set<String> updateMask, File _file, String fileName, Boolean isPublic) throws ApiException {
+    ApiResponse<FileMetadata> localVarResponse = updateFileWithHttpInfo(fileId, updateMask, _file, fileName, isPublic);
     return localVarResponse.getData();
   }
 
   /**
    * Update a file
-   * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+   * Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
    * @param fileId  (required)
    * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-   * @param _file File to upload. This is a file sent as multi-part (not a string) (optional)
+   * @param _file File to upload (optional)
    * @param fileName File name (optional)
    * @param isPublic Is public (optional)
-   * @param _file2 File to upload (optional)
-   * @param fileName2 File name (optional)
-   * @param isPublic2 Is public (optional)
    * @return ApiResponse&lt;FileMetadata&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<FileMetadata> updateFileWithHttpInfo(String fileId, Object updateMask, File _file, String fileName, Boolean isPublic, File _file2, String fileName2, Boolean isPublic2) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = updateFileRequestBuilder(fileId, updateMask, _file, fileName, isPublic, _file2, fileName2, isPublic2);
+  public ApiResponse<FileMetadata> updateFileWithHttpInfo(String fileId, Set<String> updateMask, File _file, String fileName, Boolean isPublic) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateFileRequestBuilder(fileId, updateMask, _file, fileName, isPublic);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -735,7 +677,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateFileRequestBuilder(String fileId, Object updateMask, File _file, String fileName, Boolean isPublic, File _file2, String fileName2, Boolean isPublic2) throws ApiException {
+  private HttpRequest.Builder updateFileRequestBuilder(String fileId, Set<String> updateMask, File _file, String fileName, Boolean isPublic) throws ApiException {
     // verify the required parameter 'fileId' is set
     if (fileId == null) {
       throw new ApiException(400, "Missing the required parameter 'fileId' when calling updateFile");
@@ -750,13 +692,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
-    localVarQueryParameterBaseName = "file";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("file", _file));
-    localVarQueryParameterBaseName = "file_name";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("file_name", fileName));
-    localVarQueryParameterBaseName = "is_public";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("is_public", isPublic));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -774,10 +710,10 @@ import io.github.resilience4j.retry.Retry;
 
     MultipartEntityBuilder multiPartBuilder = MultipartEntityBuilder.create();
     boolean hasFiles = false;
-    multiPartBuilder.addBinaryBody("file", _file2);
+    multiPartBuilder.addBinaryBody("file", _file);
     hasFiles = true;
-    multiPartBuilder.addTextBody("file_name", fileName2.toString());
-    multiPartBuilder.addTextBody("is_public", isPublic2.toString());
+    multiPartBuilder.addTextBody("file_name", fileName.toString());
+    multiPartBuilder.addTextBody("is_public", isPublic.toString());
     HttpEntity entity = multiPartBuilder.build();
     HttpRequest.BodyPublisher formDataPublisher;
     if (hasFiles) {

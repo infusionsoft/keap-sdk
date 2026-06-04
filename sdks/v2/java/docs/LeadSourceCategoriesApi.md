@@ -698,7 +698,7 @@ public class Example {
         LeadSourceCategoriesApi apiInstance = new LeadSourceCategoriesApi(defaultClient);
         String leadSourceCategoryId = "leadSourceCategoryId_example"; // String | The ID of a lead source category
         CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest = new CreateUpdateLeadSourceCategoryRequest(); // CreateUpdateLeadSourceCategoryRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             LeadSourceCategory result = apiInstance.updateLeadSourceCategory(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask);
             System.out.println(result);
@@ -720,7 +720,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **leadSourceCategoryId** | **String**| The ID of a lead source category | |
 | **createUpdateLeadSourceCategoryRequest** | [**CreateUpdateLeadSourceCategoryRequest**](CreateUpdateLeadSourceCategoryRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description] |
 
 ### Return type
 
@@ -781,7 +781,7 @@ public class Example {
         LeadSourceCategoriesApi apiInstance = new LeadSourceCategoriesApi(defaultClient);
         String leadSourceCategoryId = "leadSourceCategoryId_example"; // String | The ID of a lead source category
         CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest = new CreateUpdateLeadSourceCategoryRequest(); // CreateUpdateLeadSourceCategoryRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<LeadSourceCategory> response = apiInstance.updateLeadSourceCategoryWithHttpInfo(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -805,7 +805,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **leadSourceCategoryId** | **String**| The ID of a lead source category | |
 | **createUpdateLeadSourceCategoryRequest** | [**CreateUpdateLeadSourceCategoryRequest**](CreateUpdateLeadSourceCategoryRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description] |
 
 ### Return type
 

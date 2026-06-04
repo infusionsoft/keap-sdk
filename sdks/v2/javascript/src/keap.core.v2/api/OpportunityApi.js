@@ -50,9 +50,12 @@ export default class OpportunityApi {
      * Create an Opportunity
      * Creates a new opportunity as the authenticated user.
      * @param {module:keap.core.v2/model/CreateOpportunityRequest} createOpportunityRequest 
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:keap.core.v2/model/String>} [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/RestV2Opportunity} and HTTP response
      */
-    createOpportunityWithHttpInfo(createOpportunityRequest) {
+    createOpportunityWithHttpInfo(createOpportunityRequest, opts) {
+      opts = opts || {};
       let postBody = createOpportunityRequest;
       // verify the required parameter 'createOpportunityRequest' is set
       if (createOpportunityRequest === undefined || createOpportunityRequest === null) {
@@ -62,6 +65,7 @@ export default class OpportunityApi {
       let pathParams = {
       };
       let queryParams = {
+        'fields': this.apiClient.buildCollectionParam(opts['fields'], 'multi')
       };
       let headerParams = {
       };
@@ -83,10 +87,12 @@ export default class OpportunityApi {
      * Create an Opportunity
      * Creates a new opportunity as the authenticated user.
      * @param {module:keap.core.v2/model/CreateOpportunityRequest} createOpportunityRequest 
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:keap.core.v2/model/String>} opts.fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/RestV2Opportunity}
      */
-    createOpportunity(createOpportunityRequest) {
-      return this.createOpportunityWithHttpInfo(createOpportunityRequest)
+    createOpportunity(createOpportunityRequest, opts) {
+      return this.createOpportunityWithHttpInfo(createOpportunityRequest, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -335,9 +341,12 @@ export default class OpportunityApi {
      * Retrieve a Opportunity
      * Retrieves the specified Opportunity
      * @param {String} opportunityId 
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:keap.core.v2/model/String>} [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/RestV2Opportunity} and HTTP response
      */
-    getOpportunityWithHttpInfo(opportunityId) {
+    getOpportunityWithHttpInfo(opportunityId, opts) {
+      opts = opts || {};
       let postBody = null;
       // verify the required parameter 'opportunityId' is set
       if (opportunityId === undefined || opportunityId === null) {
@@ -348,6 +357,7 @@ export default class OpportunityApi {
         'opportunity_id': opportunityId
       };
       let queryParams = {
+        'fields': this.apiClient.buildCollectionParam(opts['fields'], 'multi')
       };
       let headerParams = {
       };
@@ -369,10 +379,12 @@ export default class OpportunityApi {
      * Retrieve a Opportunity
      * Retrieves the specified Opportunity
      * @param {String} opportunityId 
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:keap.core.v2/model/String>} opts.fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/RestV2Opportunity}
      */
-    getOpportunity(opportunityId) {
-      return this.getOpportunityWithHttpInfo(opportunityId)
+    getOpportunity(opportunityId, opts) {
+      return this.getOpportunityWithHttpInfo(opportunityId, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -431,7 +443,7 @@ export default class OpportunityApi {
      * List Opportunities
      * Retrieves a list of all Opportunities.
      * @param {Object} opts Optional parameters
-     * @param {Array.<String>} [fields] 
+     * @param {Array.<module:keap.core.v2/model/String>} [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      * @param {String} [filter] Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs Note: `opportunity_id` and `ids` cannot be used together in the same request. 
      * @param {String} [orderBy] Attribute and direction to opportunities items. One of the following fields: - `next_action_time` - `contact_name` - `opportunity_title` - `created_time` - `update_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} [pageSize] Total number of items to return per page
@@ -471,7 +483,7 @@ export default class OpportunityApi {
      * List Opportunities
      * Retrieves a list of all Opportunities.
      * @param {Object} opts Optional parameters
-     * @param {Array.<String>} opts.fields 
+     * @param {Array.<module:keap.core.v2/model/String>} opts.fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs Note: `opportunity_id` and `ids` cannot be used together in the same request. 
      * @param {String} opts.orderBy Attribute and direction to opportunities items. One of the following fields: - `next_action_time` - `contact_name` - `opportunity_title` - `created_time` - `update_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} opts.pageSize Total number of items to return per page
@@ -490,7 +502,7 @@ export default class OpportunityApi {
      * List of Opportunity Stages
      * Retrieves a list of Opportunity Stages.
      * @param {Object} opts Optional parameters
-     * @param {String} [filter] Search filter to apply to results
+     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `opportunity_stage_name` — supports wildcard prefix search (e.g. `opportunity_stage_name==Qualified*`) - (String) `opportunity_stage_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `opportunity_stage_id>5`) 
      * @param {String} [orderBy] Attribute and direction to order stage items. One of the following fields: - `stage_order`  One of the following directions: - `asc` - `desc`
      * @param {Number} [pageSize] Total number of items to return per page
      * @param {String} [pageToken] Page token
@@ -528,7 +540,7 @@ export default class OpportunityApi {
      * List of Opportunity Stages
      * Retrieves a list of Opportunity Stages.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.filter Search filter to apply to results
+     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `opportunity_stage_name` — supports wildcard prefix search (e.g. `opportunity_stage_name==Qualified*`) - (String) `opportunity_stage_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `opportunity_stage_id>5`) 
      * @param {String} opts.orderBy Attribute and direction to order stage items. One of the following fields: - `stage_order`  One of the following directions: - `asc` - `desc`
      * @param {Number} opts.pageSize Total number of items to return per page
      * @param {String} opts.pageToken Page token
@@ -589,7 +601,8 @@ export default class OpportunityApi {
      * @param {String} opportunityId 
      * @param {module:keap.core.v2/model/UpdateOpportunityRequestV2} updateOpportunityRequestV2 
      * @param {Object} opts Optional parameters
-     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/RestV2Opportunity} and HTTP response
      */
     updateOpportunityWithHttpInfo(opportunityId, updateOpportunityRequestV2, opts) {
@@ -608,7 +621,8 @@ export default class OpportunityApi {
         'opportunity_id': opportunityId
       };
       let queryParams = {
-        'update_mask': opts['updateMask']
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi'),
+        'fields': this.apiClient.buildCollectionParam(opts['fields'], 'multi')
       };
       let headerParams = {
       };
@@ -632,7 +646,8 @@ export default class OpportunityApi {
      * @param {String} opportunityId 
      * @param {module:keap.core.v2/model/UpdateOpportunityRequestV2} updateOpportunityRequestV2 
      * @param {Object} opts Optional parameters
-     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} opts.fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/RestV2Opportunity}
      */
     updateOpportunity(opportunityId, updateOpportunityRequestV2, opts) {
@@ -649,7 +664,7 @@ export default class OpportunityApi {
      * @param {String} customFieldId 
      * @param {module:keap.core.v2/model/UpdateCustomFieldMetaDataRequest} updateCustomFieldMetaDataRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldMetaData} and HTTP response
      */
     updateOpportunityCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, opts) {
@@ -668,7 +683,7 @@ export default class OpportunityApi {
         'custom_field_id': customFieldId
       };
       let queryParams = {
-        'update_mask': opts['updateMask']
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
       };
       let headerParams = {
       };
@@ -692,7 +707,7 @@ export default class OpportunityApi {
      * @param {String} customFieldId 
      * @param {module:keap.core.v2/model/UpdateCustomFieldMetaDataRequest} updateCustomFieldMetaDataRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldMetaData}
      */
     updateOpportunityCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts) {
@@ -709,7 +724,7 @@ export default class OpportunityApi {
      * @param {String} stageId 
      * @param {module:keap.core.v2/model/UpdateOpportunityStageRequest} updateOpportunityStageRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/RestOpportunityStage} and HTTP response
      */
     updateOpportunityStageWithHttpInfo(stageId, updateOpportunityStageRequest, opts) {
@@ -728,7 +743,7 @@ export default class OpportunityApi {
         'stage_id': stageId
       };
       let queryParams = {
-        'update_mask': opts['updateMask']
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
       };
       let headerParams = {
       };
@@ -752,7 +767,7 @@ export default class OpportunityApi {
      * @param {String} stageId 
      * @param {module:keap.core.v2/model/UpdateOpportunityStageRequest} updateOpportunityStageRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/RestOpportunityStage}
      */
     updateOpportunityStage(stageId, updateOpportunityStageRequest, opts) {

@@ -1458,7 +1458,7 @@ catch (ApiException e)
 
 <a id="updateproduct"></a>
 # **UpdateProduct**
-> RestV2ProductDetail UpdateProduct (string productId, UpdateProductRequestDetail updateProductRequestDetail, Object? updateMask = null)
+> RestV2ProductDetail UpdateProduct (string productId, UpdateProductRequestDetail updateProductRequestDetail, List<string>? updateMask = null)
 
 Update a Product
 
@@ -1486,7 +1486,7 @@ namespace Example
             var apiInstance = new ProductsApi(config);
             var productId = "productId_example";  // string | product_id
             var updateProductRequestDetail = new UpdateProductRequestDetail(); // UpdateProductRequestDetail | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -1531,7 +1531,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **productId** | **string** | product_id |  |
 | **updateProductRequestDetail** | [**UpdateProductRequestDetail**](UpdateProductRequestDetail.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -1564,7 +1564,7 @@ catch (ApiException e)
 
 <a id="updateproductoption"></a>
 # **UpdateProductOption**
-> ProductOption UpdateProductOption (string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object? updateMask = null)
+> ProductOption UpdateProductOption (string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, List<string>? updateMask = null)
 
 Updates a Product Option
 
@@ -1593,7 +1593,7 @@ namespace Example
             var productId = "productId_example";  // string | product_id
             var productOptionId = "productOptionId_example";  // string | product_option_id
             var updateProductOptionRequest = new UpdateProductOptionRequest(); // UpdateProductOptionRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -1639,7 +1639,7 @@ catch (ApiException e)
 | **productId** | **string** | product_id |  |
 | **productOptionId** | **string** | product_option_id |  |
 | **updateProductOptionRequest** | [**UpdateProductOptionRequest**](UpdateProductOptionRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -1672,7 +1672,7 @@ catch (ApiException e)
 
 <a id="updateproductoptionlistoptionvalue"></a>
 # **UpdateProductOptionListOptionValue**
-> ProductOption UpdateProductOptionListOptionValue (string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, Object? updateMask = null)
+> ProductOption UpdateProductOptionListOptionValue (string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, List<string>? updateMask = null)
 
 Updates a Product Option List Option Value
 
@@ -1702,7 +1702,7 @@ namespace Example
             var productOptionId = "productOptionId_example";  // string | product_option_id
             var itemId = "itemId_example";  // string | item_id
             var updateProductOptionListOption = new UpdateProductOptionListOption(); // UpdateProductOptionListOption | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -1749,7 +1749,7 @@ catch (ApiException e)
 | **productOptionId** | **string** | product_option_id |  |
 | **itemId** | **string** | item_id |  |
 | **updateProductOptionListOption** | [**UpdateProductOptionListOption**](UpdateProductOptionListOption.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

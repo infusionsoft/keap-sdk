@@ -6281,7 +6281,7 @@ class OrdersApi
      *
      * @param  string $order_id order_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderRequest $update_order_request update_order_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6301,7 +6301,7 @@ class OrdersApi
      *
      * @param  string $order_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderRequest $update_order_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6500,7 +6500,7 @@ class OrdersApi
      *
      * @param  string $order_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderRequest $update_order_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6523,7 +6523,7 @@ class OrdersApi
      *
      * @param  string $order_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderRequest $update_order_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6575,7 +6575,7 @@ class OrdersApi
      *
      * @param  string $order_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderRequest $update_order_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6598,7 +6598,7 @@ class OrdersApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/orders/{order_id}';
         $formParams = [];
@@ -6611,7 +6611,7 @@ class OrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -6699,7 +6699,7 @@ class OrdersApi
      *
      * @param  string $custom_field_id custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderCustomField'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6719,7 +6719,7 @@ class OrdersApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderCustomField'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6918,7 +6918,7 @@ class OrdersApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6941,7 +6941,7 @@ class OrdersApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6993,7 +6993,7 @@ class OrdersApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7016,7 +7016,7 @@ class OrdersApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/orders/model/customFields/{custom_field_id}';
         $formParams = [];
@@ -7029,7 +7029,7 @@ class OrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -7118,7 +7118,7 @@ class OrdersApi
      * @param  string $order_id order_id (required)
      * @param  string $order_item_id order_item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderItemRequest $update_order_item_request update_order_item_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderItem'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7139,7 +7139,7 @@ class OrdersApi
      * @param  string $order_id (required)
      * @param  string $order_item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderItemRequest $update_order_item_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderItem'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7339,7 +7339,7 @@ class OrdersApi
      * @param  string $order_id (required)
      * @param  string $order_item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderItemRequest $update_order_item_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7363,7 +7363,7 @@ class OrdersApi
      * @param  string $order_id (required)
      * @param  string $order_item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderItemRequest $update_order_item_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7416,7 +7416,7 @@ class OrdersApi
      * @param  string $order_id (required)
      * @param  string $order_item_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOrderItemRequest $update_order_item_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7446,7 +7446,7 @@ class OrdersApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/orders/{order_id}/items/{order_item_id}';
         $formParams = [];
@@ -7459,7 +7459,7 @@ class OrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required

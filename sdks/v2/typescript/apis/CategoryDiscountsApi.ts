@@ -207,7 +207,7 @@ export class CategoryDiscountsApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateCategoryDiscountRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateCategoryDiscount(discountId: string, updateCategoryDiscountRequest: UpdateCategoryDiscountRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateCategoryDiscount(discountId: string, updateCategoryDiscountRequest: UpdateCategoryDiscountRequest, updateMask?: Set<'name' | 'description' | 'discount_percent' | 'apply_to_commissions' | 'criteria' | 'product_category_ids'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'discountId' is not null or undefined
@@ -233,9 +233,9 @@ export class CategoryDiscountsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'name' | 'description' | 'discount_percent' | 'apply_to_commissions' | 'criteria' | 'product_category_ids'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 

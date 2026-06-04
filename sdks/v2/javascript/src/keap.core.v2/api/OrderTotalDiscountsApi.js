@@ -243,7 +243,7 @@ export default class OrderTotalDiscountsApi {
      * @param {String} discountId 
      * @param {module:keap.core.v2/model/UpdateOrderTotalDiscountRequest} updateOrderTotalDiscountRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/OrderTotalDiscount} and HTTP response
      */
     updateOrderTotalDiscountWithHttpInfo(discountId, updateOrderTotalDiscountRequest, opts) {
@@ -262,7 +262,7 @@ export default class OrderTotalDiscountsApi {
         'discount_id': discountId
       };
       let queryParams = {
-        'update_mask': opts['updateMask']
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
       };
       let headerParams = {
       };
@@ -286,7 +286,7 @@ export default class OrderTotalDiscountsApi {
      * @param {String} discountId 
      * @param {module:keap.core.v2/model/UpdateOrderTotalDiscountRequest} updateOrderTotalDiscountRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/OrderTotalDiscount}
      */
     updateOrderTotalDiscount(discountId, updateOrderTotalDiscountRequest, opts) {

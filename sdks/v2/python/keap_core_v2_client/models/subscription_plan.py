@@ -17,8 +17,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
 from keap_core_v2_client.models.currency_value import CurrencyValue
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,18 +27,16 @@ class SubscriptionPlan(BaseModel):
     """
     SubscriptionPlan
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="Id of the subscription plan.")
+    id: Optional[StrictStr] = Field(default=None, description="Subscription plan ID")
+    frequency: Optional[StrictInt] = Field(default=None, description="Interval at which a customer receives a product or service as part of a subscription plan.")
     active: Optional[StrictBool] = Field(default=None, description="If the subscription plan is active or not.")
-    frequency: Optional[StrictInt] = Field(default=None, description="Total number of times of a cycle type which constitutes a plan cycle. Minimum value is 1.")
-    allow_prorating: Optional[StrictBool] = Field(default=None, description="Whether or not the plan will allow prorating.")
-    product_id: Optional[StrictStr] = Field(default=None, description="The product ID this plan belongs to.")
+    subscription_plan_name: Optional[StrictStr] = Field(default=None, description="Plan name")
     cycle_type: Optional[StrictStr] = Field(default=None, description="The cycle type of the subscription plan.")
-    display_order_index: Optional[StrictInt] = Field(default=None, description="The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list.")
     total_cycles: Optional[StrictInt] = Field(default=None, description="Total number of cycles the plan will run before ending. Value of 0 indicates plan will never end.")
-    plan_price: Optional[CurrencyValue] = Field(default=None, description="The price of the subscription plan.")
-    preauthorize_amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The pre-authorize amount for the subscription plan. If null, this field is omitted from the response.")
+    plan_price: Optional[CurrencyValue] = Field(default=None, description="Price of the plan")
+    display_order_index: Optional[StrictInt] = Field(default=None, description="The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "active", "frequency", "allow_prorating", "product_id", "cycle_type", "display_order_index", "total_cycles", "plan_price", "preauthorize_amount"]
+    __properties: ClassVar[List[str]] = ["id", "frequency", "active", "subscription_plan_name", "cycle_type", "total_cycles", "plan_price", "display_order_index"]
 
     @field_validator('cycle_type')
     def cycle_type_validate_enum(cls, value):
@@ -46,8 +44,8 @@ class SubscriptionPlan(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['DAILY', 'WEEKLY', 'MONTHLY', 'YEARLY']):
-            raise ValueError("must be one of enum values ('DAILY', 'WEEKLY', 'MONTHLY', 'YEARLY')")
+        if value not in set(['YEARLY', 'MONTHLY', 'WEEKLY', 'DAILY']):
+            raise ValueError("must be one of enum values ('YEARLY', 'MONTHLY', 'WEEKLY', 'DAILY')")
         return value
 
     model_config = ConfigDict(
@@ -112,15 +110,13 @@ class SubscriptionPlan(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "active": obj.get("active"),
             "frequency": obj.get("frequency"),
-            "allow_prorating": obj.get("allow_prorating"),
-            "product_id": obj.get("product_id"),
+            "active": obj.get("active"),
+            "subscription_plan_name": obj.get("subscription_plan_name"),
             "cycle_type": obj.get("cycle_type"),
-            "display_order_index": obj.get("display_order_index"),
             "total_cycles": obj.get("total_cycles"),
             "plan_price": CurrencyValue.from_dict(obj["plan_price"]) if obj.get("plan_price") is not None else None,
-            "preauthorize_amount": obj.get("preauthorize_amount")
+            "display_order_index": obj.get("display_order_index")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

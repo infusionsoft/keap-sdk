@@ -3679,7 +3679,7 @@ class NoteApi
      * @param  string $contact_id contact_id (required)
      * @param  string $note_id note_id (required)
      * @param  \Keap\Core\V2\Model\UpdateNoteRequest $update_note_request update_note_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNote'] to see the possible values for this operation
      *
@@ -3701,7 +3701,7 @@ class NoteApi
      * @param  string $contact_id (required)
      * @param  string $note_id (required)
      * @param  \Keap\Core\V2\Model\UpdateNoteRequest $update_note_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNote'] to see the possible values for this operation
      *
@@ -3902,7 +3902,7 @@ class NoteApi
      * @param  string $contact_id (required)
      * @param  string $note_id (required)
      * @param  \Keap\Core\V2\Model\UpdateNoteRequest $update_note_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNote'] to see the possible values for this operation
      *
@@ -3927,7 +3927,7 @@ class NoteApi
      * @param  string $contact_id (required)
      * @param  string $note_id (required)
      * @param  \Keap\Core\V2\Model\UpdateNoteRequest $update_note_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNote'] to see the possible values for this operation
      *
@@ -3981,7 +3981,7 @@ class NoteApi
      * @param  string $contact_id (required)
      * @param  string $note_id (required)
      * @param  \Keap\Core\V2\Model\UpdateNoteRequest $update_note_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string[]|null $fields Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNote'] to see the possible values for this operation
      *
@@ -4012,7 +4012,7 @@ class NoteApi
             );
         }
 
-
+        
 
 
         $resourcePath = '/rest/v2/contacts/{contact_id}/notes/{note_id}';
@@ -4026,7 +4026,7 @@ class NoteApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -4131,7 +4131,7 @@ class NoteApi
      *
      * @param  string $custom_field_id custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNotesCustomField'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4151,7 +4151,7 @@ class NoteApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNotesCustomField'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4350,7 +4350,7 @@ class NoteApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNotesCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4373,7 +4373,7 @@ class NoteApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNotesCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4425,7 +4425,7 @@ class NoteApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNotesCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4448,7 +4448,7 @@ class NoteApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/notes/model/customFields/{custom_field_id}';
         $formParams = [];
@@ -4461,7 +4461,7 @@ class NoteApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required

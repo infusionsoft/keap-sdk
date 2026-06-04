@@ -47,8 +47,13 @@ class RestV2Opportunity(BaseModel):
     last_updated_time: Optional[StrictStr] = Field(default=None, description="Last update timestamp (ISO-8601)")
     affiliate_id: Optional[StrictStr] = Field(default=None, description="Affiliate ID")
     lead_source: Optional[StrictStr] = Field(default=None, description="Lead source")
+    monthly_revenue: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Monthly recurring revenue")
+    order_revenue: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Order revenue")
+    objection: Optional[StrictStr] = Field(default=None, description="Objection reason")
+    status: Optional[StrictStr] = Field(default=None, description="Status name")
+    stage_entrance_time: Optional[StrictStr] = Field(default=None, description="Timestamp when the opportunity entered its current stage (ISO-8601)")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "contact", "stage", "user", "opportunity_title", "next_action_time", "next_action_notes", "opportunity_notes", "estimated_close_time", "include_in_forecast", "projected_revenue_low", "projected_revenue_high", "custom_fields", "created_time", "last_updated_time", "affiliate_id", "lead_source"]
+    __properties: ClassVar[List[str]] = ["id", "contact", "stage", "user", "opportunity_title", "next_action_time", "next_action_notes", "opportunity_notes", "estimated_close_time", "include_in_forecast", "projected_revenue_low", "projected_revenue_high", "custom_fields", "created_time", "last_updated_time", "affiliate_id", "lead_source", "monthly_revenue", "order_revenue", "objection", "status", "stage_entrance_time"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -140,7 +145,12 @@ class RestV2Opportunity(BaseModel):
             "created_time": obj.get("created_time"),
             "last_updated_time": obj.get("last_updated_time"),
             "affiliate_id": obj.get("affiliate_id"),
-            "lead_source": obj.get("lead_source")
+            "lead_source": obj.get("lead_source"),
+            "monthly_revenue": obj.get("monthly_revenue"),
+            "order_revenue": obj.get("order_revenue"),
+            "objection": obj.get("objection"),
+            "status": obj.get("status"),
+            "stage_entrance_time": obj.get("stage_entrance_time")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

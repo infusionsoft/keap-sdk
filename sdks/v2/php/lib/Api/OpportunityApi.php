@@ -170,15 +170,16 @@ class OpportunityApi
      * Create an Opportunity
      *
      * @param  \Keap\Core\V2\Model\CreateOpportunityRequest $create_opportunity_request create_opportunity_request (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOpportunity'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Keap\Core\V2\Model\RestV2Opportunity|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
-    public function createOpportunity($create_opportunity_request, string $contentType = self::contentTypes['createOpportunity'][0])
+    public function createOpportunity($create_opportunity_request, $fields = null, string $contentType = self::contentTypes['createOpportunity'][0])
     {
-        list($response) = $this->createOpportunityWithHttpInfo($create_opportunity_request, $contentType);
+        list($response) = $this->createOpportunityWithHttpInfo($create_opportunity_request, $fields, $contentType);
         return $response;
     }
 
@@ -188,15 +189,16 @@ class OpportunityApi
      * Create an Opportunity
      *
      * @param  \Keap\Core\V2\Model\CreateOpportunityRequest $create_opportunity_request (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOpportunity'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Keap\Core\V2\Model\RestV2Opportunity|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createOpportunityWithHttpInfo($create_opportunity_request, string $contentType = self::contentTypes['createOpportunity'][0])
+    public function createOpportunityWithHttpInfo($create_opportunity_request, $fields = null, string $contentType = self::contentTypes['createOpportunity'][0])
     {
-        $request = $this->createOpportunityRequest($create_opportunity_request, $contentType);
+        $request = $this->createOpportunityRequest($create_opportunity_request, $fields, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -385,14 +387,15 @@ class OpportunityApi
      * Create an Opportunity
      *
      * @param  \Keap\Core\V2\Model\CreateOpportunityRequest $create_opportunity_request (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOpportunity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOpportunityAsync($create_opportunity_request, string $contentType = self::contentTypes['createOpportunity'][0])
+    public function createOpportunityAsync($create_opportunity_request, $fields = null, string $contentType = self::contentTypes['createOpportunity'][0])
     {
-        return $this->createOpportunityAsyncWithHttpInfo($create_opportunity_request, $contentType)
+        return $this->createOpportunityAsyncWithHttpInfo($create_opportunity_request, $fields, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -406,15 +409,16 @@ class OpportunityApi
      * Create an Opportunity
      *
      * @param  \Keap\Core\V2\Model\CreateOpportunityRequest $create_opportunity_request (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOpportunity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOpportunityAsyncWithHttpInfo($create_opportunity_request, string $contentType = self::contentTypes['createOpportunity'][0])
+    public function createOpportunityAsyncWithHttpInfo($create_opportunity_request, $fields = null, string $contentType = self::contentTypes['createOpportunity'][0])
     {
         $returnType = '\Keap\Core\V2\Model\RestV2Opportunity';
-        $request = $this->createOpportunityRequest($create_opportunity_request, $contentType);
+        $request = $this->createOpportunityRequest($create_opportunity_request, $fields, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -456,12 +460,13 @@ class OpportunityApi
      * Create request for operation 'createOpportunity'
      *
      * @param  \Keap\Core\V2\Model\CreateOpportunityRequest $create_opportunity_request (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOpportunity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createOpportunityRequest($create_opportunity_request, string $contentType = self::contentTypes['createOpportunity'][0])
+    public function createOpportunityRequest($create_opportunity_request, $fields = null, string $contentType = self::contentTypes['createOpportunity'][0])
     {
 
         // verify the required parameter 'create_opportunity_request' is set
@@ -471,6 +476,7 @@ class OpportunityApi
             );
         }
 
+        
 
         $resourcePath = '/rest/v2/opportunities';
         $formParams = [];
@@ -479,6 +485,15 @@ class OpportunityApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
 
@@ -2177,15 +2192,16 @@ class OpportunityApi
      * Retrieve a Opportunity
      *
      * @param  string $opportunity_id opportunity_id (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOpportunity'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Keap\Core\V2\Model\RestV2Opportunity|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
-    public function getOpportunity($opportunity_id, string $contentType = self::contentTypes['getOpportunity'][0])
+    public function getOpportunity($opportunity_id, $fields = null, string $contentType = self::contentTypes['getOpportunity'][0])
     {
-        list($response) = $this->getOpportunityWithHttpInfo($opportunity_id, $contentType);
+        list($response) = $this->getOpportunityWithHttpInfo($opportunity_id, $fields, $contentType);
         return $response;
     }
 
@@ -2195,15 +2211,16 @@ class OpportunityApi
      * Retrieve a Opportunity
      *
      * @param  string $opportunity_id (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOpportunity'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Keap\Core\V2\Model\RestV2Opportunity|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getOpportunityWithHttpInfo($opportunity_id, string $contentType = self::contentTypes['getOpportunity'][0])
+    public function getOpportunityWithHttpInfo($opportunity_id, $fields = null, string $contentType = self::contentTypes['getOpportunity'][0])
     {
-        $request = $this->getOpportunityRequest($opportunity_id, $contentType);
+        $request = $this->getOpportunityRequest($opportunity_id, $fields, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2392,14 +2409,15 @@ class OpportunityApi
      * Retrieve a Opportunity
      *
      * @param  string $opportunity_id (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOpportunity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getOpportunityAsync($opportunity_id, string $contentType = self::contentTypes['getOpportunity'][0])
+    public function getOpportunityAsync($opportunity_id, $fields = null, string $contentType = self::contentTypes['getOpportunity'][0])
     {
-        return $this->getOpportunityAsyncWithHttpInfo($opportunity_id, $contentType)
+        return $this->getOpportunityAsyncWithHttpInfo($opportunity_id, $fields, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2413,15 +2431,16 @@ class OpportunityApi
      * Retrieve a Opportunity
      *
      * @param  string $opportunity_id (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOpportunity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getOpportunityAsyncWithHttpInfo($opportunity_id, string $contentType = self::contentTypes['getOpportunity'][0])
+    public function getOpportunityAsyncWithHttpInfo($opportunity_id, $fields = null, string $contentType = self::contentTypes['getOpportunity'][0])
     {
         $returnType = '\Keap\Core\V2\Model\RestV2Opportunity';
-        $request = $this->getOpportunityRequest($opportunity_id, $contentType);
+        $request = $this->getOpportunityRequest($opportunity_id, $fields, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2463,12 +2482,13 @@ class OpportunityApi
      * Create request for operation 'getOpportunity'
      *
      * @param  string $opportunity_id (required)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOpportunity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getOpportunityRequest($opportunity_id, string $contentType = self::contentTypes['getOpportunity'][0])
+    public function getOpportunityRequest($opportunity_id, $fields = null, string $contentType = self::contentTypes['getOpportunity'][0])
     {
 
         // verify the required parameter 'opportunity_id' is set
@@ -2478,6 +2498,7 @@ class OpportunityApi
             );
         }
 
+        
 
         $resourcePath = '/rest/v2/opportunities/{opportunity_id}';
         $formParams = [];
@@ -2486,6 +2507,15 @@ class OpportunityApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
@@ -2944,7 +2974,7 @@ class OpportunityApi
      *
      * List Opportunities
      *
-     * @param  string[]|null $fields fields (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. (optional)
      * @param  string|null $order_by Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
@@ -2966,7 +2996,7 @@ class OpportunityApi
      *
      * List Opportunities
      *
-     * @param  string[]|null $fields (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. (optional)
      * @param  string|null $order_by Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
@@ -3167,7 +3197,7 @@ class OpportunityApi
      *
      * List Opportunities
      *
-     * @param  string[]|null $fields (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. (optional)
      * @param  string|null $order_by Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
@@ -3192,7 +3222,7 @@ class OpportunityApi
      *
      * List Opportunities
      *
-     * @param  string[]|null $fields (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. (optional)
      * @param  string|null $order_by Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
@@ -3246,7 +3276,7 @@ class OpportunityApi
     /**
      * Create request for operation 'listOpportunities'
      *
-     * @param  string[]|null $fields (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. (optional)
      * @param  string|null $order_by Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
@@ -3389,7 +3419,7 @@ class OpportunityApi
      *
      * List of Opportunity Stages
      *
-     * @param  string|null $filter Search filter to apply to results (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;opportunity_stage_name&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_stage_name&#x3D;&#x3D;Qualified*&#x60;) - (String) &#x60;opportunity_stage_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;opportunity_stage_id&gt;5&#x60;) (optional)
      * @param  string|null $order_by Attribute and direction to order stage items. One of the following fields: - &#x60;stage_order&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -3410,7 +3440,7 @@ class OpportunityApi
      *
      * List of Opportunity Stages
      *
-     * @param  string|null $filter Search filter to apply to results (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;opportunity_stage_name&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_stage_name&#x3D;&#x3D;Qualified*&#x60;) - (String) &#x60;opportunity_stage_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;opportunity_stage_id&gt;5&#x60;) (optional)
      * @param  string|null $order_by Attribute and direction to order stage items. One of the following fields: - &#x60;stage_order&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -3610,7 +3640,7 @@ class OpportunityApi
      *
      * List of Opportunity Stages
      *
-     * @param  string|null $filter Search filter to apply to results (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;opportunity_stage_name&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_stage_name&#x3D;&#x3D;Qualified*&#x60;) - (String) &#x60;opportunity_stage_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;opportunity_stage_id&gt;5&#x60;) (optional)
      * @param  string|null $order_by Attribute and direction to order stage items. One of the following fields: - &#x60;stage_order&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -3634,7 +3664,7 @@ class OpportunityApi
      *
      * List of Opportunity Stages
      *
-     * @param  string|null $filter Search filter to apply to results (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;opportunity_stage_name&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_stage_name&#x3D;&#x3D;Qualified*&#x60;) - (String) &#x60;opportunity_stage_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;opportunity_stage_id&gt;5&#x60;) (optional)
      * @param  string|null $order_by Attribute and direction to order stage items. One of the following fields: - &#x60;stage_order&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -3687,7 +3717,7 @@ class OpportunityApi
     /**
      * Create request for operation 'listOpportunityStages'
      *
-     * @param  string|null $filter Search filter to apply to results (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;opportunity_stage_name&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_stage_name&#x3D;&#x3D;Qualified*&#x60;) - (String) &#x60;opportunity_stage_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;opportunity_stage_id&gt;5&#x60;) (optional)
      * @param  string|null $order_by Attribute and direction to order stage items. One of the following fields: - &#x60;stage_order&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -4185,16 +4215,17 @@ class OpportunityApi
      *
      * @param  string $opportunity_id opportunity_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityRequestV2 $update_opportunity_request_v2 update_opportunity_request_v2 (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunity'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Keap\Core\V2\Model\RestV2Opportunity|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
-    public function updateOpportunity($opportunity_id, $update_opportunity_request_v2, $update_mask = null, string $contentType = self::contentTypes['updateOpportunity'][0])
+    public function updateOpportunity($opportunity_id, $update_opportunity_request_v2, $update_mask = null, $fields = null, string $contentType = self::contentTypes['updateOpportunity'][0])
     {
-        list($response) = $this->updateOpportunityWithHttpInfo($opportunity_id, $update_opportunity_request_v2, $update_mask, $contentType);
+        list($response) = $this->updateOpportunityWithHttpInfo($opportunity_id, $update_opportunity_request_v2, $update_mask, $fields, $contentType);
         return $response;
     }
 
@@ -4205,16 +4236,17 @@ class OpportunityApi
      *
      * @param  string $opportunity_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityRequestV2 $update_opportunity_request_v2 (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunity'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Keap\Core\V2\Model\RestV2Opportunity|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateOpportunityWithHttpInfo($opportunity_id, $update_opportunity_request_v2, $update_mask = null, string $contentType = self::contentTypes['updateOpportunity'][0])
+    public function updateOpportunityWithHttpInfo($opportunity_id, $update_opportunity_request_v2, $update_mask = null, $fields = null, string $contentType = self::contentTypes['updateOpportunity'][0])
     {
-        $request = $this->updateOpportunityRequest($opportunity_id, $update_opportunity_request_v2, $update_mask, $contentType);
+        $request = $this->updateOpportunityRequest($opportunity_id, $update_opportunity_request_v2, $update_mask, $fields, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4404,15 +4436,16 @@ class OpportunityApi
      *
      * @param  string $opportunity_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityRequestV2 $update_opportunity_request_v2 (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateOpportunityAsync($opportunity_id, $update_opportunity_request_v2, $update_mask = null, string $contentType = self::contentTypes['updateOpportunity'][0])
+    public function updateOpportunityAsync($opportunity_id, $update_opportunity_request_v2, $update_mask = null, $fields = null, string $contentType = self::contentTypes['updateOpportunity'][0])
     {
-        return $this->updateOpportunityAsyncWithHttpInfo($opportunity_id, $update_opportunity_request_v2, $update_mask, $contentType)
+        return $this->updateOpportunityAsyncWithHttpInfo($opportunity_id, $update_opportunity_request_v2, $update_mask, $fields, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4427,16 +4460,17 @@ class OpportunityApi
      *
      * @param  string $opportunity_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityRequestV2 $update_opportunity_request_v2 (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateOpportunityAsyncWithHttpInfo($opportunity_id, $update_opportunity_request_v2, $update_mask = null, string $contentType = self::contentTypes['updateOpportunity'][0])
+    public function updateOpportunityAsyncWithHttpInfo($opportunity_id, $update_opportunity_request_v2, $update_mask = null, $fields = null, string $contentType = self::contentTypes['updateOpportunity'][0])
     {
         $returnType = '\Keap\Core\V2\Model\RestV2Opportunity';
-        $request = $this->updateOpportunityRequest($opportunity_id, $update_opportunity_request_v2, $update_mask, $contentType);
+        $request = $this->updateOpportunityRequest($opportunity_id, $update_opportunity_request_v2, $update_mask, $fields, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4479,13 +4513,14 @@ class OpportunityApi
      *
      * @param  string $opportunity_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityRequestV2 $update_opportunity_request_v2 (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateOpportunityRequest($opportunity_id, $update_opportunity_request_v2, $update_mask = null, string $contentType = self::contentTypes['updateOpportunity'][0])
+    public function updateOpportunityRequest($opportunity_id, $update_opportunity_request_v2, $update_mask = null, $fields = null, string $contentType = self::contentTypes['updateOpportunity'][0])
     {
 
         // verify the required parameter 'opportunity_id' is set
@@ -4502,7 +4537,8 @@ class OpportunityApi
             );
         }
 
-
+        
+        
 
         $resourcePath = '/rest/v2/opportunities/{opportunity_id}';
         $formParams = [];
@@ -4515,7 +4551,16 @@ class OpportunityApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -4603,7 +4648,7 @@ class OpportunityApi
      *
      * @param  string $custom_field_id custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityCustomField'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4623,7 +4668,7 @@ class OpportunityApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityCustomField'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4822,7 +4867,7 @@ class OpportunityApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4845,7 +4890,7 @@ class OpportunityApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4897,7 +4942,7 @@ class OpportunityApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4920,7 +4965,7 @@ class OpportunityApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/opportunities/model/customFields/{custom_field_id}';
         $formParams = [];
@@ -4933,7 +4978,7 @@ class OpportunityApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -5021,7 +5066,7 @@ class OpportunityApi
      *
      * @param  string $stage_id stage_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityStageRequest $update_opportunity_stage_request update_opportunity_stage_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityStage'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5041,7 +5086,7 @@ class OpportunityApi
      *
      * @param  string $stage_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityStageRequest $update_opportunity_stage_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityStage'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5240,7 +5285,7 @@ class OpportunityApi
      *
      * @param  string $stage_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityStageRequest $update_opportunity_stage_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityStage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5263,7 +5308,7 @@ class OpportunityApi
      *
      * @param  string $stage_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityStageRequest $update_opportunity_stage_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityStage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5315,7 +5360,7 @@ class OpportunityApi
      *
      * @param  string $stage_id (required)
      * @param  \Keap\Core\V2\Model\UpdateOpportunityStageRequest $update_opportunity_stage_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityStage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5338,7 +5383,7 @@ class OpportunityApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/opportunities/stages/{stage_id}';
         $formParams = [];
@@ -5351,7 +5396,7 @@ class OpportunityApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required

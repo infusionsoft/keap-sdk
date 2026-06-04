@@ -743,7 +743,9 @@ const request: CompanyApiUpdateCompanyRequest = {
     spouseName: "Jane Smith",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "id",
+  ],
 };
 
 const data = await apiInstance.updateCompany(request);
@@ -757,7 +759,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateCompanyRequest** | **UpdateCompanyRequest**|  |
  **companyId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;id&#39; &#124; &#39;company_name&#39; &#124; &#39;address&#39; &#124; &#39;phone_number&#39; &#124; &#39;fax_number&#39; &#124; &#39;email_address&#39; &#124; &#39;notes&#39; &#124; &#39;website&#39; &#124; &#39;custom_fields&#39; &#124; &#39;create_time&#39; &#124; &#39;update_time&#39; &#124; &#39;anniversary_date&#39; &#124; &#39;assistant_name&#39; &#124; &#39;assistant_phone&#39; &#124; &#39;billing_information&#39; &#124; &#39;birth_date&#39; &#124; &#39;contact_type&#39; &#124; &#39;first_name&#39; &#124; &#39;job_title&#39; &#124; &#39;last_name&#39; &#124; &#39;middle_name&#39; &#124; &#39;preferred_name&#39; &#124; &#39;owner_id&#39; &#124; &#39;referral_code&#39; &#124; &#39;spouse_name&#39; &#124; &#39;suffix&#39; &#124; &#39;title&#39; &#124; &#39;account_id&#39; &#124; &#39;created_by&#39; &#124; &#39;groups&#39; &#124; &#39;last_updated_by&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -819,7 +821,9 @@ const request: CompanyApiUpdateCompanyCustomFieldRequest = {
     groupId: "groupId_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "group_id",
+  ],
 };
 
 const data = await apiInstance.updateCompanyCustomField(request);
@@ -833,7 +837,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**|  |
  **customFieldId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;group_id&#39; &#124; &#39;label&#39; &#124; &#39;options&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

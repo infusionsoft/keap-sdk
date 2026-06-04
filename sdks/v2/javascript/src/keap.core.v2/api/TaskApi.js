@@ -400,7 +400,7 @@ export default class TaskApi {
      * @param {String} taskId 
      * @param {module:keap.core.v2/model/CreateUpdateTaskRequest} createUpdateTaskRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param {Array.<String>} [fields] Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/UpdateTaskResponse} and HTTP response
      */
@@ -420,7 +420,7 @@ export default class TaskApi {
         'task_id': taskId
       };
       let queryParams = {
-        'update_mask': opts['updateMask'],
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi'),
         'fields': this.apiClient.buildCollectionParam(opts['fields'], 'csv')
       };
       let headerParams = {
@@ -445,7 +445,7 @@ export default class TaskApi {
      * @param {String} taskId 
      * @param {module:keap.core.v2/model/CreateUpdateTaskRequest} createUpdateTaskRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param {Array.<String>} opts.fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/UpdateTaskResponse}
      */
@@ -463,7 +463,7 @@ export default class TaskApi {
      * @param {String} customFieldId 
      * @param {module:keap.core.v2/model/UpdateCustomFieldMetaDataRequest} updateCustomFieldMetaDataRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldMetaData} and HTTP response
      */
     updateTaskCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, opts) {
@@ -482,7 +482,7 @@ export default class TaskApi {
         'custom_field_id': customFieldId
       };
       let queryParams = {
-        'update_mask': opts['updateMask']
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
       };
       let headerParams = {
       };
@@ -506,7 +506,7 @@ export default class TaskApi {
      * @param {String} customFieldId 
      * @param {module:keap.core.v2/model/UpdateCustomFieldMetaDataRequest} updateCustomFieldMetaDataRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldMetaData}
      */
     updateTaskCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts) {

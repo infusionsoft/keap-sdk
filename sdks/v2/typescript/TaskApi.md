@@ -528,7 +528,9 @@ const request: TaskApiUpdateTaskRequest = {
     ],
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "id",
+  ],
     // Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
   fields: [
     "fields_example",
@@ -546,7 +548,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createUpdateTaskRequest** | **CreateUpdateTaskRequest**|  |
  **taskId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;id&#39; &#124; &#39;title&#39; &#124; &#39;description&#39; &#124; &#39;type&#39; &#124; &#39;priority&#39; &#124; &#39;completion_time&#39; &#124; &#39;due_time&#39; &#124; &#39;remind_time_mins&#39; &#124; &#39;assigned_to_user_id&#39; &#124; &#39;last_updated_by_user_id&#39; &#124; &#39;contact_id&#39; &#124; &#39;opportunity_id&#39; &#124; &#39;accepted&#39; &#124; &#39;completed&#39; &#124; &#39;custom_fields&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
  **fields** | **Array&lt;string&gt;** | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | (optional) defaults to undefined
 
 
@@ -609,7 +611,9 @@ const request: TaskApiUpdateTaskCustomFieldRequest = {
     groupId: "groupId_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "group_id",
+  ],
 };
 
 const data = await apiInstance.updateTaskCustomField(request);
@@ -623,7 +627,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**|  |
  **customFieldId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;group_id&#39; &#124; &#39;label&#39; &#124; &#39;options&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

@@ -31,6 +31,7 @@ import com.keap.core.sdk.model.OrderV2;
 import com.keap.core.sdk.model.PaymentResult;
 import com.keap.core.sdk.model.RestCreateOrderRequest;
 import com.keap.core.sdk.model.RestCreatePaymentRequest;
+import java.util.Set;
 import com.keap.core.sdk.model.UpdateCustomFieldMetaDataRequest;
 import com.keap.core.sdk.model.UpdateOrderItemRequest;
 import com.keap.core.sdk.model.UpdateOrderRequest;
@@ -1643,7 +1644,7 @@ import io.github.resilience4j.retry.Retry;
    * @return OrderV2
    * @throws ApiException if fails to make API call
    */
-  public OrderV2 updateOrder(String orderId, UpdateOrderRequest updateOrderRequest, Object updateMask) throws ApiException {
+  public OrderV2 updateOrder(String orderId, UpdateOrderRequest updateOrderRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<OrderV2> localVarResponse = updateOrderWithHttpInfo(orderId, updateOrderRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -1657,7 +1658,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;OrderV2&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<OrderV2> updateOrderWithHttpInfo(String orderId, UpdateOrderRequest updateOrderRequest, Object updateMask) throws ApiException {
+  public ApiResponse<OrderV2> updateOrderWithHttpInfo(String orderId, UpdateOrderRequest updateOrderRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateOrderRequestBuilder(orderId, updateOrderRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1698,7 +1699,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateOrderRequestBuilder(String orderId, UpdateOrderRequest updateOrderRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateOrderRequestBuilder(String orderId, UpdateOrderRequest updateOrderRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'orderId' is set
     if (orderId == null) {
       throw new ApiException(400, "Missing the required parameter 'orderId' when calling updateOrder");
@@ -1717,7 +1718,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -1758,7 +1759,7 @@ import io.github.resilience4j.retry.Retry;
    * @return CustomFieldMetaData
    * @throws ApiException if fails to make API call
    */
-  public CustomFieldMetaData updateOrderCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
+  public CustomFieldMetaData updateOrderCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<CustomFieldMetaData> localVarResponse = updateOrderCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -1772,7 +1773,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;CustomFieldMetaData&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CustomFieldMetaData> updateOrderCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
+  public ApiResponse<CustomFieldMetaData> updateOrderCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateOrderCustomFieldRequestBuilder(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1813,7 +1814,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateOrderCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateOrderCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'customFieldId' is set
     if (customFieldId == null) {
       throw new ApiException(400, "Missing the required parameter 'customFieldId' when calling updateOrderCustomField");
@@ -1832,7 +1833,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -1874,7 +1875,7 @@ import io.github.resilience4j.retry.Retry;
    * @return OrderItem
    * @throws ApiException if fails to make API call
    */
-  public OrderItem updateOrderItem(String orderId, String orderItemId, UpdateOrderItemRequest updateOrderItemRequest, Object updateMask) throws ApiException {
+  public OrderItem updateOrderItem(String orderId, String orderItemId, UpdateOrderItemRequest updateOrderItemRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<OrderItem> localVarResponse = updateOrderItemWithHttpInfo(orderId, orderItemId, updateOrderItemRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -1889,7 +1890,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;OrderItem&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<OrderItem> updateOrderItemWithHttpInfo(String orderId, String orderItemId, UpdateOrderItemRequest updateOrderItemRequest, Object updateMask) throws ApiException {
+  public ApiResponse<OrderItem> updateOrderItemWithHttpInfo(String orderId, String orderItemId, UpdateOrderItemRequest updateOrderItemRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateOrderItemRequestBuilder(orderId, orderItemId, updateOrderItemRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1930,7 +1931,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateOrderItemRequestBuilder(String orderId, String orderItemId, UpdateOrderItemRequest updateOrderItemRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateOrderItemRequestBuilder(String orderId, String orderItemId, UpdateOrderItemRequest updateOrderItemRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'orderId' is set
     if (orderId == null) {
       throw new ApiException(400, "Missing the required parameter 'orderId' when calling updateOrderItem");
@@ -1954,7 +1955,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

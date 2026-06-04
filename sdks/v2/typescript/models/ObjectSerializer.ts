@@ -657,7 +657,7 @@ import { SocialAccount , SocialAccountTypeEnum   } from '../models/SocialAccount
 import { StageDetails } from '../models/StageDetails';
 import { Subscription         , SubscriptionBillingCycleEnum                    } from '../models/Subscription';
 import { SubscriptionCommission, SubscriptionCommissionPayoutTypeEnum           } from '../models/SubscriptionCommission';
-import { SubscriptionPlan     , SubscriptionPlanCycleTypeEnum       } from '../models/SubscriptionPlan';
+import { SubscriptionPlan    , SubscriptionPlanCycleTypeEnum      } from '../models/SubscriptionPlan';
 import { SubscriptionPlanDetail   , SubscriptionPlanDetailBillingCycleEnum       } from '../models/SubscriptionPlanDetail';
 import { SubscriptionPlanList   , SubscriptionPlanListBillingCycleEnum       } from '../models/SubscriptionPlanList';
 import { Tag } from '../models/Tag';

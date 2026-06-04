@@ -729,7 +729,7 @@ export class ProductsApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateProductRequestDetail 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateProduct(productId: string, updateProductRequestDetail: UpdateProductRequestDetail, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateProduct(productId: string, updateProductRequestDetail: UpdateProductRequestDetail, updateMask?: Set<'active' | 'name' | 'description' | 'price' | 'sku' | 'shippable' | 'short_description' | 'subscription_only' | 'storefront_hidden' | 'weight' | 'taxable' | 'country_taxable' | 'city_taxable' | 'state_taxable' | 'inventory_limit' | 'out_of_stock_enabled' | 'email_for_inventory_notifications' | 'top_html' | 'bottom_html' | 'is_package' | 'needs_digital_delivery' | 'delivery_description'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'productId' is not null or undefined
@@ -755,9 +755,9 @@ export class ProductsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'active' | 'name' | 'description' | 'price' | 'sku' | 'shippable' | 'short_description' | 'subscription_only' | 'storefront_hidden' | 'weight' | 'taxable' | 'country_taxable' | 'city_taxable' | 'state_taxable' | 'inventory_limit' | 'out_of_stock_enabled' | 'email_for_inventory_notifications' | 'top_html' | 'bottom_html' | 'is_package' | 'needs_digital_delivery' | 'delivery_description'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 
@@ -796,7 +796,7 @@ export class ProductsApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateProductOptionRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateProductOption(productId: string, productOptionId: string, updateProductOptionRequest: UpdateProductOptionRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateProductOption(productId: string, productOptionId: string, updateProductOptionRequest: UpdateProductOptionRequest, updateMask?: Set<'option_label' | 'display_order' | 'required' | 'minimum_characters' | 'maximum_characters' | 'allow_spaces' | 'only_starts_with' | 'only_ends_with' | 'only_contains' | 'error_message'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'productId' is not null or undefined
@@ -829,9 +829,9 @@ export class ProductsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'option_label' | 'display_order' | 'required' | 'minimum_characters' | 'maximum_characters' | 'allow_spaces' | 'only_starts_with' | 'only_ends_with' | 'only_contains' | 'error_message'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 
@@ -871,7 +871,7 @@ export class ProductsApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateProductOptionListOption 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateProductOptionListOptionValue(productId: string, productOptionId: string, itemId: string, updateProductOptionListOption: UpdateProductOptionListOption, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateProductOptionListOptionValue(productId: string, productOptionId: string, itemId: string, updateProductOptionListOption: UpdateProductOptionListOption, updateMask?: Set<'item_label' | 'item_code' | 'item_display_order' | 'price_adjustment'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'productId' is not null or undefined
@@ -911,9 +911,9 @@ export class ProductsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'item_label' | 'item_code' | 'item_display_order' | 'price_adjustment'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 

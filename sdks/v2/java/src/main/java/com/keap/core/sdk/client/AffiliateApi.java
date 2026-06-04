@@ -46,6 +46,7 @@ import com.keap.core.sdk.model.ListAffiliatesResponse;
 import com.keap.core.sdk.model.ListProgramResourcesResponse;
 import com.keap.core.sdk.model.ObjectModel;
 import com.keap.core.sdk.model.RestAffiliate;
+import java.util.Set;
 import com.keap.core.sdk.model.UpdateAffiliateRequest;
 import com.keap.core.sdk.model.UpdateCommissionProgramRequest;
 import com.keap.core.sdk.model.UpdateCustomFieldMetaDataRequest;
@@ -3020,7 +3021,7 @@ import io.github.resilience4j.retry.Retry;
    * @return RestAffiliate
    * @throws ApiException if fails to make API call
    */
-  public RestAffiliate updateAffiliate(String id, UpdateAffiliateRequest updateAffiliateRequest, Object updateMask) throws ApiException {
+  public RestAffiliate updateAffiliate(String id, UpdateAffiliateRequest updateAffiliateRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<RestAffiliate> localVarResponse = updateAffiliateWithHttpInfo(id, updateAffiliateRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -3034,7 +3035,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;RestAffiliate&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RestAffiliate> updateAffiliateWithHttpInfo(String id, UpdateAffiliateRequest updateAffiliateRequest, Object updateMask) throws ApiException {
+  public ApiResponse<RestAffiliate> updateAffiliateWithHttpInfo(String id, UpdateAffiliateRequest updateAffiliateRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateAffiliateRequestBuilder(id, updateAffiliateRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -3075,7 +3076,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateAffiliateRequestBuilder(String id, UpdateAffiliateRequest updateAffiliateRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateAffiliateRequestBuilder(String id, UpdateAffiliateRequest updateAffiliateRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling updateAffiliate");
@@ -3094,7 +3095,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -3135,7 +3136,7 @@ import io.github.resilience4j.retry.Retry;
    * @return CustomFieldMetaData
    * @throws ApiException if fails to make API call
    */
-  public CustomFieldMetaData updateAffiliateCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
+  public CustomFieldMetaData updateAffiliateCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<CustomFieldMetaData> localVarResponse = updateAffiliateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -3149,7 +3150,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;CustomFieldMetaData&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CustomFieldMetaData> updateAffiliateCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
+  public ApiResponse<CustomFieldMetaData> updateAffiliateCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateAffiliateCustomFieldRequestBuilder(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -3190,7 +3191,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateAffiliateCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateAffiliateCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'customFieldId' is set
     if (customFieldId == null) {
       throw new ApiException(400, "Missing the required parameter 'customFieldId' when calling updateAffiliateCustomField");
@@ -3209,7 +3210,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -3250,7 +3251,7 @@ import io.github.resilience4j.retry.Retry;
    * @return AffiliateCommissionProgramResponse
    * @throws ApiException if fails to make API call
    */
-  public AffiliateCommissionProgramResponse updateCommissionProgram(String commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Object updateMask) throws ApiException {
+  public AffiliateCommissionProgramResponse updateCommissionProgram(String commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<AffiliateCommissionProgramResponse> localVarResponse = updateCommissionProgramWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -3264,7 +3265,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;AffiliateCommissionProgramResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AffiliateCommissionProgramResponse> updateCommissionProgramWithHttpInfo(String commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Object updateMask) throws ApiException {
+  public ApiResponse<AffiliateCommissionProgramResponse> updateCommissionProgramWithHttpInfo(String commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateCommissionProgramRequestBuilder(commissionProgramId, updateCommissionProgramRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -3305,7 +3306,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateCommissionProgramRequestBuilder(String commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateCommissionProgramRequestBuilder(String commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'commissionProgramId' is set
     if (commissionProgramId == null) {
       throw new ApiException(400, "Missing the required parameter 'commissionProgramId' when calling updateCommissionProgram");
@@ -3324,7 +3325,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -3365,7 +3366,7 @@ import io.github.resilience4j.retry.Retry;
    * @return AffiliateProgramResource
    * @throws ApiException if fails to make API call
    */
-  public AffiliateProgramResource updateCommissionProgramResource(String resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Object updateMask) throws ApiException {
+  public AffiliateProgramResource updateCommissionProgramResource(String resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<AffiliateProgramResource> localVarResponse = updateCommissionProgramResourceWithHttpInfo(resourceId, updateProgramResourceRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -3379,7 +3380,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;AffiliateProgramResource&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AffiliateProgramResource> updateCommissionProgramResourceWithHttpInfo(String resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Object updateMask) throws ApiException {
+  public ApiResponse<AffiliateProgramResource> updateCommissionProgramResourceWithHttpInfo(String resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateCommissionProgramResourceRequestBuilder(resourceId, updateProgramResourceRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -3420,7 +3421,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateCommissionProgramResourceRequestBuilder(String resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateCommissionProgramResourceRequestBuilder(String resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'resourceId' is set
     if (resourceId == null) {
       throw new ApiException(400, "Missing the required parameter 'resourceId' when calling updateCommissionProgramResource");
@@ -3439,7 +3440,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -3480,7 +3481,7 @@ import io.github.resilience4j.retry.Retry;
    * @return GetRestCommissionProgram
    * @throws ApiException if fails to make API call
    */
-  public GetRestCommissionProgram updateDefaultCommissionProgram(String commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Object updateMask) throws ApiException {
+  public GetRestCommissionProgram updateDefaultCommissionProgram(String commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<GetRestCommissionProgram> localVarResponse = updateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -3494,7 +3495,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;GetRestCommissionProgram&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<GetRestCommissionProgram> updateDefaultCommissionProgramWithHttpInfo(String commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Object updateMask) throws ApiException {
+  public ApiResponse<GetRestCommissionProgram> updateDefaultCommissionProgramWithHttpInfo(String commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateDefaultCommissionProgramRequestBuilder(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -3535,7 +3536,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateDefaultCommissionProgramRequestBuilder(String commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateDefaultCommissionProgramRequestBuilder(String commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'commissionProgramId' is set
     if (commissionProgramId == null) {
       throw new ApiException(400, "Missing the required parameter 'commissionProgramId' when calling updateDefaultCommissionProgram");
@@ -3554,7 +3555,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -3595,7 +3596,7 @@ import io.github.resilience4j.retry.Retry;
    * @return GetRestCommissionProgram
    * @throws ApiException if fails to make API call
    */
-  public GetRestCommissionProgram updateProductCommissionProgram(String commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Object updateMask) throws ApiException {
+  public GetRestCommissionProgram updateProductCommissionProgram(String commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<GetRestCommissionProgram> localVarResponse = updateProductCommissionProgramWithHttpInfo(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -3609,7 +3610,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;GetRestCommissionProgram&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<GetRestCommissionProgram> updateProductCommissionProgramWithHttpInfo(String commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Object updateMask) throws ApiException {
+  public ApiResponse<GetRestCommissionProgram> updateProductCommissionProgramWithHttpInfo(String commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateProductCommissionProgramRequestBuilder(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -3650,7 +3651,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateProductCommissionProgramRequestBuilder(String commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateProductCommissionProgramRequestBuilder(String commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'commissionProgramId' is set
     if (commissionProgramId == null) {
       throw new ApiException(400, "Missing the required parameter 'commissionProgramId' when calling updateProductCommissionProgram");
@@ -3669,7 +3670,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -3808,7 +3809,7 @@ import io.github.resilience4j.retry.Retry;
    * @return GetRestCommissionProgram
    * @throws ApiException if fails to make API call
    */
-  public GetRestCommissionProgram updateSubscriptionCommissionProgram(String commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Object updateMask) throws ApiException {
+  public GetRestCommissionProgram updateSubscriptionCommissionProgram(String commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<GetRestCommissionProgram> localVarResponse = updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -3822,7 +3823,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;GetRestCommissionProgram&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<GetRestCommissionProgram> updateSubscriptionCommissionProgramWithHttpInfo(String commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Object updateMask) throws ApiException {
+  public ApiResponse<GetRestCommissionProgram> updateSubscriptionCommissionProgramWithHttpInfo(String commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateSubscriptionCommissionProgramRequestBuilder(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -3863,7 +3864,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateSubscriptionCommissionProgramRequestBuilder(String commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateSubscriptionCommissionProgramRequestBuilder(String commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'commissionProgramId' is set
     if (commissionProgramId == null) {
       throw new ApiException(400, "Missing the required parameter 'commissionProgramId' when calling updateSubscriptionCommissionProgram");
@@ -3882,7 +3883,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

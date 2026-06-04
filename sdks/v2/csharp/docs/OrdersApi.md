@@ -1671,7 +1671,7 @@ This endpoint does not need any parameter.
 
 <a id="updateorder"></a>
 # **UpdateOrder**
-> OrderV2 UpdateOrder (string orderId, UpdateOrderRequest updateOrderRequest, Object? updateMask = null)
+> OrderV2 UpdateOrder (string orderId, UpdateOrderRequest updateOrderRequest, List<string>? updateMask = null)
 
 Update an Order
 
@@ -1699,7 +1699,7 @@ namespace Example
             var apiInstance = new OrdersApi(config);
             var orderId = "orderId_example";  // string | 
             var updateOrderRequest = new UpdateOrderRequest(); // UpdateOrderRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -1744,7 +1744,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **orderId** | **string** |  |  |
 | **updateOrderRequest** | [**UpdateOrderRequest**](UpdateOrderRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -1777,7 +1777,7 @@ catch (ApiException e)
 
 <a id="updateordercustomfield"></a>
 # **UpdateOrderCustomField**
-> CustomFieldMetaData UpdateOrderCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = null)
+> CustomFieldMetaData UpdateOrderCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = null)
 
 Update an Order Custom Field
 
@@ -1805,7 +1805,7 @@ namespace Example
             var apiInstance = new OrdersApi(config);
             var customFieldId = "customFieldId_example";  // string | 
             var updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -1850,7 +1850,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **customFieldId** | **string** |  |  |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -1883,7 +1883,7 @@ catch (ApiException e)
 
 <a id="updateorderitem"></a>
 # **UpdateOrderItem**
-> OrderItem UpdateOrderItem (string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, Object? updateMask = null)
+> OrderItem UpdateOrderItem (string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, List<string>? updateMask = null)
 
 Update an Order Item
 
@@ -1912,7 +1912,7 @@ namespace Example
             var orderId = "orderId_example";  // string | 
             var orderItemId = "orderItemId_example";  // string | 
             var updateOrderItemRequest = new UpdateOrderItemRequest(); // UpdateOrderItemRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -1958,7 +1958,7 @@ catch (ApiException e)
 | **orderId** | **string** |  |  |
 | **orderItemId** | **string** |  |  |
 | **updateOrderItemRequest** | [**UpdateOrderItemRequest**](UpdateOrderItemRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

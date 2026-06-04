@@ -289,7 +289,7 @@ $apiInstance = new Keap\Core\V2\Api\LeadSourceExpensesApi(
 $lead_source_expense_id = 'lead_source_expense_id_example'; // string | The ID of a lead source expense
 $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead source this expense belongs to
 $update_lead_source_expense_request = new \Keap\Core\V2\Model\UpdateLeadSourceExpenseRequest(); // \Keap\Core\V2\Model\UpdateLeadSourceExpenseRequest
-$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateLeadSourceExpense($lead_source_expense_id, $lead_source_id, $update_lead_source_expense_request, $update_mask);
@@ -306,7 +306,7 @@ try {
 | **lead_source_expense_id** | **string**| The ID of a lead source expense | |
 | **lead_source_id** | **string**| The ID of the lead source this expense belongs to | |
 | **update_lead_source_expense_request** | [**\Keap\Core\V2\Model\UpdateLeadSourceExpenseRequest**](../Model/UpdateLeadSourceExpenseRequest.md)|  | |
-| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

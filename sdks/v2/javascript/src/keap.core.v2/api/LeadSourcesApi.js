@@ -242,7 +242,7 @@ export default class LeadSourcesApi {
      * @param {String} leadSourceId The ID of a lead source
      * @param {module:keap.core.v2/model/CreateLeadSourceRequest} createLeadSourceRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/LeadSource} and HTTP response
      */
     updateLeadSourceWithHttpInfo(leadSourceId, createLeadSourceRequest, opts) {
@@ -261,7 +261,7 @@ export default class LeadSourcesApi {
         'lead_source_id': leadSourceId
       };
       let queryParams = {
-        'update_mask': opts['updateMask']
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
       };
       let headerParams = {
       };
@@ -285,7 +285,7 @@ export default class LeadSourcesApi {
      * @param {String} leadSourceId The ID of a lead source
      * @param {module:keap.core.v2/model/CreateLeadSourceRequest} createLeadSourceRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/LeadSource}
      */
     updateLeadSource(leadSourceId, createLeadSourceRequest, opts) {

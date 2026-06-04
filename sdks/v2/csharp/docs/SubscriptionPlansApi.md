@@ -430,7 +430,7 @@ catch (ApiException e)
 
 <a id="updatesubscriptionplan"></a>
 # **UpdateSubscriptionPlan**
-> SubscriptionPlan UpdateSubscriptionPlan (string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, Object? updateMask = null)
+> SubscriptionPlan UpdateSubscriptionPlan (string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, List<string>? updateMask = null)
 
 Update Subscription Plan
 
@@ -459,7 +459,7 @@ namespace Example
             var productId = "productId_example";  // string | product_id
             var subscriptionPlanId = "subscriptionPlanId_example";  // string | subscription_plan_id
             var updateSubscriptionPlanRequest = new UpdateSubscriptionPlanRequest(); // UpdateSubscriptionPlanRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -505,7 +505,7 @@ catch (ApiException e)
 | **productId** | **string** | product_id |  |
 | **subscriptionPlanId** | **string** | subscription_plan_id |  |
 | **updateSubscriptionPlanRequest** | [**UpdateSubscriptionPlanRequest**](UpdateSubscriptionPlanRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

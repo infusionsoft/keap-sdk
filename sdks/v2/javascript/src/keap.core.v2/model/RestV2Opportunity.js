@@ -107,6 +107,21 @@ class RestV2Opportunity {
             if (data.hasOwnProperty('lead_source')) {
                 obj['lead_source'] = ApiClient.convertToType(data['lead_source'], 'String');
             }
+            if (data.hasOwnProperty('monthly_revenue')) {
+                obj['monthly_revenue'] = ApiClient.convertToType(data['monthly_revenue'], 'Number');
+            }
+            if (data.hasOwnProperty('order_revenue')) {
+                obj['order_revenue'] = ApiClient.convertToType(data['order_revenue'], 'Number');
+            }
+            if (data.hasOwnProperty('objection')) {
+                obj['objection'] = ApiClient.convertToType(data['objection'], 'String');
+            }
+            if (data.hasOwnProperty('status')) {
+                obj['status'] = ApiClient.convertToType(data['status'], 'String');
+            }
+            if (data.hasOwnProperty('stage_entrance_time')) {
+                obj['stage_entrance_time'] = ApiClient.convertToType(data['stage_entrance_time'], 'String');
+            }
         }
         return obj;
     }
@@ -184,6 +199,18 @@ class RestV2Opportunity {
         // ensure the json data is a string
         if (data['lead_source'] && !(typeof data['lead_source'] === 'string' || data['lead_source'] instanceof String)) {
             throw new Error("Expected the field `lead_source` to be a primitive type in the JSON string but got " + data['lead_source']);
+        }
+        // ensure the json data is a string
+        if (data['objection'] && !(typeof data['objection'] === 'string' || data['objection'] instanceof String)) {
+            throw new Error("Expected the field `objection` to be a primitive type in the JSON string but got " + data['objection']);
+        }
+        // ensure the json data is a string
+        if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {
+            throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
+        }
+        // ensure the json data is a string
+        if (data['stage_entrance_time'] && !(typeof data['stage_entrance_time'] === 'string' || data['stage_entrance_time'] instanceof String)) {
+            throw new Error("Expected the field `stage_entrance_time` to be a primitive type in the JSON string but got " + data['stage_entrance_time']);
         }
 
         return true;
@@ -291,6 +318,36 @@ RestV2Opportunity.prototype['affiliate_id'] = undefined;
  * @member {String} lead_source
  */
 RestV2Opportunity.prototype['lead_source'] = undefined;
+
+/**
+ * Monthly recurring revenue
+ * @member {Number} monthly_revenue
+ */
+RestV2Opportunity.prototype['monthly_revenue'] = undefined;
+
+/**
+ * Order revenue
+ * @member {Number} order_revenue
+ */
+RestV2Opportunity.prototype['order_revenue'] = undefined;
+
+/**
+ * Objection reason
+ * @member {String} objection
+ */
+RestV2Opportunity.prototype['objection'] = undefined;
+
+/**
+ * Status name
+ * @member {String} status
+ */
+RestV2Opportunity.prototype['status'] = undefined;
+
+/**
+ * Timestamp when the opportunity entered its current stage (ISO-8601)
+ * @member {String} stage_entrance_time
+ */
+RestV2Opportunity.prototype['stage_entrance_time'] = undefined;
 
 
 

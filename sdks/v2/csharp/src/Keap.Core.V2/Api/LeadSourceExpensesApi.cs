@@ -147,7 +147,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LeadSourceExpense</returns>
-        LeadSourceExpense UpdateLeadSourceExpense(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object? updateMask = default, int operationIndex = 0);
+        LeadSourceExpense UpdateLeadSourceExpense(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, List<string>? updateMask = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a Lead Source Expense
@@ -162,7 +162,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LeadSourceExpense</returns>
-        ApiResponse<LeadSourceExpense> UpdateLeadSourceExpenseWithHttpInfo(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object? updateMask = default, int operationIndex = 0);
+        ApiResponse<LeadSourceExpense> UpdateLeadSourceExpenseWithHttpInfo(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, List<string>? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -300,7 +300,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LeadSourceExpense</returns>
-        System.Threading.Tasks.Task<LeadSourceExpense> UpdateLeadSourceExpenseAsync(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<LeadSourceExpense> UpdateLeadSourceExpenseAsync(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a Lead Source Expense
@@ -316,7 +316,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LeadSourceExpense)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LeadSourceExpense>> UpdateLeadSourceExpenseWithHttpInfoAsync(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<LeadSourceExpense>> UpdateLeadSourceExpenseWithHttpInfoAsync(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -1257,7 +1257,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LeadSourceExpense</returns>
-        public LeadSourceExpense UpdateLeadSourceExpense(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object? updateMask = default, int operationIndex = 0)
+        public LeadSourceExpense UpdateLeadSourceExpense(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, List<string>? updateMask = default, int operationIndex = 0)
         {
             Keap.Core.V2.Client.ApiResponse<LeadSourceExpense> localVarResponse = UpdateLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask);
             return localVarResponse.Data;
@@ -1273,7 +1273,7 @@ namespace Keap.Core.V2.Api
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LeadSourceExpense</returns>
-        public Keap.Core.V2.Client.ApiResponse<LeadSourceExpense> UpdateLeadSourceExpenseWithHttpInfo(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object? updateMask = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<LeadSourceExpense> UpdateLeadSourceExpenseWithHttpInfo(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, List<string>? updateMask = default, int operationIndex = 0)
         {
             // verify the required parameter 'leadSourceExpenseId' is set
             if (leadSourceExpenseId == null)
@@ -1321,7 +1321,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("lead_source_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(leadSourceId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateLeadSourceExpenseRequest;
 
@@ -1370,7 +1370,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LeadSourceExpense</returns>
-        public async System.Threading.Tasks.Task<LeadSourceExpense> UpdateLeadSourceExpenseAsync(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<LeadSourceExpense> UpdateLeadSourceExpenseAsync(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             Keap.Core.V2.Client.ApiResponse<LeadSourceExpense> localVarResponse = await UpdateLeadSourceExpenseWithHttpInfoAsync(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1387,7 +1387,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LeadSourceExpense)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<LeadSourceExpense>> UpdateLeadSourceExpenseWithHttpInfoAsync(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<LeadSourceExpense>> UpdateLeadSourceExpenseWithHttpInfoAsync(string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'leadSourceExpenseId' is set
             if (leadSourceExpenseId == null)
@@ -1435,7 +1435,7 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("lead_source_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(leadSourceId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             localVarRequestOptions.Data = updateLeadSourceExpenseRequest;
 

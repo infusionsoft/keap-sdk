@@ -2354,7 +2354,7 @@ public class Example {
         ProductsApi apiInstance = new ProductsApi(defaultClient);
         String productId = "productId_example"; // String | product_id
         UpdateProductRequestDetail updateProductRequestDetail = new UpdateProductRequestDetail(); // UpdateProductRequestDetail | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             RestV2ProductDetail result = apiInstance.updateProduct(productId, updateProductRequestDetail, updateMask);
             System.out.println(result);
@@ -2376,7 +2376,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **productId** | **String**| product_id | |
 | **updateProductRequestDetail** | [**UpdateProductRequestDetail**](UpdateProductRequestDetail.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: active, name, description, price, sku, shippable, short_description, subscription_only, storefront_hidden, weight, taxable, country_taxable, city_taxable, state_taxable, inventory_limit, out_of_stock_enabled, email_for_inventory_notifications, top_html, bottom_html, is_package, needs_digital_delivery, delivery_description] |
 
 ### Return type
 
@@ -2437,7 +2437,7 @@ public class Example {
         ProductsApi apiInstance = new ProductsApi(defaultClient);
         String productId = "productId_example"; // String | product_id
         UpdateProductRequestDetail updateProductRequestDetail = new UpdateProductRequestDetail(); // UpdateProductRequestDetail | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<RestV2ProductDetail> response = apiInstance.updateProductWithHttpInfo(productId, updateProductRequestDetail, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -2461,7 +2461,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **productId** | **String**| product_id | |
 | **updateProductRequestDetail** | [**UpdateProductRequestDetail**](UpdateProductRequestDetail.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: active, name, description, price, sku, shippable, short_description, subscription_only, storefront_hidden, weight, taxable, country_taxable, city_taxable, state_taxable, inventory_limit, out_of_stock_enabled, email_for_inventory_notifications, top_html, bottom_html, is_package, needs_digital_delivery, delivery_description] |
 
 ### Return type
 
@@ -2523,7 +2523,7 @@ public class Example {
         String productId = "productId_example"; // String | product_id
         String productOptionId = "productOptionId_example"; // String | product_option_id
         UpdateProductOptionRequest updateProductOptionRequest = new UpdateProductOptionRequest(); // UpdateProductOptionRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ProductOption result = apiInstance.updateProductOption(productId, productOptionId, updateProductOptionRequest, updateMask);
             System.out.println(result);
@@ -2546,7 +2546,7 @@ public class Example {
 | **productId** | **String**| product_id | |
 | **productOptionId** | **String**| product_option_id | |
 | **updateProductOptionRequest** | [**UpdateProductOptionRequest**](UpdateProductOptionRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: option_label, display_order, required, minimum_characters, maximum_characters, allow_spaces, only_starts_with, only_ends_with, only_contains, error_message] |
 
 ### Return type
 
@@ -2608,7 +2608,7 @@ public class Example {
         String productId = "productId_example"; // String | product_id
         String productOptionId = "productOptionId_example"; // String | product_option_id
         UpdateProductOptionRequest updateProductOptionRequest = new UpdateProductOptionRequest(); // UpdateProductOptionRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<ProductOption> response = apiInstance.updateProductOptionWithHttpInfo(productId, productOptionId, updateProductOptionRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -2633,7 +2633,7 @@ public class Example {
 | **productId** | **String**| product_id | |
 | **productOptionId** | **String**| product_option_id | |
 | **updateProductOptionRequest** | [**UpdateProductOptionRequest**](UpdateProductOptionRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: option_label, display_order, required, minimum_characters, maximum_characters, allow_spaces, only_starts_with, only_ends_with, only_contains, error_message] |
 
 ### Return type
 
@@ -2696,7 +2696,7 @@ public class Example {
         String productOptionId = "productOptionId_example"; // String | product_option_id
         String itemId = "itemId_example"; // String | item_id
         UpdateProductOptionListOption updateProductOptionListOption = new UpdateProductOptionListOption(); // UpdateProductOptionListOption | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ProductOption result = apiInstance.updateProductOptionListOptionValue(productId, productOptionId, itemId, updateProductOptionListOption, updateMask);
             System.out.println(result);
@@ -2720,7 +2720,7 @@ public class Example {
 | **productOptionId** | **String**| product_option_id | |
 | **itemId** | **String**| item_id | |
 | **updateProductOptionListOption** | [**UpdateProductOptionListOption**](UpdateProductOptionListOption.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: item_label, item_code, item_display_order, price_adjustment] |
 
 ### Return type
 
@@ -2783,7 +2783,7 @@ public class Example {
         String productOptionId = "productOptionId_example"; // String | product_option_id
         String itemId = "itemId_example"; // String | item_id
         UpdateProductOptionListOption updateProductOptionListOption = new UpdateProductOptionListOption(); // UpdateProductOptionListOption | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<ProductOption> response = apiInstance.updateProductOptionListOptionValueWithHttpInfo(productId, productOptionId, itemId, updateProductOptionListOption, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -2809,7 +2809,7 @@ public class Example {
 | **productOptionId** | **String**| product_option_id | |
 | **itemId** | **String**| item_id | |
 | **updateProductOptionListOption** | [**UpdateProductOptionListOption**](UpdateProductOptionListOption.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: item_label, item_code, item_display_order, price_adjustment] |
 
 ### Return type
 

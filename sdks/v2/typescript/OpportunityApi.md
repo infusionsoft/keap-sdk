@@ -57,6 +57,10 @@ const request: OpportunityApiCreateOpportunityRequest = {
     ],
     affiliateId: "789",
   },
+    // Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
+  fields: [
+    "custom_fields",
+  ],
 };
 
 const data = await apiInstance.createOpportunity(request);
@@ -69,6 +73,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createOpportunityRequest** | **CreateOpportunityRequest**|  |
+ **fields** | **Array<&#39;custom_fields&#39; &#124; &#39;monthly_revenue&#39; &#124; &#39;order_revenue&#39; &#124; &#39;objection&#39; &#124; &#39;status&#39; &#124; &#39;stage_entrance_time&#39;>** | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | (optional) defaults to undefined
 
 
 ### Return type
@@ -445,6 +450,10 @@ const apiInstance = new OpportunityApi(configuration);
 const request: OpportunityApiGetOpportunityRequest = {
   
   opportunityId: "opportunity_id_example",
+    // Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
+  fields: [
+    "custom_fields",
+  ],
 };
 
 const data = await apiInstance.getOpportunity(request);
@@ -457,6 +466,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **opportunityId** | [**string**] |  | defaults to undefined
+ **fields** | **Array<&#39;custom_fields&#39; &#124; &#39;monthly_revenue&#39; &#124; &#39;order_revenue&#39; &#124; &#39;objection&#39; &#124; &#39;status&#39; &#124; &#39;stage_entrance_time&#39;>** | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | (optional) defaults to undefined
 
 
 ### Return type
@@ -565,9 +575,9 @@ const configuration = createConfiguration();
 const apiInstance = new OpportunityApi(configuration);
 
 const request: OpportunityApiListOpportunitiesRequest = {
-  
+    // Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
   fields: [
-    "fields_example",
+    "custom_fields",
   ],
     // Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs Note: `opportunity_id` and `ids` cannot be used together in the same request.  (optional)
   filter: "filter_example",
@@ -588,7 +598,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fields** | **Set&lt;string&gt;** |  | (optional) defaults to undefined
+ **fields** | **Array<&#39;custom_fields&#39; &#124; &#39;monthly_revenue&#39; &#124; &#39;order_revenue&#39; &#124; &#39;objection&#39; &#124; &#39;status&#39; &#124; &#39;stage_entrance_time&#39;>** | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | (optional) defaults to undefined
  **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  | (optional) defaults to undefined
  **orderBy** | [**string**] | Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
@@ -640,7 +650,7 @@ const configuration = createConfiguration();
 const apiInstance = new OpportunityApi(configuration);
 
 const request: OpportunityApiListOpportunityStagesRequest = {
-    // Search filter to apply to results (optional)
+    // Filter to apply, allowed fields are: - (String) `opportunity_stage_name` — supports wildcard prefix search (e.g. `opportunity_stage_name==Qualified*`) - (String) `opportunity_stage_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `opportunity_stage_id>5`)  (optional)
   filter: "filter_example",
     // Attribute and direction to order stage items. One of the following fields: - `stage_order`  One of the following directions: - `asc` - `desc` (optional)
   orderBy: "order_by_example",
@@ -659,7 +669,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | [**string**] | Search filter to apply to results | (optional) defaults to undefined
+ **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;opportunity_stage_name&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_stage_name&#x3D;&#x3D;Qualified*&#x60;) - (String) &#x60;opportunity_stage_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;opportunity_stage_id&gt;5&#x60;)  | (optional) defaults to undefined
  **orderBy** | [**string**] | Attribute and direction to order stage items. One of the following fields: - &#x60;stage_order&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
@@ -788,7 +798,13 @@ const request: OpportunityApiUpdateOpportunityRequest = {
     affiliateId: "789",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "opportunity_title",
+  ],
+    // Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
+  fields: [
+    "custom_fields",
+  ],
 };
 
 const data = await apiInstance.updateOpportunity(request);
@@ -802,7 +818,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateOpportunityRequestV2** | **UpdateOpportunityRequestV2**|  |
  **opportunityId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;opportunity_title&#39; &#124; &#39;next_action_time&#39; &#124; &#39;next_action_notes&#39; &#124; &#39;opportunity_notes&#39; &#124; &#39;estimated_close_time&#39; &#124; &#39;include_in_forecast&#39; &#124; &#39;projected_revenue_low&#39; &#124; &#39;projected_revenue_high&#39; &#124; &#39;contact_id&#39; &#124; &#39;stage_id&#39; &#124; &#39;user_id&#39; &#124; &#39;custom_fields&#39; &#124; &#39;affiliate_id&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **fields** | **Array<&#39;custom_fields&#39; &#124; &#39;monthly_revenue&#39; &#124; &#39;order_revenue&#39; &#124; &#39;objection&#39; &#124; &#39;status&#39; &#124; &#39;stage_entrance_time&#39;>** | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | (optional) defaults to undefined
 
 
 ### Return type
@@ -864,7 +881,9 @@ const request: OpportunityApiUpdateOpportunityCustomFieldRequest = {
     groupId: "groupId_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "group_id",
+  ],
 };
 
 const data = await apiInstance.updateOpportunityCustomField(request);
@@ -878,7 +897,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**|  |
  **customFieldId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;group_id&#39; &#124; &#39;label&#39; &#124; &#39;options&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -944,7 +963,9 @@ const request: OpportunityApiUpdateOpportunityStageRequest = {
     ],
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "name",
+  ],
 };
 
 const data = await apiInstance.updateOpportunityStage(request);
@@ -958,7 +979,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateOpportunityStageRequest** | **UpdateOpportunityStageRequest**|  |
  **stageId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;name&#39; &#124; &#39;order&#39; &#124; &#39;target_number_days&#39; &#124; &#39;probability&#39; &#124; &#39;checklist_items&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

@@ -431,7 +431,9 @@ const request: ProductInterestBundlesApiUpdateProductInterestRequest = {
     discountPercent: 10,
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "quantity",
+  ],
 };
 
 const data = await apiInstance.updateProductInterest(request);
@@ -446,7 +448,7 @@ Name | Type | Description  | Notes
  **updateProductInterestRequest** | **UpdateProductInterestRequest**|  |
  **id** | [**string**] |  | defaults to undefined
  **interestId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;quantity&#39; &#124; &#39;price&#39; &#124; &#39;discount_percent&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -502,7 +504,9 @@ const request: ProductInterestBundlesApiUpdateProductInterestBundleRequest = {
     description: "Bundle of premium products",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "name",
+  ],
 };
 
 const data = await apiInstance.updateProductInterestBundle(request);
@@ -516,7 +520,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateProductInterestBundleRequest** | **UpdateProductInterestBundleRequest**|  |
  **id** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;name&#39; &#124; &#39;description&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

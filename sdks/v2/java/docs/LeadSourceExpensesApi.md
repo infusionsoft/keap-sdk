@@ -715,7 +715,7 @@ public class Example {
         String leadSourceExpenseId = "leadSourceExpenseId_example"; // String | The ID of a lead source expense
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this expense belongs to
         UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest = new UpdateLeadSourceExpenseRequest(); // UpdateLeadSourceExpenseRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             LeadSourceExpense result = apiInstance.updateLeadSourceExpense(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask);
             System.out.println(result);
@@ -738,7 +738,7 @@ public class Example {
 | **leadSourceExpenseId** | **String**| The ID of a lead source expense | |
 | **leadSourceId** | **String**| The ID of the lead source this expense belongs to | |
 | **updateLeadSourceExpenseRequest** | [**UpdateLeadSourceExpenseRequest**](UpdateLeadSourceExpenseRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: title, notes, amount, incurred_time] |
 
 ### Return type
 
@@ -800,7 +800,7 @@ public class Example {
         String leadSourceExpenseId = "leadSourceExpenseId_example"; // String | The ID of a lead source expense
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this expense belongs to
         UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest = new UpdateLeadSourceExpenseRequest(); // UpdateLeadSourceExpenseRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<LeadSourceExpense> response = apiInstance.updateLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -825,7 +825,7 @@ public class Example {
 | **leadSourceExpenseId** | **String**| The ID of a lead source expense | |
 | **leadSourceId** | **String**| The ID of the lead source this expense belongs to | |
 | **updateLeadSourceExpenseRequest** | [**UpdateLeadSourceExpenseRequest**](UpdateLeadSourceExpenseRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: title, notes, amount, incurred_time] |
 
 ### Return type
 

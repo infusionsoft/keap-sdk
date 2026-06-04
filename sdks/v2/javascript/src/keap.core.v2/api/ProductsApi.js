@@ -796,7 +796,7 @@ export default class ProductsApi {
      * @param {String} productId product_id
      * @param {module:keap.core.v2/model/UpdateProductRequestDetail} updateProductRequestDetail 
      * @param {Object} opts Optional parameters
-     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/RestV2ProductDetail} and HTTP response
      */
     updateProductWithHttpInfo(productId, updateProductRequestDetail, opts) {
@@ -815,7 +815,7 @@ export default class ProductsApi {
         'product_id': productId
       };
       let queryParams = {
-        'update_mask': opts['updateMask']
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
       };
       let headerParams = {
       };
@@ -839,7 +839,7 @@ export default class ProductsApi {
      * @param {String} productId product_id
      * @param {module:keap.core.v2/model/UpdateProductRequestDetail} updateProductRequestDetail 
      * @param {Object} opts Optional parameters
-     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/RestV2ProductDetail}
      */
     updateProduct(productId, updateProductRequestDetail, opts) {
@@ -857,7 +857,7 @@ export default class ProductsApi {
      * @param {String} productOptionId product_option_id
      * @param {module:keap.core.v2/model/UpdateProductOptionRequest} updateProductOptionRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ProductOption} and HTTP response
      */
     updateProductOptionWithHttpInfo(productId, productOptionId, updateProductOptionRequest, opts) {
@@ -881,7 +881,7 @@ export default class ProductsApi {
         'product_option_id': productOptionId
       };
       let queryParams = {
-        'update_mask': opts['updateMask']
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
       };
       let headerParams = {
       };
@@ -906,7 +906,7 @@ export default class ProductsApi {
      * @param {String} productOptionId product_option_id
      * @param {module:keap.core.v2/model/UpdateProductOptionRequest} updateProductOptionRequest 
      * @param {Object} opts Optional parameters
-     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ProductOption}
      */
     updateProductOption(productId, productOptionId, updateProductOptionRequest, opts) {
@@ -925,7 +925,7 @@ export default class ProductsApi {
      * @param {String} itemId item_id
      * @param {module:keap.core.v2/model/UpdateProductOptionListOption} updateProductOptionListOption 
      * @param {Object} opts Optional parameters
-     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ProductOption} and HTTP response
      */
     updateProductOptionListOptionValueWithHttpInfo(productId, productOptionId, itemId, updateProductOptionListOption, opts) {
@@ -954,7 +954,7 @@ export default class ProductsApi {
         'item_id': itemId
       };
       let queryParams = {
-        'update_mask': opts['updateMask']
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
       };
       let headerParams = {
       };
@@ -980,7 +980,7 @@ export default class ProductsApi {
      * @param {String} itemId item_id
      * @param {module:keap.core.v2/model/UpdateProductOptionListOption} updateProductOptionListOption 
      * @param {Object} opts Optional parameters
-     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ProductOption}
      */
     updateProductOptionListOptionValue(productId, productOptionId, itemId, updateProductOptionListOption, opts) {

@@ -13,11 +13,11 @@ All URIs are relative to *https://api.keap.com/crm*
 
 <a id="createfile"></a>
 # **CreateFile**
-> FileMetadata CreateFile (System.IO.Stream file, string fileName, bool isPublic, string fileAssociation, System.IO.Stream file2, string fileName2, string isPublic2, string fileAssociation2, string? contactId = null, string? contactId2 = null)
+> FileMetadata CreateFile (System.IO.Stream file, string fileName, string fileAssociation, string? contactId = null, string? isPublic = null)
 
 Create a file
 
-Creates a file and uploads it
+Uploads a file using multipart/form-data. The `file` part contains the binary file content; `file_name`, `is_public`, `file_association`, and optionally `contact_id` are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
 
 ### Example
 ```csharp
@@ -39,21 +39,16 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new FilesApi(config);
-            var file = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream | File to upload. This is a file sent as multi-part (not a string)
+            var file = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream | File to upload
             var fileName = "fileName_example";  // string | File name
-            var isPublic = true;  // bool | Is public
             var fileAssociation = "fileAssociation_example";  // string | File association
-            var file2 = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream | File to upload
-            var fileName2 = "fileName_example";  // string | File name
-            var isPublic2 = "isPublic_example";  // string | Is public
-            var fileAssociation2 = "fileAssociation_example";  // string | File association
-            var contactId = "contactId_example";  // string? | Contact ID (optional) 
-            var contactId2 = "contactId_example";  // string? | Contact ID. Required if the `file_association` is CONTACT (optional) 
+            var contactId = "contactId_example";  // string? | Contact ID. Required if the `file_association` is CONTACT (optional) 
+            var isPublic = "isPublic_example";  // string? | Is public (optional) 
 
             try
             {
                 // Create a file
-                FileMetadata result = apiInstance.CreateFile(file, fileName, isPublic, fileAssociation, file2, fileName2, isPublic2, fileAssociation2, contactId, contactId2);
+                FileMetadata result = apiInstance.CreateFile(file, fileName, fileAssociation, contactId, isPublic);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -74,7 +69,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Create a file
-    ApiResponse<FileMetadata> response = apiInstance.CreateFileWithHttpInfo(file, fileName, isPublic, fileAssociation, file2, fileName2, isPublic2, fileAssociation2, contactId, contactId2);
+    ApiResponse<FileMetadata> response = apiInstance.CreateFileWithHttpInfo(file, fileName, fileAssociation, contactId, isPublic);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -91,16 +86,11 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **file** | **System.IO.Stream****System.IO.Stream** | File to upload. This is a file sent as multi-part (not a string) |  |
+| **file** | **System.IO.Stream****System.IO.Stream** | File to upload |  |
 | **fileName** | **string** | File name |  |
-| **isPublic** | **bool** | Is public |  |
 | **fileAssociation** | **string** | File association |  |
-| **file2** | **System.IO.Stream****System.IO.Stream** | File to upload |  |
-| **fileName2** | **string** | File name |  |
-| **isPublic2** | **string** | Is public |  |
-| **fileAssociation2** | **string** | File association |  |
-| **contactId** | **string?** | Contact ID | [optional]  |
-| **contactId2** | **string?** | Contact ID. Required if the &#x60;file_association&#x60; is CONTACT | [optional]  |
+| **contactId** | **string?** | Contact ID. Required if the &#x60;file_association&#x60; is CONTACT | [optional]  |
+| **isPublic** | **string?** | Is public | [optional]  |
 
 ### Return type
 
@@ -543,11 +533,11 @@ catch (ApiException e)
 
 <a id="updatefile"></a>
 # **UpdateFile**
-> FileMetadata UpdateFile (string fileId, Object? updateMask = null, System.IO.Stream? file = null, string? fileName = null, bool? isPublic = null, System.IO.Stream? file2 = null, string? fileName2 = null, bool? isPublic2 = null)
+> FileMetadata UpdateFile (string fileId, List<string>? updateMask = null, System.IO.Stream? file = null, string? fileName = null, bool? isPublic = null)
 
 Update a file
 
-Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
 
 ### Example
 ```csharp
@@ -570,18 +560,15 @@ namespace Example
 
             var apiInstance = new FilesApi(config);
             var fileId = "fileId_example";  // string | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
-            var file = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream? | File to upload. This is a file sent as multi-part (not a string) (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var file = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream? | File to upload (optional) 
             var fileName = "fileName_example";  // string? | File name (optional) 
             var isPublic = true;  // bool? | Is public (optional) 
-            var file2 = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream? | File to upload (optional) 
-            var fileName2 = "fileName_example";  // string? | File name (optional) 
-            var isPublic2 = true;  // bool? | Is public (optional) 
 
             try
             {
                 // Update a file
-                FileMetadata result = apiInstance.UpdateFile(fileId, updateMask, file, fileName, isPublic, file2, fileName2, isPublic2);
+                FileMetadata result = apiInstance.UpdateFile(fileId, updateMask, file, fileName, isPublic);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -602,7 +589,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Update a file
-    ApiResponse<FileMetadata> response = apiInstance.UpdateFileWithHttpInfo(fileId, updateMask, file, fileName, isPublic, file2, fileName2, isPublic2);
+    ApiResponse<FileMetadata> response = apiInstance.UpdateFileWithHttpInfo(fileId, updateMask, file, fileName, isPublic);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -620,13 +607,10 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **fileId** | **string** |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
-| **file** | **System.IO.Stream?****System.IO.Stream?** | File to upload. This is a file sent as multi-part (not a string) | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **file** | **System.IO.Stream?****System.IO.Stream?** | File to upload | [optional]  |
 | **fileName** | **string?** | File name | [optional]  |
 | **isPublic** | **bool?** | Is public | [optional]  |
-| **file2** | **System.IO.Stream?****System.IO.Stream?** | File to upload | [optional]  |
-| **fileName2** | **string?** | File name | [optional]  |
-| **isPublic2** | **bool?** | Is public | [optional]  |
 
 ### Return type
 

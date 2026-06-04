@@ -23,6 +23,7 @@ import com.keap.core.sdk.model.LeadSourceRecurringExpense;
 import com.keap.core.sdk.model.LeadSourceRecurringExpenseUpdateRequest;
 import com.keap.core.sdk.model.ListLeadSourceExpensesResponse;
 import com.keap.core.sdk.model.ListLeadSourceRecurringExpensesResponse;
+import java.util.Set;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -637,7 +638,7 @@ import io.github.resilience4j.retry.Retry;
    * @return LeadSourceRecurringExpense
    * @throws ApiException if fails to make API call
    */
-  public LeadSourceRecurringExpense updateLeadSourceRecurringExpense(String leadSourceId, String leadSourceRecurringExpenseId, LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest, Object updateMask) throws ApiException {
+  public LeadSourceRecurringExpense updateLeadSourceRecurringExpense(String leadSourceId, String leadSourceRecurringExpenseId, LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<LeadSourceRecurringExpense> localVarResponse = updateLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -652,7 +653,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;LeadSourceRecurringExpense&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LeadSourceRecurringExpense> updateLeadSourceRecurringExpenseWithHttpInfo(String leadSourceId, String leadSourceRecurringExpenseId, LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest, Object updateMask) throws ApiException {
+  public ApiResponse<LeadSourceRecurringExpense> updateLeadSourceRecurringExpenseWithHttpInfo(String leadSourceId, String leadSourceRecurringExpenseId, LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateLeadSourceRecurringExpenseRequestBuilder(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -693,7 +694,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateLeadSourceRecurringExpenseRequestBuilder(String leadSourceId, String leadSourceRecurringExpenseId, LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateLeadSourceRecurringExpenseRequestBuilder(String leadSourceId, String leadSourceRecurringExpenseId, LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'leadSourceId' is set
     if (leadSourceId == null) {
       throw new ApiException(400, "Missing the required parameter 'leadSourceId' when calling updateLeadSourceRecurringExpense");
@@ -717,7 +718,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

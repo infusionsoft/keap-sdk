@@ -422,7 +422,7 @@ catch (ApiException e)
 
 <a id="updateordertotaldiscount"></a>
 # **UpdateOrderTotalDiscount**
-> OrderTotalDiscount UpdateOrderTotalDiscount (string discountId, UpdateOrderTotalDiscountRequest updateOrderTotalDiscountRequest, Object? updateMask = null)
+> OrderTotalDiscount UpdateOrderTotalDiscount (string discountId, UpdateOrderTotalDiscountRequest updateOrderTotalDiscountRequest, List<string>? updateMask = null)
 
 Update an Order Total Discount
 
@@ -450,7 +450,7 @@ namespace Example
             var apiInstance = new OrderTotalDiscountsApi(config);
             var discountId = "discountId_example";  // string | 
             var updateOrderTotalDiscountRequest = new UpdateOrderTotalDiscountRequest(); // UpdateOrderTotalDiscountRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -495,7 +495,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **discountId** | **string** |  |  |
 | **updateOrderTotalDiscountRequest** | [**UpdateOrderTotalDiscountRequest**](UpdateOrderTotalDiscountRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

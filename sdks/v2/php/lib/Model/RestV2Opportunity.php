@@ -73,7 +73,12 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         'created_time' => 'string',
         'last_updated_time' => 'string',
         'affiliate_id' => 'string',
-        'lead_source' => 'string'
+        'lead_source' => 'string',
+        'monthly_revenue' => 'float',
+        'order_revenue' => 'float',
+        'objection' => 'string',
+        'status' => 'string',
+        'stage_entrance_time' => 'string'
     ];
 
     /**
@@ -100,7 +105,12 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         'created_time' => null,
         'last_updated_time' => null,
         'affiliate_id' => null,
-        'lead_source' => null
+        'lead_source' => null,
+        'monthly_revenue' => 'double',
+        'order_revenue' => 'double',
+        'objection' => null,
+        'status' => null,
+        'stage_entrance_time' => null
     ];
 
     /**
@@ -125,7 +135,12 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         'created_time' => false,
         'last_updated_time' => false,
         'affiliate_id' => false,
-        'lead_source' => false
+        'lead_source' => false,
+        'monthly_revenue' => false,
+        'order_revenue' => false,
+        'objection' => false,
+        'status' => false,
+        'stage_entrance_time' => false
     ];
 
     /**
@@ -230,7 +245,12 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         'created_time' => 'created_time',
         'last_updated_time' => 'last_updated_time',
         'affiliate_id' => 'affiliate_id',
-        'lead_source' => 'lead_source'
+        'lead_source' => 'lead_source',
+        'monthly_revenue' => 'monthly_revenue',
+        'order_revenue' => 'order_revenue',
+        'objection' => 'objection',
+        'status' => 'status',
+        'stage_entrance_time' => 'stage_entrance_time'
     ];
 
     /**
@@ -255,7 +275,12 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         'created_time' => 'setCreatedTime',
         'last_updated_time' => 'setLastUpdatedTime',
         'affiliate_id' => 'setAffiliateId',
-        'lead_source' => 'setLeadSource'
+        'lead_source' => 'setLeadSource',
+        'monthly_revenue' => 'setMonthlyRevenue',
+        'order_revenue' => 'setOrderRevenue',
+        'objection' => 'setObjection',
+        'status' => 'setStatus',
+        'stage_entrance_time' => 'setStageEntranceTime'
     ];
 
     /**
@@ -280,7 +305,12 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         'created_time' => 'getCreatedTime',
         'last_updated_time' => 'getLastUpdatedTime',
         'affiliate_id' => 'getAffiliateId',
-        'lead_source' => 'getLeadSource'
+        'lead_source' => 'getLeadSource',
+        'monthly_revenue' => 'getMonthlyRevenue',
+        'order_revenue' => 'getOrderRevenue',
+        'objection' => 'getObjection',
+        'status' => 'getStatus',
+        'stage_entrance_time' => 'getStageEntranceTime'
     ];
 
     /**
@@ -357,6 +387,11 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('last_updated_time', $data ?? [], null);
         $this->setIfExists('affiliate_id', $data ?? [], null);
         $this->setIfExists('lead_source', $data ?? [], null);
+        $this->setIfExists('monthly_revenue', $data ?? [], null);
+        $this->setIfExists('order_revenue', $data ?? [], null);
+        $this->setIfExists('objection', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('stage_entrance_time', $data ?? [], null);
     }
 
     /**
@@ -865,6 +900,141 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable lead_source cannot be null');
         }
         $this->container['lead_source'] = $lead_source;
+
+        return $this;
+    }
+
+    /**
+     * Gets monthly_revenue
+     *
+     * @return float|null
+     */
+    public function getMonthlyRevenue()
+    {
+        return $this->container['monthly_revenue'];
+    }
+
+    /**
+     * Sets monthly_revenue
+     *
+     * @param float|null $monthly_revenue Monthly recurring revenue
+     *
+     * @return self
+     */
+    public function setMonthlyRevenue($monthly_revenue)
+    {
+        if (is_null($monthly_revenue)) {
+            throw new \InvalidArgumentException('non-nullable monthly_revenue cannot be null');
+        }
+        $this->container['monthly_revenue'] = $monthly_revenue;
+
+        return $this;
+    }
+
+    /**
+     * Gets order_revenue
+     *
+     * @return float|null
+     */
+    public function getOrderRevenue()
+    {
+        return $this->container['order_revenue'];
+    }
+
+    /**
+     * Sets order_revenue
+     *
+     * @param float|null $order_revenue Order revenue
+     *
+     * @return self
+     */
+    public function setOrderRevenue($order_revenue)
+    {
+        if (is_null($order_revenue)) {
+            throw new \InvalidArgumentException('non-nullable order_revenue cannot be null');
+        }
+        $this->container['order_revenue'] = $order_revenue;
+
+        return $this;
+    }
+
+    /**
+     * Gets objection
+     *
+     * @return string|null
+     */
+    public function getObjection()
+    {
+        return $this->container['objection'];
+    }
+
+    /**
+     * Sets objection
+     *
+     * @param string|null $objection Objection reason
+     *
+     * @return self
+     */
+    public function setObjection($objection)
+    {
+        if (is_null($objection)) {
+            throw new \InvalidArgumentException('non-nullable objection cannot be null');
+        }
+        $this->container['objection'] = $objection;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status Status name
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets stage_entrance_time
+     *
+     * @return string|null
+     */
+    public function getStageEntranceTime()
+    {
+        return $this->container['stage_entrance_time'];
+    }
+
+    /**
+     * Sets stage_entrance_time
+     *
+     * @param string|null $stage_entrance_time Timestamp when the opportunity entered its current stage (ISO-8601)
+     *
+     * @return self
+     */
+    public function setStageEntranceTime($stage_entrance_time)
+    {
+        if (is_null($stage_entrance_time)) {
+            throw new \InvalidArgumentException('non-nullable stage_entrance_time cannot be null');
+        }
+        $this->container['stage_entrance_time'] = $stage_entrance_time;
 
         return $this;
     }

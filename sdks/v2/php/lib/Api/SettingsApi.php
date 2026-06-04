@@ -136,7 +136,7 @@ class SettingsApi
      *
      * Get Application Configuration
      *
-     * @param  mixed|null $fields By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)
+     * @param  string[]|null $fields By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationConfigurations'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -154,7 +154,7 @@ class SettingsApi
      *
      * Get Application Configuration
      *
-     * @param  mixed|null $fields By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)
+     * @param  string[]|null $fields By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationConfigurations'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -351,7 +351,7 @@ class SettingsApi
      *
      * Get Application Configuration
      *
-     * @param  mixed|null $fields By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)
+     * @param  string[]|null $fields By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationConfigurations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -372,7 +372,7 @@ class SettingsApi
      *
      * Get Application Configuration
      *
-     * @param  mixed|null $fields By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)
+     * @param  string[]|null $fields By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationConfigurations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -422,7 +422,7 @@ class SettingsApi
     /**
      * Create request for operation 'getApplicationConfigurations'
      *
-     * @param  mixed|null $fields By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)
+     * @param  string[]|null $fields By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationConfigurations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -431,7 +431,7 @@ class SettingsApi
     public function getApplicationConfigurationsRequest($fields = null, string $contentType = self::contentTypes['getApplicationConfigurations'][0])
     {
 
-
+        
 
         $resourcePath = '/rest/v2/settings/applications:getConfiguration';
         $formParams = [];
@@ -444,7 +444,7 @@ class SettingsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $fields,
             'fields', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required

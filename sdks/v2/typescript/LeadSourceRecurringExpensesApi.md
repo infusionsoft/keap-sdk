@@ -388,7 +388,9 @@ const request: LeadSourceRecurringExpensesApiUpdateLeadSourceRecurringExpenseReq
     endTime: new Date('2024-12-31T23:59:59Z'),
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "title",
+  ],
 };
 
 const data = await apiInstance.updateLeadSourceRecurringExpense(request);
@@ -403,7 +405,7 @@ Name | Type | Description  | Notes
  **leadSourceRecurringExpenseUpdateRequest** | **LeadSourceRecurringExpenseUpdateRequest**|  |
  **leadSourceId** | [**string**] | The ID of the lead source this recurring expense belongs to | defaults to undefined
  **leadSourceRecurringExpenseId** | [**string**] | The ID of a lead source recurring expense | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;title&#39; &#124; &#39;notes&#39; &#124; &#39;amount&#39; &#124; &#39;start_time&#39; &#124; &#39;end_time&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

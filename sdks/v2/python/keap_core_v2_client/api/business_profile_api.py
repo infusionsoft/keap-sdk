@@ -16,8 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field
-from typing import Any, Optional
+from pydantic import Field, StrictStr, field_validator
+from typing import List, Optional
 from typing_extensions import Annotated
 from keap_core_v2_client.models.get_business_profile_response import GetBusinessProfileResponse
 from keap_core_v2_client.models.update_business_profile_request import UpdateBusinessProfileRequest
@@ -314,7 +314,7 @@ class BusinessProfileApi:
     def update_business_profile(
         self,
         update_business_profile_request: UpdateBusinessProfileRequest,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -335,7 +335,7 @@ class BusinessProfileApi:
         :param update_business_profile_request: (required)
         :type update_business_profile_request: UpdateBusinessProfileRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -393,7 +393,7 @@ class BusinessProfileApi:
     def update_business_profile_with_http_info(
         self,
         update_business_profile_request: UpdateBusinessProfileRequest,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -414,7 +414,7 @@ class BusinessProfileApi:
         :param update_business_profile_request: (required)
         :type update_business_profile_request: UpdateBusinessProfileRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -472,7 +472,7 @@ class BusinessProfileApi:
     def update_business_profile_without_preload_content(
         self,
         update_business_profile_request: UpdateBusinessProfileRequest,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -493,7 +493,7 @@ class BusinessProfileApi:
         :param update_business_profile_request: (required)
         :type update_business_profile_request: UpdateBusinessProfileRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -556,6 +556,7 @@ class BusinessProfileApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'update_mask': 'multi',
         }
 
         _path_params: Dict[str, str] = {}

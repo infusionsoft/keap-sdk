@@ -3126,7 +3126,7 @@ void (empty response body)
 
 <a id="updateaffiliate"></a>
 # **UpdateAffiliate**
-> RestAffiliate UpdateAffiliate (string id, UpdateAffiliateRequest updateAffiliateRequest, Object? updateMask = null)
+> RestAffiliate UpdateAffiliate (string id, UpdateAffiliateRequest updateAffiliateRequest, List<string>? updateMask = null)
 
 Update an Affiliate
 
@@ -3154,7 +3154,7 @@ namespace Example
             var apiInstance = new AffiliateApi(config);
             var id = "id_example";  // string | 
             var updateAffiliateRequest = new UpdateAffiliateRequest(); // UpdateAffiliateRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -3199,7 +3199,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **id** | **string** |  |  |
 | **updateAffiliateRequest** | [**UpdateAffiliateRequest**](UpdateAffiliateRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -3232,7 +3232,7 @@ catch (ApiException e)
 
 <a id="updateaffiliatecustomfield"></a>
 # **UpdateAffiliateCustomField**
-> CustomFieldMetaData UpdateAffiliateCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = null)
+> CustomFieldMetaData UpdateAffiliateCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = null)
 
 Update a Custom Field
 
@@ -3260,7 +3260,7 @@ namespace Example
             var apiInstance = new AffiliateApi(config);
             var customFieldId = "customFieldId_example";  // string | 
             var updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -3305,7 +3305,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **customFieldId** | **string** |  |  |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -3338,7 +3338,7 @@ catch (ApiException e)
 
 <a id="updatecommissionprogram"></a>
 # **UpdateCommissionProgram**
-> AffiliateCommissionProgramResponse UpdateCommissionProgram (string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, Object? updateMask = null)
+> AffiliateCommissionProgramResponse UpdateCommissionProgram (string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, List<string>? updateMask = null)
 
 Update an Affiliate Commission Program
 
@@ -3366,7 +3366,7 @@ namespace Example
             var apiInstance = new AffiliateApi(config);
             var commissionProgramId = "commissionProgramId_example";  // string | 
             var updateCommissionProgramRequest = new UpdateCommissionProgramRequest(); // UpdateCommissionProgramRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -3411,7 +3411,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **commissionProgramId** | **string** |  |  |
 | **updateCommissionProgramRequest** | [**UpdateCommissionProgramRequest**](UpdateCommissionProgramRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -3444,7 +3444,7 @@ catch (ApiException e)
 
 <a id="updatecommissionprogramresource"></a>
 # **UpdateCommissionProgramResource**
-> AffiliateProgramResource UpdateCommissionProgramResource (string resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, Object? updateMask = null)
+> AffiliateProgramResource UpdateCommissionProgramResource (string resourceId, UpdateProgramResourceRequest updateProgramResourceRequest, List<string>? updateMask = null)
 
 Update Commission Program Resource
 
@@ -3472,7 +3472,7 @@ namespace Example
             var apiInstance = new AffiliateApi(config);
             var resourceId = "resourceId_example";  // string | 
             var updateProgramResourceRequest = new UpdateProgramResourceRequest(); // UpdateProgramResourceRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -3517,7 +3517,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **resourceId** | **string** |  |  |
 | **updateProgramResourceRequest** | [**UpdateProgramResourceRequest**](UpdateProgramResourceRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -3550,7 +3550,7 @@ catch (ApiException e)
 
 <a id="updatedefaultcommissionprogram"></a>
 # **UpdateDefaultCommissionProgram**
-> GetRestCommissionProgram UpdateDefaultCommissionProgram (string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, Object? updateMask = null)
+> GetRestCommissionProgram UpdateDefaultCommissionProgram (string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, List<string>? updateMask = null)
 
 Update a Default Commission Program
 
@@ -3578,7 +3578,7 @@ namespace Example
             var apiInstance = new AffiliateApi(config);
             var commissionProgramId = "commissionProgramId_example";  // string | 
             var updateDefaultCommissionProgramRequest = new UpdateDefaultCommissionProgramRequest(); // UpdateDefaultCommissionProgramRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -3623,7 +3623,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **commissionProgramId** | **string** |  |  |
 | **updateDefaultCommissionProgramRequest** | [**UpdateDefaultCommissionProgramRequest**](UpdateDefaultCommissionProgramRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -3656,7 +3656,7 @@ catch (ApiException e)
 
 <a id="updateproductcommissionprogram"></a>
 # **UpdateProductCommissionProgram**
-> GetRestCommissionProgram UpdateProductCommissionProgram (string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, Object? updateMask = null)
+> GetRestCommissionProgram UpdateProductCommissionProgram (string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, List<string>? updateMask = null)
 
 Update a Product Commission Program
 
@@ -3684,7 +3684,7 @@ namespace Example
             var apiInstance = new AffiliateApi(config);
             var commissionProgramId = "commissionProgramId_example";  // string | 
             var updateProductCommissionProgramRequest = new UpdateProductCommissionProgramRequest(); // UpdateProductCommissionProgramRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -3729,7 +3729,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **commissionProgramId** | **string** |  |  |
 | **updateProductCommissionProgramRequest** | [**UpdateProductCommissionProgramRequest**](UpdateProductCommissionProgramRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -3866,7 +3866,7 @@ catch (ApiException e)
 
 <a id="updatesubscriptioncommissionprogram"></a>
 # **UpdateSubscriptionCommissionProgram**
-> GetRestCommissionProgram UpdateSubscriptionCommissionProgram (string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, Object? updateMask = null)
+> GetRestCommissionProgram UpdateSubscriptionCommissionProgram (string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, List<string>? updateMask = null)
 
 Update a Subscription Commission Program
 
@@ -3894,7 +3894,7 @@ namespace Example
             var apiInstance = new AffiliateApi(config);
             var commissionProgramId = "commissionProgramId_example";  // string | 
             var updateSubscriptionCommissionProgramRequest = new UpdateSubscriptionCommissionProgramRequest(); // UpdateSubscriptionCommissionProgramRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -3939,7 +3939,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **commissionProgramId** | **string** |  |  |
 | **updateSubscriptionCommissionProgramRequest** | [**UpdateSubscriptionCommissionProgramRequest**](UpdateSubscriptionCommissionProgramRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

@@ -17,20 +17,15 @@ import { ListFilesResponse } from '../models/ListFilesResponse';
 export class FilesApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * Creates a file and uploads it
+     * Uploads a file using multipart/form-data. The `file` part contains the binary file content; `file_name`, `is_public`, `file_association`, and optionally `contact_id` are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
      * Create a file
-     * @param file File to upload. This is a file sent as multi-part (not a string)
+     * @param file File to upload
      * @param fileName File name
-     * @param isPublic Is public
      * @param fileAssociation File association
-     * @param file2 File to upload
-     * @param fileName2 File name
-     * @param isPublic2 Is public
-     * @param fileAssociation2 File association
-     * @param contactId Contact ID
-     * @param contactId2 Contact ID. Required if the &#x60;file_association&#x60; is CONTACT
+     * @param contactId Contact ID. Required if the &#x60;file_association&#x60; is CONTACT
+     * @param isPublic Is public
      */
-    public async createFile(file: HttpFile, fileName: string, isPublic: boolean, fileAssociation: string, file2: HttpFile, fileName2: string, isPublic2: string, fileAssociation2: string, contactId?: string, contactId2?: string, _options?: Configuration): Promise<RequestContext> {
+    public async createFile(file: HttpFile, fileName: string, fileAssociation: string, contactId?: string, isPublic?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'file' is not null or undefined
@@ -45,39 +40,9 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'isPublic' is not null or undefined
-        if (isPublic === null || isPublic === undefined) {
-            throw new RequiredError("FilesApi", "createFile", "isPublic");
-        }
-
-
         // verify required parameter 'fileAssociation' is not null or undefined
         if (fileAssociation === null || fileAssociation === undefined) {
             throw new RequiredError("FilesApi", "createFile", "fileAssociation");
-        }
-
-
-        // verify required parameter 'file2' is not null or undefined
-        if (file2 === null || file2 === undefined) {
-            throw new RequiredError("FilesApi", "createFile", "file2");
-        }
-
-
-        // verify required parameter 'fileName2' is not null or undefined
-        if (fileName2 === null || fileName2 === undefined) {
-            throw new RequiredError("FilesApi", "createFile", "fileName2");
-        }
-
-
-        // verify required parameter 'isPublic2' is not null or undefined
-        if (isPublic2 === null || isPublic2 === undefined) {
-            throw new RequiredError("FilesApi", "createFile", "isPublic2");
-        }
-
-
-        // verify required parameter 'fileAssociation2' is not null or undefined
-        if (fileAssociation2 === null || fileAssociation2 === undefined) {
-            throw new RequiredError("FilesApi", "createFile", "fileAssociation2");
         }
 
 
@@ -89,31 +54,6 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (file !== undefined) {
-            requestContext.setQueryParam("file", ObjectSerializer.serialize(file, "HttpFile", "binary"));
-        }
-
-        // Query Params
-        if (fileName !== undefined) {
-            requestContext.setQueryParam("file_name", ObjectSerializer.serialize(fileName, "string", ""));
-        }
-
-        // Query Params
-        if (contactId !== undefined) {
-            requestContext.setQueryParam("contact_id", ObjectSerializer.serialize(contactId, "string", ""));
-        }
-
-        // Query Params
-        if (isPublic !== undefined) {
-            requestContext.setQueryParam("is_public", ObjectSerializer.serialize(isPublic, "boolean", ""));
-        }
-
-        // Query Params
-        if (fileAssociation !== undefined) {
-            requestContext.setQueryParam("file_association", ObjectSerializer.serialize(fileAssociation, "string", ""));
-        }
 
         // Form Params
         const useForm = canConsumeForm([
@@ -127,27 +67,27 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
             localVarFormParams = new URLSearchParams();
         }
 
-        if (file2 !== undefined) {
+        if (file !== undefined) {
              // TODO: replace .append with .set
              if (localVarFormParams instanceof FormData) {
-                 localVarFormParams.append('file', file2, file2.name);
+                 localVarFormParams.append('file', file, file.name);
              }
         }
-        if (fileName2 !== undefined) {
+        if (fileName !== undefined) {
              // TODO: replace .append with .set
-             localVarFormParams.append('file_name', fileName2 as any);
+             localVarFormParams.append('file_name', fileName as any);
         }
-        if (contactId2 !== undefined) {
+        if (contactId !== undefined) {
              // TODO: replace .append with .set
-             localVarFormParams.append('contact_id', contactId2 as any);
+             localVarFormParams.append('contact_id', contactId as any);
         }
-        if (isPublic2 !== undefined) {
+        if (isPublic !== undefined) {
              // TODO: replace .append with .set
-             localVarFormParams.append('is_public', isPublic2 as any);
+             localVarFormParams.append('is_public', isPublic as any);
         }
-        if (fileAssociation2 !== undefined) {
+        if (fileAssociation !== undefined) {
              // TODO: replace .append with .set
-             localVarFormParams.append('file_association', fileAssociation2 as any);
+             localVarFormParams.append('file_association', fileAssociation as any);
         }
 
         requestContext.setBody(localVarFormParams);
@@ -347,27 +287,21 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+     * Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
      * Update a file
      * @param fileId 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * @param file File to upload. This is a file sent as multi-part (not a string)
+     * @param file File to upload
      * @param fileName File name
      * @param isPublic Is public
-     * @param file2 File to upload
-     * @param fileName2 File name
-     * @param isPublic2 Is public
      */
-    public async updateFile(fileId: string, updateMask?: any, file?: HttpFile, fileName?: string, isPublic?: boolean, file2?: HttpFile, fileName2?: string, isPublic2?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async updateFile(fileId: string, updateMask?: Set<'file' | 'file_name' | 'is_public'>, file?: HttpFile, fileName?: string, isPublic?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'fileId' is not null or undefined
         if (fileId === null || fileId === undefined) {
             throw new RequiredError("FilesApi", "updateFile", "fileId");
         }
-
-
-
 
 
 
@@ -384,25 +318,10 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'file' | 'file_name' | 'is_public'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
-        }
-
-        // Query Params
-        if (file !== undefined) {
-            requestContext.setQueryParam("file", ObjectSerializer.serialize(file, "HttpFile", "binary"));
-        }
-
-        // Query Params
-        if (fileName !== undefined) {
-            requestContext.setQueryParam("file_name", ObjectSerializer.serialize(fileName, "string", ""));
-        }
-
-        // Query Params
-        if (isPublic !== undefined) {
-            requestContext.setQueryParam("is_public", ObjectSerializer.serialize(isPublic, "boolean", ""));
         }
 
         // Form Params
@@ -417,19 +336,19 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
             localVarFormParams = new URLSearchParams();
         }
 
-        if (file2 !== undefined) {
+        if (file !== undefined) {
              // TODO: replace .append with .set
              if (localVarFormParams instanceof FormData) {
-                 localVarFormParams.append('file', file2, file2.name);
+                 localVarFormParams.append('file', file, file.name);
              }
         }
-        if (fileName2 !== undefined) {
+        if (fileName !== undefined) {
              // TODO: replace .append with .set
-             localVarFormParams.append('file_name', fileName2 as any);
+             localVarFormParams.append('file_name', fileName as any);
         }
-        if (isPublic2 !== undefined) {
+        if (isPublic !== undefined) {
              // TODO: replace .append with .set
-             localVarFormParams.append('is_public', isPublic2 as any);
+             localVarFormParams.append('is_public', isPublic as any);
         }
 
         requestContext.setBody(localVarFormParams);

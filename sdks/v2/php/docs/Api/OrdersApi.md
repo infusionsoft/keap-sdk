@@ -1021,7 +1021,7 @@ $apiInstance = new Keap\Core\V2\Api\OrdersApi(
 );
 $order_id = 'order_id_example'; // string
 $update_order_request = new \Keap\Core\V2\Model\UpdateOrderRequest(); // \Keap\Core\V2\Model\UpdateOrderRequest
-$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateOrder($order_id, $update_order_request, $update_mask);
@@ -1037,7 +1037,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **order_id** | **string**|  | |
 | **update_order_request** | [**\Keap\Core\V2\Model\UpdateOrderRequest**](../Model/UpdateOrderRequest.md)|  | |
-| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1084,7 +1084,7 @@ $apiInstance = new Keap\Core\V2\Api\OrdersApi(
 );
 $custom_field_id = 'custom_field_id_example'; // string
 $update_custom_field_meta_data_request = new \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest(); // \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest
-$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateOrderCustomField($custom_field_id, $update_custom_field_meta_data_request, $update_mask);
@@ -1100,7 +1100,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **custom_field_id** | **string**|  | |
 | **update_custom_field_meta_data_request** | [**\Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest**](../Model/UpdateCustomFieldMetaDataRequest.md)|  | |
-| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1148,7 +1148,7 @@ $apiInstance = new Keap\Core\V2\Api\OrdersApi(
 $order_id = 'order_id_example'; // string
 $order_item_id = 'order_item_id_example'; // string
 $update_order_item_request = new \Keap\Core\V2\Model\UpdateOrderItemRequest(); // \Keap\Core\V2\Model\UpdateOrderItemRequest
-$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateOrderItem($order_id, $order_item_id, $update_order_item_request, $update_mask);
@@ -1165,7 +1165,7 @@ try {
 | **order_id** | **string**|  | |
 | **order_item_id** | **string**|  | |
 | **update_order_item_request** | [**\Keap\Core\V2\Model\UpdateOrderItemRequest**](../Model/UpdateOrderItemRequest.md)|  | |
-| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

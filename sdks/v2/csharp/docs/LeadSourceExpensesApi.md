@@ -430,7 +430,7 @@ catch (ApiException e)
 
 <a id="updateleadsourceexpense"></a>
 # **UpdateLeadSourceExpense**
-> LeadSourceExpense UpdateLeadSourceExpense (string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, Object? updateMask = null)
+> LeadSourceExpense UpdateLeadSourceExpense (string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, List<string>? updateMask = null)
 
 Update a Lead Source Expense
 
@@ -459,7 +459,7 @@ namespace Example
             var leadSourceExpenseId = "leadSourceExpenseId_example";  // string | The ID of a lead source expense
             var leadSourceId = "leadSourceId_example";  // string | The ID of the lead source this expense belongs to
             var updateLeadSourceExpenseRequest = new UpdateLeadSourceExpenseRequest(); // UpdateLeadSourceExpenseRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -505,7 +505,7 @@ catch (ApiException e)
 | **leadSourceExpenseId** | **string** | The ID of a lead source expense |  |
 | **leadSourceId** | **string** | The ID of the lead source this expense belongs to |  |
 | **updateLeadSourceExpenseRequest** | [**UpdateLeadSourceExpenseRequest**](UpdateLeadSourceExpenseRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

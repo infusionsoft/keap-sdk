@@ -31,6 +31,7 @@ import com.keap.core.sdk.model.ListContactLinksResponse;
 import com.keap.core.sdk.model.ListContactTagsResponse;
 import com.keap.core.sdk.model.ListContactsResponse;
 import com.keap.core.sdk.model.ObjectModel;
+import java.util.Set;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -1286,7 +1287,7 @@ import io.github.resilience4j.retry.Retry;
    * @return Contact
    * @throws ApiException if fails to make API call
    */
-  public Contact updateContact(String contactId, CreateUpdateContactRequest createUpdateContactRequest, Object updateMask, List<String> fields) throws ApiException {
+  public Contact updateContact(String contactId, CreateUpdateContactRequest createUpdateContactRequest, Set<String> updateMask, List<String> fields) throws ApiException {
     ApiResponse<Contact> localVarResponse = updateContactWithHttpInfo(contactId, createUpdateContactRequest, updateMask, fields);
     return localVarResponse.getData();
   }
@@ -1301,7 +1302,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;Contact&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Contact> updateContactWithHttpInfo(String contactId, CreateUpdateContactRequest createUpdateContactRequest, Object updateMask, List<String> fields) throws ApiException {
+  public ApiResponse<Contact> updateContactWithHttpInfo(String contactId, CreateUpdateContactRequest createUpdateContactRequest, Set<String> updateMask, List<String> fields) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateContactRequestBuilder(contactId, createUpdateContactRequest, updateMask, fields);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1342,7 +1343,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateContactRequestBuilder(String contactId, CreateUpdateContactRequest createUpdateContactRequest, Object updateMask, List<String> fields) throws ApiException {
+  private HttpRequest.Builder updateContactRequestBuilder(String contactId, CreateUpdateContactRequest createUpdateContactRequest, Set<String> updateMask, List<String> fields) throws ApiException {
     // verify the required parameter 'contactId' is set
     if (contactId == null) {
       throw new ApiException(400, "Missing the required parameter 'contactId' when calling updateContact");
@@ -1361,7 +1362,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
     localVarQueryParameterBaseName = "fields";
     localVarQueryParams.addAll(ApiClient.parameterToPairs("csv", "fields", fields));
 

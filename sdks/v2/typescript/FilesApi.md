@@ -15,7 +15,7 @@ Method | HTTP request | Description
 # **createFile**
 > FileMetadata createFile()
 
-Creates a file and uploads it
+Uploads a file using multipart/form-data. The `file` part contains the binary file content; `file_name`, `is_public`, `file_association`, and optionally `contact_id` are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
 
 ### Example
 
@@ -28,26 +28,16 @@ const configuration = createConfiguration();
 const apiInstance = new FilesApi(configuration);
 
 const request: FilesApiCreateFileRequest = {
-    // File to upload. This is a file sent as multi-part (not a string)
+    // File to upload
   file: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
     // File name
-  fileName: ,
-    // Is public
-  isPublic: ,
+  fileName: "fileName_example",
     // File association
-  fileAssociation: ,
-    // File to upload
-  file2: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
-    // File name
-  fileName2: "fileName_example",
-    // Is public
-  isPublic2: "isPublic_example",
-    // File association
-  fileAssociation2: "fileAssociation_example",
-    // Contact ID (optional)
-  contactId: ,
+  fileAssociation: "fileAssociation_example",
     // Contact ID. Required if the `file_association` is CONTACT (optional)
-  contactId2: "contactId_example",
+  contactId: "contactId_example",
+    // Is public (optional)
+  isPublic: "isPublic_example",
 };
 
 const data = await apiInstance.createFile(request);
@@ -59,16 +49,11 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | [**HttpFile**] | File to upload. This is a file sent as multi-part (not a string) | defaults to undefined
+ **file** | [**HttpFile**] | File to upload | defaults to undefined
  **fileName** | [**string**] | File name | defaults to undefined
- **isPublic** | [**boolean**] | Is public | defaults to undefined
  **fileAssociation** | [**string**] | File association | defaults to undefined
- **file2** | [**HttpFile**] | File to upload | defaults to undefined
- **fileName2** | [**string**] | File name | defaults to undefined
- **isPublic2** | [**string**] | Is public | defaults to undefined
- **fileAssociation2** | [**string**] | File association | defaults to undefined
- **contactId** | [**string**] | Contact ID | (optional) defaults to undefined
- **contactId2** | [**string**] | Contact ID. Required if the &#x60;file_association&#x60; is CONTACT | (optional) defaults to undefined
+ **contactId** | [**string**] | Contact ID. Required if the &#x60;file_association&#x60; is CONTACT | (optional) defaults to undefined
+ **isPublic** | [**string**] | Is public | (optional) defaults to undefined
 
 
 ### Return type
@@ -356,7 +341,7 @@ Name | Type | Description  | Notes
 # **updateFile**
 > FileMetadata updateFile()
 
-Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
 
 ### Example
 
@@ -372,19 +357,15 @@ const request: FilesApiUpdateFileRequest = {
   
   fileId: "file_id_example",
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
-    // File to upload. This is a file sent as multi-part (not a string) (optional)
+  updateMask: [
+    "file",
+  ],
+    // File to upload (optional)
   file: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
     // File name (optional)
-  fileName: ,
+  fileName: "fileName_example",
     // Is public (optional)
-  isPublic: ,
-    // File to upload (optional)
-  file2: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
-    // File name (optional)
-  fileName2: "fileName_example",
-    // Is public (optional)
-  isPublic2: true,
+  isPublic: true,
 };
 
 const data = await apiInstance.updateFile(request);
@@ -397,13 +378,10 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fileId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
- **file** | [**HttpFile**] | File to upload. This is a file sent as multi-part (not a string) | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;file&#39; &#124; &#39;file_name&#39; &#124; &#39;is_public&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **file** | [**HttpFile**] | File to upload | (optional) defaults to undefined
  **fileName** | [**string**] | File name | (optional) defaults to undefined
  **isPublic** | [**boolean**] | Is public | (optional) defaults to undefined
- **file2** | [**HttpFile**] | File to upload | (optional) defaults to undefined
- **fileName2** | [**string**] | File name | (optional) defaults to undefined
- **isPublic2** | [**boolean**] | Is public | (optional) defaults to undefined
 
 
 ### Return type

@@ -38,21 +38,16 @@ export default class FilesApi {
 
     /**
      * Create a file
-     * Creates a file and uploads it
-     * @param {File} file File to upload. This is a file sent as multi-part (not a string)
+     * Uploads a file using multipart/form-data. The `file` part contains the binary file content; `file_name`, `is_public`, `file_association`, and optionally `contact_id` are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
+     * @param {File} file File to upload
      * @param {String} fileName File name
-     * @param {Boolean} isPublic Is public
      * @param {String} fileAssociation File association
-     * @param {File} file2 File to upload
-     * @param {String} fileName2 File name
-     * @param {String} isPublic2 Is public
-     * @param {String} fileAssociation2 File association
      * @param {Object} opts Optional parameters
-     * @param {String} [contactId] Contact ID
-     * @param {String} [contactId2] Contact ID. Required if the `file_association` is CONTACT
+     * @param {String} [contactId] Contact ID. Required if the `file_association` is CONTACT
+     * @param {String} [isPublic] Is public
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/FileMetadata} and HTTP response
      */
-    createFileWithHttpInfo(file, fileName, isPublic, fileAssociation, file2, fileName2, isPublic2, fileAssociation2, opts) {
+    createFileWithHttpInfo(file, fileName, fileAssociation, opts) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'file' is set
@@ -63,48 +58,23 @@ export default class FilesApi {
       if (fileName === undefined || fileName === null) {
         throw new Error("Missing the required parameter 'fileName' when calling createFile");
       }
-      // verify the required parameter 'isPublic' is set
-      if (isPublic === undefined || isPublic === null) {
-        throw new Error("Missing the required parameter 'isPublic' when calling createFile");
-      }
       // verify the required parameter 'fileAssociation' is set
       if (fileAssociation === undefined || fileAssociation === null) {
         throw new Error("Missing the required parameter 'fileAssociation' when calling createFile");
-      }
-      // verify the required parameter 'file2' is set
-      if (file2 === undefined || file2 === null) {
-        throw new Error("Missing the required parameter 'file2' when calling createFile");
-      }
-      // verify the required parameter 'fileName2' is set
-      if (fileName2 === undefined || fileName2 === null) {
-        throw new Error("Missing the required parameter 'fileName2' when calling createFile");
-      }
-      // verify the required parameter 'isPublic2' is set
-      if (isPublic2 === undefined || isPublic2 === null) {
-        throw new Error("Missing the required parameter 'isPublic2' when calling createFile");
-      }
-      // verify the required parameter 'fileAssociation2' is set
-      if (fileAssociation2 === undefined || fileAssociation2 === null) {
-        throw new Error("Missing the required parameter 'fileAssociation2' when calling createFile");
       }
 
       let pathParams = {
       };
       let queryParams = {
-        'file': file,
-        'file_name': fileName,
-        'contact_id': opts['contactId'],
-        'is_public': isPublic,
-        'file_association': fileAssociation
       };
       let headerParams = {
       };
       let formParams = {
-        'file': file2,
-        'file_name': fileName2,
-        'contact_id': opts['contactId2'],
-        'is_public': isPublic2,
-        'file_association': fileAssociation2
+        'file': file,
+        'file_name': fileName,
+        'contact_id': opts['contactId'],
+        'is_public': opts['isPublic'],
+        'file_association': fileAssociation
       };
 
       let authNames = ['oauth2'];
@@ -120,22 +90,17 @@ export default class FilesApi {
 
     /**
      * Create a file
-     * Creates a file and uploads it
-     * @param {File} file File to upload. This is a file sent as multi-part (not a string)
+     * Uploads a file using multipart/form-data. The `file` part contains the binary file content; `file_name`, `is_public`, `file_association`, and optionally `contact_id` are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
+     * @param {File} file File to upload
      * @param {String} fileName File name
-     * @param {Boolean} isPublic Is public
      * @param {String} fileAssociation File association
-     * @param {File} file2 File to upload
-     * @param {String} fileName2 File name
-     * @param {String} isPublic2 Is public
-     * @param {String} fileAssociation2 File association
      * @param {Object} opts Optional parameters
-     * @param {String} opts.contactId Contact ID
-     * @param {String} opts.contactId2 Contact ID. Required if the `file_association` is CONTACT
+     * @param {String} opts.contactId Contact ID. Required if the `file_association` is CONTACT
+     * @param {String} opts.isPublic Is public
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/FileMetadata}
      */
-    createFile(file, fileName, isPublic, fileAssociation, file2, fileName2, isPublic2, fileAssociation2, opts) {
-      return this.createFileWithHttpInfo(file, fileName, isPublic, fileAssociation, file2, fileName2, isPublic2, fileAssociation2, opts)
+    createFile(file, fileName, fileAssociation, opts) {
+      return this.createFileWithHttpInfo(file, fileName, fileAssociation, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -344,16 +309,13 @@ export default class FilesApi {
 
     /**
      * Update a file
-     * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+     * Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
      * @param {String} fileId 
      * @param {Object} opts Optional parameters
-     * @param {Object} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * @param {File} [file] File to upload. This is a file sent as multi-part (not a string)
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {File} [file] File to upload
      * @param {String} [fileName] File name
      * @param {Boolean} [isPublic] Is public
-     * @param {File} [file2] File to upload
-     * @param {String} [fileName2] File name
-     * @param {Boolean} [isPublic2] Is public
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/FileMetadata} and HTTP response
      */
     updateFileWithHttpInfo(fileId, opts) {
@@ -368,17 +330,14 @@ export default class FilesApi {
         'file_id': fileId
       };
       let queryParams = {
-        'update_mask': opts['updateMask'],
-        'file': opts['file'],
-        'file_name': opts['fileName'],
-        'is_public': opts['isPublic']
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
       };
       let headerParams = {
       };
       let formParams = {
-        'file': opts['file2'],
-        'file_name': opts['fileName2'],
-        'is_public': opts['isPublic2']
+        'file': opts['file'],
+        'file_name': opts['fileName'],
+        'is_public': opts['isPublic']
       };
 
       let authNames = ['oauth2'];
@@ -394,16 +353,13 @@ export default class FilesApi {
 
     /**
      * Update a file
-     * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+     * Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
      * @param {String} fileId 
      * @param {Object} opts Optional parameters
-     * @param {Object} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * @param {File} opts.file File to upload. This is a file sent as multi-part (not a string)
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param {File} opts.file File to upload
      * @param {String} opts.fileName File name
      * @param {Boolean} opts.isPublic Is public
-     * @param {File} opts.file2 File to upload
-     * @param {String} opts.fileName2 File name
-     * @param {Boolean} opts.isPublic2 Is public
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/FileMetadata}
      */
     updateFile(fileId, opts) {

@@ -2044,7 +2044,7 @@ public class Example {
         TagsApi apiInstance = new TagsApi(defaultClient);
         String tagId = "tagId_example"; // String | 
         CreateUpdateTagRequest createUpdateTagRequest = new CreateUpdateTagRequest(); // CreateUpdateTagRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             UpdateTagResponse result = apiInstance.updateTag(tagId, createUpdateTagRequest, updateMask);
             System.out.println(result);
@@ -2066,7 +2066,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **tagId** | **String**|  | |
 | **createUpdateTagRequest** | [**CreateUpdateTagRequest**](CreateUpdateTagRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description, category] |
 
 ### Return type
 
@@ -2127,7 +2127,7 @@ public class Example {
         TagsApi apiInstance = new TagsApi(defaultClient);
         String tagId = "tagId_example"; // String | 
         CreateUpdateTagRequest createUpdateTagRequest = new CreateUpdateTagRequest(); // CreateUpdateTagRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<UpdateTagResponse> response = apiInstance.updateTagWithHttpInfo(tagId, createUpdateTagRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -2151,7 +2151,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **tagId** | **String**|  | |
 | **createUpdateTagRequest** | [**CreateUpdateTagRequest**](CreateUpdateTagRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description, category] |
 
 ### Return type
 
@@ -2212,7 +2212,7 @@ public class Example {
         TagsApi apiInstance = new TagsApi(defaultClient);
         String tagCategoryId = "tagCategoryId_example"; // String | 
         CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest = new CreateUpdateTagCategoryRequest(); // CreateUpdateTagCategoryRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             UpdateTagCategoryResponse result = apiInstance.updateTagCategory(tagCategoryId, createUpdateTagCategoryRequest, updateMask);
             System.out.println(result);
@@ -2234,7 +2234,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **tagCategoryId** | **String**|  | |
 | **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description] |
 
 ### Return type
 
@@ -2295,7 +2295,7 @@ public class Example {
         TagsApi apiInstance = new TagsApi(defaultClient);
         String tagCategoryId = "tagCategoryId_example"; // String | 
         CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest = new CreateUpdateTagCategoryRequest(); // CreateUpdateTagCategoryRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<UpdateTagCategoryResponse> response = apiInstance.updateTagCategoryWithHttpInfo(tagCategoryId, createUpdateTagCategoryRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -2319,7 +2319,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **tagCategoryId** | **String**|  | |
 | **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description] |
 
 ### Return type
 

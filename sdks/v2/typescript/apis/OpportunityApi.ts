@@ -30,8 +30,9 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
      * Creates a new opportunity as the authenticated user.
      * Create an Opportunity
      * @param createOpportunityRequest 
+     * @param fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      */
-    public async createOpportunity(createOpportunityRequest: CreateOpportunityRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createOpportunity(createOpportunityRequest: CreateOpportunityRequest, fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'createOpportunityRequest' is not null or undefined
@@ -40,12 +41,21 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+
         // Path Params
         const localVarPath = '/rest/v2/opportunities';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (fields !== undefined) {
+            const serializedParams = ObjectSerializer.serialize(fields, "Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("fields", serializedParam);
+            }
+        }
 
 
         // Body Params
@@ -288,14 +298,16 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
      * Retrieves the specified Opportunity
      * Retrieve a Opportunity
      * @param opportunityId 
+     * @param fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      */
-    public async getOpportunity(opportunityId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getOpportunity(opportunityId: string, fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'opportunityId' is not null or undefined
         if (opportunityId === null || opportunityId === undefined) {
             throw new RequiredError("OpportunityApi", "getOpportunity", "opportunityId");
         }
+
 
 
         // Path Params
@@ -305,6 +317,14 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (fields !== undefined) {
+            const serializedParams = ObjectSerializer.serialize(fields, "Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("fields", serializedParam);
+            }
+        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -363,13 +383,13 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a list of all Opportunities.
      * List Opportunities
-     * @param fields 
+     * @param fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      * @param filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. 
      * @param orderBy Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listOpportunities(fields?: Set<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listOpportunities(fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -386,7 +406,7 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (fields !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(fields, "Set<string>", "");
+            const serializedParams = ObjectSerializer.serialize(fields, "Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>", "");
             for (const serializedParam of serializedParams) {
                 requestContext.appendQueryParam("fields", serializedParam);
             }
@@ -431,7 +451,7 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a list of Opportunity Stages.
      * List of Opportunity Stages
-     * @param filter Search filter to apply to results
+     * @param filter Filter to apply, allowed fields are: - (String) &#x60;opportunity_stage_name&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_stage_name&#x3D;&#x3D;Qualified*&#x60;) - (String) &#x60;opportunity_stage_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;opportunity_stage_id&gt;5&#x60;) 
      * @param orderBy Attribute and direction to order stage items. One of the following fields: - &#x60;stage_order&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
@@ -522,8 +542,9 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
      * @param opportunityId 
      * @param updateOpportunityRequestV2 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      */
-    public async updateOpportunity(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateOpportunity(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: Set<'opportunity_title' | 'next_action_time' | 'next_action_notes' | 'opportunity_notes' | 'estimated_close_time' | 'include_in_forecast' | 'projected_revenue_low' | 'projected_revenue_high' | 'contact_id' | 'stage_id' | 'user_id' | 'custom_fields' | 'affiliate_id'>, fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'opportunityId' is not null or undefined
@@ -539,6 +560,7 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
 
 
 
+
         // Path Params
         const localVarPath = '/rest/v2/opportunities/{opportunity_id}'
             .replace('{' + 'opportunity_id' + '}', encodeURIComponent(String(opportunityId)));
@@ -549,9 +571,17 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'opportunity_title' | 'next_action_time' | 'next_action_notes' | 'opportunity_notes' | 'estimated_close_time' | 'include_in_forecast' | 'projected_revenue_low' | 'projected_revenue_high' | 'contact_id' | 'stage_id' | 'user_id' | 'custom_fields' | 'affiliate_id'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
+            }
+        }
+
+        // Query Params
+        if (fields !== undefined) {
+            const serializedParams = ObjectSerializer.serialize(fields, "Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("fields", serializedParam);
             }
         }
 
@@ -589,7 +619,7 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateCustomFieldMetaDataRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateOpportunityCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateOpportunityCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'customFieldId' is not null or undefined
@@ -615,9 +645,9 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'group_id' | 'label' | 'options'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 
@@ -655,7 +685,7 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateOpportunityStageRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateOpportunityStage(stageId: string, updateOpportunityStageRequest: UpdateOpportunityStageRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateOpportunityStage(stageId: string, updateOpportunityStageRequest: UpdateOpportunityStageRequest, updateMask?: Set<'name' | 'order' | 'target_number_days' | 'probability' | 'checklist_items'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'stageId' is not null or undefined
@@ -681,9 +711,9 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'name' | 'order' | 'target_number_days' | 'probability' | 'checklist_items'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 

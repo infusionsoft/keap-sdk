@@ -15,12 +15,12 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 ## `createFile()`
 
 ```php
-createFile($file, $file_name, $is_public, $file_association, $file2, $file_name2, $is_public2, $file_association2, $contact_id, $contact_id2): \Keap\Core\V2\Model\FileMetadata
+createFile($file, $file_name, $file_association, $contact_id, $is_public): \Keap\Core\V2\Model\FileMetadata
 ```
 
 Create a file
 
-Creates a file and uploads it
+Uploads a file using multipart/form-data. The `file` part contains the binary file content; `file_name`, `is_public`, `file_association`, and optionally `contact_id` are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
 
 ### Example
 
@@ -38,19 +38,14 @@ $apiInstance = new Keap\Core\V2\Api\FilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$file = '/path/to/file.txt'; // \SplFileObject | File to upload. This is a file sent as multi-part (not a string)
+$file = '/path/to/file.txt'; // \SplFileObject | File to upload
 $file_name = 'file_name_example'; // string | File name
-$is_public = True; // bool | Is public
 $file_association = 'file_association_example'; // string | File association
-$file2 = '/path/to/file.txt'; // \SplFileObject | File to upload
-$file_name2 = 'file_name_example'; // string | File name
-$is_public2 = 'is_public_example'; // string | Is public
-$file_association2 = 'file_association_example'; // string | File association
-$contact_id = 'contact_id_example'; // string | Contact ID
-$contact_id2 = 'contact_id_example'; // string | Contact ID. Required if the `file_association` is CONTACT
+$contact_id = 'contact_id_example'; // string | Contact ID. Required if the `file_association` is CONTACT
+$is_public = 'is_public_example'; // string | Is public
 
 try {
-    $result = $apiInstance->createFile($file, $file_name, $is_public, $file_association, $file2, $file_name2, $is_public2, $file_association2, $contact_id, $contact_id2);
+    $result = $apiInstance->createFile($file, $file_name, $file_association, $contact_id, $is_public);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->createFile: ', $e->getMessage(), PHP_EOL;
@@ -61,16 +56,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **file** | **\SplFileObject****\SplFileObject**| File to upload. This is a file sent as multi-part (not a string) | |
+| **file** | **\SplFileObject****\SplFileObject**| File to upload | |
 | **file_name** | **string**| File name | |
-| **is_public** | **bool**| Is public | |
 | **file_association** | **string**| File association | |
-| **file2** | **\SplFileObject****\SplFileObject**| File to upload | |
-| **file_name2** | **string**| File name | |
-| **is_public2** | **string**| Is public | |
-| **file_association2** | **string**| File association | |
-| **contact_id** | **string**| Contact ID | [optional] |
-| **contact_id2** | **string**| Contact ID. Required if the &#x60;file_association&#x60; is CONTACT | [optional] |
+| **contact_id** | **string**| Contact ID. Required if the &#x60;file_association&#x60; is CONTACT | [optional] |
+| **is_public** | **string**| Is public | [optional] |
 
 ### Return type
 
@@ -333,12 +323,12 @@ try {
 ## `updateFile()`
 
 ```php
-updateFile($file_id, $update_mask, $file, $file_name, $is_public, $file2, $file_name2, $is_public2): \Keap\Core\V2\Model\FileMetadata
+updateFile($file_id, $update_mask, $file, $file_name, $is_public): \Keap\Core\V2\Model\FileMetadata
 ```
 
 Update a file
 
-Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
 
 ### Example
 
@@ -357,16 +347,13 @@ $apiInstance = new Keap\Core\V2\Api\FilesApi(
     $config
 );
 $file_id = 'file_id_example'; // string
-$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-$file = '/path/to/file.txt'; // \SplFileObject | File to upload. This is a file sent as multi-part (not a string)
+$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$file = '/path/to/file.txt'; // \SplFileObject | File to upload
 $file_name = 'file_name_example'; // string | File name
 $is_public = True; // bool | Is public
-$file2 = '/path/to/file.txt'; // \SplFileObject | File to upload
-$file_name2 = 'file_name_example'; // string | File name
-$is_public2 = True; // bool | Is public
 
 try {
-    $result = $apiInstance->updateFile($file_id, $update_mask, $file, $file_name, $is_public, $file2, $file_name2, $is_public2);
+    $result = $apiInstance->updateFile($file_id, $update_mask, $file, $file_name, $is_public);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->updateFile: ', $e->getMessage(), PHP_EOL;
@@ -378,13 +365,10 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **string**|  | |
-| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
-| **file** | **\SplFileObject****\SplFileObject**| File to upload. This is a file sent as multi-part (not a string) | [optional] |
+| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **file** | **\SplFileObject****\SplFileObject**| File to upload | [optional] |
 | **file_name** | **string**| File name | [optional] |
 | **is_public** | **bool**| Is public | [optional] |
-| **file2** | **\SplFileObject****\SplFileObject**| File to upload | [optional] |
-| **file_name2** | **string**| File name | [optional] |
-| **is_public2** | **bool**| Is public | [optional] |
 
 ### Return type
 

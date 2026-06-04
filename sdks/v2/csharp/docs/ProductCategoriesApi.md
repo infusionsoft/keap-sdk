@@ -832,7 +832,7 @@ catch (ApiException e)
 
 <a id="updateproductcategory"></a>
 # **UpdateProductCategory**
-> ProductCategory UpdateProductCategory (string categoryId, UpdateProductCategoryRequest updateProductCategoryRequest, Object? updateMask = null)
+> ProductCategory UpdateProductCategory (string categoryId, UpdateProductCategoryRequest updateProductCategoryRequest, List<string>? updateMask = null)
 
 Update a Product Category
 
@@ -860,7 +860,7 @@ namespace Example
             var apiInstance = new ProductCategoriesApi(config);
             var categoryId = "categoryId_example";  // string | 
             var updateProductCategoryRequest = new UpdateProductCategoryRequest(); // UpdateProductCategoryRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -905,7 +905,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **categoryId** | **string** |  |  |
 | **updateProductCategoryRequest** | [**UpdateProductCategoryRequest**](UpdateProductCategoryRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

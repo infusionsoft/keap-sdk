@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr, field_validator
-from typing import Any, List, Optional
+from typing import List, Optional
 from typing_extensions import Annotated
 from keap_core_v2_client.models.contact import Contact
 from keap_core_v2_client.models.contact_link import ContactLink
@@ -3771,7 +3771,7 @@ class ContactApi:
         self,
         contact_id: StrictStr,
         create_update_contact_request: CreateUpdateContactRequest,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)")] = None,
         _request_timeout: Union[
             None,
@@ -3795,7 +3795,7 @@ class ContactApi:
         :param create_update_contact_request: (required)
         :type create_update_contact_request: CreateUpdateContactRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
         :param fields: Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
         :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -3858,7 +3858,7 @@ class ContactApi:
         self,
         contact_id: StrictStr,
         create_update_contact_request: CreateUpdateContactRequest,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)")] = None,
         _request_timeout: Union[
             None,
@@ -3882,7 +3882,7 @@ class ContactApi:
         :param create_update_contact_request: (required)
         :type create_update_contact_request: CreateUpdateContactRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
         :param fields: Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
         :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -3945,7 +3945,7 @@ class ContactApi:
         self,
         contact_id: StrictStr,
         create_update_contact_request: CreateUpdateContactRequest,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)")] = None,
         _request_timeout: Union[
             None,
@@ -3969,7 +3969,7 @@ class ContactApi:
         :param create_update_contact_request: (required)
         :type create_update_contact_request: CreateUpdateContactRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
         :param fields: Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
         :type fields: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -4038,6 +4038,7 @@ class ContactApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'update_mask': 'multi',
             'fields': 'csv',
         }
 

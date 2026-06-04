@@ -207,7 +207,7 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateFreeTrialDiscountRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateFreeTrialDiscount(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateFreeTrialDiscount(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: Set<'name' | 'description' | 'free_trial_days' | 'hide_price' | 'subscription_plan_id' | 'criteria'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'discountId' is not null or undefined
@@ -233,9 +233,9 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'name' | 'description' | 'free_trial_days' | 'hide_price' | 'subscription_plan_id' | 'criteria'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 

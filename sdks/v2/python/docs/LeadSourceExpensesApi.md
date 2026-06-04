@@ -384,7 +384,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     lead_source_expense_id = 'lead_source_expense_id_example' # str | The ID of a lead source expense
     lead_source_id = 'lead_source_id_example' # str | The ID of the lead source this expense belongs to
     update_lead_source_expense_request = keap_core_v2_client.UpdateLeadSourceExpenseRequest() # UpdateLeadSourceExpenseRequest | 
-    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Lead Source Expense
@@ -404,7 +404,7 @@ Name | Type | Description  | Notes
  **lead_source_expense_id** | **str**| The ID of a lead source expense | 
  **lead_source_id** | **str**| The ID of the lead source this expense belongs to | 
  **update_lead_source_expense_request** | [**UpdateLeadSourceExpenseRequest**](UpdateLeadSourceExpenseRequest.md)|  | 
- **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

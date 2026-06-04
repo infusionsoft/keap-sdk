@@ -527,7 +527,7 @@ $apiInstance = new Keap\Core\V2\Api\ProductCategoriesApi(
 );
 $category_id = 'category_id_example'; // string
 $update_product_category_request = new \Keap\Core\V2\Model\UpdateProductCategoryRequest(); // \Keap\Core\V2\Model\UpdateProductCategoryRequest
-$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateProductCategory($category_id, $update_product_category_request, $update_mask);
@@ -543,7 +543,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **category_id** | **string**|  | |
 | **update_product_category_request** | [**\Keap\Core\V2\Model\UpdateProductCategoryRequest**](../Model/UpdateProductCategoryRequest.md)|  | |
-| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

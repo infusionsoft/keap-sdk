@@ -1059,7 +1059,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.TagsApi(api_client)
     tag_id = 'tag_id_example' # str | 
     create_update_tag_request = keap_core_v2_client.CreateUpdateTagRequest() # CreateUpdateTagRequest | 
-    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Tag
@@ -1078,7 +1078,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tag_id** | **str**|  | 
  **create_update_tag_request** | [**CreateUpdateTagRequest**](CreateUpdateTagRequest.md)|  | 
- **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -1145,7 +1145,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.TagsApi(api_client)
     tag_category_id = 'tag_category_id_example' # str | 
     create_update_tag_category_request = keap_core_v2_client.CreateUpdateTagCategoryRequest() # CreateUpdateTagCategoryRequest | 
-    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Tag Category
@@ -1164,7 +1164,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tag_category_id** | **str**|  | 
  **create_update_tag_category_request** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md)|  | 
- **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

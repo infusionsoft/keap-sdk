@@ -25,6 +25,7 @@ import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.ListCompaniesResponse;
 import com.keap.core.sdk.model.ListCompanyTagsResponse;
 import com.keap.core.sdk.model.ObjectModel;
+import java.util.Set;
 import com.keap.core.sdk.model.UpdateCompanyRequest;
 import com.keap.core.sdk.model.UpdateCustomFieldMetaDataRequest;
 
@@ -982,7 +983,7 @@ import io.github.resilience4j.retry.Retry;
    * @return Company
    * @throws ApiException if fails to make API call
    */
-  public Company updateCompany(String companyId, UpdateCompanyRequest updateCompanyRequest, Object updateMask) throws ApiException {
+  public Company updateCompany(String companyId, UpdateCompanyRequest updateCompanyRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<Company> localVarResponse = updateCompanyWithHttpInfo(companyId, updateCompanyRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -996,7 +997,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;Company&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Company> updateCompanyWithHttpInfo(String companyId, UpdateCompanyRequest updateCompanyRequest, Object updateMask) throws ApiException {
+  public ApiResponse<Company> updateCompanyWithHttpInfo(String companyId, UpdateCompanyRequest updateCompanyRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateCompanyRequestBuilder(companyId, updateCompanyRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1037,7 +1038,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateCompanyRequestBuilder(String companyId, UpdateCompanyRequest updateCompanyRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateCompanyRequestBuilder(String companyId, UpdateCompanyRequest updateCompanyRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'companyId' is set
     if (companyId == null) {
       throw new ApiException(400, "Missing the required parameter 'companyId' when calling updateCompany");
@@ -1056,7 +1057,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -1097,7 +1098,7 @@ import io.github.resilience4j.retry.Retry;
    * @return CustomFieldMetaData
    * @throws ApiException if fails to make API call
    */
-  public CustomFieldMetaData updateCompanyCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
+  public CustomFieldMetaData updateCompanyCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<CustomFieldMetaData> localVarResponse = updateCompanyCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -1111,7 +1112,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;CustomFieldMetaData&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CustomFieldMetaData> updateCompanyCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
+  public ApiResponse<CustomFieldMetaData> updateCompanyCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateCompanyCustomFieldRequestBuilder(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1152,7 +1153,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateCompanyCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateCompanyCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'customFieldId' is set
     if (customFieldId == null) {
       throw new ApiException(400, "Missing the required parameter 'customFieldId' when calling updateCompanyCustomField");
@@ -1171,7 +1172,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

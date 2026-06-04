@@ -24,6 +24,7 @@ import java.io.File;
 import com.keap.core.sdk.model.ListAssignedProductsResponse;
 import com.keap.core.sdk.model.ListProductCategoriesResponse;
 import com.keap.core.sdk.model.ProductCategory;
+import java.util.Set;
 import com.keap.core.sdk.model.UpdateProductCategoryRequest;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -914,7 +915,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ProductCategory
    * @throws ApiException if fails to make API call
    */
-  public ProductCategory updateProductCategory(String categoryId, UpdateProductCategoryRequest updateProductCategoryRequest, Object updateMask) throws ApiException {
+  public ProductCategory updateProductCategory(String categoryId, UpdateProductCategoryRequest updateProductCategoryRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<ProductCategory> localVarResponse = updateProductCategoryWithHttpInfo(categoryId, updateProductCategoryRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -928,7 +929,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;ProductCategory&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ProductCategory> updateProductCategoryWithHttpInfo(String categoryId, UpdateProductCategoryRequest updateProductCategoryRequest, Object updateMask) throws ApiException {
+  public ApiResponse<ProductCategory> updateProductCategoryWithHttpInfo(String categoryId, UpdateProductCategoryRequest updateProductCategoryRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateProductCategoryRequestBuilder(categoryId, updateProductCategoryRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -969,7 +970,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateProductCategoryRequestBuilder(String categoryId, UpdateProductCategoryRequest updateProductCategoryRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateProductCategoryRequestBuilder(String categoryId, UpdateProductCategoryRequest updateProductCategoryRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'categoryId' is set
     if (categoryId == null) {
       throw new ApiException(400, "Missing the required parameter 'categoryId' when calling updateProductCategory");
@@ -988,7 +989,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

@@ -498,7 +498,7 @@ class BusinessProfileApi
      * Update Business Profile
      *
      * @param  \Keap\Core\V2\Model\UpdateBusinessProfileRequest $update_business_profile_request update_business_profile_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBusinessProfile'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -517,7 +517,7 @@ class BusinessProfileApi
      * Update Business Profile
      *
      * @param  \Keap\Core\V2\Model\UpdateBusinessProfileRequest $update_business_profile_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBusinessProfile'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -715,7 +715,7 @@ class BusinessProfileApi
      * Update Business Profile
      *
      * @param  \Keap\Core\V2\Model\UpdateBusinessProfileRequest $update_business_profile_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBusinessProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -737,7 +737,7 @@ class BusinessProfileApi
      * Update Business Profile
      *
      * @param  \Keap\Core\V2\Model\UpdateBusinessProfileRequest $update_business_profile_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBusinessProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -788,7 +788,7 @@ class BusinessProfileApi
      * Create request for operation 'updateBusinessProfile'
      *
      * @param  \Keap\Core\V2\Model\UpdateBusinessProfileRequest $update_business_profile_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBusinessProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -804,7 +804,7 @@ class BusinessProfileApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/businessProfile';
         $formParams = [];
@@ -817,7 +817,7 @@ class BusinessProfileApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required

@@ -26,6 +26,7 @@ import com.keap.core.sdk.model.ListProductOptionsResponse;
 import com.keap.core.sdk.model.ListProductsResponseList;
 import com.keap.core.sdk.model.ProductOption;
 import com.keap.core.sdk.model.RestV2ProductDetail;
+import java.util.Set;
 import com.keap.core.sdk.model.UpdateProductInventoryRequestDetail;
 import com.keap.core.sdk.model.UpdateProductOptionListOption;
 import com.keap.core.sdk.model.UpdateProductOptionRequest;
@@ -1492,7 +1493,7 @@ import io.github.resilience4j.retry.Retry;
    * @return RestV2ProductDetail
    * @throws ApiException if fails to make API call
    */
-  public RestV2ProductDetail updateProduct(String productId, UpdateProductRequestDetail updateProductRequestDetail, Object updateMask) throws ApiException {
+  public RestV2ProductDetail updateProduct(String productId, UpdateProductRequestDetail updateProductRequestDetail, Set<String> updateMask) throws ApiException {
     ApiResponse<RestV2ProductDetail> localVarResponse = updateProductWithHttpInfo(productId, updateProductRequestDetail, updateMask);
     return localVarResponse.getData();
   }
@@ -1506,7 +1507,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;RestV2ProductDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RestV2ProductDetail> updateProductWithHttpInfo(String productId, UpdateProductRequestDetail updateProductRequestDetail, Object updateMask) throws ApiException {
+  public ApiResponse<RestV2ProductDetail> updateProductWithHttpInfo(String productId, UpdateProductRequestDetail updateProductRequestDetail, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateProductRequestBuilder(productId, updateProductRequestDetail, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1547,7 +1548,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateProductRequestBuilder(String productId, UpdateProductRequestDetail updateProductRequestDetail, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateProductRequestBuilder(String productId, UpdateProductRequestDetail updateProductRequestDetail, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'productId' is set
     if (productId == null) {
       throw new ApiException(400, "Missing the required parameter 'productId' when calling updateProduct");
@@ -1566,7 +1567,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -1608,7 +1609,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ProductOption
    * @throws ApiException if fails to make API call
    */
-  public ProductOption updateProductOption(String productId, String productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object updateMask) throws ApiException {
+  public ProductOption updateProductOption(String productId, String productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<ProductOption> localVarResponse = updateProductOptionWithHttpInfo(productId, productOptionId, updateProductOptionRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -1623,7 +1624,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;ProductOption&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ProductOption> updateProductOptionWithHttpInfo(String productId, String productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object updateMask) throws ApiException {
+  public ApiResponse<ProductOption> updateProductOptionWithHttpInfo(String productId, String productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateProductOptionRequestBuilder(productId, productOptionId, updateProductOptionRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1664,7 +1665,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateProductOptionRequestBuilder(String productId, String productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateProductOptionRequestBuilder(String productId, String productOptionId, UpdateProductOptionRequest updateProductOptionRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'productId' is set
     if (productId == null) {
       throw new ApiException(400, "Missing the required parameter 'productId' when calling updateProductOption");
@@ -1688,7 +1689,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -1731,7 +1732,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ProductOption
    * @throws ApiException if fails to make API call
    */
-  public ProductOption updateProductOptionListOptionValue(String productId, String productOptionId, String itemId, UpdateProductOptionListOption updateProductOptionListOption, Object updateMask) throws ApiException {
+  public ProductOption updateProductOptionListOptionValue(String productId, String productOptionId, String itemId, UpdateProductOptionListOption updateProductOptionListOption, Set<String> updateMask) throws ApiException {
     ApiResponse<ProductOption> localVarResponse = updateProductOptionListOptionValueWithHttpInfo(productId, productOptionId, itemId, updateProductOptionListOption, updateMask);
     return localVarResponse.getData();
   }
@@ -1747,7 +1748,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;ProductOption&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ProductOption> updateProductOptionListOptionValueWithHttpInfo(String productId, String productOptionId, String itemId, UpdateProductOptionListOption updateProductOptionListOption, Object updateMask) throws ApiException {
+  public ApiResponse<ProductOption> updateProductOptionListOptionValueWithHttpInfo(String productId, String productOptionId, String itemId, UpdateProductOptionListOption updateProductOptionListOption, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateProductOptionListOptionValueRequestBuilder(productId, productOptionId, itemId, updateProductOptionListOption, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1788,7 +1789,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateProductOptionListOptionValueRequestBuilder(String productId, String productOptionId, String itemId, UpdateProductOptionListOption updateProductOptionListOption, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateProductOptionListOptionValueRequestBuilder(String productId, String productOptionId, String itemId, UpdateProductOptionListOption updateProductOptionListOption, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'productId' is set
     if (productId == null) {
       throw new ApiException(400, "Missing the required parameter 'productId' when calling updateProductOptionListOptionValue");
@@ -1817,7 +1818,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

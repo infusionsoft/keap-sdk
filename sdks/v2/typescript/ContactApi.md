@@ -1008,7 +1008,9 @@ const request: ContactApiUpdateContactRequest = {
     billingInformation: "billingInformation_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "addresses",
+  ],
     // Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)
   fields: [
     "fields_example",
@@ -1026,7 +1028,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createUpdateContactRequest** | **CreateUpdateContactRequest**|  |
  **contactId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;addresses&#39; &#124; &#39;anniversary_date&#39; &#124; &#39;birth_date&#39; &#124; &#39;company&#39; &#124; &#39;contact_type&#39; &#124; &#39;create_time&#39; &#124; &#39;custom_fields&#39; &#124; &#39;email_addresses&#39; &#124; &#39;family_name&#39; &#124; &#39;fax_numbers&#39; &#124; &#39;given_name&#39; &#124; &#39;id&#39; &#124; &#39;job_title&#39; &#124; &#39;leadsource_id&#39; &#124; &#39;links&#39; &#124; &#39;middle_name&#39; &#124; &#39;notes&#39; &#124; &#39;origin&#39; &#124; &#39;owner_id&#39; &#124; &#39;phone_numbers&#39; &#124; &#39;preferred_locale&#39; &#124; &#39;preferred_name&#39; &#124; &#39;prefix&#39; &#124; &#39;referral_code&#39; &#124; &#39;score_value&#39; &#124; &#39;social_accounts&#39; &#124; &#39;source_type&#39; &#124; &#39;spouse_name&#39; &#124; &#39;suffix&#39; &#124; &#39;tag_ids&#39; &#124; &#39;time_zone&#39; &#124; &#39;update_time&#39; &#124; &#39;utm_parameters&#39; &#124; &#39;website&#39; &#124; &#39;account_id&#39; &#124; &#39;assistant_name&#39; &#124; &#39;assistant_phone&#39; &#124; &#39;billing_information&#39; &#124; &#39;created_by&#39; &#124; &#39;groups&#39; &#124; &#39;last_updated_by&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
  **fields** | **Array&lt;string&gt;** | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) | (optional) defaults to undefined
 
 

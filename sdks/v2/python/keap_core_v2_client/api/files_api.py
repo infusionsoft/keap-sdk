@@ -16,8 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBool, StrictBytes, StrictStr
-from typing import Any, Optional, Tuple, Union
+from pydantic import Field, StrictBool, StrictBytes, StrictStr, field_validator
+from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from keap_core_v2_client.models.file_metadata import FileMetadata
 from keap_core_v2_client.models.list_files_response import ListFilesResponse
@@ -43,16 +43,11 @@ class FilesApi:
     @validate_call
     def create_file(
         self,
-        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="File to upload. This is a file sent as multi-part (not a string)")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="File to upload")],
         file_name: Annotated[StrictStr, Field(description="File name")],
-        is_public: Annotated[StrictBool, Field(description="Is public")],
         file_association: Annotated[StrictStr, Field(description="File association")],
-        file2: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="File to upload")],
-        file_name2: Annotated[StrictStr, Field(description="File name")],
-        is_public2: Annotated[StrictStr, Field(description="Is public")],
-        file_association2: Annotated[StrictStr, Field(description="File association")],
-        contact_id: Annotated[Optional[StrictStr], Field(description="Contact ID")] = None,
-        contact_id2: Annotated[Optional[StrictStr], Field(description="Contact ID. Required if the `file_association` is CONTACT")] = None,
+        contact_id: Annotated[Optional[StrictStr], Field(description="Contact ID. Required if the `file_association` is CONTACT")] = None,
+        is_public: Annotated[Optional[StrictStr], Field(description="Is public")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -68,28 +63,18 @@ class FilesApi:
     ) -> FileMetadata:
         """Create a file
 
-        Creates a file and uploads it
+        Uploads a file using multipart/form-data. The `file` part contains the binary file content; `file_name`, `is_public`, `file_association`, and optionally `contact_id` are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
 
-        :param file: File to upload. This is a file sent as multi-part (not a string) (required)
+        :param file: File to upload (required)
         :type file: bytearray
         :param file_name: File name (required)
         :type file_name: str
-        :param is_public: Is public (required)
-        :type is_public: bool
         :param file_association: File association (required)
         :type file_association: str
-        :param file2: File to upload (required)
-        :type file2: bytearray
-        :param file_name2: File name (required)
-        :type file_name2: str
-        :param is_public2: Is public (required)
-        :type is_public2: str
-        :param file_association2: File association (required)
-        :type file_association2: str
-        :param contact_id: Contact ID
+        :param contact_id: Contact ID. Required if the `file_association` is CONTACT
         :type contact_id: str
-        :param contact_id2: Contact ID. Required if the `file_association` is CONTACT
-        :type contact_id2: str
+        :param is_public: Is public
+        :type is_public: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -115,14 +100,9 @@ class FilesApi:
         _param = self._create_file_serialize(
             file=file,
             file_name=file_name,
-            is_public=is_public,
             file_association=file_association,
-            file2=file2,
-            file_name2=file_name2,
-            is_public2=is_public2,
-            file_association2=file_association2,
             contact_id=contact_id,
-            contact_id2=contact_id2,
+            is_public=is_public,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -154,16 +134,11 @@ class FilesApi:
     @validate_call
     def create_file_with_http_info(
         self,
-        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="File to upload. This is a file sent as multi-part (not a string)")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="File to upload")],
         file_name: Annotated[StrictStr, Field(description="File name")],
-        is_public: Annotated[StrictBool, Field(description="Is public")],
         file_association: Annotated[StrictStr, Field(description="File association")],
-        file2: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="File to upload")],
-        file_name2: Annotated[StrictStr, Field(description="File name")],
-        is_public2: Annotated[StrictStr, Field(description="Is public")],
-        file_association2: Annotated[StrictStr, Field(description="File association")],
-        contact_id: Annotated[Optional[StrictStr], Field(description="Contact ID")] = None,
-        contact_id2: Annotated[Optional[StrictStr], Field(description="Contact ID. Required if the `file_association` is CONTACT")] = None,
+        contact_id: Annotated[Optional[StrictStr], Field(description="Contact ID. Required if the `file_association` is CONTACT")] = None,
+        is_public: Annotated[Optional[StrictStr], Field(description="Is public")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -179,28 +154,18 @@ class FilesApi:
     ) -> ApiResponse[FileMetadata]:
         """Create a file
 
-        Creates a file and uploads it
+        Uploads a file using multipart/form-data. The `file` part contains the binary file content; `file_name`, `is_public`, `file_association`, and optionally `contact_id` are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
 
-        :param file: File to upload. This is a file sent as multi-part (not a string) (required)
+        :param file: File to upload (required)
         :type file: bytearray
         :param file_name: File name (required)
         :type file_name: str
-        :param is_public: Is public (required)
-        :type is_public: bool
         :param file_association: File association (required)
         :type file_association: str
-        :param file2: File to upload (required)
-        :type file2: bytearray
-        :param file_name2: File name (required)
-        :type file_name2: str
-        :param is_public2: Is public (required)
-        :type is_public2: str
-        :param file_association2: File association (required)
-        :type file_association2: str
-        :param contact_id: Contact ID
+        :param contact_id: Contact ID. Required if the `file_association` is CONTACT
         :type contact_id: str
-        :param contact_id2: Contact ID. Required if the `file_association` is CONTACT
-        :type contact_id2: str
+        :param is_public: Is public
+        :type is_public: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -226,14 +191,9 @@ class FilesApi:
         _param = self._create_file_serialize(
             file=file,
             file_name=file_name,
-            is_public=is_public,
             file_association=file_association,
-            file2=file2,
-            file_name2=file_name2,
-            is_public2=is_public2,
-            file_association2=file_association2,
             contact_id=contact_id,
-            contact_id2=contact_id2,
+            is_public=is_public,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -265,16 +225,11 @@ class FilesApi:
     @validate_call
     def create_file_without_preload_content(
         self,
-        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="File to upload. This is a file sent as multi-part (not a string)")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="File to upload")],
         file_name: Annotated[StrictStr, Field(description="File name")],
-        is_public: Annotated[StrictBool, Field(description="Is public")],
         file_association: Annotated[StrictStr, Field(description="File association")],
-        file2: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="File to upload")],
-        file_name2: Annotated[StrictStr, Field(description="File name")],
-        is_public2: Annotated[StrictStr, Field(description="Is public")],
-        file_association2: Annotated[StrictStr, Field(description="File association")],
-        contact_id: Annotated[Optional[StrictStr], Field(description="Contact ID")] = None,
-        contact_id2: Annotated[Optional[StrictStr], Field(description="Contact ID. Required if the `file_association` is CONTACT")] = None,
+        contact_id: Annotated[Optional[StrictStr], Field(description="Contact ID. Required if the `file_association` is CONTACT")] = None,
+        is_public: Annotated[Optional[StrictStr], Field(description="Is public")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -290,28 +245,18 @@ class FilesApi:
     ) -> RESTResponseType:
         """Create a file
 
-        Creates a file and uploads it
+        Uploads a file using multipart/form-data. The `file` part contains the binary file content; `file_name`, `is_public`, `file_association`, and optionally `contact_id` are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
 
-        :param file: File to upload. This is a file sent as multi-part (not a string) (required)
+        :param file: File to upload (required)
         :type file: bytearray
         :param file_name: File name (required)
         :type file_name: str
-        :param is_public: Is public (required)
-        :type is_public: bool
         :param file_association: File association (required)
         :type file_association: str
-        :param file2: File to upload (required)
-        :type file2: bytearray
-        :param file_name2: File name (required)
-        :type file_name2: str
-        :param is_public2: Is public (required)
-        :type is_public2: str
-        :param file_association2: File association (required)
-        :type file_association2: str
-        :param contact_id: Contact ID
+        :param contact_id: Contact ID. Required if the `file_association` is CONTACT
         :type contact_id: str
-        :param contact_id2: Contact ID. Required if the `file_association` is CONTACT
-        :type contact_id2: str
+        :param is_public: Is public
+        :type is_public: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -337,14 +282,9 @@ class FilesApi:
         _param = self._create_file_serialize(
             file=file,
             file_name=file_name,
-            is_public=is_public,
             file_association=file_association,
-            file2=file2,
-            file_name2=file_name2,
-            is_public2=is_public2,
-            file_association2=file_association2,
             contact_id=contact_id,
-            contact_id2=contact_id2,
+            is_public=is_public,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -373,14 +313,9 @@ class FilesApi:
         self,
         file,
         file_name,
-        is_public,
         file_association,
-        file2,
-        file_name2,
-        is_public2,
-        file_association2,
         contact_id,
-        contact_id2,
+        is_public,
         _request_auth,
         _content_type,
         _headers,
@@ -403,38 +338,18 @@ class FilesApi:
 
         # process the path parameters
         # process the query parameters
-        if file is not None:
-            
-            _query_params.append(('file', file))
-            
-        if file_name is not None:
-            
-            _query_params.append(('file_name', file_name))
-            
-        if contact_id is not None:
-            
-            _query_params.append(('contact_id', contact_id))
-            
-        if is_public is not None:
-            
-            _query_params.append(('is_public', is_public))
-            
-        if file_association is not None:
-            
-            _query_params.append(('file_association', file_association))
-            
         # process the header parameters
         # process the form parameters
-        if file2 is not None:
-            _files['file'] = file2
-        if file_name2 is not None:
-            _form_params.append(('file_name', file_name2))
-        if contact_id2 is not None:
-            _form_params.append(('contact_id', contact_id2))
-        if is_public2 is not None:
-            _form_params.append(('is_public', is_public2))
-        if file_association2 is not None:
-            _form_params.append(('file_association', file_association2))
+        if file is not None:
+            _files['file'] = file
+        if file_name is not None:
+            _form_params.append(('file_name', file_name))
+        if contact_id is not None:
+            _form_params.append(('contact_id', contact_id))
+        if is_public is not None:
+            _form_params.append(('is_public', is_public))
+        if file_association is not None:
+            _form_params.append(('file_association', file_association))
         # process the body parameter
 
 
@@ -1680,13 +1595,10 @@ class FilesApi:
     def update_file(
         self,
         file_id: StrictStr,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
-        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="File to upload. This is a file sent as multi-part (not a string)")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="File to upload")] = None,
         file_name: Annotated[Optional[StrictStr], Field(description="File name")] = None,
         is_public: Annotated[Optional[StrictBool], Field(description="Is public")] = None,
-        file2: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="File to upload")] = None,
-        file_name2: Annotated[Optional[StrictStr], Field(description="File name")] = None,
-        is_public2: Annotated[Optional[StrictBool], Field(description="Is public")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1702,24 +1614,18 @@ class FilesApi:
     ) -> FileMetadata:
         """Update a file
 
-        Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+        Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
 
         :param file_id: (required)
         :type file_id: str
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
-        :param file: File to upload. This is a file sent as multi-part (not a string)
+        :type update_mask: List[str]
+        :param file: File to upload
         :type file: bytearray
         :param file_name: File name
         :type file_name: str
         :param is_public: Is public
         :type is_public: bool
-        :param file2: File to upload
-        :type file2: bytearray
-        :param file_name2: File name
-        :type file_name2: str
-        :param is_public2: Is public
-        :type is_public2: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1748,9 +1654,6 @@ class FilesApi:
             file=file,
             file_name=file_name,
             is_public=is_public,
-            file2=file2,
-            file_name2=file_name2,
-            is_public2=is_public2,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1783,13 +1686,10 @@ class FilesApi:
     def update_file_with_http_info(
         self,
         file_id: StrictStr,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
-        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="File to upload. This is a file sent as multi-part (not a string)")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="File to upload")] = None,
         file_name: Annotated[Optional[StrictStr], Field(description="File name")] = None,
         is_public: Annotated[Optional[StrictBool], Field(description="Is public")] = None,
-        file2: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="File to upload")] = None,
-        file_name2: Annotated[Optional[StrictStr], Field(description="File name")] = None,
-        is_public2: Annotated[Optional[StrictBool], Field(description="Is public")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1805,24 +1705,18 @@ class FilesApi:
     ) -> ApiResponse[FileMetadata]:
         """Update a file
 
-        Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+        Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
 
         :param file_id: (required)
         :type file_id: str
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
-        :param file: File to upload. This is a file sent as multi-part (not a string)
+        :type update_mask: List[str]
+        :param file: File to upload
         :type file: bytearray
         :param file_name: File name
         :type file_name: str
         :param is_public: Is public
         :type is_public: bool
-        :param file2: File to upload
-        :type file2: bytearray
-        :param file_name2: File name
-        :type file_name2: str
-        :param is_public2: Is public
-        :type is_public2: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1851,9 +1745,6 @@ class FilesApi:
             file=file,
             file_name=file_name,
             is_public=is_public,
-            file2=file2,
-            file_name2=file_name2,
-            is_public2=is_public2,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1886,13 +1777,10 @@ class FilesApi:
     def update_file_without_preload_content(
         self,
         file_id: StrictStr,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
-        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="File to upload. This is a file sent as multi-part (not a string)")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="File to upload")] = None,
         file_name: Annotated[Optional[StrictStr], Field(description="File name")] = None,
         is_public: Annotated[Optional[StrictBool], Field(description="Is public")] = None,
-        file2: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="File to upload")] = None,
-        file_name2: Annotated[Optional[StrictStr], Field(description="File name")] = None,
-        is_public2: Annotated[Optional[StrictBool], Field(description="Is public")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1908,24 +1796,18 @@ class FilesApi:
     ) -> RESTResponseType:
         """Update a file
 
-        Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+        Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
 
         :param file_id: (required)
         :type file_id: str
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
-        :param file: File to upload. This is a file sent as multi-part (not a string)
+        :type update_mask: List[str]
+        :param file: File to upload
         :type file: bytearray
         :param file_name: File name
         :type file_name: str
         :param is_public: Is public
         :type is_public: bool
-        :param file2: File to upload
-        :type file2: bytearray
-        :param file_name2: File name
-        :type file_name2: str
-        :param is_public2: Is public
-        :type is_public2: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1954,9 +1836,6 @@ class FilesApi:
             file=file,
             file_name=file_name,
             is_public=is_public,
-            file2=file2,
-            file_name2=file_name2,
-            is_public2=is_public2,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1988,9 +1867,6 @@ class FilesApi:
         file,
         file_name,
         is_public,
-        file2,
-        file_name2,
-        is_public2,
         _request_auth,
         _content_type,
         _headers,
@@ -2000,6 +1876,7 @@ class FilesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'update_mask': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2019,26 +1896,14 @@ class FilesApi:
             
             _query_params.append(('update_mask', update_mask))
             
-        if file is not None:
-            
-            _query_params.append(('file', file))
-            
-        if file_name is not None:
-            
-            _query_params.append(('file_name', file_name))
-            
-        if is_public is not None:
-            
-            _query_params.append(('is_public', is_public))
-            
         # process the header parameters
         # process the form parameters
-        if file2 is not None:
-            _files['file'] = file2
-        if file_name2 is not None:
-            _form_params.append(('file_name', file_name2))
-        if is_public2 is not None:
-            _form_params.append(('is_public', is_public2))
+        if file is not None:
+            _files['file'] = file
+        if file_name is not None:
+            _form_params.append(('file_name', file_name))
+        if is_public is not None:
+            _form_params.append(('is_public', is_public))
         # process the body parameter
 
 

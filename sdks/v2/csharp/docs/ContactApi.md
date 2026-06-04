@@ -1259,7 +1259,7 @@ void (empty response body)
 
 <a id="updatecontact"></a>
 # **UpdateContact**
-> Contact UpdateContact (string contactId, CreateUpdateContactRequest createUpdateContactRequest, Object? updateMask = null, List<string>? fields = null)
+> Contact UpdateContact (string contactId, CreateUpdateContactRequest createUpdateContactRequest, List<string>? updateMask = null, List<string>? fields = null)
 
 Update a Contact
 
@@ -1287,7 +1287,7 @@ namespace Example
             var apiInstance = new ContactApi(config);
             var contactId = "contactId_example";  // string | 
             var createUpdateContactRequest = new CreateUpdateContactRequest(); // CreateUpdateContactRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
             var fields = new List<string>?(); // List<string>? | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional) 
 
             try
@@ -1333,7 +1333,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **contactId** | **string** |  |  |
 | **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 | **fields** | [**List&lt;string&gt;?**](string.md) | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) | [optional]  |
 
 ### Return type

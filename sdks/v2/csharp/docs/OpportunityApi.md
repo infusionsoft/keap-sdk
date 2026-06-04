@@ -21,7 +21,7 @@ All URIs are relative to *https://api.keap.com/crm*
 
 <a id="createopportunity"></a>
 # **CreateOpportunity**
-> RestV2Opportunity CreateOpportunity (CreateOpportunityRequest createOpportunityRequest)
+> RestV2Opportunity CreateOpportunity (CreateOpportunityRequest createOpportunityRequest, List<string>? fields = null)
 
 Create an Opportunity
 
@@ -48,11 +48,12 @@ namespace Example
 
             var apiInstance = new OpportunityApi(config);
             var createOpportunityRequest = new CreateOpportunityRequest(); // CreateOpportunityRequest | 
+            var fields = new List<string>?(); // List<string>? | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional) 
 
             try
             {
                 // Create an Opportunity
-                RestV2Opportunity result = apiInstance.CreateOpportunity(createOpportunityRequest);
+                RestV2Opportunity result = apiInstance.CreateOpportunity(createOpportunityRequest, fields);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -73,7 +74,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Create an Opportunity
-    ApiResponse<RestV2Opportunity> response = apiInstance.CreateOpportunityWithHttpInfo(createOpportunityRequest);
+    ApiResponse<RestV2Opportunity> response = apiInstance.CreateOpportunityWithHttpInfo(createOpportunityRequest, fields);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -91,6 +92,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **createOpportunityRequest** | [**CreateOpportunityRequest**](CreateOpportunityRequest.md) |  |  |
+| **fields** | [**List&lt;string&gt;?**](string.md) | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | [optional]  |
 
 ### Return type
 
@@ -621,7 +623,7 @@ void (empty response body)
 
 <a id="getopportunity"></a>
 # **GetOpportunity**
-> RestV2Opportunity GetOpportunity (string opportunityId)
+> RestV2Opportunity GetOpportunity (string opportunityId, List<string>? fields = null)
 
 Retrieve a Opportunity
 
@@ -648,11 +650,12 @@ namespace Example
 
             var apiInstance = new OpportunityApi(config);
             var opportunityId = "opportunityId_example";  // string | 
+            var fields = new List<string>?(); // List<string>? | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional) 
 
             try
             {
                 // Retrieve a Opportunity
-                RestV2Opportunity result = apiInstance.GetOpportunity(opportunityId);
+                RestV2Opportunity result = apiInstance.GetOpportunity(opportunityId, fields);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -673,7 +676,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Retrieve a Opportunity
-    ApiResponse<RestV2Opportunity> response = apiInstance.GetOpportunityWithHttpInfo(opportunityId);
+    ApiResponse<RestV2Opportunity> response = apiInstance.GetOpportunityWithHttpInfo(opportunityId, fields);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -691,6 +694,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **opportunityId** | **string** |  |  |
+| **fields** | [**List&lt;string&gt;?**](string.md) | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | [optional]  |
 
 ### Return type
 
@@ -851,7 +855,7 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new OpportunityApi(config);
-            var fields = new List<string>?(); // List<string>? |  (optional) 
+            var fields = new List<string>?(); // List<string>? | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional) 
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs Note: `opportunity_id` and `ids` cannot be used together in the same request.  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to opportunities items. One of the following fields: - `next_action_time` - `contact_name` - `opportunity_title` - `created_time` - `update_time`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
@@ -898,7 +902,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **fields** | [**List&lt;string&gt;?**](string.md) |  | [optional]  |
+| **fields** | [**List&lt;string&gt;?**](string.md) | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | [optional]  |
 | **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  | [optional]  |
 | **orderBy** | **string?** | Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
@@ -961,7 +965,7 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new OpportunityApi(config);
-            var filter = "filter_example";  // string? | Search filter to apply to results (optional) 
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `opportunity_stage_name` — supports wildcard prefix search (e.g. `opportunity_stage_name==Qualified*`) - (String) `opportunity_stage_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `opportunity_stage_id>5`)  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order stage items. One of the following fields: - `stage_order`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
@@ -1007,7 +1011,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **filter** | **string?** | Search filter to apply to results | [optional]  |
+| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;opportunity_stage_name&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_stage_name&#x3D;&#x3D;Qualified*&#x60;) - (String) &#x60;opportunity_stage_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;opportunity_stage_id&gt;5&#x60;)  | [optional]  |
 | **orderBy** | **string?** | Attribute and direction to order stage items. One of the following fields: - &#x60;stage_order&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
@@ -1140,7 +1144,7 @@ This endpoint does not need any parameter.
 
 <a id="updateopportunity"></a>
 # **UpdateOpportunity**
-> RestV2Opportunity UpdateOpportunity (string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, Object? updateMask = null)
+> RestV2Opportunity UpdateOpportunity (string opportunityId, UpdateOpportunityRequestV2 updateOpportunityRequestV2, List<string>? updateMask = null, List<string>? fields = null)
 
 Update an opportunity
 
@@ -1168,12 +1172,13 @@ namespace Example
             var apiInstance = new OpportunityApi(config);
             var opportunityId = "opportunityId_example";  // string | 
             var updateOpportunityRequestV2 = new UpdateOpportunityRequestV2(); // UpdateOpportunityRequestV2 | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var fields = new List<string>?(); // List<string>? | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional) 
 
             try
             {
                 // Update an opportunity
-                RestV2Opportunity result = apiInstance.UpdateOpportunity(opportunityId, updateOpportunityRequestV2, updateMask);
+                RestV2Opportunity result = apiInstance.UpdateOpportunity(opportunityId, updateOpportunityRequestV2, updateMask, fields);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1194,7 +1199,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Update an opportunity
-    ApiResponse<RestV2Opportunity> response = apiInstance.UpdateOpportunityWithHttpInfo(opportunityId, updateOpportunityRequestV2, updateMask);
+    ApiResponse<RestV2Opportunity> response = apiInstance.UpdateOpportunityWithHttpInfo(opportunityId, updateOpportunityRequestV2, updateMask, fields);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1213,7 +1218,8 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **opportunityId** | **string** |  |  |
 | **updateOpportunityRequestV2** | [**UpdateOpportunityRequestV2**](UpdateOpportunityRequestV2.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **fields** | [**List&lt;string&gt;?**](string.md) | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | [optional]  |
 
 ### Return type
 
@@ -1246,7 +1252,7 @@ catch (ApiException e)
 
 <a id="updateopportunitycustomfield"></a>
 # **UpdateOpportunityCustomField**
-> CustomFieldMetaData UpdateOpportunityCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = null)
+> CustomFieldMetaData UpdateOpportunityCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = null)
 
 Update a Opportunity's Custom Field
 
@@ -1274,7 +1280,7 @@ namespace Example
             var apiInstance = new OpportunityApi(config);
             var customFieldId = "customFieldId_example";  // string | 
             var updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -1319,7 +1325,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **customFieldId** | **string** |  |  |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -1352,7 +1358,7 @@ catch (ApiException e)
 
 <a id="updateopportunitystage"></a>
 # **UpdateOpportunityStage**
-> RestOpportunityStage UpdateOpportunityStage (string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, Object? updateMask = null)
+> RestOpportunityStage UpdateOpportunityStage (string stageId, UpdateOpportunityStageRequest updateOpportunityStageRequest, List<string>? updateMask = null)
 
 Update an Opportunity Stage
 
@@ -1380,7 +1386,7 @@ namespace Example
             var apiInstance = new OpportunityApi(config);
             var stageId = "stageId_example";  // string | 
             var updateOpportunityStageRequest = new UpdateOpportunityStageRequest(); // UpdateOpportunityStageRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -1425,7 +1431,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **stageId** | **string** |  |  |
 | **updateOpportunityStageRequest** | [**UpdateOpportunityStageRequest**](UpdateOpportunityStageRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

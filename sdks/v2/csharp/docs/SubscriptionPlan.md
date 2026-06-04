@@ -4,16 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Id of the subscription plan. | [optional] 
+**Id** | **string** | Subscription plan ID | [optional] 
+**Frequency** | **int** | Interval at which a customer receives a product or service as part of a subscription plan. | [optional] 
 **Active** | **bool** | If the subscription plan is active or not. | [optional] 
-**Frequency** | **int** | Total number of times of a cycle type which constitutes a plan cycle. Minimum value is 1. | [optional] 
-**AllowProrating** | **bool** | Whether or not the plan will allow prorating. | [optional] 
-**ProductId** | **string** | The product ID this plan belongs to. | [optional] 
+**SubscriptionPlanName** | **string** | Plan name | [optional] 
 **CycleType** | **string** | The cycle type of the subscription plan. | [optional] 
-**DisplayOrderIndex** | **int** | The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list. | [optional] 
 **TotalCycles** | **int** | Total number of cycles the plan will run before ending. Value of 0 indicates plan will never end. | [optional] 
-**PlanPrice** | [**CurrencyValue**](CurrencyValue.md) | The price of the subscription plan. | [optional] 
-**PreauthorizeAmount** | **double** | The pre-authorize amount for the subscription plan. If null, this field is omitted from the response. | [optional] 
+**PlanPrice** | [**CurrencyValue**](CurrencyValue.md) | Price of the plan | [optional] 
+**DisplayOrderIndex** | **int** | The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

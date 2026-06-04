@@ -2120,7 +2120,9 @@ const request: AffiliateApiUpdateAffiliateRequest = {
     ],
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "contact_id",
+  ],
 };
 
 const data = await apiInstance.updateAffiliate(request);
@@ -2134,7 +2136,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateAffiliateRequest** | **UpdateAffiliateRequest**|  |
  **id** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;contact_id&#39; &#124; &#39;code&#39; &#124; &#39;name&#39; &#124; &#39;status&#39; &#124; &#39;parent_affiliate_id&#39; &#124; &#39;notify_on_sale&#39; &#124; &#39;notify_on_lead&#39; &#124; &#39;track_leads_days&#39; &#124; &#39;password&#39; &#124; &#39;custom_fields&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -2196,7 +2198,9 @@ const request: AffiliateApiUpdateAffiliateCustomFieldRequest = {
     groupId: "groupId_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "group_id",
+  ],
 };
 
 const data = await apiInstance.updateAffiliateCustomField(request);
@@ -2210,7 +2214,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**|  |
  **customFieldId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;group_id&#39; &#124; &#39;label&#39; &#124; &#39;options&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -2267,7 +2271,9 @@ const request: AffiliateApiUpdateCommissionProgramRequest = {
     priority: 1,
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "name",
+  ],
 };
 
 const data = await apiInstance.updateCommissionProgram(request);
@@ -2281,7 +2287,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateCommissionProgramRequest** | **UpdateCommissionProgramRequest**|  |
  **commissionProgramId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;name&#39; &#124; &#39;notes&#39; &#124; &#39;priority&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -2343,7 +2349,9 @@ const request: AffiliateApiUpdateCommissionProgramResourceRequest = {
     commissionProgramIds: [123, 456],
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "title",
+  ],
 };
 
 const data = await apiInstance.updateCommissionProgramResource(request);
@@ -2357,7 +2365,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateProgramResourceRequest** | **UpdateProgramResourceRequest**|  |
  **resourceId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;title&#39; &#124; &#39;notes&#39; &#124; &#39;url&#39; &#124; &#39;order&#39; &#124; &#39;content_html&#39; &#124; &#39;page_width&#39; &#124; &#39;page_height&#39; &#124; &#39;commission_program_ids&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -2432,7 +2440,9 @@ const request: AffiliateApiUpdateDefaultCommissionProgramRequest = {
     payoutType: "UPFRONT",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "percentage",
+  ],
 };
 
 const data = await apiInstance.updateDefaultCommissionProgram(request);
@@ -2446,7 +2456,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateDefaultCommissionProgramRequest** | **UpdateDefaultCommissionProgramRequest**|  |
  **commissionProgramId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;percentage&#39; &#124; &#39;dollar_amount&#39; &#124; &#39;payout_type&#39; &#124; &#39;level_1&#39; &#124; &#39;level_2&#39; &#124; &#39;unused&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -2522,7 +2532,9 @@ const request: AffiliateApiUpdateProductCommissionProgramRequest = {
     productId: "123",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "percentage",
+  ],
 };
 
 const data = await apiInstance.updateProductCommissionProgram(request);
@@ -2536,7 +2548,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateProductCommissionProgramRequest** | **UpdateProductCommissionProgramRequest**|  |
  **commissionProgramId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;percentage&#39; &#124; &#39;dollar_amount&#39; &#124; &#39;payout_type&#39; &#124; &#39;level_1&#39; &#124; &#39;level_2&#39; &#124; &#39;unused&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -2682,7 +2694,9 @@ const request: AffiliateApiUpdateSubscriptionCommissionProgramRequest = {
     subscriptionId: "456",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "percentage",
+  ],
 };
 
 const data = await apiInstance.updateSubscriptionCommissionProgram(request);
@@ -2696,7 +2710,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateSubscriptionCommissionProgramRequest** | **UpdateSubscriptionCommissionProgramRequest**|  |
  **commissionProgramId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;percentage&#39; &#124; &#39;dollar_amount&#39; &#124; &#39;payout_type&#39; &#124; &#39;level_1&#39; &#124; &#39;level_2&#39; &#124; &#39;unused&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

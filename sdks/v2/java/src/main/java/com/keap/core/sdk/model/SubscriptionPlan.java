@@ -35,15 +35,13 @@ import jakarta.validation.Valid;
  */
 @JsonPropertyOrder({
   SubscriptionPlan.JSON_PROPERTY_ID,
-  SubscriptionPlan.JSON_PROPERTY_ACTIVE,
   SubscriptionPlan.JSON_PROPERTY_FREQUENCY,
-  SubscriptionPlan.JSON_PROPERTY_ALLOW_PRORATING,
-  SubscriptionPlan.JSON_PROPERTY_PRODUCT_ID,
+  SubscriptionPlan.JSON_PROPERTY_ACTIVE,
+  SubscriptionPlan.JSON_PROPERTY_SUBSCRIPTION_PLAN_NAME,
   SubscriptionPlan.JSON_PROPERTY_CYCLE_TYPE,
-  SubscriptionPlan.JSON_PROPERTY_DISPLAY_ORDER_INDEX,
   SubscriptionPlan.JSON_PROPERTY_TOTAL_CYCLES,
   SubscriptionPlan.JSON_PROPERTY_PLAN_PRICE,
-  SubscriptionPlan.JSON_PROPERTY_PREAUTHORIZE_AMOUNT
+  SubscriptionPlan.JSON_PROPERTY_DISPLAY_ORDER_INDEX
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SubscriptionPlan implements Serializable {
@@ -52,29 +50,26 @@ public class SubscriptionPlan implements Serializable {
   public static final String JSON_PROPERTY_ID = "id";
   @jakarta.annotation.Nullable  private String id;
 
-  public static final String JSON_PROPERTY_ACTIVE = "active";
-  @jakarta.annotation.Nullable  private Boolean active;
-
   public static final String JSON_PROPERTY_FREQUENCY = "frequency";
   @jakarta.annotation.Nullable  private Integer frequency;
 
-  public static final String JSON_PROPERTY_ALLOW_PRORATING = "allow_prorating";
-  @jakarta.annotation.Nullable  private Boolean allowProrating;
+  public static final String JSON_PROPERTY_ACTIVE = "active";
+  @jakarta.annotation.Nullable  private Boolean active;
 
-  public static final String JSON_PROPERTY_PRODUCT_ID = "product_id";
-  @jakarta.annotation.Nullable  private String productId;
+  public static final String JSON_PROPERTY_SUBSCRIPTION_PLAN_NAME = "subscription_plan_name";
+  @jakarta.annotation.Nullable  private String subscriptionPlanName;
 
   /**
    * The cycle type of the subscription plan.
    */
   public enum CycleTypeEnum {
-    DAILY(String.valueOf("DAILY")),
-    
-    WEEKLY(String.valueOf("WEEKLY")),
+    YEARLY(String.valueOf("YEARLY")),
     
     MONTHLY(String.valueOf("MONTHLY")),
     
-    YEARLY(String.valueOf("YEARLY")),
+    WEEKLY(String.valueOf("WEEKLY")),
+    
+    DAILY(String.valueOf("DAILY")),
     
     UNKNOWN_COULD_NOT_DESERIALIZE(String.valueOf("unknown_default_open_api"));
 
@@ -107,17 +102,14 @@ public class SubscriptionPlan implements Serializable {
   public static final String JSON_PROPERTY_CYCLE_TYPE = "cycle_type";
   @jakarta.annotation.Nullable  private CycleTypeEnum cycleType;
 
-  public static final String JSON_PROPERTY_DISPLAY_ORDER_INDEX = "display_order_index";
-  @jakarta.annotation.Nullable  private Integer displayOrderIndex;
-
   public static final String JSON_PROPERTY_TOTAL_CYCLES = "total_cycles";
   @jakarta.annotation.Nullable  private Integer totalCycles;
 
   public static final String JSON_PROPERTY_PLAN_PRICE = "plan_price";
   @jakarta.annotation.Nullable  private CurrencyValue planPrice;
 
-  public static final String JSON_PROPERTY_PREAUTHORIZE_AMOUNT = "preauthorize_amount";
-  @jakarta.annotation.Nullable  private Double preauthorizeAmount;
+  public static final String JSON_PROPERTY_DISPLAY_ORDER_INDEX = "display_order_index";
+  @jakarta.annotation.Nullable  private Integer displayOrderIndex;
 
   public SubscriptionPlan() { 
   }
@@ -128,10 +120,10 @@ public class SubscriptionPlan implements Serializable {
   }
 
   /**
-   * Id of the subscription plan.
+   * Subscription plan ID
    * @return id
    */
-  @jakarta.annotation.Nullable  @Schema(example = "1", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Id of the subscription plan.")
+  @jakarta.annotation.Nullable  @Schema(example = "123", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Subscription plan ID")
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getId() {
@@ -143,6 +135,30 @@ public class SubscriptionPlan implements Serializable {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setId(@jakarta.annotation.Nullable String id) {
     this.id = id;
+  }
+
+
+  public SubscriptionPlan frequency(@jakarta.annotation.Nullable Integer frequency) {
+    this.frequency = frequency;
+    return this;
+  }
+
+  /**
+   * Interval at which a customer receives a product or service as part of a subscription plan.
+   * @return frequency
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "1", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Interval at which a customer receives a product or service as part of a subscription plan.")
+  @JsonProperty(JSON_PROPERTY_FREQUENCY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getFrequency() {
+    return frequency;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FREQUENCY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFrequency(@jakarta.annotation.Nullable Integer frequency) {
+    this.frequency = frequency;
   }
 
 
@@ -170,75 +186,27 @@ public class SubscriptionPlan implements Serializable {
   }
 
 
-  public SubscriptionPlan frequency(@jakarta.annotation.Nullable Integer frequency) {
-    this.frequency = frequency;
+  public SubscriptionPlan subscriptionPlanName(@jakarta.annotation.Nullable String subscriptionPlanName) {
+    this.subscriptionPlanName = subscriptionPlanName;
     return this;
   }
 
   /**
-   * Total number of times of a cycle type which constitutes a plan cycle. Minimum value is 1.
-   * @return frequency
+   * Plan name
+   * @return subscriptionPlanName
    */
-  @jakarta.annotation.Nullable  @Schema(example = "1", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Total number of times of a cycle type which constitutes a plan cycle. Minimum value is 1.")
-  @JsonProperty(JSON_PROPERTY_FREQUENCY)
+  @jakarta.annotation.Nullable  @Schema(example = "Premium Monthly", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Plan name")
+  @JsonProperty(JSON_PROPERTY_SUBSCRIPTION_PLAN_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getFrequency() {
-    return frequency;
+  public String getSubscriptionPlanName() {
+    return subscriptionPlanName;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FREQUENCY)
+  @JsonProperty(JSON_PROPERTY_SUBSCRIPTION_PLAN_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFrequency(@jakarta.annotation.Nullable Integer frequency) {
-    this.frequency = frequency;
-  }
-
-
-  public SubscriptionPlan allowProrating(@jakarta.annotation.Nullable Boolean allowProrating) {
-    this.allowProrating = allowProrating;
-    return this;
-  }
-
-  /**
-   * Whether or not the plan will allow prorating.
-   * @return allowProrating
-   */
-  @jakarta.annotation.Nullable  @Schema(example = "false", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Whether or not the plan will allow prorating.")
-  @JsonProperty(JSON_PROPERTY_ALLOW_PRORATING)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getAllowProrating() {
-    return allowProrating;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ALLOW_PRORATING)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAllowProrating(@jakarta.annotation.Nullable Boolean allowProrating) {
-    this.allowProrating = allowProrating;
-  }
-
-
-  public SubscriptionPlan productId(@jakarta.annotation.Nullable String productId) {
-    this.productId = productId;
-    return this;
-  }
-
-  /**
-   * The product ID this plan belongs to.
-   * @return productId
-   */
-  @jakarta.annotation.Nullable  @Schema(example = "123", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The product ID this plan belongs to.")
-  @JsonProperty(JSON_PROPERTY_PRODUCT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getProductId() {
-    return productId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PRODUCT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProductId(@jakarta.annotation.Nullable String productId) {
-    this.productId = productId;
+  public void setSubscriptionPlanName(@jakarta.annotation.Nullable String subscriptionPlanName) {
+    this.subscriptionPlanName = subscriptionPlanName;
   }
 
 
@@ -263,30 +231,6 @@ public class SubscriptionPlan implements Serializable {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCycleType(@jakarta.annotation.Nullable CycleTypeEnum cycleType) {
     this.cycleType = cycleType;
-  }
-
-
-  public SubscriptionPlan displayOrderIndex(@jakarta.annotation.Nullable Integer displayOrderIndex) {
-    this.displayOrderIndex = displayOrderIndex;
-    return this;
-  }
-
-  /**
-   * The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list.
-   * @return displayOrderIndex
-   */
-  @jakarta.annotation.Nullable  @Schema(example = "0", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list.")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_ORDER_INDEX)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getDisplayOrderIndex() {
-    return displayOrderIndex;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DISPLAY_ORDER_INDEX)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDisplayOrderIndex(@jakarta.annotation.Nullable Integer displayOrderIndex) {
-    this.displayOrderIndex = displayOrderIndex;
   }
 
 
@@ -320,11 +264,11 @@ public class SubscriptionPlan implements Serializable {
   }
 
   /**
-   * The price of the subscription plan.
+   * Price of the plan
    * @return planPrice
    */
   @jakarta.annotation.Nullable  @Valid
-  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The price of the subscription plan.")
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Price of the plan")
   @JsonProperty(JSON_PROPERTY_PLAN_PRICE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CurrencyValue getPlanPrice() {
@@ -339,27 +283,27 @@ public class SubscriptionPlan implements Serializable {
   }
 
 
-  public SubscriptionPlan preauthorizeAmount(@jakarta.annotation.Nullable Double preauthorizeAmount) {
-    this.preauthorizeAmount = preauthorizeAmount;
+  public SubscriptionPlan displayOrderIndex(@jakarta.annotation.Nullable Integer displayOrderIndex) {
+    this.displayOrderIndex = displayOrderIndex;
     return this;
   }
 
   /**
-   * The pre-authorize amount for the subscription plan. If null, this field is omitted from the response.
-   * @return preauthorizeAmount
+   * The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list.
+   * @return displayOrderIndex
    */
-  @jakarta.annotation.Nullable  @Schema(example = "13", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The pre-authorize amount for the subscription plan. If null, this field is omitted from the response.")
-  @JsonProperty(JSON_PROPERTY_PREAUTHORIZE_AMOUNT)
+  @jakarta.annotation.Nullable  @Schema(example = "1", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list.")
+  @JsonProperty(JSON_PROPERTY_DISPLAY_ORDER_INDEX)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Double getPreauthorizeAmount() {
-    return preauthorizeAmount;
+  public Integer getDisplayOrderIndex() {
+    return displayOrderIndex;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PREAUTHORIZE_AMOUNT)
+  @JsonProperty(JSON_PROPERTY_DISPLAY_ORDER_INDEX)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPreauthorizeAmount(@jakarta.annotation.Nullable Double preauthorizeAmount) {
-    this.preauthorizeAmount = preauthorizeAmount;
+  public void setDisplayOrderIndex(@jakarta.annotation.Nullable Integer displayOrderIndex) {
+    this.displayOrderIndex = displayOrderIndex;
   }
 
   /**
@@ -375,20 +319,18 @@ public class SubscriptionPlan implements Serializable {
     }
     SubscriptionPlan subscriptionPlan = (SubscriptionPlan) o;
     return Objects.equals(this.id, subscriptionPlan.id) &&
-        Objects.equals(this.active, subscriptionPlan.active) &&
         Objects.equals(this.frequency, subscriptionPlan.frequency) &&
-        Objects.equals(this.allowProrating, subscriptionPlan.allowProrating) &&
-        Objects.equals(this.productId, subscriptionPlan.productId) &&
+        Objects.equals(this.active, subscriptionPlan.active) &&
+        Objects.equals(this.subscriptionPlanName, subscriptionPlan.subscriptionPlanName) &&
         Objects.equals(this.cycleType, subscriptionPlan.cycleType) &&
-        Objects.equals(this.displayOrderIndex, subscriptionPlan.displayOrderIndex) &&
         Objects.equals(this.totalCycles, subscriptionPlan.totalCycles) &&
         Objects.equals(this.planPrice, subscriptionPlan.planPrice) &&
-        Objects.equals(this.preauthorizeAmount, subscriptionPlan.preauthorizeAmount);
+        Objects.equals(this.displayOrderIndex, subscriptionPlan.displayOrderIndex);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, active, frequency, allowProrating, productId, cycleType, displayOrderIndex, totalCycles, planPrice, preauthorizeAmount);
+    return Objects.hash(id, frequency, active, subscriptionPlanName, cycleType, totalCycles, planPrice, displayOrderIndex);
   }
 
   @Override
@@ -396,15 +338,13 @@ public class SubscriptionPlan implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class SubscriptionPlan {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("    frequency: ").append(toIndentedString(frequency)).append("\n");
-    sb.append("    allowProrating: ").append(toIndentedString(allowProrating)).append("\n");
-    sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
+    sb.append("    active: ").append(toIndentedString(active)).append("\n");
+    sb.append("    subscriptionPlanName: ").append(toIndentedString(subscriptionPlanName)).append("\n");
     sb.append("    cycleType: ").append(toIndentedString(cycleType)).append("\n");
-    sb.append("    displayOrderIndex: ").append(toIndentedString(displayOrderIndex)).append("\n");
     sb.append("    totalCycles: ").append(toIndentedString(totalCycles)).append("\n");
     sb.append("    planPrice: ").append(toIndentedString(planPrice)).append("\n");
-    sb.append("    preauthorizeAmount: ").append(toIndentedString(preauthorizeAmount)).append("\n");
+    sb.append("    displayOrderIndex: ").append(toIndentedString(displayOrderIndex)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -436,28 +376,20 @@ public class SubscriptionPlan implements Serializable {
               this.instance.id = id;
           return this;
         }
-            public SubscriptionPlan.Builder active(Boolean active) {
-              this.instance.active = active;
-          return this;
-        }
             public SubscriptionPlan.Builder frequency(Integer frequency) {
               this.instance.frequency = frequency;
           return this;
         }
-            public SubscriptionPlan.Builder allowProrating(Boolean allowProrating) {
-              this.instance.allowProrating = allowProrating;
+            public SubscriptionPlan.Builder active(Boolean active) {
+              this.instance.active = active;
           return this;
         }
-            public SubscriptionPlan.Builder productId(String productId) {
-              this.instance.productId = productId;
+            public SubscriptionPlan.Builder subscriptionPlanName(String subscriptionPlanName) {
+              this.instance.subscriptionPlanName = subscriptionPlanName;
           return this;
         }
             public SubscriptionPlan.Builder cycleType(CycleTypeEnum cycleType) {
               this.instance.cycleType = cycleType;
-          return this;
-        }
-            public SubscriptionPlan.Builder displayOrderIndex(Integer displayOrderIndex) {
-              this.instance.displayOrderIndex = displayOrderIndex;
           return this;
         }
             public SubscriptionPlan.Builder totalCycles(Integer totalCycles) {
@@ -468,8 +400,8 @@ public class SubscriptionPlan implements Serializable {
               this.instance.planPrice = planPrice;
           return this;
         }
-            public SubscriptionPlan.Builder preauthorizeAmount(Double preauthorizeAmount) {
-              this.instance.preauthorizeAmount = preauthorizeAmount;
+            public SubscriptionPlan.Builder displayOrderIndex(Integer displayOrderIndex) {
+              this.instance.displayOrderIndex = displayOrderIndex;
           return this;
         }
         
@@ -507,15 +439,13 @@ public class SubscriptionPlan implements Serializable {
       public SubscriptionPlan.Builder toBuilder() {
         return new SubscriptionPlan.Builder()
           .id(getId())
-          .active(getActive())
           .frequency(getFrequency())
-          .allowProrating(getAllowProrating())
-          .productId(getProductId())
+          .active(getActive())
+          .subscriptionPlanName(getSubscriptionPlanName())
           .cycleType(getCycleType())
-          .displayOrderIndex(getDisplayOrderIndex())
           .totalCycles(getTotalCycles())
           .planPrice(getPlanPrice())
-          .preauthorizeAmount(getPreauthorizeAmount());
+          .displayOrderIndex(getDisplayOrderIndex());
       }
 }
 

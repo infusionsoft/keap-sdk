@@ -2717,7 +2717,7 @@ class TaskApi
      *
      * @param  string $task_id task_id (required)
      * @param  \Keap\Core\V2\Model\CreateUpdateTaskRequest $create_update_task_request create_update_task_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTask'] to see the possible values for this operation
      *
@@ -2738,7 +2738,7 @@ class TaskApi
      *
      * @param  string $task_id (required)
      * @param  \Keap\Core\V2\Model\CreateUpdateTaskRequest $create_update_task_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTask'] to see the possible values for this operation
      *
@@ -2938,7 +2938,7 @@ class TaskApi
      *
      * @param  string $task_id (required)
      * @param  \Keap\Core\V2\Model\CreateUpdateTaskRequest $create_update_task_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTask'] to see the possible values for this operation
      *
@@ -2962,7 +2962,7 @@ class TaskApi
      *
      * @param  string $task_id (required)
      * @param  \Keap\Core\V2\Model\CreateUpdateTaskRequest $create_update_task_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTask'] to see the possible values for this operation
      *
@@ -3015,7 +3015,7 @@ class TaskApi
      *
      * @param  string $task_id (required)
      * @param  \Keap\Core\V2\Model\CreateUpdateTaskRequest $create_update_task_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string[]|null $fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTask'] to see the possible values for this operation
      *
@@ -3039,7 +3039,7 @@ class TaskApi
             );
         }
 
-
+        
 
 
         $resourcePath = '/rest/v2/tasks/{task_id}';
@@ -3053,7 +3053,7 @@ class TaskApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -3150,7 +3150,7 @@ class TaskApi
      *
      * @param  string $custom_field_id custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTaskCustomField'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3170,7 +3170,7 @@ class TaskApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTaskCustomField'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3369,7 +3369,7 @@ class TaskApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTaskCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3392,7 +3392,7 @@ class TaskApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTaskCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3444,7 +3444,7 @@ class TaskApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTaskCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3467,7 +3467,7 @@ class TaskApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/tasks/model/customFields/{custom_field_id}';
         $formParams = [];
@@ -3480,7 +3480,7 @@ class TaskApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required

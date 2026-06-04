@@ -898,7 +898,7 @@ $apiInstance = new Keap\Core\V2\Api\ProductsApi(
 );
 $product_id = 'product_id_example'; // string | product_id
 $update_product_request_detail = new \Keap\Core\V2\Model\UpdateProductRequestDetail(); // \Keap\Core\V2\Model\UpdateProductRequestDetail
-$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateProduct($product_id, $update_product_request_detail, $update_mask);
@@ -914,7 +914,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **product_id** | **string**| product_id | |
 | **update_product_request_detail** | [**\Keap\Core\V2\Model\UpdateProductRequestDetail**](../Model/UpdateProductRequestDetail.md)|  | |
-| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -962,7 +962,7 @@ $apiInstance = new Keap\Core\V2\Api\ProductsApi(
 $product_id = 'product_id_example'; // string | product_id
 $product_option_id = 'product_option_id_example'; // string | product_option_id
 $update_product_option_request = new \Keap\Core\V2\Model\UpdateProductOptionRequest(); // \Keap\Core\V2\Model\UpdateProductOptionRequest
-$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateProductOption($product_id, $product_option_id, $update_product_option_request, $update_mask);
@@ -979,7 +979,7 @@ try {
 | **product_id** | **string**| product_id | |
 | **product_option_id** | **string**| product_option_id | |
 | **update_product_option_request** | [**\Keap\Core\V2\Model\UpdateProductOptionRequest**](../Model/UpdateProductOptionRequest.md)|  | |
-| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1028,7 +1028,7 @@ $product_id = 'product_id_example'; // string | product_id
 $product_option_id = 'product_option_id_example'; // string | product_option_id
 $item_id = 'item_id_example'; // string | item_id
 $update_product_option_list_option = new \Keap\Core\V2\Model\UpdateProductOptionListOption(); // \Keap\Core\V2\Model\UpdateProductOptionListOption
-$update_mask = NULL; // mixed | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateProductOptionListOptionValue($product_id, $product_option_id, $item_id, $update_product_option_list_option, $update_mask);
@@ -1046,7 +1046,7 @@ try {
 | **product_option_id** | **string**| product_option_id | |
 | **item_id** | **string**| item_id | |
 | **update_product_option_list_option** | [**\Keap\Core\V2\Model\UpdateProductOptionListOption**](../Model/UpdateProductOptionListOption.md)|  | |
-| **update_mask** | [**mixed**](../Model/.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 

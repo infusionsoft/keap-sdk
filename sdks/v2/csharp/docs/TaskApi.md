@@ -729,7 +729,7 @@ This endpoint does not need any parameter.
 
 <a id="updatetask"></a>
 # **UpdateTask**
-> UpdateTaskResponse UpdateTask (string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, Object? updateMask = null, List<string>? fields = null)
+> UpdateTaskResponse UpdateTask (string taskId, CreateUpdateTaskRequest createUpdateTaskRequest, List<string>? updateMask = null, List<string>? fields = null)
 
 Update a Task
 
@@ -757,7 +757,7 @@ namespace Example
             var apiInstance = new TaskApi(config);
             var taskId = "taskId_example";  // string | 
             var createUpdateTaskRequest = new CreateUpdateTaskRequest(); // CreateUpdateTaskRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
             var fields = new List<string>?(); // List<string>? | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields (optional) 
 
             try
@@ -803,7 +803,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **taskId** | **string** |  |  |
 | **createUpdateTaskRequest** | [**CreateUpdateTaskRequest**](CreateUpdateTaskRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 | **fields** | [**List&lt;string&gt;?**](string.md) | Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields | [optional]  |
 
 ### Return type
@@ -837,7 +837,7 @@ catch (ApiException e)
 
 <a id="updatetaskcustomfield"></a>
 # **UpdateTaskCustomField**
-> CustomFieldMetaData UpdateTaskCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object? updateMask = null)
+> CustomFieldMetaData UpdateTaskCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = null)
 
 Update a Task's Custom Field
 
@@ -865,7 +865,7 @@ namespace Example
             var apiInstance = new TaskApi(config);
             var customFieldId = "customFieldId_example";  // string | 
             var updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -910,7 +910,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **customFieldId** | **string** |  |  |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

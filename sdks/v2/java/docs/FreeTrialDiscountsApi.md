@@ -698,7 +698,7 @@ public class Example {
         FreeTrialDiscountsApi apiInstance = new FreeTrialDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | 
         UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest = new UpdateFreeTrialDiscountRequest(); // UpdateFreeTrialDiscountRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             FreeTrialDiscount result = apiInstance.updateFreeTrialDiscount(discountId, updateFreeTrialDiscountRequest, updateMask);
             System.out.println(result);
@@ -720,7 +720,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **discountId** | **String**|  | |
 | **updateFreeTrialDiscountRequest** | [**UpdateFreeTrialDiscountRequest**](UpdateFreeTrialDiscountRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description, free_trial_days, hide_price, subscription_plan_id, criteria] |
 
 ### Return type
 
@@ -781,7 +781,7 @@ public class Example {
         FreeTrialDiscountsApi apiInstance = new FreeTrialDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | 
         UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest = new UpdateFreeTrialDiscountRequest(); // UpdateFreeTrialDiscountRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<FreeTrialDiscount> response = apiInstance.updateFreeTrialDiscountWithHttpInfo(discountId, updateFreeTrialDiscountRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -805,7 +805,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **discountId** | **String**|  | |
 | **updateFreeTrialDiscountRequest** | [**UpdateFreeTrialDiscountRequest**](UpdateFreeTrialDiscountRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description, free_trial_days, hide_price, subscription_plan_id, criteria] |
 
 ### Return type
 

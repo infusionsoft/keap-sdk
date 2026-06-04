@@ -462,7 +462,7 @@ export class CompanyApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateCompanyRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateCompany(companyId: string, updateCompanyRequest: UpdateCompanyRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateCompany(companyId: string, updateCompanyRequest: UpdateCompanyRequest, updateMask?: Set<'id' | 'company_name' | 'address' | 'phone_number' | 'fax_number' | 'email_address' | 'notes' | 'website' | 'custom_fields' | 'create_time' | 'update_time' | 'anniversary_date' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'birth_date' | 'contact_type' | 'first_name' | 'job_title' | 'last_name' | 'middle_name' | 'preferred_name' | 'owner_id' | 'referral_code' | 'spouse_name' | 'suffix' | 'title' | 'account_id' | 'created_by' | 'groups' | 'last_updated_by'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'companyId' is not null or undefined
@@ -488,9 +488,9 @@ export class CompanyApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'id' | 'company_name' | 'address' | 'phone_number' | 'fax_number' | 'email_address' | 'notes' | 'website' | 'custom_fields' | 'create_time' | 'update_time' | 'anniversary_date' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'birth_date' | 'contact_type' | 'first_name' | 'job_title' | 'last_name' | 'middle_name' | 'preferred_name' | 'owner_id' | 'referral_code' | 'spouse_name' | 'suffix' | 'title' | 'account_id' | 'created_by' | 'groups' | 'last_updated_by'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 
@@ -528,7 +528,7 @@ export class CompanyApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateCustomFieldMetaDataRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateCompanyCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateCompanyCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'customFieldId' is not null or undefined
@@ -554,9 +554,9 @@ export class CompanyApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'group_id' | 'label' | 'options'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 

@@ -1265,7 +1265,7 @@ void (empty response body)
 
 <a id="updatetag"></a>
 # **UpdateTag**
-> UpdateTagResponse UpdateTag (string tagId, CreateUpdateTagRequest createUpdateTagRequest, Object? updateMask = null)
+> UpdateTagResponse UpdateTag (string tagId, CreateUpdateTagRequest createUpdateTagRequest, List<string>? updateMask = null)
 
 Update a Tag
 
@@ -1293,7 +1293,7 @@ namespace Example
             var apiInstance = new TagsApi(config);
             var tagId = "tagId_example";  // string | 
             var createUpdateTagRequest = new CreateUpdateTagRequest(); // CreateUpdateTagRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -1338,7 +1338,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **tagId** | **string** |  |  |
 | **createUpdateTagRequest** | [**CreateUpdateTagRequest**](CreateUpdateTagRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -1371,7 +1371,7 @@ catch (ApiException e)
 
 <a id="updatetagcategory"></a>
 # **UpdateTagCategory**
-> UpdateTagCategoryResponse UpdateTagCategory (string tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, Object? updateMask = null)
+> UpdateTagCategoryResponse UpdateTagCategory (string tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, List<string>? updateMask = null)
 
 Update a Tag Category
 
@@ -1399,7 +1399,7 @@ namespace Example
             var apiInstance = new TagsApi(config);
             var tagCategoryId = "tagCategoryId_example";  // string | 
             var createUpdateTagCategoryRequest = new CreateUpdateTagCategoryRequest(); // CreateUpdateTagCategoryRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -1444,7 +1444,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **tagCategoryId** | **string** |  |  |
 | **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

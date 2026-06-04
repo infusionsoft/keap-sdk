@@ -50,23 +50,17 @@ class SubscriptionPlan {
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
             }
-            if (data.hasOwnProperty('active')) {
-                obj['active'] = ApiClient.convertToType(data['active'], 'Boolean');
-            }
             if (data.hasOwnProperty('frequency')) {
                 obj['frequency'] = ApiClient.convertToType(data['frequency'], 'Number');
             }
-            if (data.hasOwnProperty('allow_prorating')) {
-                obj['allow_prorating'] = ApiClient.convertToType(data['allow_prorating'], 'Boolean');
+            if (data.hasOwnProperty('active')) {
+                obj['active'] = ApiClient.convertToType(data['active'], 'Boolean');
             }
-            if (data.hasOwnProperty('product_id')) {
-                obj['product_id'] = ApiClient.convertToType(data['product_id'], 'String');
+            if (data.hasOwnProperty('subscription_plan_name')) {
+                obj['subscription_plan_name'] = ApiClient.convertToType(data['subscription_plan_name'], 'String');
             }
             if (data.hasOwnProperty('cycle_type')) {
                 obj['cycle_type'] = ApiClient.convertToType(data['cycle_type'], 'String');
-            }
-            if (data.hasOwnProperty('display_order_index')) {
-                obj['display_order_index'] = ApiClient.convertToType(data['display_order_index'], 'Number');
             }
             if (data.hasOwnProperty('total_cycles')) {
                 obj['total_cycles'] = ApiClient.convertToType(data['total_cycles'], 'Number');
@@ -74,8 +68,8 @@ class SubscriptionPlan {
             if (data.hasOwnProperty('plan_price')) {
                 obj['plan_price'] = CurrencyValue.constructFromObject(data['plan_price']);
             }
-            if (data.hasOwnProperty('preauthorize_amount')) {
-                obj['preauthorize_amount'] = ApiClient.convertToType(data['preauthorize_amount'], 'Number');
+            if (data.hasOwnProperty('display_order_index')) {
+                obj['display_order_index'] = ApiClient.convertToType(data['display_order_index'], 'Number');
             }
         }
         return obj;
@@ -92,8 +86,8 @@ class SubscriptionPlan {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
         }
         // ensure the json data is a string
-        if (data['product_id'] && !(typeof data['product_id'] === 'string' || data['product_id'] instanceof String)) {
-            throw new Error("Expected the field `product_id` to be a primitive type in the JSON string but got " + data['product_id']);
+        if (data['subscription_plan_name'] && !(typeof data['subscription_plan_name'] === 'string' || data['subscription_plan_name'] instanceof String)) {
+            throw new Error("Expected the field `subscription_plan_name` to be a primitive type in the JSON string but got " + data['subscription_plan_name']);
         }
         // ensure the json data is a string
         if (data['cycle_type'] && !(typeof data['cycle_type'] === 'string' || data['cycle_type'] instanceof String)) {
@@ -113,10 +107,16 @@ class SubscriptionPlan {
 
 
 /**
- * Id of the subscription plan.
+ * Subscription plan ID
  * @member {String} id
  */
 SubscriptionPlan.prototype['id'] = undefined;
+
+/**
+ * Interval at which a customer receives a product or service as part of a subscription plan.
+ * @member {Number} frequency
+ */
+SubscriptionPlan.prototype['frequency'] = undefined;
 
 /**
  * If the subscription plan is active or not.
@@ -125,22 +125,10 @@ SubscriptionPlan.prototype['id'] = undefined;
 SubscriptionPlan.prototype['active'] = undefined;
 
 /**
- * Total number of times of a cycle type which constitutes a plan cycle. Minimum value is 1.
- * @member {Number} frequency
+ * Plan name
+ * @member {String} subscription_plan_name
  */
-SubscriptionPlan.prototype['frequency'] = undefined;
-
-/**
- * Whether or not the plan will allow prorating.
- * @member {Boolean} allow_prorating
- */
-SubscriptionPlan.prototype['allow_prorating'] = undefined;
-
-/**
- * The product ID this plan belongs to.
- * @member {String} product_id
- */
-SubscriptionPlan.prototype['product_id'] = undefined;
+SubscriptionPlan.prototype['subscription_plan_name'] = undefined;
 
 /**
  * The cycle type of the subscription plan.
@@ -149,28 +137,22 @@ SubscriptionPlan.prototype['product_id'] = undefined;
 SubscriptionPlan.prototype['cycle_type'] = undefined;
 
 /**
- * The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list.
- * @member {Number} display_order_index
- */
-SubscriptionPlan.prototype['display_order_index'] = undefined;
-
-/**
  * Total number of cycles the plan will run before ending. Value of 0 indicates plan will never end.
  * @member {Number} total_cycles
  */
 SubscriptionPlan.prototype['total_cycles'] = undefined;
 
 /**
- * The price of the subscription plan.
+ * Price of the plan
  * @member {module:keap.core.v2/model/CurrencyValue} plan_price
  */
 SubscriptionPlan.prototype['plan_price'] = undefined;
 
 /**
- * The pre-authorize amount for the subscription plan. If null, this field is omitted from the response.
- * @member {Number} preauthorize_amount
+ * The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list.
+ * @member {Number} display_order_index
  */
-SubscriptionPlan.prototype['preauthorize_amount'] = undefined;
+SubscriptionPlan.prototype['display_order_index'] = undefined;
 
 
 
@@ -184,16 +166,10 @@ SubscriptionPlan.prototype['preauthorize_amount'] = undefined;
 SubscriptionPlan['CycleTypeEnum'] = {
 
     /**
-     * value: "DAILY"
+     * value: "YEARLY"
      * @const
      */
-    "DAILY": "DAILY",
-
-    /**
-     * value: "WEEKLY"
-     * @const
-     */
-    "WEEKLY": "WEEKLY",
+    "YEARLY": "YEARLY",
 
     /**
      * value: "MONTHLY"
@@ -202,10 +178,16 @@ SubscriptionPlan['CycleTypeEnum'] = {
     "MONTHLY": "MONTHLY",
 
     /**
-     * value: "YEARLY"
+     * value: "WEEKLY"
      * @const
      */
-    "YEARLY": "YEARLY",
+    "WEEKLY": "WEEKLY",
+
+    /**
+     * value: "DAILY"
+     * @const
+     */
+    "DAILY": "DAILY",
 
     /**
      * value: "unknown_default_open_api"

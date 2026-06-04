@@ -1528,7 +1528,7 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateAffiliateRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateAffiliate(id: string, updateAffiliateRequest: UpdateAffiliateRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateAffiliate(id: string, updateAffiliateRequest: UpdateAffiliateRequest, updateMask?: Set<'contact_id' | 'code' | 'name' | 'status' | 'parent_affiliate_id' | 'notify_on_sale' | 'notify_on_lead' | 'track_leads_days' | 'password' | 'custom_fields'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'id' is not null or undefined
@@ -1554,9 +1554,9 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'contact_id' | 'code' | 'name' | 'status' | 'parent_affiliate_id' | 'notify_on_sale' | 'notify_on_lead' | 'track_leads_days' | 'password' | 'custom_fields'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 
@@ -1594,7 +1594,7 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateCustomFieldMetaDataRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateAffiliateCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateAffiliateCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'customFieldId' is not null or undefined
@@ -1620,9 +1620,9 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'group_id' | 'label' | 'options'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 
@@ -1660,7 +1660,7 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateCommissionProgramRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateCommissionProgram(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateCommissionProgram(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: Set<'name' | 'notes' | 'priority'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commissionProgramId' is not null or undefined
@@ -1686,9 +1686,9 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'name' | 'notes' | 'priority'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 
@@ -1726,7 +1726,7 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateProgramResourceRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateCommissionProgramResource(resourceId: string, updateProgramResourceRequest: UpdateProgramResourceRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateCommissionProgramResource(resourceId: string, updateProgramResourceRequest: UpdateProgramResourceRequest, updateMask?: Set<'title' | 'notes' | 'url' | 'order' | 'content_html' | 'page_width' | 'page_height' | 'commission_program_ids'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'resourceId' is not null or undefined
@@ -1752,9 +1752,9 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'title' | 'notes' | 'url' | 'order' | 'content_html' | 'page_width' | 'page_height' | 'commission_program_ids'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 
@@ -1792,7 +1792,7 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateDefaultCommissionProgramRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateDefaultCommissionProgram(commissionProgramId: string, updateDefaultCommissionProgramRequest: UpdateDefaultCommissionProgramRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateDefaultCommissionProgram(commissionProgramId: string, updateDefaultCommissionProgramRequest: UpdateDefaultCommissionProgramRequest, updateMask?: Set<'percentage' | 'dollar_amount' | 'payout_type' | 'level_1' | 'level_2' | 'unused'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commissionProgramId' is not null or undefined
@@ -1818,9 +1818,9 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'percentage' | 'dollar_amount' | 'payout_type' | 'level_1' | 'level_2' | 'unused'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 
@@ -1858,7 +1858,7 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateProductCommissionProgramRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateProductCommissionProgram(commissionProgramId: string, updateProductCommissionProgramRequest: UpdateProductCommissionProgramRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateProductCommissionProgram(commissionProgramId: string, updateProductCommissionProgramRequest: UpdateProductCommissionProgramRequest, updateMask?: Set<'percentage' | 'dollar_amount' | 'payout_type' | 'level_1' | 'level_2' | 'unused'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commissionProgramId' is not null or undefined
@@ -1884,9 +1884,9 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'percentage' | 'dollar_amount' | 'payout_type' | 'level_1' | 'level_2' | 'unused'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 
@@ -1980,7 +1980,7 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateSubscriptionCommissionProgramRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateSubscriptionCommissionProgram(commissionProgramId: string, updateSubscriptionCommissionProgramRequest: UpdateSubscriptionCommissionProgramRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateSubscriptionCommissionProgram(commissionProgramId: string, updateSubscriptionCommissionProgramRequest: UpdateSubscriptionCommissionProgramRequest, updateMask?: Set<'percentage' | 'dollar_amount' | 'payout_type' | 'level_1' | 'level_2' | 'unused'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commissionProgramId' is not null or undefined
@@ -2006,9 +2006,9 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'percentage' | 'dollar_amount' | 'payout_type' | 'level_1' | 'level_2' | 'unused'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 

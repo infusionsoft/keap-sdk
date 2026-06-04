@@ -2968,7 +2968,7 @@ class ProductCategoriesApi
      *
      * @param  string $category_id category_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductCategoryRequest $update_product_category_request update_product_category_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductCategory'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2988,7 +2988,7 @@ class ProductCategoriesApi
      *
      * @param  string $category_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductCategoryRequest $update_product_category_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductCategory'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3187,7 +3187,7 @@ class ProductCategoriesApi
      *
      * @param  string $category_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductCategoryRequest $update_product_category_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductCategory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3210,7 +3210,7 @@ class ProductCategoriesApi
      *
      * @param  string $category_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductCategoryRequest $update_product_category_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductCategory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3262,7 +3262,7 @@ class ProductCategoriesApi
      *
      * @param  string $category_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductCategoryRequest $update_product_category_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductCategory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3285,7 +3285,7 @@ class ProductCategoriesApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/productCategories/{category_id}';
         $formParams = [];
@@ -3298,7 +3298,7 @@ class ProductCategoriesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required

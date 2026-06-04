@@ -692,7 +692,7 @@ public class Example {
         UsersApi apiInstance = new UsersApi(defaultClient);
         String userId = "userId_example"; // String | 
         UpdateUserRequest updateUserRequest = new UpdateUserRequest(); // UpdateUserRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             User result = apiInstance.updateUser(userId, updateUserRequest, updateMask);
             System.out.println(result);
@@ -714,7 +714,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **userId** | **String**|  | |
 | **updateUserRequest** | [**UpdateUserRequest**](UpdateUserRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: address, company_name, email_address, family_name, fax_numbers, given_name, job_title, phone_numbers, time_zone, website] |
 
 ### Return type
 
@@ -775,7 +775,7 @@ public class Example {
         UsersApi apiInstance = new UsersApi(defaultClient);
         String userId = "userId_example"; // String | 
         UpdateUserRequest updateUserRequest = new UpdateUserRequest(); // UpdateUserRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<User> response = apiInstance.updateUserWithHttpInfo(userId, updateUserRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -799,7 +799,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **userId** | **String**|  | |
 | **updateUserRequest** | [**UpdateUserRequest**](UpdateUserRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: address, company_name, email_address, family_name, fax_numbers, given_name, job_title, phone_numbers, time_zone, website] |
 
 ### Return type
 

@@ -20,6 +20,7 @@ import com.keap.core.sdk.Pair;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.GetUserInfoResponse;
 import com.keap.core.sdk.model.ListUsersPaginatedResponse;
+import java.util.Set;
 import com.keap.core.sdk.model.UpdateUserRequest;
 import com.keap.core.sdk.model.User;
 
@@ -470,7 +471,7 @@ import io.github.resilience4j.retry.Retry;
    * @return User
    * @throws ApiException if fails to make API call
    */
-  public User updateUser(String userId, UpdateUserRequest updateUserRequest, Object updateMask) throws ApiException {
+  public User updateUser(String userId, UpdateUserRequest updateUserRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<User> localVarResponse = updateUserWithHttpInfo(userId, updateUserRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -484,7 +485,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;User&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<User> updateUserWithHttpInfo(String userId, UpdateUserRequest updateUserRequest, Object updateMask) throws ApiException {
+  public ApiResponse<User> updateUserWithHttpInfo(String userId, UpdateUserRequest updateUserRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateUserRequestBuilder(userId, updateUserRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -525,7 +526,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateUserRequestBuilder(String userId, UpdateUserRequest updateUserRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateUserRequestBuilder(String userId, UpdateUserRequest updateUserRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'userId' is set
     if (userId == null) {
       throw new ApiException(400, "Missing the required parameter 'userId' when calling updateUser");
@@ -544,7 +545,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

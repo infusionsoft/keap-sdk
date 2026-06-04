@@ -15,11 +15,11 @@ Method | HTTP request | Description
 
 ## createFile
 
-> FileMetadata createFile(file, fileName, isPublic, fileAssociation, file2, fileName2, isPublic2, fileAssociation2, opts)
+> FileMetadata createFile(file, fileName, fileAssociation, opts)
 
 Create a file
 
-Creates a file and uploads it
+Uploads a file using multipart/form-data. The &#x60;file&#x60; part contains the binary file content; &#x60;file_name&#x60;, &#x60;is_public&#x60;, &#x60;file_association&#x60;, and optionally &#x60;contact_id&#x60; are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
 
 ### Example
 
@@ -31,19 +31,14 @@ let oauth2 = defaultClient.authentications['oauth2'];
 oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.FilesApi();
-let file = "/path/to/file"; // File | File to upload. This is a file sent as multi-part (not a string)
+let file = "/path/to/file"; // File | File to upload
 let fileName = "fileName_example"; // String | File name
-let isPublic = true; // Boolean | Is public
 let fileAssociation = "fileAssociation_example"; // String | File association
-let file2 = "/path/to/file"; // File | File to upload
-let fileName2 = "fileName_example"; // String | File name
-let isPublic2 = "isPublic_example"; // String | Is public
-let fileAssociation2 = "fileAssociation_example"; // String | File association
 let opts = {
-  'contactId': "contactId_example", // String | Contact ID
-  'contactId2': "contactId_example" // String | Contact ID. Required if the `file_association` is CONTACT
+  'contactId': "contactId_example", // String | Contact ID. Required if the `file_association` is CONTACT
+  'isPublic': "isPublic_example" // String | Is public
 };
-apiInstance.createFile(file, fileName, isPublic, fileAssociation, file2, fileName2, isPublic2, fileAssociation2, opts).then((data) => {
+apiInstance.createFile(file, fileName, fileAssociation, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -56,16 +51,11 @@ apiInstance.createFile(file, fileName, isPublic, fileAssociation, file2, fileNam
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **File**| File to upload. This is a file sent as multi-part (not a string) | 
+ **file** | **File**| File to upload | 
  **fileName** | **String**| File name | 
- **isPublic** | **Boolean**| Is public | 
  **fileAssociation** | **String**| File association | 
- **file2** | **File**| File to upload | 
- **fileName2** | **String**| File name | 
- **isPublic2** | **String**| Is public | 
- **fileAssociation2** | **String**| File association | 
- **contactId** | **String**| Contact ID | [optional] 
- **contactId2** | **String**| Contact ID. Required if the &#x60;file_association&#x60; is CONTACT | [optional] 
+ **contactId** | **String**| Contact ID. Required if the &#x60;file_association&#x60; is CONTACT | [optional] 
+ **isPublic** | **String**| Is public | [optional] 
 
 ### Return type
 
@@ -287,7 +277,7 @@ Name | Type | Description  | Notes
 
 Update a file
 
-Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
 
 ### Example
 
@@ -301,13 +291,10 @@ oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new KeapCoreServiceV2Sdk.FilesApi();
 let fileId = "fileId_example"; // String | 
 let opts = {
-  'updateMask': null, // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-  'file': "/path/to/file", // File | File to upload. This is a file sent as multi-part (not a string)
+  'updateMask': ["null"], // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'file': "/path/to/file", // File | File to upload
   'fileName': "fileName_example", // String | File name
-  'isPublic': true, // Boolean | Is public
-  'file2': "/path/to/file", // File | File to upload
-  'fileName2': "fileName_example", // String | File name
-  'isPublic2': true // Boolean | Is public
+  'isPublic': true // Boolean | Is public
 };
 apiInstance.updateFile(fileId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -323,13 +310,10 @@ apiInstance.updateFile(fileId, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fileId** | **String**|  | 
- **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
- **file** | **File**| File to upload. This is a file sent as multi-part (not a string) | [optional] 
+ **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **file** | **File**| File to upload | [optional] 
  **fileName** | **String**| File name | [optional] 
  **isPublic** | **Boolean**| Is public | [optional] 
- **file2** | **File**| File to upload | [optional] 
- **fileName2** | **String**| File name | [optional] 
- **isPublic2** | **Boolean**| Is public | [optional] 
 
 ### Return type
 

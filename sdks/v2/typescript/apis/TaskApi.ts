@@ -351,7 +351,7 @@ export class TaskApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param fields Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
      */
-    public async updateTask(taskId: string, createUpdateTaskRequest: CreateUpdateTaskRequest, updateMask?: any, fields?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateTask(taskId: string, createUpdateTaskRequest: CreateUpdateTaskRequest, updateMask?: Set<'id' | 'title' | 'description' | 'type' | 'priority' | 'completion_time' | 'due_time' | 'remind_time_mins' | 'assigned_to_user_id' | 'last_updated_by_user_id' | 'contact_id' | 'opportunity_id' | 'accepted' | 'completed' | 'custom_fields'>, fields?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'taskId' is not null or undefined
@@ -378,9 +378,9 @@ export class TaskApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'id' | 'title' | 'description' | 'type' | 'priority' | 'completion_time' | 'due_time' | 'remind_time_mins' | 'assigned_to_user_id' | 'last_updated_by_user_id' | 'contact_id' | 'opportunity_id' | 'accepted' | 'completed' | 'custom_fields'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 
@@ -423,7 +423,7 @@ export class TaskApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateCustomFieldMetaDataRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateTaskCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: any, _options?: Configuration): Promise<RequestContext> {
+    public async updateTaskCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'customFieldId' is not null or undefined
@@ -449,9 +449,9 @@ export class TaskApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "any", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'group_id' | 'label' | 'options'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
             }
         }
 

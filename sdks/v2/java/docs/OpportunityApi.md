@@ -37,7 +37,7 @@ All URIs are relative to *https://api.keap.com/crm*
 
 ## createOpportunity
 
-> RestV2Opportunity createOpportunity(createOpportunityRequest)
+> RestV2Opportunity createOpportunity(createOpportunityRequest, fields)
 
 Create an Opportunity
 
@@ -65,8 +65,9 @@ public class Example {
 
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
         CreateOpportunityRequest createOpportunityRequest = new CreateOpportunityRequest(); // CreateOpportunityRequest | 
+        Set<String> fields = Arrays.asList(); // Set<String> | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
         try {
-            RestV2Opportunity result = apiInstance.createOpportunity(createOpportunityRequest);
+            RestV2Opportunity result = apiInstance.createOpportunity(createOpportunityRequest, fields);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling OpportunityApi#createOpportunity");
@@ -85,6 +86,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **createOpportunityRequest** | [**CreateOpportunityRequest**](CreateOpportunityRequest.md)|  | |
+| **fields** | [**Set&lt;String&gt;**](String.md)| Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | [optional] [enum: custom_fields, monthly_revenue, order_revenue, objection, status, stage_entrance_time] |
 
 ### Return type
 
@@ -115,7 +117,7 @@ public class Example {
 
 ## createOpportunityWithHttpInfo
 
-> ApiResponse<RestV2Opportunity> createOpportunity createOpportunityWithHttpInfo(createOpportunityRequest)
+> ApiResponse<RestV2Opportunity> createOpportunity createOpportunityWithHttpInfo(createOpportunityRequest, fields)
 
 Create an Opportunity
 
@@ -144,8 +146,9 @@ public class Example {
 
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
         CreateOpportunityRequest createOpportunityRequest = new CreateOpportunityRequest(); // CreateOpportunityRequest | 
+        Set<String> fields = Arrays.asList(); // Set<String> | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
         try {
-            ApiResponse<RestV2Opportunity> response = apiInstance.createOpportunityWithHttpInfo(createOpportunityRequest);
+            ApiResponse<RestV2Opportunity> response = apiInstance.createOpportunityWithHttpInfo(createOpportunityRequest, fields);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -166,6 +169,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **createOpportunityRequest** | [**CreateOpportunityRequest**](CreateOpportunityRequest.md)|  | |
+| **fields** | [**Set&lt;String&gt;**](String.md)| Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | [optional] [enum: custom_fields, monthly_revenue, order_revenue, objection, status, stage_entrance_time] |
 
 ### Return type
 
@@ -991,7 +995,7 @@ ApiResponse<Void>
 
 ## getOpportunity
 
-> RestV2Opportunity getOpportunity(opportunityId)
+> RestV2Opportunity getOpportunity(opportunityId, fields)
 
 Retrieve a Opportunity
 
@@ -1019,8 +1023,9 @@ public class Example {
 
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
         String opportunityId = "opportunityId_example"; // String | 
+        Set<String> fields = Arrays.asList(); // Set<String> | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
         try {
-            RestV2Opportunity result = apiInstance.getOpportunity(opportunityId);
+            RestV2Opportunity result = apiInstance.getOpportunity(opportunityId, fields);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling OpportunityApi#getOpportunity");
@@ -1039,6 +1044,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **opportunityId** | **String**|  | |
+| **fields** | [**Set&lt;String&gt;**](String.md)| Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | [optional] [enum: custom_fields, monthly_revenue, order_revenue, objection, status, stage_entrance_time] |
 
 ### Return type
 
@@ -1069,7 +1075,7 @@ public class Example {
 
 ## getOpportunityWithHttpInfo
 
-> ApiResponse<RestV2Opportunity> getOpportunity getOpportunityWithHttpInfo(opportunityId)
+> ApiResponse<RestV2Opportunity> getOpportunity getOpportunityWithHttpInfo(opportunityId, fields)
 
 Retrieve a Opportunity
 
@@ -1098,8 +1104,9 @@ public class Example {
 
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
         String opportunityId = "opportunityId_example"; // String | 
+        Set<String> fields = Arrays.asList(); // Set<String> | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
         try {
-            ApiResponse<RestV2Opportunity> response = apiInstance.getOpportunityWithHttpInfo(opportunityId);
+            ApiResponse<RestV2Opportunity> response = apiInstance.getOpportunityWithHttpInfo(opportunityId, fields);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1120,6 +1127,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **opportunityId** | **String**|  | |
+| **fields** | [**Set&lt;String&gt;**](String.md)| Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | [optional] [enum: custom_fields, monthly_revenue, order_revenue, objection, status, stage_entrance_time] |
 
 ### Return type
 
@@ -1338,7 +1346,7 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
-        Set<String> fields = Arrays.asList(); // Set<String> | 
+        Set<String> fields = Arrays.asList(); // Set<String> | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs Note: `opportunity_id` and `ids` cannot be used together in the same request. 
         String orderBy = "orderBy_example"; // String | Attribute and direction to opportunities items. One of the following fields: - `next_action_time` - `contact_name` - `opportunity_title` - `created_time` - `update_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
@@ -1362,7 +1370,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **fields** | [**Set&lt;String&gt;**](String.md)|  | [optional] |
+| **fields** | [**Set&lt;String&gt;**](String.md)| Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | [optional] [enum: custom_fields, monthly_revenue, order_revenue, objection, status, stage_entrance_time] |
 | **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  | [optional] |
 | **orderBy** | **String**| Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
@@ -1425,7 +1433,7 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
-        Set<String> fields = Arrays.asList(); // Set<String> | 
+        Set<String> fields = Arrays.asList(); // Set<String> | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs Note: `opportunity_id` and `ids` cannot be used together in the same request. 
         String orderBy = "orderBy_example"; // String | Attribute and direction to opportunities items. One of the following fields: - `next_action_time` - `contact_name` - `opportunity_title` - `created_time` - `update_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
@@ -1451,7 +1459,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **fields** | [**Set&lt;String&gt;**](String.md)|  | [optional] |
+| **fields** | [**Set&lt;String&gt;**](String.md)| Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | [optional] [enum: custom_fields, monthly_revenue, order_revenue, objection, status, stage_entrance_time] |
 | **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  | [optional] |
 | **orderBy** | **String**| Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
@@ -1514,7 +1522,7 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
-        String filter = "filter_example"; // String | Search filter to apply to results
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `opportunity_stage_name` — supports wildcard prefix search (e.g. `opportunity_stage_name==Qualified*`) - (String) `opportunity_stage_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `opportunity_stage_id>5`) 
         String orderBy = "orderBy_example"; // String | Attribute and direction to order stage items. One of the following fields: - `stage_order`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
@@ -1537,7 +1545,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Search filter to apply to results | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;opportunity_stage_name&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_stage_name&#x3D;&#x3D;Qualified*&#x60;) - (String) &#x60;opportunity_stage_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;opportunity_stage_id&gt;5&#x60;)  | [optional] |
 | **orderBy** | **String**| Attribute and direction to order stage items. One of the following fields: - &#x60;stage_order&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
@@ -1599,7 +1607,7 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
-        String filter = "filter_example"; // String | Search filter to apply to results
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `opportunity_stage_name` — supports wildcard prefix search (e.g. `opportunity_stage_name==Qualified*`) - (String) `opportunity_stage_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `opportunity_stage_id>5`) 
         String orderBy = "orderBy_example"; // String | Attribute and direction to order stage items. One of the following fields: - `stage_order`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
@@ -1624,7 +1632,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Search filter to apply to results | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;opportunity_stage_name&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_stage_name&#x3D;&#x3D;Qualified*&#x60;) - (String) &#x60;opportunity_stage_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;opportunity_stage_id&gt;5&#x60;)  | [optional] |
 | **orderBy** | **String**| Attribute and direction to order stage items. One of the following fields: - &#x60;stage_order&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
@@ -1811,7 +1819,7 @@ ApiResponse<[**ObjectModel**](ObjectModel.md)>
 
 ## updateOpportunity
 
-> RestV2Opportunity updateOpportunity(opportunityId, updateOpportunityRequestV2, updateMask)
+> RestV2Opportunity updateOpportunity(opportunityId, updateOpportunityRequestV2, updateMask, fields)
 
 Update an opportunity
 
@@ -1840,9 +1848,10 @@ public class Example {
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
         String opportunityId = "opportunityId_example"; // String | 
         UpdateOpportunityRequestV2 updateOpportunityRequestV2 = new UpdateOpportunityRequestV2(); // UpdateOpportunityRequestV2 | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> fields = Arrays.asList(); // Set<String> | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
         try {
-            RestV2Opportunity result = apiInstance.updateOpportunity(opportunityId, updateOpportunityRequestV2, updateMask);
+            RestV2Opportunity result = apiInstance.updateOpportunity(opportunityId, updateOpportunityRequestV2, updateMask, fields);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling OpportunityApi#updateOpportunity");
@@ -1862,7 +1871,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **opportunityId** | **String**|  | |
 | **updateOpportunityRequestV2** | [**UpdateOpportunityRequestV2**](UpdateOpportunityRequestV2.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: opportunity_title, next_action_time, next_action_notes, opportunity_notes, estimated_close_time, include_in_forecast, projected_revenue_low, projected_revenue_high, contact_id, stage_id, user_id, custom_fields, affiliate_id] |
+| **fields** | [**Set&lt;String&gt;**](String.md)| Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | [optional] [enum: custom_fields, monthly_revenue, order_revenue, objection, status, stage_entrance_time] |
 
 ### Return type
 
@@ -1893,7 +1903,7 @@ public class Example {
 
 ## updateOpportunityWithHttpInfo
 
-> ApiResponse<RestV2Opportunity> updateOpportunity updateOpportunityWithHttpInfo(opportunityId, updateOpportunityRequestV2, updateMask)
+> ApiResponse<RestV2Opportunity> updateOpportunity updateOpportunityWithHttpInfo(opportunityId, updateOpportunityRequestV2, updateMask, fields)
 
 Update an opportunity
 
@@ -1923,9 +1933,10 @@ public class Example {
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
         String opportunityId = "opportunityId_example"; // String | 
         UpdateOpportunityRequestV2 updateOpportunityRequestV2 = new UpdateOpportunityRequestV2(); // UpdateOpportunityRequestV2 | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> fields = Arrays.asList(); // Set<String> | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
         try {
-            ApiResponse<RestV2Opportunity> response = apiInstance.updateOpportunityWithHttpInfo(opportunityId, updateOpportunityRequestV2, updateMask);
+            ApiResponse<RestV2Opportunity> response = apiInstance.updateOpportunityWithHttpInfo(opportunityId, updateOpportunityRequestV2, updateMask, fields);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1947,7 +1958,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **opportunityId** | **String**|  | |
 | **updateOpportunityRequestV2** | [**UpdateOpportunityRequestV2**](UpdateOpportunityRequestV2.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: opportunity_title, next_action_time, next_action_notes, opportunity_notes, estimated_close_time, include_in_forecast, projected_revenue_low, projected_revenue_high, contact_id, stage_id, user_id, custom_fields, affiliate_id] |
+| **fields** | [**Set&lt;String&gt;**](String.md)| Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | [optional] [enum: custom_fields, monthly_revenue, order_revenue, objection, status, stage_entrance_time] |
 
 ### Return type
 
@@ -2008,7 +2020,7 @@ public class Example {
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
         String customFieldId = "customFieldId_example"; // String | 
         UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             CustomFieldMetaData result = apiInstance.updateOpportunityCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println(result);
@@ -2030,7 +2042,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **customFieldId** | **String**|  | |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id, label, options] |
 
 ### Return type
 
@@ -2091,7 +2103,7 @@ public class Example {
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
         String customFieldId = "customFieldId_example"; // String | 
         UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<CustomFieldMetaData> response = apiInstance.updateOpportunityCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -2115,7 +2127,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **customFieldId** | **String**|  | |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id, label, options] |
 
 ### Return type
 
@@ -2176,7 +2188,7 @@ public class Example {
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
         String stageId = "stageId_example"; // String | 
         UpdateOpportunityStageRequest updateOpportunityStageRequest = new UpdateOpportunityStageRequest(); // UpdateOpportunityStageRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             RestOpportunityStage result = apiInstance.updateOpportunityStage(stageId, updateOpportunityStageRequest, updateMask);
             System.out.println(result);
@@ -2198,7 +2210,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **stageId** | **String**|  | |
 | **updateOpportunityStageRequest** | [**UpdateOpportunityStageRequest**](UpdateOpportunityStageRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, order, target_number_days, probability, checklist_items] |
 
 ### Return type
 
@@ -2259,7 +2271,7 @@ public class Example {
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
         String stageId = "stageId_example"; // String | 
         UpdateOpportunityStageRequest updateOpportunityStageRequest = new UpdateOpportunityStageRequest(); // UpdateOpportunityStageRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<RestOpportunityStage> response = apiInstance.updateOpportunityStageWithHttpInfo(stageId, updateOpportunityStageRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -2283,7 +2295,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **stageId** | **String**|  | |
 | **updateOpportunityStageRequest** | [**UpdateOpportunityStageRequest**](UpdateOpportunityStageRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, order, target_number_days, probability, checklist_items] |
 
 ### Return type
 

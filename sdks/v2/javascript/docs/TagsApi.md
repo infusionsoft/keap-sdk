@@ -658,7 +658,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.TagsApi();
 let tagId = "tagId_example"; // String | 
 let createUpdateTagRequest = new KeapCoreServiceV2Sdk.CreateUpdateTagRequest(); // CreateUpdateTagRequest | 
 let opts = {
-  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateTag(tagId, createUpdateTagRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -675,7 +675,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tagId** | **String**|  | 
  **createUpdateTagRequest** | [**CreateUpdateTagRequest**](CreateUpdateTagRequest.md)|  | 
- **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -712,7 +712,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.TagsApi();
 let tagCategoryId = "tagCategoryId_example"; // String | 
 let createUpdateTagCategoryRequest = new KeapCoreServiceV2Sdk.CreateUpdateTagCategoryRequest(); // CreateUpdateTagCategoryRequest | 
 let opts = {
-  'updateMask': null // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateTagCategory(tagCategoryId, createUpdateTagCategoryRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -729,7 +729,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tagCategoryId** | **String**|  | 
  **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md)|  | 
- **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

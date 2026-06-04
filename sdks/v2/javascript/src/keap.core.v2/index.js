@@ -442,7 +442,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.12
+* @version 2.0.13
 */
 export {
     /**

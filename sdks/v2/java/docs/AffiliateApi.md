@@ -5012,7 +5012,7 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String id = "id_example"; // String | 
         UpdateAffiliateRequest updateAffiliateRequest = new UpdateAffiliateRequest(); // UpdateAffiliateRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             RestAffiliate result = apiInstance.updateAffiliate(id, updateAffiliateRequest, updateMask);
             System.out.println(result);
@@ -5034,7 +5034,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**|  | |
 | **updateAffiliateRequest** | [**UpdateAffiliateRequest**](UpdateAffiliateRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: contact_id, code, name, status, parent_affiliate_id, notify_on_sale, notify_on_lead, track_leads_days, password, custom_fields] |
 
 ### Return type
 
@@ -5095,7 +5095,7 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String id = "id_example"; // String | 
         UpdateAffiliateRequest updateAffiliateRequest = new UpdateAffiliateRequest(); // UpdateAffiliateRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<RestAffiliate> response = apiInstance.updateAffiliateWithHttpInfo(id, updateAffiliateRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -5119,7 +5119,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**|  | |
 | **updateAffiliateRequest** | [**UpdateAffiliateRequest**](UpdateAffiliateRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: contact_id, code, name, status, parent_affiliate_id, notify_on_sale, notify_on_lead, track_leads_days, password, custom_fields] |
 
 ### Return type
 
@@ -5180,7 +5180,7 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String customFieldId = "customFieldId_example"; // String | 
         UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             CustomFieldMetaData result = apiInstance.updateAffiliateCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println(result);
@@ -5202,7 +5202,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **customFieldId** | **String**|  | |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id, label, options] |
 
 ### Return type
 
@@ -5263,7 +5263,7 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String customFieldId = "customFieldId_example"; // String | 
         UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<CustomFieldMetaData> response = apiInstance.updateAffiliateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -5287,7 +5287,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **customFieldId** | **String**|  | |
 | **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id, label, options] |
 
 ### Return type
 
@@ -5348,7 +5348,7 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String commissionProgramId = "commissionProgramId_example"; // String | 
         UpdateCommissionProgramRequest updateCommissionProgramRequest = new UpdateCommissionProgramRequest(); // UpdateCommissionProgramRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             AffiliateCommissionProgramResponse result = apiInstance.updateCommissionProgram(commissionProgramId, updateCommissionProgramRequest, updateMask);
             System.out.println(result);
@@ -5370,7 +5370,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **commissionProgramId** | **String**|  | |
 | **updateCommissionProgramRequest** | [**UpdateCommissionProgramRequest**](UpdateCommissionProgramRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, notes, priority] |
 
 ### Return type
 
@@ -5431,7 +5431,7 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String commissionProgramId = "commissionProgramId_example"; // String | 
         UpdateCommissionProgramRequest updateCommissionProgramRequest = new UpdateCommissionProgramRequest(); // UpdateCommissionProgramRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<AffiliateCommissionProgramResponse> response = apiInstance.updateCommissionProgramWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -5455,7 +5455,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **commissionProgramId** | **String**|  | |
 | **updateCommissionProgramRequest** | [**UpdateCommissionProgramRequest**](UpdateCommissionProgramRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, notes, priority] |
 
 ### Return type
 
@@ -5516,7 +5516,7 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String resourceId = "resourceId_example"; // String | 
         UpdateProgramResourceRequest updateProgramResourceRequest = new UpdateProgramResourceRequest(); // UpdateProgramResourceRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             AffiliateProgramResource result = apiInstance.updateCommissionProgramResource(resourceId, updateProgramResourceRequest, updateMask);
             System.out.println(result);
@@ -5538,7 +5538,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **resourceId** | **String**|  | |
 | **updateProgramResourceRequest** | [**UpdateProgramResourceRequest**](UpdateProgramResourceRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: title, notes, url, order, content_html, page_width, page_height, commission_program_ids] |
 
 ### Return type
 
@@ -5599,7 +5599,7 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String resourceId = "resourceId_example"; // String | 
         UpdateProgramResourceRequest updateProgramResourceRequest = new UpdateProgramResourceRequest(); // UpdateProgramResourceRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<AffiliateProgramResource> response = apiInstance.updateCommissionProgramResourceWithHttpInfo(resourceId, updateProgramResourceRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -5623,7 +5623,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **resourceId** | **String**|  | |
 | **updateProgramResourceRequest** | [**UpdateProgramResourceRequest**](UpdateProgramResourceRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: title, notes, url, order, content_html, page_width, page_height, commission_program_ids] |
 
 ### Return type
 
@@ -5684,7 +5684,7 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String commissionProgramId = "commissionProgramId_example"; // String | 
         UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest = new UpdateDefaultCommissionProgramRequest(); // UpdateDefaultCommissionProgramRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             GetRestCommissionProgram result = apiInstance.updateDefaultCommissionProgram(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
             System.out.println(result);
@@ -5706,7 +5706,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **commissionProgramId** | **String**|  | |
 | **updateDefaultCommissionProgramRequest** | [**UpdateDefaultCommissionProgramRequest**](UpdateDefaultCommissionProgramRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: percentage, dollar_amount, payout_type, level_1, level_2, unused] |
 
 ### Return type
 
@@ -5767,7 +5767,7 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String commissionProgramId = "commissionProgramId_example"; // String | 
         UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest = new UpdateDefaultCommissionProgramRequest(); // UpdateDefaultCommissionProgramRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<GetRestCommissionProgram> response = apiInstance.updateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -5791,7 +5791,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **commissionProgramId** | **String**|  | |
 | **updateDefaultCommissionProgramRequest** | [**UpdateDefaultCommissionProgramRequest**](UpdateDefaultCommissionProgramRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: percentage, dollar_amount, payout_type, level_1, level_2, unused] |
 
 ### Return type
 
@@ -5852,7 +5852,7 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String commissionProgramId = "commissionProgramId_example"; // String | 
         UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest = new UpdateProductCommissionProgramRequest(); // UpdateProductCommissionProgramRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             GetRestCommissionProgram result = apiInstance.updateProductCommissionProgram(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
             System.out.println(result);
@@ -5874,7 +5874,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **commissionProgramId** | **String**|  | |
 | **updateProductCommissionProgramRequest** | [**UpdateProductCommissionProgramRequest**](UpdateProductCommissionProgramRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: percentage, dollar_amount, payout_type, level_1, level_2, unused] |
 
 ### Return type
 
@@ -5935,7 +5935,7 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String commissionProgramId = "commissionProgramId_example"; // String | 
         UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest = new UpdateProductCommissionProgramRequest(); // UpdateProductCommissionProgramRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<GetRestCommissionProgram> response = apiInstance.updateProductCommissionProgramWithHttpInfo(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -5959,7 +5959,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **commissionProgramId** | **String**|  | |
 | **updateProductCommissionProgramRequest** | [**UpdateProductCommissionProgramRequest**](UpdateProductCommissionProgramRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: percentage, dollar_amount, payout_type, level_1, level_2, unused] |
 
 ### Return type
 
@@ -6184,7 +6184,7 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String commissionProgramId = "commissionProgramId_example"; // String | 
         UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest = new UpdateSubscriptionCommissionProgramRequest(); // UpdateSubscriptionCommissionProgramRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             GetRestCommissionProgram result = apiInstance.updateSubscriptionCommissionProgram(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
             System.out.println(result);
@@ -6206,7 +6206,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **commissionProgramId** | **String**|  | |
 | **updateSubscriptionCommissionProgramRequest** | [**UpdateSubscriptionCommissionProgramRequest**](UpdateSubscriptionCommissionProgramRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: percentage, dollar_amount, payout_type, level_1, level_2, unused] |
 
 ### Return type
 
@@ -6267,7 +6267,7 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String commissionProgramId = "commissionProgramId_example"; // String | 
         UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest = new UpdateSubscriptionCommissionProgramRequest(); // UpdateSubscriptionCommissionProgramRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<GetRestCommissionProgram> response = apiInstance.updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -6291,7 +6291,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **commissionProgramId** | **String**|  | |
 | **updateSubscriptionCommissionProgramRequest** | [**UpdateSubscriptionCommissionProgramRequest**](UpdateSubscriptionCommissionProgramRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: percentage, dollar_amount, payout_type, level_1, level_2, unused] |
 
 ### Return type
 

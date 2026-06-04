@@ -676,7 +676,9 @@ const request: NoteApiUpdateNoteRequest = {
     contactId: "1001",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "contact_id",
+  ],
     // Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
   fields: [
     "fields_example",
@@ -695,7 +697,7 @@ Name | Type | Description  | Notes
  **updateNoteRequest** | **UpdateNoteRequest**|  |
  **contactId** | [**string**] |  | defaults to undefined
  **noteId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;contact_id&#39; &#124; &#39;title&#39; &#124; &#39;text&#39; &#124; &#39;type&#39; &#124; &#39;user_id&#39; &#124; &#39;is_pinned&#39; &#124; &#39;custom_fields&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
  **fields** | **Array&lt;string&gt;** | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | (optional) defaults to undefined
 
 
@@ -758,7 +760,9 @@ const request: NoteApiUpdateNotesCustomFieldRequest = {
     groupId: "groupId_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: null,
+  updateMask: [
+    "group_id",
+  ],
 };
 
 const data = await apiInstance.updateNotesCustomField(request);
@@ -772,7 +776,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**|  |
  **customFieldId** | [**string**] |  | defaults to undefined
- **updateMask** | **any** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;group_id&#39; &#124; &#39;label&#39; &#124; &#39;options&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

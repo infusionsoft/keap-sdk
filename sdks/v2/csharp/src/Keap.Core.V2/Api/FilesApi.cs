@@ -32,43 +32,33 @@ namespace Keap.Core.V2.Api
         /// Create a file
         /// </summary>
         /// <remarks>
-        /// Creates a file and uploads it
+        /// Uploads a file using multipart/form-data. The &#x60;file&#x60; part contains the binary file content; &#x60;file_name&#x60;, &#x60;is_public&#x60;, &#x60;file_association&#x60;, and optionally &#x60;contact_id&#x60; are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="file">File to upload. This is a file sent as multi-part (not a string)</param>
+        /// <param name="file">File to upload</param>
         /// <param name="fileName">File name</param>
-        /// <param name="isPublic">Is public</param>
         /// <param name="fileAssociation">File association</param>
-        /// <param name="file2">File to upload</param>
-        /// <param name="fileName2">File name</param>
-        /// <param name="isPublic2">Is public</param>
-        /// <param name="fileAssociation2">File association</param>
-        /// <param name="contactId">Contact ID (optional)</param>
-        /// <param name="contactId2">Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)</param>
+        /// <param name="contactId">Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)</param>
+        /// <param name="isPublic">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>FileMetadata</returns>
-        FileMetadata CreateFile(System.IO.Stream file, string fileName, bool isPublic, string fileAssociation, System.IO.Stream file2, string fileName2, string isPublic2, string fileAssociation2, string? contactId = default, string? contactId2 = default, int operationIndex = 0);
+        FileMetadata CreateFile(System.IO.Stream file, string fileName, string fileAssociation, string? contactId = default, string? isPublic = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a file
         /// </summary>
         /// <remarks>
-        /// Creates a file and uploads it
+        /// Uploads a file using multipart/form-data. The &#x60;file&#x60; part contains the binary file content; &#x60;file_name&#x60;, &#x60;is_public&#x60;, &#x60;file_association&#x60;, and optionally &#x60;contact_id&#x60; are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="file">File to upload. This is a file sent as multi-part (not a string)</param>
+        /// <param name="file">File to upload</param>
         /// <param name="fileName">File name</param>
-        /// <param name="isPublic">Is public</param>
         /// <param name="fileAssociation">File association</param>
-        /// <param name="file2">File to upload</param>
-        /// <param name="fileName2">File name</param>
-        /// <param name="isPublic2">Is public</param>
-        /// <param name="fileAssociation2">File association</param>
-        /// <param name="contactId">Contact ID (optional)</param>
-        /// <param name="contactId2">Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)</param>
+        /// <param name="contactId">Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)</param>
+        /// <param name="isPublic">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of FileMetadata</returns>
-        ApiResponse<FileMetadata> CreateFileWithHttpInfo(System.IO.Stream file, string fileName, bool isPublic, string fileAssociation, System.IO.Stream file2, string fileName2, string isPublic2, string fileAssociation2, string? contactId = default, string? contactId2 = default, int operationIndex = 0);
+        ApiResponse<FileMetadata> CreateFileWithHttpInfo(System.IO.Stream file, string fileName, string fileAssociation, string? contactId = default, string? isPublic = default, int operationIndex = 0);
         /// <summary>
         /// Delete a file
         /// </summary>
@@ -171,39 +161,33 @@ namespace Keap.Core.V2.Api
         /// Update a file
         /// </summary>
         /// <remarks>
-        /// Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+        /// Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fileId"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
-        /// <param name="file">File to upload. This is a file sent as multi-part (not a string) (optional)</param>
+        /// <param name="file">File to upload (optional)</param>
         /// <param name="fileName">File name (optional)</param>
         /// <param name="isPublic">Is public (optional)</param>
-        /// <param name="file2">File to upload (optional)</param>
-        /// <param name="fileName2">File name (optional)</param>
-        /// <param name="isPublic2">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>FileMetadata</returns>
-        FileMetadata UpdateFile(string fileId, Object? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0);
+        FileMetadata UpdateFile(string fileId, List<string>? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a file
         /// </summary>
         /// <remarks>
-        /// Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+        /// Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fileId"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
-        /// <param name="file">File to upload. This is a file sent as multi-part (not a string) (optional)</param>
+        /// <param name="file">File to upload (optional)</param>
         /// <param name="fileName">File name (optional)</param>
         /// <param name="isPublic">Is public (optional)</param>
-        /// <param name="file2">File to upload (optional)</param>
-        /// <param name="fileName2">File name (optional)</param>
-        /// <param name="isPublic2">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of FileMetadata</returns>
-        ApiResponse<FileMetadata> UpdateFileWithHttpInfo(string fileId, Object? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0);
+        ApiResponse<FileMetadata> UpdateFileWithHttpInfo(string fileId, List<string>? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -217,45 +201,35 @@ namespace Keap.Core.V2.Api
         /// Create a file
         /// </summary>
         /// <remarks>
-        /// Creates a file and uploads it
+        /// Uploads a file using multipart/form-data. The &#x60;file&#x60; part contains the binary file content; &#x60;file_name&#x60;, &#x60;is_public&#x60;, &#x60;file_association&#x60;, and optionally &#x60;contact_id&#x60; are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="file">File to upload. This is a file sent as multi-part (not a string)</param>
+        /// <param name="file">File to upload</param>
         /// <param name="fileName">File name</param>
-        /// <param name="isPublic">Is public</param>
         /// <param name="fileAssociation">File association</param>
-        /// <param name="file2">File to upload</param>
-        /// <param name="fileName2">File name</param>
-        /// <param name="isPublic2">Is public</param>
-        /// <param name="fileAssociation2">File association</param>
-        /// <param name="contactId">Contact ID (optional)</param>
-        /// <param name="contactId2">Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)</param>
+        /// <param name="contactId">Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)</param>
+        /// <param name="isPublic">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of FileMetadata</returns>
-        System.Threading.Tasks.Task<FileMetadata> CreateFileAsync(System.IO.Stream file, string fileName, bool isPublic, string fileAssociation, System.IO.Stream file2, string fileName2, string isPublic2, string fileAssociation2, string? contactId = default, string? contactId2 = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<FileMetadata> CreateFileAsync(System.IO.Stream file, string fileName, string fileAssociation, string? contactId = default, string? isPublic = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create a file
         /// </summary>
         /// <remarks>
-        /// Creates a file and uploads it
+        /// Uploads a file using multipart/form-data. The &#x60;file&#x60; part contains the binary file content; &#x60;file_name&#x60;, &#x60;is_public&#x60;, &#x60;file_association&#x60;, and optionally &#x60;contact_id&#x60; are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="file">File to upload. This is a file sent as multi-part (not a string)</param>
+        /// <param name="file">File to upload</param>
         /// <param name="fileName">File name</param>
-        /// <param name="isPublic">Is public</param>
         /// <param name="fileAssociation">File association</param>
-        /// <param name="file2">File to upload</param>
-        /// <param name="fileName2">File name</param>
-        /// <param name="isPublic2">Is public</param>
-        /// <param name="fileAssociation2">File association</param>
-        /// <param name="contactId">Contact ID (optional)</param>
-        /// <param name="contactId2">Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)</param>
+        /// <param name="contactId">Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)</param>
+        /// <param name="isPublic">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (FileMetadata)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileMetadata>> CreateFileWithHttpInfoAsync(System.IO.Stream file, string fileName, bool isPublic, string fileAssociation, System.IO.Stream file2, string fileName2, string isPublic2, string fileAssociation2, string? contactId = default, string? contactId2 = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<FileMetadata>> CreateFileWithHttpInfoAsync(System.IO.Stream file, string fileName, string fileAssociation, string? contactId = default, string? isPublic = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Delete a file
         /// </summary>
@@ -366,41 +340,35 @@ namespace Keap.Core.V2.Api
         /// Update a file
         /// </summary>
         /// <remarks>
-        /// Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+        /// Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fileId"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
-        /// <param name="file">File to upload. This is a file sent as multi-part (not a string) (optional)</param>
+        /// <param name="file">File to upload (optional)</param>
         /// <param name="fileName">File name (optional)</param>
         /// <param name="isPublic">Is public (optional)</param>
-        /// <param name="file2">File to upload (optional)</param>
-        /// <param name="fileName2">File name (optional)</param>
-        /// <param name="isPublic2">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of FileMetadata</returns>
-        System.Threading.Tasks.Task<FileMetadata> UpdateFileAsync(string fileId, Object? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<FileMetadata> UpdateFileAsync(string fileId, List<string>? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a file
         /// </summary>
         /// <remarks>
-        /// Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+        /// Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fileId"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
-        /// <param name="file">File to upload. This is a file sent as multi-part (not a string) (optional)</param>
+        /// <param name="file">File to upload (optional)</param>
         /// <param name="fileName">File name (optional)</param>
         /// <param name="isPublic">Is public (optional)</param>
-        /// <param name="file2">File to upload (optional)</param>
-        /// <param name="fileName2">File name (optional)</param>
-        /// <param name="isPublic2">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (FileMetadata)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileMetadata>> UpdateFileWithHttpInfoAsync(string fileId, Object? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<FileMetadata>> UpdateFileWithHttpInfoAsync(string fileId, List<string>? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -522,44 +490,34 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
-        /// Create a file Creates a file and uploads it
+        /// Create a file Uploads a file using multipart/form-data. The &#x60;file&#x60; part contains the binary file content; &#x60;file_name&#x60;, &#x60;is_public&#x60;, &#x60;file_association&#x60;, and optionally &#x60;contact_id&#x60; are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="file">File to upload. This is a file sent as multi-part (not a string)</param>
+        /// <param name="file">File to upload</param>
         /// <param name="fileName">File name</param>
-        /// <param name="isPublic">Is public</param>
         /// <param name="fileAssociation">File association</param>
-        /// <param name="file2">File to upload</param>
-        /// <param name="fileName2">File name</param>
-        /// <param name="isPublic2">Is public</param>
-        /// <param name="fileAssociation2">File association</param>
-        /// <param name="contactId">Contact ID (optional)</param>
-        /// <param name="contactId2">Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)</param>
+        /// <param name="contactId">Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)</param>
+        /// <param name="isPublic">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>FileMetadata</returns>
-        public FileMetadata CreateFile(System.IO.Stream file, string fileName, bool isPublic, string fileAssociation, System.IO.Stream file2, string fileName2, string isPublic2, string fileAssociation2, string? contactId = default, string? contactId2 = default, int operationIndex = 0)
+        public FileMetadata CreateFile(System.IO.Stream file, string fileName, string fileAssociation, string? contactId = default, string? isPublic = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<FileMetadata> localVarResponse = CreateFileWithHttpInfo(file, fileName, isPublic, fileAssociation, file2, fileName2, isPublic2, fileAssociation2, contactId, contactId2);
+            Keap.Core.V2.Client.ApiResponse<FileMetadata> localVarResponse = CreateFileWithHttpInfo(file, fileName, fileAssociation, contactId, isPublic);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Create a file Creates a file and uploads it
+        /// Create a file Uploads a file using multipart/form-data. The &#x60;file&#x60; part contains the binary file content; &#x60;file_name&#x60;, &#x60;is_public&#x60;, &#x60;file_association&#x60;, and optionally &#x60;contact_id&#x60; are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="file">File to upload. This is a file sent as multi-part (not a string)</param>
+        /// <param name="file">File to upload</param>
         /// <param name="fileName">File name</param>
-        /// <param name="isPublic">Is public</param>
         /// <param name="fileAssociation">File association</param>
-        /// <param name="file2">File to upload</param>
-        /// <param name="fileName2">File name</param>
-        /// <param name="isPublic2">Is public</param>
-        /// <param name="fileAssociation2">File association</param>
-        /// <param name="contactId">Contact ID (optional)</param>
-        /// <param name="contactId2">Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)</param>
+        /// <param name="contactId">Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)</param>
+        /// <param name="isPublic">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of FileMetadata</returns>
-        public Keap.Core.V2.Client.ApiResponse<FileMetadata> CreateFileWithHttpInfo(System.IO.Stream file, string fileName, bool isPublic, string fileAssociation, System.IO.Stream file2, string fileName2, string isPublic2, string fileAssociation2, string? contactId = default, string? contactId2 = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<FileMetadata> CreateFileWithHttpInfo(System.IO.Stream file, string fileName, string fileAssociation, string? contactId = default, string? isPublic = default, int operationIndex = 0)
         {
             // verify the required parameter 'file' is set
             if (file == null)
@@ -577,30 +535,6 @@ namespace Keap.Core.V2.Api
             if (fileAssociation == null)
             {
                 throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'fileAssociation' when calling FilesApi->CreateFile");
-            }
-
-            // verify the required parameter 'file2' is set
-            if (file2 == null)
-            {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'file2' when calling FilesApi->CreateFile");
-            }
-
-            // verify the required parameter 'fileName2' is set
-            if (fileName2 == null)
-            {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'fileName2' when calling FilesApi->CreateFile");
-            }
-
-            // verify the required parameter 'isPublic2' is set
-            if (isPublic2 == null)
-            {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'isPublic2' when calling FilesApi->CreateFile");
-            }
-
-            // verify the required parameter 'fileAssociation2' is set
-            if (fileAssociation2 == null)
-            {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'fileAssociation2' when calling FilesApi->CreateFile");
             }
 
             Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
@@ -627,22 +561,17 @@ namespace Keap.Core.V2.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "file", file));
-            localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "file_name", fileName));
+            localVarRequestOptions.FileParameters.Add("file", file);
+            localVarRequestOptions.FormParameters.Add("file_name", Keap.Core.V2.Client.ClientUtils.ParameterToString(fileName)); // form parameter
             if (contactId != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "contact_id", contactId));
+                localVarRequestOptions.FormParameters.Add("contact_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(contactId)); // form parameter
             }
-            localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "is_public", isPublic));
-            localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "file_association", fileAssociation));
-            localVarRequestOptions.FileParameters.Add("file", file2);
-            localVarRequestOptions.FormParameters.Add("file_name", Keap.Core.V2.Client.ClientUtils.ParameterToString(fileName2)); // form parameter
-            if (contactId2 != null)
+            if (isPublic != null)
             {
-                localVarRequestOptions.FormParameters.Add("contact_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(contactId2)); // form parameter
+                localVarRequestOptions.FormParameters.Add("is_public", Keap.Core.V2.Client.ClientUtils.ParameterToString(isPublic)); // form parameter
             }
-            localVarRequestOptions.FormParameters.Add("is_public", Keap.Core.V2.Client.ClientUtils.ParameterToString(isPublic2)); // form parameter
-            localVarRequestOptions.FormParameters.Add("file_association", Keap.Core.V2.Client.ClientUtils.ParameterToString(fileAssociation2)); // form parameter
+            localVarRequestOptions.FormParameters.Add("file_association", Keap.Core.V2.Client.ClientUtils.ParameterToString(fileAssociation)); // form parameter
 
             localVarRequestOptions.Operation = "FilesApi.CreateFile";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -679,46 +608,36 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
-        /// Create a file Creates a file and uploads it
+        /// Create a file Uploads a file using multipart/form-data. The &#x60;file&#x60; part contains the binary file content; &#x60;file_name&#x60;, &#x60;is_public&#x60;, &#x60;file_association&#x60;, and optionally &#x60;contact_id&#x60; are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="file">File to upload. This is a file sent as multi-part (not a string)</param>
+        /// <param name="file">File to upload</param>
         /// <param name="fileName">File name</param>
-        /// <param name="isPublic">Is public</param>
         /// <param name="fileAssociation">File association</param>
-        /// <param name="file2">File to upload</param>
-        /// <param name="fileName2">File name</param>
-        /// <param name="isPublic2">Is public</param>
-        /// <param name="fileAssociation2">File association</param>
-        /// <param name="contactId">Contact ID (optional)</param>
-        /// <param name="contactId2">Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)</param>
+        /// <param name="contactId">Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)</param>
+        /// <param name="isPublic">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of FileMetadata</returns>
-        public async System.Threading.Tasks.Task<FileMetadata> CreateFileAsync(System.IO.Stream file, string fileName, bool isPublic, string fileAssociation, System.IO.Stream file2, string fileName2, string isPublic2, string fileAssociation2, string? contactId = default, string? contactId2 = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<FileMetadata> CreateFileAsync(System.IO.Stream file, string fileName, string fileAssociation, string? contactId = default, string? isPublic = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<FileMetadata> localVarResponse = await CreateFileWithHttpInfoAsync(file, fileName, isPublic, fileAssociation, file2, fileName2, isPublic2, fileAssociation2, contactId, contactId2, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<FileMetadata> localVarResponse = await CreateFileWithHttpInfoAsync(file, fileName, fileAssociation, contactId, isPublic, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Create a file Creates a file and uploads it
+        /// Create a file Uploads a file using multipart/form-data. The &#x60;file&#x60; part contains the binary file content; &#x60;file_name&#x60;, &#x60;is_public&#x60;, &#x60;file_association&#x60;, and optionally &#x60;contact_id&#x60; are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="file">File to upload. This is a file sent as multi-part (not a string)</param>
+        /// <param name="file">File to upload</param>
         /// <param name="fileName">File name</param>
-        /// <param name="isPublic">Is public</param>
         /// <param name="fileAssociation">File association</param>
-        /// <param name="file2">File to upload</param>
-        /// <param name="fileName2">File name</param>
-        /// <param name="isPublic2">Is public</param>
-        /// <param name="fileAssociation2">File association</param>
-        /// <param name="contactId">Contact ID (optional)</param>
-        /// <param name="contactId2">Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)</param>
+        /// <param name="contactId">Contact ID. Required if the &#x60;file_association&#x60; is CONTACT (optional)</param>
+        /// <param name="isPublic">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (FileMetadata)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<FileMetadata>> CreateFileWithHttpInfoAsync(System.IO.Stream file, string fileName, bool isPublic, string fileAssociation, System.IO.Stream file2, string fileName2, string isPublic2, string fileAssociation2, string? contactId = default, string? contactId2 = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<FileMetadata>> CreateFileWithHttpInfoAsync(System.IO.Stream file, string fileName, string fileAssociation, string? contactId = default, string? isPublic = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'file' is set
             if (file == null)
@@ -736,30 +655,6 @@ namespace Keap.Core.V2.Api
             if (fileAssociation == null)
             {
                 throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'fileAssociation' when calling FilesApi->CreateFile");
-            }
-
-            // verify the required parameter 'file2' is set
-            if (file2 == null)
-            {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'file2' when calling FilesApi->CreateFile");
-            }
-
-            // verify the required parameter 'fileName2' is set
-            if (fileName2 == null)
-            {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'fileName2' when calling FilesApi->CreateFile");
-            }
-
-            // verify the required parameter 'isPublic2' is set
-            if (isPublic2 == null)
-            {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'isPublic2' when calling FilesApi->CreateFile");
-            }
-
-            // verify the required parameter 'fileAssociation2' is set
-            if (fileAssociation2 == null)
-            {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'fileAssociation2' when calling FilesApi->CreateFile");
             }
 
 
@@ -786,22 +681,17 @@ namespace Keap.Core.V2.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "file", file));
-            localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "file_name", fileName));
+            localVarRequestOptions.FileParameters.Add("file", file);
+            localVarRequestOptions.FormParameters.Add("file_name", Keap.Core.V2.Client.ClientUtils.ParameterToString(fileName)); // form parameter
             if (contactId != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "contact_id", contactId));
+                localVarRequestOptions.FormParameters.Add("contact_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(contactId)); // form parameter
             }
-            localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "is_public", isPublic));
-            localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "file_association", fileAssociation));
-            localVarRequestOptions.FileParameters.Add("file", file2);
-            localVarRequestOptions.FormParameters.Add("file_name", Keap.Core.V2.Client.ClientUtils.ParameterToString(fileName2)); // form parameter
-            if (contactId2 != null)
+            if (isPublic != null)
             {
-                localVarRequestOptions.FormParameters.Add("contact_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(contactId2)); // form parameter
+                localVarRequestOptions.FormParameters.Add("is_public", Keap.Core.V2.Client.ClientUtils.ParameterToString(isPublic)); // form parameter
             }
-            localVarRequestOptions.FormParameters.Add("is_public", Keap.Core.V2.Client.ClientUtils.ParameterToString(isPublic2)); // form parameter
-            localVarRequestOptions.FormParameters.Add("file_association", Keap.Core.V2.Client.ClientUtils.ParameterToString(fileAssociation2)); // form parameter
+            localVarRequestOptions.FormParameters.Add("file_association", Keap.Core.V2.Client.ClientUtils.ParameterToString(fileAssociation)); // form parameter
 
             localVarRequestOptions.Operation = "FilesApi.CreateFile";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1575,40 +1465,34 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
-        /// Update a file Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+        /// Update a file Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fileId"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
-        /// <param name="file">File to upload. This is a file sent as multi-part (not a string) (optional)</param>
+        /// <param name="file">File to upload (optional)</param>
         /// <param name="fileName">File name (optional)</param>
         /// <param name="isPublic">Is public (optional)</param>
-        /// <param name="file2">File to upload (optional)</param>
-        /// <param name="fileName2">File name (optional)</param>
-        /// <param name="isPublic2">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>FileMetadata</returns>
-        public FileMetadata UpdateFile(string fileId, Object? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0)
+        public FileMetadata UpdateFile(string fileId, List<string>? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<FileMetadata> localVarResponse = UpdateFileWithHttpInfo(fileId, updateMask, file, fileName, isPublic, file2, fileName2, isPublic2);
+            Keap.Core.V2.Client.ApiResponse<FileMetadata> localVarResponse = UpdateFileWithHttpInfo(fileId, updateMask, file, fileName, isPublic);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Update a file Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+        /// Update a file Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fileId"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
-        /// <param name="file">File to upload. This is a file sent as multi-part (not a string) (optional)</param>
+        /// <param name="file">File to upload (optional)</param>
         /// <param name="fileName">File name (optional)</param>
         /// <param name="isPublic">Is public (optional)</param>
-        /// <param name="file2">File to upload (optional)</param>
-        /// <param name="fileName2">File name (optional)</param>
-        /// <param name="isPublic2">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of FileMetadata</returns>
-        public Keap.Core.V2.Client.ApiResponse<FileMetadata> UpdateFileWithHttpInfo(string fileId, Object? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<FileMetadata> UpdateFileWithHttpInfo(string fileId, List<string>? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, int operationIndex = 0)
         {
             // verify the required parameter 'fileId' is set
             if (fileId == null)
@@ -1643,31 +1527,19 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("file_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(fileId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             if (file != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "file", file));
+                localVarRequestOptions.FileParameters.Add("file", file);
             }
             if (fileName != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "file_name", fileName));
+                localVarRequestOptions.FormParameters.Add("file_name", Keap.Core.V2.Client.ClientUtils.ParameterToString(fileName)); // form parameter
             }
             if (isPublic != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "is_public", isPublic));
-            }
-            if (file2 != null)
-            {
-                localVarRequestOptions.FileParameters.Add("file", file2);
-            }
-            if (fileName2 != null)
-            {
-                localVarRequestOptions.FormParameters.Add("file_name", Keap.Core.V2.Client.ClientUtils.ParameterToString(fileName2)); // form parameter
-            }
-            if (isPublic2 != null)
-            {
-                localVarRequestOptions.FormParameters.Add("is_public", Keap.Core.V2.Client.ClientUtils.ParameterToString(isPublic2)); // form parameter
+                localVarRequestOptions.FormParameters.Add("is_public", Keap.Core.V2.Client.ClientUtils.ParameterToString(isPublic)); // form parameter
             }
 
             localVarRequestOptions.Operation = "FilesApi.UpdateFile";
@@ -1705,42 +1577,36 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
-        /// Update a file Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+        /// Update a file Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fileId"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
-        /// <param name="file">File to upload. This is a file sent as multi-part (not a string) (optional)</param>
+        /// <param name="file">File to upload (optional)</param>
         /// <param name="fileName">File name (optional)</param>
         /// <param name="isPublic">Is public (optional)</param>
-        /// <param name="file2">File to upload (optional)</param>
-        /// <param name="fileName2">File name (optional)</param>
-        /// <param name="isPublic2">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of FileMetadata</returns>
-        public async System.Threading.Tasks.Task<FileMetadata> UpdateFileAsync(string fileId, Object? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<FileMetadata> UpdateFileAsync(string fileId, List<string>? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<FileMetadata> localVarResponse = await UpdateFileWithHttpInfoAsync(fileId, updateMask, file, fileName, isPublic, file2, fileName2, isPublic2, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<FileMetadata> localVarResponse = await UpdateFileWithHttpInfoAsync(fileId, updateMask, file, fileName, isPublic, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Update a file Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+        /// Update a file Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fileId"></param>
         /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
-        /// <param name="file">File to upload. This is a file sent as multi-part (not a string) (optional)</param>
+        /// <param name="file">File to upload (optional)</param>
         /// <param name="fileName">File name (optional)</param>
         /// <param name="isPublic">Is public (optional)</param>
-        /// <param name="file2">File to upload (optional)</param>
-        /// <param name="fileName2">File name (optional)</param>
-        /// <param name="isPublic2">Is public (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (FileMetadata)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<FileMetadata>> UpdateFileWithHttpInfoAsync(string fileId, Object? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, System.IO.Stream? file2 = default, string? fileName2 = default, bool? isPublic2 = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<FileMetadata>> UpdateFileWithHttpInfoAsync(string fileId, List<string>? updateMask = default, System.IO.Stream? file = default, string? fileName = default, bool? isPublic = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'fileId' is set
             if (fileId == null)
@@ -1775,31 +1641,19 @@ namespace Keap.Core.V2.Api
             localVarRequestOptions.PathParameters.Add("file_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(fileId)); // path parameter
             if (updateMask != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "update_mask", updateMask));
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
             }
             if (file != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "file", file));
+                localVarRequestOptions.FileParameters.Add("file", file);
             }
             if (fileName != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "file_name", fileName));
+                localVarRequestOptions.FormParameters.Add("file_name", Keap.Core.V2.Client.ClientUtils.ParameterToString(fileName)); // form parameter
             }
             if (isPublic != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "is_public", isPublic));
-            }
-            if (file2 != null)
-            {
-                localVarRequestOptions.FileParameters.Add("file", file2);
-            }
-            if (fileName2 != null)
-            {
-                localVarRequestOptions.FormParameters.Add("file_name", Keap.Core.V2.Client.ClientUtils.ParameterToString(fileName2)); // form parameter
-            }
-            if (isPublic2 != null)
-            {
-                localVarRequestOptions.FormParameters.Add("is_public", Keap.Core.V2.Client.ClientUtils.ParameterToString(isPublic2)); // form parameter
+                localVarRequestOptions.FormParameters.Add("is_public", Keap.Core.V2.Client.ClientUtils.ParameterToString(isPublic)); // form parameter
             }
 
             localVarRequestOptions.Operation = "FilesApi.UpdateFile";

@@ -698,7 +698,7 @@ public class Example {
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | 
         UpdateProductDiscountRequest updateProductDiscountRequest = new UpdateProductDiscountRequest(); // UpdateProductDiscountRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ProductDiscount result = apiInstance.updateProductDiscount(discountId, updateProductDiscountRequest, updateMask);
             System.out.println(result);
@@ -720,7 +720,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **discountId** | **String**|  | |
 | **updateProductDiscountRequest** | [**UpdateProductDiscountRequest**](UpdateProductDiscountRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description, apply_to_commissions, discount_type, discount_value, product_id, criteria] |
 
 ### Return type
 
@@ -781,7 +781,7 @@ public class Example {
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | 
         UpdateProductDiscountRequest updateProductDiscountRequest = new UpdateProductDiscountRequest(); // UpdateProductDiscountRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<ProductDiscount> response = apiInstance.updateProductDiscountWithHttpInfo(discountId, updateProductDiscountRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -805,7 +805,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **discountId** | **String**|  | |
 | **updateProductDiscountRequest** | [**UpdateProductDiscountRequest**](UpdateProductDiscountRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description, apply_to_commissions, discount_type, discount_value, product_id, criteria] |
 
 ### Return type
 

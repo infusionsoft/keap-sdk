@@ -2028,7 +2028,7 @@ public class Example {
         ContactApi apiInstance = new ContactApi(defaultClient);
         String contactId = "contactId_example"; // String | 
         CreateUpdateContactRequest createUpdateContactRequest = new CreateUpdateContactRequest(); // CreateUpdateContactRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
         try {
             Contact result = apiInstance.updateContact(contactId, createUpdateContactRequest, updateMask, fields);
@@ -2051,7 +2051,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **contactId** | **String**|  | |
 | **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: addresses, anniversary_date, birth_date, company, contact_type, create_time, custom_fields, email_addresses, family_name, fax_numbers, given_name, id, job_title, leadsource_id, links, middle_name, notes, origin, owner_id, phone_numbers, preferred_locale, preferred_name, prefix, referral_code, score_value, social_accounts, source_type, spouse_name, suffix, tag_ids, time_zone, update_time, utm_parameters, website, account_id, assistant_name, assistant_phone, billing_information, created_by, groups, last_updated_by] |
 | **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) | [optional] |
 
 ### Return type
@@ -2113,7 +2113,7 @@ public class Example {
         ContactApi apiInstance = new ContactApi(defaultClient);
         String contactId = "contactId_example"; // String | 
         CreateUpdateContactRequest createUpdateContactRequest = new CreateUpdateContactRequest(); // CreateUpdateContactRequest | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
         try {
             ApiResponse<Contact> response = apiInstance.updateContactWithHttpInfo(contactId, createUpdateContactRequest, updateMask, fields);
@@ -2138,7 +2138,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **contactId** | **String**|  | |
 | **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: addresses, anniversary_date, birth_date, company, contact_type, create_time, custom_fields, email_addresses, family_name, fax_numbers, given_name, id, job_title, leadsource_id, links, middle_name, notes, origin, owner_id, phone_numbers, preferred_locale, preferred_name, prefix, referral_code, score_value, social_accounts, source_type, spouse_name, suffix, tag_ids, time_zone, update_time, utm_parameters, website, account_id, assistant_name, assistant_phone, billing_information, created_by, groups, last_updated_by] |
 | **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) | [optional] |
 
 ### Return type

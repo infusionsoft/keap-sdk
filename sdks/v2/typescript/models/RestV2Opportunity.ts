@@ -73,6 +73,26 @@ export class RestV2Opportunity {
     * Lead source
     */
     'leadSource'?: string;
+    /**
+    * Monthly recurring revenue
+    */
+    'monthlyRevenue'?: number;
+    /**
+    * Order revenue
+    */
+    'orderRevenue'?: number;
+    /**
+    * Objection reason
+    */
+    'objection'?: string;
+    /**
+    * Status name
+    */
+    'status'?: string;
+    /**
+    * Timestamp when the opportunity entered its current stage (ISO-8601)
+    */
+    'stageEntranceTime'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -178,6 +198,36 @@ export class RestV2Opportunity {
         {
             "name": "leadSource",
             "baseName": "lead_source",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "monthlyRevenue",
+            "baseName": "monthly_revenue",
+            "type": "number",
+            "format": "double"
+        },
+        {
+            "name": "orderRevenue",
+            "baseName": "order_revenue",
+            "type": "number",
+            "format": "double"
+        },
+        {
+            "name": "objection",
+            "baseName": "objection",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "status",
+            "baseName": "status",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "stageEntranceTime",
+            "baseName": "stage_entrance_time",
             "type": "string",
             "format": ""
         }    ];

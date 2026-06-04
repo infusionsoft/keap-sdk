@@ -11371,7 +11371,7 @@ class AffiliateApi
      *
      * @param  string $id id (required)
      * @param  \Keap\Core\V2\Model\UpdateAffiliateRequest $update_affiliate_request update_affiliate_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAffiliate'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11391,7 +11391,7 @@ class AffiliateApi
      *
      * @param  string $id (required)
      * @param  \Keap\Core\V2\Model\UpdateAffiliateRequest $update_affiliate_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAffiliate'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11590,7 +11590,7 @@ class AffiliateApi
      *
      * @param  string $id (required)
      * @param  \Keap\Core\V2\Model\UpdateAffiliateRequest $update_affiliate_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAffiliate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11613,7 +11613,7 @@ class AffiliateApi
      *
      * @param  string $id (required)
      * @param  \Keap\Core\V2\Model\UpdateAffiliateRequest $update_affiliate_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAffiliate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11665,7 +11665,7 @@ class AffiliateApi
      *
      * @param  string $id (required)
      * @param  \Keap\Core\V2\Model\UpdateAffiliateRequest $update_affiliate_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAffiliate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11688,7 +11688,7 @@ class AffiliateApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/affiliates/{id}';
         $formParams = [];
@@ -11701,7 +11701,7 @@ class AffiliateApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -11789,7 +11789,7 @@ class AffiliateApi
      *
      * @param  string $custom_field_id custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAffiliateCustomField'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11809,7 +11809,7 @@ class AffiliateApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAffiliateCustomField'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -12008,7 +12008,7 @@ class AffiliateApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAffiliateCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12031,7 +12031,7 @@ class AffiliateApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAffiliateCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12083,7 +12083,7 @@ class AffiliateApi
      *
      * @param  string $custom_field_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest $update_custom_field_meta_data_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAffiliateCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12106,7 +12106,7 @@ class AffiliateApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/affiliates/model/customFields/{custom_field_id}';
         $formParams = [];
@@ -12119,7 +12119,7 @@ class AffiliateApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -12207,7 +12207,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCommissionProgramRequest $update_commission_program_request update_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCommissionProgram'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -12227,7 +12227,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCommissionProgramRequest $update_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCommissionProgram'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -12426,7 +12426,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCommissionProgramRequest $update_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCommissionProgram'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12449,7 +12449,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCommissionProgramRequest $update_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCommissionProgram'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12501,7 +12501,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateCommissionProgramRequest $update_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCommissionProgram'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12524,7 +12524,7 @@ class AffiliateApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/affiliates/commissionPrograms/{commission_program_id}';
         $formParams = [];
@@ -12537,7 +12537,7 @@ class AffiliateApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -12625,7 +12625,7 @@ class AffiliateApi
      *
      * @param  string $resource_id resource_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProgramResourceRequest $update_program_resource_request update_program_resource_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCommissionProgramResource'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -12645,7 +12645,7 @@ class AffiliateApi
      *
      * @param  string $resource_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProgramResourceRequest $update_program_resource_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCommissionProgramResource'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -12844,7 +12844,7 @@ class AffiliateApi
      *
      * @param  string $resource_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProgramResourceRequest $update_program_resource_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCommissionProgramResource'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12867,7 +12867,7 @@ class AffiliateApi
      *
      * @param  string $resource_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProgramResourceRequest $update_program_resource_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCommissionProgramResource'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12919,7 +12919,7 @@ class AffiliateApi
      *
      * @param  string $resource_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProgramResourceRequest $update_program_resource_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCommissionProgramResource'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12942,7 +12942,7 @@ class AffiliateApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/affiliates/commissionPrograms/resources/{resource_id}';
         $formParams = [];
@@ -12955,7 +12955,7 @@ class AffiliateApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -13043,7 +13043,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateDefaultCommissionProgramRequest $update_default_commission_program_request update_default_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDefaultCommissionProgram'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -13063,7 +13063,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateDefaultCommissionProgramRequest $update_default_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDefaultCommissionProgram'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -13262,7 +13262,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateDefaultCommissionProgramRequest $update_default_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDefaultCommissionProgram'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -13285,7 +13285,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateDefaultCommissionProgramRequest $update_default_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDefaultCommissionProgram'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -13337,7 +13337,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateDefaultCommissionProgramRequest $update_default_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDefaultCommissionProgram'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -13360,7 +13360,7 @@ class AffiliateApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id}';
         $formParams = [];
@@ -13373,7 +13373,7 @@ class AffiliateApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -13461,7 +13461,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductCommissionProgramRequest $update_product_commission_program_request update_product_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductCommissionProgram'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -13481,7 +13481,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductCommissionProgramRequest $update_product_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductCommissionProgram'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -13680,7 +13680,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductCommissionProgramRequest $update_product_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductCommissionProgram'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -13703,7 +13703,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductCommissionProgramRequest $update_product_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductCommissionProgram'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -13755,7 +13755,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateProductCommissionProgramRequest $update_product_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductCommissionProgram'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -13778,7 +13778,7 @@ class AffiliateApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id}';
         $formParams = [];
@@ -13791,7 +13791,7 @@ class AffiliateApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -14282,7 +14282,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateSubscriptionCommissionProgramRequest $update_subscription_commission_program_request update_subscription_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscriptionCommissionProgram'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -14302,7 +14302,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateSubscriptionCommissionProgramRequest $update_subscription_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscriptionCommissionProgram'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
@@ -14501,7 +14501,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateSubscriptionCommissionProgramRequest $update_subscription_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscriptionCommissionProgram'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14524,7 +14524,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateSubscriptionCommissionProgramRequest $update_subscription_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscriptionCommissionProgram'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14576,7 +14576,7 @@ class AffiliateApi
      *
      * @param  string $commission_program_id (required)
      * @param  \Keap\Core\V2\Model\UpdateSubscriptionCommissionProgramRequest $update_subscription_commission_program_request (required)
-     * @param  mixed|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+     * @param  string[]|null $update_mask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscriptionCommissionProgram'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14599,7 +14599,7 @@ class AffiliateApi
             );
         }
 
-
+        
 
         $resourcePath = '/rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id}';
         $formParams = [];
@@ -14612,7 +14612,7 @@ class AffiliateApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $update_mask,
             'update_mask', // param base name
-            'mixed', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required

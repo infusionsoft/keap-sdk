@@ -809,7 +809,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     contact_id = 'contact_id_example' # str | 
     note_id = 'note_id_example' # str | 
     update_note_request = keap_core_v2_client.UpdateNoteRequest() # UpdateNoteRequest | 
-    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
     fields = ['fields_example'] # List[str] | Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields (optional)
 
     try:
@@ -830,7 +830,7 @@ Name | Type | Description  | Notes
  **contact_id** | **str**|  | 
  **note_id** | **str**|  | 
  **update_note_request** | [**UpdateNoteRequest**](UpdateNoteRequest.md)|  | 
- **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
  **fields** | [**List[str]**](str.md)| Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields | [optional] 
 
 ### Return type
@@ -898,7 +898,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.NoteApi(api_client)
     custom_field_id = 'custom_field_id_example' # str | 
     update_custom_field_meta_data_request = keap_core_v2_client.UpdateCustomFieldMetaDataRequest() # UpdateCustomFieldMetaDataRequest | 
-    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Custom Field
@@ -917,7 +917,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **custom_field_id** | **str**|  | 
  **update_custom_field_meta_data_request** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | 
- **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

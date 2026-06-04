@@ -27,6 +27,7 @@ import com.keap.core.sdk.model.ListTagCategoriesResponse;
 import com.keap.core.sdk.model.ListTaggedCompaniesResponse;
 import com.keap.core.sdk.model.ListTaggedContactsResponse;
 import com.keap.core.sdk.model.ListTagsResponse;
+import java.util.Set;
 import com.keap.core.sdk.model.Tag;
 import com.keap.core.sdk.model.TagCategory;
 import com.keap.core.sdk.model.UpdateTagCategoryResponse;
@@ -1297,7 +1298,7 @@ import io.github.resilience4j.retry.Retry;
    * @return UpdateTagResponse
    * @throws ApiException if fails to make API call
    */
-  public UpdateTagResponse updateTag(String tagId, CreateUpdateTagRequest createUpdateTagRequest, Object updateMask) throws ApiException {
+  public UpdateTagResponse updateTag(String tagId, CreateUpdateTagRequest createUpdateTagRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<UpdateTagResponse> localVarResponse = updateTagWithHttpInfo(tagId, createUpdateTagRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -1311,7 +1312,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;UpdateTagResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<UpdateTagResponse> updateTagWithHttpInfo(String tagId, CreateUpdateTagRequest createUpdateTagRequest, Object updateMask) throws ApiException {
+  public ApiResponse<UpdateTagResponse> updateTagWithHttpInfo(String tagId, CreateUpdateTagRequest createUpdateTagRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateTagRequestBuilder(tagId, createUpdateTagRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1352,7 +1353,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateTagRequestBuilder(String tagId, CreateUpdateTagRequest createUpdateTagRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateTagRequestBuilder(String tagId, CreateUpdateTagRequest createUpdateTagRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'tagId' is set
     if (tagId == null) {
       throw new ApiException(400, "Missing the required parameter 'tagId' when calling updateTag");
@@ -1371,7 +1372,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -1412,7 +1413,7 @@ import io.github.resilience4j.retry.Retry;
    * @return UpdateTagCategoryResponse
    * @throws ApiException if fails to make API call
    */
-  public UpdateTagCategoryResponse updateTagCategory(String tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, Object updateMask) throws ApiException {
+  public UpdateTagCategoryResponse updateTagCategory(String tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<UpdateTagCategoryResponse> localVarResponse = updateTagCategoryWithHttpInfo(tagCategoryId, createUpdateTagCategoryRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -1426,7 +1427,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;UpdateTagCategoryResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<UpdateTagCategoryResponse> updateTagCategoryWithHttpInfo(String tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, Object updateMask) throws ApiException {
+  public ApiResponse<UpdateTagCategoryResponse> updateTagCategoryWithHttpInfo(String tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateTagCategoryRequestBuilder(tagCategoryId, createUpdateTagCategoryRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1467,7 +1468,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateTagCategoryRequestBuilder(String tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateTagCategoryRequestBuilder(String tagCategoryId, CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'tagCategoryId' is set
     if (tagCategoryId == null) {
       throw new ApiException(400, "Missing the required parameter 'tagCategoryId' when calling updateTagCategory");
@@ -1486,7 +1487,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

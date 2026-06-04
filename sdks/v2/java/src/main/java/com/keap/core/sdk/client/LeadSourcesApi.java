@@ -21,6 +21,7 @@ import com.keap.core.sdk.model.CreateLeadSourceRequest;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.LeadSource;
 import com.keap.core.sdk.model.ListLeadSourcesResponse;
+import java.util.Set;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -484,7 +485,7 @@ import io.github.resilience4j.retry.Retry;
    * @return LeadSource
    * @throws ApiException if fails to make API call
    */
-  public LeadSource updateLeadSource(String leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, Object updateMask) throws ApiException {
+  public LeadSource updateLeadSource(String leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<LeadSource> localVarResponse = updateLeadSourceWithHttpInfo(leadSourceId, createLeadSourceRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -498,7 +499,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;LeadSource&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LeadSource> updateLeadSourceWithHttpInfo(String leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, Object updateMask) throws ApiException {
+  public ApiResponse<LeadSource> updateLeadSourceWithHttpInfo(String leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateLeadSourceRequestBuilder(leadSourceId, createLeadSourceRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -539,7 +540,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateLeadSourceRequestBuilder(String leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateLeadSourceRequestBuilder(String leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'leadSourceId' is set
     if (leadSourceId == null) {
       throw new ApiException(400, "Missing the required parameter 'leadSourceId' when calling updateLeadSource");
@@ -558,7 +559,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

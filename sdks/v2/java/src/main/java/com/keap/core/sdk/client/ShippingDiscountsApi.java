@@ -20,6 +20,7 @@ import com.keap.core.sdk.Pair;
 import com.keap.core.sdk.model.CreateShippingDiscountRequest;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.ListShippingDiscountsResponse;
+import java.util.Set;
 import com.keap.core.sdk.model.ShippingDiscount;
 import com.keap.core.sdk.model.UpdateShippingDiscountRequest;
 
@@ -485,7 +486,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ShippingDiscount
    * @throws ApiException if fails to make API call
    */
-  public ShippingDiscount updateShippingDiscount(String discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, Object updateMask) throws ApiException {
+  public ShippingDiscount updateShippingDiscount(String discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<ShippingDiscount> localVarResponse = updateShippingDiscountWithHttpInfo(discountId, updateShippingDiscountRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -499,7 +500,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;ShippingDiscount&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ShippingDiscount> updateShippingDiscountWithHttpInfo(String discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, Object updateMask) throws ApiException {
+  public ApiResponse<ShippingDiscount> updateShippingDiscountWithHttpInfo(String discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateShippingDiscountRequestBuilder(discountId, updateShippingDiscountRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -540,7 +541,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateShippingDiscountRequestBuilder(String discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateShippingDiscountRequestBuilder(String discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'discountId' is set
     if (discountId == null) {
       throw new ApiException(400, "Missing the required parameter 'discountId' when calling updateShippingDiscount");
@@ -559,7 +560,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

@@ -543,7 +543,7 @@ catch (ApiException e)
 
 <a id="updateleadsourcerecurringexpense"></a>
 # **UpdateLeadSourceRecurringExpense**
-> LeadSourceRecurringExpense UpdateLeadSourceRecurringExpense (string leadSourceId, string leadSourceRecurringExpenseId, LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest, Object? updateMask = null)
+> LeadSourceRecurringExpense UpdateLeadSourceRecurringExpense (string leadSourceId, string leadSourceRecurringExpenseId, LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest, List<string>? updateMask = null)
 
 Update a Lead Source Recurring Expense
 
@@ -572,7 +572,7 @@ namespace Example
             var leadSourceId = "leadSourceId_example";  // string | The ID of the lead source this recurring expense belongs to
             var leadSourceRecurringExpenseId = "leadSourceRecurringExpenseId_example";  // string | The ID of a lead source recurring expense
             var leadSourceRecurringExpenseUpdateRequest = new LeadSourceRecurringExpenseUpdateRequest(); // LeadSourceRecurringExpenseUpdateRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -618,7 +618,7 @@ catch (ApiException e)
 | **leadSourceId** | **string** | The ID of the lead source this recurring expense belongs to |  |
 | **leadSourceRecurringExpenseId** | **string** | The ID of a lead source recurring expense |  |
 | **leadSourceRecurringExpenseUpdateRequest** | [**LeadSourceRecurringExpenseUpdateRequest**](LeadSourceRecurringExpenseUpdateRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

@@ -629,7 +629,7 @@ void (empty response body)
 
 <a id="updateproductinterest"></a>
 # **UpdateProductInterest**
-> ProductInterest UpdateProductInterest (string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, Object? updateMask = null)
+> ProductInterest UpdateProductInterest (string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, List<string>? updateMask = null)
 
 Update a Product Interest in an existing Bundle
 
@@ -658,7 +658,7 @@ namespace Example
             var id = "id_example";  // string | 
             var interestId = "interestId_example";  // string | 
             var updateProductInterestRequest = new UpdateProductInterestRequest(); // UpdateProductInterestRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -704,7 +704,7 @@ catch (ApiException e)
 | **id** | **string** |  |  |
 | **interestId** | **string** |  |  |
 | **updateProductInterestRequest** | [**UpdateProductInterestRequest**](UpdateProductInterestRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -737,7 +737,7 @@ catch (ApiException e)
 
 <a id="updateproductinterestbundle"></a>
 # **UpdateProductInterestBundle**
-> ProductInterestBundle UpdateProductInterestBundle (string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, Object? updateMask = null)
+> ProductInterestBundle UpdateProductInterestBundle (string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, List<string>? updateMask = null)
 
 Update a Product Interest Bundle
 
@@ -765,7 +765,7 @@ namespace Example
             var apiInstance = new ProductInterestBundlesApi(config);
             var id = "id_example";  // string | 
             var updateProductInterestBundleRequest = new UpdateProductInterestBundleRequest(); // UpdateProductInterestBundleRequest | 
-            var updateMask = new Object?(); // Object? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -810,7 +810,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **id** | **string** |  |  |
 | **updateProductInterestBundleRequest** | [**UpdateProductInterestBundleRequest**](UpdateProductInterestBundleRequest.md) |  |  |
-| **updateMask** | [**Object?**](Object?.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 

@@ -24,6 +24,8 @@ import com.keap.core.sdk.model.CustomFieldMetaData;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.ListSubscriptionsResponse;
 import com.keap.core.sdk.model.ObjectModel;
+import com.keap.core.sdk.model.OrderV2;
+import java.util.Set;
 import com.keap.core.sdk.model.Subscription;
 import com.keap.core.sdk.model.UpdateCustomFieldMetaDataRequest;
 import com.keap.core.sdk.model.UpdateSubscriptionRequest;
@@ -566,6 +568,92 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Invoice a Subscription
+   * Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
+   * @param subscriptionId  (required)
+   * @return OrderV2
+   * @throws ApiException if fails to make API call
+   */
+  public OrderV2 invoiceSubscription(String subscriptionId) throws ApiException {
+    ApiResponse<OrderV2> localVarResponse = invoiceSubscriptionWithHttpInfo(subscriptionId);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Invoice a Subscription
+   * Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
+   * @param subscriptionId  (required)
+   * @return ApiResponse&lt;OrderV2&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<OrderV2> invoiceSubscriptionWithHttpInfo(String subscriptionId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = invoiceSubscriptionRequestBuilder(subscriptionId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("invoiceSubscription", localVarResponse);
+        }
+        return new ApiResponse<OrderV2>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<OrderV2>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder invoiceSubscriptionRequestBuilder(String subscriptionId) throws ApiException {
+    // verify the required parameter 'subscriptionId' is set
+    if (subscriptionId == null) {
+      throw new ApiException(400, "Missing the required parameter 'subscriptionId' when calling invoiceSubscription");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/subscriptions/{subscription_id}:invoice"
+        .replace("{subscription_id}", ApiClient.urlEncode(subscriptionId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * List Subscriptions
    * Retrieves a list of subscriptions using the specified search criteria.
    * @param filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  (optional)
@@ -761,7 +849,7 @@ import io.github.resilience4j.retry.Retry;
    * @return Subscription
    * @throws ApiException if fails to make API call
    */
-  public Subscription updateSubscription(String subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object updateMask) throws ApiException {
+  public Subscription updateSubscription(String subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<Subscription> localVarResponse = updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -775,7 +863,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;Subscription&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Subscription> updateSubscriptionWithHttpInfo(String subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object updateMask) throws ApiException {
+  public ApiResponse<Subscription> updateSubscriptionWithHttpInfo(String subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateSubscriptionRequestBuilder(subscriptionId, updateSubscriptionRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -816,7 +904,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateSubscriptionRequestBuilder(String subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateSubscriptionRequestBuilder(String subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'subscriptionId' is set
     if (subscriptionId == null) {
       throw new ApiException(400, "Missing the required parameter 'subscriptionId' when calling updateSubscription");
@@ -835,7 +923,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -876,7 +964,7 @@ import io.github.resilience4j.retry.Retry;
    * @return CustomFieldMetaData
    * @throws ApiException if fails to make API call
    */
-  public CustomFieldMetaData updateSubscriptionCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
+  public CustomFieldMetaData updateSubscriptionCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<CustomFieldMetaData> localVarResponse = updateSubscriptionCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -890,7 +978,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;CustomFieldMetaData&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CustomFieldMetaData> updateSubscriptionCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
+  public ApiResponse<CustomFieldMetaData> updateSubscriptionCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateSubscriptionCustomFieldRequestBuilder(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -931,7 +1019,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateSubscriptionCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateSubscriptionCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'customFieldId' is set
     if (customFieldId == null) {
       throw new ApiException(400, "Missing the required parameter 'customFieldId' when calling updateSubscriptionCustomField");
@@ -950,7 +1038,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

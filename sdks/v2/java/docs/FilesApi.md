@@ -21,11 +21,11 @@ All URIs are relative to *https://api.keap.com/crm*
 
 ## createFile
 
-> FileMetadata createFile(_file, fileName, isPublic, fileAssociation, _file2, fileName2, isPublic2, fileAssociation2, contactId, contactId2)
+> FileMetadata createFile(_file, fileName, fileAssociation, contactId, isPublic)
 
 Create a file
 
-Creates a file and uploads it
+Uploads a file using multipart/form-data. The &#x60;file&#x60; part contains the binary file content; &#x60;file_name&#x60;, &#x60;is_public&#x60;, &#x60;file_association&#x60;, and optionally &#x60;contact_id&#x60; are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
 
 ### Example
 
@@ -48,18 +48,13 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         FilesApi apiInstance = new FilesApi(defaultClient);
-        File _file = new File("/path/to/file"); // File | File to upload. This is a file sent as multi-part (not a string)
+        File _file = new File("/path/to/file"); // File | File to upload
         String fileName = "fileName_example"; // String | File name
-        Boolean isPublic = true; // Boolean | Is public
         String fileAssociation = "fileAssociation_example"; // String | File association
-        File _file2 = new File("/path/to/file"); // File | File to upload
-        String fileName2 = "fileName_example"; // String | File name
-        String isPublic2 = "isPublic_example"; // String | Is public
-        String fileAssociation2 = "fileAssociation_example"; // String | File association
-        String contactId = "contactId_example"; // String | Contact ID
-        String contactId2 = "contactId_example"; // String | Contact ID. Required if the `file_association` is CONTACT
+        String contactId = "contactId_example"; // String | Contact ID. Required if the `file_association` is CONTACT
+        String isPublic = "isPublic_example"; // String | Is public
         try {
-            FileMetadata result = apiInstance.createFile(_file, fileName, isPublic, fileAssociation, _file2, fileName2, isPublic2, fileAssociation2, contactId, contactId2);
+            FileMetadata result = apiInstance.createFile(_file, fileName, fileAssociation, contactId, isPublic);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FilesApi#createFile");
@@ -77,16 +72,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **_file** | **File**| File to upload. This is a file sent as multi-part (not a string) | |
+| **_file** | **File**| File to upload | |
 | **fileName** | **String**| File name | |
-| **isPublic** | **Boolean**| Is public | |
 | **fileAssociation** | **String**| File association | |
-| **_file2** | **File**| File to upload | |
-| **fileName2** | **String**| File name | |
-| **isPublic2** | **String**| Is public | |
-| **fileAssociation2** | **String**| File association | |
-| **contactId** | **String**| Contact ID | [optional] |
-| **contactId2** | **String**| Contact ID. Required if the &#x60;file_association&#x60; is CONTACT | [optional] |
+| **contactId** | **String**| Contact ID. Required if the &#x60;file_association&#x60; is CONTACT | [optional] |
+| **isPublic** | **String**| Is public | [optional] |
 
 ### Return type
 
@@ -117,11 +107,11 @@ public class Example {
 
 ## createFileWithHttpInfo
 
-> ApiResponse<FileMetadata> createFile createFileWithHttpInfo(_file, fileName, isPublic, fileAssociation, _file2, fileName2, isPublic2, fileAssociation2, contactId, contactId2)
+> ApiResponse<FileMetadata> createFile createFileWithHttpInfo(_file, fileName, fileAssociation, contactId, isPublic)
 
 Create a file
 
-Creates a file and uploads it
+Uploads a file using multipart/form-data. The &#x60;file&#x60; part contains the binary file content; &#x60;file_name&#x60;, &#x60;is_public&#x60;, &#x60;file_association&#x60;, and optionally &#x60;contact_id&#x60; are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
 
 ### Example
 
@@ -145,18 +135,13 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         FilesApi apiInstance = new FilesApi(defaultClient);
-        File _file = new File("/path/to/file"); // File | File to upload. This is a file sent as multi-part (not a string)
+        File _file = new File("/path/to/file"); // File | File to upload
         String fileName = "fileName_example"; // String | File name
-        Boolean isPublic = true; // Boolean | Is public
         String fileAssociation = "fileAssociation_example"; // String | File association
-        File _file2 = new File("/path/to/file"); // File | File to upload
-        String fileName2 = "fileName_example"; // String | File name
-        String isPublic2 = "isPublic_example"; // String | Is public
-        String fileAssociation2 = "fileAssociation_example"; // String | File association
-        String contactId = "contactId_example"; // String | Contact ID
-        String contactId2 = "contactId_example"; // String | Contact ID. Required if the `file_association` is CONTACT
+        String contactId = "contactId_example"; // String | Contact ID. Required if the `file_association` is CONTACT
+        String isPublic = "isPublic_example"; // String | Is public
         try {
-            ApiResponse<FileMetadata> response = apiInstance.createFileWithHttpInfo(_file, fileName, isPublic, fileAssociation, _file2, fileName2, isPublic2, fileAssociation2, contactId, contactId2);
+            ApiResponse<FileMetadata> response = apiInstance.createFileWithHttpInfo(_file, fileName, fileAssociation, contactId, isPublic);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -176,16 +161,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **_file** | **File**| File to upload. This is a file sent as multi-part (not a string) | |
+| **_file** | **File**| File to upload | |
 | **fileName** | **String**| File name | |
-| **isPublic** | **Boolean**| Is public | |
 | **fileAssociation** | **String**| File association | |
-| **_file2** | **File**| File to upload | |
-| **fileName2** | **String**| File name | |
-| **isPublic2** | **String**| Is public | |
-| **fileAssociation2** | **String**| File association | |
-| **contactId** | **String**| Contact ID | [optional] |
-| **contactId2** | **String**| Contact ID. Required if the &#x60;file_association&#x60; is CONTACT | [optional] |
+| **contactId** | **String**| Contact ID. Required if the &#x60;file_association&#x60; is CONTACT | [optional] |
+| **isPublic** | **String**| Is public | [optional] |
 
 ### Return type
 
@@ -867,11 +847,11 @@ ApiResponse<[**ListFilesResponse**](ListFilesResponse.md)>
 
 ## updateFile
 
-> FileMetadata updateFile(fileId, updateMask, _file, fileName, isPublic, _file2, fileName2, isPublic2)
+> FileMetadata updateFile(fileId, updateMask, _file, fileName, isPublic)
 
 Update a file
 
-Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
 
 ### Example
 
@@ -895,15 +875,12 @@ public class Example {
 
         FilesApi apiInstance = new FilesApi(defaultClient);
         String fileId = "fileId_example"; // String | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        File _file = new File("/path/to/file"); // File | File to upload. This is a file sent as multi-part (not a string)
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        File _file = new File("/path/to/file"); // File | File to upload
         String fileName = "fileName_example"; // String | File name
         Boolean isPublic = true; // Boolean | Is public
-        File _file2 = new File("/path/to/file"); // File | File to upload
-        String fileName2 = "fileName_example"; // String | File name
-        Boolean isPublic2 = true; // Boolean | Is public
         try {
-            FileMetadata result = apiInstance.updateFile(fileId, updateMask, _file, fileName, isPublic, _file2, fileName2, isPublic2);
+            FileMetadata result = apiInstance.updateFile(fileId, updateMask, _file, fileName, isPublic);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FilesApi#updateFile");
@@ -922,13 +899,10 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **fileId** | **String**|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
-| **_file** | **File**| File to upload. This is a file sent as multi-part (not a string) | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: file, file_name, is_public] |
+| **_file** | **File**| File to upload | [optional] |
 | **fileName** | **String**| File name | [optional] |
 | **isPublic** | **Boolean**| Is public | [optional] |
-| **_file2** | **File**| File to upload | [optional] |
-| **fileName2** | **String**| File name | [optional] |
-| **isPublic2** | **Boolean**| Is public | [optional] |
 
 ### Return type
 
@@ -959,11 +933,11 @@ public class Example {
 
 ## updateFileWithHttpInfo
 
-> ApiResponse<FileMetadata> updateFile updateFileWithHttpInfo(fileId, updateMask, _file, fileName, isPublic, _file2, fileName2, isPublic2)
+> ApiResponse<FileMetadata> updateFile updateFileWithHttpInfo(fileId, updateMask, _file, fileName, isPublic)
 
 Update a file
 
-Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
 
 ### Example
 
@@ -988,15 +962,12 @@ public class Example {
 
         FilesApi apiInstance = new FilesApi(defaultClient);
         String fileId = "fileId_example"; // String | 
-        Object updateMask = null; // Object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        File _file = new File("/path/to/file"); // File | File to upload. This is a file sent as multi-part (not a string)
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        File _file = new File("/path/to/file"); // File | File to upload
         String fileName = "fileName_example"; // String | File name
         Boolean isPublic = true; // Boolean | Is public
-        File _file2 = new File("/path/to/file"); // File | File to upload
-        String fileName2 = "fileName_example"; // String | File name
-        Boolean isPublic2 = true; // Boolean | Is public
         try {
-            ApiResponse<FileMetadata> response = apiInstance.updateFileWithHttpInfo(fileId, updateMask, _file, fileName, isPublic, _file2, fileName2, isPublic2);
+            ApiResponse<FileMetadata> response = apiInstance.updateFileWithHttpInfo(fileId, updateMask, _file, fileName, isPublic);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1017,13 +988,10 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **fileId** | **String**|  | |
-| **updateMask** | [**Object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
-| **_file** | **File**| File to upload. This is a file sent as multi-part (not a string) | [optional] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: file, file_name, is_public] |
+| **_file** | **File**| File to upload | [optional] |
 | **fileName** | **String**| File name | [optional] |
 | **isPublic** | **Boolean**| Is public | [optional] |
-| **_file2** | **File**| File to upload | [optional] |
-| **fileName2** | **String**| File name | [optional] |
-| **isPublic2** | **Boolean**| Is public | [optional] |
 
 ### Return type
 

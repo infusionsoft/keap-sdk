@@ -55,7 +55,12 @@ import jakarta.validation.Valid;
   RestV2Opportunity.JSON_PROPERTY_CREATED_TIME,
   RestV2Opportunity.JSON_PROPERTY_LAST_UPDATED_TIME,
   RestV2Opportunity.JSON_PROPERTY_AFFILIATE_ID,
-  RestV2Opportunity.JSON_PROPERTY_LEAD_SOURCE
+  RestV2Opportunity.JSON_PROPERTY_LEAD_SOURCE,
+  RestV2Opportunity.JSON_PROPERTY_MONTHLY_REVENUE,
+  RestV2Opportunity.JSON_PROPERTY_ORDER_REVENUE,
+  RestV2Opportunity.JSON_PROPERTY_OBJECTION,
+  RestV2Opportunity.JSON_PROPERTY_STATUS,
+  RestV2Opportunity.JSON_PROPERTY_STAGE_ENTRANCE_TIME
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class RestV2Opportunity implements Serializable {
@@ -111,6 +116,21 @@ public class RestV2Opportunity implements Serializable {
 
   public static final String JSON_PROPERTY_LEAD_SOURCE = "lead_source";
   @jakarta.annotation.Nullable  private String leadSource;
+
+  public static final String JSON_PROPERTY_MONTHLY_REVENUE = "monthly_revenue";
+  @jakarta.annotation.Nullable  private Double monthlyRevenue;
+
+  public static final String JSON_PROPERTY_ORDER_REVENUE = "order_revenue";
+  @jakarta.annotation.Nullable  private Double orderRevenue;
+
+  public static final String JSON_PROPERTY_OBJECTION = "objection";
+  @jakarta.annotation.Nullable  private String objection;
+
+  public static final String JSON_PROPERTY_STATUS = "status";
+  @jakarta.annotation.Nullable  private String status;
+
+  public static final String JSON_PROPERTY_STAGE_ENTRANCE_TIME = "stage_entrance_time";
+  @jakarta.annotation.Nullable  private String stageEntranceTime;
 
   public RestV2Opportunity() { 
   }
@@ -537,6 +557,126 @@ public class RestV2Opportunity implements Serializable {
     this.leadSource = leadSource;
   }
 
+
+  public RestV2Opportunity monthlyRevenue(@jakarta.annotation.Nullable Double monthlyRevenue) {
+    this.monthlyRevenue = monthlyRevenue;
+    return this;
+  }
+
+  /**
+   * Monthly recurring revenue
+   * @return monthlyRevenue
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "500", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Monthly recurring revenue")
+  @JsonProperty(JSON_PROPERTY_MONTHLY_REVENUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Double getMonthlyRevenue() {
+    return monthlyRevenue;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MONTHLY_REVENUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMonthlyRevenue(@jakarta.annotation.Nullable Double monthlyRevenue) {
+    this.monthlyRevenue = monthlyRevenue;
+  }
+
+
+  public RestV2Opportunity orderRevenue(@jakarta.annotation.Nullable Double orderRevenue) {
+    this.orderRevenue = orderRevenue;
+    return this;
+  }
+
+  /**
+   * Order revenue
+   * @return orderRevenue
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "2500", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Order revenue")
+  @JsonProperty(JSON_PROPERTY_ORDER_REVENUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Double getOrderRevenue() {
+    return orderRevenue;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ORDER_REVENUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOrderRevenue(@jakarta.annotation.Nullable Double orderRevenue) {
+    this.orderRevenue = orderRevenue;
+  }
+
+
+  public RestV2Opportunity objection(@jakarta.annotation.Nullable String objection) {
+    this.objection = objection;
+    return this;
+  }
+
+  /**
+   * Objection reason
+   * @return objection
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Price", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Objection reason")
+  @JsonProperty(JSON_PROPERTY_OBJECTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getObjection() {
+    return objection;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OBJECTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setObjection(@jakarta.annotation.Nullable String objection) {
+    this.objection = objection;
+  }
+
+
+  public RestV2Opportunity status(@jakarta.annotation.Nullable String status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Status name
+   * @return status
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Active", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Status name")
+  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getStatus() {
+    return status;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setStatus(@jakarta.annotation.Nullable String status) {
+    this.status = status;
+  }
+
+
+  public RestV2Opportunity stageEntranceTime(@jakarta.annotation.Nullable String stageEntranceTime) {
+    this.stageEntranceTime = stageEntranceTime;
+    return this;
+  }
+
+  /**
+   * Timestamp when the opportunity entered its current stage (ISO-8601)
+   * @return stageEntranceTime
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "2024-03-20T10:00:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Timestamp when the opportunity entered its current stage (ISO-8601)")
+  @JsonProperty(JSON_PROPERTY_STAGE_ENTRANCE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getStageEntranceTime() {
+    return stageEntranceTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_STAGE_ENTRANCE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setStageEntranceTime(@jakarta.annotation.Nullable String stageEntranceTime) {
+    this.stageEntranceTime = stageEntranceTime;
+  }
+
   /**
    * Return true if this RestV2Opportunity object is equal to o.
    */
@@ -565,12 +705,17 @@ public class RestV2Opportunity implements Serializable {
         Objects.equals(this.createdTime, restV2Opportunity.createdTime) &&
         Objects.equals(this.lastUpdatedTime, restV2Opportunity.lastUpdatedTime) &&
         Objects.equals(this.affiliateId, restV2Opportunity.affiliateId) &&
-        Objects.equals(this.leadSource, restV2Opportunity.leadSource);
+        Objects.equals(this.leadSource, restV2Opportunity.leadSource) &&
+        Objects.equals(this.monthlyRevenue, restV2Opportunity.monthlyRevenue) &&
+        Objects.equals(this.orderRevenue, restV2Opportunity.orderRevenue) &&
+        Objects.equals(this.objection, restV2Opportunity.objection) &&
+        Objects.equals(this.status, restV2Opportunity.status) &&
+        Objects.equals(this.stageEntranceTime, restV2Opportunity.stageEntranceTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, contact, stage, user, opportunityTitle, nextActionTime, nextActionNotes, opportunityNotes, estimatedCloseTime, includeInForecast, projectedRevenueLow, projectedRevenueHigh, customFields, createdTime, lastUpdatedTime, affiliateId, leadSource);
+    return Objects.hash(id, contact, stage, user, opportunityTitle, nextActionTime, nextActionNotes, opportunityNotes, estimatedCloseTime, includeInForecast, projectedRevenueLow, projectedRevenueHigh, customFields, createdTime, lastUpdatedTime, affiliateId, leadSource, monthlyRevenue, orderRevenue, objection, status, stageEntranceTime);
   }
 
   @Override
@@ -594,6 +739,11 @@ public class RestV2Opportunity implements Serializable {
     sb.append("    lastUpdatedTime: ").append(toIndentedString(lastUpdatedTime)).append("\n");
     sb.append("    affiliateId: ").append(toIndentedString(affiliateId)).append("\n");
     sb.append("    leadSource: ").append(toIndentedString(leadSource)).append("\n");
+    sb.append("    monthlyRevenue: ").append(toIndentedString(monthlyRevenue)).append("\n");
+    sb.append("    orderRevenue: ").append(toIndentedString(orderRevenue)).append("\n");
+    sb.append("    objection: ").append(toIndentedString(objection)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    stageEntranceTime: ").append(toIndentedString(stageEntranceTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -689,6 +839,26 @@ public class RestV2Opportunity implements Serializable {
               this.instance.leadSource = leadSource;
           return this;
         }
+            public RestV2Opportunity.Builder monthlyRevenue(Double monthlyRevenue) {
+              this.instance.monthlyRevenue = monthlyRevenue;
+          return this;
+        }
+            public RestV2Opportunity.Builder orderRevenue(Double orderRevenue) {
+              this.instance.orderRevenue = orderRevenue;
+          return this;
+        }
+            public RestV2Opportunity.Builder objection(String objection) {
+              this.instance.objection = objection;
+          return this;
+        }
+            public RestV2Opportunity.Builder status(String status) {
+              this.instance.status = status;
+          return this;
+        }
+            public RestV2Opportunity.Builder stageEntranceTime(String stageEntranceTime) {
+              this.instance.stageEntranceTime = stageEntranceTime;
+          return this;
+        }
         
     
         /**
@@ -739,7 +909,12 @@ public class RestV2Opportunity implements Serializable {
           .createdTime(getCreatedTime())
           .lastUpdatedTime(getLastUpdatedTime())
           .affiliateId(getAffiliateId())
-          .leadSource(getLeadSource());
+          .leadSource(getLeadSource())
+          .monthlyRevenue(getMonthlyRevenue())
+          .orderRevenue(getOrderRevenue())
+          .objection(getObjection())
+          .status(getStatus())
+          .stageEntranceTime(getStageEntranceTime());
       }
 }
 

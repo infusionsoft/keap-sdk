@@ -890,10 +890,10 @@ export interface AffiliateApiUpdateAffiliateRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;contact_id&#39; | &#39;code&#39; | &#39;name&#39; | &#39;status&#39; | &#39;parent_affiliate_id&#39; | &#39;notify_on_sale&#39; | &#39;notify_on_lead&#39; | &#39;track_leads_days&#39; | &#39;password&#39; | &#39;custom_fields&#39;&gt;
      * @memberof AffiliateApiupdateAffiliate
      */
-    updateMask?: any
+    updateMask?: Set<'contact_id' | 'code' | 'name' | 'status' | 'parent_affiliate_id' | 'notify_on_sale' | 'notify_on_lead' | 'track_leads_days' | 'password' | 'custom_fields'>
 }
 
 export interface AffiliateApiUpdateAffiliateCustomFieldRequest {
@@ -913,10 +913,10 @@ export interface AffiliateApiUpdateAffiliateCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;group_id&#39; | &#39;label&#39; | &#39;options&#39;&gt;
      * @memberof AffiliateApiupdateAffiliateCustomField
      */
-    updateMask?: any
+    updateMask?: Set<'group_id' | 'label' | 'options'>
 }
 
 export interface AffiliateApiUpdateCommissionProgramRequest {
@@ -936,10 +936,10 @@ export interface AffiliateApiUpdateCommissionProgramRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;name&#39; | &#39;notes&#39; | &#39;priority&#39;&gt;
      * @memberof AffiliateApiupdateCommissionProgram
      */
-    updateMask?: any
+    updateMask?: Set<'name' | 'notes' | 'priority'>
 }
 
 export interface AffiliateApiUpdateCommissionProgramResourceRequest {
@@ -959,10 +959,10 @@ export interface AffiliateApiUpdateCommissionProgramResourceRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;title&#39; | &#39;notes&#39; | &#39;url&#39; | &#39;order&#39; | &#39;content_html&#39; | &#39;page_width&#39; | &#39;page_height&#39; | &#39;commission_program_ids&#39;&gt;
      * @memberof AffiliateApiupdateCommissionProgramResource
      */
-    updateMask?: any
+    updateMask?: Set<'title' | 'notes' | 'url' | 'order' | 'content_html' | 'page_width' | 'page_height' | 'commission_program_ids'>
 }
 
 export interface AffiliateApiUpdateDefaultCommissionProgramRequest {
@@ -982,10 +982,10 @@ export interface AffiliateApiUpdateDefaultCommissionProgramRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;percentage&#39; | &#39;dollar_amount&#39; | &#39;payout_type&#39; | &#39;level_1&#39; | &#39;level_2&#39; | &#39;unused&#39;&gt;
      * @memberof AffiliateApiupdateDefaultCommissionProgram
      */
-    updateMask?: any
+    updateMask?: Set<'percentage' | 'dollar_amount' | 'payout_type' | 'level_1' | 'level_2' | 'unused'>
 }
 
 export interface AffiliateApiUpdateProductCommissionProgramRequest {
@@ -1005,10 +1005,10 @@ export interface AffiliateApiUpdateProductCommissionProgramRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;percentage&#39; | &#39;dollar_amount&#39; | &#39;payout_type&#39; | &#39;level_1&#39; | &#39;level_2&#39; | &#39;unused&#39;&gt;
      * @memberof AffiliateApiupdateProductCommissionProgram
      */
-    updateMask?: any
+    updateMask?: Set<'percentage' | 'dollar_amount' | 'payout_type' | 'level_1' | 'level_2' | 'unused'>
 }
 
 export interface AffiliateApiUpdateRedirectLinkRequest {
@@ -1044,10 +1044,10 @@ export interface AffiliateApiUpdateSubscriptionCommissionProgramRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;percentage&#39; | &#39;dollar_amount&#39; | &#39;payout_type&#39; | &#39;level_1&#39; | &#39;level_2&#39; | &#39;unused&#39;&gt;
      * @memberof AffiliateApiupdateSubscriptionCommissionProgram
      */
-    updateMask?: any
+    updateMask?: Set<'percentage' | 'dollar_amount' | 'payout_type' | 'level_1' | 'level_2' | 'unused'>
 }
 
 export class ObjectAffiliateApi {
@@ -2207,10 +2207,10 @@ export interface BusinessProfileApiUpdateBusinessProfileRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;name&#39; | &#39;email&#39; | &#39;website&#39; | &#39;phone&#39; | &#39;address&#39; | &#39;currency_code&#39; | &#39;business_goals&#39; | &#39;business_primary_color&#39; | &#39;business_secondary_color&#39;&gt;
      * @memberof BusinessProfileApiupdateBusinessProfile
      */
-    updateMask?: any
+    updateMask?: Set<'name' | 'email' | 'website' | 'phone' | 'address' | 'currency_code' | 'business_goals' | 'business_primary_color' | 'business_secondary_color'>
 }
 
 export class ObjectBusinessProfileApi {
@@ -2569,10 +2569,10 @@ export interface CategoryDiscountsApiUpdateCategoryDiscountRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;name&#39; | &#39;description&#39; | &#39;discount_percent&#39; | &#39;apply_to_commissions&#39; | &#39;criteria&#39; | &#39;product_category_ids&#39;&gt;
      * @memberof CategoryDiscountsApiupdateCategoryDiscount
      */
-    updateMask?: any
+    updateMask?: Set<'name' | 'description' | 'discount_percent' | 'apply_to_commissions' | 'criteria' | 'product_category_ids'>
 }
 
 export class ObjectCategoryDiscountsApi {
@@ -2856,10 +2856,10 @@ export interface CompanyApiUpdateCompanyRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;id&#39; | &#39;company_name&#39; | &#39;address&#39; | &#39;phone_number&#39; | &#39;fax_number&#39; | &#39;email_address&#39; | &#39;notes&#39; | &#39;website&#39; | &#39;custom_fields&#39; | &#39;create_time&#39; | &#39;update_time&#39; | &#39;anniversary_date&#39; | &#39;assistant_name&#39; | &#39;assistant_phone&#39; | &#39;billing_information&#39; | &#39;birth_date&#39; | &#39;contact_type&#39; | &#39;first_name&#39; | &#39;job_title&#39; | &#39;last_name&#39; | &#39;middle_name&#39; | &#39;preferred_name&#39; | &#39;owner_id&#39; | &#39;referral_code&#39; | &#39;spouse_name&#39; | &#39;suffix&#39; | &#39;title&#39; | &#39;account_id&#39; | &#39;created_by&#39; | &#39;groups&#39; | &#39;last_updated_by&#39;&gt;
      * @memberof CompanyApiupdateCompany
      */
-    updateMask?: any
+    updateMask?: Set<'id' | 'company_name' | 'address' | 'phone_number' | 'fax_number' | 'email_address' | 'notes' | 'website' | 'custom_fields' | 'create_time' | 'update_time' | 'anniversary_date' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'birth_date' | 'contact_type' | 'first_name' | 'job_title' | 'last_name' | 'middle_name' | 'preferred_name' | 'owner_id' | 'referral_code' | 'spouse_name' | 'suffix' | 'title' | 'account_id' | 'created_by' | 'groups' | 'last_updated_by'>
 }
 
 export interface CompanyApiUpdateCompanyCustomFieldRequest {
@@ -2879,10 +2879,10 @@ export interface CompanyApiUpdateCompanyCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;group_id&#39; | &#39;label&#39; | &#39;options&#39;&gt;
      * @memberof CompanyApiupdateCompanyCustomField
      */
-    updateMask?: any
+    updateMask?: Set<'group_id' | 'label' | 'options'>
 }
 
 export class ObjectCompanyApi {
@@ -3324,10 +3324,10 @@ export interface ContactApiUpdateContactRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;addresses&#39; | &#39;anniversary_date&#39; | &#39;birth_date&#39; | &#39;company&#39; | &#39;contact_type&#39; | &#39;create_time&#39; | &#39;custom_fields&#39; | &#39;email_addresses&#39; | &#39;family_name&#39; | &#39;fax_numbers&#39; | &#39;given_name&#39; | &#39;id&#39; | &#39;job_title&#39; | &#39;leadsource_id&#39; | &#39;links&#39; | &#39;middle_name&#39; | &#39;notes&#39; | &#39;origin&#39; | &#39;owner_id&#39; | &#39;phone_numbers&#39; | &#39;preferred_locale&#39; | &#39;preferred_name&#39; | &#39;prefix&#39; | &#39;referral_code&#39; | &#39;score_value&#39; | &#39;social_accounts&#39; | &#39;source_type&#39; | &#39;spouse_name&#39; | &#39;suffix&#39; | &#39;tag_ids&#39; | &#39;time_zone&#39; | &#39;update_time&#39; | &#39;utm_parameters&#39; | &#39;website&#39; | &#39;account_id&#39; | &#39;assistant_name&#39; | &#39;assistant_phone&#39; | &#39;billing_information&#39; | &#39;created_by&#39; | &#39;groups&#39; | &#39;last_updated_by&#39;&gt;
      * @memberof ContactApiupdateContact
      */
-    updateMask?: any
+    updateMask?: Set<'addresses' | 'anniversary_date' | 'birth_date' | 'company' | 'contact_type' | 'create_time' | 'custom_fields' | 'email_addresses' | 'family_name' | 'fax_numbers' | 'given_name' | 'id' | 'job_title' | 'leadsource_id' | 'links' | 'middle_name' | 'notes' | 'origin' | 'owner_id' | 'phone_numbers' | 'preferred_locale' | 'preferred_name' | 'prefix' | 'referral_code' | 'score_value' | 'social_accounts' | 'source_type' | 'spouse_name' | 'suffix' | 'tag_ids' | 'time_zone' | 'update_time' | 'utm_parameters' | 'website' | 'account_id' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'created_by' | 'groups' | 'last_updated_by'>
     /**
      * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      * Defaults to: undefined
@@ -3941,7 +3941,7 @@ import { FilesApiRequestFactory, FilesApiResponseProcessor} from "../apis/FilesA
 
 export interface FilesApiCreateFileRequest {
     /**
-     * File to upload. This is a file sent as multi-part (not a string)
+     * File to upload
      * Defaults to: undefined
      * @type HttpFile
      * @memberof FilesApicreateFile
@@ -3955,13 +3955,6 @@ export interface FilesApiCreateFileRequest {
      */
     fileName: string
     /**
-     * Is public
-     * Defaults to: undefined
-     * @type boolean
-     * @memberof FilesApicreateFile
-     */
-    isPublic: boolean
-    /**
      * File association
      * Defaults to: undefined
      * @type string
@@ -3969,47 +3962,19 @@ export interface FilesApiCreateFileRequest {
      */
     fileAssociation: string
     /**
-     * File to upload
-     * Defaults to: undefined
-     * @type HttpFile
-     * @memberof FilesApicreateFile
-     */
-    file2: HttpFile
-    /**
-     * File name
-     * Defaults to: undefined
-     * @type string
-     * @memberof FilesApicreateFile
-     */
-    fileName2: string
-    /**
-     * Is public
-     * Defaults to: undefined
-     * @type string
-     * @memberof FilesApicreateFile
-     */
-    isPublic2: string
-    /**
-     * File association
-     * Defaults to: undefined
-     * @type string
-     * @memberof FilesApicreateFile
-     */
-    fileAssociation2: string
-    /**
-     * Contact ID
+     * Contact ID. Required if the &#x60;file_association&#x60; is CONTACT
      * Defaults to: undefined
      * @type string
      * @memberof FilesApicreateFile
      */
     contactId?: string
     /**
-     * Contact ID. Required if the &#x60;file_association&#x60; is CONTACT
+     * Is public
      * Defaults to: undefined
      * @type string
      * @memberof FilesApicreateFile
      */
-    contactId2?: string
+    isPublic?: string
 }
 
 export interface FilesApiDeleteFileRequest {
@@ -4086,12 +4051,12 @@ export interface FilesApiUpdateFileRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;file&#39; | &#39;file_name&#39; | &#39;is_public&#39;&gt;
      * @memberof FilesApiupdateFile
      */
-    updateMask?: any
+    updateMask?: Set<'file' | 'file_name' | 'is_public'>
     /**
-     * File to upload. This is a file sent as multi-part (not a string)
+     * File to upload
      * Defaults to: undefined
      * @type HttpFile
      * @memberof FilesApiupdateFile
@@ -4111,27 +4076,6 @@ export interface FilesApiUpdateFileRequest {
      * @memberof FilesApiupdateFile
      */
     isPublic?: boolean
-    /**
-     * File to upload
-     * Defaults to: undefined
-     * @type HttpFile
-     * @memberof FilesApiupdateFile
-     */
-    file2?: HttpFile
-    /**
-     * File name
-     * Defaults to: undefined
-     * @type string
-     * @memberof FilesApiupdateFile
-     */
-    fileName2?: string
-    /**
-     * Is public
-     * Defaults to: undefined
-     * @type boolean
-     * @memberof FilesApiupdateFile
-     */
-    isPublic2?: boolean
 }
 
 export class ObjectFilesApi {
@@ -4142,21 +4086,21 @@ export class ObjectFilesApi {
     }
 
     /**
-     * Creates a file and uploads it
+     * Uploads a file using multipart/form-data. The `file` part contains the binary file content; `file_name`, `is_public`, `file_association`, and optionally `contact_id` are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
      * Create a file
      * @param param the request object
      */
     public createFileWithHttpInfo(param: FilesApiCreateFileRequest, options?: ConfigurationOptions): Promise<HttpInfo<FileMetadata>> {
-        return this.api.createFileWithHttpInfo(param.file, param.fileName, param.isPublic, param.fileAssociation, param.file2, param.fileName2, param.isPublic2, param.fileAssociation2, param.contactId, param.contactId2,  options).toPromise();
+        return this.api.createFileWithHttpInfo(param.file, param.fileName, param.fileAssociation, param.contactId, param.isPublic,  options).toPromise();
     }
 
     /**
-     * Creates a file and uploads it
+     * Uploads a file using multipart/form-data. The `file` part contains the binary file content; `file_name`, `is_public`, `file_association`, and optionally `contact_id` are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
      * Create a file
      * @param param the request object
      */
     public createFile(param: FilesApiCreateFileRequest, options?: ConfigurationOptions): Promise<FileMetadata> {
-        return this.api.createFile(param.file, param.fileName, param.isPublic, param.fileAssociation, param.file2, param.fileName2, param.isPublic2, param.fileAssociation2, param.contactId, param.contactId2,  options).toPromise();
+        return this.api.createFile(param.file, param.fileName, param.fileAssociation, param.contactId, param.isPublic,  options).toPromise();
     }
 
     /**
@@ -4232,21 +4176,21 @@ export class ObjectFilesApi {
     }
 
     /**
-     * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+     * Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
      * Update a file
      * @param param the request object
      */
     public updateFileWithHttpInfo(param: FilesApiUpdateFileRequest, options?: ConfigurationOptions): Promise<HttpInfo<FileMetadata>> {
-        return this.api.updateFileWithHttpInfo(param.fileId, param.updateMask, param.file, param.fileName, param.isPublic, param.file2, param.fileName2, param.isPublic2,  options).toPromise();
+        return this.api.updateFileWithHttpInfo(param.fileId, param.updateMask, param.file, param.fileName, param.isPublic,  options).toPromise();
     }
 
     /**
-     * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+     * Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
      * Update a file
      * @param param the request object
      */
     public updateFile(param: FilesApiUpdateFileRequest, options?: ConfigurationOptions): Promise<FileMetadata> {
-        return this.api.updateFile(param.fileId, param.updateMask, param.file, param.fileName, param.isPublic, param.file2, param.fileName2, param.isPublic2,  options).toPromise();
+        return this.api.updateFile(param.fileId, param.updateMask, param.file, param.fileName, param.isPublic,  options).toPromise();
     }
 
 }
@@ -4333,10 +4277,10 @@ export interface FreeTrialDiscountsApiUpdateFreeTrialDiscountRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;name&#39; | &#39;description&#39; | &#39;free_trial_days&#39; | &#39;hide_price&#39; | &#39;subscription_plan_id&#39; | &#39;criteria&#39;&gt;
      * @memberof FreeTrialDiscountsApiupdateFreeTrialDiscount
      */
-    updateMask?: any
+    updateMask?: Set<'name' | 'description' | 'free_trial_days' | 'hide_price' | 'subscription_plan_id' | 'criteria'>
 }
 
 export class ObjectFreeTrialDiscountsApi {
@@ -4682,10 +4626,10 @@ export interface LeadSourceCategoriesApiUpdateLeadSourceCategoryRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;name&#39; | &#39;description&#39;&gt;
      * @memberof LeadSourceCategoriesApiupdateLeadSourceCategory
      */
-    updateMask?: any
+    updateMask?: Set<'name' | 'description'>
 }
 
 export class ObjectLeadSourceCategoriesApi {
@@ -4904,10 +4848,10 @@ export interface LeadSourceExpensesApiUpdateLeadSourceExpenseRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;title&#39; | &#39;notes&#39; | &#39;amount&#39; | &#39;incurred_time&#39;&gt;
      * @memberof LeadSourceExpensesApiupdateLeadSourceExpense
      */
-    updateMask?: any
+    updateMask?: Set<'title' | 'notes' | 'amount' | 'incurred_time'>
 }
 
 export class ObjectLeadSourceExpensesApi {
@@ -5173,10 +5117,10 @@ export interface LeadSourceRecurringExpensesApiUpdateLeadSourceRecurringExpenseR
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;title&#39; | &#39;notes&#39; | &#39;amount&#39; | &#39;start_time&#39; | &#39;end_time&#39;&gt;
      * @memberof LeadSourceRecurringExpensesApiupdateLeadSourceRecurringExpense
      */
-    updateMask?: any
+    updateMask?: Set<'title' | 'notes' | 'amount' | 'start_time' | 'end_time'>
 }
 
 export class ObjectLeadSourceRecurringExpensesApi {
@@ -5378,10 +5322,10 @@ export interface LeadSourcesApiUpdateLeadSourceRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;name&#39; | &#39;description&#39; | &#39;vendor&#39; | &#39;medium&#39; | &#39;message&#39; | &#39;start_time&#39; | &#39;end_time&#39; | &#39;status&#39; | &#39;lead_source_category_id&#39;&gt;
      * @memberof LeadSourcesApiupdateLeadSource
      */
-    updateMask?: any
+    updateMask?: Set<'name' | 'description' | 'vendor' | 'medium' | 'message' | 'start_time' | 'end_time' | 'status' | 'lead_source_category_id'>
 }
 
 export class ObjectLeadSourcesApi {
@@ -5903,10 +5847,10 @@ export interface NoteApiUpdateNoteRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;contact_id&#39; | &#39;title&#39; | &#39;text&#39; | &#39;type&#39; | &#39;user_id&#39; | &#39;is_pinned&#39; | &#39;custom_fields&#39;&gt;
      * @memberof NoteApiupdateNote
      */
-    updateMask?: any
+    updateMask?: Set<'contact_id' | 'title' | 'text' | 'type' | 'user_id' | 'is_pinned' | 'custom_fields'>
     /**
      * Comma-delimited list of optional Note properties to include in the response. Allowed values: custom_fields
      * Defaults to: undefined
@@ -5933,10 +5877,10 @@ export interface NoteApiUpdateNotesCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;group_id&#39; | &#39;label&#39; | &#39;options&#39;&gt;
      * @memberof NoteApiupdateNotesCustomField
      */
-    updateMask?: any
+    updateMask?: Set<'group_id' | 'label' | 'options'>
 }
 
 export class ObjectNoteApi {
@@ -6156,6 +6100,13 @@ export interface OpportunityApiCreateOpportunityRequest {
      * @memberof OpportunityApicreateOpportunity
      */
     createOpportunityRequest: CreateOpportunityRequest
+    /**
+     * Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+     * Defaults to: undefined
+     * @type Set&lt;&#39;custom_fields&#39; | &#39;monthly_revenue&#39; | &#39;order_revenue&#39; | &#39;objection&#39; | &#39;status&#39; | &#39;stage_entrance_time&#39;&gt;
+     * @memberof OpportunityApicreateOpportunity
+     */
+    fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>
 }
 
 export interface OpportunityApiCreateOpportunityCustomFieldsRequest {
@@ -6214,6 +6165,13 @@ export interface OpportunityApiGetOpportunityRequest {
      * @memberof OpportunityApigetOpportunity
      */
     opportunityId: string
+    /**
+     * Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+     * Defaults to: undefined
+     * @type Set&lt;&#39;custom_fields&#39; | &#39;monthly_revenue&#39; | &#39;order_revenue&#39; | &#39;objection&#39; | &#39;status&#39; | &#39;stage_entrance_time&#39;&gt;
+     * @memberof OpportunityApigetOpportunity
+     */
+    fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>
 }
 
 export interface OpportunityApiGetOpportunityStageRequest {
@@ -6228,12 +6186,12 @@ export interface OpportunityApiGetOpportunityStageRequest {
 
 export interface OpportunityApiListOpportunitiesRequest {
     /**
-     * 
+     * Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      * Defaults to: undefined
-     * @type Set&lt;string&gt;
+     * @type Set&lt;&#39;custom_fields&#39; | &#39;monthly_revenue&#39; | &#39;order_revenue&#39; | &#39;objection&#39; | &#39;status&#39; | &#39;stage_entrance_time&#39;&gt;
      * @memberof OpportunityApilistOpportunities
      */
-    fields?: Set<string>
+    fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>
     /**
      * Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. 
      * Defaults to: undefined
@@ -6268,7 +6226,7 @@ export interface OpportunityApiListOpportunitiesRequest {
 
 export interface OpportunityApiListOpportunityStagesRequest {
     /**
-     * Search filter to apply to results
+     * Filter to apply, allowed fields are: - (String) &#x60;opportunity_stage_name&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_stage_name&#x3D;&#x3D;Qualified*&#x60;) - (String) &#x60;opportunity_stage_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;opportunity_stage_id&gt;5&#x60;) 
      * Defaults to: undefined
      * @type string
      * @memberof OpportunityApilistOpportunityStages
@@ -6319,10 +6277,17 @@ export interface OpportunityApiUpdateOpportunityRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;opportunity_title&#39; | &#39;next_action_time&#39; | &#39;next_action_notes&#39; | &#39;opportunity_notes&#39; | &#39;estimated_close_time&#39; | &#39;include_in_forecast&#39; | &#39;projected_revenue_low&#39; | &#39;projected_revenue_high&#39; | &#39;contact_id&#39; | &#39;stage_id&#39; | &#39;user_id&#39; | &#39;custom_fields&#39; | &#39;affiliate_id&#39;&gt;
      * @memberof OpportunityApiupdateOpportunity
      */
-    updateMask?: any
+    updateMask?: Set<'opportunity_title' | 'next_action_time' | 'next_action_notes' | 'opportunity_notes' | 'estimated_close_time' | 'include_in_forecast' | 'projected_revenue_low' | 'projected_revenue_high' | 'contact_id' | 'stage_id' | 'user_id' | 'custom_fields' | 'affiliate_id'>
+    /**
+     * Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+     * Defaults to: undefined
+     * @type Set&lt;&#39;custom_fields&#39; | &#39;monthly_revenue&#39; | &#39;order_revenue&#39; | &#39;objection&#39; | &#39;status&#39; | &#39;stage_entrance_time&#39;&gt;
+     * @memberof OpportunityApiupdateOpportunity
+     */
+    fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>
 }
 
 export interface OpportunityApiUpdateOpportunityCustomFieldRequest {
@@ -6342,10 +6307,10 @@ export interface OpportunityApiUpdateOpportunityCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;group_id&#39; | &#39;label&#39; | &#39;options&#39;&gt;
      * @memberof OpportunityApiupdateOpportunityCustomField
      */
-    updateMask?: any
+    updateMask?: Set<'group_id' | 'label' | 'options'>
 }
 
 export interface OpportunityApiUpdateOpportunityStageRequest {
@@ -6365,10 +6330,10 @@ export interface OpportunityApiUpdateOpportunityStageRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;name&#39; | &#39;order&#39; | &#39;target_number_days&#39; | &#39;probability&#39; | &#39;checklist_items&#39;&gt;
      * @memberof OpportunityApiupdateOpportunityStage
      */
-    updateMask?: any
+    updateMask?: Set<'name' | 'order' | 'target_number_days' | 'probability' | 'checklist_items'>
 }
 
 export class ObjectOpportunityApi {
@@ -6384,7 +6349,7 @@ export class ObjectOpportunityApi {
      * @param param the request object
      */
     public createOpportunityWithHttpInfo(param: OpportunityApiCreateOpportunityRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
-        return this.api.createOpportunityWithHttpInfo(param.createOpportunityRequest,  options).toPromise();
+        return this.api.createOpportunityWithHttpInfo(param.createOpportunityRequest, param.fields,  options).toPromise();
     }
 
     /**
@@ -6393,7 +6358,7 @@ export class ObjectOpportunityApi {
      * @param param the request object
      */
     public createOpportunity(param: OpportunityApiCreateOpportunityRequest, options?: ConfigurationOptions): Promise<RestV2Opportunity> {
-        return this.api.createOpportunity(param.createOpportunityRequest,  options).toPromise();
+        return this.api.createOpportunity(param.createOpportunityRequest, param.fields,  options).toPromise();
     }
 
     /**
@@ -6492,7 +6457,7 @@ export class ObjectOpportunityApi {
      * @param param the request object
      */
     public getOpportunityWithHttpInfo(param: OpportunityApiGetOpportunityRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
-        return this.api.getOpportunityWithHttpInfo(param.opportunityId,  options).toPromise();
+        return this.api.getOpportunityWithHttpInfo(param.opportunityId, param.fields,  options).toPromise();
     }
 
     /**
@@ -6501,7 +6466,7 @@ export class ObjectOpportunityApi {
      * @param param the request object
      */
     public getOpportunity(param: OpportunityApiGetOpportunityRequest, options?: ConfigurationOptions): Promise<RestV2Opportunity> {
-        return this.api.getOpportunity(param.opportunityId,  options).toPromise();
+        return this.api.getOpportunity(param.opportunityId, param.fields,  options).toPromise();
     }
 
     /**
@@ -6582,7 +6547,7 @@ export class ObjectOpportunityApi {
      * @param param the request object
      */
     public updateOpportunityWithHttpInfo(param: OpportunityApiUpdateOpportunityRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
-        return this.api.updateOpportunityWithHttpInfo(param.opportunityId, param.updateOpportunityRequestV2, param.updateMask,  options).toPromise();
+        return this.api.updateOpportunityWithHttpInfo(param.opportunityId, param.updateOpportunityRequestV2, param.updateMask, param.fields,  options).toPromise();
     }
 
     /**
@@ -6591,7 +6556,7 @@ export class ObjectOpportunityApi {
      * @param param the request object
      */
     public updateOpportunity(param: OpportunityApiUpdateOpportunityRequest, options?: ConfigurationOptions): Promise<RestV2Opportunity> {
-        return this.api.updateOpportunity(param.opportunityId, param.updateOpportunityRequestV2, param.updateMask,  options).toPromise();
+        return this.api.updateOpportunity(param.opportunityId, param.updateOpportunityRequestV2, param.updateMask, param.fields,  options).toPromise();
     }
 
     /**
@@ -6714,10 +6679,10 @@ export interface OrderTotalDiscountsApiUpdateOrderTotalDiscountRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;name&#39; | &#39;description&#39; | &#39;apply_to_commissions&#39; | &#39;discount_type&#39; | &#39;discount_value&#39; | &#39;discount_strategy&#39; | &#39;criteria&#39;&gt;
      * @memberof OrderTotalDiscountsApiupdateOrderTotalDiscount
      */
-    updateMask?: any
+    updateMask?: Set<'name' | 'description' | 'apply_to_commissions' | 'discount_type' | 'discount_value' | 'discount_strategy' | 'criteria'>
 }
 
 export class ObjectOrderTotalDiscountsApi {
@@ -7094,10 +7059,10 @@ export interface OrdersApiUpdateOrderRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;contact_id&#39; | &#39;order_items&#39; | &#39;order_title&#39; | &#39;order_time&#39; | &#39;order_type&#39; | &#39;promo_codes&#39; | &#39;lead_affiliate_id&#39; | &#39;sales_affiliate_id&#39; | &#39;shipping_address&#39; | &#39;notes&#39; | &#39;terms&#39; | &#39;payment_plan&#39; | &#39;custom_fields&#39;&gt;
      * @memberof OrdersApiupdateOrder
      */
-    updateMask?: any
+    updateMask?: Set<'contact_id' | 'order_items' | 'order_title' | 'order_time' | 'order_type' | 'promo_codes' | 'lead_affiliate_id' | 'sales_affiliate_id' | 'shipping_address' | 'notes' | 'terms' | 'payment_plan' | 'custom_fields'>
 }
 
 export interface OrdersApiUpdateOrderCustomFieldRequest {
@@ -7117,10 +7082,10 @@ export interface OrdersApiUpdateOrderCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;group_id&#39; | &#39;label&#39; | &#39;options&#39;&gt;
      * @memberof OrdersApiupdateOrderCustomField
      */
-    updateMask?: any
+    updateMask?: Set<'group_id' | 'label' | 'options'>
 }
 
 export interface OrdersApiUpdateOrderItemRequest {
@@ -7147,10 +7112,10 @@ export interface OrdersApiUpdateOrderItemRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;name&#39; | &#39;description&#39; | &#39;notes&#39; | &#39;quantity&#39; | &#39;price_per_unit&#39; | &#39;cost_per_unit&#39; | &#39;product_id&#39; | &#39;subscription_plan_id&#39; | &#39;subscription_plan_description&#39;&gt;
      * @memberof OrdersApiupdateOrderItem
      */
-    updateMask?: any
+    updateMask?: Set<'name' | 'description' | 'notes' | 'quantity' | 'price_per_unit' | 'cost_per_unit' | 'product_id' | 'subscription_plan_id' | 'subscription_plan_description'>
 }
 
 export class ObjectOrdersApi {
@@ -7892,10 +7857,10 @@ export interface ProductCategoriesApiUpdateProductCategoryRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;name&#39; | &#39;display_order_index&#39; | &#39;parent_category_id&#39;&gt;
      * @memberof ProductCategoriesApiupdateProductCategory
      */
-    updateMask?: any
+    updateMask?: Set<'name' | 'display_order_index' | 'parent_category_id'>
 }
 
 export class ObjectProductCategoriesApi {
@@ -8151,10 +8116,10 @@ export interface ProductDiscountsApiUpdateProductDiscountRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;name&#39; | &#39;description&#39; | &#39;apply_to_commissions&#39; | &#39;discount_type&#39; | &#39;discount_value&#39; | &#39;product_id&#39; | &#39;criteria&#39;&gt;
      * @memberof ProductDiscountsApiupdateProductDiscount
      */
-    updateMask?: any
+    updateMask?: Set<'name' | 'description' | 'apply_to_commissions' | 'discount_type' | 'discount_value' | 'product_id' | 'criteria'>
 }
 
 export class ObjectProductDiscountsApi {
@@ -8378,10 +8343,10 @@ export interface ProductInterestBundlesApiUpdateProductInterestRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;quantity&#39; | &#39;price&#39; | &#39;discount_percent&#39;&gt;
      * @memberof ProductInterestBundlesApiupdateProductInterest
      */
-    updateMask?: any
+    updateMask?: Set<'quantity' | 'price' | 'discount_percent'>
 }
 
 export interface ProductInterestBundlesApiUpdateProductInterestBundleRequest {
@@ -8401,10 +8366,10 @@ export interface ProductInterestBundlesApiUpdateProductInterestBundleRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;name&#39; | &#39;description&#39;&gt;
      * @memberof ProductInterestBundlesApiupdateProductInterestBundle
      */
-    updateMask?: any
+    updateMask?: Set<'name' | 'description'>
 }
 
 export class ObjectProductInterestBundlesApi {
@@ -8809,10 +8774,10 @@ export interface ProductsApiUpdateProductRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;active&#39; | &#39;name&#39; | &#39;description&#39; | &#39;price&#39; | &#39;sku&#39; | &#39;shippable&#39; | &#39;short_description&#39; | &#39;subscription_only&#39; | &#39;storefront_hidden&#39; | &#39;weight&#39; | &#39;taxable&#39; | &#39;country_taxable&#39; | &#39;city_taxable&#39; | &#39;state_taxable&#39; | &#39;inventory_limit&#39; | &#39;out_of_stock_enabled&#39; | &#39;email_for_inventory_notifications&#39; | &#39;top_html&#39; | &#39;bottom_html&#39; | &#39;is_package&#39; | &#39;needs_digital_delivery&#39; | &#39;delivery_description&#39;&gt;
      * @memberof ProductsApiupdateProduct
      */
-    updateMask?: any
+    updateMask?: Set<'active' | 'name' | 'description' | 'price' | 'sku' | 'shippable' | 'short_description' | 'subscription_only' | 'storefront_hidden' | 'weight' | 'taxable' | 'country_taxable' | 'city_taxable' | 'state_taxable' | 'inventory_limit' | 'out_of_stock_enabled' | 'email_for_inventory_notifications' | 'top_html' | 'bottom_html' | 'is_package' | 'needs_digital_delivery' | 'delivery_description'>
 }
 
 export interface ProductsApiUpdateProductOptionRequest {
@@ -8839,10 +8804,10 @@ export interface ProductsApiUpdateProductOptionRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;option_label&#39; | &#39;display_order&#39; | &#39;required&#39; | &#39;minimum_characters&#39; | &#39;maximum_characters&#39; | &#39;allow_spaces&#39; | &#39;only_starts_with&#39; | &#39;only_ends_with&#39; | &#39;only_contains&#39; | &#39;error_message&#39;&gt;
      * @memberof ProductsApiupdateProductOption
      */
-    updateMask?: any
+    updateMask?: Set<'option_label' | 'display_order' | 'required' | 'minimum_characters' | 'maximum_characters' | 'allow_spaces' | 'only_starts_with' | 'only_ends_with' | 'only_contains' | 'error_message'>
 }
 
 export interface ProductsApiUpdateProductOptionListOptionValueRequest {
@@ -8876,10 +8841,10 @@ export interface ProductsApiUpdateProductOptionListOptionValueRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;item_label&#39; | &#39;item_code&#39; | &#39;item_display_order&#39; | &#39;price_adjustment&#39;&gt;
      * @memberof ProductsApiupdateProductOptionListOptionValue
      */
-    updateMask?: any
+    updateMask?: Set<'item_label' | 'item_code' | 'item_display_order' | 'price_adjustment'>
 }
 
 export class ObjectProductsApi {
@@ -9562,10 +9527,10 @@ export interface SettingsApiGetApplicationConfigurationsRequest {
     /**
      * By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;AFFILIATE&#39; | &#39;APPOINTMENT&#39; | &#39;CONTACT&#39; | &#39;ECOMMERCE&#39; | &#39;EMAIL&#39; | &#39;FORMS&#39; | &#39;FULFILLMENT&#39; | &#39;INVOICE&#39; | &#39;NOTE&#39; | &#39;OPPORTUNITY&#39; | &#39;TASK&#39; | &#39;TEMPLATE&#39;&gt;
      * @memberof SettingsApigetApplicationConfigurations
      */
-    fields?: any
+    fields?: Set<'AFFILIATE' | 'APPOINTMENT' | 'CONTACT' | 'ECOMMERCE' | 'EMAIL' | 'FORMS' | 'FULFILLMENT' | 'INVOICE' | 'NOTE' | 'OPPORTUNITY' | 'TASK' | 'TEMPLATE'>
 }
 
 export interface SettingsApiGetContactOptionTypesRequest {
@@ -9752,10 +9717,10 @@ export interface ShippingDiscountsApiUpdateShippingDiscountRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;name&#39; | &#39;description&#39; | &#39;discount_type&#39; | &#39;discount_value&#39; | &#39;criteria&#39;&gt;
      * @memberof ShippingDiscountsApiupdateShippingDiscount
      */
-    updateMask?: any
+    updateMask?: Set<'name' | 'description' | 'discount_type' | 'discount_value' | 'criteria'>
 }
 
 export class ObjectShippingDiscountsApi {
@@ -9974,10 +9939,10 @@ export interface SubscriptionPlansApiUpdateSubscriptionPlanRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;active&#39; | &#39;allow_prorating&#39; | &#39;cycle_type&#39; | &#39;display_order_index&#39; | &#39;frequency&#39; | &#39;plan_price&#39; | &#39;total_cycles&#39;&gt;
      * @memberof SubscriptionPlansApiupdateSubscriptionPlan
      */
-    updateMask?: any
+    updateMask?: Set<'active' | 'allow_prorating' | 'cycle_type' | 'display_order_index' | 'frequency' | 'plan_price' | 'total_cycles'>
 }
 
 export class ObjectSubscriptionPlansApi {
@@ -10136,6 +10101,16 @@ export interface SubscriptionsApiGetSubscriptionRequest {
     subscriptionId: string
 }
 
+export interface SubscriptionsApiInvoiceSubscriptionRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof SubscriptionsApiinvoiceSubscription
+     */
+    subscriptionId: string
+}
+
 export interface SubscriptionsApiListSubscriptionsRequest {
     /**
      * Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60; 
@@ -10189,10 +10164,10 @@ export interface SubscriptionsApiUpdateSubscriptionRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;contact_id&#39; | &#39;subscription_plan_id&#39; | &#39;quantity&#39; | &#39;billing_amount&#39; | &#39;auto_charge&#39; | &#39;max_charge_attempts&#39; | &#39;days_between_retries&#39; | &#39;active&#39; | &#39;billing_frequency&#39; | &#39;billing_cycle&#39; | &#39;next_bill_date&#39; | &#39;end_date&#39; | &#39;payment_method_id&#39; | &#39;allow_tax&#39; | &#39;lead_affiliate_id&#39; | &#39;sale_affiliate_id&#39; | &#39;promo_code&#39; | &#39;shipping_option_id&#39; | &#39;reason_stopped&#39; | &#39;shipping_address&#39; | &#39;custom_fields&#39;&gt;
      * @memberof SubscriptionsApiupdateSubscription
      */
-    updateMask?: any
+    updateMask?: Set<'contact_id' | 'subscription_plan_id' | 'quantity' | 'billing_amount' | 'auto_charge' | 'max_charge_attempts' | 'days_between_retries' | 'active' | 'billing_frequency' | 'billing_cycle' | 'next_bill_date' | 'end_date' | 'payment_method_id' | 'allow_tax' | 'lead_affiliate_id' | 'sale_affiliate_id' | 'promo_code' | 'shipping_option_id' | 'reason_stopped' | 'shipping_address' | 'custom_fields'>
 }
 
 export interface SubscriptionsApiUpdateSubscriptionCustomFieldRequest {
@@ -10212,10 +10187,10 @@ export interface SubscriptionsApiUpdateSubscriptionCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;group_id&#39; | &#39;label&#39; | &#39;options&#39;&gt;
      * @memberof SubscriptionsApiupdateSubscriptionCustomField
      */
-    updateMask?: any
+    updateMask?: Set<'group_id' | 'label' | 'options'>
 }
 
 export class ObjectSubscriptionsApi {
@@ -10313,6 +10288,24 @@ export class ObjectSubscriptionsApi {
      */
     public getSubscription(param: SubscriptionsApiGetSubscriptionRequest, options?: ConfigurationOptions): Promise<Subscription> {
         return this.api.getSubscription(param.subscriptionId,  options).toPromise();
+    }
+
+    /**
+     * Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
+     * Invoice a Subscription
+     * @param param the request object
+     */
+    public invoiceSubscriptionWithHttpInfo(param: SubscriptionsApiInvoiceSubscriptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderV2>> {
+        return this.api.invoiceSubscriptionWithHttpInfo(param.subscriptionId,  options).toPromise();
+    }
+
+    /**
+     * Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
+     * Invoice a Subscription
+     * @param param the request object
+     */
+    public invoiceSubscription(param: SubscriptionsApiInvoiceSubscriptionRequest, options?: ConfigurationOptions): Promise<OrderV2> {
+        return this.api.invoiceSubscription(param.subscriptionId,  options).toPromise();
     }
 
     /**
@@ -10645,10 +10638,10 @@ export interface TagsApiUpdateTagRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;name&#39; | &#39;description&#39; | &#39;category&#39;&gt;
      * @memberof TagsApiupdateTag
      */
-    updateMask?: any
+    updateMask?: Set<'name' | 'description' | 'category'>
 }
 
 export interface TagsApiUpdateTagCategoryRequest {
@@ -10668,10 +10661,10 @@ export interface TagsApiUpdateTagCategoryRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;name&#39; | &#39;description&#39;&gt;
      * @memberof TagsApiupdateTagCategory
      */
-    updateMask?: any
+    updateMask?: Set<'name' | 'description'>
 }
 
 export class ObjectTagsApi {
@@ -11060,10 +11053,10 @@ export interface TaskApiUpdateTaskRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;id&#39; | &#39;title&#39; | &#39;description&#39; | &#39;type&#39; | &#39;priority&#39; | &#39;completion_time&#39; | &#39;due_time&#39; | &#39;remind_time_mins&#39; | &#39;assigned_to_user_id&#39; | &#39;last_updated_by_user_id&#39; | &#39;contact_id&#39; | &#39;opportunity_id&#39; | &#39;accepted&#39; | &#39;completed&#39; | &#39;custom_fields&#39;&gt;
      * @memberof TaskApiupdateTask
      */
-    updateMask?: any
+    updateMask?: Set<'id' | 'title' | 'description' | 'type' | 'priority' | 'completion_time' | 'due_time' | 'remind_time_mins' | 'assigned_to_user_id' | 'last_updated_by_user_id' | 'contact_id' | 'opportunity_id' | 'accepted' | 'completed' | 'custom_fields'>
     /**
      * Comma-delimited list of optional Task properties to include in the response. Allowed values: custom_fields
      * Defaults to: undefined
@@ -11090,10 +11083,10 @@ export interface TaskApiUpdateTaskCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;group_id&#39; | &#39;label&#39; | &#39;options&#39;&gt;
      * @memberof TaskApiupdateTaskCustomField
      */
-    updateMask?: any
+    updateMask?: Set<'group_id' | 'label' | 'options'>
 }
 
 export class ObjectTaskApi {
@@ -11404,10 +11397,10 @@ export interface UsersApiUpdateUserRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type any
+     * @type Set&lt;&#39;address&#39; | &#39;company_name&#39; | &#39;email_address&#39; | &#39;family_name&#39; | &#39;fax_numbers&#39; | &#39;given_name&#39; | &#39;job_title&#39; | &#39;phone_numbers&#39; | &#39;time_zone&#39; | &#39;website&#39;&gt;
      * @memberof UsersApiupdateUser
      */
-    updateMask?: any
+    updateMask?: Set<'address' | 'company_name' | 'email_address' | 'family_name' | 'fax_numbers' | 'given_name' | 'job_title' | 'phone_numbers' | 'time_zone' | 'website'>
 }
 
 export class ObjectUsersApi {

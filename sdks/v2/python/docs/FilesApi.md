@@ -13,11 +13,11 @@ Method | HTTP request | Description
 
 
 # **create_file**
-> FileMetadata create_file(file, file_name, is_public, file_association, file2, file_name2, is_public2, file_association2, contact_id=contact_id, contact_id2=contact_id2)
+> FileMetadata create_file(file, file_name, file_association, contact_id=contact_id, is_public=is_public)
 
 Create a file
 
-Creates a file and uploads it
+Uploads a file using multipart/form-data. The `file` part contains the binary file content; `file_name`, `is_public`, `file_association`, and optionally `contact_id` are additional text parts in the same multipart request. Sending these as URL query parameters is not supported.
 
 ### Example
 
@@ -45,20 +45,15 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.FilesApi(api_client)
-    file = None # bytearray | File to upload. This is a file sent as multi-part (not a string)
+    file = None # bytearray | File to upload
     file_name = 'file_name_example' # str | File name
-    is_public = True # bool | Is public
     file_association = 'file_association_example' # str | File association
-    file2 = None # bytearray | File to upload
-    file_name2 = 'file_name_example' # str | File name
-    is_public2 = 'is_public_example' # str | Is public
-    file_association2 = 'file_association_example' # str | File association
-    contact_id = 'contact_id_example' # str | Contact ID (optional)
-    contact_id2 = 'contact_id_example' # str | Contact ID. Required if the `file_association` is CONTACT (optional)
+    contact_id = 'contact_id_example' # str | Contact ID. Required if the `file_association` is CONTACT (optional)
+    is_public = 'is_public_example' # str | Is public (optional)
 
     try:
         # Create a file
-        api_response = api_instance.create_file(file, file_name, is_public, file_association, file2, file_name2, is_public2, file_association2, contact_id=contact_id, contact_id2=contact_id2)
+        api_response = api_instance.create_file(file, file_name, file_association, contact_id=contact_id, is_public=is_public)
         print("The response of FilesApi->create_file:\n")
         pprint(api_response)
     except Exception as e:
@@ -71,16 +66,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **bytearray**| File to upload. This is a file sent as multi-part (not a string) | 
+ **file** | **bytearray**| File to upload | 
  **file_name** | **str**| File name | 
- **is_public** | **bool**| Is public | 
  **file_association** | **str**| File association | 
- **file2** | **bytearray**| File to upload | 
- **file_name2** | **str**| File name | 
- **is_public2** | **str**| Is public | 
- **file_association2** | **str**| File association | 
- **contact_id** | **str**| Contact ID | [optional] 
- **contact_id2** | **str**| Contact ID. Required if the &#x60;file_association&#x60; is CONTACT | [optional] 
+ **contact_id** | **str**| Contact ID. Required if the &#x60;file_association&#x60; is CONTACT | [optional] 
+ **is_public** | **str**| Is public | [optional] 
 
 ### Return type
 
@@ -438,11 +428,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_file**
-> FileMetadata update_file(file_id, update_mask=update_mask, file=file, file_name=file_name, is_public=is_public, file2=file2, file_name2=file_name2, is_public2=is_public2)
+> FileMetadata update_file(file_id, update_mask=update_mask, file=file, file_name=file_name, is_public=is_public)
 
 Update a file
 
-Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+Updates a file using multipart/form-data. Note that this endpoint uses POST instead of PATCH.
 
 ### Example
 
@@ -471,17 +461,14 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.FilesApi(api_client)
     file_id = 'file_id_example' # str | 
-    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-    file = None # bytearray | File to upload. This is a file sent as multi-part (not a string) (optional)
+    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    file = None # bytearray | File to upload (optional)
     file_name = 'file_name_example' # str | File name (optional)
     is_public = True # bool | Is public (optional)
-    file2 = None # bytearray | File to upload (optional)
-    file_name2 = 'file_name_example' # str | File name (optional)
-    is_public2 = True # bool | Is public (optional)
 
     try:
         # Update a file
-        api_response = api_instance.update_file(file_id, update_mask=update_mask, file=file, file_name=file_name, is_public=is_public, file2=file2, file_name2=file_name2, is_public2=is_public2)
+        api_response = api_instance.update_file(file_id, update_mask=update_mask, file=file, file_name=file_name, is_public=is_public)
         print("The response of FilesApi->update_file:\n")
         pprint(api_response)
     except Exception as e:
@@ -495,13 +482,10 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **file_id** | **str**|  | 
- **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
- **file** | **bytearray**| File to upload. This is a file sent as multi-part (not a string) | [optional] 
+ **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **file** | **bytearray**| File to upload | [optional] 
  **file_name** | **str**| File name | [optional] 
  **is_public** | **bool**| Is public | [optional] 
- **file2** | **bytearray**| File to upload | [optional] 
- **file_name2** | **str**| File name | [optional] 
- **is_public2** | **bool**| Is public | [optional] 
 
 ### Return type
 

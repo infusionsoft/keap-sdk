@@ -20,6 +20,7 @@ import com.keap.core.sdk.Pair;
 import com.keap.core.sdk.model.CreateSubscriptionPlanRequest;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.ListSubscriptionPlansResponse;
+import java.util.Set;
 import com.keap.core.sdk.model.SubscriptionPlan;
 import com.keap.core.sdk.model.UpdateSubscriptionPlanRequest;
 
@@ -514,7 +515,7 @@ import io.github.resilience4j.retry.Retry;
    * @return SubscriptionPlan
    * @throws ApiException if fails to make API call
    */
-  public SubscriptionPlan updateSubscriptionPlan(String productId, String subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, Object updateMask) throws ApiException {
+  public SubscriptionPlan updateSubscriptionPlan(String productId, String subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<SubscriptionPlan> localVarResponse = updateSubscriptionPlanWithHttpInfo(productId, subscriptionPlanId, updateSubscriptionPlanRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -529,7 +530,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;SubscriptionPlan&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<SubscriptionPlan> updateSubscriptionPlanWithHttpInfo(String productId, String subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, Object updateMask) throws ApiException {
+  public ApiResponse<SubscriptionPlan> updateSubscriptionPlanWithHttpInfo(String productId, String subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateSubscriptionPlanRequestBuilder(productId, subscriptionPlanId, updateSubscriptionPlanRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -570,7 +571,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateSubscriptionPlanRequestBuilder(String productId, String subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateSubscriptionPlanRequestBuilder(String productId, String subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'productId' is set
     if (productId == null) {
       throw new ApiException(400, "Missing the required parameter 'productId' when calling updateSubscriptionPlan");
@@ -594,7 +595,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

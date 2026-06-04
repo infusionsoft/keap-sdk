@@ -22,6 +22,11 @@ Name | Type | Description | Notes
 **last_updated_time** | **str** | Last update timestamp (ISO-8601) | [optional] 
 **affiliate_id** | **str** | Affiliate ID | [optional] 
 **lead_source** | **str** | Lead source | [optional] 
+**monthly_revenue** | **float** | Monthly recurring revenue | [optional] 
+**order_revenue** | **float** | Order revenue | [optional] 
+**objection** | **str** | Objection reason | [optional] 
+**status** | **str** | Status name | [optional] 
+**stage_entrance_time** | **str** | Timestamp when the opportunity entered its current stage (ISO-8601) | [optional] 
 
 ## Example
 

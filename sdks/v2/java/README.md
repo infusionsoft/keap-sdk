@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.12</version>
+  <version>2.0.13</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.12"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.13"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.12.jar`
+- `target/core-service-v2-java-sdk-2.0.13.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -630,6 +630,8 @@ Class | Method | HTTP request | Description
 *SubscriptionsApi* | [**deleteSubscriptionCustomFieldWithHttpInfo**](docs/SubscriptionsApi.md#deleteSubscriptionCustomFieldWithHttpInfo) | **DELETE** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
 *SubscriptionsApi* | [**getSubscription**](docs/SubscriptionsApi.md#getSubscription) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription
 *SubscriptionsApi* | [**getSubscriptionWithHttpInfo**](docs/SubscriptionsApi.md#getSubscriptionWithHttpInfo) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription
+*SubscriptionsApi* | [**invoiceSubscription**](docs/SubscriptionsApi.md#invoiceSubscription) | **POST** /rest/v2/subscriptions/{subscription_id}:invoice | Invoice a Subscription
+*SubscriptionsApi* | [**invoiceSubscriptionWithHttpInfo**](docs/SubscriptionsApi.md#invoiceSubscriptionWithHttpInfo) | **POST** /rest/v2/subscriptions/{subscription_id}:invoice | Invoice a Subscription
 *SubscriptionsApi* | [**listSubscriptions**](docs/SubscriptionsApi.md#listSubscriptions) | **GET** /rest/v2/subscriptions | List Subscriptions
 *SubscriptionsApi* | [**listSubscriptionsWithHttpInfo**](docs/SubscriptionsApi.md#listSubscriptionsWithHttpInfo) | **GET** /rest/v2/subscriptions | List Subscriptions
 *SubscriptionsApi* | [**retrieveSubscriptionCustomFieldModel**](docs/SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /rest/v2/subscriptions/model | Retrieve Subscription Custom Field Model

@@ -21,6 +21,7 @@ import com.keap.core.sdk.model.CreateUpdateLeadSourceCategoryRequest;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.LeadSourceCategory;
 import com.keap.core.sdk.model.ListLeadSourceCategoriesResponse;
+import java.util.Set;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -484,7 +485,7 @@ import io.github.resilience4j.retry.Retry;
    * @return LeadSourceCategory
    * @throws ApiException if fails to make API call
    */
-  public LeadSourceCategory updateLeadSourceCategory(String leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, Object updateMask) throws ApiException {
+  public LeadSourceCategory updateLeadSourceCategory(String leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<LeadSourceCategory> localVarResponse = updateLeadSourceCategoryWithHttpInfo(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -498,7 +499,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;LeadSourceCategory&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LeadSourceCategory> updateLeadSourceCategoryWithHttpInfo(String leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, Object updateMask) throws ApiException {
+  public ApiResponse<LeadSourceCategory> updateLeadSourceCategoryWithHttpInfo(String leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateLeadSourceCategoryRequestBuilder(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -539,7 +540,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateLeadSourceCategoryRequestBuilder(String leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateLeadSourceCategoryRequestBuilder(String leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'leadSourceCategoryId' is set
     if (leadSourceCategoryId == null) {
       throw new ApiException(400, "Missing the required parameter 'leadSourceCategoryId' when calling updateLeadSourceCategory");
@@ -558,7 +559,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

@@ -705,7 +705,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.ProductCategoriesApi(api_client)
     category_id = 'category_id_example' # str | 
     update_product_category_request = keap_core_v2_client.UpdateProductCategoryRequest() # UpdateProductCategoryRequest | 
-    update_mask = None # object | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Product Category
@@ -724,7 +724,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **category_id** | **str**|  | 
  **update_product_category_request** | [**UpdateProductCategoryRequest**](UpdateProductCategoryRequest.md)|  | 
- **update_mask** | [**object**](.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 

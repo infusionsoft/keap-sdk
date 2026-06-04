@@ -16,8 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBytes, StrictStr
-from typing import Any, Optional, Tuple, Union
+from pydantic import Field, StrictBytes, StrictStr, field_validator
+from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from keap_core_v2_client.models.assign_products_request import AssignProductsRequest
 from keap_core_v2_client.models.create_product_category_request import CreateProductCategoryRequest
@@ -2504,7 +2504,7 @@ class ProductCategoriesApi:
         self,
         category_id: StrictStr,
         update_product_category_request: UpdateProductCategoryRequest,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2527,7 +2527,7 @@ class ProductCategoriesApi:
         :param update_product_category_request: (required)
         :type update_product_category_request: UpdateProductCategoryRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2587,7 +2587,7 @@ class ProductCategoriesApi:
         self,
         category_id: StrictStr,
         update_product_category_request: UpdateProductCategoryRequest,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2610,7 +2610,7 @@ class ProductCategoriesApi:
         :param update_product_category_request: (required)
         :type update_product_category_request: UpdateProductCategoryRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2670,7 +2670,7 @@ class ProductCategoriesApi:
         self,
         category_id: StrictStr,
         update_product_category_request: UpdateProductCategoryRequest,
-        update_mask: Annotated[Optional[Any], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
+        update_mask: Annotated[Optional[List[StrictStr]], Field(description="An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2693,7 +2693,7 @@ class ProductCategoriesApi:
         :param update_product_category_request: (required)
         :type update_product_category_request: UpdateProductCategoryRequest
         :param update_mask: An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        :type update_mask: object
+        :type update_mask: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2758,6 +2758,7 @@ class ProductCategoriesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'update_mask': 'multi',
         }
 
         _path_params: Dict[str, str] = {}

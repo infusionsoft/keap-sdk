@@ -26,6 +26,7 @@ import com.keap.core.sdk.model.ListNoteTemplateResponse;
 import com.keap.core.sdk.model.ListNotesResponse;
 import com.keap.core.sdk.model.Note;
 import com.keap.core.sdk.model.ObjectModel;
+import java.util.Set;
 import com.keap.core.sdk.model.UpdateCustomFieldMetaDataRequest;
 import com.keap.core.sdk.model.UpdateNoteRequest;
 import com.keap.core.sdk.model.UpdateNoteResponse;
@@ -1039,7 +1040,7 @@ import io.github.resilience4j.retry.Retry;
    * @return UpdateNoteResponse
    * @throws ApiException if fails to make API call
    */
-  public UpdateNoteResponse updateNote(String contactId, String noteId, UpdateNoteRequest updateNoteRequest, Object updateMask, List<String> fields) throws ApiException {
+  public UpdateNoteResponse updateNote(String contactId, String noteId, UpdateNoteRequest updateNoteRequest, Set<String> updateMask, List<String> fields) throws ApiException {
     ApiResponse<UpdateNoteResponse> localVarResponse = updateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask, fields);
     return localVarResponse.getData();
   }
@@ -1055,7 +1056,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;UpdateNoteResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<UpdateNoteResponse> updateNoteWithHttpInfo(String contactId, String noteId, UpdateNoteRequest updateNoteRequest, Object updateMask, List<String> fields) throws ApiException {
+  public ApiResponse<UpdateNoteResponse> updateNoteWithHttpInfo(String contactId, String noteId, UpdateNoteRequest updateNoteRequest, Set<String> updateMask, List<String> fields) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateNoteRequestBuilder(contactId, noteId, updateNoteRequest, updateMask, fields);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1096,7 +1097,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateNoteRequestBuilder(String contactId, String noteId, UpdateNoteRequest updateNoteRequest, Object updateMask, List<String> fields) throws ApiException {
+  private HttpRequest.Builder updateNoteRequestBuilder(String contactId, String noteId, UpdateNoteRequest updateNoteRequest, Set<String> updateMask, List<String> fields) throws ApiException {
     // verify the required parameter 'contactId' is set
     if (contactId == null) {
       throw new ApiException(400, "Missing the required parameter 'contactId' when calling updateNote");
@@ -1120,7 +1121,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
     localVarQueryParameterBaseName = "fields";
     localVarQueryParams.addAll(ApiClient.parameterToPairs("csv", "fields", fields));
 
@@ -1163,7 +1164,7 @@ import io.github.resilience4j.retry.Retry;
    * @return CustomFieldMetaData
    * @throws ApiException if fails to make API call
    */
-  public CustomFieldMetaData updateNotesCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
+  public CustomFieldMetaData updateNotesCustomField(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Set<String> updateMask) throws ApiException {
     ApiResponse<CustomFieldMetaData> localVarResponse = updateNotesCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
     return localVarResponse.getData();
   }
@@ -1177,7 +1178,7 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;CustomFieldMetaData&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CustomFieldMetaData> updateNotesCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
+  public ApiResponse<CustomFieldMetaData> updateNotesCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Set<String> updateMask) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = updateNotesCustomFieldRequestBuilder(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
@@ -1218,7 +1219,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateNotesCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Object updateMask) throws ApiException {
+  private HttpRequest.Builder updateNotesCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, Set<String> updateMask) throws ApiException {
     // verify the required parameter 'customFieldId' is set
     if (customFieldId == null) {
       throw new ApiException(400, "Missing the required parameter 'customFieldId' when calling updateNotesCustomField");
@@ -1237,7 +1238,7 @@ import io.github.resilience4j.retry.Retry;
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "update_mask";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("update_mask", updateMask));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

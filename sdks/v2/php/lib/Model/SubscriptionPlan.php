@@ -58,15 +58,13 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'active' => 'bool',
         'frequency' => 'int',
-        'allow_prorating' => 'bool',
-        'product_id' => 'string',
+        'active' => 'bool',
+        'subscription_plan_name' => 'string',
         'cycle_type' => 'string',
-        'display_order_index' => 'int',
         'total_cycles' => 'int',
         'plan_price' => '\Keap\Core\V2\Model\CurrencyValue',
-        'preauthorize_amount' => 'float'
+        'display_order_index' => 'int'
     ];
 
     /**
@@ -78,15 +76,13 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'active' => null,
         'frequency' => 'int32',
-        'allow_prorating' => null,
-        'product_id' => null,
+        'active' => null,
+        'subscription_plan_name' => null,
         'cycle_type' => null,
-        'display_order_index' => 'int32',
         'total_cycles' => 'int32',
         'plan_price' => null,
-        'preauthorize_amount' => 'double'
+        'display_order_index' => 'int32'
     ];
 
     /**
@@ -96,15 +92,13 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'active' => false,
         'frequency' => false,
-        'allow_prorating' => false,
-        'product_id' => false,
+        'active' => false,
+        'subscription_plan_name' => false,
         'cycle_type' => false,
-        'display_order_index' => false,
         'total_cycles' => false,
         'plan_price' => false,
-        'preauthorize_amount' => false
+        'display_order_index' => false
     ];
 
     /**
@@ -194,15 +188,13 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'active' => 'active',
         'frequency' => 'frequency',
-        'allow_prorating' => 'allow_prorating',
-        'product_id' => 'product_id',
+        'active' => 'active',
+        'subscription_plan_name' => 'subscription_plan_name',
         'cycle_type' => 'cycle_type',
-        'display_order_index' => 'display_order_index',
         'total_cycles' => 'total_cycles',
         'plan_price' => 'plan_price',
-        'preauthorize_amount' => 'preauthorize_amount'
+        'display_order_index' => 'display_order_index'
     ];
 
     /**
@@ -212,15 +204,13 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'id' => 'setId',
-        'active' => 'setActive',
         'frequency' => 'setFrequency',
-        'allow_prorating' => 'setAllowProrating',
-        'product_id' => 'setProductId',
+        'active' => 'setActive',
+        'subscription_plan_name' => 'setSubscriptionPlanName',
         'cycle_type' => 'setCycleType',
-        'display_order_index' => 'setDisplayOrderIndex',
         'total_cycles' => 'setTotalCycles',
         'plan_price' => 'setPlanPrice',
-        'preauthorize_amount' => 'setPreauthorizeAmount'
+        'display_order_index' => 'setDisplayOrderIndex'
     ];
 
     /**
@@ -230,15 +220,13 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'id' => 'getId',
-        'active' => 'getActive',
         'frequency' => 'getFrequency',
-        'allow_prorating' => 'getAllowProrating',
-        'product_id' => 'getProductId',
+        'active' => 'getActive',
+        'subscription_plan_name' => 'getSubscriptionPlanName',
         'cycle_type' => 'getCycleType',
-        'display_order_index' => 'getDisplayOrderIndex',
         'total_cycles' => 'getTotalCycles',
         'plan_price' => 'getPlanPrice',
-        'preauthorize_amount' => 'getPreauthorizeAmount'
+        'display_order_index' => 'getDisplayOrderIndex'
     ];
 
     /**
@@ -282,10 +270,10 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const CYCLE_TYPE_DAILY = 'DAILY';
-    public const CYCLE_TYPE_WEEKLY = 'WEEKLY';
-    public const CYCLE_TYPE_MONTHLY = 'MONTHLY';
     public const CYCLE_TYPE_YEARLY = 'YEARLY';
+    public const CYCLE_TYPE_MONTHLY = 'MONTHLY';
+    public const CYCLE_TYPE_WEEKLY = 'WEEKLY';
+    public const CYCLE_TYPE_DAILY = 'DAILY';
 
     /**
      * Gets allowable values of the enum
@@ -295,10 +283,10 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getCycleTypeAllowableValues()
     {
         return [
-            self::CYCLE_TYPE_DAILY,
-            self::CYCLE_TYPE_WEEKLY,
-            self::CYCLE_TYPE_MONTHLY,
             self::CYCLE_TYPE_YEARLY,
+            self::CYCLE_TYPE_MONTHLY,
+            self::CYCLE_TYPE_WEEKLY,
+            self::CYCLE_TYPE_DAILY,
         ];
     }
 
@@ -318,15 +306,13 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('active', $data ?? [], null);
         $this->setIfExists('frequency', $data ?? [], null);
-        $this->setIfExists('allow_prorating', $data ?? [], null);
-        $this->setIfExists('product_id', $data ?? [], null);
+        $this->setIfExists('active', $data ?? [], null);
+        $this->setIfExists('subscription_plan_name', $data ?? [], null);
         $this->setIfExists('cycle_type', $data ?? [], null);
-        $this->setIfExists('display_order_index', $data ?? [], null);
         $this->setIfExists('total_cycles', $data ?? [], null);
         $this->setIfExists('plan_price', $data ?? [], null);
-        $this->setIfExists('preauthorize_amount', $data ?? [], null);
+        $this->setIfExists('display_order_index', $data ?? [], null);
     }
 
     /**
@@ -393,7 +379,7 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id Id of the subscription plan.
+     * @param string|null $id Subscription plan ID
      *
      * @return self
      */
@@ -403,6 +389,33 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets frequency
+     *
+     * @return int|null
+     */
+    public function getFrequency()
+    {
+        return $this->container['frequency'];
+    }
+
+    /**
+     * Sets frequency
+     *
+     * @param int|null $frequency Interval at which a customer receives a product or service as part of a subscription plan.
+     *
+     * @return self
+     */
+    public function setFrequency($frequency)
+    {
+        if (is_null($frequency)) {
+            throw new \InvalidArgumentException('non-nullable frequency cannot be null');
+        }
+        $this->container['frequency'] = $frequency;
 
         return $this;
     }
@@ -435,82 +448,28 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets frequency
-     *
-     * @return int|null
-     */
-    public function getFrequency()
-    {
-        return $this->container['frequency'];
-    }
-
-    /**
-     * Sets frequency
-     *
-     * @param int|null $frequency Total number of times of a cycle type which constitutes a plan cycle. Minimum value is 1.
-     *
-     * @return self
-     */
-    public function setFrequency($frequency)
-    {
-        if (is_null($frequency)) {
-            throw new \InvalidArgumentException('non-nullable frequency cannot be null');
-        }
-        $this->container['frequency'] = $frequency;
-
-        return $this;
-    }
-
-    /**
-     * Gets allow_prorating
-     *
-     * @return bool|null
-     */
-    public function getAllowProrating()
-    {
-        return $this->container['allow_prorating'];
-    }
-
-    /**
-     * Sets allow_prorating
-     *
-     * @param bool|null $allow_prorating Whether or not the plan will allow prorating.
-     *
-     * @return self
-     */
-    public function setAllowProrating($allow_prorating)
-    {
-        if (is_null($allow_prorating)) {
-            throw new \InvalidArgumentException('non-nullable allow_prorating cannot be null');
-        }
-        $this->container['allow_prorating'] = $allow_prorating;
-
-        return $this;
-    }
-
-    /**
-     * Gets product_id
+     * Gets subscription_plan_name
      *
      * @return string|null
      */
-    public function getProductId()
+    public function getSubscriptionPlanName()
     {
-        return $this->container['product_id'];
+        return $this->container['subscription_plan_name'];
     }
 
     /**
-     * Sets product_id
+     * Sets subscription_plan_name
      *
-     * @param string|null $product_id The product ID this plan belongs to.
+     * @param string|null $subscription_plan_name Plan name
      *
      * @return self
      */
-    public function setProductId($product_id)
+    public function setSubscriptionPlanName($subscription_plan_name)
     {
-        if (is_null($product_id)) {
-            throw new \InvalidArgumentException('non-nullable product_id cannot be null');
+        if (is_null($subscription_plan_name)) {
+            throw new \InvalidArgumentException('non-nullable subscription_plan_name cannot be null');
         }
-        $this->container['product_id'] = $product_id;
+        $this->container['subscription_plan_name'] = $subscription_plan_name;
 
         return $this;
     }
@@ -548,33 +507,6 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['cycle_type'] = $cycle_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets display_order_index
-     *
-     * @return int|null
-     */
-    public function getDisplayOrderIndex()
-    {
-        return $this->container['display_order_index'];
-    }
-
-    /**
-     * Sets display_order_index
-     *
-     * @param int|null $display_order_index The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list.
-     *
-     * @return self
-     */
-    public function setDisplayOrderIndex($display_order_index)
-    {
-        if (is_null($display_order_index)) {
-            throw new \InvalidArgumentException('non-nullable display_order_index cannot be null');
-        }
-        $this->container['display_order_index'] = $display_order_index;
 
         return $this;
     }
@@ -619,7 +551,7 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets plan_price
      *
-     * @param \Keap\Core\V2\Model\CurrencyValue|null $plan_price The price of the subscription plan.
+     * @param \Keap\Core\V2\Model\CurrencyValue|null $plan_price Price of the plan
      *
      * @return self
      */
@@ -634,28 +566,28 @@ class SubscriptionPlan implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets preauthorize_amount
+     * Gets display_order_index
      *
-     * @return float|null
+     * @return int|null
      */
-    public function getPreauthorizeAmount()
+    public function getDisplayOrderIndex()
     {
-        return $this->container['preauthorize_amount'];
+        return $this->container['display_order_index'];
     }
 
     /**
-     * Sets preauthorize_amount
+     * Sets display_order_index
      *
-     * @param float|null $preauthorize_amount The pre-authorize amount for the subscription plan. If null, this field is omitted from the response.
+     * @param int|null $display_order_index The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list.
      *
      * @return self
      */
-    public function setPreauthorizeAmount($preauthorize_amount)
+    public function setDisplayOrderIndex($display_order_index)
     {
-        if (is_null($preauthorize_amount)) {
-            throw new \InvalidArgumentException('non-nullable preauthorize_amount cannot be null');
+        if (is_null($display_order_index)) {
+            throw new \InvalidArgumentException('non-nullable display_order_index cannot be null');
         }
-        $this->container['preauthorize_amount'] = $preauthorize_amount;
+        $this->container['display_order_index'] = $display_order_index;
 
         return $this;
     }

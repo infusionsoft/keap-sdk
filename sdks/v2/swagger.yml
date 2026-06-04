@@ -1076,6 +1076,75 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/subscriptions/{subscription_id}:invoice:
+    post:
+      tags:
+      - Subscriptions
+      summary: Invoice a Subscription
+      description: Generates invoices from all cycles of a subscription that are due.
+        Returns the most recently billed invoice.
+      operationId: invoiceSubscription
+      parameters:
+      - name: subscription_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderV2'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/subscriptions/{subscription_id}:deactivate:
     post:
       tags:
@@ -3929,11 +3998,22 @@ paths:
       parameters:
       - name: fields
         in: query
+        description: 'Comma-delimited list of optional Opportunities properties to
+          include in the response. Legacy field names are supported for optional fields
+          only if legacy opportunities feature is enabled. Allowed optional values:
+          custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time'
         required: false
         schema:
           type: array
           items:
             type: string
+            enum:
+            - custom_fields
+            - monthly_revenue
+            - order_revenue
+            - objection
+            - status
+            - stage_entrance_time
           uniqueItems: true
       - name: filter
         in: query
@@ -4045,6 +4125,26 @@ paths:
       summary: Create an Opportunity
       description: Creates a new opportunity as the authenticated user.
       operationId: createOpportunity
+      parameters:
+      - name: fields
+        in: query
+        description: 'Comma-delimited list of optional Opportunities properties to
+          include in the response. Legacy field names are supported for optional fields
+          only if legacy opportunities feature is enabled. Allowed optional values:
+          custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time'
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - custom_fields
+            - monthly_revenue
+            - order_revenue
+            - objection
+            - status
+            - stage_entrance_time
+          uniqueItems: true
       requestBody:
         content:
           application/json:
@@ -4116,7 +4216,10 @@ paths:
       parameters:
       - name: filter
         in: query
-        description: Search filter to apply to results
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) `opportunity_stage_name` — supports wildcard prefix search (e.g. `opportunity_stage_name==Qualified*`)
+          - (String) `opportunity_stage_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `opportunity_stage_id>5`)
         required: false
         schema:
           type: string
@@ -5488,47 +5591,11 @@ paths:
       tags:
       - Files
       summary: Create a file
-      description: Creates a file and uploads it
+      description: Uploads a file using multipart/form-data. The `file` part contains
+        the binary file content; `file_name`, `is_public`, `file_association`, and
+        optionally `contact_id` are additional text parts in the same multipart request.
+        Sending these as URL query parameters is not supported.
       operationId: createFile
-      parameters:
-      - name: file
-        in: query
-        description: File to upload. This is a file sent as multi-part (not a string)
-        required: true
-        schema:
-          type: string
-          format: binary
-      - name: file_name
-        in: query
-        description: File name
-        required: true
-        content:
-          application/json:
-            schema:
-              type: string
-      - name: contact_id
-        in: query
-        description: Contact ID
-        content:
-          application/json:
-            schema:
-              type: string
-      - name: is_public
-        in: query
-        description: Is public
-        required: true
-        content:
-          application/json:
-            schema:
-              type: boolean
-      - name: file_association
-        in: query
-        description: File association
-        required: true
-        content:
-          application/json:
-            schema:
-              type: string
       requestBody:
         content:
           multipart/form-data:
@@ -5555,7 +5622,6 @@ paths:
               - file
               - file_association
               - file_name
-              - is_public
       responses:
         '201':
           description: Created
@@ -5683,8 +5749,8 @@ paths:
       tags:
       - Files
       summary: Update a file
-      description: Updates a file. Note that this endpoint is using a POST method
-        instead of PATCH.
+      description: Updates a file using multipart/form-data. Note that this endpoint
+        uses POST instead of PATCH.
       operationId: updateFile
       parameters:
       - name: file_id
@@ -5698,6 +5764,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -5705,26 +5772,6 @@ paths:
             - file_name
             - is_public
           uniqueItems: true
-      - name: file
-        in: query
-        description: File to upload. This is a file sent as multi-part (not a string)
-        schema:
-          type: string
-          format: binary
-      - name: file_name
-        in: query
-        description: File name
-        content:
-          application/json:
-            schema:
-              type: string
-      - name: is_public
-        in: query
-        description: Is public
-        content:
-          application/json:
-            schema:
-              type: boolean
       requestBody:
         content:
           multipart/form-data:
@@ -10134,6 +10181,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -10365,6 +10413,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -10528,6 +10577,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -10680,6 +10730,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -10919,6 +10970,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -11094,6 +11146,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -11311,6 +11364,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -11528,6 +11582,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -11681,6 +11736,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -11850,6 +11906,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -12070,6 +12127,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -12327,6 +12385,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -12569,6 +12628,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -12752,6 +12812,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -12970,6 +13031,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -13129,6 +13191,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -13347,6 +13410,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -13566,6 +13630,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -13808,6 +13873,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -13965,6 +14031,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -14046,6 +14113,25 @@ paths:
         required: true
         schema:
           type: string
+      - name: fields
+        in: query
+        description: 'Comma-delimited list of optional Opportunities properties to
+          include in the response. Legacy field names are supported for optional fields
+          only if legacy opportunities feature is enabled. Allowed optional values:
+          custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time'
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - custom_fields
+            - monthly_revenue
+            - order_revenue
+            - objection
+            - status
+            - stage_entrance_time
+          uniqueItems: true
       responses:
         '200':
           description: OK
@@ -14182,6 +14268,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -14198,6 +14285,25 @@ paths:
             - user_id
             - custom_fields
             - affiliate_id
+          uniqueItems: true
+      - name: fields
+        in: query
+        description: 'Comma-delimited list of optional Opportunities properties to
+          include in the response. Legacy field names are supported for optional fields
+          only if legacy opportunities feature is enabled. Allowed optional values:
+          custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time'
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - custom_fields
+            - monthly_revenue
+            - order_revenue
+            - objection
+            - status
+            - stage_entrance_time
           uniqueItems: true
       requestBody:
         content:
@@ -14409,6 +14515,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -14562,6 +14669,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -14715,6 +14823,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -14935,6 +15044,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -15181,6 +15291,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -15421,6 +15532,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -15642,6 +15754,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -16017,6 +16130,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -16236,6 +16350,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -16457,6 +16572,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -16677,6 +16793,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -16898,6 +17015,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -17132,6 +17250,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -17426,6 +17545,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -17667,6 +17787,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -17783,6 +17904,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -17926,6 +18048,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -18223,6 +18346,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -18585,6 +18709,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -18802,6 +18927,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -18952,6 +19078,7 @@ paths:
           provided properties will be updated and others will be skipped.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -20083,6 +20210,7 @@ paths:
           that, data is returned for the fields that are mentioned in the query.
         required: false
         schema:
+          type: array
           items:
             type: string
             enum:
@@ -24962,6 +25090,466 @@ components:
             content: Preferred
           items:
             $ref: '#/components/schemas/CustomFieldValue'
+    BasicContact:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        given_name:
+          type: string
+        family_name:
+          type: string
+    CurrencyValue:
+      type: object
+      properties:
+        amount:
+          type: integer
+          format: int64
+          description: The price amount in the smallest currency unit
+          example: 10000
+        currency_code:
+          type: string
+          description: Three-letter ISO currency code
+          example: USD
+        formatted_amount:
+          type: string
+          description: The product amount formatted using the tenant's currency locale
+          example: $100.00
+    Discount:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+          description: Discount amount
+          example: 10
+        special_item_id:
+          type: string
+          description: Discount item ID
+          example: 123
+        discount_method:
+          type: string
+          description: Discount method
+          enum:
+          - AMOUNT
+          - PERCENT
+          example: PERCENT
+    InvoiceFile:
+      type: object
+      properties:
+        file_id:
+          type: string
+    OrderItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the order item
+          example: 456
+        name:
+          type: string
+          description: Name of the item
+          example: Premium Widget
+        description:
+          type: string
+          description: Item description
+          example: High-quality widget with warranty
+        notes:
+          type: string
+          description: Additional notes
+          example: Gift wrap requested
+        quantity:
+          type: integer
+          format: int32
+          description: Quantity ordered
+          example: 2
+        discount:
+          $ref: '#/components/schemas/CurrencyValue'
+          description: If the order item is a discount type, this is the amount of
+            the discount.
+        special:
+          $ref: '#/components/schemas/Discount'
+          description: If the line item is a discount type, the details about the
+            discount.
+        product:
+          $ref: '#/components/schemas/OrderItemProduct'
+          description: Product details
+        subscription_id:
+          type: string
+          description: If the order item is a subscription type, this refers to the
+            subscription id that generated the order.
+          example: 123
+        item_type:
+          type: string
+          description: The type of order item.
+          enum:
+          - PRODUCT
+          - SHIPPING
+          - TAX
+          - SERVICE
+          - UPSELL
+          - FINANCE_CHARGE
+          - DISCOUNT
+          - PROGRAM
+          - SUBSCRIPTION
+          - DISCOUNT_FREE_TRIAL
+          - DISCOUNT_ORDER_TOTAL
+          - DISCOUNT_PRODUCT
+          - DISCOUNT_PRODUCT_CATEGORY
+          - DISCOUNT_SHIPPING
+          - TIP
+          - OTHER
+          - UNKNOWN
+          example: PRODUCT
+        cost_per_unit:
+          $ref: '#/components/schemas/CurrencyValue'
+          description: Cost per unit
+        price_per_unit:
+          $ref: '#/components/schemas/CurrencyValue'
+          description: Price per unit charged to customer
+        subscription_plan:
+          $ref: '#/components/schemas/SubscriptionPlan'
+          description: If the order item is a subscription type, the details of the
+            subscription plan.
+    OrderItemProduct:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Product ID
+          example: 123
+        name:
+          type: string
+          description: Product name
+          example: Premium Widget
+        sku:
+          type: string
+          description: Stock keeping unit
+          example: WDG-001
+        description:
+          type: string
+          description: Product description
+          example: High-quality widget
+        shippable:
+          type: boolean
+          description: Whether product requires shipping
+          example: true
+        taxable:
+          type: boolean
+          description: Whether product is taxable
+          example: true
+    OrderV2:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the order
+          example: 123
+        title:
+          type: string
+          description: Title of the order
+          example: 'Online Order #1234'
+        status:
+          type: string
+          description: The order status.
+          enum:
+          - DRAFT
+          - SENT
+          - VIEWED
+          - PAID
+          example: PAID
+        total:
+          $ref: '#/components/schemas/CurrencyValue'
+          description: The total amount of the order.
+        contact:
+          $ref: '#/components/schemas/BasicContact'
+          description: Contact associated with this order
+        notes:
+          type: string
+          description: Internal notes for the order
+          example: Customer requested gift wrapping
+        terms:
+          type: string
+          description: Order terms and conditions
+          example: Net 30
+        order_type:
+          type: string
+          description: The order type.
+          enum:
+          - ONLINE
+          - OFFLINE
+          example: ONLINE
+        source_type:
+          type: string
+          description: The source where the order was created.
+          enum:
+          - API
+          - CHECKOUT_FORM
+          - INVOICE
+          - MANUAL_PAYMENT
+          - QUICKBOOKS
+          - UNKNOWN
+          example: API
+        creation_time:
+          type: string
+          format: date-time
+          description: When this order was originally created. In ISO-8601 format
+            (e.g. 2024-05-21T23:00:00Z)
+          example: '2024-05-21T14:30:00Z'
+        modification_time:
+          type: string
+          format: date-time
+          description: When this order was changed. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+          example: '2024-05-21T14:30:00Z'
+        order_time:
+          type: string
+          format: date-time
+          description: A user-defined date and time of the order. In ISO-8601 format
+            (e.g. 2024-05-21T23:00:00Z)
+          example: '2024-05-21T14:30:00Z'
+        lead_affiliate_id:
+          type: string
+          description: ID of the lead affiliate
+          example: 456
+        sales_affiliate_id:
+          type: string
+          description: ID of the sales affiliate
+          example: 789
+        total_paid:
+          $ref: '#/components/schemas/CurrencyValue'
+          description: The total amount paid to the order.
+        total_due:
+          $ref: '#/components/schemas/CurrencyValue'
+          description: The total amount of the order that is due. This is not current
+            balance.
+        shipping_information:
+          $ref: '#/components/schemas/ShippingInformation'
+          description: Shipping details for the order
+        refund_total:
+          $ref: '#/components/schemas/CurrencyValue'
+          description: Total amount refunded
+        allow_payment:
+          type: boolean
+          description: Whether or not card-related payments should be allowed on this
+            order. Applies only to Keap Pro/Max edition.
+          example: true
+        allow_paypal:
+          type: boolean
+          description: Whether or not PayPal payments should be allowed on this order.
+            Applies only to Keap Pro/Max edition.
+          example: false
+        order_items:
+          type: array
+          description: List of items in the order
+          items:
+            $ref: '#/components/schemas/OrderItem'
+        payment_plan:
+          $ref: '#/components/schemas/PaymentPlan'
+          description: Payment plan details if applicable
+        invoice_number:
+          type: string
+          description: The associated invoice identifier. Applies only to Keap Pro/Max
+            edition. Feature not yet supported.
+          example: 1001
+        files:
+          type: array
+          description: A list of attached files to this order. Applies only to Keap
+            Pro/Max edition.
+          items:
+            $ref: '#/components/schemas/InvoiceFile'
+        credit_status:
+          type: string
+          description: Credit status of the order
+          example: APPROVED
+        promo_code:
+          type: string
+          description: Promotional code applied
+          example: SUMMER20
+        refund_status:
+          type: string
+          description: Refund status
+          example: NONE
+        synced:
+          type: boolean
+          description: Whether order is synced with external systems
+          example: true
+        invoice_id:
+          type: string
+          description: Associated invoice ID
+          example: 456
+        custom_fields:
+          type: array
+          description: List of custom field values applied to this order
+          example:
+          - id: '1'
+            content: VIP
+          - id: '2'
+            content: Preferred
+          items:
+            $ref: '#/components/schemas/CustomFieldValue'
+    PaymentPlan:
+      type: object
+      properties:
+        auto_charge:
+          type: boolean
+          description: Whether to auto-charge payments
+          example: true
+        max_charge_attempts:
+          type: integer
+          format: int64
+          description: Maximum charge attempts
+          example: 3
+        days_between_retries:
+          type: integer
+          format: int64
+          description: Days between retry attempts
+          example: 7
+        payment_method_id:
+          type: string
+          description: Payment method ID to charge
+          example: 123
+        initial_payment_amount:
+          $ref: '#/components/schemas/CurrencyValue'
+          description: Initial payment amount
+        initial_payment_percent:
+          type: number
+          format: double
+          description: Initial payment as percentage
+          example: 25
+        initial_payment_date:
+          type: string
+          format: date
+          description: The initial payment date. In ISO-8601 date format (e.g. 2024-05-21)
+          example: '2024-05-21'
+        plan_start_date:
+          type: string
+          format: date
+          description: The start date of the payment plan. In ISO-8601 date format
+            (e.g. 2024-05-21)
+          example: '2024-05-21'
+        number_of_payments:
+          type: integer
+          format: int64
+          description: Number of payments in the plan
+          example: 12
+        days_between_payments:
+          type: integer
+          format: int64
+          description: Days between each payment
+          example: 30
+        payment_plan_items:
+          type: array
+          description: List of scheduled payment items
+          items:
+            $ref: '#/components/schemas/PaymentPlanItem'
+      required:
+      - days_between_payments
+      - number_of_payments
+      - plan_start_date
+    PaymentPlanItem:
+      type: object
+      properties:
+        status:
+          type: string
+          description: |
+            The status of the payment plan item. Possible values are:
+            - `UNPAID_MANUAL` - The item is set for manual charge, and its `amount_due` has not been completely paid.
+            - `UNPAID_AUTOCHARGE` - The item is set for auto-charge, and its `amount_due` has not been completely paid.
+            - `PAID` - The item has been completely paid.
+            - `FAILED` - The item `amount_due` has not been completely paid, and there was a failure. (*Note: This status is deprecated and not currently used.*)
+          enum:
+          - UNPAID_MANUAL
+          - UNPAID_AUTOCHARGE
+          - PAID
+          - FAILED
+        due_date:
+          type: string
+          format: date
+          description: The due date in the application's timezone, as an ISO 8601
+            calendar date string (date only), in the format YYYY-MM-DD
+          example: '2024-05-21'
+        amount_due:
+          $ref: '#/components/schemas/CurrencyValue'
+        amount_paid:
+          $ref: '#/components/schemas/CurrencyValue'
+    ShippingInformation:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Shipping information ID
+          example: 123
+        address:
+          $ref: '#/components/schemas/Address'
+          description: Shipping address
+        company:
+          type: string
+          description: Company name
+          example: Acme Corp
+        given_name:
+          type: string
+          description: First name
+          example: John
+        family_name:
+          type: string
+          description: Last name
+          example: Doe
+        phone_number:
+          type: string
+          description: Phone number
+          example: +1-555-123-4567
+        invoice_to_company:
+          type: boolean
+          description: Whether to invoice to company
+          example: false
+    SubscriptionPlan:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Subscription plan ID
+          example: 123
+        frequency:
+          type: integer
+          format: int32
+          description: Interval at which a customer receives a product or service
+            as part of a subscription plan.
+          example: 1
+        active:
+          type: boolean
+          description: If the subscription plan is active or not.
+          example: true
+        subscription_plan_name:
+          type: string
+          description: Plan name
+          example: Premium Monthly
+        cycle_type:
+          type: string
+          description: The cycle type of the subscription plan.
+          enum:
+          - YEARLY
+          - MONTHLY
+          - WEEKLY
+          - DAILY
+          example: MONTHLY
+        total_cycles:
+          type: integer
+          format: int32
+          description: Total number of cycles the plan will run before ending. Value
+            of 0 indicates plan will never end.
+          example: 12
+        plan_price:
+          $ref: '#/components/schemas/CurrencyValue'
+          description: Price of the plan
+        display_order_index:
+          type: integer
+          format: int32
+          description: The order index where this plan will be displayed on a page
+            against other plans. Smaller number indicates plan will be displayed higher
+            in the list.
+          example: 1
     CancelSubscriptionRequest:
       type: object
       properties:
@@ -25510,78 +26098,6 @@ components:
       required:
       - cycle_type
       - plan_price
-    CurrencyValue:
-      type: object
-      properties:
-        amount:
-          type: integer
-          format: int64
-          description: The price amount in the smallest currency unit
-          example: 10000
-        currency_code:
-          type: string
-          description: Three-letter ISO currency code
-          example: USD
-        formatted_amount:
-          type: string
-          description: The product amount formatted using the tenant's currency locale
-          example: $100.00
-    SubscriptionPlan:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Id of the subscription plan.
-          example: 1
-        active:
-          type: boolean
-          description: If the subscription plan is active or not.
-          example: true
-        frequency:
-          type: integer
-          format: int32
-          description: Total number of times of a cycle type which constitutes a plan
-            cycle. Minimum value is 1.
-          example: 1
-        allow_prorating:
-          type: boolean
-          description: Whether or not the plan will allow prorating.
-          example: false
-        product_id:
-          type: string
-          description: The product ID this plan belongs to.
-          example: 123
-        cycle_type:
-          type: string
-          description: The cycle type of the subscription plan.
-          enum:
-          - DAILY
-          - WEEKLY
-          - MONTHLY
-          - YEARLY
-          example: MONTHLY
-        display_order_index:
-          type: integer
-          format: int32
-          description: The order index where this plan will be displayed on a page
-            against other plans. Smaller number indicates plan will be displayed higher
-            in the list.
-          example: 0
-        total_cycles:
-          type: integer
-          format: int32
-          description: Total number of cycles the plan will run before ending. Value
-            of 0 indicates plan will never end.
-          example: 12
-        plan_price:
-          $ref: '#/components/schemas/CurrencyValue'
-          description: The price of the subscription plan.
-        preauthorize_amount:
-          type: number
-          format: double
-          description: The pre-authorize amount for the subscription plan. If null,
-            this field is omitted from the response.
-          example: 13
     CreateProductOptionListOption:
       type: object
       properties:
@@ -26118,404 +26634,6 @@ components:
       - order_time
       - order_title
       - order_type
-    BasicContact:
-      type: object
-      properties:
-        id:
-          type: string
-        email:
-          type: string
-        given_name:
-          type: string
-        family_name:
-          type: string
-    Discount:
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-          description: Discount amount
-          example: 10
-        special_item_id:
-          type: string
-          description: Discount item ID
-          example: 123
-        discount_method:
-          type: string
-          description: Discount method
-          enum:
-          - AMOUNT
-          - PERCENT
-          example: PERCENT
-    InvoiceFile:
-      type: object
-      properties:
-        file_id:
-          type: string
-    OrderItem:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the order item
-          example: 456
-        name:
-          type: string
-          description: Name of the item
-          example: Premium Widget
-        description:
-          type: string
-          description: Item description
-          example: High-quality widget with warranty
-        notes:
-          type: string
-          description: Additional notes
-          example: Gift wrap requested
-        quantity:
-          type: integer
-          format: int32
-          description: Quantity ordered
-          example: 2
-        discount:
-          $ref: '#/components/schemas/CurrencyValue'
-          description: If the order item is a discount type, this is the amount of
-            the discount.
-        special:
-          $ref: '#/components/schemas/Discount'
-          description: If the line item is a discount type, the details about the
-            discount.
-        product:
-          $ref: '#/components/schemas/OrderItemProduct'
-          description: Product details
-        subscription_id:
-          type: string
-          description: If the order item is a subscription type, this refers to the
-            subscription id that generated the order.
-          example: 123
-        item_type:
-          type: string
-          description: The type of order item.
-          enum:
-          - PRODUCT
-          - SHIPPING
-          - TAX
-          - SERVICE
-          - UPSELL
-          - FINANCE_CHARGE
-          - DISCOUNT
-          - PROGRAM
-          - SUBSCRIPTION
-          - DISCOUNT_FREE_TRIAL
-          - DISCOUNT_ORDER_TOTAL
-          - DISCOUNT_PRODUCT
-          - DISCOUNT_PRODUCT_CATEGORY
-          - DISCOUNT_SHIPPING
-          - TIP
-          - OTHER
-          - UNKNOWN
-          example: PRODUCT
-        cost_per_unit:
-          $ref: '#/components/schemas/CurrencyValue'
-          description: Cost per unit
-        price_per_unit:
-          $ref: '#/components/schemas/CurrencyValue'
-          description: Price per unit charged to customer
-        subscription_plan:
-          $ref: '#/components/schemas/SubscriptionPlan'
-          description: If the order item is a subscription type, the details of the
-            subscription plan.
-    OrderItemProduct:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Product ID
-          example: 123
-        name:
-          type: string
-          description: Product name
-          example: Premium Widget
-        sku:
-          type: string
-          description: Stock keeping unit
-          example: WDG-001
-        description:
-          type: string
-          description: Product description
-          example: High-quality widget
-        shippable:
-          type: boolean
-          description: Whether product requires shipping
-          example: true
-        taxable:
-          type: boolean
-          description: Whether product is taxable
-          example: true
-    OrderV2:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the order
-          example: 123
-        title:
-          type: string
-          description: Title of the order
-          example: 'Online Order #1234'
-        status:
-          type: string
-          description: The order status.
-          enum:
-          - DRAFT
-          - SENT
-          - VIEWED
-          - PAID
-          example: PAID
-        total:
-          $ref: '#/components/schemas/CurrencyValue'
-          description: The total amount of the order.
-        contact:
-          $ref: '#/components/schemas/BasicContact'
-          description: Contact associated with this order
-        notes:
-          type: string
-          description: Internal notes for the order
-          example: Customer requested gift wrapping
-        terms:
-          type: string
-          description: Order terms and conditions
-          example: Net 30
-        order_type:
-          type: string
-          description: The order type.
-          enum:
-          - ONLINE
-          - OFFLINE
-          example: ONLINE
-        source_type:
-          type: string
-          description: The source where the order was created.
-          enum:
-          - API
-          - CHECKOUT_FORM
-          - INVOICE
-          - MANUAL_PAYMENT
-          - QUICKBOOKS
-          - UNKNOWN
-          example: API
-        creation_time:
-          type: string
-          format: date-time
-          description: When this order was originally created. In ISO-8601 format
-            (e.g. 2024-05-21T23:00:00Z)
-          example: '2024-05-21T14:30:00Z'
-        modification_time:
-          type: string
-          format: date-time
-          description: When this order was changed. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
-          example: '2024-05-21T14:30:00Z'
-        order_time:
-          type: string
-          format: date-time
-          description: A user-defined date and time of the order. In ISO-8601 format
-            (e.g. 2024-05-21T23:00:00Z)
-          example: '2024-05-21T14:30:00Z'
-        lead_affiliate_id:
-          type: string
-          description: ID of the lead affiliate
-          example: 456
-        sales_affiliate_id:
-          type: string
-          description: ID of the sales affiliate
-          example: 789
-        total_paid:
-          $ref: '#/components/schemas/CurrencyValue'
-          description: The total amount paid to the order.
-        total_due:
-          $ref: '#/components/schemas/CurrencyValue'
-          description: The total amount of the order that is due. This is not current
-            balance.
-        shipping_information:
-          $ref: '#/components/schemas/ShippingInformation'
-          description: Shipping details for the order
-        refund_total:
-          $ref: '#/components/schemas/CurrencyValue'
-          description: Total amount refunded
-        allow_payment:
-          type: boolean
-          description: Whether or not card-related payments should be allowed on this
-            order. Applies only to Keap Pro/Max edition.
-          example: true
-        allow_paypal:
-          type: boolean
-          description: Whether or not PayPal payments should be allowed on this order.
-            Applies only to Keap Pro/Max edition.
-          example: false
-        order_items:
-          type: array
-          description: List of items in the order
-          items:
-            $ref: '#/components/schemas/OrderItem'
-        payment_plan:
-          $ref: '#/components/schemas/PaymentPlan'
-          description: Payment plan details if applicable
-        invoice_number:
-          type: string
-          description: The associated invoice identifier. Applies only to Keap Pro/Max
-            edition. Feature not yet supported.
-          example: 1001
-        files:
-          type: array
-          description: A list of attached files to this order. Applies only to Keap
-            Pro/Max edition.
-          items:
-            $ref: '#/components/schemas/InvoiceFile'
-        credit_status:
-          type: string
-          description: Credit status of the order
-          example: APPROVED
-        promo_code:
-          type: string
-          description: Promotional code applied
-          example: SUMMER20
-        refund_status:
-          type: string
-          description: Refund status
-          example: NONE
-        synced:
-          type: boolean
-          description: Whether order is synced with external systems
-          example: true
-        invoice_id:
-          type: string
-          description: Associated invoice ID
-          example: 456
-        custom_fields:
-          type: array
-          description: List of custom field values applied to this order
-          example:
-          - id: '1'
-            content: VIP
-          - id: '2'
-            content: Preferred
-          items:
-            $ref: '#/components/schemas/CustomFieldValue'
-    PaymentPlan:
-      type: object
-      properties:
-        auto_charge:
-          type: boolean
-          description: Whether to auto-charge payments
-          example: true
-        max_charge_attempts:
-          type: integer
-          format: int64
-          description: Maximum charge attempts
-          example: 3
-        days_between_retries:
-          type: integer
-          format: int64
-          description: Days between retry attempts
-          example: 7
-        payment_method_id:
-          type: string
-          description: Payment method ID to charge
-          example: 123
-        initial_payment_amount:
-          $ref: '#/components/schemas/CurrencyValue'
-          description: Initial payment amount
-        initial_payment_percent:
-          type: number
-          format: double
-          description: Initial payment as percentage
-          example: 25
-        initial_payment_date:
-          type: string
-          format: date
-          description: The initial payment date. In ISO-8601 date format (e.g. 2024-05-21)
-          example: '2024-05-21'
-        plan_start_date:
-          type: string
-          format: date
-          description: The start date of the payment plan. In ISO-8601 date format
-            (e.g. 2024-05-21)
-          example: '2024-05-21'
-        number_of_payments:
-          type: integer
-          format: int64
-          description: Number of payments in the plan
-          example: 12
-        days_between_payments:
-          type: integer
-          format: int64
-          description: Days between each payment
-          example: 30
-        payment_plan_items:
-          type: array
-          description: List of scheduled payment items
-          items:
-            $ref: '#/components/schemas/PaymentPlanItem'
-      required:
-      - days_between_payments
-      - number_of_payments
-      - plan_start_date
-    PaymentPlanItem:
-      type: object
-      properties:
-        status:
-          type: string
-          description: |
-            The status of the payment plan item. Possible values are:
-            - `UNPAID_MANUAL` - The item is set for manual charge, and its `amount_due` has not been completely paid.
-            - `UNPAID_AUTOCHARGE` - The item is set for auto-charge, and its `amount_due` has not been completely paid.
-            - `PAID` - The item has been completely paid.
-            - `FAILED` - The item `amount_due` has not been completely paid, and there was a failure. (*Note: This status is deprecated and not currently used.*)
-          enum:
-          - UNPAID_MANUAL
-          - UNPAID_AUTOCHARGE
-          - PAID
-          - FAILED
-        due_date:
-          type: string
-          format: date
-          description: The due date in the application's timezone, as an ISO 8601
-            calendar date string (date only), in the format YYYY-MM-DD
-          example: '2024-05-21'
-        amount_due:
-          $ref: '#/components/schemas/CurrencyValue'
-        amount_paid:
-          $ref: '#/components/schemas/CurrencyValue'
-    ShippingInformation:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Shipping information ID
-          example: 123
-        address:
-          $ref: '#/components/schemas/Address'
-          description: Shipping address
-        company:
-          type: string
-          description: Company name
-          example: Acme Corp
-        given_name:
-          type: string
-          description: First name
-          example: John
-        family_name:
-          type: string
-          description: Last name
-          example: Doe
-        phone_number:
-          type: string
-          description: Phone number
-          example: +1-555-123-4567
-        invoice_to_company:
-          type: boolean
-          description: Whether to invoice to company
-          example: false
     FileOperationRequest:
       type: object
       description: File name
@@ -26823,6 +26941,28 @@ components:
           type: string
           description: Lead source
           example: Web Form
+        monthly_revenue:
+          type: number
+          format: double
+          description: Monthly recurring revenue
+          example: 500
+        order_revenue:
+          type: number
+          format: double
+          description: Order revenue
+          example: 2500
+        objection:
+          type: string
+          description: Objection reason
+          example: Price
+        status:
+          type: string
+          description: Status name
+          example: Active
+        stage_entrance_time:
+          type: string
+          description: Timestamp when the opportunity entered its current stage (ISO-8601)
+          example: '2024-03-20T10:00:00Z'
       required:
       - contact
       - opportunity_title
