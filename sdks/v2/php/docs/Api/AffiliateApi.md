@@ -11,22 +11,26 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**assignProductCommissionProgram()**](AffiliateApi.md#assignProductCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program |
 | [**assignSubscriptionCommissionProgram()**](AffiliateApi.md#assignSubscriptionCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program |
 | [**createAffiliateCustomField()**](AffiliateApi.md#createAffiliateCustomField) | **POST** /rest/v2/affiliates/model/customFields | Create an Affiliate Custom Field |
+| [**createAffiliateCustomFieldGroup()**](AffiliateApi.md#createAffiliateCustomFieldGroup) | **POST** /rest/v2/affiliates/model/customFields/groups | Create an Affiliate Custom Field Group |
 | [**createDefaultCommissionProgram()**](AffiliateApi.md#createDefaultCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program |
 | [**createRedirectLink()**](AffiliateApi.md#createRedirectLink) | **POST** /rest/v2/affiliates/redirects | Create an Affiliate Link |
 | [**deleteAffiliate()**](AffiliateApi.md#deleteAffiliate) | **DELETE** /rest/v2/affiliates/{id} | Delete Affiliate |
 | [**deleteAffiliateCommissionProgram()**](AffiliateApi.md#deleteAffiliateCommissionProgram) | **DELETE** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
 | [**deleteAffiliateCustomField()**](AffiliateApi.md#deleteAffiliateCustomField) | **DELETE** /rest/v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field |
+| [**deleteAffiliateCustomFieldGroup()**](AffiliateApi.md#deleteAffiliateCustomFieldGroup) | **DELETE** /rest/v2/affiliates/model/customFields/groups/{group_id} | Delete an Affiliate Custom Field Group |
 | [**deleteCommissionProgramResource()**](AffiliateApi.md#deleteCommissionProgramResource) | **DELETE** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Remove Commission Program Resource |
 | [**deleteRedirectLink()**](AffiliateApi.md#deleteRedirectLink) | **DELETE** /rest/v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
 | [**getAffiliate()**](AffiliateApi.md#getAffiliate) | **GET** /rest/v2/affiliates/{id} | Retrieve an Affiliate |
 | [**getAffiliateCommissionTotal()**](AffiliateApi.md#getAffiliateCommissionTotal) | **GET** /rest/v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal |
 | [**getAffiliateCommissions()**](AffiliateApi.md#getAffiliateCommissions) | **GET** /rest/v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commissions |
+| [**getAffiliateCustomFieldGroup()**](AffiliateApi.md#getAffiliateCustomFieldGroup) | **GET** /rest/v2/affiliates/model/customFields/groups/{group_id} | Retrieve an Affiliate Custom Field Group |
 | [**getAffiliateCustomFields()**](AffiliateApi.md#getAffiliateCustomFields) | **GET** /rest/v2/affiliates/model | Retrieve Affiliate Model |
 | [**getCommissionProgram()**](AffiliateApi.md#getCommissionProgram) | **GET** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program |
 | [**getRedirectLink()**](AffiliateApi.md#getRedirectLink) | **GET** /rest/v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link |
 | [**getReferralsByAffiliateId()**](AffiliateApi.md#getReferralsByAffiliateId) | **GET** /rest/v2/affiliates/{affiliate_id}/referrals | Retrieve Affiliate Referrals |
 | [**listAffiliate()**](AffiliateApi.md#listAffiliate) | **GET** /rest/v2/affiliates | List Affiliates |
 | [**listAffiliateCommissionPrograms()**](AffiliateApi.md#listAffiliateCommissionPrograms) | **GET** /rest/v2/affiliates/commissionPrograms | List Affiliate Commission Programs |
+| [**listAffiliateCustomFieldGroups()**](AffiliateApi.md#listAffiliateCustomFieldGroups) | **GET** /rest/v2/affiliates/model/customFields/groups | List Affiliate Custom Field Groups |
 | [**listAffiliateLinks()**](AffiliateApi.md#listAffiliateLinks) | **GET** /rest/v2/affiliates/redirects | List Affiliate Links |
 | [**listAffiliatePayments()**](AffiliateApi.md#listAffiliatePayments) | **GET** /rest/v2/affiliates/{affiliate_id}/payments | List Affiliate Payments |
 | [**listCommissionProgramResources()**](AffiliateApi.md#listCommissionProgramResources) | **GET** /rest/v2/affiliates/commissionPrograms/{commission_program_id}/resources | Retrieve Commission Program Resources |
@@ -36,6 +40,7 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**removeSubscriptionPlanCommissionFromCommissions()**](AffiliateApi.md#removeSubscriptionPlanCommissionFromCommissions) | **POST** /rest/v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program |
 | [**updateAffiliate()**](AffiliateApi.md#updateAffiliate) | **PATCH** /rest/v2/affiliates/{id} | Update an Affiliate |
 | [**updateAffiliateCustomField()**](AffiliateApi.md#updateAffiliateCustomField) | **PATCH** /rest/v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field |
+| [**updateAffiliateCustomFieldGroup()**](AffiliateApi.md#updateAffiliateCustomFieldGroup) | **PATCH** /rest/v2/affiliates/model/customFields/groups/{group_id} | Update an Affiliate Custom Field Group |
 | [**updateCommissionProgram()**](AffiliateApi.md#updateCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
 | [**updateCommissionProgramResource()**](AffiliateApi.md#updateCommissionProgramResource) | **PATCH** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Update Commission Program Resource |
 | [**updateDefaultCommissionProgram()**](AffiliateApi.md#updateDefaultCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
@@ -462,6 +467,65 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createAffiliateCustomFieldGroup()`
+
+```php
+createAffiliateCustomFieldGroup($create_custom_field_group_request): \Keap\Core\V2\Model\CustomFieldGroup
+```
+
+Create an Affiliate Custom Field Group
+
+Creates a new custom field group for the Affiliate record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\AffiliateApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_custom_field_group_request = new \Keap\Core\V2\Model\CreateCustomFieldGroupRequest(); // \Keap\Core\V2\Model\CreateCustomFieldGroupRequest
+
+try {
+    $result = $apiInstance->createAffiliateCustomFieldGroup($create_custom_field_group_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AffiliateApi->createAffiliateCustomFieldGroup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_custom_field_group_request** | [**\Keap\Core\V2\Model\CreateCustomFieldGroupRequest**](../Model/CreateCustomFieldGroupRequest.md)|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\CustomFieldGroup**](../Model/CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `createDefaultCommissionProgram()`
 
 ```php
@@ -738,6 +802,64 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **custom_field_id** | **string**|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteAffiliateCustomFieldGroup()`
+
+```php
+deleteAffiliateCustomFieldGroup($group_id)
+```
+
+Delete an Affiliate Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\AffiliateApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 'group_id_example'; // string
+
+try {
+    $apiInstance->deleteAffiliateCustomFieldGroup($group_id);
+} catch (Exception $e) {
+    echo 'Exception when calling AffiliateApi->deleteAffiliateCustomFieldGroup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**|  | |
 
 ### Return type
 
@@ -1043,6 +1165,65 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\ListAffiliateCommissionsResponse**](../Model/ListAffiliateCommissionsResponse.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAffiliateCustomFieldGroup()`
+
+```php
+getAffiliateCustomFieldGroup($group_id): \Keap\Core\V2\Model\CustomFieldGroup
+```
+
+Retrieve an Affiliate Custom Field Group
+
+Retrieves a single custom field group by id for the Affiliate record type.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\AffiliateApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 'group_id_example'; // string
+
+try {
+    $result = $apiInstance->getAffiliateCustomFieldGroup($group_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AffiliateApi->getAffiliateCustomFieldGroup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\CustomFieldGroup**](../Model/CustomFieldGroup.md)
 
 ### Authorization
 
@@ -1414,6 +1595,65 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\ListAffiliateCommissionProgramsResponse**](../Model/ListAffiliateCommissionProgramsResponse.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAffiliateCustomFieldGroups()`
+
+```php
+listAffiliateCustomFieldGroups($tab_id): \Keap\Core\V2\Model\ListCustomFieldGroupsResponse
+```
+
+List Affiliate Custom Field Groups
+
+Retrieves a list of custom field groups for the Affiliate record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\AffiliateApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tab_id = 'tab_id_example'; // string | Optional tab id to scope groups to a single tab
+
+try {
+    $result = $apiInstance->listAffiliateCustomFieldGroups($tab_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AffiliateApi->listAffiliateCustomFieldGroups: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tab_id** | **string**| Optional tab id to scope groups to a single tab | [optional] |
+
+### Return type
+
+[**\Keap\Core\V2\Model\ListCustomFieldGroupsResponse**](../Model/ListCustomFieldGroupsResponse.md)
 
 ### Authorization
 
@@ -1976,6 +2216,69 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\CustomFieldMetaData**](../Model/CustomFieldMetaData.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAffiliateCustomFieldGroup()`
+
+```php
+updateAffiliateCustomFieldGroup($group_id, $update_mask, $update_custom_field_group_request): \Keap\Core\V2\Model\CustomFieldGroup
+```
+
+Update an Affiliate Custom Field Group
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\AffiliateApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 'group_id_example'; // string
+$update_mask = array('update_mask_example'); // string[] | Comma-separated list of fields to update
+$update_custom_field_group_request = new \Keap\Core\V2\Model\UpdateCustomFieldGroupRequest(); // \Keap\Core\V2\Model\UpdateCustomFieldGroupRequest
+
+try {
+    $result = $apiInstance->updateAffiliateCustomFieldGroup($group_id, $update_mask, $update_custom_field_group_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AffiliateApi->updateAffiliateCustomFieldGroup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**|  | |
+| **update_mask** | [**string[]**](../Model/string.md)| Comma-separated list of fields to update | |
+| **update_custom_field_group_request** | [**\Keap\Core\V2\Model\UpdateCustomFieldGroupRequest**](../Model/UpdateCustomFieldGroupRequest.md)|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\CustomFieldGroup**](../Model/CustomFieldGroup.md)
 
 ### Authorization
 

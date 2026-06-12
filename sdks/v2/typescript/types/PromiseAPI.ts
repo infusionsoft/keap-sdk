@@ -85,6 +85,7 @@ import { CreateCommissionProgramRequest } from '../models/CreateCommissionProgra
 import { CreateCompanyRequest } from '../models/CreateCompanyRequest';
 import { CreateContactLinkTypeRequest } from '../models/CreateContactLinkTypeRequest';
 import { CreateContactUtmPropertiesRequest } from '../models/CreateContactUtmPropertiesRequest';
+import { CreateCustomFieldGroupRequest } from '../models/CreateCustomFieldGroupRequest';
 import { CreateCustomFieldOptionRequest } from '../models/CreateCustomFieldOptionRequest';
 import { CreateCustomFieldRequest } from '../models/CreateCustomFieldRequest';
 import { CreateCustomFieldResponse } from '../models/CreateCustomFieldResponse';
@@ -106,6 +107,7 @@ import { CreateOrderTotalDiscountRequest } from '../models/CreateOrderTotalDisco
 import { CreatePaymentMethodConfigRequest } from '../models/CreatePaymentMethodConfigRequest';
 import { CreateProductCategoryRequest } from '../models/CreateProductCategoryRequest';
 import { CreateProductCommissionProgramRequest } from '../models/CreateProductCommissionProgramRequest';
+import { CreateProductDiscountCriteria } from '../models/CreateProductDiscountCriteria';
 import { CreateProductDiscountRequest } from '../models/CreateProductDiscountRequest';
 import { CreateProductInterestBundleRequest } from '../models/CreateProductInterestBundleRequest';
 import { CreateProductOptionListOption } from '../models/CreateProductOptionListOption';
@@ -128,6 +130,7 @@ import { CurrencyValue } from '../models/CurrencyValue';
 import { CurrencyValueDetail } from '../models/CurrencyValueDetail';
 import { CurrencyValueList } from '../models/CurrencyValueList';
 import { CustomField } from '../models/CustomField';
+import { CustomFieldGroup } from '../models/CustomFieldGroup';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';
 import { CustomFieldOption } from '../models/CustomFieldOption';
 import { CustomFieldValue } from '../models/CustomFieldValue';
@@ -200,6 +203,7 @@ import { ListContactPaymentMethodsResponse } from '../models/ListContactPaymentM
 import { ListContactTagsResponse } from '../models/ListContactTagsResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
+import { ListCustomFieldGroupsResponse } from '../models/ListCustomFieldGroupsResponse';
 import { ListEmailsSentResponse } from '../models/ListEmailsSentResponse';
 import { ListFilesResponse } from '../models/ListFilesResponse';
 import { ListFreeTrialDiscountsResponse } from '../models/ListFreeTrialDiscountsResponse';
@@ -242,6 +246,7 @@ import { ListUserGroupsResponse } from '../models/ListUserGroupsResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { ListWebformsResponse } from '../models/ListWebformsResponse';
 import { ListWordPressOptInOptionsResponse } from '../models/ListWordPressOptInOptionsResponse';
+import { MergeContactRequest } from '../models/MergeContactRequest';
 import { ModelError } from '../models/ModelError';
 import { Note } from '../models/Note';
 import { NoteTemplate } from '../models/NoteTemplate';
@@ -321,6 +326,7 @@ import { UpdateBusinessProfileRequest } from '../models/UpdateBusinessProfileReq
 import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountRequest';
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
+import { UpdateCustomFieldGroupRequest } from '../models/UpdateCustomFieldGroupRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
 import { UpdateEmailAddress } from '../models/UpdateEmailAddress';
@@ -336,6 +342,7 @@ import { UpdateOrderRequest } from '../models/UpdateOrderRequest';
 import { UpdateOrderTotalDiscountRequest } from '../models/UpdateOrderTotalDiscountRequest';
 import { UpdateProductCategoryRequest } from '../models/UpdateProductCategoryRequest';
 import { UpdateProductCommissionProgramRequest } from '../models/UpdateProductCommissionProgramRequest';
+import { UpdateProductDiscountCriteria } from '../models/UpdateProductDiscountCriteria';
 import { UpdateProductDiscountRequest } from '../models/UpdateProductDiscountRequest';
 import { UpdateProductInterestBundleRequest } from '../models/UpdateProductInterestBundleRequest';
 import { UpdateProductInterestRequest } from '../models/UpdateProductInterestRequest';
@@ -532,6 +539,28 @@ export class PromiseAffiliateApi {
     }
 
     /**
+     * Creates a new custom field group for the Affiliate record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create an Affiliate Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createAffiliateCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createAffiliateCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new custom field group for the Affiliate record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create an Affiliate Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createAffiliateCustomFieldGroup(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createAffiliateCustomFieldGroup(createCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Creates a Default Commission Program
      * Create a Default Commission Program
      * @param commissionProgramId
@@ -640,6 +669,28 @@ export class PromiseAffiliateApi {
     public deleteAffiliateCustomField(customFieldId: string, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteAffiliateCustomField(customFieldId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete an Affiliate Custom Field Group
+     * @param groupId
+     */
+    public deleteAffiliateCustomFieldGroupWithHttpInfo(groupId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteAffiliateCustomFieldGroupWithHttpInfo(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete an Affiliate Custom Field Group
+     * @param groupId
+     */
+    public deleteAffiliateCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteAffiliateCustomFieldGroup(groupId, observableOptions);
         return result.toPromise();
     }
 
@@ -758,6 +809,28 @@ export class PromiseAffiliateApi {
     public getAffiliateCommissions(affiliateId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListAffiliateCommissionsResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getAffiliateCommissions(affiliateId, filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Affiliate record type.
+     * Retrieve an Affiliate Custom Field Group
+     * @param groupId
+     */
+    public getAffiliateCustomFieldGroupWithHttpInfo(groupId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAffiliateCustomFieldGroupWithHttpInfo(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Affiliate record type.
+     * Retrieve an Affiliate Custom Field Group
+     * @param groupId
+     */
+    public getAffiliateCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAffiliateCustomFieldGroup(groupId, observableOptions);
         return result.toPromise();
     }
 
@@ -908,6 +981,28 @@ export class PromiseAffiliateApi {
     public listAffiliateCommissionPrograms(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListAffiliateCommissionProgramsResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listAffiliateCommissionPrograms(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Affiliate record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Affiliate Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listAffiliateCustomFieldGroupsWithHttpInfo(tabId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCustomFieldGroupsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAffiliateCustomFieldGroupsWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Affiliate record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Affiliate Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listAffiliateCustomFieldGroups(tabId?: string, _options?: PromiseConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAffiliateCustomFieldGroups(tabId, observableOptions);
         return result.toPromise();
     }
 
@@ -1140,6 +1235,32 @@ export class PromiseAffiliateApi {
     public updateAffiliateCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateAffiliateCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update an Affiliate Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateAffiliateCustomFieldGroupWithHttpInfo(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateAffiliateCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update an Affiliate Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateAffiliateCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateAffiliateCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -2094,6 +2215,28 @@ export class PromiseCompanyApi {
     }
 
     /**
+     * Creates a new custom field group for the Company record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create a Company Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createCompanyCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createCompanyCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new custom field group for the Company record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create a Company Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createCompanyCustomFieldGroup(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createCompanyCustomFieldGroup(createCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes the specified Company
      * Delete a Company
      * @param companyId
@@ -2112,6 +2255,50 @@ export class PromiseCompanyApi {
     public deleteCompany(companyId: string, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteCompany(companyId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field from the company model
+     * Delete a Company Custom Field
+     * @param customFieldId
+     */
+    public deleteCompanyCustomFieldWithHttpInfo(customFieldId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteCompanyCustomFieldWithHttpInfo(customFieldId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field from the company model
+     * Delete a Company Custom Field
+     * @param customFieldId
+     */
+    public deleteCompanyCustomField(customFieldId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteCompanyCustomField(customFieldId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete a Company Custom Field Group
+     * @param groupId
+     */
+    public deleteCompanyCustomFieldGroupWithHttpInfo(groupId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteCompanyCustomFieldGroupWithHttpInfo(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete a Company Custom Field Group
+     * @param groupId
+     */
+    public deleteCompanyCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteCompanyCustomFieldGroup(groupId, observableOptions);
         return result.toPromise();
     }
 
@@ -2136,6 +2323,28 @@ export class PromiseCompanyApi {
     public getCompany(companyId: string, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<Company> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getCompany(companyId, fields, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Company record type.
+     * Retrieve a Company Custom Field Group
+     * @param groupId
+     */
+    public getCompanyCustomFieldGroupWithHttpInfo(groupId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCompanyCustomFieldGroupWithHttpInfo(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Company record type.
+     * Retrieve a Company Custom Field Group
+     * @param groupId
+     */
+    public getCompanyCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCompanyCustomFieldGroup(groupId, observableOptions);
         return result.toPromise();
     }
 
@@ -2166,6 +2375,28 @@ export class PromiseCompanyApi {
     public listCompanies(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListCompaniesResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listCompanies(fields, filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Company record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Company Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listCompanyCustomFieldGroupsWithHttpInfo(tabId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCustomFieldGroupsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listCompanyCustomFieldGroupsWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Company record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Company Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listCompanyCustomFieldGroups(tabId?: string, _options?: PromiseConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listCompanyCustomFieldGroups(tabId, observableOptions);
         return result.toPromise();
     }
 
@@ -2295,6 +2526,32 @@ export class PromiseCompanyApi {
         return result.toPromise();
     }
 
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update a Company Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateCompanyCustomFieldGroupWithHttpInfo(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateCompanyCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update a Company Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateCompanyCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateCompanyCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
 
 }
 
@@ -2363,6 +2620,28 @@ export class PromiseContactApi {
     }
 
     /**
+     * Creates a new custom field group for the Contact record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create a Contact Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createContactCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createContactCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new custom field group for the Contact record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create a Contact Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createContactCustomFieldGroup(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createContactCustomFieldGroup(createCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Creates a new type of Contact Link
      * Create a Contact Link type
      * @param createContactLinkTypeRequest
@@ -2407,6 +2686,50 @@ export class PromiseContactApi {
     }
 
     /**
+     * Deletes a custom field from the Contacts model
+     * Delete a Contact Custom Field
+     * @param customFieldId
+     */
+    public deleteContactCustomFieldWithHttpInfo(customFieldId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteContactCustomFieldWithHttpInfo(customFieldId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field from the Contacts model
+     * Delete a Contact Custom Field
+     * @param customFieldId
+     */
+    public deleteContactCustomField(customFieldId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteContactCustomField(customFieldId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete a Contact Custom Field Group
+     * @param groupId
+     */
+    public deleteContactCustomFieldGroupWithHttpInfo(groupId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteContactCustomFieldGroupWithHttpInfo(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete a Contact Custom Field Group
+     * @param groupId
+     */
+    public deleteContactCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteContactCustomFieldGroup(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a single Contact
      * Retrieve a Contact
      * @param contactId
@@ -2431,6 +2754,28 @@ export class PromiseContactApi {
     }
 
     /**
+     * Retrieves a single custom field group by id for the Contact record type.
+     * Retrieve a Contact Custom Field Group
+     * @param groupId
+     */
+    public getContactCustomFieldGroupWithHttpInfo(groupId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getContactCustomFieldGroupWithHttpInfo(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Contact record type.
+     * Retrieve a Contact Custom Field Group
+     * @param groupId
+     */
+    public getContactCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getContactCustomFieldGroup(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Links two Contacts together using the provided Link type
      * Link Contacts
      * @param linkContactsRequest
@@ -2449,6 +2794,28 @@ export class PromiseContactApi {
     public linkContacts(linkContactsRequest: LinkContactsRequest, _options?: PromiseConfigurationOptions): Promise<ContactLink> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.linkContacts(linkContactsRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Contact record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Contact Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listContactCustomFieldGroupsWithHttpInfo(tabId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCustomFieldGroupsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listContactCustomFieldGroupsWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Contact record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Contact Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listContactCustomFieldGroups(tabId?: string, _options?: PromiseConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listContactCustomFieldGroups(tabId, observableOptions);
         return result.toPromise();
     }
 
@@ -2563,6 +2930,30 @@ export class PromiseContactApi {
     }
 
     /**
+     * Merges two Contacts together. The duplicate contact will be merged into the primary contact.
+     * Merge two Contacts
+     * @param mergeContactRequest
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
+     */
+    public mergeContactsWithHttpInfo(mergeContactRequest: MergeContactRequest, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Contact>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.mergeContactsWithHttpInfo(mergeContactRequest, fields, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Merges two Contacts together. The duplicate contact will be merged into the primary contact.
+     * Merge two Contacts
+     * @param mergeContactRequest
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
+     */
+    public mergeContacts(mergeContactRequest: MergeContactRequest, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<Contact> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.mergeContacts(mergeContactRequest, fields, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Get the custom fields and optional properties for the Contact object
      * Retrieve Contact Model
      */
@@ -2629,6 +3020,32 @@ export class PromiseContactApi {
     public updateContact(contactId: string, createUpdateContactRequest: CreateUpdateContactRequest, updateMask?: Set<'addresses' | 'anniversary_date' | 'birth_date' | 'company' | 'contact_type' | 'create_time' | 'custom_fields' | 'email_addresses' | 'family_name' | 'fax_numbers' | 'given_name' | 'id' | 'job_title' | 'leadsource_id' | 'links' | 'middle_name' | 'notes' | 'origin' | 'owner_id' | 'phone_numbers' | 'preferred_locale' | 'preferred_name' | 'prefix' | 'referral_code' | 'score_value' | 'social_accounts' | 'source_type' | 'spouse_name' | 'suffix' | 'tag_ids' | 'time_zone' | 'update_time' | 'utm_parameters' | 'website' | 'account_id' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'created_by' | 'groups' | 'last_updated_by'>, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<Contact> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateContact(contactId, createUpdateContactRequest, updateMask, fields, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update a Contact Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateContactCustomFieldGroupWithHttpInfo(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateContactCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update a Contact Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateContactCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateContactCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -4210,6 +4627,28 @@ export class PromiseNoteApi {
     }
 
     /**
+     * Creates a new custom field group for the Note record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Create a Note Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createNoteCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createNoteCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new custom field group for the Note record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Create a Note Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createNoteCustomFieldGroup(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createNoteCustomFieldGroup(createCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes the specified Note
      * Delete a Note
      * @param contactId
@@ -4230,6 +4669,28 @@ export class PromiseNoteApi {
     public deleteNote(contactId: string, noteId: string, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteNote(contactId, noteId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Note Custom Field Group
+     * @param groupId
+     */
+    public deleteNoteCustomFieldGroupWithHttpInfo(groupId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteNoteCustomFieldGroupWithHttpInfo(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Note Custom Field Group
+     * @param groupId
+     */
+    public deleteNoteCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteNoteCustomFieldGroup(groupId, observableOptions);
         return result.toPromise();
     }
 
@@ -4282,6 +4743,28 @@ export class PromiseNoteApi {
     }
 
     /**
+     * Retrieves a single custom field group by id for the Note record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve a Note Custom Field Group
+     * @param groupId
+     */
+    public getNoteCustomFieldGroupWithHttpInfo(groupId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getNoteCustomFieldGroupWithHttpInfo(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Note record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve a Note Custom Field Group
+     * @param groupId
+     */
+    public getNoteCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getNoteCustomFieldGroup(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a list of all notes
      * List All Notes
      * @param [filter] Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons. 
@@ -4308,6 +4791,28 @@ export class PromiseNoteApi {
     public listAllNotes(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<ListNotesResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listAllNotes(filter, pageToken, orderBy, pageSize, fields, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Note record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * List Note Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listNoteCustomFieldGroupsWithHttpInfo(tabId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCustomFieldGroupsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listNoteCustomFieldGroupsWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Note record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * List Note Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listNoteCustomFieldGroups(tabId?: string, _options?: PromiseConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listNoteCustomFieldGroups(tabId, observableOptions);
         return result.toPromise();
     }
 
@@ -4422,6 +4927,32 @@ export class PromiseNoteApi {
     }
 
     /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Update a Note Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateNoteCustomFieldGroupWithHttpInfo(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateNoteCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Update a Note Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateNoteCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateNoteCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Updates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
      * Update a Custom Field
      * @param customFieldId
@@ -4491,6 +5022,28 @@ export class PromiseOpportunityApi {
     }
 
     /**
+     * Creates a new custom field group for the Opportunity record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create an Opportunity Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createOpportunityCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createOpportunityCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new custom field group for the Opportunity record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create an Opportunity Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createOpportunityCustomFieldGroup(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createOpportunityCustomFieldGroup(createCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Creates a custom field of the specified type and options to the Opportunity object
      * Create an Opportunity Custom Field
      * @param createCustomFieldRequest
@@ -4535,6 +5088,28 @@ export class PromiseOpportunityApi {
     }
 
     /**
+     * Deletes a Custom Field from Opportunity.
+     * Delete an Opportunity Custom Field
+     * @param customFieldId
+     */
+    public deleteOpportunitiesCustomFieldWithHttpInfo(customFieldId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOpportunitiesCustomFieldWithHttpInfo(customFieldId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a Custom Field from Opportunity.
+     * Delete an Opportunity Custom Field
+     * @param customFieldId
+     */
+    public deleteOpportunitiesCustomField(customFieldId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOpportunitiesCustomField(customFieldId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes the specified Opportunity
      * Delete an Opportunity
      * @param opportunityId
@@ -4553,6 +5128,28 @@ export class PromiseOpportunityApi {
     public deleteOpportunity(opportunityId: string, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteOpportunity(opportunityId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete an Opportunity Custom Field Group
+     * @param groupId
+     */
+    public deleteOpportunityCustomFieldGroupWithHttpInfo(groupId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOpportunityCustomFieldGroupWithHttpInfo(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete an Opportunity Custom Field Group
+     * @param groupId
+     */
+    public deleteOpportunityCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOpportunityCustomFieldGroup(groupId, observableOptions);
         return result.toPromise();
     }
 
@@ -4579,28 +5176,6 @@ export class PromiseOpportunityApi {
     }
 
     /**
-     * Deletes a Custom Field from Opportunity.
-     * Delete an Opportunity Custom Field
-     * @param customFieldId
-     */
-    public deleteOpportunityesCustomFieldWithHttpInfo(customFieldId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteOpportunityesCustomFieldWithHttpInfo(customFieldId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Deletes a Custom Field from Opportunity.
-     * Delete an Opportunity Custom Field
-     * @param customFieldId
-     */
-    public deleteOpportunityesCustomField(customFieldId: string, _options?: PromiseConfigurationOptions): Promise<void> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteOpportunityesCustomField(customFieldId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
      * Retrieves the specified Opportunity
      * Retrieve a Opportunity
      * @param opportunityId
@@ -4621,6 +5196,28 @@ export class PromiseOpportunityApi {
     public getOpportunity(opportunityId: string, fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<RestV2Opportunity> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getOpportunity(opportunityId, fields, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Opportunity record type.
+     * Retrieve an Opportunity Custom Field Group
+     * @param groupId
+     */
+    public getOpportunityCustomFieldGroupWithHttpInfo(groupId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getOpportunityCustomFieldGroupWithHttpInfo(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Opportunity record type.
+     * Retrieve an Opportunity Custom Field Group
+     * @param groupId
+     */
+    public getOpportunityCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getOpportunityCustomFieldGroup(groupId, observableOptions);
         return result.toPromise();
     }
 
@@ -4673,6 +5270,28 @@ export class PromiseOpportunityApi {
     public listOpportunities(fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListOpportunitiesResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listOpportunities(fields, filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Opportunity record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Opportunity Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listOpportunityCustomFieldGroupsWithHttpInfo(tabId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCustomFieldGroupsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listOpportunityCustomFieldGroupsWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Opportunity record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Opportunity Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listOpportunityCustomFieldGroups(tabId?: string, _options?: PromiseConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listOpportunityCustomFieldGroups(tabId, observableOptions);
         return result.toPromise();
     }
 
@@ -4775,6 +5394,32 @@ export class PromiseOpportunityApi {
     public updateOpportunityCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOpportunityCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update an Opportunity Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateOpportunityCustomFieldGroupWithHttpInfo(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateOpportunityCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update an Opportunity Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateOpportunityCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateOpportunityCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -5079,6 +5724,28 @@ export class PromiseOrdersApi {
     }
 
     /**
+     * Creates a new custom field group for the Order record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create an Order Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createOrderCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createOrderCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new custom field group for the Order record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create an Order Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createOrderCustomFieldGroup(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createOrderCustomFieldGroup(createCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Creates an order item on an existing order
      * Create an Order Item
      * @param orderId
@@ -5171,6 +5838,28 @@ export class PromiseOrdersApi {
     }
 
     /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete an Order Custom Field Group
+     * @param groupId
+     */
+    public deleteOrderCustomFieldGroupWithHttpInfo(groupId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOrderCustomFieldGroupWithHttpInfo(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete an Order Custom Field Group
+     * @param groupId
+     */
+    public deleteOrderCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOrderCustomFieldGroup(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes an order item on an existing order
      * Delete an Order Item
      * @param orderId
@@ -5241,6 +5930,28 @@ export class PromiseOrdersApi {
     }
 
     /**
+     * Retrieves a single custom field group by id for the Order record type.
+     * Retrieve an Order Custom Field Group
+     * @param groupId
+     */
+    public getOrderCustomFieldGroupWithHttpInfo(groupId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getOrderCustomFieldGroupWithHttpInfo(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Order record type.
+     * Retrieve an Order Custom Field Group
+     * @param groupId
+     */
+    public getOrderCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getOrderCustomFieldGroup(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a single order item from an existing order
      * Retrieve an Order Item
      * @param orderId
@@ -5261,6 +5972,28 @@ export class PromiseOrdersApi {
     public getOrderItem(orderId: string, orderItemId: string, _options?: PromiseConfigurationOptions): Promise<OrderItem> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getOrderItem(orderId, orderItemId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Order record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Order Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listOrderCustomFieldGroupsWithHttpInfo(tabId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCustomFieldGroupsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listOrderCustomFieldGroupsWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Order record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Order Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listOrderCustomFieldGroups(tabId?: string, _options?: PromiseConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listOrderCustomFieldGroups(tabId, observableOptions);
         return result.toPromise();
     }
 
@@ -5391,6 +6124,32 @@ export class PromiseOrdersApi {
     public updateOrderCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOrderCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update an Order Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateOrderCustomFieldGroupWithHttpInfo(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateOrderCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update an Order Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateOrderCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateOrderCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -5867,6 +6626,30 @@ export class PromiseProductDiscountsApi {
     }
 
     /**
+     * Creates a Product Discount Criteria
+     * Create a Product Discount Criteria
+     * @param discountId
+     * @param createProductDiscountCriteria
+     */
+    public createProductDiscountCriteriaWithHttpInfo(discountId: string, createProductDiscountCriteria: CreateProductDiscountCriteria, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DiscountCriteria>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createProductDiscountCriteriaWithHttpInfo(discountId, createProductDiscountCriteria, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a Product Discount Criteria
+     * Create a Product Discount Criteria
+     * @param discountId
+     * @param createProductDiscountCriteria
+     */
+    public createProductDiscountCriteria(discountId: string, createProductDiscountCriteria: CreateProductDiscountCriteria, _options?: PromiseConfigurationOptions): Promise<DiscountCriteria> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createProductDiscountCriteria(discountId, createProductDiscountCriteria, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes a specified Product Discount
      * Delete a Product Discount
      * @param discountId
@@ -5885,6 +6668,30 @@ export class PromiseProductDiscountsApi {
     public deleteProductDiscount(discountId: string, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteProductDiscount(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified Product Discount Criteria
+     * Delete a Product Discount Criteria
+     * @param discountId
+     * @param criteriaId
+     */
+    public deleteProductDiscountCriteriaWithHttpInfo(discountId: string, criteriaId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteProductDiscountCriteriaWithHttpInfo(discountId, criteriaId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified Product Discount Criteria
+     * Delete a Product Discount Criteria
+     * @param discountId
+     * @param criteriaId
+     */
+    public deleteProductDiscountCriteria(discountId: string, criteriaId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteProductDiscountCriteria(discountId, criteriaId, observableOptions);
         return result.toPromise();
     }
 
@@ -7371,6 +8178,28 @@ export class PromiseSubscriptionsApi {
     }
 
     /**
+     * Creates a new custom field group for the Subscription record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create a Subscription Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createSubscriptionCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createSubscriptionCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new custom field group for the Subscription record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create a Subscription Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createSubscriptionCustomFieldGroup(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createSubscriptionCustomFieldGroup(createCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes a custom field from the Subscription object
      * Delete a Subscription Custom Field
      * @param customFieldId
@@ -7389,6 +8218,28 @@ export class PromiseSubscriptionsApi {
     public deleteSubscriptionCustomField(customFieldId: string, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteSubscriptionCustomField(customFieldId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete a Subscription Custom Field Group
+     * @param groupId
+     */
+    public deleteSubscriptionCustomFieldGroupWithHttpInfo(groupId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteSubscriptionCustomFieldGroupWithHttpInfo(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete a Subscription Custom Field Group
+     * @param groupId
+     */
+    public deleteSubscriptionCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteSubscriptionCustomFieldGroup(groupId, observableOptions);
         return result.toPromise();
     }
 
@@ -7415,6 +8266,28 @@ export class PromiseSubscriptionsApi {
     }
 
     /**
+     * Retrieves a single custom field group by id for the Subscription record type.
+     * Retrieve a Subscription Custom Field Group
+     * @param groupId
+     */
+    public getSubscriptionCustomFieldGroupWithHttpInfo(groupId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getSubscriptionCustomFieldGroupWithHttpInfo(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Subscription record type.
+     * Retrieve a Subscription Custom Field Group
+     * @param groupId
+     */
+    public getSubscriptionCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getSubscriptionCustomFieldGroup(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
      * Invoice a Subscription
      * @param subscriptionId
@@ -7433,6 +8306,28 @@ export class PromiseSubscriptionsApi {
     public invoiceSubscription(subscriptionId: string, _options?: PromiseConfigurationOptions): Promise<OrderV2> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.invoiceSubscription(subscriptionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Subscription record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Subscription Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listSubscriptionCustomFieldGroupsWithHttpInfo(tabId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCustomFieldGroupsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listSubscriptionCustomFieldGroupsWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Subscription record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Subscription Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listSubscriptionCustomFieldGroups(tabId?: string, _options?: PromiseConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listSubscriptionCustomFieldGroups(tabId, observableOptions);
         return result.toPromise();
     }
 
@@ -7533,6 +8428,32 @@ export class PromiseSubscriptionsApi {
     public updateSubscriptionCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateSubscriptionCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update a Subscription Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateSubscriptionCustomFieldGroupWithHttpInfo(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateSubscriptionCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update a Subscription Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateSubscriptionCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateSubscriptionCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -7969,6 +8890,28 @@ export class PromiseTaskApi {
     }
 
     /**
+     * Creates a new custom field group for the Task record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Create a Task Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createTaskCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createTaskCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new custom field group for the Task record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Create a Task Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createTaskCustomFieldGroup(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createTaskCustomFieldGroup(createCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes a single task
      * Delete a Task
      * @param taskId
@@ -8013,6 +8956,28 @@ export class PromiseTaskApi {
     }
 
     /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Task Custom Field Group
+     * @param groupId
+     */
+    public deleteTaskCustomFieldGroupWithHttpInfo(groupId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteTaskCustomFieldGroupWithHttpInfo(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Task Custom Field Group
+     * @param groupId
+     */
+    public deleteTaskCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteTaskCustomFieldGroup(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a single task
      * Retrieve a Task
      * @param taskId
@@ -8033,6 +8998,50 @@ export class PromiseTaskApi {
     public getTask(taskId: string, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<Task> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getTask(taskId, fields, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Task record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve a Task Custom Field Group
+     * @param groupId
+     */
+    public getTaskCustomFieldGroupWithHttpInfo(groupId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getTaskCustomFieldGroupWithHttpInfo(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Task record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve a Task Custom Field Group
+     * @param groupId
+     */
+    public getTaskCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getTaskCustomFieldGroup(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Task record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * List Task Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listTaskCustomFieldGroupsWithHttpInfo(tabId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCustomFieldGroupsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listTaskCustomFieldGroupsWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Task record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * List Task Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listTaskCustomFieldGroups(tabId?: string, _options?: PromiseConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listTaskCustomFieldGroups(tabId, observableOptions);
         return result.toPromise();
     }
 
@@ -8137,6 +9146,32 @@ export class PromiseTaskApi {
     public updateTaskCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateTaskCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Update a Task Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateTaskCustomFieldGroupWithHttpInfo(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateTaskCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Update a Task Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateTaskCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateTaskCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
         return result.toPromise();
     }
 

@@ -7,14 +7,20 @@ Method | HTTP request | Description
 [**addTagToCompany**](CompanyApi.md#addTagToCompany) | **POST** /rest/v2/companies/{company_id}/tags/{tag_id} | Add Tag to Company
 [**createCompany**](CompanyApi.md#createCompany) | **POST** /rest/v2/companies | Create a Company
 [**createCompanyCustomField**](CompanyApi.md#createCompanyCustomField) | **POST** /rest/v2/companies/model/customFields | Create a Company Custom Field
+[**createCompanyCustomFieldGroup**](CompanyApi.md#createCompanyCustomFieldGroup) | **POST** /rest/v2/companies/model/customFields/groups | Create a Company Custom Field Group
 [**deleteCompany**](CompanyApi.md#deleteCompany) | **DELETE** /rest/v2/companies/{company_id} | Delete a Company
+[**deleteCompanyCustomField**](CompanyApi.md#deleteCompanyCustomField) | **DELETE** /rest/v2/companies/model/customFields/{custom_field_id} | Delete a Company Custom Field
+[**deleteCompanyCustomFieldGroup**](CompanyApi.md#deleteCompanyCustomFieldGroup) | **DELETE** /rest/v2/companies/model/customFields/groups/{group_id} | Delete a Company Custom Field Group
 [**getCompany**](CompanyApi.md#getCompany) | **GET** /rest/v2/companies/{company_id} | Retrieve a Company
+[**getCompanyCustomFieldGroup**](CompanyApi.md#getCompanyCustomFieldGroup) | **GET** /rest/v2/companies/model/customFields/groups/{group_id} | Retrieve a Company Custom Field Group
 [**listCompanies**](CompanyApi.md#listCompanies) | **GET** /rest/v2/companies | List Companies
+[**listCompanyCustomFieldGroups**](CompanyApi.md#listCompanyCustomFieldGroups) | **GET** /rest/v2/companies/model/customFields/groups | List Company Custom Field Groups
 [**listTagsForCompany**](CompanyApi.md#listTagsForCompany) | **GET** /rest/v2/companies/{company_id}/tags | List Applied Tags
 [**removeTagFromCompany**](CompanyApi.md#removeTagFromCompany) | **DELETE** /rest/v2/companies/{company_id}/tags/{tag_id} | Remove Tag
 [**retrieveCompanyCustomFieldModel**](CompanyApi.md#retrieveCompanyCustomFieldModel) | **GET** /rest/v2/companies/model | Retrieve Company Custom Field Model
 [**updateCompany**](CompanyApi.md#updateCompany) | **PATCH** /rest/v2/companies/{company_id} | Update a Company
 [**updateCompanyCustomField**](CompanyApi.md#updateCompanyCustomField) | **PATCH** /rest/v2/companies/model/customFields/{custom_field_id} | Update a Company Custom Field
+[**updateCompanyCustomFieldGroup**](CompanyApi.md#updateCompanyCustomFieldGroup) | **PATCH** /rest/v2/companies/model/customFields/groups/{group_id} | Update a Company Custom Field Group
 
 
 # **addTagToCompany**
@@ -271,6 +277,70 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **createCompanyCustomFieldGroup**
+> CustomFieldGroup createCompanyCustomFieldGroup(createCustomFieldGroupRequest)
+
+Creates a new custom field group for the Company record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+
+### Example
+
+
+```typescript
+import { createConfiguration, CompanyApi } from '';
+import type { CompanyApiCreateCompanyCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new CompanyApi(configuration);
+
+const request: CompanyApiCreateCompanyCustomFieldGroupRequest = {
+  
+  createCustomFieldGroupRequest: {
+    name: "name_example",
+    tabId: "tabId_example",
+  },
+};
+
+const data = await apiInstance.createCompanyCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCustomFieldGroupRequest** | **CreateCustomFieldGroupRequest**|  |
+
+
+### Return type
+
+**CustomFieldGroup**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **deleteCompany**
 > void deleteCompany()
 
@@ -301,6 +371,128 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **companyId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **deleteCompanyCustomField**
+> void deleteCompanyCustomField()
+
+Deletes a custom field from the company model
+
+### Example
+
+
+```typescript
+import { createConfiguration, CompanyApi } from '';
+import type { CompanyApiDeleteCompanyCustomFieldRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new CompanyApi(configuration);
+
+const request: CompanyApiDeleteCompanyCustomFieldRequest = {
+  
+  customFieldId: "custom_field_id_example",
+};
+
+const data = await apiInstance.deleteCompanyCustomField(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customFieldId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **deleteCompanyCustomFieldGroup**
+> void deleteCompanyCustomFieldGroup()
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+
+
+```typescript
+import { createConfiguration, CompanyApi } from '';
+import type { CompanyApiDeleteCompanyCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new CompanyApi(configuration);
+
+const request: CompanyApiDeleteCompanyCustomFieldGroupRequest = {
+  
+  groupId: "group_id_example",
+};
+
+const data = await apiInstance.deleteCompanyCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -398,6 +590,67 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getCompanyCustomFieldGroup**
+> CustomFieldGroup getCompanyCustomFieldGroup()
+
+Retrieves a single custom field group by id for the Company record type.
+
+### Example
+
+
+```typescript
+import { createConfiguration, CompanyApi } from '';
+import type { CompanyApiGetCompanyCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new CompanyApi(configuration);
+
+const request: CompanyApiGetCompanyCustomFieldGroupRequest = {
+  
+  groupId: "group_id_example",
+};
+
+const data = await apiInstance.getCompanyCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**CustomFieldGroup**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **listCompanies**
 > ListCompaniesResponse listCompanies()
 
@@ -447,6 +700,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 **ListCompaniesResponse**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listCompanyCustomFieldGroups**
+> ListCustomFieldGroupsResponse listCompanyCustomFieldGroups()
+
+Retrieves a list of custom field groups for the Company record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+
+
+```typescript
+import { createConfiguration, CompanyApi } from '';
+import type { CompanyApiListCompanyCustomFieldGroupsRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new CompanyApi(configuration);
+
+const request: CompanyApiListCompanyCustomFieldGroupsRequest = {
+    // Optional tab id to scope groups to a single tab (optional)
+  tabId: "tab_id_example",
+};
+
+const data = await apiInstance.listCompanyCustomFieldGroups(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tabId** | [**string**] | Optional tab id to scope groups to a single tab | (optional) defaults to undefined
+
+
+### Return type
+
+**ListCustomFieldGroupsResponse**
 
 ### Authorization
 
@@ -843,6 +1157,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 **CustomFieldMetaData**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **updateCompanyCustomFieldGroup**
+> CustomFieldGroup updateCompanyCustomFieldGroup(updateCustomFieldGroupRequest)
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+
+### Example
+
+
+```typescript
+import { createConfiguration, CompanyApi } from '';
+import type { CompanyApiUpdateCompanyCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new CompanyApi(configuration);
+
+const request: CompanyApiUpdateCompanyCustomFieldGroupRequest = {
+  
+  groupId: "group_id_example",
+    // Comma-separated list of fields to update
+  updateMask: [
+    "name",
+  ],
+  
+  updateCustomFieldGroupRequest: {
+    name: "name_example",
+    order: 1,
+    tabId: "tabId_example",
+  },
+};
+
+const data = await apiInstance.updateCompanyCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateCustomFieldGroupRequest** | **UpdateCustomFieldGroupRequest**|  |
+ **groupId** | [**string**] |  | defaults to undefined
+ **updateMask** | **Array<&#39;name&#39; &#124; &#39;tab_id&#39; &#124; &#39;order&#39;>** | Comma-separated list of fields to update | defaults to undefined
+
+
+### Return type
+
+**CustomFieldGroup**
 
 ### Authorization
 

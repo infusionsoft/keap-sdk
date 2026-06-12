@@ -5,18 +5,23 @@ All URIs are relative to *https://api.keap.com/crm*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createOpportunity**](OpportunityApi.md#createOpportunity) | **POST** /rest/v2/opportunities | Create an Opportunity
+[**createOpportunityCustomFieldGroup**](OpportunityApi.md#createOpportunityCustomFieldGroup) | **POST** /rest/v2/opportunities/model/customFields/groups | Create an Opportunity Custom Field Group
 [**createOpportunityCustomFields**](OpportunityApi.md#createOpportunityCustomFields) | **POST** /rest/v2/opportunities/model/customFields | Create an Opportunity Custom Field
 [**createOpportunityStage**](OpportunityApi.md#createOpportunityStage) | **POST** /rest/v2/opportunities/stages | Create an Opportunity Stage
+[**deleteOpportunitiesCustomField**](OpportunityApi.md#deleteOpportunitiesCustomField) | **DELETE** /rest/v2/opportunities/model/customFields/{custom_field_id} | Delete an Opportunity Custom Field
 [**deleteOpportunity**](OpportunityApi.md#deleteOpportunity) | **DELETE** /rest/v2/opportunities/{opportunity_id} | Delete an Opportunity
+[**deleteOpportunityCustomFieldGroup**](OpportunityApi.md#deleteOpportunityCustomFieldGroup) | **DELETE** /rest/v2/opportunities/model/customFields/groups/{group_id} | Delete an Opportunity Custom Field Group
 [**deleteOpportunityStage**](OpportunityApi.md#deleteOpportunityStage) | **DELETE** /rest/v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage
-[**deleteOpportunityesCustomField**](OpportunityApi.md#deleteOpportunityesCustomField) | **DELETE** /rest/v2/opportunities/model/customFields/{custom_field_id} | Delete an Opportunity Custom Field
 [**getOpportunity**](OpportunityApi.md#getOpportunity) | **GET** /rest/v2/opportunities/{opportunity_id} | Retrieve a Opportunity
+[**getOpportunityCustomFieldGroup**](OpportunityApi.md#getOpportunityCustomFieldGroup) | **GET** /rest/v2/opportunities/model/customFields/groups/{group_id} | Retrieve an Opportunity Custom Field Group
 [**getOpportunityStage**](OpportunityApi.md#getOpportunityStage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
 [**listOpportunities**](OpportunityApi.md#listOpportunities) | **GET** /rest/v2/opportunities | List Opportunities
+[**listOpportunityCustomFieldGroups**](OpportunityApi.md#listOpportunityCustomFieldGroups) | **GET** /rest/v2/opportunities/model/customFields/groups | List Opportunity Custom Field Groups
 [**listOpportunityStages**](OpportunityApi.md#listOpportunityStages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages
 [**retrieveOpportunityCustomFieldModel**](OpportunityApi.md#retrieveOpportunityCustomFieldModel) | **GET** /rest/v2/opportunities/model | Retrieve Opportunity Custom Field Model
 [**updateOpportunity**](OpportunityApi.md#updateOpportunity) | **PATCH** /rest/v2/opportunities/{opportunity_id} | Update an opportunity
 [**updateOpportunityCustomField**](OpportunityApi.md#updateOpportunityCustomField) | **PATCH** /rest/v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field
+[**updateOpportunityCustomFieldGroup**](OpportunityApi.md#updateOpportunityCustomFieldGroup) | **PATCH** /rest/v2/opportunities/model/customFields/groups/{group_id} | Update an Opportunity Custom Field Group
 [**updateOpportunityStage**](OpportunityApi.md#updateOpportunityStage) | **PATCH** /rest/v2/opportunities/stages/{stage_id} | Update an Opportunity Stage
 
 
@@ -62,6 +67,54 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RestV2Opportunity**](RestV2Opportunity.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## createOpportunityCustomFieldGroup
+
+> CustomFieldGroup createOpportunityCustomFieldGroup(createCustomFieldGroupRequest)
+
+Create an Opportunity Custom Field Group
+
+Creates a new custom field group for the Opportunity record type. If &#x60;tab_id&#x60; is omitted, the group is added to the default &#39;Custom Fields&#39; tab.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.OpportunityApi();
+let createCustomFieldGroupRequest = new KeapCoreServiceV2Sdk.CreateCustomFieldGroupRequest(); // CreateCustomFieldGroupRequest | 
+apiInstance.createOpportunityCustomFieldGroup(createCustomFieldGroupRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCustomFieldGroupRequest** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 
@@ -169,6 +222,54 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## deleteOpportunitiesCustomField
+
+> deleteOpportunitiesCustomField(customFieldId)
+
+Delete an Opportunity Custom Field
+
+Deletes a Custom Field from Opportunity.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.OpportunityApi();
+let customFieldId = "customFieldId_example"; // String | 
+apiInstance.deleteOpportunitiesCustomField(customFieldId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customFieldId** | **String**|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## deleteOpportunity
 
 > deleteOpportunity(opportunityId)
@@ -202,6 +303,54 @@ apiInstance.deleteOpportunity(opportunityId).then(() => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **opportunityId** | **String**|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## deleteOpportunityCustomFieldGroup
+
+> deleteOpportunityCustomFieldGroup(groupId)
+
+Delete an Opportunity Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.OpportunityApi();
+let groupId = "groupId_example"; // String | 
+apiInstance.deleteOpportunityCustomFieldGroup(groupId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **String**|  | 
 
 ### Return type
 
@@ -265,54 +414,6 @@ null (empty response body)
 - **Accept**: application/json
 
 
-## deleteOpportunityesCustomField
-
-> deleteOpportunityesCustomField(customFieldId)
-
-Delete an Opportunity Custom Field
-
-Deletes a Custom Field from Opportunity.
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
-// Configure OAuth2 access token for authorization: oauth2
-let oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = 'YOUR ACCESS TOKEN';
-
-let apiInstance = new KeapCoreServiceV2Sdk.OpportunityApi();
-let customFieldId = "customFieldId_example"; // String | 
-apiInstance.deleteOpportunityesCustomField(customFieldId).then(() => {
-  console.log('API called successfully.');
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customFieldId** | **String**|  | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## getOpportunity
 
 > RestV2Opportunity getOpportunity(opportunityId, opts)
@@ -354,6 +455,54 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RestV2Opportunity**](RestV2Opportunity.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getOpportunityCustomFieldGroup
+
+> CustomFieldGroup getOpportunityCustomFieldGroup(groupId)
+
+Retrieve an Opportunity Custom Field Group
+
+Retrieves a single custom field group by id for the Opportunity record type.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.OpportunityApi();
+let groupId = "groupId_example"; // String | 
+apiInstance.getOpportunityCustomFieldGroup(groupId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **String**|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 
@@ -460,6 +609,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListOpportunitiesResponse**](ListOpportunitiesResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## listOpportunityCustomFieldGroups
+
+> ListCustomFieldGroupsResponse listOpportunityCustomFieldGroups(opts)
+
+List Opportunity Custom Field Groups
+
+Retrieves a list of custom field groups for the Opportunity record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.OpportunityApi();
+let opts = {
+  'tabId': "tabId_example" // String | Optional tab id to scope groups to a single tab
+};
+apiInstance.listOpportunityCustomFieldGroups(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tabId** | **String**| Optional tab id to scope groups to a single tab | [optional] 
+
+### Return type
+
+[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
 
 ### Authorization
 
@@ -670,6 +869,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomFieldMetaData**](CustomFieldMetaData.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## updateOpportunityCustomFieldGroup
+
+> CustomFieldGroup updateOpportunityCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest)
+
+Update an Opportunity Custom Field Group
+
+Updates an existing custom field group. Only fields listed in &#x60;update_mask&#x60; are applied.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.OpportunityApi();
+let groupId = "groupId_example"; // String | 
+let updateMask = ["null"]; // [String] | Comma-separated list of fields to update
+let updateCustomFieldGroupRequest = new KeapCoreServiceV2Sdk.UpdateCustomFieldGroupRequest(); // UpdateCustomFieldGroupRequest | 
+apiInstance.updateOpportunityCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **String**|  | 
+ **updateMask** | [**[String]**](String.md)| Comma-separated list of fields to update | 
+ **updateCustomFieldGroupRequest** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 

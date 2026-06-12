@@ -5,18 +5,23 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**createOpportunity()**](OpportunityApi.md#createOpportunity) | **POST** /rest/v2/opportunities | Create an Opportunity |
+| [**createOpportunityCustomFieldGroup()**](OpportunityApi.md#createOpportunityCustomFieldGroup) | **POST** /rest/v2/opportunities/model/customFields/groups | Create an Opportunity Custom Field Group |
 | [**createOpportunityCustomFields()**](OpportunityApi.md#createOpportunityCustomFields) | **POST** /rest/v2/opportunities/model/customFields | Create an Opportunity Custom Field |
 | [**createOpportunityStage()**](OpportunityApi.md#createOpportunityStage) | **POST** /rest/v2/opportunities/stages | Create an Opportunity Stage |
+| [**deleteOpportunitiesCustomField()**](OpportunityApi.md#deleteOpportunitiesCustomField) | **DELETE** /rest/v2/opportunities/model/customFields/{custom_field_id} | Delete an Opportunity Custom Field |
 | [**deleteOpportunity()**](OpportunityApi.md#deleteOpportunity) | **DELETE** /rest/v2/opportunities/{opportunity_id} | Delete an Opportunity |
+| [**deleteOpportunityCustomFieldGroup()**](OpportunityApi.md#deleteOpportunityCustomFieldGroup) | **DELETE** /rest/v2/opportunities/model/customFields/groups/{group_id} | Delete an Opportunity Custom Field Group |
 | [**deleteOpportunityStage()**](OpportunityApi.md#deleteOpportunityStage) | **DELETE** /rest/v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage |
-| [**deleteOpportunityesCustomField()**](OpportunityApi.md#deleteOpportunityesCustomField) | **DELETE** /rest/v2/opportunities/model/customFields/{custom_field_id} | Delete an Opportunity Custom Field |
 | [**getOpportunity()**](OpportunityApi.md#getOpportunity) | **GET** /rest/v2/opportunities/{opportunity_id} | Retrieve a Opportunity |
+| [**getOpportunityCustomFieldGroup()**](OpportunityApi.md#getOpportunityCustomFieldGroup) | **GET** /rest/v2/opportunities/model/customFields/groups/{group_id} | Retrieve an Opportunity Custom Field Group |
 | [**getOpportunityStage()**](OpportunityApi.md#getOpportunityStage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage |
 | [**listOpportunities()**](OpportunityApi.md#listOpportunities) | **GET** /rest/v2/opportunities | List Opportunities |
+| [**listOpportunityCustomFieldGroups()**](OpportunityApi.md#listOpportunityCustomFieldGroups) | **GET** /rest/v2/opportunities/model/customFields/groups | List Opportunity Custom Field Groups |
 | [**listOpportunityStages()**](OpportunityApi.md#listOpportunityStages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages |
 | [**retrieveOpportunityCustomFieldModel()**](OpportunityApi.md#retrieveOpportunityCustomFieldModel) | **GET** /rest/v2/opportunities/model | Retrieve Opportunity Custom Field Model |
 | [**updateOpportunity()**](OpportunityApi.md#updateOpportunity) | **PATCH** /rest/v2/opportunities/{opportunity_id} | Update an opportunity |
 | [**updateOpportunityCustomField()**](OpportunityApi.md#updateOpportunityCustomField) | **PATCH** /rest/v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field |
+| [**updateOpportunityCustomFieldGroup()**](OpportunityApi.md#updateOpportunityCustomFieldGroup) | **PATCH** /rest/v2/opportunities/model/customFields/groups/{group_id} | Update an Opportunity Custom Field Group |
 | [**updateOpportunityStage()**](OpportunityApi.md#updateOpportunityStage) | **PATCH** /rest/v2/opportunities/stages/{stage_id} | Update an Opportunity Stage |
 
 
@@ -67,6 +72,65 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\RestV2Opportunity**](../Model/RestV2Opportunity.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createOpportunityCustomFieldGroup()`
+
+```php
+createOpportunityCustomFieldGroup($create_custom_field_group_request): \Keap\Core\V2\Model\CustomFieldGroup
+```
+
+Create an Opportunity Custom Field Group
+
+Creates a new custom field group for the Opportunity record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\OpportunityApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_custom_field_group_request = new \Keap\Core\V2\Model\CreateCustomFieldGroupRequest(); // \Keap\Core\V2\Model\CreateCustomFieldGroupRequest
+
+try {
+    $result = $apiInstance->createOpportunityCustomFieldGroup($create_custom_field_group_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OpportunityApi->createOpportunityCustomFieldGroup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_custom_field_group_request** | [**\Keap\Core\V2\Model\CreateCustomFieldGroupRequest**](../Model/CreateCustomFieldGroupRequest.md)|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\CustomFieldGroup**](../Model/CustomFieldGroup.md)
 
 ### Authorization
 
@@ -199,6 +263,64 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `deleteOpportunitiesCustomField()`
+
+```php
+deleteOpportunitiesCustomField($custom_field_id)
+```
+
+Delete an Opportunity Custom Field
+
+Deletes a Custom Field from Opportunity.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\OpportunityApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$custom_field_id = 'custom_field_id_example'; // string
+
+try {
+    $apiInstance->deleteOpportunitiesCustomField($custom_field_id);
+} catch (Exception $e) {
+    echo 'Exception when calling OpportunityApi->deleteOpportunitiesCustomField: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **custom_field_id** | **string**|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteOpportunity()`
 
 ```php
@@ -239,6 +361,64 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **opportunity_id** | **string**|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteOpportunityCustomFieldGroup()`
+
+```php
+deleteOpportunityCustomFieldGroup($group_id)
+```
+
+Delete an Opportunity Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\OpportunityApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 'group_id_example'; // string
+
+try {
+    $apiInstance->deleteOpportunityCustomFieldGroup($group_id);
+} catch (Exception $e) {
+    echo 'Exception when calling OpportunityApi->deleteOpportunityCustomFieldGroup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**|  | |
 
 ### Return type
 
@@ -315,64 +495,6 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteOpportunityesCustomField()`
-
-```php
-deleteOpportunityesCustomField($custom_field_id)
-```
-
-Delete an Opportunity Custom Field
-
-Deletes a Custom Field from Opportunity.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$apiInstance = new Keap\Core\V2\Api\OpportunityApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$custom_field_id = 'custom_field_id_example'; // string
-
-try {
-    $apiInstance->deleteOpportunityesCustomField($custom_field_id);
-} catch (Exception $e) {
-    echo 'Exception when calling OpportunityApi->deleteOpportunityesCustomField: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **custom_field_id** | **string**|  | |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `getOpportunity()`
 
 ```php
@@ -420,6 +542,65 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\RestV2Opportunity**](../Model/RestV2Opportunity.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getOpportunityCustomFieldGroup()`
+
+```php
+getOpportunityCustomFieldGroup($group_id): \Keap\Core\V2\Model\CustomFieldGroup
+```
+
+Retrieve an Opportunity Custom Field Group
+
+Retrieves a single custom field group by id for the Opportunity record type.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\OpportunityApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 'group_id_example'; // string
+
+try {
+    $result = $apiInstance->getOpportunityCustomFieldGroup($group_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OpportunityApi->getOpportunityCustomFieldGroup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\CustomFieldGroup**](../Model/CustomFieldGroup.md)
 
 ### Authorization
 
@@ -546,6 +727,65 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\ListOpportunitiesResponse**](../Model/ListOpportunitiesResponse.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listOpportunityCustomFieldGroups()`
+
+```php
+listOpportunityCustomFieldGroups($tab_id): \Keap\Core\V2\Model\ListCustomFieldGroupsResponse
+```
+
+List Opportunity Custom Field Groups
+
+Retrieves a list of custom field groups for the Opportunity record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\OpportunityApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tab_id = 'tab_id_example'; // string | Optional tab id to scope groups to a single tab
+
+try {
+    $result = $apiInstance->listOpportunityCustomFieldGroups($tab_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OpportunityApi->listOpportunityCustomFieldGroups: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tab_id** | **string**| Optional tab id to scope groups to a single tab | [optional] |
+
+### Return type
+
+[**\Keap\Core\V2\Model\ListCustomFieldGroupsResponse**](../Model/ListCustomFieldGroupsResponse.md)
 
 ### Authorization
 
@@ -795,6 +1035,69 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\CustomFieldMetaData**](../Model/CustomFieldMetaData.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateOpportunityCustomFieldGroup()`
+
+```php
+updateOpportunityCustomFieldGroup($group_id, $update_mask, $update_custom_field_group_request): \Keap\Core\V2\Model\CustomFieldGroup
+```
+
+Update an Opportunity Custom Field Group
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\OpportunityApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 'group_id_example'; // string
+$update_mask = array('update_mask_example'); // string[] | Comma-separated list of fields to update
+$update_custom_field_group_request = new \Keap\Core\V2\Model\UpdateCustomFieldGroupRequest(); // \Keap\Core\V2\Model\UpdateCustomFieldGroupRequest
+
+try {
+    $result = $apiInstance->updateOpportunityCustomFieldGroup($group_id, $update_mask, $update_custom_field_group_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OpportunityApi->updateOpportunityCustomFieldGroup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**|  | |
+| **update_mask** | [**string[]**](../Model/string.md)| Comma-separated list of fields to update | |
+| **update_custom_field_group_request** | [**\Keap\Core\V2\Model\UpdateCustomFieldGroupRequest**](../Model/UpdateCustomFieldGroupRequest.md)|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\CustomFieldGroup**](../Model/CustomFieldGroup.md)
 
 ### Authorization
 

@@ -300,12 +300,12 @@ class CreateSubscriptionPlanRequest implements ModelInterface, ArrayAccess, \Jso
     public function __construct(?array $data = null)
     {
         $this->setIfExists('active', $data ?? [], null);
-        $this->setIfExists('frequency', $data ?? [], null);
+        $this->setIfExists('frequency', $data ?? [], 1);
         $this->setIfExists('allow_prorating', $data ?? [], null);
         $this->setIfExists('cycle_type', $data ?? [], null);
-        $this->setIfExists('display_order_index', $data ?? [], null);
+        $this->setIfExists('display_order_index', $data ?? [], 0);
         $this->setIfExists('plan_price', $data ?? [], null);
-        $this->setIfExists('total_cycles', $data ?? [], null);
+        $this->setIfExists('total_cycles', $data ?? [], 0);
     }
 
     /**
@@ -496,7 +496,7 @@ class CreateSubscriptionPlanRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets display_order_index
      *
-     * @param int|null $display_order_index The order that this plan will be displayed to the user.
+     * @param int|null $display_order_index The order that this plan will be displayed to the user. Lower values indicate higher priority in order.
      *
      * @return self
      */

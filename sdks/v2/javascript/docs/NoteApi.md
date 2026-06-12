@@ -6,14 +6,19 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createNote**](NoteApi.md#createNote) | **POST** /rest/v2/contacts/{contact_id}/notes | Create a Note
 [**createNoteCustomField**](NoteApi.md#createNoteCustomField) | **POST** /rest/v2/notes/model/customFields | Create a Custom Field
+[**createNoteCustomFieldGroup**](NoteApi.md#createNoteCustomFieldGroup) | **POST** /rest/v2/notes/model/customFields/groups | Create a Note Custom Field Group
 [**deleteNote**](NoteApi.md#deleteNote) | **DELETE** /rest/v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
+[**deleteNoteCustomFieldGroup**](NoteApi.md#deleteNoteCustomFieldGroup) | **DELETE** /rest/v2/notes/model/customFields/groups/{group_id} | Delete a Note Custom Field Group
 [**deleteNotesCustomField**](NoteApi.md#deleteNotesCustomField) | **DELETE** /rest/v2/notes/model/customFields/{custom_field_id} | Delete a Note Custom Field
 [**getNote**](NoteApi.md#getNote) | **GET** /rest/v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
+[**getNoteCustomFieldGroup**](NoteApi.md#getNoteCustomFieldGroup) | **GET** /rest/v2/notes/model/customFields/groups/{group_id} | Retrieve a Note Custom Field Group
 [**listAllNotes**](NoteApi.md#listAllNotes) | **GET** /rest/v2/notes | List All Notes
+[**listNoteCustomFieldGroups**](NoteApi.md#listNoteCustomFieldGroups) | **GET** /rest/v2/notes/model/customFields/groups | List Note Custom Field Groups
 [**listNoteTemplates**](NoteApi.md#listNoteTemplates) | **GET** /rest/v2/notes/templates | Retrieve Note Templates
 [**listNotes**](NoteApi.md#listNotes) | **GET** /rest/v2/contacts/{contact_id}/notes | List Notes
 [**retrieveNoteModel**](NoteApi.md#retrieveNoteModel) | **GET** /rest/v2/notes/model | Retrieve Note Model
 [**updateNote**](NoteApi.md#updateNote) | **PATCH** /rest/v2/contacts/{contact_id}/notes/{note_id} | Update a Note
+[**updateNoteCustomFieldGroup**](NoteApi.md#updateNoteCustomFieldGroup) | **PATCH** /rest/v2/notes/model/customFields/groups/{group_id} | Update a Note Custom Field Group
 [**updateNotesCustomField**](NoteApi.md#updateNotesCustomField) | **PATCH** /rest/v2/notes/model/customFields/{custom_field_id} | Update a Custom Field
 
 
@@ -120,6 +125,54 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## createNoteCustomFieldGroup
+
+> CustomFieldGroup createNoteCustomFieldGroup(createCustomFieldGroupRequest)
+
+Create a Note Custom Field Group
+
+Creates a new custom field group for the Note record type. If &#x60;tab_id&#x60; is omitted, the group is added to the default &#39;Custom Fields&#39; tab.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.NoteApi();
+let createCustomFieldGroupRequest = new KeapCoreServiceV2Sdk.CreateCustomFieldGroupRequest(); // CreateCustomFieldGroupRequest | 
+apiInstance.createNoteCustomFieldGroup(createCustomFieldGroupRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCustomFieldGroupRequest** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## deleteNote
 
 > deleteNote(contactId, noteId)
@@ -155,6 +208,54 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contactId** | **String**|  | 
  **noteId** | **String**|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## deleteNoteCustomFieldGroup
+
+> deleteNoteCustomFieldGroup(groupId)
+
+Delete a Note Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.NoteApi();
+let groupId = "groupId_example"; // String | 
+apiInstance.deleteNoteCustomFieldGroup(groupId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **String**|  | 
 
 ### Return type
 
@@ -272,6 +373,54 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## getNoteCustomFieldGroup
+
+> CustomFieldGroup getNoteCustomFieldGroup(groupId)
+
+Retrieve a Note Custom Field Group
+
+Retrieves a single custom field group by id for the Note record type.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.NoteApi();
+let groupId = "groupId_example"; // String | 
+apiInstance.getNoteCustomFieldGroup(groupId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **String**|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## listAllNotes
 
 > ListNotesResponse listAllNotes(opts)
@@ -319,6 +468,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListNotesResponse**](ListNotesResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## listNoteCustomFieldGroups
+
+> ListCustomFieldGroupsResponse listNoteCustomFieldGroups(opts)
+
+List Note Custom Field Groups
+
+Retrieves a list of custom field groups for the Note record type. Optionally filter by tab_id to scope to a specific tab.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.NoteApi();
+let opts = {
+  'tabId': "tabId_example" // String | Optional tab id to scope groups to a single tab
+};
+apiInstance.listNoteCustomFieldGroups(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tabId** | **String**| Optional tab id to scope groups to a single tab | [optional] 
+
+### Return type
+
+[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
 
 ### Authorization
 
@@ -537,6 +736,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateNoteResponse**](UpdateNoteResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## updateNoteCustomFieldGroup
+
+> CustomFieldGroup updateNoteCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest)
+
+Update a Note Custom Field Group
+
+Updates an existing custom field group. Only fields listed in &#x60;update_mask&#x60; are applied.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.NoteApi();
+let groupId = "groupId_example"; // String | 
+let updateMask = ["null"]; // [String] | Comma-separated list of fields to update
+let updateCustomFieldGroupRequest = new KeapCoreServiceV2Sdk.UpdateCustomFieldGroupRequest(); // UpdateCustomFieldGroupRequest | 
+apiInstance.updateNoteCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **String**|  | 
+ **updateMask** | [**[String]**](String.md)| Comma-separated list of fields to update | 
+ **updateCustomFieldGroupRequest** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 

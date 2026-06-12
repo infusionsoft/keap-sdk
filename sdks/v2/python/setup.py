@@ -21,10 +21,10 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "keap-core-v2-sdk"
-VERSION = "2.0.13"
+VERSION = "2.0.14"
 PYTHON_REQUIRES = ">= 3.9"
 REQUIRES = [
-    "urllib3 >= 2.1.0, < 3.0.0",
+    "urllib3 >= 2.7.0, < 3.0.0",
     "python-dateutil >= 2.8.2",
     "pydantic >= 2",
     "typing-extensions >= 4.7.1",

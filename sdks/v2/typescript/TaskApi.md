@@ -6,13 +6,18 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createTask**](TaskApi.md#createTask) | **POST** /rest/v2/tasks | Create a Task
 [**createTaskCustomField**](TaskApi.md#createTaskCustomField) | **POST** /rest/v2/tasks/model/customFields | Create a Custom Field
+[**createTaskCustomFieldGroup**](TaskApi.md#createTaskCustomFieldGroup) | **POST** /rest/v2/tasks/model/customFields/groups | Create a Task Custom Field Group
 [**deleteTask**](TaskApi.md#deleteTask) | **DELETE** /rest/v2/tasks/{task_id} | Delete a Task
 [**deleteTaskCustomField**](TaskApi.md#deleteTaskCustomField) | **DELETE** /rest/v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field
+[**deleteTaskCustomFieldGroup**](TaskApi.md#deleteTaskCustomFieldGroup) | **DELETE** /rest/v2/tasks/model/customFields/groups/{group_id} | Delete a Task Custom Field Group
 [**getTask**](TaskApi.md#getTask) | **GET** /rest/v2/tasks/{task_id} | Retrieve a Task
+[**getTaskCustomFieldGroup**](TaskApi.md#getTaskCustomFieldGroup) | **GET** /rest/v2/tasks/model/customFields/groups/{group_id} | Retrieve a Task Custom Field Group
+[**listTaskCustomFieldGroups**](TaskApi.md#listTaskCustomFieldGroups) | **GET** /rest/v2/tasks/model/customFields/groups | List Task Custom Field Groups
 [**listTasks**](TaskApi.md#listTasks) | **GET** /rest/v2/tasks | List Tasks
 [**retrieveTaskModel**](TaskApi.md#retrieveTaskModel) | **GET** /rest/v2/tasks/model | Retrieve Task Model
 [**updateTask**](TaskApi.md#updateTask) | **PATCH** /rest/v2/tasks/{task_id} | Update a Task
 [**updateTaskCustomField**](TaskApi.md#updateTaskCustomField) | **PATCH** /rest/v2/tasks/model/customFields/{custom_field_id} | Update a Task\&#39;s Custom Field
+[**updateTaskCustomFieldGroup**](TaskApi.md#updateTaskCustomFieldGroup) | **PATCH** /rest/v2/tasks/model/customFields/groups/{group_id} | Update a Task Custom Field Group
 
 
 # **createTask**
@@ -171,6 +176,70 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **createTaskCustomFieldGroup**
+> CustomFieldGroup createTaskCustomFieldGroup(createCustomFieldGroupRequest)
+
+Creates a new custom field group for the Task record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+
+```typescript
+import { createConfiguration, TaskApi } from '';
+import type { TaskApiCreateTaskCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new TaskApi(configuration);
+
+const request: TaskApiCreateTaskCustomFieldGroupRequest = {
+  
+  createCustomFieldGroupRequest: {
+    name: "name_example",
+    tabId: "tabId_example",
+  },
+};
+
+const data = await apiInstance.createTaskCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCustomFieldGroupRequest** | **CreateCustomFieldGroupRequest**|  |
+
+
+### Return type
+
+**CustomFieldGroup**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **deleteTask**
 > void deleteTask()
 
@@ -293,6 +362,67 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **deleteTaskCustomFieldGroup**
+> void deleteTaskCustomFieldGroup()
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+
+```typescript
+import { createConfiguration, TaskApi } from '';
+import type { TaskApiDeleteTaskCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new TaskApi(configuration);
+
+const request: TaskApiDeleteTaskCustomFieldGroupRequest = {
+  
+  groupId: "group_id_example",
+};
+
+const data = await apiInstance.deleteTaskCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **getTask**
 > Task getTask()
 
@@ -333,6 +463,128 @@ Name | Type | Description  | Notes
 ### Return type
 
 **Task**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getTaskCustomFieldGroup**
+> CustomFieldGroup getTaskCustomFieldGroup()
+
+Retrieves a single custom field group by id for the Task record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+
+```typescript
+import { createConfiguration, TaskApi } from '';
+import type { TaskApiGetTaskCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new TaskApi(configuration);
+
+const request: TaskApiGetTaskCustomFieldGroupRequest = {
+  
+  groupId: "group_id_example",
+};
+
+const data = await apiInstance.getTaskCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**CustomFieldGroup**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listTaskCustomFieldGroups**
+> ListCustomFieldGroupsResponse listTaskCustomFieldGroups()
+
+Retrieves a list of custom field groups for the Task record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+
+```typescript
+import { createConfiguration, TaskApi } from '';
+import type { TaskApiListTaskCustomFieldGroupsRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new TaskApi(configuration);
+
+const request: TaskApiListTaskCustomFieldGroupsRequest = {
+    // Optional tab id to scope groups to a single tab (optional)
+  tabId: "tab_id_example",
+};
+
+const data = await apiInstance.listTaskCustomFieldGroups(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tabId** | [**string**] | Optional tab id to scope groups to a single tab | (optional) defaults to undefined
+
+
+### Return type
+
+**ListCustomFieldGroupsResponse**
 
 ### Authorization
 
@@ -633,6 +885,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 **CustomFieldMetaData**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **updateTaskCustomFieldGroup**
+> CustomFieldGroup updateTaskCustomFieldGroup(updateCustomFieldGroupRequest)
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+
+```typescript
+import { createConfiguration, TaskApi } from '';
+import type { TaskApiUpdateTaskCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new TaskApi(configuration);
+
+const request: TaskApiUpdateTaskCustomFieldGroupRequest = {
+  
+  groupId: "group_id_example",
+    // Comma-separated list of fields to update
+  updateMask: [
+    "name",
+  ],
+  
+  updateCustomFieldGroupRequest: {
+    name: "name_example",
+    order: 1,
+    tabId: "tabId_example",
+  },
+};
+
+const data = await apiInstance.updateTaskCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateCustomFieldGroupRequest** | **UpdateCustomFieldGroupRequest**|  |
+ **groupId** | [**string**] |  | defaults to undefined
+ **updateMask** | **Array<&#39;name&#39; &#124; &#39;tab_id&#39; &#124; &#39;order&#39;>** | Comma-separated list of fields to update | defaults to undefined
+
+
+### Return type
+
+**CustomFieldGroup**
 
 ### Authorization
 

@@ -8,14 +8,22 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**createNoteWithHttpInfo**](NoteApi.md#createNoteWithHttpInfo) | **POST** /rest/v2/contacts/{contact_id}/notes | Create a Note |
 | [**createNoteCustomField**](NoteApi.md#createNoteCustomField) | **POST** /rest/v2/notes/model/customFields | Create a Custom Field |
 | [**createNoteCustomFieldWithHttpInfo**](NoteApi.md#createNoteCustomFieldWithHttpInfo) | **POST** /rest/v2/notes/model/customFields | Create a Custom Field |
+| [**createNoteCustomFieldGroup**](NoteApi.md#createNoteCustomFieldGroup) | **POST** /rest/v2/notes/model/customFields/groups | Create a Note Custom Field Group |
+| [**createNoteCustomFieldGroupWithHttpInfo**](NoteApi.md#createNoteCustomFieldGroupWithHttpInfo) | **POST** /rest/v2/notes/model/customFields/groups | Create a Note Custom Field Group |
 | [**deleteNote**](NoteApi.md#deleteNote) | **DELETE** /rest/v2/contacts/{contact_id}/notes/{note_id} | Delete a Note |
 | [**deleteNoteWithHttpInfo**](NoteApi.md#deleteNoteWithHttpInfo) | **DELETE** /rest/v2/contacts/{contact_id}/notes/{note_id} | Delete a Note |
+| [**deleteNoteCustomFieldGroup**](NoteApi.md#deleteNoteCustomFieldGroup) | **DELETE** /rest/v2/notes/model/customFields/groups/{group_id} | Delete a Note Custom Field Group |
+| [**deleteNoteCustomFieldGroupWithHttpInfo**](NoteApi.md#deleteNoteCustomFieldGroupWithHttpInfo) | **DELETE** /rest/v2/notes/model/customFields/groups/{group_id} | Delete a Note Custom Field Group |
 | [**deleteNotesCustomField**](NoteApi.md#deleteNotesCustomField) | **DELETE** /rest/v2/notes/model/customFields/{custom_field_id} | Delete a Note Custom Field |
 | [**deleteNotesCustomFieldWithHttpInfo**](NoteApi.md#deleteNotesCustomFieldWithHttpInfo) | **DELETE** /rest/v2/notes/model/customFields/{custom_field_id} | Delete a Note Custom Field |
 | [**getNote**](NoteApi.md#getNote) | **GET** /rest/v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note |
 | [**getNoteWithHttpInfo**](NoteApi.md#getNoteWithHttpInfo) | **GET** /rest/v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note |
+| [**getNoteCustomFieldGroup**](NoteApi.md#getNoteCustomFieldGroup) | **GET** /rest/v2/notes/model/customFields/groups/{group_id} | Retrieve a Note Custom Field Group |
+| [**getNoteCustomFieldGroupWithHttpInfo**](NoteApi.md#getNoteCustomFieldGroupWithHttpInfo) | **GET** /rest/v2/notes/model/customFields/groups/{group_id} | Retrieve a Note Custom Field Group |
 | [**listAllNotes**](NoteApi.md#listAllNotes) | **GET** /rest/v2/notes | List All Notes |
 | [**listAllNotesWithHttpInfo**](NoteApi.md#listAllNotesWithHttpInfo) | **GET** /rest/v2/notes | List All Notes |
+| [**listNoteCustomFieldGroups**](NoteApi.md#listNoteCustomFieldGroups) | **GET** /rest/v2/notes/model/customFields/groups | List Note Custom Field Groups |
+| [**listNoteCustomFieldGroupsWithHttpInfo**](NoteApi.md#listNoteCustomFieldGroupsWithHttpInfo) | **GET** /rest/v2/notes/model/customFields/groups | List Note Custom Field Groups |
 | [**listNoteTemplates**](NoteApi.md#listNoteTemplates) | **GET** /rest/v2/notes/templates | Retrieve Note Templates |
 | [**listNoteTemplatesWithHttpInfo**](NoteApi.md#listNoteTemplatesWithHttpInfo) | **GET** /rest/v2/notes/templates | Retrieve Note Templates |
 | [**listNotes**](NoteApi.md#listNotes) | **GET** /rest/v2/contacts/{contact_id}/notes | List Notes |
@@ -24,6 +32,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**retrieveNoteModelWithHttpInfo**](NoteApi.md#retrieveNoteModelWithHttpInfo) | **GET** /rest/v2/notes/model | Retrieve Note Model |
 | [**updateNote**](NoteApi.md#updateNote) | **PATCH** /rest/v2/contacts/{contact_id}/notes/{note_id} | Update a Note |
 | [**updateNoteWithHttpInfo**](NoteApi.md#updateNoteWithHttpInfo) | **PATCH** /rest/v2/contacts/{contact_id}/notes/{note_id} | Update a Note |
+| [**updateNoteCustomFieldGroup**](NoteApi.md#updateNoteCustomFieldGroup) | **PATCH** /rest/v2/notes/model/customFields/groups/{group_id} | Update a Note Custom Field Group |
+| [**updateNoteCustomFieldGroupWithHttpInfo**](NoteApi.md#updateNoteCustomFieldGroupWithHttpInfo) | **PATCH** /rest/v2/notes/model/customFields/groups/{group_id} | Update a Note Custom Field Group |
 | [**updateNotesCustomField**](NoteApi.md#updateNotesCustomField) | **PATCH** /rest/v2/notes/model/customFields/{custom_field_id} | Update a Custom Field |
 | [**updateNotesCustomFieldWithHttpInfo**](NoteApi.md#updateNotesCustomFieldWithHttpInfo) | **PATCH** /rest/v2/notes/model/customFields/{custom_field_id} | Update a Custom Field |
 
@@ -357,6 +367,166 @@ ApiResponse<[**CustomFieldMetaData**](CustomFieldMetaData.md)>
 | **501** | Method Not Implemented |  -  |
 
 
+## createNoteCustomFieldGroup
+
+> CustomFieldGroup createNoteCustomFieldGroup(createCustomFieldGroupRequest)
+
+Create a Note Custom Field Group
+
+Creates a new custom field group for the Note record type. If &#x60;tab_id&#x60; is omitted, the group is added to the default &#39;Custom Fields&#39; tab.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.NoteApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        NoteApi apiInstance = new NoteApi(defaultClient);
+        CreateCustomFieldGroupRequest createCustomFieldGroupRequest = new CreateCustomFieldGroupRequest(); // CreateCustomFieldGroupRequest | 
+        try {
+            CustomFieldGroup result = apiInstance.createNoteCustomFieldGroup(createCustomFieldGroupRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NoteApi#createNoteCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createCustomFieldGroupRequest** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md)|  | |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## createNoteCustomFieldGroupWithHttpInfo
+
+> ApiResponse<CustomFieldGroup> createNoteCustomFieldGroup createNoteCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest)
+
+Create a Note Custom Field Group
+
+Creates a new custom field group for the Note record type. If &#x60;tab_id&#x60; is omitted, the group is added to the default &#39;Custom Fields&#39; tab.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.NoteApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        NoteApi apiInstance = new NoteApi(defaultClient);
+        CreateCustomFieldGroupRequest createCustomFieldGroupRequest = new CreateCustomFieldGroupRequest(); // CreateCustomFieldGroupRequest | 
+        try {
+            ApiResponse<CustomFieldGroup> response = apiInstance.createNoteCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NoteApi#createNoteCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createCustomFieldGroupRequest** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md)|  | |
+
+### Return type
+
+ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## deleteNote
 
 > void deleteNote(contactId, noteId)
@@ -490,6 +660,164 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **contactId** | **String**|  | |
 | **noteId** | **String**|  | |
+
+### Return type
+
+
+ApiResponse<Void>
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## deleteNoteCustomFieldGroup
+
+> void deleteNoteCustomFieldGroup(groupId)
+
+Delete a Note Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.NoteApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        NoteApi apiInstance = new NoteApi(defaultClient);
+        String groupId = "groupId_example"; // String | 
+        try {
+            apiInstance.deleteNoteCustomFieldGroup(groupId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NoteApi#deleteNoteCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String**|  | |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## deleteNoteCustomFieldGroupWithHttpInfo
+
+> ApiResponse<Void> deleteNoteCustomFieldGroup deleteNoteCustomFieldGroupWithHttpInfo(groupId)
+
+Delete a Note Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.NoteApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        NoteApi apiInstance = new NoteApi(defaultClient);
+        String groupId = "groupId_example"; // String | 
+        try {
+            ApiResponse<Void> response = apiInstance.deleteNoteCustomFieldGroupWithHttpInfo(groupId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NoteApi#deleteNoteCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String**|  | |
 
 ### Return type
 
@@ -845,6 +1173,166 @@ ApiResponse<[**GetNoteResponse**](GetNoteResponse.md)>
 | **501** | Method Not Implemented |  -  |
 
 
+## getNoteCustomFieldGroup
+
+> CustomFieldGroup getNoteCustomFieldGroup(groupId)
+
+Retrieve a Note Custom Field Group
+
+Retrieves a single custom field group by id for the Note record type.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.NoteApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        NoteApi apiInstance = new NoteApi(defaultClient);
+        String groupId = "groupId_example"; // String | 
+        try {
+            CustomFieldGroup result = apiInstance.getNoteCustomFieldGroup(groupId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NoteApi#getNoteCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String**|  | |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## getNoteCustomFieldGroupWithHttpInfo
+
+> ApiResponse<CustomFieldGroup> getNoteCustomFieldGroup getNoteCustomFieldGroupWithHttpInfo(groupId)
+
+Retrieve a Note Custom Field Group
+
+Retrieves a single custom field group by id for the Note record type.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.NoteApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        NoteApi apiInstance = new NoteApi(defaultClient);
+        String groupId = "groupId_example"; // String | 
+        try {
+            ApiResponse<CustomFieldGroup> response = apiInstance.getNoteCustomFieldGroupWithHttpInfo(groupId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NoteApi#getNoteCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String**|  | |
+
+### Return type
+
+ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## listAllNotes
 
 > ListNotesResponse listAllNotes(filter, pageToken, orderBy, pageSize, fields)
@@ -996,6 +1484,166 @@ public class Example {
 ### Return type
 
 ApiResponse<[**ListNotesResponse**](ListNotesResponse.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## listNoteCustomFieldGroups
+
+> ListCustomFieldGroupsResponse listNoteCustomFieldGroups(tabId)
+
+List Note Custom Field Groups
+
+Retrieves a list of custom field groups for the Note record type. Optionally filter by tab_id to scope to a specific tab.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.NoteApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        NoteApi apiInstance = new NoteApi(defaultClient);
+        String tabId = "tabId_example"; // String | Optional tab id to scope groups to a single tab
+        try {
+            ListCustomFieldGroupsResponse result = apiInstance.listNoteCustomFieldGroups(tabId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NoteApi#listNoteCustomFieldGroups");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**| Optional tab id to scope groups to a single tab | [optional] |
+
+### Return type
+
+[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## listNoteCustomFieldGroupsWithHttpInfo
+
+> ApiResponse<ListCustomFieldGroupsResponse> listNoteCustomFieldGroups listNoteCustomFieldGroupsWithHttpInfo(tabId)
+
+List Note Custom Field Groups
+
+Retrieves a list of custom field groups for the Note record type. Optionally filter by tab_id to scope to a specific tab.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.NoteApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        NoteApi apiInstance = new NoteApi(defaultClient);
+        String tabId = "tabId_example"; // String | Optional tab id to scope groups to a single tab
+        try {
+            ApiResponse<ListCustomFieldGroupsResponse> response = apiInstance.listNoteCustomFieldGroupsWithHttpInfo(tabId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NoteApi#listNoteCustomFieldGroups");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**| Optional tab id to scope groups to a single tab | [optional] |
+
+### Return type
+
+ApiResponse<[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)>
 
 
 ### Authorization
@@ -1676,6 +2324,174 @@ public class Example {
 ### Return type
 
 ApiResponse<[**UpdateNoteResponse**](UpdateNoteResponse.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## updateNoteCustomFieldGroup
+
+> CustomFieldGroup updateNoteCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest)
+
+Update a Note Custom Field Group
+
+Updates an existing custom field group. Only fields listed in &#x60;update_mask&#x60; are applied.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.NoteApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        NoteApi apiInstance = new NoteApi(defaultClient);
+        String groupId = "groupId_example"; // String | 
+        Set<String> updateMask = Arrays.asList(); // Set<String> | Comma-separated list of fields to update
+        UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest = new UpdateCustomFieldGroupRequest(); // UpdateCustomFieldGroupRequest | 
+        try {
+            CustomFieldGroup result = apiInstance.updateNoteCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NoteApi#updateNoteCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String**|  | |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| Comma-separated list of fields to update | [enum: name, tab_id, order] |
+| **updateCustomFieldGroupRequest** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md)|  | |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## updateNoteCustomFieldGroupWithHttpInfo
+
+> ApiResponse<CustomFieldGroup> updateNoteCustomFieldGroup updateNoteCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest)
+
+Update a Note Custom Field Group
+
+Updates an existing custom field group. Only fields listed in &#x60;update_mask&#x60; are applied.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.NoteApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        NoteApi apiInstance = new NoteApi(defaultClient);
+        String groupId = "groupId_example"; // String | 
+        Set<String> updateMask = Arrays.asList(); // Set<String> | Comma-separated list of fields to update
+        UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest = new UpdateCustomFieldGroupRequest(); // UpdateCustomFieldGroupRequest | 
+        try {
+            ApiResponse<CustomFieldGroup> response = apiInstance.updateNoteCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NoteApi#updateNoteCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String**|  | |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| Comma-separated list of fields to update | [enum: name, tab_id, order] |
+| **updateCustomFieldGroupRequest** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md)|  | |
+
+### Return type
+
+ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
 
 
 ### Authorization

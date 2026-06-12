@@ -30,7 +30,7 @@ export class CreateSubscriptionPlanRequest {
     */
     'cycleType': CreateSubscriptionPlanRequestCycleTypeEnum;
     /**
-    * The order that this plan will be displayed to the user.
+    * The order that this plan will be displayed to the user. Lower values indicate higher priority in order.
     */
     'displayOrderIndex'?: number;
     /**

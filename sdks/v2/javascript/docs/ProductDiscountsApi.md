@@ -5,7 +5,9 @@ All URIs are relative to *https://api.keap.com/crm*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createProductDiscount**](ProductDiscountsApi.md#createProductDiscount) | **POST** /rest/v2/discounts/products | Create a Product Discount
+[**createProductDiscountCriteria**](ProductDiscountsApi.md#createProductDiscountCriteria) | **POST** /rest/v2/discounts/products/{discount_id}/criteria | Create a Product Discount Criteria
 [**deleteProductDiscount**](ProductDiscountsApi.md#deleteProductDiscount) | **DELETE** /rest/v2/discounts/products/{discount_id} | Delete a Product Discount
+[**deleteProductDiscountCriteria**](ProductDiscountsApi.md#deleteProductDiscountCriteria) | **DELETE** /rest/v2/discounts/products/{discount_id}/criteria/{criteria_id} | Delete a Product Discount Criteria
 [**getProductDiscount**](ProductDiscountsApi.md#getProductDiscount) | **GET** /rest/v2/discounts/products/{discount_id} | Retrieve a Product Discount
 [**listProductDiscounts**](ProductDiscountsApi.md#listProductDiscounts) | **GET** /rest/v2/discounts/products | List all Product Discounts
 [**updateProductDiscount**](ProductDiscountsApi.md#updateProductDiscount) | **PATCH** /rest/v2/discounts/products/{discount_id} | Update a Product Discount
@@ -60,6 +62,56 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## createProductDiscountCriteria
+
+> DiscountCriteria createProductDiscountCriteria(discountId, createProductDiscountCriteria)
+
+Create a Product Discount Criteria
+
+Creates a Product Discount Criteria
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.ProductDiscountsApi();
+let discountId = "discountId_example"; // String | 
+let createProductDiscountCriteria = new KeapCoreServiceV2Sdk.CreateProductDiscountCriteria(); // CreateProductDiscountCriteria | 
+apiInstance.createProductDiscountCriteria(discountId, createProductDiscountCriteria).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **discountId** | **String**|  | 
+ **createProductDiscountCriteria** | [**CreateProductDiscountCriteria**](CreateProductDiscountCriteria.md)|  | 
+
+### Return type
+
+[**DiscountCriteria**](DiscountCriteria.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## deleteProductDiscount
 
 > deleteProductDiscount(discountId)
@@ -93,6 +145,56 @@ apiInstance.deleteProductDiscount(discountId).then(() => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **discountId** | **String**|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## deleteProductDiscountCriteria
+
+> deleteProductDiscountCriteria(discountId, criteriaId)
+
+Delete a Product Discount Criteria
+
+Deletes a specified Product Discount Criteria
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.ProductDiscountsApi();
+let discountId = "discountId_example"; // String | 
+let criteriaId = "criteriaId_example"; // String | 
+apiInstance.deleteProductDiscountCriteria(discountId, criteriaId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **discountId** | **String**|  | 
+ **criteriaId** | **String**|  | 
 
 ### Return type
 

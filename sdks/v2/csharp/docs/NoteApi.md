@@ -6,14 +6,19 @@ All URIs are relative to *https://api.keap.com/crm*
 |--------|--------------|-------------|
 | [**CreateNote**](NoteApi.md#createnote) | **POST** /rest/v2/contacts/{contact_id}/notes | Create a Note |
 | [**CreateNoteCustomField**](NoteApi.md#createnotecustomfield) | **POST** /rest/v2/notes/model/customFields | Create a Custom Field |
+| [**CreateNoteCustomFieldGroup**](NoteApi.md#createnotecustomfieldgroup) | **POST** /rest/v2/notes/model/customFields/groups | Create a Note Custom Field Group |
 | [**DeleteNote**](NoteApi.md#deletenote) | **DELETE** /rest/v2/contacts/{contact_id}/notes/{note_id} | Delete a Note |
+| [**DeleteNoteCustomFieldGroup**](NoteApi.md#deletenotecustomfieldgroup) | **DELETE** /rest/v2/notes/model/customFields/groups/{group_id} | Delete a Note Custom Field Group |
 | [**DeleteNotesCustomField**](NoteApi.md#deletenotescustomfield) | **DELETE** /rest/v2/notes/model/customFields/{custom_field_id} | Delete a Note Custom Field |
 | [**GetNote**](NoteApi.md#getnote) | **GET** /rest/v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note |
+| [**GetNoteCustomFieldGroup**](NoteApi.md#getnotecustomfieldgroup) | **GET** /rest/v2/notes/model/customFields/groups/{group_id} | Retrieve a Note Custom Field Group |
 | [**ListAllNotes**](NoteApi.md#listallnotes) | **GET** /rest/v2/notes | List All Notes |
+| [**ListNoteCustomFieldGroups**](NoteApi.md#listnotecustomfieldgroups) | **GET** /rest/v2/notes/model/customFields/groups | List Note Custom Field Groups |
 | [**ListNoteTemplates**](NoteApi.md#listnotetemplates) | **GET** /rest/v2/notes/templates | Retrieve Note Templates |
 | [**ListNotes**](NoteApi.md#listnotes) | **GET** /rest/v2/contacts/{contact_id}/notes | List Notes |
 | [**RetrieveNoteModel**](NoteApi.md#retrievenotemodel) | **GET** /rest/v2/notes/model | Retrieve Note Model |
 | [**UpdateNote**](NoteApi.md#updatenote) | **PATCH** /rest/v2/contacts/{contact_id}/notes/{note_id} | Update a Note |
+| [**UpdateNoteCustomFieldGroup**](NoteApi.md#updatenotecustomfieldgroup) | **PATCH** /rest/v2/notes/model/customFields/groups/{group_id} | Update a Note Custom Field Group |
 | [**UpdateNotesCustomField**](NoteApi.md#updatenotescustomfield) | **PATCH** /rest/v2/notes/model/customFields/{custom_field_id} | Update a Custom Field |
 
 <a id="createnote"></a>
@@ -224,6 +229,108 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="createnotecustomfieldgroup"></a>
+# **CreateNoteCustomFieldGroup**
+> CustomFieldGroup CreateNoteCustomFieldGroup (CreateCustomFieldGroupRequest createCustomFieldGroupRequest)
+
+Create a Note Custom Field Group
+
+Creates a new custom field group for the Note record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class CreateNoteCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new NoteApi(config);
+            var createCustomFieldGroupRequest = new CreateCustomFieldGroupRequest(); // CreateCustomFieldGroupRequest | 
+
+            try
+            {
+                // Create a Note Custom Field Group
+                CustomFieldGroup result = apiInstance.CreateNoteCustomFieldGroup(createCustomFieldGroupRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling NoteApi.CreateNoteCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateNoteCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create a Note Custom Field Group
+    ApiResponse<CustomFieldGroup> response = apiInstance.CreateNoteCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling NoteApi.CreateNoteCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createCustomFieldGroupRequest** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="deletenote"></a>
 # **DeleteNote**
 > void DeleteNote (string contactId, string noteId)
@@ -294,6 +401,104 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **contactId** | **string** |  |  |
 | **noteId** | **string** |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deletenotecustomfieldgroup"></a>
+# **DeleteNoteCustomFieldGroup**
+> void DeleteNoteCustomFieldGroup (string groupId)
+
+Delete a Note Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteNoteCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new NoteApi(config);
+            var groupId = "groupId_example";  // string | 
+
+            try
+            {
+                // Delete a Note Custom Field Group
+                apiInstance.DeleteNoteCustomFieldGroup(groupId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling NoteApi.DeleteNoteCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteNoteCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete a Note Custom Field Group
+    apiInstance.DeleteNoteCustomFieldGroupWithHttpInfo(groupId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling NoteApi.DeleteNoteCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **groupId** | **string** |  |  |
 
 ### Return type
 
@@ -528,6 +733,108 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="getnotecustomfieldgroup"></a>
+# **GetNoteCustomFieldGroup**
+> CustomFieldGroup GetNoteCustomFieldGroup (string groupId)
+
+Retrieve a Note Custom Field Group
+
+Retrieves a single custom field group by id for the Note record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class GetNoteCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new NoteApi(config);
+            var groupId = "groupId_example";  // string | 
+
+            try
+            {
+                // Retrieve a Note Custom Field Group
+                CustomFieldGroup result = apiInstance.GetNoteCustomFieldGroup(groupId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling NoteApi.GetNoteCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetNoteCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve a Note Custom Field Group
+    ApiResponse<CustomFieldGroup> response = apiInstance.GetNoteCustomFieldGroupWithHttpInfo(groupId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling NoteApi.GetNoteCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **groupId** | **string** |  |  |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="listallnotes"></a>
 # **ListAllNotes**
 > ListNotesResponse ListAllNotes (string? filter = null, string? pageToken = null, string? orderBy = null, int? pageSize = null, List<string>? fields = null)
@@ -612,6 +919,108 @@ catch (ApiException e)
 ### Return type
 
 [**ListNotesResponse**](ListNotesResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listnotecustomfieldgroups"></a>
+# **ListNoteCustomFieldGroups**
+> ListCustomFieldGroupsResponse ListNoteCustomFieldGroups (string? tabId = null)
+
+List Note Custom Field Groups
+
+Retrieves a list of custom field groups for the Note record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListNoteCustomFieldGroupsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new NoteApi(config);
+            var tabId = "tabId_example";  // string? | Optional tab id to scope groups to a single tab (optional) 
+
+            try
+            {
+                // List Note Custom Field Groups
+                ListCustomFieldGroupsResponse result = apiInstance.ListNoteCustomFieldGroups(tabId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling NoteApi.ListNoteCustomFieldGroups: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListNoteCustomFieldGroupsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Note Custom Field Groups
+    ApiResponse<ListCustomFieldGroupsResponse> response = apiInstance.ListNoteCustomFieldGroupsWithHttpInfo(tabId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling NoteApi.ListNoteCustomFieldGroupsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tabId** | **string?** | Optional tab id to scope groups to a single tab | [optional]  |
+
+### Return type
+
+[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
 
 ### Authorization
 
@@ -1039,6 +1448,112 @@ catch (ApiException e)
 ### Return type
 
 [**UpdateNoteResponse**](UpdateNoteResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updatenotecustomfieldgroup"></a>
+# **UpdateNoteCustomFieldGroup**
+> CustomFieldGroup UpdateNoteCustomFieldGroup (string groupId, List<string> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest)
+
+Update a Note Custom Field Group
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class UpdateNoteCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new NoteApi(config);
+            var groupId = "groupId_example";  // string | 
+            var updateMask = new List<string>(); // List<string> | Comma-separated list of fields to update
+            var updateCustomFieldGroupRequest = new UpdateCustomFieldGroupRequest(); // UpdateCustomFieldGroupRequest | 
+
+            try
+            {
+                // Update a Note Custom Field Group
+                CustomFieldGroup result = apiInstance.UpdateNoteCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling NoteApi.UpdateNoteCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateNoteCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Update a Note Custom Field Group
+    ApiResponse<CustomFieldGroup> response = apiInstance.UpdateNoteCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling NoteApi.UpdateNoteCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **groupId** | **string** |  |  |
+| **updateMask** | [**List&lt;string&gt;**](string.md) | Comma-separated list of fields to update |  |
+| **updateCustomFieldGroupRequest** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 

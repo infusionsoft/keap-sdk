@@ -18,11 +18,14 @@ import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Pair;
 
 import com.keap.core.sdk.model.ApplyCommissionRequest;
+import com.keap.core.sdk.model.CreateCustomFieldGroupRequest;
 import com.keap.core.sdk.model.CreateCustomFieldRequest;
 import com.keap.core.sdk.model.CreateOrderItemRequest;
+import com.keap.core.sdk.model.CustomFieldGroup;
 import com.keap.core.sdk.model.CustomFieldMetaData;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.FileOperationRequest;
+import com.keap.core.sdk.model.ListCustomFieldGroupsResponse;
 import com.keap.core.sdk.model.ListOrderPaymentsResponse;
 import com.keap.core.sdk.model.ListOrders;
 import com.keap.core.sdk.model.ObjectModel;
@@ -32,6 +35,7 @@ import com.keap.core.sdk.model.PaymentResult;
 import com.keap.core.sdk.model.RestCreateOrderRequest;
 import com.keap.core.sdk.model.RestCreatePaymentRequest;
 import java.util.Set;
+import com.keap.core.sdk.model.UpdateCustomFieldGroupRequest;
 import com.keap.core.sdk.model.UpdateCustomFieldMetaDataRequest;
 import com.keap.core.sdk.model.UpdateOrderItemRequest;
 import com.keap.core.sdk.model.UpdateOrderRequest;
@@ -587,6 +591,97 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Create an Order Custom Field Group
+   * Creates a new custom field group for the Order record type. If &#x60;tab_id&#x60; is omitted, the group is added to the default &#39;Custom Fields&#39; tab.
+   * @param createCustomFieldGroupRequest  (required)
+   * @return CustomFieldGroup
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldGroup createOrderCustomFieldGroup(CreateCustomFieldGroupRequest createCustomFieldGroupRequest) throws ApiException {
+    ApiResponse<CustomFieldGroup> localVarResponse = createOrderCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Create an Order Custom Field Group
+   * Creates a new custom field group for the Order record type. If &#x60;tab_id&#x60; is omitted, the group is added to the default &#39;Custom Fields&#39; tab.
+   * @param createCustomFieldGroupRequest  (required)
+   * @return ApiResponse&lt;CustomFieldGroup&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldGroup> createOrderCustomFieldGroupWithHttpInfo(CreateCustomFieldGroupRequest createCustomFieldGroupRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createOrderCustomFieldGroupRequestBuilder(createCustomFieldGroupRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("createOrderCustomFieldGroup", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldGroup>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldGroup>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder createOrderCustomFieldGroupRequestBuilder(CreateCustomFieldGroupRequest createCustomFieldGroupRequest) throws ApiException {
+    // verify the required parameter 'createCustomFieldGroupRequest' is set
+    if (createCustomFieldGroupRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'createCustomFieldGroupRequest' when calling createOrderCustomFieldGroup");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/orders/model/customFields/groups";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(createCustomFieldGroupRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Create an Order Item
    * Creates an order item on an existing order
    * @param orderId  (required)
@@ -961,6 +1056,95 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Delete an Order Custom Field Group
+   * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+   * @param groupId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteOrderCustomFieldGroup(String groupId) throws ApiException {
+    deleteOrderCustomFieldGroupWithHttpInfo(groupId);
+  }
+
+  /**
+   * Delete an Order Custom Field Group
+   * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+   * @param groupId  (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteOrderCustomFieldGroupWithHttpInfo(String groupId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteOrderCustomFieldGroupRequestBuilder(groupId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteOrderCustomFieldGroup", localVarResponse);
+        }
+        return new ApiResponse<Void>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          null
+        );
+      } finally {
+        // Drain the InputStream
+        while (localVarResponse.body().read() != -1) {
+            // Ignore
+        }
+        localVarResponse.body().close();
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteOrderCustomFieldGroupRequestBuilder(String groupId) throws ApiException {
+    // verify the required parameter 'groupId' is set
+    if (groupId == null) {
+      throw new ApiException(400, "Missing the required parameter 'groupId' when calling deleteOrderCustomFieldGroup");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/orders/model/customFields/groups/{group_id}"
+        .replace("{group_id}", ApiClient.urlEncode(groupId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Delete an Order Item
    * Deletes an order item on an existing order
    * @param orderId  (required)
@@ -1241,6 +1425,92 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Retrieve an Order Custom Field Group
+   * Retrieves a single custom field group by id for the Order record type.
+   * @param groupId  (required)
+   * @return CustomFieldGroup
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldGroup getOrderCustomFieldGroup(String groupId) throws ApiException {
+    ApiResponse<CustomFieldGroup> localVarResponse = getOrderCustomFieldGroupWithHttpInfo(groupId);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Retrieve an Order Custom Field Group
+   * Retrieves a single custom field group by id for the Order record type.
+   * @param groupId  (required)
+   * @return ApiResponse&lt;CustomFieldGroup&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldGroup> getOrderCustomFieldGroupWithHttpInfo(String groupId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getOrderCustomFieldGroupRequestBuilder(groupId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getOrderCustomFieldGroup", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldGroup>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldGroup>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getOrderCustomFieldGroupRequestBuilder(String groupId) throws ApiException {
+    // verify the required parameter 'groupId' is set
+    if (groupId == null) {
+      throw new ApiException(400, "Missing the required parameter 'groupId' when calling getOrderCustomFieldGroup");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/orders/model/customFields/groups/{group_id}"
+        .replace("{group_id}", ApiClient.urlEncode(groupId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Retrieve an Order Item
    * Retrieves a single order item from an existing order
    * @param orderId  (required)
@@ -1319,6 +1589,102 @@ import io.github.resilience4j.retry.Retry;
         .replace("{order_item_id}", ApiClient.urlEncode(orderItemId.toString()));
 
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * List Order Custom Field Groups
+   * Retrieves a list of custom field groups for the Order record type. Optionally filter by tab_id to scope to a specific tab.
+   * @param tabId Optional tab id to scope groups to a single tab (optional)
+   * @return ListCustomFieldGroupsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ListCustomFieldGroupsResponse listOrderCustomFieldGroups(String tabId) throws ApiException {
+    ApiResponse<ListCustomFieldGroupsResponse> localVarResponse = listOrderCustomFieldGroupsWithHttpInfo(tabId);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * List Order Custom Field Groups
+   * Retrieves a list of custom field groups for the Order record type. Optionally filter by tab_id to scope to a specific tab.
+   * @param tabId Optional tab id to scope groups to a single tab (optional)
+   * @return ApiResponse&lt;ListCustomFieldGroupsResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ListCustomFieldGroupsResponse> listOrderCustomFieldGroupsWithHttpInfo(String tabId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listOrderCustomFieldGroupsRequestBuilder(tabId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("listOrderCustomFieldGroups", localVarResponse);
+        }
+        return new ApiResponse<ListCustomFieldGroupsResponse>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ListCustomFieldGroupsResponse>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder listOrderCustomFieldGroupsRequestBuilder(String tabId) throws ApiException {
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/orders/model/customFields/groups";
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "tab_id";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("tab_id", tabId));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
 
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
@@ -1852,6 +2218,125 @@ import io.github.resilience4j.retry.Retry;
 
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCustomFieldMetaDataRequest);
+      localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Update an Order Custom Field Group
+   * Updates an existing custom field group. Only fields listed in &#x60;update_mask&#x60; are applied.
+   * @param groupId  (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateCustomFieldGroupRequest  (required)
+   * @return CustomFieldGroup
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldGroup updateOrderCustomFieldGroup(String groupId, Set<String> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest) throws ApiException {
+    ApiResponse<CustomFieldGroup> localVarResponse = updateOrderCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Update an Order Custom Field Group
+   * Updates an existing custom field group. Only fields listed in &#x60;update_mask&#x60; are applied.
+   * @param groupId  (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateCustomFieldGroupRequest  (required)
+   * @return ApiResponse&lt;CustomFieldGroup&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldGroup> updateOrderCustomFieldGroupWithHttpInfo(String groupId, Set<String> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateOrderCustomFieldGroupRequestBuilder(groupId, updateMask, updateCustomFieldGroupRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updateOrderCustomFieldGroup", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldGroup>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldGroup>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updateOrderCustomFieldGroupRequestBuilder(String groupId, Set<String> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest) throws ApiException {
+    // verify the required parameter 'groupId' is set
+    if (groupId == null) {
+      throw new ApiException(400, "Missing the required parameter 'groupId' when calling updateOrderCustomFieldGroup");
+    }
+    // verify the required parameter 'updateMask' is set
+    if (updateMask == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateMask' when calling updateOrderCustomFieldGroup");
+    }
+    // verify the required parameter 'updateCustomFieldGroupRequest' is set
+    if (updateCustomFieldGroupRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateCustomFieldGroupRequest' when calling updateOrderCustomFieldGroup");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/orders/model/customFields/groups/{group_id}"
+        .replace("{group_id}", ApiClient.urlEncode(groupId.toString()));
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "update_mask";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCustomFieldGroupRequest);
       localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);

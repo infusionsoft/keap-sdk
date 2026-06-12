@@ -7,14 +7,20 @@ Method | HTTP request | Description
 [**addTagToCompany**](CompanyApi.md#addTagToCompany) | **POST** /rest/v2/companies/{company_id}/tags/{tag_id} | Add Tag to Company
 [**createCompany**](CompanyApi.md#createCompany) | **POST** /rest/v2/companies | Create a Company
 [**createCompanyCustomField**](CompanyApi.md#createCompanyCustomField) | **POST** /rest/v2/companies/model/customFields | Create a Company Custom Field
+[**createCompanyCustomFieldGroup**](CompanyApi.md#createCompanyCustomFieldGroup) | **POST** /rest/v2/companies/model/customFields/groups | Create a Company Custom Field Group
 [**deleteCompany**](CompanyApi.md#deleteCompany) | **DELETE** /rest/v2/companies/{company_id} | Delete a Company
+[**deleteCompanyCustomField**](CompanyApi.md#deleteCompanyCustomField) | **DELETE** /rest/v2/companies/model/customFields/{custom_field_id} | Delete a Company Custom Field
+[**deleteCompanyCustomFieldGroup**](CompanyApi.md#deleteCompanyCustomFieldGroup) | **DELETE** /rest/v2/companies/model/customFields/groups/{group_id} | Delete a Company Custom Field Group
 [**getCompany**](CompanyApi.md#getCompany) | **GET** /rest/v2/companies/{company_id} | Retrieve a Company
+[**getCompanyCustomFieldGroup**](CompanyApi.md#getCompanyCustomFieldGroup) | **GET** /rest/v2/companies/model/customFields/groups/{group_id} | Retrieve a Company Custom Field Group
 [**listCompanies**](CompanyApi.md#listCompanies) | **GET** /rest/v2/companies | List Companies
+[**listCompanyCustomFieldGroups**](CompanyApi.md#listCompanyCustomFieldGroups) | **GET** /rest/v2/companies/model/customFields/groups | List Company Custom Field Groups
 [**listTagsForCompany**](CompanyApi.md#listTagsForCompany) | **GET** /rest/v2/companies/{company_id}/tags | List Applied Tags
 [**removeTagFromCompany**](CompanyApi.md#removeTagFromCompany) | **DELETE** /rest/v2/companies/{company_id}/tags/{tag_id} | Remove Tag
 [**retrieveCompanyCustomFieldModel**](CompanyApi.md#retrieveCompanyCustomFieldModel) | **GET** /rest/v2/companies/model | Retrieve Company Custom Field Model
 [**updateCompany**](CompanyApi.md#updateCompany) | **PATCH** /rest/v2/companies/{company_id} | Update a Company
 [**updateCompanyCustomField**](CompanyApi.md#updateCompanyCustomField) | **PATCH** /rest/v2/companies/model/customFields/{custom_field_id} | Update a Company Custom Field
+[**updateCompanyCustomFieldGroup**](CompanyApi.md#updateCompanyCustomFieldGroup) | **PATCH** /rest/v2/companies/model/customFields/groups/{group_id} | Update a Company Custom Field Group
 
 
 
@@ -164,6 +170,54 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## createCompanyCustomFieldGroup
+
+> CustomFieldGroup createCompanyCustomFieldGroup(createCustomFieldGroupRequest)
+
+Create a Company Custom Field Group
+
+Creates a new custom field group for the Company record type. If &#x60;tab_id&#x60; is omitted, the group is added to the default &#39;Custom Fields&#39; tab.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.CompanyApi();
+let createCustomFieldGroupRequest = new KeapCoreServiceV2Sdk.CreateCustomFieldGroupRequest(); // CreateCustomFieldGroupRequest | 
+apiInstance.createCompanyCustomFieldGroup(createCustomFieldGroupRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCustomFieldGroupRequest** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## deleteCompany
 
 > deleteCompany(companyId)
@@ -197,6 +251,102 @@ apiInstance.deleteCompany(companyId).then(() => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **companyId** | **String**|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## deleteCompanyCustomField
+
+> deleteCompanyCustomField(customFieldId)
+
+Delete a Company Custom Field
+
+Deletes a custom field from the company model
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.CompanyApi();
+let customFieldId = "customFieldId_example"; // String | 
+apiInstance.deleteCompanyCustomField(customFieldId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customFieldId** | **String**|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## deleteCompanyCustomFieldGroup
+
+> deleteCompanyCustomFieldGroup(groupId)
+
+Delete a Company Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.CompanyApi();
+let groupId = "groupId_example"; // String | 
+apiInstance.deleteCompanyCustomFieldGroup(groupId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **String**|  | 
 
 ### Return type
 
@@ -264,6 +414,54 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## getCompanyCustomFieldGroup
+
+> CustomFieldGroup getCompanyCustomFieldGroup(groupId)
+
+Retrieve a Company Custom Field Group
+
+Retrieves a single custom field group by id for the Company record type.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.CompanyApi();
+let groupId = "groupId_example"; // String | 
+apiInstance.getCompanyCustomFieldGroup(groupId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **String**|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## listCompanies
 
 > ListCompaniesResponse listCompanies(opts)
@@ -311,6 +509,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListCompaniesResponse**](ListCompaniesResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## listCompanyCustomFieldGroups
+
+> ListCustomFieldGroupsResponse listCompanyCustomFieldGroups(opts)
+
+List Company Custom Field Groups
+
+Retrieves a list of custom field groups for the Company record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.CompanyApi();
+let opts = {
+  'tabId': "tabId_example" // String | Optional tab id to scope groups to a single tab
+};
+apiInstance.listCompanyCustomFieldGroups(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tabId** | **String**| Optional tab id to scope groups to a single tab | [optional] 
+
+### Return type
+
+[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
 
 ### Authorization
 
@@ -571,6 +819,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomFieldMetaData**](CustomFieldMetaData.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## updateCompanyCustomFieldGroup
+
+> CustomFieldGroup updateCompanyCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest)
+
+Update a Company Custom Field Group
+
+Updates an existing custom field group. Only fields listed in &#x60;update_mask&#x60; are applied.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.CompanyApi();
+let groupId = "groupId_example"; // String | 
+let updateMask = ["null"]; // [String] | Comma-separated list of fields to update
+let updateCustomFieldGroupRequest = new KeapCoreServiceV2Sdk.UpdateCustomFieldGroupRequest(); // UpdateCustomFieldGroupRequest | 
+apiInstance.updateCompanyCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **String**|  | 
+ **updateMask** | [**[String]**](String.md)| Comma-separated list of fields to update | 
+ **updateCustomFieldGroupRequest** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 

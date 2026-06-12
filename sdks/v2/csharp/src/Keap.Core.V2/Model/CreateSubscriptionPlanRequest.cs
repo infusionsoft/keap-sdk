@@ -82,13 +82,13 @@ namespace Keap.Core.V2.Model
         /// Initializes a new instance of the <see cref="CreateSubscriptionPlanRequest" /> class.
         /// </summary>
         /// <param name="active">Whether the subscription plan is active..</param>
-        /// <param name="frequency">The frequency of the subscription plan. Must be greater than 0. Default is 1..</param>
+        /// <param name="frequency">The frequency of the subscription plan. Must be greater than 0. Default is 1. (default to 1).</param>
         /// <param name="allowProrating">Allow prorating of the subscription plan..</param>
         /// <param name="cycleType">The cycle type of the subscription plan. (required).</param>
-        /// <param name="displayOrderIndex">The order that this plan will be displayed to the user..</param>
+        /// <param name="displayOrderIndex">The order that this plan will be displayed to the user. Lower values indicate higher priority in order. (default to 0).</param>
         /// <param name="planPrice">The price of the subscription plan in the smallest currency unit. Must be greater than or equal to 0. (required).</param>
-        /// <param name="totalCycles">How many cycles the subscription plan will have. 0 means infinite..</param>
-        public CreateSubscriptionPlanRequest(bool active = default, int frequency = default, bool allowProrating = default, CycleTypeEnum cycleType = default, int displayOrderIndex = default, double planPrice = default, int totalCycles = default)
+        /// <param name="totalCycles">How many cycles the subscription plan will have. 0 means infinite. (default to 0).</param>
+        public CreateSubscriptionPlanRequest(bool active = default, int frequency = 1, bool allowProrating = default, CycleTypeEnum cycleType = default, int displayOrderIndex = 0, double planPrice = default, int totalCycles = 0)
         {
             this.CycleType = cycleType;
             this.PlanPrice = planPrice;
@@ -130,9 +130,9 @@ namespace Keap.Core.V2.Model
         public bool AllowProrating { get; set; }
 
         /// <summary>
-        /// The order that this plan will be displayed to the user.
+        /// The order that this plan will be displayed to the user. Lower values indicate higher priority in order.
         /// </summary>
-        /// <value>The order that this plan will be displayed to the user.</value>
+        /// <value>The order that this plan will be displayed to the user. Lower values indicate higher priority in order.</value>
         /*
         <example>0</example>
         */

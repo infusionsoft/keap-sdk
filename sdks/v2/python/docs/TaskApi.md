@@ -6,13 +6,18 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_task**](TaskApi.md#create_task) | **POST** /rest/v2/tasks | Create a Task
 [**create_task_custom_field**](TaskApi.md#create_task_custom_field) | **POST** /rest/v2/tasks/model/customFields | Create a Custom Field
+[**create_task_custom_field_group**](TaskApi.md#create_task_custom_field_group) | **POST** /rest/v2/tasks/model/customFields/groups | Create a Task Custom Field Group
 [**delete_task**](TaskApi.md#delete_task) | **DELETE** /rest/v2/tasks/{task_id} | Delete a Task
 [**delete_task_custom_field**](TaskApi.md#delete_task_custom_field) | **DELETE** /rest/v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field
+[**delete_task_custom_field_group**](TaskApi.md#delete_task_custom_field_group) | **DELETE** /rest/v2/tasks/model/customFields/groups/{group_id} | Delete a Task Custom Field Group
 [**get_task**](TaskApi.md#get_task) | **GET** /rest/v2/tasks/{task_id} | Retrieve a Task
+[**get_task_custom_field_group**](TaskApi.md#get_task_custom_field_group) | **GET** /rest/v2/tasks/model/customFields/groups/{group_id} | Retrieve a Task Custom Field Group
+[**list_task_custom_field_groups**](TaskApi.md#list_task_custom_field_groups) | **GET** /rest/v2/tasks/model/customFields/groups | List Task Custom Field Groups
 [**list_tasks**](TaskApi.md#list_tasks) | **GET** /rest/v2/tasks | List Tasks
 [**retrieve_task_model**](TaskApi.md#retrieve_task_model) | **GET** /rest/v2/tasks/model | Retrieve Task Model
 [**update_task**](TaskApi.md#update_task) | **PATCH** /rest/v2/tasks/{task_id} | Update a Task
 [**update_task_custom_field**](TaskApi.md#update_task_custom_field) | **PATCH** /rest/v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field
+[**update_task_custom_field_group**](TaskApi.md#update_task_custom_field_group) | **PATCH** /rest/v2/tasks/model/customFields/groups/{group_id} | Update a Task Custom Field Group
 
 
 # **create_task**
@@ -155,6 +160,88 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateCustomFieldResponse**](CreateCustomFieldResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_task_custom_field_group**
+> CustomFieldGroup create_task_custom_field_group(create_custom_field_group_request)
+
+Create a Task Custom Field Group
+
+Creates a new custom field group for the Task record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.create_custom_field_group_request import CreateCustomFieldGroupRequest
+from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.TaskApi(api_client)
+    create_custom_field_group_request = keap_core_v2_client.CreateCustomFieldGroupRequest() # CreateCustomFieldGroupRequest | 
+
+    try:
+        # Create a Task Custom Field Group
+        api_response = api_instance.create_task_custom_field_group(create_custom_field_group_request)
+        print("The response of TaskApi->create_task_custom_field_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TaskApi->create_task_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_custom_field_group_request** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 
@@ -337,6 +424,84 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_task_custom_field_group**
+> delete_task_custom_field_group(group_id)
+
+Delete a Task Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.TaskApi(api_client)
+    group_id = 'group_id_example' # str | 
+
+    try:
+        # Delete a Task Custom Field Group
+        api_instance.delete_task_custom_field_group(group_id)
+    except Exception as e:
+        print("Exception when calling TaskApi->delete_task_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_task**
 > Task get_task(task_id, fields=fields)
 
@@ -394,6 +559,168 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Task**](Task.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_task_custom_field_group**
+> CustomFieldGroup get_task_custom_field_group(group_id)
+
+Retrieve a Task Custom Field Group
+
+Retrieves a single custom field group by id for the Task record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.TaskApi(api_client)
+    group_id = 'group_id_example' # str | 
+
+    try:
+        # Retrieve a Task Custom Field Group
+        api_response = api_instance.get_task_custom_field_group(group_id)
+        print("The response of TaskApi->get_task_custom_field_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TaskApi->get_task_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_task_custom_field_groups**
+> ListCustomFieldGroupsResponse list_task_custom_field_groups(tab_id=tab_id)
+
+List Task Custom Field Groups
+
+Retrieves a list of custom field groups for the Task record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_custom_field_groups_response import ListCustomFieldGroupsResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.TaskApi(api_client)
+    tab_id = 'tab_id_example' # str | Optional tab id to scope groups to a single tab (optional)
+
+    try:
+        # List Task Custom Field Groups
+        api_response = api_instance.list_task_custom_field_groups(tab_id=tab_id)
+        print("The response of TaskApi->list_task_custom_field_groups:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TaskApi->list_task_custom_field_groups: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**| Optional tab id to scope groups to a single tab | [optional] 
+
+### Return type
+
+[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
 
 ### Authorization
 
@@ -734,6 +1061,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomFieldMetaData**](CustomFieldMetaData.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_task_custom_field_group**
+> CustomFieldGroup update_task_custom_field_group(group_id, update_mask, update_custom_field_group_request)
+
+Update a Task Custom Field Group
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
+from keap_core_v2_client.models.update_custom_field_group_request import UpdateCustomFieldGroupRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.TaskApi(api_client)
+    group_id = 'group_id_example' # str | 
+    update_mask = ['update_mask_example'] # List[str] | Comma-separated list of fields to update
+    update_custom_field_group_request = keap_core_v2_client.UpdateCustomFieldGroupRequest() # UpdateCustomFieldGroupRequest | 
+
+    try:
+        # Update a Task Custom Field Group
+        api_response = api_instance.update_task_custom_field_group(group_id, update_mask, update_custom_field_group_request)
+        print("The response of TaskApi->update_task_custom_field_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TaskApi->update_task_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**|  | 
+ **update_mask** | [**List[str]**](str.md)| Comma-separated list of fields to update | 
+ **update_custom_field_group_request** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 

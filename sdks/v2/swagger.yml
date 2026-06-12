@@ -372,6 +372,146 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/tasks/model/customFields/groups:
+    get:
+      tags:
+      - Task
+      summary: List Task Custom Field Groups
+      description: 'Retrieves a list of custom field groups for the Task record type.
+        Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field
+        Groups for Tasks, Classic Appointments and Notes are combined.'
+      operationId: listTaskCustomFieldGroups
+      parameters:
+      - name: tab_id
+        in: query
+        description: Optional tab id to scope groups to a single tab
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomFieldGroupsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Task
+      summary: Create a Task Custom Field Group
+      description: 'Creates a new custom field group for the Task record type. If
+        `tab_id` is omitted, the group is added to the default ''Custom Fields'' tab.<br/>Note:
+        Custom Field Groups for Tasks, Classic Appointments and Notes are combined.'
+      operationId: createTaskCustomFieldGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomFieldGroupRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/tags:
     get:
       tags:
@@ -1236,6 +1376,145 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomFieldMetaData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/subscriptions/model/customFields/groups:
+    get:
+      tags:
+      - Subscriptions
+      summary: List Subscription Custom Field Groups
+      description: Retrieves a list of custom field groups for the Subscription record
+        type. Optionally filter by tab_id to scope to a specific tab.
+      operationId: listSubscriptionCustomFieldGroups
+      parameters:
+      - name: tab_id
+        in: query
+        description: Optional tab id to scope groups to a single tab
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomFieldGroupsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Subscriptions
+      summary: Create a Subscription Custom Field Group
+      description: Creates a new custom field group for the Subscription record type.
+        If `tab_id` is omitted, the group is added to the default 'Custom Fields'
+        tab.
+      operationId: createSubscriptionCustomFieldGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomFieldGroupRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
         '400':
           description: Bad Request
           content:
@@ -3988,6 +4267,144 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/orders/model/customFields/groups:
+    get:
+      tags:
+      - Orders
+      summary: List Order Custom Field Groups
+      description: Retrieves a list of custom field groups for the Order record type.
+        Optionally filter by tab_id to scope to a specific tab.
+      operationId: listOrderCustomFieldGroups
+      parameters:
+      - name: tab_id
+        in: query
+        description: Optional tab id to scope groups to a single tab
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomFieldGroupsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Orders
+      summary: Create an Order Custom Field Group
+      description: Creates a new custom field group for the Order record type. If
+        `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+      operationId: createOrderCustomFieldGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomFieldGroupRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/opportunities:
     get:
       tags:
@@ -4443,6 +4860,145 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/opportunities/model/customFields/groups:
+    get:
+      tags:
+      - Opportunity
+      summary: List Opportunity Custom Field Groups
+      description: Retrieves a list of custom field groups for the Opportunity record
+        type. Optionally filter by tab_id to scope to a specific tab.
+      operationId: listOpportunityCustomFieldGroups
+      parameters:
+      - name: tab_id
+        in: query
+        description: Optional tab id to scope groups to a single tab
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomFieldGroupsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Opportunity
+      summary: Create an Opportunity Custom Field Group
+      description: Creates a new custom field group for the Opportunity record type.
+        If `tab_id` is omitted, the group is added to the default 'Custom Fields'
+        tab.
+      operationId: createOpportunityCustomFieldGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomFieldGroupRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/notes/model/customFields:
     post:
       tags:
@@ -4465,6 +5021,146 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomFieldMetaData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/notes/model/customFields/groups:
+    get:
+      tags:
+      - Note
+      summary: List Note Custom Field Groups
+      description: 'Retrieves a list of custom field groups for the Note record type.
+        Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field
+        Groups for Tasks, Classic Appointments and Notes are combined.'
+      operationId: listNoteCustomFieldGroups
+      parameters:
+      - name: tab_id
+        in: query
+        description: Optional tab id to scope groups to a single tab
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomFieldGroupsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Note
+      summary: Create a Note Custom Field Group
+      description: 'Creates a new custom field group for the Note record type. If
+        `tab_id` is omitted, the group is added to the default ''Custom Fields'' tab.<br/>Note:
+        Custom Field Groups for Tasks, Classic Appointments and Notes are combined.'
+      operationId: createNoteCustomFieldGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomFieldGroupRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
         '400':
           description: Bad Request
           content:
@@ -6701,6 +7397,80 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/discounts/products/{discount_id}/criteria:
+    post:
+      tags:
+      - Product Discounts
+      summary: Create a Product Discount Criteria
+      description: Creates a Product Discount Criteria
+      operationId: createProductDiscountCriteria
+      parameters:
+      - name: discount_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProductDiscountCriteria'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscountCriteria'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/discounts/productCategories:
     get:
       tags:
@@ -7566,6 +8336,90 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/contacts:merge:
+    post:
+      tags:
+      - Contact
+      summary: Merge two Contacts
+      description: Merges two Contacts together. The duplicate contact will be merged
+        into the primary contact.
+      operationId: mergeContacts
+      parameters:
+      - name: fields
+        in: query
+        description: |-
+          Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time,
+          custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id,
+          links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix,
+          referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone,
+          update_time,utm_parameters,website,account_id,assistant_name,assistant_phone,
+          billing_information,created_by,groups,last_updated_by)
+        schema:
+          type: array
+          items:
+            type: string
+        explode: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MergeContactRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/contacts:link:
     post:
       tags:
@@ -7952,6 +8806,144 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomFieldMetaData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/contacts/model/customFields/groups:
+    get:
+      tags:
+      - Contact
+      summary: List Contact Custom Field Groups
+      description: Retrieves a list of custom field groups for the Contact record
+        type. Optionally filter by tab_id to scope to a specific tab.
+      operationId: listContactCustomFieldGroups
+      parameters:
+      - name: tab_id
+        in: query
+        description: Optional tab id to scope groups to a single tab
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomFieldGroupsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Contact
+      summary: Create a Contact Custom Field Group
+      description: Creates a new custom field group for the Contact record type. If
+        `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+      operationId: createContactCustomFieldGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomFieldGroupRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
         '400':
           description: Bad Request
           content:
@@ -8531,6 +9523,144 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomFieldMetaData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/companies/model/customFields/groups:
+    get:
+      tags:
+      - Company
+      summary: List Company Custom Field Groups
+      description: Retrieves a list of custom field groups for the Company record
+        type. Optionally filter by tab_id to scope to a specific tab.
+      operationId: listCompanyCustomFieldGroups
+      parameters:
+      - name: tab_id
+        in: query
+        description: Optional tab id to scope groups to a single tab
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomFieldGroupsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Company
+      summary: Create a Company Custom Field Group
+      description: Creates a new custom field group for the Company record type. If
+        `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+      operationId: createCompanyCustomFieldGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomFieldGroupRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
         '400':
           description: Bad Request
           content:
@@ -9732,6 +10862,145 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomFieldMetaData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/affiliates/model/customFields/groups:
+    get:
+      tags:
+      - Affiliate
+      summary: List Affiliate Custom Field Groups
+      description: Retrieves a list of custom field groups for the Affiliate record
+        type. Optionally filter by tab_id to scope to a specific tab.
+      operationId: listAffiliateCustomFieldGroups
+      parameters:
+      - name: tab_id
+        in: query
+        description: Optional tab id to scope groups to a single tab
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomFieldGroupsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Affiliate
+      summary: Create an Affiliate Custom Field Group
+      description: Creates a new custom field group for the Affiliate record type.
+        If `tab_id` is omitted, the group is added to the default 'Custom Fields'
+        tab.
+      operationId: createAffiliateCustomFieldGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomFieldGroupRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
         '400':
           description: Bad Request
           content:
@@ -11215,6 +12484,229 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/tasks/model/customFields/groups/{group_id}:
+    get:
+      tags:
+      - Task
+      summary: Retrieve a Task Custom Field Group
+      description: 'Retrieves a single custom field group by id for the Task record
+        type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes
+        are combined.'
+      operationId: getTaskCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Task
+      summary: Delete a Task Custom Field Group
+      description: 'Deletes a custom field group. Returns 409 Conflict if the group
+        still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic
+        Appointments and Notes are combined.'
+      operationId: deleteTaskCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Task
+      summary: Update a Task Custom Field Group
+      description: 'Updates an existing custom field group. Only fields listed in
+        `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic
+        Appointments and Notes are combined.'
+      operationId: updateTaskCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: Comma-separated list of fields to update
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - name
+            - tab_id
+            - order
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomFieldGroupRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/tags/{tag_id}:
     get:
       tags:
@@ -11927,6 +13419,226 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomFieldMetaData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/subscriptions/model/customFields/groups/{group_id}:
+    get:
+      tags:
+      - Subscriptions
+      summary: Retrieve a Subscription Custom Field Group
+      description: Retrieves a single custom field group by id for the Subscription
+        record type.
+      operationId: getSubscriptionCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Subscriptions
+      summary: Delete a Subscription Custom Field Group
+      description: Deletes a custom field group. Returns 409 Conflict if the group
+        still contains custom fields.
+      operationId: deleteSubscriptionCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Subscriptions
+      summary: Update a Subscription Custom Field Group
+      description: Updates an existing custom field group. Only fields listed in `update_mask`
+        are applied.
+      operationId: updateSubscriptionCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: Comma-separated list of fields to update
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - name
+            - tab_id
+            - order
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomFieldGroupRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
         '400':
           description: Bad Request
           content:
@@ -14100,6 +15812,226 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/orders/model/customFields/groups/{group_id}:
+    get:
+      tags:
+      - Orders
+      summary: Retrieve an Order Custom Field Group
+      description: Retrieves a single custom field group by id for the Order record
+        type.
+      operationId: getOrderCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Orders
+      summary: Delete an Order Custom Field Group
+      description: Deletes a custom field group. Returns 409 Conflict if the group
+        still contains custom fields.
+      operationId: deleteOrderCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Orders
+      summary: Update an Order Custom Field Group
+      description: Updates an existing custom field group. Only fields listed in `update_mask`
+        are applied.
+      operationId: updateOrderCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: Comma-separated list of fields to update
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - name
+            - tab_id
+            - order
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomFieldGroupRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/opportunities/{opportunity_id}:
     get:
       tags:
@@ -14592,7 +16524,7 @@ paths:
       - Opportunity
       summary: Delete an Opportunity Custom Field
       description: Deletes a Custom Field from Opportunity.
-      operationId: deleteOpportunityesCustomField
+      operationId: deleteOpportunitiesCustomField
       parameters:
       - name: custom_field_id
         in: path
@@ -14690,6 +16622,226 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomFieldMetaData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/opportunities/model/customFields/groups/{group_id}:
+    get:
+      tags:
+      - Opportunity
+      summary: Retrieve an Opportunity Custom Field Group
+      description: Retrieves a single custom field group by id for the Opportunity
+        record type.
+      operationId: getOpportunityCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Opportunity
+      summary: Delete an Opportunity Custom Field Group
+      description: Deletes a custom field group. Returns 409 Conflict if the group
+        still contains custom fields.
+      operationId: deleteOpportunityCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Opportunity
+      summary: Update an Opportunity Custom Field Group
+      description: Updates an existing custom field group. Only fields listed in `update_mask`
+        are applied.
+      operationId: updateOpportunityCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: Comma-separated list of fields to update
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - name
+            - tab_id
+            - order
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomFieldGroupRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
         '400':
           description: Bad Request
           content:
@@ -14844,6 +16996,229 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomFieldMetaData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/notes/model/customFields/groups/{group_id}:
+    get:
+      tags:
+      - Note
+      summary: Retrieve a Note Custom Field Group
+      description: 'Retrieves a single custom field group by id for the Note record
+        type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes
+        are combined.'
+      operationId: getNoteCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Note
+      summary: Delete a Note Custom Field Group
+      description: 'Deletes a custom field group. Returns 409 Conflict if the group
+        still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic
+        Appointments and Notes are combined.'
+      operationId: deleteNoteCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Note
+      summary: Update a Note Custom Field Group
+      description: 'Updates an existing custom field group. Only fields listed in
+        `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic
+        Appointments and Notes are combined.'
+      operationId: updateNoteCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: Comma-separated list of fields to update
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - name
+            - tab_id
+            - order
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomFieldGroupRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
         '400':
           description: Bad Request
           content:
@@ -17628,6 +20003,226 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/contacts/model/customFields/groups/{group_id}:
+    get:
+      tags:
+      - Contact
+      summary: Retrieve a Contact Custom Field Group
+      description: Retrieves a single custom field group by id for the Contact record
+        type.
+      operationId: getContactCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Contact
+      summary: Delete a Contact Custom Field Group
+      description: Deletes a custom field group. Returns 409 Conflict if the group
+        still contains custom fields.
+      operationId: deleteContactCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Contact
+      summary: Update a Contact Custom Field Group
+      description: Updates an existing custom field group. Only fields listed in `update_mask`
+        are applied.
+      operationId: updateContactCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: Comma-separated list of fields to update
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - name
+            - tab_id
+            - order
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomFieldGroupRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/companies/{company_id}:
     get:
       tags:
@@ -17885,6 +20480,69 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
   /rest/v2/companies/model/customFields/{custom_field_id}:
+    delete:
+      tags:
+      - Company
+      summary: Delete a Company Custom Field
+      description: Deletes a custom field from the company model
+      operationId: deleteCompanyCustomField
+      parameters:
+      - name: custom_field_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     patch:
       tags:
       - Company
@@ -17925,6 +20583,226 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomFieldMetaData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/companies/model/customFields/groups/{group_id}:
+    get:
+      tags:
+      - Company
+      summary: Retrieve a Company Custom Field Group
+      description: Retrieves a single custom field group by id for the Company record
+        type.
+      operationId: getCompanyCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Company
+      summary: Delete a Company Custom Field Group
+      description: Deletes a custom field group. Returns 409 Conflict if the group
+        still contains custom fields.
+      operationId: deleteCompanyCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Company
+      summary: Update a Company Custom Field Group
+      description: Updates an existing custom field group. Only fields listed in `update_mask`
+        are applied.
+      operationId: updateCompanyCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: Comma-separated list of fields to update
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - name
+            - tab_id
+            - order
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomFieldGroupRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
         '400':
           description: Bad Request
           content:
@@ -18730,6 +21608,226 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomFieldMetaData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/affiliates/model/customFields/groups/{group_id}:
+    get:
+      tags:
+      - Affiliate
+      summary: Retrieve an Affiliate Custom Field Group
+      description: Retrieves a single custom field group by id for the Affiliate record
+        type.
+      operationId: getAffiliateCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Affiliate
+      summary: Delete an Affiliate Custom Field Group
+      description: Deletes a custom field group. Returns 409 Conflict if the group
+        still contains custom fields.
+      operationId: deleteAffiliateCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Affiliate
+      summary: Update an Affiliate Custom Field Group
+      description: Updates an existing custom field group. Only fields listed in `update_mask`
+        are applied.
+      operationId: updateAffiliateCustomFieldGroup
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: Comma-separated list of fields to update
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - name
+            - tab_id
+            - order
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomFieldGroupRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldGroup'
         '400':
           description: Bad Request
           content:
@@ -24246,6 +27344,75 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/discounts/products/{discount_id}/criteria/{criteria_id}:
+    delete:
+      tags:
+      - Product Discounts
+      summary: Delete a Product Discount Criteria
+      description: Deletes a specified Product Discount Criteria
+      operationId: deleteProductDiscountCriteria
+      parameters:
+      - name: discount_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: criteria_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id}:
     delete:
       tags:
@@ -24263,6 +27430,70 @@ paths:
       - name: payment_method_id
         in: path
         description: ID of the payment method to be deleted.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/contacts/model/customFields/{custom_field_id}:
+    delete:
+      tags:
+      - Contact
+      summary: Delete a Contact Custom Field
+      description: Deletes a custom field from the Contacts model
+      operationId: deleteContactCustomField
+      parameters:
+      - name: custom_field_id
+        in: path
         required: true
         schema:
           type: string
@@ -24651,6 +27882,35 @@ components:
           type: string
         label:
           type: string
+    CreateCustomFieldGroupRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        tab_id:
+          type: string
+    CustomFieldGroup:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        order:
+          type: integer
+          format: int32
+        tab_id:
+          type: string
+        record_type:
+          type: string
+          enum:
+          - CONTACT
+          - REFERRAL_PARTNER
+          - OPPORTUNITY
+          - TASK_NOTE_APPOINTMENT
+          - COMPANY
+          - ORDER
+          - SUBSCRIPTION
     CategoryReference:
       type: object
       properties:
@@ -26063,6 +29323,7 @@ components:
         frequency:
           type: integer
           format: int32
+          default: 1
           description: The frequency of the subscription plan. Must be greater than
             0. Default is 1.
           example: 1
@@ -26082,7 +29343,9 @@ components:
         display_order_index:
           type: integer
           format: int32
-          description: The order that this plan will be displayed to the user.
+          default: 0
+          description: The order that this plan will be displayed to the user. Lower
+            values indicate higher priority in order.
           example: 0
         plan_price:
           type: number
@@ -26093,6 +29356,7 @@ components:
         total_cycles:
           type: integer
           format: int32
+          default: 0
           description: How many cycles the subscription plan will have. 0 means infinite.
           example: 12
       required:
@@ -27986,6 +31250,70 @@ components:
           format: double
           description: Value of the discount (amount or percentage depending on discount_type)
           example: 100
+    CreateProductDiscountCriteria:
+      type: object
+      properties:
+        type:
+          type: string
+          description: 'Type of criteria: DATE_RANGE, PROMO_CODE, PRODUCT, SUBSCRIPTION_PLAN,
+            or ORDER_TOTAL'
+          enum:
+          - DATE_RANGE
+          - PROMO_CODE
+          - PRODUCT
+          - SUBSCRIPTION_PLAN
+          - ORDER_TOTAL
+          example: DATE_RANGE
+        code:
+          type: string
+          description: Promotional code for PROMO_CODE criteria
+          example: SUMMER2024
+        range_start_time:
+          type: string
+          format: date-time
+          description: Start date/time for DATE_RANGE criteria (ISO-8601 format)
+          example: '2024-01-01T00:00:00Z'
+        range_end_time:
+          type: string
+          format: date-time
+          description: End date/time for DATE_RANGE criteria (ISO-8601 format)
+          example: '2024-12-31T23:59:59Z'
+        product_id:
+          type: string
+          description: Product ID for PRODUCT criteria
+          example: 456
+        product_quantity_min:
+          type: integer
+          format: int32
+          description: Minimum product quantity for PRODUCT criteria
+          example: 1
+        product_quantity_max:
+          type: integer
+          format: int32
+          description: Maximum product quantity for PRODUCT criteria
+          example: 10
+        plan_id:
+          type: string
+          description: Subscription plan ID for SUBSCRIPTION_PLAN criteria
+          example: 789
+        subscription_quantity:
+          type: integer
+          format: int32
+          description: Subscription quantity for SUBSCRIPTION_PLAN criteria
+          example: 1
+        total_amount:
+          type: number
+          format: double
+          description: Total amount threshold for ORDER_TOTAL criteria
+          example: 100
+        operator:
+          type: string
+          description: 'Comparison operator for ORDER_TOTAL criteria: LESS_THAN or
+            GREATER_THAN'
+          enum:
+          - LESS_THAN
+          - GREATER_THAN
+          example: GREATER_THAN
     CreateProductDiscountRequest:
       type: object
       properties:
@@ -28001,7 +31329,7 @@ components:
           type: array
           description: List of criteria that must be met for this discount to apply
           items:
-            $ref: '#/components/schemas/DiscountCriteria'
+            $ref: '#/components/schemas/CreateProductDiscountCriteria'
         apply_to_commissions:
           type: boolean
           description: Whether to apply this discount to commission calculations
@@ -28887,6 +32215,20 @@ components:
           type: string
           description: Second contact ID to link
           example: 1002
+    MergeContactRequest:
+      type: object
+      properties:
+        contact_id:
+          type: string
+          description: Primary contact ID to merge into
+          example: 1001
+        duplicate_contact_id:
+          type: string
+          description: Duplicate contact ID to merge from
+          example: 1002
+      required:
+      - contact_id
+      - duplicate_contact_id
     ContactLink:
       type: object
       properties:
@@ -30527,6 +33869,16 @@ components:
           type: string
       required:
       - group_id
+    UpdateCustomFieldGroupRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        order:
+          type: integer
+          format: int32
+        tab_id:
+          type: string
     UpdateTagResponse:
       type: object
       properties:
@@ -31366,6 +34718,65 @@ components:
           format: double
           description: Value of the discount (amount or percentage depending on discount_type)
           example: 100
+    UpdateProductDiscountCriteria:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Promotional code for PROMO_CODE criteria
+          example: SUMMER2024
+        criteria_id:
+          type: string
+          description: Unique identifier for this criteria
+          example: 501
+        range_start_time:
+          type: string
+          format: date-time
+          description: Start date/time for DATE_RANGE criteria (ISO-8601 format)
+          example: '2024-01-01T00:00:00Z'
+        range_end_time:
+          type: string
+          format: date-time
+          description: End date/time for DATE_RANGE criteria (ISO-8601 format)
+          example: '2024-12-31T23:59:59Z'
+        product_id:
+          type: string
+          description: Product ID for PRODUCT criteria
+          example: 456
+        product_quantity_min:
+          type: integer
+          format: int32
+          description: Minimum product quantity for PRODUCT criteria
+          example: 1
+        product_quantity_max:
+          type: integer
+          format: int32
+          description: Maximum product quantity for PRODUCT criteria
+          example: 10
+        plan_id:
+          type: string
+          description: Subscription plan ID for SUBSCRIPTION_PLAN criteria
+          example: 789
+        subscription_quantity:
+          type: integer
+          format: int32
+          description: Subscription quantity for SUBSCRIPTION_PLAN criteria
+          example: 1
+        total_amount:
+          type: number
+          format: double
+          description: Total amount threshold for ORDER_TOTAL criteria
+          example: 100
+        operator:
+          type: string
+          description: 'Comparison operator for ORDER_TOTAL criteria: LESS_THAN or
+            GREATER_THAN'
+          enum:
+          - LESS_THAN
+          - GREATER_THAN
+          example: GREATER_THAN
+      required:
+      - criteria_id
     UpdateProductDiscountRequest:
       type: object
       properties:
@@ -31381,7 +34792,7 @@ components:
           type: array
           description: List of criteria that must be met for this discount to apply
           items:
-            $ref: '#/components/schemas/DiscountCriteria'
+            $ref: '#/components/schemas/UpdateProductDiscountCriteria'
         apply_to_commissions:
           type: boolean
           description: Whether to apply this discount to commission calculations
@@ -32207,6 +35618,13 @@ components:
           items:
             type: string
           uniqueItems: true
+    ListCustomFieldGroupsResponse:
+      type: object
+      properties:
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomFieldGroup'
     ListTagsResponse:
       type: object
       properties:
@@ -33420,14 +36838,7 @@ components:
         action_type:
           type: string
           description: Note action type
-          enum:
-          - APPOINTMENT
-          - CALL
-          - EMAIL
-          - FAX
-          - LETTER
-          - OTHER
-          example: CALL
+          example: Call
         assignment_user_id:
           type: integer
           format: int64

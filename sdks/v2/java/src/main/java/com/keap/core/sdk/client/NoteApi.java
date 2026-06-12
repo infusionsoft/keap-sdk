@@ -17,16 +17,20 @@ import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Pair;
 
+import com.keap.core.sdk.model.CreateCustomFieldGroupRequest;
 import com.keap.core.sdk.model.CreateCustomFieldRequest;
 import com.keap.core.sdk.model.CreateNoteRequest;
+import com.keap.core.sdk.model.CustomFieldGroup;
 import com.keap.core.sdk.model.CustomFieldMetaData;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.GetNoteResponse;
+import com.keap.core.sdk.model.ListCustomFieldGroupsResponse;
 import com.keap.core.sdk.model.ListNoteTemplateResponse;
 import com.keap.core.sdk.model.ListNotesResponse;
 import com.keap.core.sdk.model.Note;
 import com.keap.core.sdk.model.ObjectModel;
 import java.util.Set;
+import com.keap.core.sdk.model.UpdateCustomFieldGroupRequest;
 import com.keap.core.sdk.model.UpdateCustomFieldMetaDataRequest;
 import com.keap.core.sdk.model.UpdateNoteRequest;
 import com.keap.core.sdk.model.UpdateNoteResponse;
@@ -317,6 +321,97 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Create a Note Custom Field Group
+   * Creates a new custom field group for the Note record type. If &#x60;tab_id&#x60; is omitted, the group is added to the default &#39;Custom Fields&#39; tab.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+   * @param createCustomFieldGroupRequest  (required)
+   * @return CustomFieldGroup
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldGroup createNoteCustomFieldGroup(CreateCustomFieldGroupRequest createCustomFieldGroupRequest) throws ApiException {
+    ApiResponse<CustomFieldGroup> localVarResponse = createNoteCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Create a Note Custom Field Group
+   * Creates a new custom field group for the Note record type. If &#x60;tab_id&#x60; is omitted, the group is added to the default &#39;Custom Fields&#39; tab.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+   * @param createCustomFieldGroupRequest  (required)
+   * @return ApiResponse&lt;CustomFieldGroup&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldGroup> createNoteCustomFieldGroupWithHttpInfo(CreateCustomFieldGroupRequest createCustomFieldGroupRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createNoteCustomFieldGroupRequestBuilder(createCustomFieldGroupRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("createNoteCustomFieldGroup", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldGroup>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldGroup>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder createNoteCustomFieldGroupRequestBuilder(CreateCustomFieldGroupRequest createCustomFieldGroupRequest) throws ApiException {
+    // verify the required parameter 'createCustomFieldGroupRequest' is set
+    if (createCustomFieldGroupRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'createCustomFieldGroupRequest' when calling createNoteCustomFieldGroup");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/notes/model/customFields/groups";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(createCustomFieldGroupRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Delete a Note
    * Deletes the specified Note
    * @param contactId  (required)
@@ -396,6 +491,95 @@ import io.github.resilience4j.retry.Retry;
     String localVarPath = "/rest/v2/contacts/{contact_id}/notes/{note_id}"
         .replace("{contact_id}", ApiClient.urlEncode(contactId.toString()))
         .replace("{note_id}", ApiClient.urlEncode(noteId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Delete a Note Custom Field Group
+   * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+   * @param groupId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteNoteCustomFieldGroup(String groupId) throws ApiException {
+    deleteNoteCustomFieldGroupWithHttpInfo(groupId);
+  }
+
+  /**
+   * Delete a Note Custom Field Group
+   * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+   * @param groupId  (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteNoteCustomFieldGroupWithHttpInfo(String groupId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteNoteCustomFieldGroupRequestBuilder(groupId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteNoteCustomFieldGroup", localVarResponse);
+        }
+        return new ApiResponse<Void>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          null
+        );
+      } finally {
+        // Drain the InputStream
+        while (localVarResponse.body().read() != -1) {
+            // Ignore
+        }
+        localVarResponse.body().close();
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteNoteCustomFieldGroupRequestBuilder(String groupId) throws ApiException {
+    // verify the required parameter 'groupId' is set
+    if (groupId == null) {
+      throw new ApiException(400, "Missing the required parameter 'groupId' when calling deleteNoteCustomFieldGroup");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/notes/model/customFields/groups/{group_id}"
+        .replace("{group_id}", ApiClient.urlEncode(groupId.toString()));
 
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
 
@@ -612,6 +796,92 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Retrieve a Note Custom Field Group
+   * Retrieves a single custom field group by id for the Note record type.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+   * @param groupId  (required)
+   * @return CustomFieldGroup
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldGroup getNoteCustomFieldGroup(String groupId) throws ApiException {
+    ApiResponse<CustomFieldGroup> localVarResponse = getNoteCustomFieldGroupWithHttpInfo(groupId);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Retrieve a Note Custom Field Group
+   * Retrieves a single custom field group by id for the Note record type.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+   * @param groupId  (required)
+   * @return ApiResponse&lt;CustomFieldGroup&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldGroup> getNoteCustomFieldGroupWithHttpInfo(String groupId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getNoteCustomFieldGroupRequestBuilder(groupId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getNoteCustomFieldGroup", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldGroup>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldGroup>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getNoteCustomFieldGroupRequestBuilder(String groupId) throws ApiException {
+    // verify the required parameter 'groupId' is set
+    if (groupId == null) {
+      throw new ApiException(400, "Missing the required parameter 'groupId' when calling getNoteCustomFieldGroup");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/notes/model/customFields/groups/{group_id}"
+        .replace("{group_id}", ApiClient.urlEncode(groupId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * List All Notes
    * Retrieves a list of all notes
    * @param filter Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons.  (optional)
@@ -698,6 +968,102 @@ import io.github.resilience4j.retry.Retry;
     localVarQueryParams.addAll(ApiClient.parameterToPairs("page_size", pageSize));
     localVarQueryParameterBaseName = "fields";
     localVarQueryParams.addAll(ApiClient.parameterToPairs("csv", "fields", fields));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * List Note Custom Field Groups
+   * Retrieves a list of custom field groups for the Note record type. Optionally filter by tab_id to scope to a specific tab.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+   * @param tabId Optional tab id to scope groups to a single tab (optional)
+   * @return ListCustomFieldGroupsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ListCustomFieldGroupsResponse listNoteCustomFieldGroups(String tabId) throws ApiException {
+    ApiResponse<ListCustomFieldGroupsResponse> localVarResponse = listNoteCustomFieldGroupsWithHttpInfo(tabId);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * List Note Custom Field Groups
+   * Retrieves a list of custom field groups for the Note record type. Optionally filter by tab_id to scope to a specific tab.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+   * @param tabId Optional tab id to scope groups to a single tab (optional)
+   * @return ApiResponse&lt;ListCustomFieldGroupsResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ListCustomFieldGroupsResponse> listNoteCustomFieldGroupsWithHttpInfo(String tabId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listNoteCustomFieldGroupsRequestBuilder(tabId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("listNoteCustomFieldGroups", localVarResponse);
+        }
+        return new ApiResponse<ListCustomFieldGroupsResponse>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ListCustomFieldGroupsResponse>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder listNoteCustomFieldGroupsRequestBuilder(String tabId) throws ApiException {
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/notes/model/customFields/groups";
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "tab_id";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("tab_id", tabId));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -1142,6 +1508,125 @@ import io.github.resilience4j.retry.Retry;
 
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateNoteRequest);
+      localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Update a Note Custom Field Group
+   * Updates an existing custom field group. Only fields listed in &#x60;update_mask&#x60; are applied.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+   * @param groupId  (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateCustomFieldGroupRequest  (required)
+   * @return CustomFieldGroup
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldGroup updateNoteCustomFieldGroup(String groupId, Set<String> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest) throws ApiException {
+    ApiResponse<CustomFieldGroup> localVarResponse = updateNoteCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Update a Note Custom Field Group
+   * Updates an existing custom field group. Only fields listed in &#x60;update_mask&#x60; are applied.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+   * @param groupId  (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateCustomFieldGroupRequest  (required)
+   * @return ApiResponse&lt;CustomFieldGroup&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldGroup> updateNoteCustomFieldGroupWithHttpInfo(String groupId, Set<String> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateNoteCustomFieldGroupRequestBuilder(groupId, updateMask, updateCustomFieldGroupRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updateNoteCustomFieldGroup", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldGroup>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldGroup>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updateNoteCustomFieldGroupRequestBuilder(String groupId, Set<String> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest) throws ApiException {
+    // verify the required parameter 'groupId' is set
+    if (groupId == null) {
+      throw new ApiException(400, "Missing the required parameter 'groupId' when calling updateNoteCustomFieldGroup");
+    }
+    // verify the required parameter 'updateMask' is set
+    if (updateMask == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateMask' when calling updateNoteCustomFieldGroup");
+    }
+    // verify the required parameter 'updateCustomFieldGroupRequest' is set
+    if (updateCustomFieldGroupRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateCustomFieldGroupRequest' when calling updateNoteCustomFieldGroup");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/notes/model/customFields/groups/{group_id}"
+        .replace("{group_id}", ApiClient.urlEncode(groupId.toString()));
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "update_mask";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCustomFieldGroupRequest);
       localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);

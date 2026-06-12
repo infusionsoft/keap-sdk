@@ -11,22 +11,26 @@ Method | HTTP request | Description
 [**assign_product_commission_program**](AffiliateApi.md#assign_product_commission_program) | **POST** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program
 [**assign_subscription_commission_program**](AffiliateApi.md#assign_subscription_commission_program) | **POST** /rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program
 [**create_affiliate_custom_field**](AffiliateApi.md#create_affiliate_custom_field) | **POST** /rest/v2/affiliates/model/customFields | Create an Affiliate Custom Field
+[**create_affiliate_custom_field_group**](AffiliateApi.md#create_affiliate_custom_field_group) | **POST** /rest/v2/affiliates/model/customFields/groups | Create an Affiliate Custom Field Group
 [**create_default_commission_program**](AffiliateApi.md#create_default_commission_program) | **POST** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program
 [**create_redirect_link**](AffiliateApi.md#create_redirect_link) | **POST** /rest/v2/affiliates/redirects | Create an Affiliate Link
 [**delete_affiliate**](AffiliateApi.md#delete_affiliate) | **DELETE** /rest/v2/affiliates/{id} | Delete Affiliate
 [**delete_affiliate_commission_program**](AffiliateApi.md#delete_affiliate_commission_program) | **DELETE** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program
 [**delete_affiliate_custom_field**](AffiliateApi.md#delete_affiliate_custom_field) | **DELETE** /rest/v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field
+[**delete_affiliate_custom_field_group**](AffiliateApi.md#delete_affiliate_custom_field_group) | **DELETE** /rest/v2/affiliates/model/customFields/groups/{group_id} | Delete an Affiliate Custom Field Group
 [**delete_commission_program_resource**](AffiliateApi.md#delete_commission_program_resource) | **DELETE** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Remove Commission Program Resource
 [**delete_redirect_link**](AffiliateApi.md#delete_redirect_link) | **DELETE** /rest/v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link
 [**get_affiliate**](AffiliateApi.md#get_affiliate) | **GET** /rest/v2/affiliates/{id} | Retrieve an Affiliate
 [**get_affiliate_commission_total**](AffiliateApi.md#get_affiliate_commission_total) | **GET** /rest/v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal
 [**get_affiliate_commissions**](AffiliateApi.md#get_affiliate_commissions) | **GET** /rest/v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commissions
+[**get_affiliate_custom_field_group**](AffiliateApi.md#get_affiliate_custom_field_group) | **GET** /rest/v2/affiliates/model/customFields/groups/{group_id} | Retrieve an Affiliate Custom Field Group
 [**get_affiliate_custom_fields**](AffiliateApi.md#get_affiliate_custom_fields) | **GET** /rest/v2/affiliates/model | Retrieve Affiliate Model
 [**get_commission_program**](AffiliateApi.md#get_commission_program) | **GET** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program
 [**get_redirect_link**](AffiliateApi.md#get_redirect_link) | **GET** /rest/v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link
 [**get_referrals_by_affiliate_id**](AffiliateApi.md#get_referrals_by_affiliate_id) | **GET** /rest/v2/affiliates/{affiliate_id}/referrals | Retrieve Affiliate Referrals
 [**list_affiliate**](AffiliateApi.md#list_affiliate) | **GET** /rest/v2/affiliates | List Affiliates
 [**list_affiliate_commission_programs**](AffiliateApi.md#list_affiliate_commission_programs) | **GET** /rest/v2/affiliates/commissionPrograms | List Affiliate Commission Programs
+[**list_affiliate_custom_field_groups**](AffiliateApi.md#list_affiliate_custom_field_groups) | **GET** /rest/v2/affiliates/model/customFields/groups | List Affiliate Custom Field Groups
 [**list_affiliate_links**](AffiliateApi.md#list_affiliate_links) | **GET** /rest/v2/affiliates/redirects | List Affiliate Links
 [**list_affiliate_payments**](AffiliateApi.md#list_affiliate_payments) | **GET** /rest/v2/affiliates/{affiliate_id}/payments | List Affiliate Payments
 [**list_commission_program_resources**](AffiliateApi.md#list_commission_program_resources) | **GET** /rest/v2/affiliates/commissionPrograms/{commission_program_id}/resources | Retrieve Commission Program Resources
@@ -36,6 +40,7 @@ Method | HTTP request | Description
 [**remove_subscription_plan_commission_from_commissions**](AffiliateApi.md#remove_subscription_plan_commission_from_commissions) | **POST** /rest/v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program
 [**update_affiliate**](AffiliateApi.md#update_affiliate) | **PATCH** /rest/v2/affiliates/{id} | Update an Affiliate
 [**update_affiliate_custom_field**](AffiliateApi.md#update_affiliate_custom_field) | **PATCH** /rest/v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field
+[**update_affiliate_custom_field_group**](AffiliateApi.md#update_affiliate_custom_field_group) | **PATCH** /rest/v2/affiliates/model/customFields/groups/{group_id} | Update an Affiliate Custom Field Group
 [**update_commission_program**](AffiliateApi.md#update_commission_program) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
 [**update_commission_program_resource**](AffiliateApi.md#update_commission_program_resource) | **PATCH** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Update Commission Program Resource
 [**update_default_commission_program**](AffiliateApi.md#update_default_commission_program) | **PATCH** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program
@@ -621,6 +626,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_affiliate_custom_field_group**
+> CustomFieldGroup create_affiliate_custom_field_group(create_custom_field_group_request)
+
+Create an Affiliate Custom Field Group
+
+Creates a new custom field group for the Affiliate record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.create_custom_field_group_request import CreateCustomFieldGroupRequest
+from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+    create_custom_field_group_request = keap_core_v2_client.CreateCustomFieldGroupRequest() # CreateCustomFieldGroupRequest | 
+
+    try:
+        # Create an Affiliate Custom Field Group
+        api_response = api_instance.create_affiliate_custom_field_group(create_custom_field_group_request)
+        print("The response of AffiliateApi->create_affiliate_custom_field_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->create_affiliate_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_custom_field_group_request** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_default_commission_program**
 > GetRestCommissionProgram create_default_commission_program(commission_program_id, create_default_commission_program_request)
 
@@ -991,6 +1078,84 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **custom_field_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_affiliate_custom_field_group**
+> delete_affiliate_custom_field_group(group_id)
+
+Delete an Affiliate Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+    group_id = 'group_id_example' # str | 
+
+    try:
+        # Delete an Affiliate Custom Field Group
+        api_instance.delete_affiliate_custom_field_group(group_id)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->delete_affiliate_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**|  | 
 
 ### Return type
 
@@ -1402,6 +1567,87 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListAffiliateCommissionsResponse**](ListAffiliateCommissionsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_affiliate_custom_field_group**
+> CustomFieldGroup get_affiliate_custom_field_group(group_id)
+
+Retrieve an Affiliate Custom Field Group
+
+Retrieves a single custom field group by id for the Affiliate record type.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+    group_id = 'group_id_example' # str | 
+
+    try:
+        # Retrieve an Affiliate Custom Field Group
+        api_response = api_instance.get_affiliate_custom_field_group(group_id)
+        print("The response of AffiliateApi->get_affiliate_custom_field_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->get_affiliate_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 
@@ -1904,6 +2150,87 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListAffiliateCommissionProgramsResponse**](ListAffiliateCommissionProgramsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_affiliate_custom_field_groups**
+> ListCustomFieldGroupsResponse list_affiliate_custom_field_groups(tab_id=tab_id)
+
+List Affiliate Custom Field Groups
+
+Retrieves a list of custom field groups for the Affiliate record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_custom_field_groups_response import ListCustomFieldGroupsResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+    tab_id = 'tab_id_example' # str | Optional tab id to scope groups to a single tab (optional)
+
+    try:
+        # List Affiliate Custom Field Groups
+        api_response = api_instance.list_affiliate_custom_field_groups(tab_id=tab_id)
+        print("The response of AffiliateApi->list_affiliate_custom_field_groups:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->list_affiliate_custom_field_groups: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**| Optional tab id to scope groups to a single tab | [optional] 
+
+### Return type
+
+[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
 
 ### Authorization
 
@@ -2663,6 +2990,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomFieldMetaData**](CustomFieldMetaData.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_affiliate_custom_field_group**
+> CustomFieldGroup update_affiliate_custom_field_group(group_id, update_mask, update_custom_field_group_request)
+
+Update an Affiliate Custom Field Group
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
+from keap_core_v2_client.models.update_custom_field_group_request import UpdateCustomFieldGroupRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+    group_id = 'group_id_example' # str | 
+    update_mask = ['update_mask_example'] # List[str] | Comma-separated list of fields to update
+    update_custom_field_group_request = keap_core_v2_client.UpdateCustomFieldGroupRequest() # UpdateCustomFieldGroupRequest | 
+
+    try:
+        # Update an Affiliate Custom Field Group
+        api_response = api_instance.update_affiliate_custom_field_group(group_id, update_mask, update_custom_field_group_request)
+        print("The response of AffiliateApi->update_affiliate_custom_field_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->update_affiliate_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**|  | 
+ **update_mask** | [**List[str]**](str.md)| Comma-separated list of fields to update | 
+ **update_custom_field_group_request** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 

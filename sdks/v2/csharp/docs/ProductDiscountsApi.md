@@ -5,7 +5,9 @@ All URIs are relative to *https://api.keap.com/crm*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**CreateProductDiscount**](ProductDiscountsApi.md#createproductdiscount) | **POST** /rest/v2/discounts/products | Create a Product Discount |
+| [**CreateProductDiscountCriteria**](ProductDiscountsApi.md#createproductdiscountcriteria) | **POST** /rest/v2/discounts/products/{discount_id}/criteria | Create a Product Discount Criteria |
 | [**DeleteProductDiscount**](ProductDiscountsApi.md#deleteproductdiscount) | **DELETE** /rest/v2/discounts/products/{discount_id} | Delete a Product Discount |
+| [**DeleteProductDiscountCriteria**](ProductDiscountsApi.md#deleteproductdiscountcriteria) | **DELETE** /rest/v2/discounts/products/{discount_id}/criteria/{criteria_id} | Delete a Product Discount Criteria |
 | [**GetProductDiscount**](ProductDiscountsApi.md#getproductdiscount) | **GET** /rest/v2/discounts/products/{discount_id} | Retrieve a Product Discount |
 | [**ListProductDiscounts**](ProductDiscountsApi.md#listproductdiscounts) | **GET** /rest/v2/discounts/products | List all Product Discounts |
 | [**UpdateProductDiscount**](ProductDiscountsApi.md#updateproductdiscount) | **PATCH** /rest/v2/discounts/products/{discount_id} | Update a Product Discount |
@@ -112,6 +114,110 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="createproductdiscountcriteria"></a>
+# **CreateProductDiscountCriteria**
+> DiscountCriteria CreateProductDiscountCriteria (string discountId, CreateProductDiscountCriteria createProductDiscountCriteria)
+
+Create a Product Discount Criteria
+
+Creates a Product Discount Criteria
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class CreateProductDiscountCriteriaExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ProductDiscountsApi(config);
+            var discountId = "discountId_example";  // string | 
+            var createProductDiscountCriteria = new CreateProductDiscountCriteria(); // CreateProductDiscountCriteria | 
+
+            try
+            {
+                // Create a Product Discount Criteria
+                DiscountCriteria result = apiInstance.CreateProductDiscountCriteria(discountId, createProductDiscountCriteria);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ProductDiscountsApi.CreateProductDiscountCriteria: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateProductDiscountCriteriaWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create a Product Discount Criteria
+    ApiResponse<DiscountCriteria> response = apiInstance.CreateProductDiscountCriteriaWithHttpInfo(discountId, createProductDiscountCriteria);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ProductDiscountsApi.CreateProductDiscountCriteriaWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **discountId** | **string** |  |  |
+| **createProductDiscountCriteria** | [**CreateProductDiscountCriteria**](CreateProductDiscountCriteria.md) |  |  |
+
+### Return type
+
+[**DiscountCriteria**](DiscountCriteria.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="deleteproductdiscount"></a>
 # **DeleteProductDiscount**
 > void DeleteProductDiscount (string discountId)
@@ -180,6 +286,106 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **discountId** | **string** |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deleteproductdiscountcriteria"></a>
+# **DeleteProductDiscountCriteria**
+> void DeleteProductDiscountCriteria (string discountId, string criteriaId)
+
+Delete a Product Discount Criteria
+
+Deletes a specified Product Discount Criteria
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteProductDiscountCriteriaExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ProductDiscountsApi(config);
+            var discountId = "discountId_example";  // string | 
+            var criteriaId = "criteriaId_example";  // string | 
+
+            try
+            {
+                // Delete a Product Discount Criteria
+                apiInstance.DeleteProductDiscountCriteria(discountId, criteriaId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ProductDiscountsApi.DeleteProductDiscountCriteria: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteProductDiscountCriteriaWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete a Product Discount Criteria
+    apiInstance.DeleteProductDiscountCriteriaWithHttpInfo(discountId, criteriaId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ProductDiscountsApi.DeleteProductDiscountCriteriaWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **discountId** | **string** |  |  |
+| **criteriaId** | **string** |  |  |
 
 ### Return type
 

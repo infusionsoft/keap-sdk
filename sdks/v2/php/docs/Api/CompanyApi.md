@@ -7,14 +7,20 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**addTagToCompany()**](CompanyApi.md#addTagToCompany) | **POST** /rest/v2/companies/{company_id}/tags/{tag_id} | Add Tag to Company |
 | [**createCompany()**](CompanyApi.md#createCompany) | **POST** /rest/v2/companies | Create a Company |
 | [**createCompanyCustomField()**](CompanyApi.md#createCompanyCustomField) | **POST** /rest/v2/companies/model/customFields | Create a Company Custom Field |
+| [**createCompanyCustomFieldGroup()**](CompanyApi.md#createCompanyCustomFieldGroup) | **POST** /rest/v2/companies/model/customFields/groups | Create a Company Custom Field Group |
 | [**deleteCompany()**](CompanyApi.md#deleteCompany) | **DELETE** /rest/v2/companies/{company_id} | Delete a Company |
+| [**deleteCompanyCustomField()**](CompanyApi.md#deleteCompanyCustomField) | **DELETE** /rest/v2/companies/model/customFields/{custom_field_id} | Delete a Company Custom Field |
+| [**deleteCompanyCustomFieldGroup()**](CompanyApi.md#deleteCompanyCustomFieldGroup) | **DELETE** /rest/v2/companies/model/customFields/groups/{group_id} | Delete a Company Custom Field Group |
 | [**getCompany()**](CompanyApi.md#getCompany) | **GET** /rest/v2/companies/{company_id} | Retrieve a Company |
+| [**getCompanyCustomFieldGroup()**](CompanyApi.md#getCompanyCustomFieldGroup) | **GET** /rest/v2/companies/model/customFields/groups/{group_id} | Retrieve a Company Custom Field Group |
 | [**listCompanies()**](CompanyApi.md#listCompanies) | **GET** /rest/v2/companies | List Companies |
+| [**listCompanyCustomFieldGroups()**](CompanyApi.md#listCompanyCustomFieldGroups) | **GET** /rest/v2/companies/model/customFields/groups | List Company Custom Field Groups |
 | [**listTagsForCompany()**](CompanyApi.md#listTagsForCompany) | **GET** /rest/v2/companies/{company_id}/tags | List Applied Tags |
 | [**removeTagFromCompany()**](CompanyApi.md#removeTagFromCompany) | **DELETE** /rest/v2/companies/{company_id}/tags/{tag_id} | Remove Tag |
 | [**retrieveCompanyCustomFieldModel()**](CompanyApi.md#retrieveCompanyCustomFieldModel) | **GET** /rest/v2/companies/model | Retrieve Company Custom Field Model |
 | [**updateCompany()**](CompanyApi.md#updateCompany) | **PATCH** /rest/v2/companies/{company_id} | Update a Company |
 | [**updateCompanyCustomField()**](CompanyApi.md#updateCompanyCustomField) | **PATCH** /rest/v2/companies/model/customFields/{custom_field_id} | Update a Company Custom Field |
+| [**updateCompanyCustomFieldGroup()**](CompanyApi.md#updateCompanyCustomFieldGroup) | **PATCH** /rest/v2/companies/model/customFields/groups/{group_id} | Update a Company Custom Field Group |
 
 
 ## `addTagToCompany()`
@@ -195,6 +201,65 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createCompanyCustomFieldGroup()`
+
+```php
+createCompanyCustomFieldGroup($create_custom_field_group_request): \Keap\Core\V2\Model\CustomFieldGroup
+```
+
+Create a Company Custom Field Group
+
+Creates a new custom field group for the Company record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\CompanyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_custom_field_group_request = new \Keap\Core\V2\Model\CreateCustomFieldGroupRequest(); // \Keap\Core\V2\Model\CreateCustomFieldGroupRequest
+
+try {
+    $result = $apiInstance->createCompanyCustomFieldGroup($create_custom_field_group_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CompanyApi->createCompanyCustomFieldGroup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_custom_field_group_request** | [**\Keap\Core\V2\Model\CreateCustomFieldGroupRequest**](../Model/CreateCustomFieldGroupRequest.md)|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\CustomFieldGroup**](../Model/CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteCompany()`
 
 ```php
@@ -235,6 +300,122 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **company_id** | **string**|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteCompanyCustomField()`
+
+```php
+deleteCompanyCustomField($custom_field_id)
+```
+
+Delete a Company Custom Field
+
+Deletes a custom field from the company model
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\CompanyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$custom_field_id = 'custom_field_id_example'; // string
+
+try {
+    $apiInstance->deleteCompanyCustomField($custom_field_id);
+} catch (Exception $e) {
+    echo 'Exception when calling CompanyApi->deleteCompanyCustomField: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **custom_field_id** | **string**|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteCompanyCustomFieldGroup()`
+
+```php
+deleteCompanyCustomFieldGroup($group_id)
+```
+
+Delete a Company Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\CompanyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 'group_id_example'; // string
+
+try {
+    $apiInstance->deleteCompanyCustomFieldGroup($group_id);
+} catch (Exception $e) {
+    echo 'Exception when calling CompanyApi->deleteCompanyCustomFieldGroup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**|  | |
 
 ### Return type
 
@@ -314,6 +495,65 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getCompanyCustomFieldGroup()`
+
+```php
+getCompanyCustomFieldGroup($group_id): \Keap\Core\V2\Model\CustomFieldGroup
+```
+
+Retrieve a Company Custom Field Group
+
+Retrieves a single custom field group by id for the Company record type.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\CompanyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 'group_id_example'; // string
+
+try {
+    $result = $apiInstance->getCompanyCustomFieldGroup($group_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CompanyApi->getCompanyCustomFieldGroup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\CustomFieldGroup**](../Model/CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listCompanies()`
 
 ```php
@@ -367,6 +607,65 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\ListCompaniesResponse**](../Model/ListCompaniesResponse.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listCompanyCustomFieldGroups()`
+
+```php
+listCompanyCustomFieldGroups($tab_id): \Keap\Core\V2\Model\ListCustomFieldGroupsResponse
+```
+
+List Company Custom Field Groups
+
+Retrieves a list of custom field groups for the Company record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\CompanyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tab_id = 'tab_id_example'; // string | Optional tab id to scope groups to a single tab
+
+try {
+    $result = $apiInstance->listCompanyCustomFieldGroups($tab_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CompanyApi->listCompanyCustomFieldGroups: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tab_id** | **string**| Optional tab id to scope groups to a single tab | [optional] |
+
+### Return type
+
+[**\Keap\Core\V2\Model\ListCustomFieldGroupsResponse**](../Model/ListCustomFieldGroupsResponse.md)
 
 ### Authorization
 
@@ -676,6 +975,69 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\CustomFieldMetaData**](../Model/CustomFieldMetaData.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateCompanyCustomFieldGroup()`
+
+```php
+updateCompanyCustomFieldGroup($group_id, $update_mask, $update_custom_field_group_request): \Keap\Core\V2\Model\CustomFieldGroup
+```
+
+Update a Company Custom Field Group
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\CompanyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 'group_id_example'; // string
+$update_mask = array('update_mask_example'); // string[] | Comma-separated list of fields to update
+$update_custom_field_group_request = new \Keap\Core\V2\Model\UpdateCustomFieldGroupRequest(); // \Keap\Core\V2\Model\UpdateCustomFieldGroupRequest
+
+try {
+    $result = $apiInstance->updateCompanyCustomFieldGroup($group_id, $update_mask, $update_custom_field_group_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CompanyApi->updateCompanyCustomFieldGroup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**|  | |
+| **update_mask** | [**string[]**](../Model/string.md)| Comma-separated list of fields to update | |
+| **update_custom_field_group_request** | [**\Keap\Core\V2\Model\UpdateCustomFieldGroupRequest**](../Model/UpdateCustomFieldGroupRequest.md)|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\CustomFieldGroup**](../Model/CustomFieldGroup.md)
 
 ### Authorization
 

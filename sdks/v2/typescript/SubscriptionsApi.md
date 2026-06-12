@@ -7,13 +7,18 @@ Method | HTTP request | Description
 [**cancelSubscription**](SubscriptionsApi.md#cancelSubscription) | **POST** /rest/v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription
 [**createSubscription**](SubscriptionsApi.md#createSubscription) | **POST** /rest/v2/subscriptions | Create Subscription
 [**createSubscriptionCustomField**](SubscriptionsApi.md#createSubscriptionCustomField) | **POST** /rest/v2/subscriptions/model/customFields | Create a Subscription Custom Field
+[**createSubscriptionCustomFieldGroup**](SubscriptionsApi.md#createSubscriptionCustomFieldGroup) | **POST** /rest/v2/subscriptions/model/customFields/groups | Create a Subscription Custom Field Group
 [**deleteSubscriptionCustomField**](SubscriptionsApi.md#deleteSubscriptionCustomField) | **DELETE** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
+[**deleteSubscriptionCustomFieldGroup**](SubscriptionsApi.md#deleteSubscriptionCustomFieldGroup) | **DELETE** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Delete a Subscription Custom Field Group
 [**getSubscription**](SubscriptionsApi.md#getSubscription) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription
+[**getSubscriptionCustomFieldGroup**](SubscriptionsApi.md#getSubscriptionCustomFieldGroup) | **GET** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Retrieve a Subscription Custom Field Group
 [**invoiceSubscription**](SubscriptionsApi.md#invoiceSubscription) | **POST** /rest/v2/subscriptions/{subscription_id}:invoice | Invoice a Subscription
+[**listSubscriptionCustomFieldGroups**](SubscriptionsApi.md#listSubscriptionCustomFieldGroups) | **GET** /rest/v2/subscriptions/model/customFields/groups | List Subscription Custom Field Groups
 [**listSubscriptions**](SubscriptionsApi.md#listSubscriptions) | **GET** /rest/v2/subscriptions | List Subscriptions
 [**retrieveSubscriptionCustomFieldModel**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /rest/v2/subscriptions/model | Retrieve Subscription Custom Field Model
 [**updateSubscription**](SubscriptionsApi.md#updateSubscription) | **PATCH** /rest/v2/subscriptions/{subscription_id} | Update a Subscription
 [**updateSubscriptionCustomField**](SubscriptionsApi.md#updateSubscriptionCustomField) | **PATCH** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field
+[**updateSubscriptionCustomFieldGroup**](SubscriptionsApi.md#updateSubscriptionCustomFieldGroup) | **PATCH** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Update a Subscription Custom Field Group
 
 
 # **cancelSubscription**
@@ -247,6 +252,70 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **createSubscriptionCustomFieldGroup**
+> CustomFieldGroup createSubscriptionCustomFieldGroup(createCustomFieldGroupRequest)
+
+Creates a new custom field group for the Subscription record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+
+### Example
+
+
+```typescript
+import { createConfiguration, SubscriptionsApi } from '';
+import type { SubscriptionsApiCreateSubscriptionCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new SubscriptionsApi(configuration);
+
+const request: SubscriptionsApiCreateSubscriptionCustomFieldGroupRequest = {
+  
+  createCustomFieldGroupRequest: {
+    name: "name_example",
+    tabId: "tabId_example",
+  },
+};
+
+const data = await apiInstance.createSubscriptionCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCustomFieldGroupRequest** | **CreateCustomFieldGroupRequest**|  |
+
+
+### Return type
+
+**CustomFieldGroup**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **deleteSubscriptionCustomField**
 > void deleteSubscriptionCustomField()
 
@@ -277,6 +346,67 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customFieldId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **deleteSubscriptionCustomFieldGroup**
+> void deleteSubscriptionCustomFieldGroup()
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+
+
+```typescript
+import { createConfiguration, SubscriptionsApi } from '';
+import type { SubscriptionsApiDeleteSubscriptionCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new SubscriptionsApi(configuration);
+
+const request: SubscriptionsApiDeleteSubscriptionCustomFieldGroupRequest = {
+  
+  groupId: "group_id_example",
+};
+
+const data = await apiInstance.deleteSubscriptionCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -369,6 +499,67 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getSubscriptionCustomFieldGroup**
+> CustomFieldGroup getSubscriptionCustomFieldGroup()
+
+Retrieves a single custom field group by id for the Subscription record type.
+
+### Example
+
+
+```typescript
+import { createConfiguration, SubscriptionsApi } from '';
+import type { SubscriptionsApiGetSubscriptionCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new SubscriptionsApi(configuration);
+
+const request: SubscriptionsApiGetSubscriptionCustomFieldGroupRequest = {
+  
+  groupId: "group_id_example",
+};
+
+const data = await apiInstance.getSubscriptionCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**CustomFieldGroup**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **invoiceSubscription**
 > OrderV2 invoiceSubscription()
 
@@ -404,6 +595,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 **OrderV2**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listSubscriptionCustomFieldGroups**
+> ListCustomFieldGroupsResponse listSubscriptionCustomFieldGroups()
+
+Retrieves a list of custom field groups for the Subscription record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+
+
+```typescript
+import { createConfiguration, SubscriptionsApi } from '';
+import type { SubscriptionsApiListSubscriptionCustomFieldGroupsRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new SubscriptionsApi(configuration);
+
+const request: SubscriptionsApiListSubscriptionCustomFieldGroupsRequest = {
+    // Optional tab id to scope groups to a single tab (optional)
+  tabId: "tab_id_example",
+};
+
+const data = await apiInstance.listSubscriptionCustomFieldGroups(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tabId** | [**string**] | Optional tab id to scope groups to a single tab | (optional) defaults to undefined
+
+
+### Return type
+
+**ListCustomFieldGroupsResponse**
 
 ### Authorization
 
@@ -710,6 +962,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 **CustomFieldMetaData**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **updateSubscriptionCustomFieldGroup**
+> CustomFieldGroup updateSubscriptionCustomFieldGroup(updateCustomFieldGroupRequest)
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+
+### Example
+
+
+```typescript
+import { createConfiguration, SubscriptionsApi } from '';
+import type { SubscriptionsApiUpdateSubscriptionCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new SubscriptionsApi(configuration);
+
+const request: SubscriptionsApiUpdateSubscriptionCustomFieldGroupRequest = {
+  
+  groupId: "group_id_example",
+    // Comma-separated list of fields to update
+  updateMask: [
+    "name",
+  ],
+  
+  updateCustomFieldGroupRequest: {
+    name: "name_example",
+    order: 1,
+    tabId: "tabId_example",
+  },
+};
+
+const data = await apiInstance.updateSubscriptionCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateCustomFieldGroupRequest** | **UpdateCustomFieldGroupRequest**|  |
+ **groupId** | [**string**] |  | defaults to undefined
+ **updateMask** | **Array<&#39;name&#39; &#124; &#39;tab_id&#39; &#124; &#39;order&#39;>** | Comma-separated list of fields to update | defaults to undefined
+
+
+### Return type
+
+**CustomFieldGroup**
 
 ### Authorization
 

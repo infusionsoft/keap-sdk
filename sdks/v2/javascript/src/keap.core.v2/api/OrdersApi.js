@@ -14,11 +14,14 @@
 
 import ApiClient from "../ApiClient";
 import ApplyCommissionRequest from '../model/ApplyCommissionRequest';
+import CreateCustomFieldGroupRequest from '../model/CreateCustomFieldGroupRequest';
 import CreateCustomFieldRequest from '../model/CreateCustomFieldRequest';
 import CreateOrderItemRequest from '../model/CreateOrderItemRequest';
+import CustomFieldGroup from '../model/CustomFieldGroup';
 import CustomFieldMetaData from '../model/CustomFieldMetaData';
 import Error from '../model/Error';
 import FileOperationRequest from '../model/FileOperationRequest';
+import ListCustomFieldGroupsResponse from '../model/ListCustomFieldGroupsResponse';
 import ListOrderPaymentsResponse from '../model/ListOrderPaymentsResponse';
 import ListOrders from '../model/ListOrders';
 import ObjectModel from '../model/ObjectModel';
@@ -27,6 +30,7 @@ import OrderV2 from '../model/OrderV2';
 import PaymentResult from '../model/PaymentResult';
 import RestCreateOrderRequest from '../model/RestCreateOrderRequest';
 import RestCreatePaymentRequest from '../model/RestCreatePaymentRequest';
+import UpdateCustomFieldGroupRequest from '../model/UpdateCustomFieldGroupRequest';
 import UpdateCustomFieldMetaDataRequest from '../model/UpdateCustomFieldMetaDataRequest';
 import UpdateOrderItemRequest from '../model/UpdateOrderItemRequest';
 import UpdateOrderRequest from '../model/UpdateOrderRequest';
@@ -308,6 +312,53 @@ export default class OrdersApi {
 
 
     /**
+     * Create an Order Custom Field Group
+     * Creates a new custom field group for the Order record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+     * @param {module:keap.core.v2/model/CreateCustomFieldGroupRequest} createCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldGroup} and HTTP response
+     */
+    createOrderCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest) {
+      let postBody = createCustomFieldGroupRequest;
+      // verify the required parameter 'createCustomFieldGroupRequest' is set
+      if (createCustomFieldGroupRequest === undefined || createCustomFieldGroupRequest === null) {
+        throw new Error("Missing the required parameter 'createCustomFieldGroupRequest' when calling createOrderCustomFieldGroup");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldGroup;
+      return this.apiClient.callApi(
+        '/rest/v2/orders/model/customFields/groups', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create an Order Custom Field Group
+     * Creates a new custom field group for the Order record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+     * @param {module:keap.core.v2/model/CreateCustomFieldGroupRequest} createCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldGroup}
+     */
+    createOrderCustomFieldGroup(createCustomFieldGroupRequest) {
+      return this.createOrderCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Create an Order Item
      * Creates an order item on an existing order
      * @param {String} orderId 
@@ -512,6 +563,54 @@ export default class OrdersApi {
 
 
     /**
+     * Delete an Order Custom Field Group
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteOrderCustomFieldGroupWithHttpInfo(groupId) {
+      let postBody = null;
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling deleteOrderCustomFieldGroup");
+      }
+
+      let pathParams = {
+        'group_id': groupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/orders/model/customFields/groups/{group_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete an Order Custom Field Group
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteOrderCustomFieldGroup(groupId) {
+      return this.deleteOrderCustomFieldGroupWithHttpInfo(groupId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Delete an Order Item
      * Deletes an order item on an existing order
      * @param {String} orderId 
@@ -669,6 +768,54 @@ export default class OrdersApi {
 
 
     /**
+     * Retrieve an Order Custom Field Group
+     * Retrieves a single custom field group by id for the Order record type.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldGroup} and HTTP response
+     */
+    getOrderCustomFieldGroupWithHttpInfo(groupId) {
+      let postBody = null;
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling getOrderCustomFieldGroup");
+      }
+
+      let pathParams = {
+        'group_id': groupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldGroup;
+      return this.apiClient.callApi(
+        '/rest/v2/orders/model/customFields/groups/{group_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Retrieve an Order Custom Field Group
+     * Retrieves a single custom field group by id for the Order record type.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldGroup}
+     */
+    getOrderCustomFieldGroup(groupId) {
+      return this.getOrderCustomFieldGroupWithHttpInfo(groupId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Retrieve an Order Item
      * Retrieves a single order item from an existing order
      * @param {String} orderId 
@@ -717,6 +864,53 @@ export default class OrdersApi {
      */
     getOrderItem(orderId, orderItemId) {
       return this.getOrderItemWithHttpInfo(orderId, orderItemId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List Order Custom Field Groups
+     * Retrieves a list of custom field groups for the Order record type. Optionally filter by tab_id to scope to a specific tab.
+     * @param {Object} opts Optional parameters
+     * @param {String} [tabId] Optional tab id to scope groups to a single tab
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListCustomFieldGroupsResponse} and HTTP response
+     */
+    listOrderCustomFieldGroupsWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'tab_id': opts['tabId']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListCustomFieldGroupsResponse;
+      return this.apiClient.callApi(
+        '/rest/v2/orders/model/customFields/groups', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List Order Custom Field Groups
+     * Retrieves a list of custom field groups for the Order record type. Optionally filter by tab_id to scope to a specific tab.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.tabId Optional tab id to scope groups to a single tab
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListCustomFieldGroupsResponse}
+     */
+    listOrderCustomFieldGroups(opts) {
+      return this.listOrderCustomFieldGroupsWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -997,6 +1191,67 @@ export default class OrdersApi {
      */
     updateOrderCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts) {
       return this.updateOrderCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update an Order Custom Field Group
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * @param {String} groupId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldGroupRequest} updateCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldGroup} and HTTP response
+     */
+    updateOrderCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest) {
+      let postBody = updateCustomFieldGroupRequest;
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling updateOrderCustomFieldGroup");
+      }
+      // verify the required parameter 'updateMask' is set
+      if (updateMask === undefined || updateMask === null) {
+        throw new Error("Missing the required parameter 'updateMask' when calling updateOrderCustomFieldGroup");
+      }
+      // verify the required parameter 'updateCustomFieldGroupRequest' is set
+      if (updateCustomFieldGroupRequest === undefined || updateCustomFieldGroupRequest === null) {
+        throw new Error("Missing the required parameter 'updateCustomFieldGroupRequest' when calling updateOrderCustomFieldGroup");
+      }
+
+      let pathParams = {
+        'group_id': groupId
+      };
+      let queryParams = {
+        'update_mask': this.apiClient.buildCollectionParam(updateMask, 'multi')
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldGroup;
+      return this.apiClient.callApi(
+        '/rest/v2/orders/model/customFields/groups/{group_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Update an Order Custom Field Group
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * @param {String} groupId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldGroupRequest} updateCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldGroup}
+     */
+    updateOrderCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest) {
+      return this.updateOrderCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

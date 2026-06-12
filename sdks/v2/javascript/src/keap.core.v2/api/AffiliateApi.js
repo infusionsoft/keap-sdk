@@ -21,12 +21,14 @@ import AffiliateProgramResource from '../model/AffiliateProgramResource';
 import AffiliateRemoveFromProgramRequest from '../model/AffiliateRemoveFromProgramRequest';
 import CreateAffiliateRequest from '../model/CreateAffiliateRequest';
 import CreateCommissionProgramRequest from '../model/CreateCommissionProgramRequest';
+import CreateCustomFieldGroupRequest from '../model/CreateCustomFieldGroupRequest';
 import CreateCustomFieldRequest from '../model/CreateCustomFieldRequest';
 import CreateDefaultCommissionProgramRequest from '../model/CreateDefaultCommissionProgramRequest';
 import CreateOrUpdateAffiliateLinkRequest from '../model/CreateOrUpdateAffiliateLinkRequest';
 import CreateProductCommissionProgramRequest from '../model/CreateProductCommissionProgramRequest';
 import CreateProgramResourceRequest from '../model/CreateProgramResourceRequest';
 import CreateSubscriptionCommissionProgramRequest from '../model/CreateSubscriptionCommissionProgramRequest';
+import CustomFieldGroup from '../model/CustomFieldGroup';
 import CustomFieldMetaData from '../model/CustomFieldMetaData';
 import DeleteProgramCommissionRequest from '../model/DeleteProgramCommissionRequest';
 import DeleteSubscriptionPlanCommissionRequest from '../model/DeleteSubscriptionPlanCommissionRequest';
@@ -39,11 +41,13 @@ import ListAffiliatePaymentsResponse from '../model/ListAffiliatePaymentsRespons
 import ListAffiliateReferralsResponse from '../model/ListAffiliateReferralsResponse';
 import ListAffiliateSummariesResponse from '../model/ListAffiliateSummariesResponse';
 import ListAffiliatesResponse from '../model/ListAffiliatesResponse';
+import ListCustomFieldGroupsResponse from '../model/ListCustomFieldGroupsResponse';
 import ListProgramResourcesResponse from '../model/ListProgramResourcesResponse';
 import ObjectModel from '../model/ObjectModel';
 import RestAffiliate from '../model/RestAffiliate';
 import UpdateAffiliateRequest from '../model/UpdateAffiliateRequest';
 import UpdateCommissionProgramRequest from '../model/UpdateCommissionProgramRequest';
+import UpdateCustomFieldGroupRequest from '../model/UpdateCustomFieldGroupRequest';
 import UpdateCustomFieldMetaDataRequest from '../model/UpdateCustomFieldMetaDataRequest';
 import UpdateDefaultCommissionProgramRequest from '../model/UpdateDefaultCommissionProgramRequest';
 import UpdateProductCommissionProgramRequest from '../model/UpdateProductCommissionProgramRequest';
@@ -420,6 +424,53 @@ export default class AffiliateApi {
 
 
     /**
+     * Create an Affiliate Custom Field Group
+     * Creates a new custom field group for the Affiliate record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+     * @param {module:keap.core.v2/model/CreateCustomFieldGroupRequest} createCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldGroup} and HTTP response
+     */
+    createAffiliateCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest) {
+      let postBody = createCustomFieldGroupRequest;
+      // verify the required parameter 'createCustomFieldGroupRequest' is set
+      if (createCustomFieldGroupRequest === undefined || createCustomFieldGroupRequest === null) {
+        throw new Error("Missing the required parameter 'createCustomFieldGroupRequest' when calling createAffiliateCustomFieldGroup");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldGroup;
+      return this.apiClient.callApi(
+        '/rest/v2/affiliates/model/customFields/groups', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create an Affiliate Custom Field Group
+     * Creates a new custom field group for the Affiliate record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+     * @param {module:keap.core.v2/model/CreateCustomFieldGroupRequest} createCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldGroup}
+     */
+    createAffiliateCustomFieldGroup(createCustomFieldGroupRequest) {
+      return this.createAffiliateCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Create a Default Commission Program
      * Creates a Default Commission Program
      * @param {String} commissionProgramId 
@@ -658,6 +709,54 @@ export default class AffiliateApi {
      */
     deleteAffiliateCustomField(customFieldId) {
       return this.deleteAffiliateCustomFieldWithHttpInfo(customFieldId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Delete an Affiliate Custom Field Group
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteAffiliateCustomFieldGroupWithHttpInfo(groupId) {
+      let postBody = null;
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling deleteAffiliateCustomFieldGroup");
+      }
+
+      let pathParams = {
+        'group_id': groupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/affiliates/model/customFields/groups/{group_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete an Affiliate Custom Field Group
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteAffiliateCustomFieldGroup(groupId) {
+      return this.deleteAffiliateCustomFieldGroupWithHttpInfo(groupId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -913,6 +1012,54 @@ export default class AffiliateApi {
      */
     getAffiliateCommissions(affiliateId, opts) {
       return this.getAffiliateCommissionsWithHttpInfo(affiliateId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Retrieve an Affiliate Custom Field Group
+     * Retrieves a single custom field group by id for the Affiliate record type.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldGroup} and HTTP response
+     */
+    getAffiliateCustomFieldGroupWithHttpInfo(groupId) {
+      let postBody = null;
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling getAffiliateCustomFieldGroup");
+      }
+
+      let pathParams = {
+        'group_id': groupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldGroup;
+      return this.apiClient.callApi(
+        '/rest/v2/affiliates/model/customFields/groups/{group_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Retrieve an Affiliate Custom Field Group
+     * Retrieves a single custom field group by id for the Affiliate record type.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldGroup}
+     */
+    getAffiliateCustomFieldGroup(groupId) {
+      return this.getAffiliateCustomFieldGroupWithHttpInfo(groupId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1225,6 +1372,53 @@ export default class AffiliateApi {
      */
     listAffiliateCommissionPrograms(opts) {
       return this.listAffiliateCommissionProgramsWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List Affiliate Custom Field Groups
+     * Retrieves a list of custom field groups for the Affiliate record type. Optionally filter by tab_id to scope to a specific tab.
+     * @param {Object} opts Optional parameters
+     * @param {String} [tabId] Optional tab id to scope groups to a single tab
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListCustomFieldGroupsResponse} and HTTP response
+     */
+    listAffiliateCustomFieldGroupsWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'tab_id': opts['tabId']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListCustomFieldGroupsResponse;
+      return this.apiClient.callApi(
+        '/rest/v2/affiliates/model/customFields/groups', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List Affiliate Custom Field Groups
+     * Retrieves a list of custom field groups for the Affiliate record type. Optionally filter by tab_id to scope to a specific tab.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.tabId Optional tab id to scope groups to a single tab
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListCustomFieldGroupsResponse}
+     */
+    listAffiliateCustomFieldGroups(opts) {
+      return this.listAffiliateCustomFieldGroupsWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1730,6 +1924,67 @@ export default class AffiliateApi {
      */
     updateAffiliateCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts) {
       return this.updateAffiliateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update an Affiliate Custom Field Group
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * @param {String} groupId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldGroupRequest} updateCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldGroup} and HTTP response
+     */
+    updateAffiliateCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest) {
+      let postBody = updateCustomFieldGroupRequest;
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling updateAffiliateCustomFieldGroup");
+      }
+      // verify the required parameter 'updateMask' is set
+      if (updateMask === undefined || updateMask === null) {
+        throw new Error("Missing the required parameter 'updateMask' when calling updateAffiliateCustomFieldGroup");
+      }
+      // verify the required parameter 'updateCustomFieldGroupRequest' is set
+      if (updateCustomFieldGroupRequest === undefined || updateCustomFieldGroupRequest === null) {
+        throw new Error("Missing the required parameter 'updateCustomFieldGroupRequest' when calling updateAffiliateCustomFieldGroup");
+      }
+
+      let pathParams = {
+        'group_id': groupId
+      };
+      let queryParams = {
+        'update_mask': this.apiClient.buildCollectionParam(updateMask, 'multi')
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldGroup;
+      return this.apiClient.callApi(
+        '/rest/v2/affiliates/model/customFields/groups/{group_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Update an Affiliate Custom Field Group
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * @param {String} groupId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldGroupRequest} updateCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldGroup}
+     */
+    updateAffiliateCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest) {
+      return this.updateAffiliateCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

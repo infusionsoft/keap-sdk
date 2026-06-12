@@ -21,8 +21,10 @@ import com.keap.core.sdk.model.Contact;
 import com.keap.core.sdk.model.ContactLink;
 import com.keap.core.sdk.model.ContactLinkType;
 import com.keap.core.sdk.model.CreateContactLinkTypeRequest;
+import com.keap.core.sdk.model.CreateCustomFieldGroupRequest;
 import com.keap.core.sdk.model.CreateCustomFieldRequest;
 import com.keap.core.sdk.model.CreateUpdateContactRequest;
+import com.keap.core.sdk.model.CustomFieldGroup;
 import com.keap.core.sdk.model.CustomFieldMetaData;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.LinkContactsRequest;
@@ -30,8 +32,11 @@ import com.keap.core.sdk.model.ListContactLinkTypesResponse;
 import com.keap.core.sdk.model.ListContactLinksResponse;
 import com.keap.core.sdk.model.ListContactTagsResponse;
 import com.keap.core.sdk.model.ListContactsResponse;
+import com.keap.core.sdk.model.ListCustomFieldGroupsResponse;
+import com.keap.core.sdk.model.MergeContactRequest;
 import com.keap.core.sdk.model.ObjectModel;
 import java.util.Set;
+import com.keap.core.sdk.model.UpdateCustomFieldGroupRequest;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -310,6 +315,97 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Create a Contact Custom Field Group
+   * Creates a new custom field group for the Contact record type. If &#x60;tab_id&#x60; is omitted, the group is added to the default &#39;Custom Fields&#39; tab.
+   * @param createCustomFieldGroupRequest  (required)
+   * @return CustomFieldGroup
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldGroup createContactCustomFieldGroup(CreateCustomFieldGroupRequest createCustomFieldGroupRequest) throws ApiException {
+    ApiResponse<CustomFieldGroup> localVarResponse = createContactCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Create a Contact Custom Field Group
+   * Creates a new custom field group for the Contact record type. If &#x60;tab_id&#x60; is omitted, the group is added to the default &#39;Custom Fields&#39; tab.
+   * @param createCustomFieldGroupRequest  (required)
+   * @return ApiResponse&lt;CustomFieldGroup&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldGroup> createContactCustomFieldGroupWithHttpInfo(CreateCustomFieldGroupRequest createCustomFieldGroupRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createContactCustomFieldGroupRequestBuilder(createCustomFieldGroupRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("createContactCustomFieldGroup", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldGroup>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldGroup>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder createContactCustomFieldGroupRequestBuilder(CreateCustomFieldGroupRequest createCustomFieldGroupRequest) throws ApiException {
+    // verify the required parameter 'createCustomFieldGroupRequest' is set
+    if (createCustomFieldGroupRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'createCustomFieldGroupRequest' when calling createContactCustomFieldGroup");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/contacts/model/customFields/groups";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(createCustomFieldGroupRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Create a Contact Link type
    * Creates a new type of Contact Link
    * @param createContactLinkTypeRequest  (required)
@@ -490,6 +586,184 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Delete a Contact Custom Field
+   * Deletes a custom field from the Contacts model
+   * @param customFieldId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteContactCustomField(String customFieldId) throws ApiException {
+    deleteContactCustomFieldWithHttpInfo(customFieldId);
+  }
+
+  /**
+   * Delete a Contact Custom Field
+   * Deletes a custom field from the Contacts model
+   * @param customFieldId  (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteContactCustomFieldWithHttpInfo(String customFieldId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteContactCustomFieldRequestBuilder(customFieldId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteContactCustomField", localVarResponse);
+        }
+        return new ApiResponse<Void>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          null
+        );
+      } finally {
+        // Drain the InputStream
+        while (localVarResponse.body().read() != -1) {
+            // Ignore
+        }
+        localVarResponse.body().close();
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteContactCustomFieldRequestBuilder(String customFieldId) throws ApiException {
+    // verify the required parameter 'customFieldId' is set
+    if (customFieldId == null) {
+      throw new ApiException(400, "Missing the required parameter 'customFieldId' when calling deleteContactCustomField");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/contacts/model/customFields/{custom_field_id}"
+        .replace("{custom_field_id}", ApiClient.urlEncode(customFieldId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Delete a Contact Custom Field Group
+   * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+   * @param groupId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteContactCustomFieldGroup(String groupId) throws ApiException {
+    deleteContactCustomFieldGroupWithHttpInfo(groupId);
+  }
+
+  /**
+   * Delete a Contact Custom Field Group
+   * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+   * @param groupId  (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteContactCustomFieldGroupWithHttpInfo(String groupId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteContactCustomFieldGroupRequestBuilder(groupId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteContactCustomFieldGroup", localVarResponse);
+        }
+        return new ApiResponse<Void>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          null
+        );
+      } finally {
+        // Drain the InputStream
+        while (localVarResponse.body().read() != -1) {
+            // Ignore
+        }
+        localVarResponse.body().close();
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteContactCustomFieldGroupRequestBuilder(String groupId) throws ApiException {
+    // verify the required parameter 'groupId' is set
+    if (groupId == null) {
+      throw new ApiException(400, "Missing the required parameter 'groupId' when calling deleteContactCustomFieldGroup");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/contacts/model/customFields/groups/{group_id}"
+        .replace("{group_id}", ApiClient.urlEncode(groupId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Retrieve a Contact
    * Retrieves a single Contact
    * @param contactId  (required)
@@ -593,6 +867,92 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Retrieve a Contact Custom Field Group
+   * Retrieves a single custom field group by id for the Contact record type.
+   * @param groupId  (required)
+   * @return CustomFieldGroup
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldGroup getContactCustomFieldGroup(String groupId) throws ApiException {
+    ApiResponse<CustomFieldGroup> localVarResponse = getContactCustomFieldGroupWithHttpInfo(groupId);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Retrieve a Contact Custom Field Group
+   * Retrieves a single custom field group by id for the Contact record type.
+   * @param groupId  (required)
+   * @return ApiResponse&lt;CustomFieldGroup&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldGroup> getContactCustomFieldGroupWithHttpInfo(String groupId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getContactCustomFieldGroupRequestBuilder(groupId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getContactCustomFieldGroup", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldGroup>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldGroup>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getContactCustomFieldGroupRequestBuilder(String groupId) throws ApiException {
+    // verify the required parameter 'groupId' is set
+    if (groupId == null) {
+      throw new ApiException(400, "Missing the required parameter 'groupId' when calling getContactCustomFieldGroup");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/contacts/model/customFields/groups/{group_id}"
+        .replace("{group_id}", ApiClient.urlEncode(groupId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Link Contacts
    * Links two Contacts together using the provided Link type
    * @param linkContactsRequest  (required)
@@ -674,6 +1034,102 @@ import io.github.resilience4j.retry.Retry;
     } catch (IOException e) {
       throw new ApiException(e);
     }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * List Contact Custom Field Groups
+   * Retrieves a list of custom field groups for the Contact record type. Optionally filter by tab_id to scope to a specific tab.
+   * @param tabId Optional tab id to scope groups to a single tab (optional)
+   * @return ListCustomFieldGroupsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ListCustomFieldGroupsResponse listContactCustomFieldGroups(String tabId) throws ApiException {
+    ApiResponse<ListCustomFieldGroupsResponse> localVarResponse = listContactCustomFieldGroupsWithHttpInfo(tabId);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * List Contact Custom Field Groups
+   * Retrieves a list of custom field groups for the Contact record type. Optionally filter by tab_id to scope to a specific tab.
+   * @param tabId Optional tab id to scope groups to a single tab (optional)
+   * @return ApiResponse&lt;ListCustomFieldGroupsResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ListCustomFieldGroupsResponse> listContactCustomFieldGroupsWithHttpInfo(String tabId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listContactCustomFieldGroupsRequestBuilder(tabId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("listContactCustomFieldGroups", localVarResponse);
+        }
+        return new ApiResponse<ListCustomFieldGroupsResponse>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ListCustomFieldGroupsResponse>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder listContactCustomFieldGroupsRequestBuilder(String tabId) throws ApiException {
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/contacts/model/customFields/groups";
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "tab_id";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("tab_id", tabId));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
@@ -1105,6 +1561,114 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Merge two Contacts
+   * Merges two Contacts together. The duplicate contact will be merged into the primary contact.
+   * @param mergeContactRequest  (required)
+   * @param fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)
+   * @return Contact
+   * @throws ApiException if fails to make API call
+   */
+  public Contact mergeContacts(MergeContactRequest mergeContactRequest, List<String> fields) throws ApiException {
+    ApiResponse<Contact> localVarResponse = mergeContactsWithHttpInfo(mergeContactRequest, fields);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Merge two Contacts
+   * Merges two Contacts together. The duplicate contact will be merged into the primary contact.
+   * @param mergeContactRequest  (required)
+   * @param fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)
+   * @return ApiResponse&lt;Contact&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Contact> mergeContactsWithHttpInfo(MergeContactRequest mergeContactRequest, List<String> fields) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = mergeContactsRequestBuilder(mergeContactRequest, fields);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("mergeContacts", localVarResponse);
+        }
+        return new ApiResponse<Contact>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<Contact>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder mergeContactsRequestBuilder(MergeContactRequest mergeContactRequest, List<String> fields) throws ApiException {
+    // verify the required parameter 'mergeContactRequest' is set
+    if (mergeContactRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'mergeContactRequest' when calling mergeContacts");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/contacts:merge";
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "fields";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("csv", "fields", fields));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(mergeContactRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Retrieve Contact Model
    * Get the custom fields and optional properties for the Contact object
    * @return ObjectModel
@@ -1383,6 +1947,125 @@ import io.github.resilience4j.retry.Retry;
 
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(createUpdateContactRequest);
+      localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Update a Contact Custom Field Group
+   * Updates an existing custom field group. Only fields listed in &#x60;update_mask&#x60; are applied.
+   * @param groupId  (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateCustomFieldGroupRequest  (required)
+   * @return CustomFieldGroup
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldGroup updateContactCustomFieldGroup(String groupId, Set<String> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest) throws ApiException {
+    ApiResponse<CustomFieldGroup> localVarResponse = updateContactCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Update a Contact Custom Field Group
+   * Updates an existing custom field group. Only fields listed in &#x60;update_mask&#x60; are applied.
+   * @param groupId  (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateCustomFieldGroupRequest  (required)
+   * @return ApiResponse&lt;CustomFieldGroup&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldGroup> updateContactCustomFieldGroupWithHttpInfo(String groupId, Set<String> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateContactCustomFieldGroupRequestBuilder(groupId, updateMask, updateCustomFieldGroupRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updateContactCustomFieldGroup", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldGroup>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldGroup>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updateContactCustomFieldGroupRequestBuilder(String groupId, Set<String> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest) throws ApiException {
+    // verify the required parameter 'groupId' is set
+    if (groupId == null) {
+      throw new ApiException(400, "Missing the required parameter 'groupId' when calling updateContactCustomFieldGroup");
+    }
+    // verify the required parameter 'updateMask' is set
+    if (updateMask == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateMask' when calling updateContactCustomFieldGroup");
+    }
+    // verify the required parameter 'updateCustomFieldGroupRequest' is set
+    if (updateCustomFieldGroupRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateCustomFieldGroupRequest' when calling updateContactCustomFieldGroup");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/contacts/model/customFields/groups/{group_id}"
+        .replace("{group_id}", ApiClient.urlEncode(groupId.toString()));
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "update_mask";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCustomFieldGroupRequest);
       localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);

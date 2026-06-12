@@ -59,7 +59,7 @@ class CreateProductDiscountRequest implements ModelInterface, ArrayAccess, \Json
     protected static $openAPITypes = [
         'name' => 'string',
         'description' => 'string',
-        'criteria' => '\Keap\Core\V2\Model\DiscountCriteria[]',
+        'criteria' => '\Keap\Core\V2\Model\CreateProductDiscountCriteria[]',
         'apply_to_commissions' => 'bool',
         'product_id' => 'string',
         'discount_type' => 'string',
@@ -424,7 +424,7 @@ class CreateProductDiscountRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets criteria
      *
-     * @return \Keap\Core\V2\Model\DiscountCriteria[]|null
+     * @return \Keap\Core\V2\Model\CreateProductDiscountCriteria[]|null
      */
     public function getCriteria()
     {
@@ -434,7 +434,7 @@ class CreateProductDiscountRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets criteria
      *
-     * @param \Keap\Core\V2\Model\DiscountCriteria[]|null $criteria List of criteria that must be met for this discount to apply
+     * @param \Keap\Core\V2\Model\CreateProductDiscountCriteria[]|null $criteria List of criteria that must be met for this discount to apply
      *
      * @return self
      */

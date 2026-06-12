@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "keap_core_v2_client"
-version = "2.0.13"
+version = "2.0.14"
 description = "Keap API"
 authors = ["Keap <api.keap@thryv.com>"]
 license = "Apache 2.0"
@@ -12,7 +12,7 @@ include = ["keap_core_v2_client/py.typed"]
 [tool.poetry.dependencies]
 python = "^3.9"
 
-urllib3 = ">= 2.1.0, < 3.0.0"
+urllib3 = ">= 2.7.0, < 3.0.0"
 python-dateutil = ">= 2.8.2"
 pydantic = ">= 2"
 typing-extensions = ">= 4.7.1"

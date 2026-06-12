@@ -14,6 +14,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**createOrderWithHttpInfo**](OrdersApi.md#createOrderWithHttpInfo) | **POST** /rest/v2/orders | Create an Order |
 | [**createOrderCustomField**](OrdersApi.md#createOrderCustomField) | **POST** /rest/v2/orders/model/customFields | Create an Order Custom Field |
 | [**createOrderCustomFieldWithHttpInfo**](OrdersApi.md#createOrderCustomFieldWithHttpInfo) | **POST** /rest/v2/orders/model/customFields | Create an Order Custom Field |
+| [**createOrderCustomFieldGroup**](OrdersApi.md#createOrderCustomFieldGroup) | **POST** /rest/v2/orders/model/customFields/groups | Create an Order Custom Field Group |
+| [**createOrderCustomFieldGroupWithHttpInfo**](OrdersApi.md#createOrderCustomFieldGroupWithHttpInfo) | **POST** /rest/v2/orders/model/customFields/groups | Create an Order Custom Field Group |
 | [**createOrderItem**](OrdersApi.md#createOrderItem) | **POST** /rest/v2/orders/{order_id}/items | Create an Order Item |
 | [**createOrderItemWithHttpInfo**](OrdersApi.md#createOrderItemWithHttpInfo) | **POST** /rest/v2/orders/{order_id}/items | Create an Order Item |
 | [**createPaymentForAnOrder**](OrdersApi.md#createPaymentForAnOrder) | **POST** /rest/v2/orders/{order_id}/payments | Create a Payment |
@@ -22,14 +24,20 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**deleteOrderWithHttpInfo**](OrdersApi.md#deleteOrderWithHttpInfo) | **DELETE** /rest/v2/orders/{order_id} | Delete an Order |
 | [**deleteOrderCustomField**](OrdersApi.md#deleteOrderCustomField) | **DELETE** /rest/v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field |
 | [**deleteOrderCustomFieldWithHttpInfo**](OrdersApi.md#deleteOrderCustomFieldWithHttpInfo) | **DELETE** /rest/v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field |
+| [**deleteOrderCustomFieldGroup**](OrdersApi.md#deleteOrderCustomFieldGroup) | **DELETE** /rest/v2/orders/model/customFields/groups/{group_id} | Delete an Order Custom Field Group |
+| [**deleteOrderCustomFieldGroupWithHttpInfo**](OrdersApi.md#deleteOrderCustomFieldGroupWithHttpInfo) | **DELETE** /rest/v2/orders/model/customFields/groups/{group_id} | Delete an Order Custom Field Group |
 | [**deleteOrderItem**](OrdersApi.md#deleteOrderItem) | **DELETE** /rest/v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item |
 | [**deleteOrderItemWithHttpInfo**](OrdersApi.md#deleteOrderItemWithHttpInfo) | **DELETE** /rest/v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item |
 | [**detachFileFromOrder**](OrdersApi.md#detachFileFromOrder) | **POST** /rest/v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice |
 | [**detachFileFromOrderWithHttpInfo**](OrdersApi.md#detachFileFromOrderWithHttpInfo) | **POST** /rest/v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice |
 | [**getOrder**](OrdersApi.md#getOrder) | **GET** /rest/v2/orders/{order_id} | Retrieve an Order |
 | [**getOrderWithHttpInfo**](OrdersApi.md#getOrderWithHttpInfo) | **GET** /rest/v2/orders/{order_id} | Retrieve an Order |
+| [**getOrderCustomFieldGroup**](OrdersApi.md#getOrderCustomFieldGroup) | **GET** /rest/v2/orders/model/customFields/groups/{group_id} | Retrieve an Order Custom Field Group |
+| [**getOrderCustomFieldGroupWithHttpInfo**](OrdersApi.md#getOrderCustomFieldGroupWithHttpInfo) | **GET** /rest/v2/orders/model/customFields/groups/{group_id} | Retrieve an Order Custom Field Group |
 | [**getOrderItem**](OrdersApi.md#getOrderItem) | **GET** /rest/v2/orders/{order_id}/items/{order_item_id} | Retrieve an Order Item |
 | [**getOrderItemWithHttpInfo**](OrdersApi.md#getOrderItemWithHttpInfo) | **GET** /rest/v2/orders/{order_id}/items/{order_item_id} | Retrieve an Order Item |
+| [**listOrderCustomFieldGroups**](OrdersApi.md#listOrderCustomFieldGroups) | **GET** /rest/v2/orders/model/customFields/groups | List Order Custom Field Groups |
+| [**listOrderCustomFieldGroupsWithHttpInfo**](OrdersApi.md#listOrderCustomFieldGroupsWithHttpInfo) | **GET** /rest/v2/orders/model/customFields/groups | List Order Custom Field Groups |
 | [**listOrderPayments**](OrdersApi.md#listOrderPayments) | **GET** /rest/v2/orders/{order_id}/payments | Retrieve Order Payments |
 | [**listOrderPaymentsWithHttpInfo**](OrdersApi.md#listOrderPaymentsWithHttpInfo) | **GET** /rest/v2/orders/{order_id}/payments | Retrieve Order Payments |
 | [**listOrders**](OrdersApi.md#listOrders) | **GET** /rest/v2/orders | List orders |
@@ -40,6 +48,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**updateOrderWithHttpInfo**](OrdersApi.md#updateOrderWithHttpInfo) | **PATCH** /rest/v2/orders/{order_id} | Update an Order |
 | [**updateOrderCustomField**](OrdersApi.md#updateOrderCustomField) | **PATCH** /rest/v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field |
 | [**updateOrderCustomFieldWithHttpInfo**](OrdersApi.md#updateOrderCustomFieldWithHttpInfo) | **PATCH** /rest/v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field |
+| [**updateOrderCustomFieldGroup**](OrdersApi.md#updateOrderCustomFieldGroup) | **PATCH** /rest/v2/orders/model/customFields/groups/{group_id} | Update an Order Custom Field Group |
+| [**updateOrderCustomFieldGroupWithHttpInfo**](OrdersApi.md#updateOrderCustomFieldGroupWithHttpInfo) | **PATCH** /rest/v2/orders/model/customFields/groups/{group_id} | Update an Order Custom Field Group |
 | [**updateOrderItem**](OrdersApi.md#updateOrderItem) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item |
 | [**updateOrderItemWithHttpInfo**](OrdersApi.md#updateOrderItemWithHttpInfo) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item |
 
@@ -857,6 +867,166 @@ ApiResponse<[**CustomFieldMetaData**](CustomFieldMetaData.md)>
 | **501** | Method Not Implemented |  -  |
 
 
+## createOrderCustomFieldGroup
+
+> CustomFieldGroup createOrderCustomFieldGroup(createCustomFieldGroupRequest)
+
+Create an Order Custom Field Group
+
+Creates a new custom field group for the Order record type. If &#x60;tab_id&#x60; is omitted, the group is added to the default &#39;Custom Fields&#39; tab.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OrdersApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OrdersApi apiInstance = new OrdersApi(defaultClient);
+        CreateCustomFieldGroupRequest createCustomFieldGroupRequest = new CreateCustomFieldGroupRequest(); // CreateCustomFieldGroupRequest | 
+        try {
+            CustomFieldGroup result = apiInstance.createOrderCustomFieldGroup(createCustomFieldGroupRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrdersApi#createOrderCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createCustomFieldGroupRequest** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md)|  | |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## createOrderCustomFieldGroupWithHttpInfo
+
+> ApiResponse<CustomFieldGroup> createOrderCustomFieldGroup createOrderCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest)
+
+Create an Order Custom Field Group
+
+Creates a new custom field group for the Order record type. If &#x60;tab_id&#x60; is omitted, the group is added to the default &#39;Custom Fields&#39; tab.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OrdersApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OrdersApi apiInstance = new OrdersApi(defaultClient);
+        CreateCustomFieldGroupRequest createCustomFieldGroupRequest = new CreateCustomFieldGroupRequest(); // CreateCustomFieldGroupRequest | 
+        try {
+            ApiResponse<CustomFieldGroup> response = apiInstance.createOrderCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrdersApi#createOrderCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createCustomFieldGroupRequest** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md)|  | |
+
+### Return type
+
+ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## createOrderItem
 
 > OrderItem createOrderItem(orderId, createOrderItemRequest)
@@ -1501,6 +1671,164 @@ ApiResponse<Void>
 | **501** | Method Not Implemented |  -  |
 
 
+## deleteOrderCustomFieldGroup
+
+> void deleteOrderCustomFieldGroup(groupId)
+
+Delete an Order Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OrdersApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OrdersApi apiInstance = new OrdersApi(defaultClient);
+        String groupId = "groupId_example"; // String | 
+        try {
+            apiInstance.deleteOrderCustomFieldGroup(groupId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrdersApi#deleteOrderCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String**|  | |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## deleteOrderCustomFieldGroupWithHttpInfo
+
+> ApiResponse<Void> deleteOrderCustomFieldGroup deleteOrderCustomFieldGroupWithHttpInfo(groupId)
+
+Delete an Order Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OrdersApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OrdersApi apiInstance = new OrdersApi(defaultClient);
+        String groupId = "groupId_example"; // String | 
+        try {
+            ApiResponse<Void> response = apiInstance.deleteOrderCustomFieldGroupWithHttpInfo(groupId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrdersApi#deleteOrderCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String**|  | |
+
+### Return type
+
+
+ApiResponse<Void>
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## deleteOrderItem
 
 > void deleteOrderItem(orderId, orderItemId)
@@ -1987,6 +2315,166 @@ ApiResponse<[**OrderV2**](OrderV2.md)>
 | **501** | Method Not Implemented |  -  |
 
 
+## getOrderCustomFieldGroup
+
+> CustomFieldGroup getOrderCustomFieldGroup(groupId)
+
+Retrieve an Order Custom Field Group
+
+Retrieves a single custom field group by id for the Order record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OrdersApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OrdersApi apiInstance = new OrdersApi(defaultClient);
+        String groupId = "groupId_example"; // String | 
+        try {
+            CustomFieldGroup result = apiInstance.getOrderCustomFieldGroup(groupId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrdersApi#getOrderCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String**|  | |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## getOrderCustomFieldGroupWithHttpInfo
+
+> ApiResponse<CustomFieldGroup> getOrderCustomFieldGroup getOrderCustomFieldGroupWithHttpInfo(groupId)
+
+Retrieve an Order Custom Field Group
+
+Retrieves a single custom field group by id for the Order record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OrdersApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OrdersApi apiInstance = new OrdersApi(defaultClient);
+        String groupId = "groupId_example"; // String | 
+        try {
+            ApiResponse<CustomFieldGroup> response = apiInstance.getOrderCustomFieldGroupWithHttpInfo(groupId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrdersApi#getOrderCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String**|  | |
+
+### Return type
+
+ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## getOrderItem
 
 > OrderItem getOrderItem(orderId, orderItemId)
@@ -2126,6 +2614,166 @@ public class Example {
 ### Return type
 
 ApiResponse<[**OrderItem**](OrderItem.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## listOrderCustomFieldGroups
+
+> ListCustomFieldGroupsResponse listOrderCustomFieldGroups(tabId)
+
+List Order Custom Field Groups
+
+Retrieves a list of custom field groups for the Order record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OrdersApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OrdersApi apiInstance = new OrdersApi(defaultClient);
+        String tabId = "tabId_example"; // String | Optional tab id to scope groups to a single tab
+        try {
+            ListCustomFieldGroupsResponse result = apiInstance.listOrderCustomFieldGroups(tabId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrdersApi#listOrderCustomFieldGroups");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**| Optional tab id to scope groups to a single tab | [optional] |
+
+### Return type
+
+[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## listOrderCustomFieldGroupsWithHttpInfo
+
+> ApiResponse<ListCustomFieldGroupsResponse> listOrderCustomFieldGroups listOrderCustomFieldGroupsWithHttpInfo(tabId)
+
+List Order Custom Field Groups
+
+Retrieves a list of custom field groups for the Order record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OrdersApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OrdersApi apiInstance = new OrdersApi(defaultClient);
+        String tabId = "tabId_example"; // String | Optional tab id to scope groups to a single tab
+        try {
+            ApiResponse<ListCustomFieldGroupsResponse> response = apiInstance.listOrderCustomFieldGroupsWithHttpInfo(tabId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrdersApi#listOrderCustomFieldGroups");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**| Optional tab id to scope groups to a single tab | [optional] |
+
+### Return type
+
+ApiResponse<[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)>
 
 
 ### Authorization
@@ -2962,6 +3610,174 @@ public class Example {
 ### Return type
 
 ApiResponse<[**CustomFieldMetaData**](CustomFieldMetaData.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## updateOrderCustomFieldGroup
+
+> CustomFieldGroup updateOrderCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest)
+
+Update an Order Custom Field Group
+
+Updates an existing custom field group. Only fields listed in &#x60;update_mask&#x60; are applied.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OrdersApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OrdersApi apiInstance = new OrdersApi(defaultClient);
+        String groupId = "groupId_example"; // String | 
+        Set<String> updateMask = Arrays.asList(); // Set<String> | Comma-separated list of fields to update
+        UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest = new UpdateCustomFieldGroupRequest(); // UpdateCustomFieldGroupRequest | 
+        try {
+            CustomFieldGroup result = apiInstance.updateOrderCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrdersApi#updateOrderCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String**|  | |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| Comma-separated list of fields to update | [enum: name, tab_id, order] |
+| **updateCustomFieldGroupRequest** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md)|  | |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## updateOrderCustomFieldGroupWithHttpInfo
+
+> ApiResponse<CustomFieldGroup> updateOrderCustomFieldGroup updateOrderCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest)
+
+Update an Order Custom Field Group
+
+Updates an existing custom field group. Only fields listed in &#x60;update_mask&#x60; are applied.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OrdersApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OrdersApi apiInstance = new OrdersApi(defaultClient);
+        String groupId = "groupId_example"; // String | 
+        Set<String> updateMask = Arrays.asList(); // Set<String> | Comma-separated list of fields to update
+        UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest = new UpdateCustomFieldGroupRequest(); // UpdateCustomFieldGroupRequest | 
+        try {
+            ApiResponse<CustomFieldGroup> response = apiInstance.updateOrderCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrdersApi#updateOrderCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String**|  | |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| Comma-separated list of fields to update | [enum: name, tab_id, order] |
+| **updateCustomFieldGroupRequest** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md)|  | |
+
+### Return type
+
+ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
 
 
 ### Authorization

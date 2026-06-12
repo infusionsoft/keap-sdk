@@ -85,6 +85,7 @@ import { CreateCommissionProgramRequest } from '../models/CreateCommissionProgra
 import { CreateCompanyRequest } from '../models/CreateCompanyRequest';
 import { CreateContactLinkTypeRequest } from '../models/CreateContactLinkTypeRequest';
 import { CreateContactUtmPropertiesRequest } from '../models/CreateContactUtmPropertiesRequest';
+import { CreateCustomFieldGroupRequest } from '../models/CreateCustomFieldGroupRequest';
 import { CreateCustomFieldOptionRequest } from '../models/CreateCustomFieldOptionRequest';
 import { CreateCustomFieldRequest } from '../models/CreateCustomFieldRequest';
 import { CreateCustomFieldResponse } from '../models/CreateCustomFieldResponse';
@@ -106,6 +107,7 @@ import { CreateOrderTotalDiscountRequest } from '../models/CreateOrderTotalDisco
 import { CreatePaymentMethodConfigRequest } from '../models/CreatePaymentMethodConfigRequest';
 import { CreateProductCategoryRequest } from '../models/CreateProductCategoryRequest';
 import { CreateProductCommissionProgramRequest } from '../models/CreateProductCommissionProgramRequest';
+import { CreateProductDiscountCriteria } from '../models/CreateProductDiscountCriteria';
 import { CreateProductDiscountRequest } from '../models/CreateProductDiscountRequest';
 import { CreateProductInterestBundleRequest } from '../models/CreateProductInterestBundleRequest';
 import { CreateProductOptionListOption } from '../models/CreateProductOptionListOption';
@@ -128,6 +130,7 @@ import { CurrencyValue } from '../models/CurrencyValue';
 import { CurrencyValueDetail } from '../models/CurrencyValueDetail';
 import { CurrencyValueList } from '../models/CurrencyValueList';
 import { CustomField } from '../models/CustomField';
+import { CustomFieldGroup } from '../models/CustomFieldGroup';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';
 import { CustomFieldOption } from '../models/CustomFieldOption';
 import { CustomFieldValue } from '../models/CustomFieldValue';
@@ -200,6 +203,7 @@ import { ListContactPaymentMethodsResponse } from '../models/ListContactPaymentM
 import { ListContactTagsResponse } from '../models/ListContactTagsResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
+import { ListCustomFieldGroupsResponse } from '../models/ListCustomFieldGroupsResponse';
 import { ListEmailsSentResponse } from '../models/ListEmailsSentResponse';
 import { ListFilesResponse } from '../models/ListFilesResponse';
 import { ListFreeTrialDiscountsResponse } from '../models/ListFreeTrialDiscountsResponse';
@@ -242,6 +246,7 @@ import { ListUserGroupsResponse } from '../models/ListUserGroupsResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { ListWebformsResponse } from '../models/ListWebformsResponse';
 import { ListWordPressOptInOptionsResponse } from '../models/ListWordPressOptInOptionsResponse';
+import { MergeContactRequest } from '../models/MergeContactRequest';
 import { ModelError } from '../models/ModelError';
 import { Note } from '../models/Note';
 import { NoteTemplate } from '../models/NoteTemplate';
@@ -321,6 +326,7 @@ import { UpdateBusinessProfileRequest } from '../models/UpdateBusinessProfileReq
 import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountRequest';
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
+import { UpdateCustomFieldGroupRequest } from '../models/UpdateCustomFieldGroupRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
 import { UpdateEmailAddress } from '../models/UpdateEmailAddress';
@@ -336,6 +342,7 @@ import { UpdateOrderRequest } from '../models/UpdateOrderRequest';
 import { UpdateOrderTotalDiscountRequest } from '../models/UpdateOrderTotalDiscountRequest';
 import { UpdateProductCategoryRequest } from '../models/UpdateProductCategoryRequest';
 import { UpdateProductCommissionProgramRequest } from '../models/UpdateProductCommissionProgramRequest';
+import { UpdateProductDiscountCriteria } from '../models/UpdateProductDiscountCriteria';
 import { UpdateProductDiscountRequest } from '../models/UpdateProductDiscountRequest';
 import { UpdateProductInterestBundleRequest } from '../models/UpdateProductInterestBundleRequest';
 import { UpdateProductInterestRequest } from '../models/UpdateProductInterestRequest';
@@ -445,6 +452,15 @@ export interface AffiliateApiCreateAffiliateCustomFieldRequest {
     createCustomFieldRequest: CreateCustomFieldRequest
 }
 
+export interface AffiliateApiCreateAffiliateCustomFieldGroupRequest {
+    /**
+     * 
+     * @type CreateCustomFieldGroupRequest
+     * @memberof AffiliateApicreateAffiliateCustomFieldGroup
+     */
+    createCustomFieldGroupRequest: CreateCustomFieldGroupRequest
+}
+
 export interface AffiliateApiCreateDefaultCommissionProgramRequest {
     /**
      * 
@@ -498,6 +514,16 @@ export interface AffiliateApiDeleteAffiliateCustomFieldRequest {
      * @memberof AffiliateApideleteAffiliateCustomField
      */
     customFieldId: string
+}
+
+export interface AffiliateApiDeleteAffiliateCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApideleteAffiliateCustomFieldGroup
+     */
+    groupId: string
 }
 
 export interface AffiliateApiDeleteCommissionProgramResourceRequest {
@@ -578,6 +604,16 @@ export interface AffiliateApiGetAffiliateCommissionsRequest {
      * @memberof AffiliateApigetAffiliateCommissions
      */
     pageToken?: string
+}
+
+export interface AffiliateApiGetAffiliateCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApigetAffiliateCustomFieldGroup
+     */
+    groupId: string
 }
 
 export interface AffiliateApiGetAffiliateCustomFieldsRequest {
@@ -707,6 +743,16 @@ export interface AffiliateApiListAffiliateCommissionProgramsRequest {
      * @memberof AffiliateApilistAffiliateCommissionPrograms
      */
     pageToken?: string
+}
+
+export interface AffiliateApiListAffiliateCustomFieldGroupsRequest {
+    /**
+     * Optional tab id to scope groups to a single tab
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApilistAffiliateCustomFieldGroups
+     */
+    tabId?: string
 }
 
 export interface AffiliateApiListAffiliateLinksRequest {
@@ -917,6 +963,29 @@ export interface AffiliateApiUpdateAffiliateCustomFieldRequest {
      * @memberof AffiliateApiupdateAffiliateCustomField
      */
     updateMask?: Set<'group_id' | 'label' | 'options'>
+}
+
+export interface AffiliateApiUpdateAffiliateCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApiupdateAffiliateCustomFieldGroup
+     */
+    groupId: string
+    /**
+     * Comma-separated list of fields to update
+     * Defaults to: undefined
+     * @type Set&lt;&#39;name&#39; | &#39;tab_id&#39; | &#39;order&#39;&gt;
+     * @memberof AffiliateApiupdateAffiliateCustomFieldGroup
+     */
+    updateMask: Set<'name' | 'tab_id' | 'order'>
+    /**
+     * 
+     * @type UpdateCustomFieldGroupRequest
+     * @memberof AffiliateApiupdateAffiliateCustomFieldGroup
+     */
+    updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest
 }
 
 export interface AffiliateApiUpdateCommissionProgramRequest {
@@ -1184,6 +1253,24 @@ export class ObjectAffiliateApi {
     }
 
     /**
+     * Creates a new custom field group for the Affiliate record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create an Affiliate Custom Field Group
+     * @param param the request object
+     */
+    public createAffiliateCustomFieldGroupWithHttpInfo(param: AffiliateApiCreateAffiliateCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.createAffiliateCustomFieldGroupWithHttpInfo(param.createCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new custom field group for the Affiliate record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create an Affiliate Custom Field Group
+     * @param param the request object
+     */
+    public createAffiliateCustomFieldGroup(param: AffiliateApiCreateAffiliateCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.createAffiliateCustomFieldGroup(param.createCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
      * Creates a Default Commission Program
      * Create a Default Commission Program
      * @param param the request object
@@ -1274,6 +1361,24 @@ export class ObjectAffiliateApi {
     }
 
     /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete an Affiliate Custom Field Group
+     * @param param the request object
+     */
+    public deleteAffiliateCustomFieldGroupWithHttpInfo(param: AffiliateApiDeleteAffiliateCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteAffiliateCustomFieldGroupWithHttpInfo(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete an Affiliate Custom Field Group
+     * @param param the request object
+     */
+    public deleteAffiliateCustomFieldGroup(param: AffiliateApiDeleteAffiliateCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteAffiliateCustomFieldGroup(param.groupId,  options).toPromise();
+    }
+
+    /**
      * Removes a resource from a commission program
      * Remove Commission Program Resource
      * @param param the request object
@@ -1361,6 +1466,24 @@ export class ObjectAffiliateApi {
      */
     public getAffiliateCommissions(param: AffiliateApiGetAffiliateCommissionsRequest, options?: ConfigurationOptions): Promise<ListAffiliateCommissionsResponse> {
         return this.api.getAffiliateCommissions(param.affiliateId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Affiliate record type.
+     * Retrieve an Affiliate Custom Field Group
+     * @param param the request object
+     */
+    public getAffiliateCustomFieldGroupWithHttpInfo(param: AffiliateApiGetAffiliateCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.getAffiliateCustomFieldGroupWithHttpInfo(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Affiliate record type.
+     * Retrieve an Affiliate Custom Field Group
+     * @param param the request object
+     */
+    public getAffiliateCustomFieldGroup(param: AffiliateApiGetAffiliateCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.getAffiliateCustomFieldGroup(param.groupId,  options).toPromise();
     }
 
     /**
@@ -1469,6 +1592,24 @@ export class ObjectAffiliateApi {
      */
     public listAffiliateCommissionPrograms(param: AffiliateApiListAffiliateCommissionProgramsRequest = {}, options?: ConfigurationOptions): Promise<ListAffiliateCommissionProgramsResponse> {
         return this.api.listAffiliateCommissionPrograms(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Affiliate record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Affiliate Custom Field Groups
+     * @param param the request object
+     */
+    public listAffiliateCustomFieldGroupsWithHttpInfo(param: AffiliateApiListAffiliateCustomFieldGroupsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListCustomFieldGroupsResponse>> {
+        return this.api.listAffiliateCustomFieldGroupsWithHttpInfo(param.tabId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Affiliate record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Affiliate Custom Field Groups
+     * @param param the request object
+     */
+    public listAffiliateCustomFieldGroups(param: AffiliateApiListAffiliateCustomFieldGroupsRequest = {}, options?: ConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
+        return this.api.listAffiliateCustomFieldGroups(param.tabId,  options).toPromise();
     }
 
     /**
@@ -1631,6 +1772,24 @@ export class ObjectAffiliateApi {
      */
     public updateAffiliateCustomField(param: AffiliateApiUpdateAffiliateCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
         return this.api.updateAffiliateCustomField(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update an Affiliate Custom Field Group
+     * @param param the request object
+     */
+    public updateAffiliateCustomFieldGroupWithHttpInfo(param: AffiliateApiUpdateAffiliateCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.updateAffiliateCustomFieldGroupWithHttpInfo(param.groupId, param.updateMask, param.updateCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update an Affiliate Custom Field Group
+     * @param param the request object
+     */
+    public updateAffiliateCustomFieldGroup(param: AffiliateApiUpdateAffiliateCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.updateAffiliateCustomFieldGroup(param.groupId, param.updateMask, param.updateCustomFieldGroupRequest,  options).toPromise();
     }
 
     /**
@@ -2712,6 +2871,15 @@ export interface CompanyApiCreateCompanyCustomFieldRequest {
     createCustomFieldRequest: CreateCustomFieldRequest
 }
 
+export interface CompanyApiCreateCompanyCustomFieldGroupRequest {
+    /**
+     * 
+     * @type CreateCustomFieldGroupRequest
+     * @memberof CompanyApicreateCompanyCustomFieldGroup
+     */
+    createCustomFieldGroupRequest: CreateCustomFieldGroupRequest
+}
+
 export interface CompanyApiDeleteCompanyRequest {
     /**
      * 
@@ -2720,6 +2888,26 @@ export interface CompanyApiDeleteCompanyRequest {
      * @memberof CompanyApideleteCompany
      */
     companyId: string
+}
+
+export interface CompanyApiDeleteCompanyCustomFieldRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApideleteCompanyCustomField
+     */
+    customFieldId: string
+}
+
+export interface CompanyApiDeleteCompanyCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApideleteCompanyCustomFieldGroup
+     */
+    groupId: string
 }
 
 export interface CompanyApiGetCompanyRequest {
@@ -2737,6 +2925,16 @@ export interface CompanyApiGetCompanyRequest {
      * @memberof CompanyApigetCompany
      */
     fields?: Array<string>
+}
+
+export interface CompanyApiGetCompanyCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApigetCompanyCustomFieldGroup
+     */
+    groupId: string
 }
 
 export interface CompanyApiListCompaniesRequest {
@@ -2777,6 +2975,16 @@ export interface CompanyApiListCompaniesRequest {
      * @memberof CompanyApilistCompanies
      */
     pageToken?: string
+}
+
+export interface CompanyApiListCompanyCustomFieldGroupsRequest {
+    /**
+     * Optional tab id to scope groups to a single tab
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApilistCompanyCustomFieldGroups
+     */
+    tabId?: string
 }
 
 export interface CompanyApiListTagsForCompanyRequest {
@@ -2885,6 +3093,29 @@ export interface CompanyApiUpdateCompanyCustomFieldRequest {
     updateMask?: Set<'group_id' | 'label' | 'options'>
 }
 
+export interface CompanyApiUpdateCompanyCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApiupdateCompanyCustomFieldGroup
+     */
+    groupId: string
+    /**
+     * Comma-separated list of fields to update
+     * Defaults to: undefined
+     * @type Set&lt;&#39;name&#39; | &#39;tab_id&#39; | &#39;order&#39;&gt;
+     * @memberof CompanyApiupdateCompanyCustomFieldGroup
+     */
+    updateMask: Set<'name' | 'tab_id' | 'order'>
+    /**
+     * 
+     * @type UpdateCustomFieldGroupRequest
+     * @memberof CompanyApiupdateCompanyCustomFieldGroup
+     */
+    updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest
+}
+
 export class ObjectCompanyApi {
     private api: ObservableCompanyApi
 
@@ -2947,6 +3178,24 @@ export class ObjectCompanyApi {
     }
 
     /**
+     * Creates a new custom field group for the Company record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create a Company Custom Field Group
+     * @param param the request object
+     */
+    public createCompanyCustomFieldGroupWithHttpInfo(param: CompanyApiCreateCompanyCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.createCompanyCustomFieldGroupWithHttpInfo(param.createCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new custom field group for the Company record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create a Company Custom Field Group
+     * @param param the request object
+     */
+    public createCompanyCustomFieldGroup(param: CompanyApiCreateCompanyCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.createCompanyCustomFieldGroup(param.createCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
      * Deletes the specified Company
      * Delete a Company
      * @param param the request object
@@ -2962,6 +3211,42 @@ export class ObjectCompanyApi {
      */
     public deleteCompany(param: CompanyApiDeleteCompanyRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.deleteCompany(param.companyId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a custom field from the company model
+     * Delete a Company Custom Field
+     * @param param the request object
+     */
+    public deleteCompanyCustomFieldWithHttpInfo(param: CompanyApiDeleteCompanyCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteCompanyCustomFieldWithHttpInfo(param.customFieldId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a custom field from the company model
+     * Delete a Company Custom Field
+     * @param param the request object
+     */
+    public deleteCompanyCustomField(param: CompanyApiDeleteCompanyCustomFieldRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteCompanyCustomField(param.customFieldId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete a Company Custom Field Group
+     * @param param the request object
+     */
+    public deleteCompanyCustomFieldGroupWithHttpInfo(param: CompanyApiDeleteCompanyCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteCompanyCustomFieldGroupWithHttpInfo(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete a Company Custom Field Group
+     * @param param the request object
+     */
+    public deleteCompanyCustomFieldGroup(param: CompanyApiDeleteCompanyCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteCompanyCustomFieldGroup(param.groupId,  options).toPromise();
     }
 
     /**
@@ -2983,6 +3268,24 @@ export class ObjectCompanyApi {
     }
 
     /**
+     * Retrieves a single custom field group by id for the Company record type.
+     * Retrieve a Company Custom Field Group
+     * @param param the request object
+     */
+    public getCompanyCustomFieldGroupWithHttpInfo(param: CompanyApiGetCompanyCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.getCompanyCustomFieldGroupWithHttpInfo(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Company record type.
+     * Retrieve a Company Custom Field Group
+     * @param param the request object
+     */
+    public getCompanyCustomFieldGroup(param: CompanyApiGetCompanyCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.getCompanyCustomFieldGroup(param.groupId,  options).toPromise();
+    }
+
+    /**
      * Retrieves a list of all Companies.<br/><br/>
      * List Companies
      * @param param the request object
@@ -2998,6 +3301,24 @@ export class ObjectCompanyApi {
      */
     public listCompanies(param: CompanyApiListCompaniesRequest = {}, options?: ConfigurationOptions): Promise<ListCompaniesResponse> {
         return this.api.listCompanies(param.fields, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Company record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Company Custom Field Groups
+     * @param param the request object
+     */
+    public listCompanyCustomFieldGroupsWithHttpInfo(param: CompanyApiListCompanyCustomFieldGroupsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListCustomFieldGroupsResponse>> {
+        return this.api.listCompanyCustomFieldGroupsWithHttpInfo(param.tabId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Company record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Company Custom Field Groups
+     * @param param the request object
+     */
+    public listCompanyCustomFieldGroups(param: CompanyApiListCompanyCustomFieldGroupsRequest = {}, options?: ConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
+        return this.api.listCompanyCustomFieldGroups(param.tabId,  options).toPromise();
     }
 
     /**
@@ -3090,6 +3411,24 @@ export class ObjectCompanyApi {
         return this.api.updateCompanyCustomField(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
     }
 
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update a Company Custom Field Group
+     * @param param the request object
+     */
+    public updateCompanyCustomFieldGroupWithHttpInfo(param: CompanyApiUpdateCompanyCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.updateCompanyCustomFieldGroupWithHttpInfo(param.groupId, param.updateMask, param.updateCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update a Company Custom Field Group
+     * @param param the request object
+     */
+    public updateCompanyCustomFieldGroup(param: CompanyApiUpdateCompanyCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.updateCompanyCustomFieldGroup(param.groupId, param.updateMask, param.updateCustomFieldGroupRequest,  options).toPromise();
+    }
+
 }
 
 import { ObservableContactApi } from "./ObservableAPI";
@@ -3127,6 +3466,15 @@ export interface ContactApiCreateContactCustomFieldRequest {
     createCustomFieldRequest: CreateCustomFieldRequest
 }
 
+export interface ContactApiCreateContactCustomFieldGroupRequest {
+    /**
+     * 
+     * @type CreateCustomFieldGroupRequest
+     * @memberof ContactApicreateContactCustomFieldGroup
+     */
+    createCustomFieldGroupRequest: CreateCustomFieldGroupRequest
+}
+
 export interface ContactApiCreateContactLinkTypeRequest {
     /**
      * 
@@ -3146,6 +3494,26 @@ export interface ContactApiDeleteContactRequest {
     contactId: string
 }
 
+export interface ContactApiDeleteContactCustomFieldRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ContactApideleteContactCustomField
+     */
+    customFieldId: string
+}
+
+export interface ContactApiDeleteContactCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ContactApideleteContactCustomFieldGroup
+     */
+    groupId: string
+}
+
 export interface ContactApiGetContactRequest {
     /**
      * 
@@ -3163,6 +3531,16 @@ export interface ContactApiGetContactRequest {
     fields?: Array<string>
 }
 
+export interface ContactApiGetContactCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ContactApigetContactCustomFieldGroup
+     */
+    groupId: string
+}
+
 export interface ContactApiLinkContactsRequest {
     /**
      * 
@@ -3170,6 +3548,16 @@ export interface ContactApiLinkContactsRequest {
      * @memberof ContactApilinkContacts
      */
     linkContactsRequest: LinkContactsRequest
+}
+
+export interface ContactApiListContactCustomFieldGroupsRequest {
+    /**
+     * Optional tab id to scope groups to a single tab
+     * Defaults to: undefined
+     * @type string
+     * @memberof ContactApilistContactCustomFieldGroups
+     */
+    tabId?: string
 }
 
 export interface ContactApiListContactLinkTypesRequest {
@@ -3295,6 +3683,22 @@ export interface ContactApiListTagsForContactRequest {
     pageSize?: number
 }
 
+export interface ContactApiMergeContactsRequest {
+    /**
+     * 
+     * @type MergeContactRequest
+     * @memberof ContactApimergeContacts
+     */
+    mergeContactRequest: MergeContactRequest
+    /**
+     * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof ContactApimergeContacts
+     */
+    fields?: Array<string>
+}
+
 export interface ContactApiRetrieveContactModelRequest {
 }
 
@@ -3335,6 +3739,29 @@ export interface ContactApiUpdateContactRequest {
      * @memberof ContactApiupdateContact
      */
     fields?: Array<string>
+}
+
+export interface ContactApiUpdateContactCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ContactApiupdateContactCustomFieldGroup
+     */
+    groupId: string
+    /**
+     * Comma-separated list of fields to update
+     * Defaults to: undefined
+     * @type Set&lt;&#39;name&#39; | &#39;tab_id&#39; | &#39;order&#39;&gt;
+     * @memberof ContactApiupdateContactCustomFieldGroup
+     */
+    updateMask: Set<'name' | 'tab_id' | 'order'>
+    /**
+     * 
+     * @type UpdateCustomFieldGroupRequest
+     * @memberof ContactApiupdateContactCustomFieldGroup
+     */
+    updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest
 }
 
 export class ObjectContactApi {
@@ -3381,6 +3808,24 @@ export class ObjectContactApi {
     }
 
     /**
+     * Creates a new custom field group for the Contact record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create a Contact Custom Field Group
+     * @param param the request object
+     */
+    public createContactCustomFieldGroupWithHttpInfo(param: ContactApiCreateContactCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.createContactCustomFieldGroupWithHttpInfo(param.createCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new custom field group for the Contact record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create a Contact Custom Field Group
+     * @param param the request object
+     */
+    public createContactCustomFieldGroup(param: ContactApiCreateContactCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.createContactCustomFieldGroup(param.createCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
      * Creates a new type of Contact Link
      * Create a Contact Link type
      * @param param the request object
@@ -3417,6 +3862,42 @@ export class ObjectContactApi {
     }
 
     /**
+     * Deletes a custom field from the Contacts model
+     * Delete a Contact Custom Field
+     * @param param the request object
+     */
+    public deleteContactCustomFieldWithHttpInfo(param: ContactApiDeleteContactCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteContactCustomFieldWithHttpInfo(param.customFieldId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a custom field from the Contacts model
+     * Delete a Contact Custom Field
+     * @param param the request object
+     */
+    public deleteContactCustomField(param: ContactApiDeleteContactCustomFieldRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteContactCustomField(param.customFieldId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete a Contact Custom Field Group
+     * @param param the request object
+     */
+    public deleteContactCustomFieldGroupWithHttpInfo(param: ContactApiDeleteContactCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteContactCustomFieldGroupWithHttpInfo(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete a Contact Custom Field Group
+     * @param param the request object
+     */
+    public deleteContactCustomFieldGroup(param: ContactApiDeleteContactCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteContactCustomFieldGroup(param.groupId,  options).toPromise();
+    }
+
+    /**
      * Retrieves a single Contact
      * Retrieve a Contact
      * @param param the request object
@@ -3435,6 +3916,24 @@ export class ObjectContactApi {
     }
 
     /**
+     * Retrieves a single custom field group by id for the Contact record type.
+     * Retrieve a Contact Custom Field Group
+     * @param param the request object
+     */
+    public getContactCustomFieldGroupWithHttpInfo(param: ContactApiGetContactCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.getContactCustomFieldGroupWithHttpInfo(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Contact record type.
+     * Retrieve a Contact Custom Field Group
+     * @param param the request object
+     */
+    public getContactCustomFieldGroup(param: ContactApiGetContactCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.getContactCustomFieldGroup(param.groupId,  options).toPromise();
+    }
+
+    /**
      * Links two Contacts together using the provided Link type
      * Link Contacts
      * @param param the request object
@@ -3450,6 +3949,24 @@ export class ObjectContactApi {
      */
     public linkContacts(param: ContactApiLinkContactsRequest, options?: ConfigurationOptions): Promise<ContactLink> {
         return this.api.linkContacts(param.linkContactsRequest,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Contact record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Contact Custom Field Groups
+     * @param param the request object
+     */
+    public listContactCustomFieldGroupsWithHttpInfo(param: ContactApiListContactCustomFieldGroupsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListCustomFieldGroupsResponse>> {
+        return this.api.listContactCustomFieldGroupsWithHttpInfo(param.tabId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Contact record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Contact Custom Field Groups
+     * @param param the request object
+     */
+    public listContactCustomFieldGroups(param: ContactApiListContactCustomFieldGroupsRequest = {}, options?: ConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
+        return this.api.listContactCustomFieldGroups(param.tabId,  options).toPromise();
     }
 
     /**
@@ -3525,6 +4042,24 @@ export class ObjectContactApi {
     }
 
     /**
+     * Merges two Contacts together. The duplicate contact will be merged into the primary contact.
+     * Merge two Contacts
+     * @param param the request object
+     */
+    public mergeContactsWithHttpInfo(param: ContactApiMergeContactsRequest, options?: ConfigurationOptions): Promise<HttpInfo<Contact>> {
+        return this.api.mergeContactsWithHttpInfo(param.mergeContactRequest, param.fields,  options).toPromise();
+    }
+
+    /**
+     * Merges two Contacts together. The duplicate contact will be merged into the primary contact.
+     * Merge two Contacts
+     * @param param the request object
+     */
+    public mergeContacts(param: ContactApiMergeContactsRequest, options?: ConfigurationOptions): Promise<Contact> {
+        return this.api.mergeContacts(param.mergeContactRequest, param.fields,  options).toPromise();
+    }
+
+    /**
      * Get the custom fields and optional properties for the Contact object
      * Retrieve Contact Model
      * @param param the request object
@@ -3576,6 +4111,24 @@ export class ObjectContactApi {
      */
     public updateContact(param: ContactApiUpdateContactRequest, options?: ConfigurationOptions): Promise<Contact> {
         return this.api.updateContact(param.contactId, param.createUpdateContactRequest, param.updateMask, param.fields,  options).toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update a Contact Custom Field Group
+     * @param param the request object
+     */
+    public updateContactCustomFieldGroupWithHttpInfo(param: ContactApiUpdateContactCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.updateContactCustomFieldGroupWithHttpInfo(param.groupId, param.updateMask, param.updateCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update a Contact Custom Field Group
+     * @param param the request object
+     */
+    public updateContactCustomFieldGroup(param: ContactApiUpdateContactCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.updateContactCustomFieldGroup(param.groupId, param.updateMask, param.updateCustomFieldGroupRequest,  options).toPromise();
     }
 
 }
@@ -5649,6 +6202,15 @@ export interface NoteApiCreateNoteCustomFieldRequest {
     createCustomFieldRequest: CreateCustomFieldRequest
 }
 
+export interface NoteApiCreateNoteCustomFieldGroupRequest {
+    /**
+     * 
+     * @type CreateCustomFieldGroupRequest
+     * @memberof NoteApicreateNoteCustomFieldGroup
+     */
+    createCustomFieldGroupRequest: CreateCustomFieldGroupRequest
+}
+
 export interface NoteApiDeleteNoteRequest {
     /**
      * 
@@ -5664,6 +6226,16 @@ export interface NoteApiDeleteNoteRequest {
      * @memberof NoteApideleteNote
      */
     noteId: string
+}
+
+export interface NoteApiDeleteNoteCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof NoteApideleteNoteCustomFieldGroup
+     */
+    groupId: string
 }
 
 export interface NoteApiDeleteNotesCustomFieldRequest {
@@ -5698,6 +6270,16 @@ export interface NoteApiGetNoteRequest {
      * @memberof NoteApigetNote
      */
     fields?: Array<string>
+}
+
+export interface NoteApiGetNoteCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof NoteApigetNoteCustomFieldGroup
+     */
+    groupId: string
 }
 
 export interface NoteApiListAllNotesRequest {
@@ -5738,6 +6320,16 @@ export interface NoteApiListAllNotesRequest {
      * @memberof NoteApilistAllNotes
      */
     fields?: Array<string>
+}
+
+export interface NoteApiListNoteCustomFieldGroupsRequest {
+    /**
+     * Optional tab id to scope groups to a single tab
+     * Defaults to: undefined
+     * @type string
+     * @memberof NoteApilistNoteCustomFieldGroups
+     */
+    tabId?: string
 }
 
 export interface NoteApiListNoteTemplatesRequest {
@@ -5860,6 +6452,29 @@ export interface NoteApiUpdateNoteRequest {
     fields?: Array<string>
 }
 
+export interface NoteApiUpdateNoteCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof NoteApiupdateNoteCustomFieldGroup
+     */
+    groupId: string
+    /**
+     * Comma-separated list of fields to update
+     * Defaults to: undefined
+     * @type Set&lt;&#39;name&#39; | &#39;tab_id&#39; | &#39;order&#39;&gt;
+     * @memberof NoteApiupdateNoteCustomFieldGroup
+     */
+    updateMask: Set<'name' | 'tab_id' | 'order'>
+    /**
+     * 
+     * @type UpdateCustomFieldGroupRequest
+     * @memberof NoteApiupdateNoteCustomFieldGroup
+     */
+    updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest
+}
+
 export interface NoteApiUpdateNotesCustomFieldRequest {
     /**
      * 
@@ -5927,6 +6542,24 @@ export class ObjectNoteApi {
     }
 
     /**
+     * Creates a new custom field group for the Note record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Create a Note Custom Field Group
+     * @param param the request object
+     */
+    public createNoteCustomFieldGroupWithHttpInfo(param: NoteApiCreateNoteCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.createNoteCustomFieldGroupWithHttpInfo(param.createCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new custom field group for the Note record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Create a Note Custom Field Group
+     * @param param the request object
+     */
+    public createNoteCustomFieldGroup(param: NoteApiCreateNoteCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.createNoteCustomFieldGroup(param.createCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
      * Deletes the specified Note
      * Delete a Note
      * @param param the request object
@@ -5942,6 +6575,24 @@ export class ObjectNoteApi {
      */
     public deleteNote(param: NoteApiDeleteNoteRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.deleteNote(param.contactId, param.noteId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Note Custom Field Group
+     * @param param the request object
+     */
+    public deleteNoteCustomFieldGroupWithHttpInfo(param: NoteApiDeleteNoteCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteNoteCustomFieldGroupWithHttpInfo(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Note Custom Field Group
+     * @param param the request object
+     */
+    public deleteNoteCustomFieldGroup(param: NoteApiDeleteNoteCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteNoteCustomFieldGroup(param.groupId,  options).toPromise();
     }
 
     /**
@@ -5981,6 +6632,24 @@ export class ObjectNoteApi {
     }
 
     /**
+     * Retrieves a single custom field group by id for the Note record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve a Note Custom Field Group
+     * @param param the request object
+     */
+    public getNoteCustomFieldGroupWithHttpInfo(param: NoteApiGetNoteCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.getNoteCustomFieldGroupWithHttpInfo(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Note record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve a Note Custom Field Group
+     * @param param the request object
+     */
+    public getNoteCustomFieldGroup(param: NoteApiGetNoteCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.getNoteCustomFieldGroup(param.groupId,  options).toPromise();
+    }
+
+    /**
      * Retrieves a list of all notes
      * List All Notes
      * @param param the request object
@@ -5996,6 +6665,24 @@ export class ObjectNoteApi {
      */
     public listAllNotes(param: NoteApiListAllNotesRequest = {}, options?: ConfigurationOptions): Promise<ListNotesResponse> {
         return this.api.listAllNotes(param.filter, param.pageToken, param.orderBy, param.pageSize, param.fields,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Note record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * List Note Custom Field Groups
+     * @param param the request object
+     */
+    public listNoteCustomFieldGroupsWithHttpInfo(param: NoteApiListNoteCustomFieldGroupsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListCustomFieldGroupsResponse>> {
+        return this.api.listNoteCustomFieldGroupsWithHttpInfo(param.tabId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Note record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * List Note Custom Field Groups
+     * @param param the request object
+     */
+    public listNoteCustomFieldGroups(param: NoteApiListNoteCustomFieldGroupsRequest = {}, options?: ConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
+        return this.api.listNoteCustomFieldGroups(param.tabId,  options).toPromise();
     }
 
     /**
@@ -6071,6 +6758,24 @@ export class ObjectNoteApi {
     }
 
     /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Update a Note Custom Field Group
+     * @param param the request object
+     */
+    public updateNoteCustomFieldGroupWithHttpInfo(param: NoteApiUpdateNoteCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.updateNoteCustomFieldGroupWithHttpInfo(param.groupId, param.updateMask, param.updateCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Update a Note Custom Field Group
+     * @param param the request object
+     */
+    public updateNoteCustomFieldGroup(param: NoteApiUpdateNoteCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.updateNoteCustomFieldGroup(param.groupId, param.updateMask, param.updateCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
      * Updates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
      * Update a Custom Field
      * @param param the request object
@@ -6109,6 +6814,15 @@ export interface OpportunityApiCreateOpportunityRequest {
     fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>
 }
 
+export interface OpportunityApiCreateOpportunityCustomFieldGroupRequest {
+    /**
+     * 
+     * @type CreateCustomFieldGroupRequest
+     * @memberof OpportunityApicreateOpportunityCustomFieldGroup
+     */
+    createCustomFieldGroupRequest: CreateCustomFieldGroupRequest
+}
+
 export interface OpportunityApiCreateOpportunityCustomFieldsRequest {
     /**
      * 
@@ -6127,6 +6841,16 @@ export interface OpportunityApiCreateOpportunityStageRequest {
     createOpportunityStageRequest: CreateOpportunityStageRequest
 }
 
+export interface OpportunityApiDeleteOpportunitiesCustomFieldRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApideleteOpportunitiesCustomField
+     */
+    customFieldId: string
+}
+
 export interface OpportunityApiDeleteOpportunityRequest {
     /**
      * 
@@ -6137,6 +6861,16 @@ export interface OpportunityApiDeleteOpportunityRequest {
     opportunityId: string
 }
 
+export interface OpportunityApiDeleteOpportunityCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApideleteOpportunityCustomFieldGroup
+     */
+    groupId: string
+}
+
 export interface OpportunityApiDeleteOpportunityStageRequest {
     /**
      * 
@@ -6145,16 +6879,6 @@ export interface OpportunityApiDeleteOpportunityStageRequest {
      * @memberof OpportunityApideleteOpportunityStage
      */
     stageId: string
-}
-
-export interface OpportunityApiDeleteOpportunityesCustomFieldRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof OpportunityApideleteOpportunityesCustomField
-     */
-    customFieldId: string
 }
 
 export interface OpportunityApiGetOpportunityRequest {
@@ -6172,6 +6896,16 @@ export interface OpportunityApiGetOpportunityRequest {
      * @memberof OpportunityApigetOpportunity
      */
     fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>
+}
+
+export interface OpportunityApiGetOpportunityCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApigetOpportunityCustomFieldGroup
+     */
+    groupId: string
 }
 
 export interface OpportunityApiGetOpportunityStageRequest {
@@ -6222,6 +6956,16 @@ export interface OpportunityApiListOpportunitiesRequest {
      * @memberof OpportunityApilistOpportunities
      */
     pageToken?: string
+}
+
+export interface OpportunityApiListOpportunityCustomFieldGroupsRequest {
+    /**
+     * Optional tab id to scope groups to a single tab
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApilistOpportunityCustomFieldGroups
+     */
+    tabId?: string
 }
 
 export interface OpportunityApiListOpportunityStagesRequest {
@@ -6313,6 +7057,29 @@ export interface OpportunityApiUpdateOpportunityCustomFieldRequest {
     updateMask?: Set<'group_id' | 'label' | 'options'>
 }
 
+export interface OpportunityApiUpdateOpportunityCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApiupdateOpportunityCustomFieldGroup
+     */
+    groupId: string
+    /**
+     * Comma-separated list of fields to update
+     * Defaults to: undefined
+     * @type Set&lt;&#39;name&#39; | &#39;tab_id&#39; | &#39;order&#39;&gt;
+     * @memberof OpportunityApiupdateOpportunityCustomFieldGroup
+     */
+    updateMask: Set<'name' | 'tab_id' | 'order'>
+    /**
+     * 
+     * @type UpdateCustomFieldGroupRequest
+     * @memberof OpportunityApiupdateOpportunityCustomFieldGroup
+     */
+    updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest
+}
+
 export interface OpportunityApiUpdateOpportunityStageRequest {
     /**
      * 
@@ -6362,6 +7129,24 @@ export class ObjectOpportunityApi {
     }
 
     /**
+     * Creates a new custom field group for the Opportunity record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create an Opportunity Custom Field Group
+     * @param param the request object
+     */
+    public createOpportunityCustomFieldGroupWithHttpInfo(param: OpportunityApiCreateOpportunityCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.createOpportunityCustomFieldGroupWithHttpInfo(param.createCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new custom field group for the Opportunity record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create an Opportunity Custom Field Group
+     * @param param the request object
+     */
+    public createOpportunityCustomFieldGroup(param: OpportunityApiCreateOpportunityCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.createOpportunityCustomFieldGroup(param.createCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
      * Creates a custom field of the specified type and options to the Opportunity object
      * Create an Opportunity Custom Field
      * @param param the request object
@@ -6398,6 +7183,24 @@ export class ObjectOpportunityApi {
     }
 
     /**
+     * Deletes a Custom Field from Opportunity.
+     * Delete an Opportunity Custom Field
+     * @param param the request object
+     */
+    public deleteOpportunitiesCustomFieldWithHttpInfo(param: OpportunityApiDeleteOpportunitiesCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteOpportunitiesCustomFieldWithHttpInfo(param.customFieldId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a Custom Field from Opportunity.
+     * Delete an Opportunity Custom Field
+     * @param param the request object
+     */
+    public deleteOpportunitiesCustomField(param: OpportunityApiDeleteOpportunitiesCustomFieldRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteOpportunitiesCustomField(param.customFieldId,  options).toPromise();
+    }
+
+    /**
      * Deletes the specified Opportunity
      * Delete an Opportunity
      * @param param the request object
@@ -6413,6 +7216,24 @@ export class ObjectOpportunityApi {
      */
     public deleteOpportunity(param: OpportunityApiDeleteOpportunityRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.deleteOpportunity(param.opportunityId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete an Opportunity Custom Field Group
+     * @param param the request object
+     */
+    public deleteOpportunityCustomFieldGroupWithHttpInfo(param: OpportunityApiDeleteOpportunityCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteOpportunityCustomFieldGroupWithHttpInfo(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete an Opportunity Custom Field Group
+     * @param param the request object
+     */
+    public deleteOpportunityCustomFieldGroup(param: OpportunityApiDeleteOpportunityCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteOpportunityCustomFieldGroup(param.groupId,  options).toPromise();
     }
 
     /**
@@ -6434,24 +7255,6 @@ export class ObjectOpportunityApi {
     }
 
     /**
-     * Deletes a Custom Field from Opportunity.
-     * Delete an Opportunity Custom Field
-     * @param param the request object
-     */
-    public deleteOpportunityesCustomFieldWithHttpInfo(param: OpportunityApiDeleteOpportunityesCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteOpportunityesCustomFieldWithHttpInfo(param.customFieldId,  options).toPromise();
-    }
-
-    /**
-     * Deletes a Custom Field from Opportunity.
-     * Delete an Opportunity Custom Field
-     * @param param the request object
-     */
-    public deleteOpportunityesCustomField(param: OpportunityApiDeleteOpportunityesCustomFieldRequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteOpportunityesCustomField(param.customFieldId,  options).toPromise();
-    }
-
-    /**
      * Retrieves the specified Opportunity
      * Retrieve a Opportunity
      * @param param the request object
@@ -6467,6 +7270,24 @@ export class ObjectOpportunityApi {
      */
     public getOpportunity(param: OpportunityApiGetOpportunityRequest, options?: ConfigurationOptions): Promise<RestV2Opportunity> {
         return this.api.getOpportunity(param.opportunityId, param.fields,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Opportunity record type.
+     * Retrieve an Opportunity Custom Field Group
+     * @param param the request object
+     */
+    public getOpportunityCustomFieldGroupWithHttpInfo(param: OpportunityApiGetOpportunityCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.getOpportunityCustomFieldGroupWithHttpInfo(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Opportunity record type.
+     * Retrieve an Opportunity Custom Field Group
+     * @param param the request object
+     */
+    public getOpportunityCustomFieldGroup(param: OpportunityApiGetOpportunityCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.getOpportunityCustomFieldGroup(param.groupId,  options).toPromise();
     }
 
     /**
@@ -6503,6 +7324,24 @@ export class ObjectOpportunityApi {
      */
     public listOpportunities(param: OpportunityApiListOpportunitiesRequest = {}, options?: ConfigurationOptions): Promise<ListOpportunitiesResponse> {
         return this.api.listOpportunities(param.fields, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Opportunity record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Opportunity Custom Field Groups
+     * @param param the request object
+     */
+    public listOpportunityCustomFieldGroupsWithHttpInfo(param: OpportunityApiListOpportunityCustomFieldGroupsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListCustomFieldGroupsResponse>> {
+        return this.api.listOpportunityCustomFieldGroupsWithHttpInfo(param.tabId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Opportunity record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Opportunity Custom Field Groups
+     * @param param the request object
+     */
+    public listOpportunityCustomFieldGroups(param: OpportunityApiListOpportunityCustomFieldGroupsRequest = {}, options?: ConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
+        return this.api.listOpportunityCustomFieldGroups(param.tabId,  options).toPromise();
     }
 
     /**
@@ -6575,6 +7414,24 @@ export class ObjectOpportunityApi {
      */
     public updateOpportunityCustomField(param: OpportunityApiUpdateOpportunityCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
         return this.api.updateOpportunityCustomField(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update an Opportunity Custom Field Group
+     * @param param the request object
+     */
+    public updateOpportunityCustomFieldGroupWithHttpInfo(param: OpportunityApiUpdateOpportunityCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.updateOpportunityCustomFieldGroupWithHttpInfo(param.groupId, param.updateMask, param.updateCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update an Opportunity Custom Field Group
+     * @param param the request object
+     */
+    public updateOpportunityCustomFieldGroup(param: OpportunityApiUpdateOpportunityCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.updateOpportunityCustomFieldGroup(param.groupId, param.updateMask, param.updateCustomFieldGroupRequest,  options).toPromise();
     }
 
     /**
@@ -6854,6 +7711,15 @@ export interface OrdersApiCreateOrderCustomFieldRequest {
     createCustomFieldRequest: CreateCustomFieldRequest
 }
 
+export interface OrdersApiCreateOrderCustomFieldGroupRequest {
+    /**
+     * 
+     * @type CreateCustomFieldGroupRequest
+     * @memberof OrdersApicreateOrderCustomFieldGroup
+     */
+    createCustomFieldGroupRequest: CreateCustomFieldGroupRequest
+}
+
 export interface OrdersApiCreateOrderItemRequest {
     /**
      * 
@@ -6906,6 +7772,16 @@ export interface OrdersApiDeleteOrderCustomFieldRequest {
     customFieldId: string
 }
 
+export interface OrdersApiDeleteOrderCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApideleteOrderCustomFieldGroup
+     */
+    groupId: string
+}
+
 export interface OrdersApiDeleteOrderItemRequest {
     /**
      * 
@@ -6949,6 +7825,16 @@ export interface OrdersApiGetOrderRequest {
     orderId: string
 }
 
+export interface OrdersApiGetOrderCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApigetOrderCustomFieldGroup
+     */
+    groupId: string
+}
+
 export interface OrdersApiGetOrderItemRequest {
     /**
      * 
@@ -6964,6 +7850,16 @@ export interface OrdersApiGetOrderItemRequest {
      * @memberof OrdersApigetOrderItem
      */
     orderItemId: string
+}
+
+export interface OrdersApiListOrderCustomFieldGroupsRequest {
+    /**
+     * Optional tab id to scope groups to a single tab
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApilistOrderCustomFieldGroups
+     */
+    tabId?: string
 }
 
 export interface OrdersApiListOrderPaymentsRequest {
@@ -7086,6 +7982,29 @@ export interface OrdersApiUpdateOrderCustomFieldRequest {
      * @memberof OrdersApiupdateOrderCustomField
      */
     updateMask?: Set<'group_id' | 'label' | 'options'>
+}
+
+export interface OrdersApiUpdateOrderCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApiupdateOrderCustomFieldGroup
+     */
+    groupId: string
+    /**
+     * Comma-separated list of fields to update
+     * Defaults to: undefined
+     * @type Set&lt;&#39;name&#39; | &#39;tab_id&#39; | &#39;order&#39;&gt;
+     * @memberof OrdersApiupdateOrderCustomFieldGroup
+     */
+    updateMask: Set<'name' | 'tab_id' | 'order'>
+    /**
+     * 
+     * @type UpdateCustomFieldGroupRequest
+     * @memberof OrdersApiupdateOrderCustomFieldGroup
+     */
+    updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest
 }
 
 export interface OrdersApiUpdateOrderItemRequest {
@@ -7216,6 +8135,24 @@ export class ObjectOrdersApi {
     }
 
     /**
+     * Creates a new custom field group for the Order record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create an Order Custom Field Group
+     * @param param the request object
+     */
+    public createOrderCustomFieldGroupWithHttpInfo(param: OrdersApiCreateOrderCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.createOrderCustomFieldGroupWithHttpInfo(param.createCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new custom field group for the Order record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create an Order Custom Field Group
+     * @param param the request object
+     */
+    public createOrderCustomFieldGroup(param: OrdersApiCreateOrderCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.createOrderCustomFieldGroup(param.createCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
      * Creates an order item on an existing order
      * Create an Order Item
      * @param param the request object
@@ -7288,6 +8225,24 @@ export class ObjectOrdersApi {
     }
 
     /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete an Order Custom Field Group
+     * @param param the request object
+     */
+    public deleteOrderCustomFieldGroupWithHttpInfo(param: OrdersApiDeleteOrderCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteOrderCustomFieldGroupWithHttpInfo(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete an Order Custom Field Group
+     * @param param the request object
+     */
+    public deleteOrderCustomFieldGroup(param: OrdersApiDeleteOrderCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteOrderCustomFieldGroup(param.groupId,  options).toPromise();
+    }
+
+    /**
      * Deletes an order item on an existing order
      * Delete an Order Item
      * @param param the request object
@@ -7342,6 +8297,24 @@ export class ObjectOrdersApi {
     }
 
     /**
+     * Retrieves a single custom field group by id for the Order record type.
+     * Retrieve an Order Custom Field Group
+     * @param param the request object
+     */
+    public getOrderCustomFieldGroupWithHttpInfo(param: OrdersApiGetOrderCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.getOrderCustomFieldGroupWithHttpInfo(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Order record type.
+     * Retrieve an Order Custom Field Group
+     * @param param the request object
+     */
+    public getOrderCustomFieldGroup(param: OrdersApiGetOrderCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.getOrderCustomFieldGroup(param.groupId,  options).toPromise();
+    }
+
+    /**
      * Retrieves a single order item from an existing order
      * Retrieve an Order Item
      * @param param the request object
@@ -7357,6 +8330,24 @@ export class ObjectOrdersApi {
      */
     public getOrderItem(param: OrdersApiGetOrderItemRequest, options?: ConfigurationOptions): Promise<OrderItem> {
         return this.api.getOrderItem(param.orderId, param.orderItemId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Order record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Order Custom Field Groups
+     * @param param the request object
+     */
+    public listOrderCustomFieldGroupsWithHttpInfo(param: OrdersApiListOrderCustomFieldGroupsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListCustomFieldGroupsResponse>> {
+        return this.api.listOrderCustomFieldGroupsWithHttpInfo(param.tabId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Order record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Order Custom Field Groups
+     * @param param the request object
+     */
+    public listOrderCustomFieldGroups(param: OrdersApiListOrderCustomFieldGroupsRequest = {}, options?: ConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
+        return this.api.listOrderCustomFieldGroups(param.tabId,  options).toPromise();
     }
 
     /**
@@ -7447,6 +8438,24 @@ export class ObjectOrdersApi {
      */
     public updateOrderCustomField(param: OrdersApiUpdateOrderCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
         return this.api.updateOrderCustomField(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update an Order Custom Field Group
+     * @param param the request object
+     */
+    public updateOrderCustomFieldGroupWithHttpInfo(param: OrdersApiUpdateOrderCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.updateOrderCustomFieldGroupWithHttpInfo(param.groupId, param.updateMask, param.updateCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update an Order Custom Field Group
+     * @param param the request object
+     */
+    public updateOrderCustomFieldGroup(param: OrdersApiUpdateOrderCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.updateOrderCustomFieldGroup(param.groupId, param.updateMask, param.updateCustomFieldGroupRequest,  options).toPromise();
     }
 
     /**
@@ -8046,6 +9055,22 @@ export interface ProductDiscountsApiCreateProductDiscountRequest {
     createProductDiscountRequest: CreateProductDiscountRequest
 }
 
+export interface ProductDiscountsApiCreateProductDiscountCriteriaRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductDiscountsApicreateProductDiscountCriteria
+     */
+    discountId: string
+    /**
+     * 
+     * @type CreateProductDiscountCriteria
+     * @memberof ProductDiscountsApicreateProductDiscountCriteria
+     */
+    createProductDiscountCriteria: CreateProductDiscountCriteria
+}
+
 export interface ProductDiscountsApiDeleteProductDiscountRequest {
     /**
      * 
@@ -8054,6 +9079,23 @@ export interface ProductDiscountsApiDeleteProductDiscountRequest {
      * @memberof ProductDiscountsApideleteProductDiscount
      */
     discountId: string
+}
+
+export interface ProductDiscountsApiDeleteProductDiscountCriteriaRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductDiscountsApideleteProductDiscountCriteria
+     */
+    discountId: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductDiscountsApideleteProductDiscountCriteria
+     */
+    criteriaId: string
 }
 
 export interface ProductDiscountsApiGetProductDiscountRequest {
@@ -8148,6 +9190,24 @@ export class ObjectProductDiscountsApi {
     }
 
     /**
+     * Creates a Product Discount Criteria
+     * Create a Product Discount Criteria
+     * @param param the request object
+     */
+    public createProductDiscountCriteriaWithHttpInfo(param: ProductDiscountsApiCreateProductDiscountCriteriaRequest, options?: ConfigurationOptions): Promise<HttpInfo<DiscountCriteria>> {
+        return this.api.createProductDiscountCriteriaWithHttpInfo(param.discountId, param.createProductDiscountCriteria,  options).toPromise();
+    }
+
+    /**
+     * Creates a Product Discount Criteria
+     * Create a Product Discount Criteria
+     * @param param the request object
+     */
+    public createProductDiscountCriteria(param: ProductDiscountsApiCreateProductDiscountCriteriaRequest, options?: ConfigurationOptions): Promise<DiscountCriteria> {
+        return this.api.createProductDiscountCriteria(param.discountId, param.createProductDiscountCriteria,  options).toPromise();
+    }
+
+    /**
      * Deletes a specified Product Discount
      * Delete a Product Discount
      * @param param the request object
@@ -8163,6 +9223,24 @@ export class ObjectProductDiscountsApi {
      */
     public deleteProductDiscount(param: ProductDiscountsApiDeleteProductDiscountRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.deleteProductDiscount(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specified Product Discount Criteria
+     * Delete a Product Discount Criteria
+     * @param param the request object
+     */
+    public deleteProductDiscountCriteriaWithHttpInfo(param: ProductDiscountsApiDeleteProductDiscountCriteriaRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteProductDiscountCriteriaWithHttpInfo(param.discountId, param.criteriaId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specified Product Discount Criteria
+     * Delete a Product Discount Criteria
+     * @param param the request object
+     */
+    public deleteProductDiscountCriteria(param: ProductDiscountsApiDeleteProductDiscountCriteriaRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteProductDiscountCriteria(param.discountId, param.criteriaId,  options).toPromise();
     }
 
     /**
@@ -10081,6 +11159,15 @@ export interface SubscriptionsApiCreateSubscriptionCustomFieldRequest {
     createCustomFieldRequest: CreateCustomFieldRequest
 }
 
+export interface SubscriptionsApiCreateSubscriptionCustomFieldGroupRequest {
+    /**
+     * 
+     * @type CreateCustomFieldGroupRequest
+     * @memberof SubscriptionsApicreateSubscriptionCustomFieldGroup
+     */
+    createCustomFieldGroupRequest: CreateCustomFieldGroupRequest
+}
+
 export interface SubscriptionsApiDeleteSubscriptionCustomFieldRequest {
     /**
      * 
@@ -10089,6 +11176,16 @@ export interface SubscriptionsApiDeleteSubscriptionCustomFieldRequest {
      * @memberof SubscriptionsApideleteSubscriptionCustomField
      */
     customFieldId: string
+}
+
+export interface SubscriptionsApiDeleteSubscriptionCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof SubscriptionsApideleteSubscriptionCustomFieldGroup
+     */
+    groupId: string
 }
 
 export interface SubscriptionsApiGetSubscriptionRequest {
@@ -10101,6 +11198,16 @@ export interface SubscriptionsApiGetSubscriptionRequest {
     subscriptionId: string
 }
 
+export interface SubscriptionsApiGetSubscriptionCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof SubscriptionsApigetSubscriptionCustomFieldGroup
+     */
+    groupId: string
+}
+
 export interface SubscriptionsApiInvoiceSubscriptionRequest {
     /**
      * 
@@ -10109,6 +11216,16 @@ export interface SubscriptionsApiInvoiceSubscriptionRequest {
      * @memberof SubscriptionsApiinvoiceSubscription
      */
     subscriptionId: string
+}
+
+export interface SubscriptionsApiListSubscriptionCustomFieldGroupsRequest {
+    /**
+     * Optional tab id to scope groups to a single tab
+     * Defaults to: undefined
+     * @type string
+     * @memberof SubscriptionsApilistSubscriptionCustomFieldGroups
+     */
+    tabId?: string
 }
 
 export interface SubscriptionsApiListSubscriptionsRequest {
@@ -10193,6 +11310,29 @@ export interface SubscriptionsApiUpdateSubscriptionCustomFieldRequest {
     updateMask?: Set<'group_id' | 'label' | 'options'>
 }
 
+export interface SubscriptionsApiUpdateSubscriptionCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof SubscriptionsApiupdateSubscriptionCustomFieldGroup
+     */
+    groupId: string
+    /**
+     * Comma-separated list of fields to update
+     * Defaults to: undefined
+     * @type Set&lt;&#39;name&#39; | &#39;tab_id&#39; | &#39;order&#39;&gt;
+     * @memberof SubscriptionsApiupdateSubscriptionCustomFieldGroup
+     */
+    updateMask: Set<'name' | 'tab_id' | 'order'>
+    /**
+     * 
+     * @type UpdateCustomFieldGroupRequest
+     * @memberof SubscriptionsApiupdateSubscriptionCustomFieldGroup
+     */
+    updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest
+}
+
 export class ObjectSubscriptionsApi {
     private api: ObservableSubscriptionsApi
 
@@ -10255,6 +11395,24 @@ export class ObjectSubscriptionsApi {
     }
 
     /**
+     * Creates a new custom field group for the Subscription record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create a Subscription Custom Field Group
+     * @param param the request object
+     */
+    public createSubscriptionCustomFieldGroupWithHttpInfo(param: SubscriptionsApiCreateSubscriptionCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.createSubscriptionCustomFieldGroupWithHttpInfo(param.createCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new custom field group for the Subscription record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create a Subscription Custom Field Group
+     * @param param the request object
+     */
+    public createSubscriptionCustomFieldGroup(param: SubscriptionsApiCreateSubscriptionCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.createSubscriptionCustomFieldGroup(param.createCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
      * Deletes a custom field from the Subscription object
      * Delete a Subscription Custom Field
      * @param param the request object
@@ -10270,6 +11428,24 @@ export class ObjectSubscriptionsApi {
      */
     public deleteSubscriptionCustomField(param: SubscriptionsApiDeleteSubscriptionCustomFieldRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.deleteSubscriptionCustomField(param.customFieldId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete a Subscription Custom Field Group
+     * @param param the request object
+     */
+    public deleteSubscriptionCustomFieldGroupWithHttpInfo(param: SubscriptionsApiDeleteSubscriptionCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteSubscriptionCustomFieldGroupWithHttpInfo(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete a Subscription Custom Field Group
+     * @param param the request object
+     */
+    public deleteSubscriptionCustomFieldGroup(param: SubscriptionsApiDeleteSubscriptionCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteSubscriptionCustomFieldGroup(param.groupId,  options).toPromise();
     }
 
     /**
@@ -10291,6 +11467,24 @@ export class ObjectSubscriptionsApi {
     }
 
     /**
+     * Retrieves a single custom field group by id for the Subscription record type.
+     * Retrieve a Subscription Custom Field Group
+     * @param param the request object
+     */
+    public getSubscriptionCustomFieldGroupWithHttpInfo(param: SubscriptionsApiGetSubscriptionCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.getSubscriptionCustomFieldGroupWithHttpInfo(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Subscription record type.
+     * Retrieve a Subscription Custom Field Group
+     * @param param the request object
+     */
+    public getSubscriptionCustomFieldGroup(param: SubscriptionsApiGetSubscriptionCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.getSubscriptionCustomFieldGroup(param.groupId,  options).toPromise();
+    }
+
+    /**
      * Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
      * Invoice a Subscription
      * @param param the request object
@@ -10306,6 +11500,24 @@ export class ObjectSubscriptionsApi {
      */
     public invoiceSubscription(param: SubscriptionsApiInvoiceSubscriptionRequest, options?: ConfigurationOptions): Promise<OrderV2> {
         return this.api.invoiceSubscription(param.subscriptionId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Subscription record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Subscription Custom Field Groups
+     * @param param the request object
+     */
+    public listSubscriptionCustomFieldGroupsWithHttpInfo(param: SubscriptionsApiListSubscriptionCustomFieldGroupsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListCustomFieldGroupsResponse>> {
+        return this.api.listSubscriptionCustomFieldGroupsWithHttpInfo(param.tabId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Subscription record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Subscription Custom Field Groups
+     * @param param the request object
+     */
+    public listSubscriptionCustomFieldGroups(param: SubscriptionsApiListSubscriptionCustomFieldGroupsRequest = {}, options?: ConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
+        return this.api.listSubscriptionCustomFieldGroups(param.tabId,  options).toPromise();
     }
 
     /**
@@ -10378,6 +11590,24 @@ export class ObjectSubscriptionsApi {
      */
     public updateSubscriptionCustomField(param: SubscriptionsApiUpdateSubscriptionCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
         return this.api.updateSubscriptionCustomField(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update a Subscription Custom Field Group
+     * @param param the request object
+     */
+    public updateSubscriptionCustomFieldGroupWithHttpInfo(param: SubscriptionsApiUpdateSubscriptionCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.updateSubscriptionCustomFieldGroupWithHttpInfo(param.groupId, param.updateMask, param.updateCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update a Subscription Custom Field Group
+     * @param param the request object
+     */
+    public updateSubscriptionCustomFieldGroup(param: SubscriptionsApiUpdateSubscriptionCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.updateSubscriptionCustomFieldGroup(param.groupId, param.updateMask, param.updateCustomFieldGroupRequest,  options).toPromise();
     }
 
 }
@@ -10956,6 +12186,15 @@ export interface TaskApiCreateTaskCustomFieldRequest {
     createCustomFieldRequest: CreateCustomFieldRequest
 }
 
+export interface TaskApiCreateTaskCustomFieldGroupRequest {
+    /**
+     * 
+     * @type CreateCustomFieldGroupRequest
+     * @memberof TaskApicreateTaskCustomFieldGroup
+     */
+    createCustomFieldGroupRequest: CreateCustomFieldGroupRequest
+}
+
 export interface TaskApiDeleteTaskRequest {
     /**
      * 
@@ -10976,6 +12215,16 @@ export interface TaskApiDeleteTaskCustomFieldRequest {
     customFieldId: string
 }
 
+export interface TaskApiDeleteTaskCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof TaskApideleteTaskCustomFieldGroup
+     */
+    groupId: string
+}
+
 export interface TaskApiGetTaskRequest {
     /**
      * 
@@ -10991,6 +12240,26 @@ export interface TaskApiGetTaskRequest {
      * @memberof TaskApigetTask
      */
     fields?: Array<string>
+}
+
+export interface TaskApiGetTaskCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof TaskApigetTaskCustomFieldGroup
+     */
+    groupId: string
+}
+
+export interface TaskApiListTaskCustomFieldGroupsRequest {
+    /**
+     * Optional tab id to scope groups to a single tab
+     * Defaults to: undefined
+     * @type string
+     * @memberof TaskApilistTaskCustomFieldGroups
+     */
+    tabId?: string
 }
 
 export interface TaskApiListTasksRequest {
@@ -11089,6 +12358,29 @@ export interface TaskApiUpdateTaskCustomFieldRequest {
     updateMask?: Set<'group_id' | 'label' | 'options'>
 }
 
+export interface TaskApiUpdateTaskCustomFieldGroupRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof TaskApiupdateTaskCustomFieldGroup
+     */
+    groupId: string
+    /**
+     * Comma-separated list of fields to update
+     * Defaults to: undefined
+     * @type Set&lt;&#39;name&#39; | &#39;tab_id&#39; | &#39;order&#39;&gt;
+     * @memberof TaskApiupdateTaskCustomFieldGroup
+     */
+    updateMask: Set<'name' | 'tab_id' | 'order'>
+    /**
+     * 
+     * @type UpdateCustomFieldGroupRequest
+     * @memberof TaskApiupdateTaskCustomFieldGroup
+     */
+    updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest
+}
+
 export class ObjectTaskApi {
     private api: ObservableTaskApi
 
@@ -11133,6 +12425,24 @@ export class ObjectTaskApi {
     }
 
     /**
+     * Creates a new custom field group for the Task record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Create a Task Custom Field Group
+     * @param param the request object
+     */
+    public createTaskCustomFieldGroupWithHttpInfo(param: TaskApiCreateTaskCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.createTaskCustomFieldGroupWithHttpInfo(param.createCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new custom field group for the Task record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Create a Task Custom Field Group
+     * @param param the request object
+     */
+    public createTaskCustomFieldGroup(param: TaskApiCreateTaskCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.createTaskCustomFieldGroup(param.createCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
      * Deletes a single task
      * Delete a Task
      * @param param the request object
@@ -11169,6 +12479,24 @@ export class ObjectTaskApi {
     }
 
     /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Task Custom Field Group
+     * @param param the request object
+     */
+    public deleteTaskCustomFieldGroupWithHttpInfo(param: TaskApiDeleteTaskCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteTaskCustomFieldGroupWithHttpInfo(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Task Custom Field Group
+     * @param param the request object
+     */
+    public deleteTaskCustomFieldGroup(param: TaskApiDeleteTaskCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteTaskCustomFieldGroup(param.groupId,  options).toPromise();
+    }
+
+    /**
      * Retrieves a single task
      * Retrieve a Task
      * @param param the request object
@@ -11184,6 +12512,42 @@ export class ObjectTaskApi {
      */
     public getTask(param: TaskApiGetTaskRequest, options?: ConfigurationOptions): Promise<Task> {
         return this.api.getTask(param.taskId, param.fields,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Task record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve a Task Custom Field Group
+     * @param param the request object
+     */
+    public getTaskCustomFieldGroupWithHttpInfo(param: TaskApiGetTaskCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.getTaskCustomFieldGroupWithHttpInfo(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Task record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve a Task Custom Field Group
+     * @param param the request object
+     */
+    public getTaskCustomFieldGroup(param: TaskApiGetTaskCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.getTaskCustomFieldGroup(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Task record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * List Task Custom Field Groups
+     * @param param the request object
+     */
+    public listTaskCustomFieldGroupsWithHttpInfo(param: TaskApiListTaskCustomFieldGroupsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListCustomFieldGroupsResponse>> {
+        return this.api.listTaskCustomFieldGroupsWithHttpInfo(param.tabId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Task record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * List Task Custom Field Groups
+     * @param param the request object
+     */
+    public listTaskCustomFieldGroups(param: TaskApiListTaskCustomFieldGroupsRequest = {}, options?: ConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
+        return this.api.listTaskCustomFieldGroups(param.tabId,  options).toPromise();
     }
 
     /**
@@ -11256,6 +12620,24 @@ export class ObjectTaskApi {
      */
     public updateTaskCustomField(param: TaskApiUpdateTaskCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
         return this.api.updateTaskCustomField(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Update a Task Custom Field Group
+     * @param param the request object
+     */
+    public updateTaskCustomFieldGroupWithHttpInfo(param: TaskApiUpdateTaskCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldGroup>> {
+        return this.api.updateTaskCustomFieldGroupWithHttpInfo(param.groupId, param.updateMask, param.updateCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Update a Task Custom Field Group
+     * @param param the request object
+     */
+    public updateTaskCustomFieldGroup(param: TaskApiUpdateTaskCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
+        return this.api.updateTaskCustomFieldGroup(param.groupId, param.updateMask, param.updateCustomFieldGroupRequest,  options).toPromise();
     }
 
 }

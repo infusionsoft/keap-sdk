@@ -25,12 +25,14 @@ import com.keap.core.sdk.model.AffiliateProgramResource;
 import com.keap.core.sdk.model.AffiliateRemoveFromProgramRequest;
 import com.keap.core.sdk.model.CreateAffiliateRequest;
 import com.keap.core.sdk.model.CreateCommissionProgramRequest;
+import com.keap.core.sdk.model.CreateCustomFieldGroupRequest;
 import com.keap.core.sdk.model.CreateCustomFieldRequest;
 import com.keap.core.sdk.model.CreateDefaultCommissionProgramRequest;
 import com.keap.core.sdk.model.CreateOrUpdateAffiliateLinkRequest;
 import com.keap.core.sdk.model.CreateProductCommissionProgramRequest;
 import com.keap.core.sdk.model.CreateProgramResourceRequest;
 import com.keap.core.sdk.model.CreateSubscriptionCommissionProgramRequest;
+import com.keap.core.sdk.model.CustomFieldGroup;
 import com.keap.core.sdk.model.CustomFieldMetaData;
 import com.keap.core.sdk.model.DeleteProgramCommissionRequest;
 import com.keap.core.sdk.model.DeleteSubscriptionPlanCommissionRequest;
@@ -43,12 +45,14 @@ import com.keap.core.sdk.model.ListAffiliatePaymentsResponse;
 import com.keap.core.sdk.model.ListAffiliateReferralsResponse;
 import com.keap.core.sdk.model.ListAffiliateSummariesResponse;
 import com.keap.core.sdk.model.ListAffiliatesResponse;
+import com.keap.core.sdk.model.ListCustomFieldGroupsResponse;
 import com.keap.core.sdk.model.ListProgramResourcesResponse;
 import com.keap.core.sdk.model.ObjectModel;
 import com.keap.core.sdk.model.RestAffiliate;
 import java.util.Set;
 import com.keap.core.sdk.model.UpdateAffiliateRequest;
 import com.keap.core.sdk.model.UpdateCommissionProgramRequest;
+import com.keap.core.sdk.model.UpdateCustomFieldGroupRequest;
 import com.keap.core.sdk.model.UpdateCustomFieldMetaDataRequest;
 import com.keap.core.sdk.model.UpdateDefaultCommissionProgramRequest;
 import com.keap.core.sdk.model.UpdateProductCommissionProgramRequest;
@@ -790,6 +794,97 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Create an Affiliate Custom Field Group
+   * Creates a new custom field group for the Affiliate record type. If &#x60;tab_id&#x60; is omitted, the group is added to the default &#39;Custom Fields&#39; tab.
+   * @param createCustomFieldGroupRequest  (required)
+   * @return CustomFieldGroup
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldGroup createAffiliateCustomFieldGroup(CreateCustomFieldGroupRequest createCustomFieldGroupRequest) throws ApiException {
+    ApiResponse<CustomFieldGroup> localVarResponse = createAffiliateCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Create an Affiliate Custom Field Group
+   * Creates a new custom field group for the Affiliate record type. If &#x60;tab_id&#x60; is omitted, the group is added to the default &#39;Custom Fields&#39; tab.
+   * @param createCustomFieldGroupRequest  (required)
+   * @return ApiResponse&lt;CustomFieldGroup&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldGroup> createAffiliateCustomFieldGroupWithHttpInfo(CreateCustomFieldGroupRequest createCustomFieldGroupRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createAffiliateCustomFieldGroupRequestBuilder(createCustomFieldGroupRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("createAffiliateCustomFieldGroup", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldGroup>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldGroup>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder createAffiliateCustomFieldGroupRequestBuilder(CreateCustomFieldGroupRequest createCustomFieldGroupRequest) throws ApiException {
+    // verify the required parameter 'createCustomFieldGroupRequest' is set
+    if (createCustomFieldGroupRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'createCustomFieldGroupRequest' when calling createAffiliateCustomFieldGroup");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/affiliates/model/customFields/groups";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(createCustomFieldGroupRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Create a Default Commission Program
    * Creates a Default Commission Program
    * @param commissionProgramId  (required)
@@ -1229,6 +1324,95 @@ import io.github.resilience4j.retry.Retry;
 
     String localVarPath = "/rest/v2/affiliates/model/customFields/{custom_field_id}"
         .replace("{custom_field_id}", ApiClient.urlEncode(customFieldId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Delete an Affiliate Custom Field Group
+   * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+   * @param groupId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteAffiliateCustomFieldGroup(String groupId) throws ApiException {
+    deleteAffiliateCustomFieldGroupWithHttpInfo(groupId);
+  }
+
+  /**
+   * Delete an Affiliate Custom Field Group
+   * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+   * @param groupId  (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteAffiliateCustomFieldGroupWithHttpInfo(String groupId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteAffiliateCustomFieldGroupRequestBuilder(groupId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteAffiliateCustomFieldGroup", localVarResponse);
+        }
+        return new ApiResponse<Void>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          null
+        );
+      } finally {
+        // Drain the InputStream
+        while (localVarResponse.body().read() != -1) {
+            // Ignore
+        }
+        localVarResponse.body().close();
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteAffiliateCustomFieldGroupRequestBuilder(String groupId) throws ApiException {
+    // verify the required parameter 'groupId' is set
+    if (groupId == null) {
+      throw new ApiException(400, "Missing the required parameter 'groupId' when calling deleteAffiliateCustomFieldGroup");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/affiliates/model/customFields/groups/{group_id}"
+        .replace("{group_id}", ApiClient.urlEncode(groupId.toString()));
 
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
 
@@ -1696,6 +1880,92 @@ import io.github.resilience4j.retry.Retry;
     } else {
       localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     }
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Retrieve an Affiliate Custom Field Group
+   * Retrieves a single custom field group by id for the Affiliate record type.
+   * @param groupId  (required)
+   * @return CustomFieldGroup
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldGroup getAffiliateCustomFieldGroup(String groupId) throws ApiException {
+    ApiResponse<CustomFieldGroup> localVarResponse = getAffiliateCustomFieldGroupWithHttpInfo(groupId);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Retrieve an Affiliate Custom Field Group
+   * Retrieves a single custom field group by id for the Affiliate record type.
+   * @param groupId  (required)
+   * @return ApiResponse&lt;CustomFieldGroup&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldGroup> getAffiliateCustomFieldGroupWithHttpInfo(String groupId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAffiliateCustomFieldGroupRequestBuilder(groupId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAffiliateCustomFieldGroup", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldGroup>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldGroup>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAffiliateCustomFieldGroupRequestBuilder(String groupId) throws ApiException {
+    // verify the required parameter 'groupId' is set
+    if (groupId == null) {
+      throw new ApiException(400, "Missing the required parameter 'groupId' when calling getAffiliateCustomFieldGroup");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/affiliates/model/customFields/groups/{group_id}"
+        .replace("{group_id}", ApiClient.urlEncode(groupId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
 
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
@@ -2267,6 +2537,102 @@ import io.github.resilience4j.retry.Retry;
     localVarQueryParams.addAll(ApiClient.parameterToPairs("page_size", pageSize));
     localVarQueryParameterBaseName = "page_token";
     localVarQueryParams.addAll(ApiClient.parameterToPairs("page_token", pageToken));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * List Affiliate Custom Field Groups
+   * Retrieves a list of custom field groups for the Affiliate record type. Optionally filter by tab_id to scope to a specific tab.
+   * @param tabId Optional tab id to scope groups to a single tab (optional)
+   * @return ListCustomFieldGroupsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ListCustomFieldGroupsResponse listAffiliateCustomFieldGroups(String tabId) throws ApiException {
+    ApiResponse<ListCustomFieldGroupsResponse> localVarResponse = listAffiliateCustomFieldGroupsWithHttpInfo(tabId);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * List Affiliate Custom Field Groups
+   * Retrieves a list of custom field groups for the Affiliate record type. Optionally filter by tab_id to scope to a specific tab.
+   * @param tabId Optional tab id to scope groups to a single tab (optional)
+   * @return ApiResponse&lt;ListCustomFieldGroupsResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ListCustomFieldGroupsResponse> listAffiliateCustomFieldGroupsWithHttpInfo(String tabId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listAffiliateCustomFieldGroupsRequestBuilder(tabId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("listAffiliateCustomFieldGroups", localVarResponse);
+        }
+        return new ApiResponse<ListCustomFieldGroupsResponse>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ListCustomFieldGroupsResponse>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder listAffiliateCustomFieldGroupsRequestBuilder(String tabId) throws ApiException {
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/affiliates/model/customFields/groups";
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "tab_id";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("tab_id", tabId));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
@@ -3229,6 +3595,125 @@ import io.github.resilience4j.retry.Retry;
 
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCustomFieldMetaDataRequest);
+      localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Update an Affiliate Custom Field Group
+   * Updates an existing custom field group. Only fields listed in &#x60;update_mask&#x60; are applied.
+   * @param groupId  (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateCustomFieldGroupRequest  (required)
+   * @return CustomFieldGroup
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldGroup updateAffiliateCustomFieldGroup(String groupId, Set<String> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest) throws ApiException {
+    ApiResponse<CustomFieldGroup> localVarResponse = updateAffiliateCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Update an Affiliate Custom Field Group
+   * Updates an existing custom field group. Only fields listed in &#x60;update_mask&#x60; are applied.
+   * @param groupId  (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateCustomFieldGroupRequest  (required)
+   * @return ApiResponse&lt;CustomFieldGroup&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldGroup> updateAffiliateCustomFieldGroupWithHttpInfo(String groupId, Set<String> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateAffiliateCustomFieldGroupRequestBuilder(groupId, updateMask, updateCustomFieldGroupRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updateAffiliateCustomFieldGroup", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldGroup>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldGroup>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updateAffiliateCustomFieldGroupRequestBuilder(String groupId, Set<String> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest) throws ApiException {
+    // verify the required parameter 'groupId' is set
+    if (groupId == null) {
+      throw new ApiException(400, "Missing the required parameter 'groupId' when calling updateAffiliateCustomFieldGroup");
+    }
+    // verify the required parameter 'updateMask' is set
+    if (updateMask == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateMask' when calling updateAffiliateCustomFieldGroup");
+    }
+    // verify the required parameter 'updateCustomFieldGroupRequest' is set
+    if (updateCustomFieldGroupRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateCustomFieldGroupRequest' when calling updateAffiliateCustomFieldGroup");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/affiliates/model/customFields/groups/{group_id}"
+        .replace("{group_id}", ApiClient.urlEncode(groupId.toString()));
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "update_mask";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCustomFieldGroupRequest);
       localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);

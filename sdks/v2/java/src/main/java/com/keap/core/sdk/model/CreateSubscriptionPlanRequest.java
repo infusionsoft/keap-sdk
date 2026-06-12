@@ -49,7 +49,7 @@ public class CreateSubscriptionPlanRequest implements Serializable {
   @jakarta.annotation.Nullable  private Boolean active;
 
   public static final String JSON_PROPERTY_FREQUENCY = "frequency";
-  @jakarta.annotation.Nullable  private Integer frequency;
+  @jakarta.annotation.Nullable  private Integer frequency = 1;
 
   public static final String JSON_PROPERTY_ALLOW_PRORATING = "allow_prorating";
   @jakarta.annotation.Nullable  private Boolean allowProrating;
@@ -98,13 +98,13 @@ public class CreateSubscriptionPlanRequest implements Serializable {
   @jakarta.annotation.Nonnull  private CycleTypeEnum cycleType;
 
   public static final String JSON_PROPERTY_DISPLAY_ORDER_INDEX = "display_order_index";
-  @jakarta.annotation.Nullable  private Integer displayOrderIndex;
+  @jakarta.annotation.Nullable  private Integer displayOrderIndex = 0;
 
   public static final String JSON_PROPERTY_PLAN_PRICE = "plan_price";
   @jakarta.annotation.Nonnull  private Double planPrice;
 
   public static final String JSON_PROPERTY_TOTAL_CYCLES = "total_cycles";
-  @jakarta.annotation.Nullable  private Integer totalCycles;
+  @jakarta.annotation.Nullable  private Integer totalCycles = 0;
 
   public CreateSubscriptionPlanRequest() { 
   }
@@ -212,10 +212,10 @@ public class CreateSubscriptionPlanRequest implements Serializable {
   }
 
   /**
-   * The order that this plan will be displayed to the user.
+   * The order that this plan will be displayed to the user. Lower values indicate higher priority in order.
    * @return displayOrderIndex
    */
-  @jakarta.annotation.Nullable  @Schema(example = "0", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The order that this plan will be displayed to the user.")
+  @jakarta.annotation.Nullable  @Schema(example = "0", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The order that this plan will be displayed to the user. Lower values indicate higher priority in order.")
   @JsonProperty(JSON_PROPERTY_DISPLAY_ORDER_INDEX)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getDisplayOrderIndex() {

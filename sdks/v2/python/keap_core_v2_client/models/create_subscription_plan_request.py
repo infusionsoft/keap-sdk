@@ -27,12 +27,12 @@ class CreateSubscriptionPlanRequest(BaseModel):
     CreateSubscriptionPlanRequest
     """ # noqa: E501
     active: Optional[StrictBool] = Field(default=None, description="Whether the subscription plan is active.")
-    frequency: Optional[StrictInt] = Field(default=None, description="The frequency of the subscription plan. Must be greater than 0. Default is 1.")
+    frequency: Optional[StrictInt] = Field(default=1, description="The frequency of the subscription plan. Must be greater than 0. Default is 1.")
     allow_prorating: Optional[StrictBool] = Field(default=None, description="Allow prorating of the subscription plan.")
     cycle_type: StrictStr = Field(description="The cycle type of the subscription plan.")
-    display_order_index: Optional[StrictInt] = Field(default=None, description="The order that this plan will be displayed to the user.")
+    display_order_index: Optional[StrictInt] = Field(default=0, description="The order that this plan will be displayed to the user. Lower values indicate higher priority in order.")
     plan_price: Union[StrictFloat, StrictInt] = Field(description="The price of the subscription plan in the smallest currency unit. Must be greater than or equal to 0.")
-    total_cycles: Optional[StrictInt] = Field(default=None, description="How many cycles the subscription plan will have. 0 means infinite.")
+    total_cycles: Optional[StrictInt] = Field(default=0, description="How many cycles the subscription plan will have. 0 means infinite.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["active", "frequency", "allow_prorating", "cycle_type", "display_order_index", "plan_price", "total_cycles"]
 
@@ -102,12 +102,12 @@ class CreateSubscriptionPlanRequest(BaseModel):
 
         _obj = cls.model_validate({
             "active": obj.get("active"),
-            "frequency": obj.get("frequency"),
+            "frequency": obj.get("frequency") if obj.get("frequency") is not None else 1,
             "allow_prorating": obj.get("allow_prorating"),
             "cycle_type": obj.get("cycle_type"),
-            "display_order_index": obj.get("display_order_index"),
+            "display_order_index": obj.get("display_order_index") if obj.get("display_order_index") is not None else 0,
             "plan_price": obj.get("plan_price"),
-            "total_cycles": obj.get("total_cycles")
+            "total_cycles": obj.get("total_cycles") if obj.get("total_cycles") is not None else 0
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

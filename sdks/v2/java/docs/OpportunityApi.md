@@ -6,22 +6,30 @@ All URIs are relative to *https://api.keap.com/crm*
 |------------- | ------------- | -------------|
 | [**createOpportunity**](OpportunityApi.md#createOpportunity) | **POST** /rest/v2/opportunities | Create an Opportunity |
 | [**createOpportunityWithHttpInfo**](OpportunityApi.md#createOpportunityWithHttpInfo) | **POST** /rest/v2/opportunities | Create an Opportunity |
+| [**createOpportunityCustomFieldGroup**](OpportunityApi.md#createOpportunityCustomFieldGroup) | **POST** /rest/v2/opportunities/model/customFields/groups | Create an Opportunity Custom Field Group |
+| [**createOpportunityCustomFieldGroupWithHttpInfo**](OpportunityApi.md#createOpportunityCustomFieldGroupWithHttpInfo) | **POST** /rest/v2/opportunities/model/customFields/groups | Create an Opportunity Custom Field Group |
 | [**createOpportunityCustomFields**](OpportunityApi.md#createOpportunityCustomFields) | **POST** /rest/v2/opportunities/model/customFields | Create an Opportunity Custom Field |
 | [**createOpportunityCustomFieldsWithHttpInfo**](OpportunityApi.md#createOpportunityCustomFieldsWithHttpInfo) | **POST** /rest/v2/opportunities/model/customFields | Create an Opportunity Custom Field |
 | [**createOpportunityStage**](OpportunityApi.md#createOpportunityStage) | **POST** /rest/v2/opportunities/stages | Create an Opportunity Stage |
 | [**createOpportunityStageWithHttpInfo**](OpportunityApi.md#createOpportunityStageWithHttpInfo) | **POST** /rest/v2/opportunities/stages | Create an Opportunity Stage |
+| [**deleteOpportunitiesCustomField**](OpportunityApi.md#deleteOpportunitiesCustomField) | **DELETE** /rest/v2/opportunities/model/customFields/{custom_field_id} | Delete an Opportunity Custom Field |
+| [**deleteOpportunitiesCustomFieldWithHttpInfo**](OpportunityApi.md#deleteOpportunitiesCustomFieldWithHttpInfo) | **DELETE** /rest/v2/opportunities/model/customFields/{custom_field_id} | Delete an Opportunity Custom Field |
 | [**deleteOpportunity**](OpportunityApi.md#deleteOpportunity) | **DELETE** /rest/v2/opportunities/{opportunity_id} | Delete an Opportunity |
 | [**deleteOpportunityWithHttpInfo**](OpportunityApi.md#deleteOpportunityWithHttpInfo) | **DELETE** /rest/v2/opportunities/{opportunity_id} | Delete an Opportunity |
+| [**deleteOpportunityCustomFieldGroup**](OpportunityApi.md#deleteOpportunityCustomFieldGroup) | **DELETE** /rest/v2/opportunities/model/customFields/groups/{group_id} | Delete an Opportunity Custom Field Group |
+| [**deleteOpportunityCustomFieldGroupWithHttpInfo**](OpportunityApi.md#deleteOpportunityCustomFieldGroupWithHttpInfo) | **DELETE** /rest/v2/opportunities/model/customFields/groups/{group_id} | Delete an Opportunity Custom Field Group |
 | [**deleteOpportunityStage**](OpportunityApi.md#deleteOpportunityStage) | **DELETE** /rest/v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage |
 | [**deleteOpportunityStageWithHttpInfo**](OpportunityApi.md#deleteOpportunityStageWithHttpInfo) | **DELETE** /rest/v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage |
-| [**deleteOpportunityesCustomField**](OpportunityApi.md#deleteOpportunityesCustomField) | **DELETE** /rest/v2/opportunities/model/customFields/{custom_field_id} | Delete an Opportunity Custom Field |
-| [**deleteOpportunityesCustomFieldWithHttpInfo**](OpportunityApi.md#deleteOpportunityesCustomFieldWithHttpInfo) | **DELETE** /rest/v2/opportunities/model/customFields/{custom_field_id} | Delete an Opportunity Custom Field |
 | [**getOpportunity**](OpportunityApi.md#getOpportunity) | **GET** /rest/v2/opportunities/{opportunity_id} | Retrieve a Opportunity |
 | [**getOpportunityWithHttpInfo**](OpportunityApi.md#getOpportunityWithHttpInfo) | **GET** /rest/v2/opportunities/{opportunity_id} | Retrieve a Opportunity |
+| [**getOpportunityCustomFieldGroup**](OpportunityApi.md#getOpportunityCustomFieldGroup) | **GET** /rest/v2/opportunities/model/customFields/groups/{group_id} | Retrieve an Opportunity Custom Field Group |
+| [**getOpportunityCustomFieldGroupWithHttpInfo**](OpportunityApi.md#getOpportunityCustomFieldGroupWithHttpInfo) | **GET** /rest/v2/opportunities/model/customFields/groups/{group_id} | Retrieve an Opportunity Custom Field Group |
 | [**getOpportunityStage**](OpportunityApi.md#getOpportunityStage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage |
 | [**getOpportunityStageWithHttpInfo**](OpportunityApi.md#getOpportunityStageWithHttpInfo) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage |
 | [**listOpportunities**](OpportunityApi.md#listOpportunities) | **GET** /rest/v2/opportunities | List Opportunities |
 | [**listOpportunitiesWithHttpInfo**](OpportunityApi.md#listOpportunitiesWithHttpInfo) | **GET** /rest/v2/opportunities | List Opportunities |
+| [**listOpportunityCustomFieldGroups**](OpportunityApi.md#listOpportunityCustomFieldGroups) | **GET** /rest/v2/opportunities/model/customFields/groups | List Opportunity Custom Field Groups |
+| [**listOpportunityCustomFieldGroupsWithHttpInfo**](OpportunityApi.md#listOpportunityCustomFieldGroupsWithHttpInfo) | **GET** /rest/v2/opportunities/model/customFields/groups | List Opportunity Custom Field Groups |
 | [**listOpportunityStages**](OpportunityApi.md#listOpportunityStages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages |
 | [**listOpportunityStagesWithHttpInfo**](OpportunityApi.md#listOpportunityStagesWithHttpInfo) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages |
 | [**retrieveOpportunityCustomFieldModel**](OpportunityApi.md#retrieveOpportunityCustomFieldModel) | **GET** /rest/v2/opportunities/model | Retrieve Opportunity Custom Field Model |
@@ -30,6 +38,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**updateOpportunityWithHttpInfo**](OpportunityApi.md#updateOpportunityWithHttpInfo) | **PATCH** /rest/v2/opportunities/{opportunity_id} | Update an opportunity |
 | [**updateOpportunityCustomField**](OpportunityApi.md#updateOpportunityCustomField) | **PATCH** /rest/v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field |
 | [**updateOpportunityCustomFieldWithHttpInfo**](OpportunityApi.md#updateOpportunityCustomFieldWithHttpInfo) | **PATCH** /rest/v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field |
+| [**updateOpportunityCustomFieldGroup**](OpportunityApi.md#updateOpportunityCustomFieldGroup) | **PATCH** /rest/v2/opportunities/model/customFields/groups/{group_id} | Update an Opportunity Custom Field Group |
+| [**updateOpportunityCustomFieldGroupWithHttpInfo**](OpportunityApi.md#updateOpportunityCustomFieldGroupWithHttpInfo) | **PATCH** /rest/v2/opportunities/model/customFields/groups/{group_id} | Update an Opportunity Custom Field Group |
 | [**updateOpportunityStage**](OpportunityApi.md#updateOpportunityStage) | **PATCH** /rest/v2/opportunities/stages/{stage_id} | Update an Opportunity Stage |
 | [**updateOpportunityStageWithHttpInfo**](OpportunityApi.md#updateOpportunityStageWithHttpInfo) | **PATCH** /rest/v2/opportunities/stages/{stage_id} | Update an Opportunity Stage |
 
@@ -174,6 +184,166 @@ public class Example {
 ### Return type
 
 ApiResponse<[**RestV2Opportunity**](RestV2Opportunity.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## createOpportunityCustomFieldGroup
+
+> CustomFieldGroup createOpportunityCustomFieldGroup(createCustomFieldGroupRequest)
+
+Create an Opportunity Custom Field Group
+
+Creates a new custom field group for the Opportunity record type. If &#x60;tab_id&#x60; is omitted, the group is added to the default &#39;Custom Fields&#39; tab.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        CreateCustomFieldGroupRequest createCustomFieldGroupRequest = new CreateCustomFieldGroupRequest(); // CreateCustomFieldGroupRequest | 
+        try {
+            CustomFieldGroup result = apiInstance.createOpportunityCustomFieldGroup(createCustomFieldGroupRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#createOpportunityCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createCustomFieldGroupRequest** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md)|  | |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## createOpportunityCustomFieldGroupWithHttpInfo
+
+> ApiResponse<CustomFieldGroup> createOpportunityCustomFieldGroup createOpportunityCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest)
+
+Create an Opportunity Custom Field Group
+
+Creates a new custom field group for the Opportunity record type. If &#x60;tab_id&#x60; is omitted, the group is added to the default &#39;Custom Fields&#39; tab.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        CreateCustomFieldGroupRequest createCustomFieldGroupRequest = new CreateCustomFieldGroupRequest(); // CreateCustomFieldGroupRequest | 
+        try {
+            ApiResponse<CustomFieldGroup> response = apiInstance.createOpportunityCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#createOpportunityCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createCustomFieldGroupRequest** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md)|  | |
+
+### Return type
+
+ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
 
 
 ### Authorization
@@ -519,6 +689,164 @@ ApiResponse<[**RestOpportunityStage**](RestOpportunityStage.md)>
 | **501** | Method Not Implemented |  -  |
 
 
+## deleteOpportunitiesCustomField
+
+> void deleteOpportunitiesCustomField(customFieldId)
+
+Delete an Opportunity Custom Field
+
+Deletes a Custom Field from Opportunity.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        String customFieldId = "customFieldId_example"; // String | 
+        try {
+            apiInstance.deleteOpportunitiesCustomField(customFieldId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#deleteOpportunitiesCustomField");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **customFieldId** | **String**|  | |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## deleteOpportunitiesCustomFieldWithHttpInfo
+
+> ApiResponse<Void> deleteOpportunitiesCustomField deleteOpportunitiesCustomFieldWithHttpInfo(customFieldId)
+
+Delete an Opportunity Custom Field
+
+Deletes a Custom Field from Opportunity.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        String customFieldId = "customFieldId_example"; // String | 
+        try {
+            ApiResponse<Void> response = apiInstance.deleteOpportunitiesCustomFieldWithHttpInfo(customFieldId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#deleteOpportunitiesCustomField");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **customFieldId** | **String**|  | |
+
+### Return type
+
+
+ApiResponse<Void>
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## deleteOpportunity
 
 > void deleteOpportunity(opportunityId)
@@ -648,6 +976,164 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **opportunityId** | **String**|  | |
+
+### Return type
+
+
+ApiResponse<Void>
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## deleteOpportunityCustomFieldGroup
+
+> void deleteOpportunityCustomFieldGroup(groupId)
+
+Delete an Opportunity Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        String groupId = "groupId_example"; // String | 
+        try {
+            apiInstance.deleteOpportunityCustomFieldGroup(groupId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#deleteOpportunityCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String**|  | |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## deleteOpportunityCustomFieldGroupWithHttpInfo
+
+> ApiResponse<Void> deleteOpportunityCustomFieldGroup deleteOpportunityCustomFieldGroupWithHttpInfo(groupId)
+
+Delete an Opportunity Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        String groupId = "groupId_example"; // String | 
+        try {
+            ApiResponse<Void> response = apiInstance.deleteOpportunityCustomFieldGroupWithHttpInfo(groupId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#deleteOpportunityCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String**|  | |
 
 ### Return type
 
@@ -835,164 +1321,6 @@ ApiResponse<Void>
 | **501** | Method Not Implemented |  -  |
 
 
-## deleteOpportunityesCustomField
-
-> void deleteOpportunityesCustomField(customFieldId)
-
-Delete an Opportunity Custom Field
-
-Deletes a Custom Field from Opportunity.
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.auth.*;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.OpportunityApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm");
-        
-        // Configure OAuth2 access token for authorization: oauth2
-        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-        oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
-        String customFieldId = "customFieldId_example"; // String | 
-        try {
-            apiInstance.deleteOpportunityesCustomField(customFieldId);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling OpportunityApi#deleteOpportunityesCustomField");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customFieldId** | **String**|  | |
-
-### Return type
-
-
-null (empty response body)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | No Content |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **405** | Method Not Allowed |  -  |
-| **409** | Conflict |  -  |
-| **500** | Internal Server Error |  -  |
-| **501** | Method Not Implemented |  -  |
-
-## deleteOpportunityesCustomFieldWithHttpInfo
-
-> ApiResponse<Void> deleteOpportunityesCustomField deleteOpportunityesCustomFieldWithHttpInfo(customFieldId)
-
-Delete an Opportunity Custom Field
-
-Deletes a Custom Field from Opportunity.
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.ApiResponse;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.auth.*;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.OpportunityApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm");
-        
-        // Configure OAuth2 access token for authorization: oauth2
-        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-        oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
-        String customFieldId = "customFieldId_example"; // String | 
-        try {
-            ApiResponse<Void> response = apiInstance.deleteOpportunityesCustomFieldWithHttpInfo(customFieldId);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling OpportunityApi#deleteOpportunityesCustomField");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customFieldId** | **String**|  | |
-
-### Return type
-
-
-ApiResponse<Void>
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | No Content |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **405** | Method Not Allowed |  -  |
-| **409** | Conflict |  -  |
-| **500** | Internal Server Error |  -  |
-| **501** | Method Not Implemented |  -  |
-
-
 ## getOpportunity
 
 > RestV2Opportunity getOpportunity(opportunityId, fields)
@@ -1132,6 +1460,166 @@ public class Example {
 ### Return type
 
 ApiResponse<[**RestV2Opportunity**](RestV2Opportunity.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## getOpportunityCustomFieldGroup
+
+> CustomFieldGroup getOpportunityCustomFieldGroup(groupId)
+
+Retrieve an Opportunity Custom Field Group
+
+Retrieves a single custom field group by id for the Opportunity record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        String groupId = "groupId_example"; // String | 
+        try {
+            CustomFieldGroup result = apiInstance.getOpportunityCustomFieldGroup(groupId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#getOpportunityCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String**|  | |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## getOpportunityCustomFieldGroupWithHttpInfo
+
+> ApiResponse<CustomFieldGroup> getOpportunityCustomFieldGroup getOpportunityCustomFieldGroupWithHttpInfo(groupId)
+
+Retrieve an Opportunity Custom Field Group
+
+Retrieves a single custom field group by id for the Opportunity record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        String groupId = "groupId_example"; // String | 
+        try {
+            ApiResponse<CustomFieldGroup> response = apiInstance.getOpportunityCustomFieldGroupWithHttpInfo(groupId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#getOpportunityCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String**|  | |
+
+### Return type
+
+ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
 
 
 ### Authorization
@@ -1468,6 +1956,166 @@ public class Example {
 ### Return type
 
 ApiResponse<[**ListOpportunitiesResponse**](ListOpportunitiesResponse.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## listOpportunityCustomFieldGroups
+
+> ListCustomFieldGroupsResponse listOpportunityCustomFieldGroups(tabId)
+
+List Opportunity Custom Field Groups
+
+Retrieves a list of custom field groups for the Opportunity record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        String tabId = "tabId_example"; // String | Optional tab id to scope groups to a single tab
+        try {
+            ListCustomFieldGroupsResponse result = apiInstance.listOpportunityCustomFieldGroups(tabId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#listOpportunityCustomFieldGroups");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**| Optional tab id to scope groups to a single tab | [optional] |
+
+### Return type
+
+[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## listOpportunityCustomFieldGroupsWithHttpInfo
+
+> ApiResponse<ListCustomFieldGroupsResponse> listOpportunityCustomFieldGroups listOpportunityCustomFieldGroupsWithHttpInfo(tabId)
+
+List Opportunity Custom Field Groups
+
+Retrieves a list of custom field groups for the Opportunity record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        String tabId = "tabId_example"; // String | Optional tab id to scope groups to a single tab
+        try {
+            ApiResponse<ListCustomFieldGroupsResponse> response = apiInstance.listOpportunityCustomFieldGroupsWithHttpInfo(tabId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#listOpportunityCustomFieldGroups");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**| Optional tab id to scope groups to a single tab | [optional] |
+
+### Return type
+
+ApiResponse<[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)>
 
 
 ### Authorization
@@ -2132,6 +2780,174 @@ public class Example {
 ### Return type
 
 ApiResponse<[**CustomFieldMetaData**](CustomFieldMetaData.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## updateOpportunityCustomFieldGroup
+
+> CustomFieldGroup updateOpportunityCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest)
+
+Update an Opportunity Custom Field Group
+
+Updates an existing custom field group. Only fields listed in &#x60;update_mask&#x60; are applied.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        String groupId = "groupId_example"; // String | 
+        Set<String> updateMask = Arrays.asList(); // Set<String> | Comma-separated list of fields to update
+        UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest = new UpdateCustomFieldGroupRequest(); // UpdateCustomFieldGroupRequest | 
+        try {
+            CustomFieldGroup result = apiInstance.updateOpportunityCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#updateOpportunityCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String**|  | |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| Comma-separated list of fields to update | [enum: name, tab_id, order] |
+| **updateCustomFieldGroupRequest** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md)|  | |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## updateOpportunityCustomFieldGroupWithHttpInfo
+
+> ApiResponse<CustomFieldGroup> updateOpportunityCustomFieldGroup updateOpportunityCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest)
+
+Update an Opportunity Custom Field Group
+
+Updates an existing custom field group. Only fields listed in &#x60;update_mask&#x60; are applied.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        String groupId = "groupId_example"; // String | 
+        Set<String> updateMask = Arrays.asList(); // Set<String> | Comma-separated list of fields to update
+        UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest = new UpdateCustomFieldGroupRequest(); // UpdateCustomFieldGroupRequest | 
+        try {
+            ApiResponse<CustomFieldGroup> response = apiInstance.updateOpportunityCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#updateOpportunityCustomFieldGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String**|  | |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| Comma-separated list of fields to update | [enum: name, tab_id, order] |
+| **updateCustomFieldGroupRequest** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md)|  | |
+
+### Return type
+
+ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
 
 
 ### Authorization

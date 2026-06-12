@@ -13,15 +13,19 @@
 
 
 import ApiClient from "../ApiClient";
+import CreateCustomFieldGroupRequest from '../model/CreateCustomFieldGroupRequest';
 import CreateCustomFieldRequest from '../model/CreateCustomFieldRequest';
 import CreateCustomFieldResponse from '../model/CreateCustomFieldResponse';
 import CreateTaskRequest from '../model/CreateTaskRequest';
 import CreateUpdateTaskRequest from '../model/CreateUpdateTaskRequest';
+import CustomFieldGroup from '../model/CustomFieldGroup';
 import CustomFieldMetaData from '../model/CustomFieldMetaData';
 import Error from '../model/Error';
+import ListCustomFieldGroupsResponse from '../model/ListCustomFieldGroupsResponse';
 import ListTasksResponse from '../model/ListTasksResponse';
 import ObjectModel from '../model/ObjectModel';
 import Task from '../model/Task';
+import UpdateCustomFieldGroupRequest from '../model/UpdateCustomFieldGroupRequest';
 import UpdateCustomFieldMetaDataRequest from '../model/UpdateCustomFieldMetaDataRequest';
 import UpdateTaskResponse from '../model/UpdateTaskResponse';
 
@@ -145,6 +149,53 @@ export default class TaskApi {
 
 
     /**
+     * Create a Task Custom Field Group
+     * Creates a new custom field group for the Task record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * @param {module:keap.core.v2/model/CreateCustomFieldGroupRequest} createCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldGroup} and HTTP response
+     */
+    createTaskCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest) {
+      let postBody = createCustomFieldGroupRequest;
+      // verify the required parameter 'createCustomFieldGroupRequest' is set
+      if (createCustomFieldGroupRequest === undefined || createCustomFieldGroupRequest === null) {
+        throw new Error("Missing the required parameter 'createCustomFieldGroupRequest' when calling createTaskCustomFieldGroup");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldGroup;
+      return this.apiClient.callApi(
+        '/rest/v2/tasks/model/customFields/groups', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create a Task Custom Field Group
+     * Creates a new custom field group for the Task record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * @param {module:keap.core.v2/model/CreateCustomFieldGroupRequest} createCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldGroup}
+     */
+    createTaskCustomFieldGroup(createCustomFieldGroupRequest) {
+      return this.createTaskCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Delete a Task
      * Deletes a single task
      * @param {String} taskId 
@@ -241,6 +292,54 @@ export default class TaskApi {
 
 
     /**
+     * Delete a Task Custom Field Group
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteTaskCustomFieldGroupWithHttpInfo(groupId) {
+      let postBody = null;
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling deleteTaskCustomFieldGroup");
+      }
+
+      let pathParams = {
+        'group_id': groupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/tasks/model/customFields/groups/{group_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete a Task Custom Field Group
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteTaskCustomFieldGroup(groupId) {
+      return this.deleteTaskCustomFieldGroupWithHttpInfo(groupId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Retrieve a Task
      * Retrieves a single task
      * @param {String} taskId 
@@ -288,6 +387,101 @@ export default class TaskApi {
      */
     getTask(taskId, opts) {
       return this.getTaskWithHttpInfo(taskId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Retrieve a Task Custom Field Group
+     * Retrieves a single custom field group by id for the Task record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldGroup} and HTTP response
+     */
+    getTaskCustomFieldGroupWithHttpInfo(groupId) {
+      let postBody = null;
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling getTaskCustomFieldGroup");
+      }
+
+      let pathParams = {
+        'group_id': groupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldGroup;
+      return this.apiClient.callApi(
+        '/rest/v2/tasks/model/customFields/groups/{group_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Retrieve a Task Custom Field Group
+     * Retrieves a single custom field group by id for the Task record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldGroup}
+     */
+    getTaskCustomFieldGroup(groupId) {
+      return this.getTaskCustomFieldGroupWithHttpInfo(groupId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List Task Custom Field Groups
+     * Retrieves a list of custom field groups for the Task record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * @param {Object} opts Optional parameters
+     * @param {String} [tabId] Optional tab id to scope groups to a single tab
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListCustomFieldGroupsResponse} and HTTP response
+     */
+    listTaskCustomFieldGroupsWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'tab_id': opts['tabId']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListCustomFieldGroupsResponse;
+      return this.apiClient.callApi(
+        '/rest/v2/tasks/model/customFields/groups', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List Task Custom Field Groups
+     * Retrieves a list of custom field groups for the Task record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.tabId Optional tab id to scope groups to a single tab
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListCustomFieldGroupsResponse}
+     */
+    listTaskCustomFieldGroups(opts) {
+      return this.listTaskCustomFieldGroupsWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -511,6 +705,67 @@ export default class TaskApi {
      */
     updateTaskCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts) {
       return this.updateTaskCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update a Task Custom Field Group
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * @param {String} groupId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldGroupRequest} updateCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldGroup} and HTTP response
+     */
+    updateTaskCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest) {
+      let postBody = updateCustomFieldGroupRequest;
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling updateTaskCustomFieldGroup");
+      }
+      // verify the required parameter 'updateMask' is set
+      if (updateMask === undefined || updateMask === null) {
+        throw new Error("Missing the required parameter 'updateMask' when calling updateTaskCustomFieldGroup");
+      }
+      // verify the required parameter 'updateCustomFieldGroupRequest' is set
+      if (updateCustomFieldGroupRequest === undefined || updateCustomFieldGroupRequest === null) {
+        throw new Error("Missing the required parameter 'updateCustomFieldGroupRequest' when calling updateTaskCustomFieldGroup");
+      }
+
+      let pathParams = {
+        'group_id': groupId
+      };
+      let queryParams = {
+        'update_mask': this.apiClient.buildCollectionParam(updateMask, 'multi')
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldGroup;
+      return this.apiClient.callApi(
+        '/rest/v2/tasks/model/customFields/groups/{group_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Update a Task Custom Field Group
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * @param {String} groupId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldGroupRequest} updateCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldGroup}
+     */
+    updateTaskCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest) {
+      return this.updateTaskCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

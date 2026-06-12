@@ -6,17 +6,24 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_contact**](ContactApi.md#create_contact) | **POST** /rest/v2/contacts | Create a Contact
 [**create_contact_custom_field**](ContactApi.md#create_contact_custom_field) | **POST** /rest/v2/contacts/model/customFields | Create a Contact Custom Field
+[**create_contact_custom_field_group**](ContactApi.md#create_contact_custom_field_group) | **POST** /rest/v2/contacts/model/customFields/groups | Create a Contact Custom Field Group
 [**create_contact_link_type**](ContactApi.md#create_contact_link_type) | **POST** /rest/v2/contacts/links/types | Create a Contact Link type
 [**delete_contact**](ContactApi.md#delete_contact) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact
+[**delete_contact_custom_field**](ContactApi.md#delete_contact_custom_field) | **DELETE** /rest/v2/contacts/model/customFields/{custom_field_id} | Delete a Contact Custom Field
+[**delete_contact_custom_field_group**](ContactApi.md#delete_contact_custom_field_group) | **DELETE** /rest/v2/contacts/model/customFields/groups/{group_id} | Delete a Contact Custom Field Group
 [**get_contact**](ContactApi.md#get_contact) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact
+[**get_contact_custom_field_group**](ContactApi.md#get_contact_custom_field_group) | **GET** /rest/v2/contacts/model/customFields/groups/{group_id} | Retrieve a Contact Custom Field Group
 [**link_contacts**](ContactApi.md#link_contacts) | **POST** /rest/v2/contacts:link | Link Contacts
+[**list_contact_custom_field_groups**](ContactApi.md#list_contact_custom_field_groups) | **GET** /rest/v2/contacts/model/customFields/groups | List Contact Custom Field Groups
 [**list_contact_link_types**](ContactApi.md#list_contact_link_types) | **GET** /rest/v2/contacts/links/types | List Contact Link types
 [**list_contact_links**](ContactApi.md#list_contact_links) | **GET** /rest/v2/contacts/{contact_id}/links | List Linked Contacts
 [**list_contacts**](ContactApi.md#list_contacts) | **GET** /rest/v2/contacts | List Contacts
 [**list_tags_for_contact**](ContactApi.md#list_tags_for_contact) | **GET** /rest/v2/contacts/{contact_id}/tags | List Applied Tags
+[**merge_contacts**](ContactApi.md#merge_contacts) | **POST** /rest/v2/contacts:merge | Merge two Contacts
 [**retrieve_contact_model**](ContactApi.md#retrieve_contact_model) | **GET** /rest/v2/contacts/model | Retrieve Contact Model
 [**unlink_contacts**](ContactApi.md#unlink_contacts) | **POST** /rest/v2/contacts:unlink | Delete Link between two Contacts
 [**update_contact**](ContactApi.md#update_contact) | **PATCH** /rest/v2/contacts/{contact_id} | Update a Contact
+[**update_contact_custom_field_group**](ContactApi.md#update_contact_custom_field_group) | **PATCH** /rest/v2/contacts/model/customFields/groups/{group_id} | Update a Contact Custom Field Group
 
 
 # **create_contact**
@@ -163,6 +170,88 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomFieldMetaData**](CustomFieldMetaData.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_contact_custom_field_group**
+> CustomFieldGroup create_contact_custom_field_group(create_custom_field_group_request)
+
+Create a Contact Custom Field Group
+
+Creates a new custom field group for the Contact record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.create_custom_field_group_request import CreateCustomFieldGroupRequest
+from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ContactApi(api_client)
+    create_custom_field_group_request = keap_core_v2_client.CreateCustomFieldGroupRequest() # CreateCustomFieldGroupRequest | 
+
+    try:
+        # Create a Contact Custom Field Group
+        api_response = api_instance.create_contact_custom_field_group(create_custom_field_group_request)
+        print("The response of ContactApi->create_contact_custom_field_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ContactApi->create_contact_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_custom_field_group_request** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 
@@ -349,6 +438,162 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_contact_custom_field**
+> delete_contact_custom_field(custom_field_id)
+
+Delete a Contact Custom Field
+
+Deletes a custom field from the Contacts model
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ContactApi(api_client)
+    custom_field_id = 'custom_field_id_example' # str | 
+
+    try:
+        # Delete a Contact Custom Field
+        api_instance.delete_contact_custom_field(custom_field_id)
+    except Exception as e:
+        print("Exception when calling ContactApi->delete_contact_custom_field: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **custom_field_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_contact_custom_field_group**
+> delete_contact_custom_field_group(group_id)
+
+Delete a Contact Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ContactApi(api_client)
+    group_id = 'group_id_example' # str | 
+
+    try:
+        # Delete a Contact Custom Field Group
+        api_instance.delete_contact_custom_field_group(group_id)
+    except Exception as e:
+        print("Exception when calling ContactApi->delete_contact_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_contact**
 > Contact get_contact(contact_id, fields=fields)
 
@@ -406,6 +651,87 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Contact**](Contact.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_contact_custom_field_group**
+> CustomFieldGroup get_contact_custom_field_group(group_id)
+
+Retrieve a Contact Custom Field Group
+
+Retrieves a single custom field group by id for the Contact record type.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ContactApi(api_client)
+    group_id = 'group_id_example' # str | 
+
+    try:
+        # Retrieve a Contact Custom Field Group
+        api_response = api_instance.get_contact_custom_field_group(group_id)
+        print("The response of ContactApi->get_contact_custom_field_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ContactApi->get_contact_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 
@@ -503,6 +829,87 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_contact_custom_field_groups**
+> ListCustomFieldGroupsResponse list_contact_custom_field_groups(tab_id=tab_id)
+
+List Contact Custom Field Groups
+
+Retrieves a list of custom field groups for the Contact record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_custom_field_groups_response import ListCustomFieldGroupsResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ContactApi(api_client)
+    tab_id = 'tab_id_example' # str | Optional tab id to scope groups to a single tab (optional)
+
+    try:
+        # List Contact Custom Field Groups
+        api_response = api_instance.list_contact_custom_field_groups(tab_id=tab_id)
+        print("The response of ContactApi->list_contact_custom_field_groups:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ContactApi->list_contact_custom_field_groups: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**| Optional tab id to scope groups to a single tab | [optional] 
+
+### Return type
+
+[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
@@ -860,6 +1267,90 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **merge_contacts**
+> Contact merge_contacts(merge_contact_request, fields=fields)
+
+Merge two Contacts
+
+Merges two Contacts together. The duplicate contact will be merged into the primary contact.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.contact import Contact
+from keap_core_v2_client.models.merge_contact_request import MergeContactRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ContactApi(api_client)
+    merge_contact_request = keap_core_v2_client.MergeContactRequest() # MergeContactRequest | 
+    fields = ['fields_example'] # List[str] | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)
+
+    try:
+        # Merge two Contacts
+        api_response = api_instance.merge_contacts(merge_contact_request, fields=fields)
+        print("The response of ContactApi->merge_contacts:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ContactApi->merge_contacts: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **merge_contact_request** | [**MergeContactRequest**](MergeContactRequest.md)|  | 
+ **fields** | [**List[str]**](str.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) | [optional] 
+
+### Return type
+
+[**Contact**](Contact.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **retrieve_contact_model**
 > ObjectModel retrieve_contact_model()
 
@@ -1078,6 +1569,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Contact**](Contact.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_contact_custom_field_group**
+> CustomFieldGroup update_contact_custom_field_group(group_id, update_mask, update_custom_field_group_request)
+
+Update a Contact Custom Field Group
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
+from keap_core_v2_client.models.update_custom_field_group_request import UpdateCustomFieldGroupRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ContactApi(api_client)
+    group_id = 'group_id_example' # str | 
+    update_mask = ['update_mask_example'] # List[str] | Comma-separated list of fields to update
+    update_custom_field_group_request = keap_core_v2_client.UpdateCustomFieldGroupRequest() # UpdateCustomFieldGroupRequest | 
+
+    try:
+        # Update a Contact Custom Field Group
+        api_response = api_instance.update_contact_custom_field_group(group_id, update_mask, update_custom_field_group_request)
+        print("The response of ContactApi->update_contact_custom_field_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ContactApi->update_contact_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**|  | 
+ **update_mask** | [**List[str]**](str.md)| Comma-separated list of fields to update | 
+ **update_custom_field_group_request** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 

@@ -6,14 +6,19 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createNote**](NoteApi.md#createNote) | **POST** /rest/v2/contacts/{contact_id}/notes | Create a Note
 [**createNoteCustomField**](NoteApi.md#createNoteCustomField) | **POST** /rest/v2/notes/model/customFields | Create a Custom Field
+[**createNoteCustomFieldGroup**](NoteApi.md#createNoteCustomFieldGroup) | **POST** /rest/v2/notes/model/customFields/groups | Create a Note Custom Field Group
 [**deleteNote**](NoteApi.md#deleteNote) | **DELETE** /rest/v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
+[**deleteNoteCustomFieldGroup**](NoteApi.md#deleteNoteCustomFieldGroup) | **DELETE** /rest/v2/notes/model/customFields/groups/{group_id} | Delete a Note Custom Field Group
 [**deleteNotesCustomField**](NoteApi.md#deleteNotesCustomField) | **DELETE** /rest/v2/notes/model/customFields/{custom_field_id} | Delete a Note Custom Field
 [**getNote**](NoteApi.md#getNote) | **GET** /rest/v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
+[**getNoteCustomFieldGroup**](NoteApi.md#getNoteCustomFieldGroup) | **GET** /rest/v2/notes/model/customFields/groups/{group_id} | Retrieve a Note Custom Field Group
 [**listAllNotes**](NoteApi.md#listAllNotes) | **GET** /rest/v2/notes | List All Notes
+[**listNoteCustomFieldGroups**](NoteApi.md#listNoteCustomFieldGroups) | **GET** /rest/v2/notes/model/customFields/groups | List Note Custom Field Groups
 [**listNoteTemplates**](NoteApi.md#listNoteTemplates) | **GET** /rest/v2/notes/templates | Retrieve Note Templates
 [**listNotes**](NoteApi.md#listNotes) | **GET** /rest/v2/contacts/{contact_id}/notes | List Notes
 [**retrieveNoteModel**](NoteApi.md#retrieveNoteModel) | **GET** /rest/v2/notes/model | Retrieve Note Model
 [**updateNote**](NoteApi.md#updateNote) | **PATCH** /rest/v2/contacts/{contact_id}/notes/{note_id} | Update a Note
+[**updateNoteCustomFieldGroup**](NoteApi.md#updateNoteCustomFieldGroup) | **PATCH** /rest/v2/notes/model/customFields/groups/{group_id} | Update a Note Custom Field Group
 [**updateNotesCustomField**](NoteApi.md#updateNotesCustomField) | **PATCH** /rest/v2/notes/model/customFields/{custom_field_id} | Update a Custom Field
 
 
@@ -169,6 +174,70 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **createNoteCustomFieldGroup**
+> CustomFieldGroup createNoteCustomFieldGroup(createCustomFieldGroupRequest)
+
+Creates a new custom field group for the Note record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+
+```typescript
+import { createConfiguration, NoteApi } from '';
+import type { NoteApiCreateNoteCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new NoteApi(configuration);
+
+const request: NoteApiCreateNoteCustomFieldGroupRequest = {
+  
+  createCustomFieldGroupRequest: {
+    name: "name_example",
+    tabId: "tabId_example",
+  },
+};
+
+const data = await apiInstance.createNoteCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCustomFieldGroupRequest** | **CreateCustomFieldGroupRequest**|  |
+
+
+### Return type
+
+**CustomFieldGroup**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **deleteNote**
 > void deleteNote()
 
@@ -202,6 +271,67 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contactId** | [**string**] |  | defaults to undefined
  **noteId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **deleteNoteCustomFieldGroup**
+> void deleteNoteCustomFieldGroup()
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+
+```typescript
+import { createConfiguration, NoteApi } from '';
+import type { NoteApiDeleteNoteCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new NoteApi(configuration);
+
+const request: NoteApiDeleteNoteCustomFieldGroupRequest = {
+  
+  groupId: "group_id_example",
+};
+
+const data = await apiInstance.deleteNoteCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -363,6 +493,67 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getNoteCustomFieldGroup**
+> CustomFieldGroup getNoteCustomFieldGroup()
+
+Retrieves a single custom field group by id for the Note record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+
+```typescript
+import { createConfiguration, NoteApi } from '';
+import type { NoteApiGetNoteCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new NoteApi(configuration);
+
+const request: NoteApiGetNoteCustomFieldGroupRequest = {
+  
+  groupId: "group_id_example",
+};
+
+const data = await apiInstance.getNoteCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**CustomFieldGroup**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **listAllNotes**
 > ListNotesResponse listAllNotes()
 
@@ -412,6 +603,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 **ListNotesResponse**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listNoteCustomFieldGroups**
+> ListCustomFieldGroupsResponse listNoteCustomFieldGroups()
+
+Retrieves a list of custom field groups for the Note record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+
+```typescript
+import { createConfiguration, NoteApi } from '';
+import type { NoteApiListNoteCustomFieldGroupsRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new NoteApi(configuration);
+
+const request: NoteApiListNoteCustomFieldGroupsRequest = {
+    // Optional tab id to scope groups to a single tab (optional)
+  tabId: "tab_id_example",
+};
+
+const data = await apiInstance.listNoteCustomFieldGroups(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tabId** | [**string**] | Optional tab id to scope groups to a single tab | (optional) defaults to undefined
+
+
+### Return type
+
+**ListCustomFieldGroupsResponse**
 
 ### Authorization
 
@@ -704,6 +956,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 **UpdateNoteResponse**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **updateNoteCustomFieldGroup**
+> CustomFieldGroup updateNoteCustomFieldGroup(updateCustomFieldGroupRequest)
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+
+```typescript
+import { createConfiguration, NoteApi } from '';
+import type { NoteApiUpdateNoteCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new NoteApi(configuration);
+
+const request: NoteApiUpdateNoteCustomFieldGroupRequest = {
+  
+  groupId: "group_id_example",
+    // Comma-separated list of fields to update
+  updateMask: [
+    "name",
+  ],
+  
+  updateCustomFieldGroupRequest: {
+    name: "name_example",
+    order: 1,
+    tabId: "tabId_example",
+  },
+};
+
+const data = await apiInstance.updateNoteCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateCustomFieldGroupRequest** | **UpdateCustomFieldGroupRequest**|  |
+ **groupId** | [**string**] |  | defaults to undefined
+ **updateMask** | **Array<&#39;name&#39; &#124; &#39;tab_id&#39; &#124; &#39;order&#39;>** | Comma-separated list of fields to update | defaults to undefined
+
+
+### Return type
+
+**CustomFieldGroup**
 
 ### Authorization
 

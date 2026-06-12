@@ -76,7 +76,7 @@ namespace Keap.Core.V2.Model
         /// <param name="productId">ID of the product this discount applies to (required).</param>
         /// <param name="discountType">Type of discount: AMOUNT (fixed amount) or PERCENT (percentage) (required).</param>
         /// <param name="discountValue">Value of the discount (amount or percentage depending on discount_type) (required).</param>
-        public CreateProductDiscountRequest(string name = default, string description = default, List<DiscountCriteria> criteria = default, bool applyToCommissions = default, string productId = default, DiscountTypeEnum discountType = default, double discountValue = default)
+        public CreateProductDiscountRequest(string name = default, string description = default, List<CreateProductDiscountCriteria> criteria = default, bool applyToCommissions = default, string productId = default, DiscountTypeEnum discountType = default, double discountValue = default)
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -122,7 +122,7 @@ namespace Keap.Core.V2.Model
         /// </summary>
         /// <value>List of criteria that must be met for this discount to apply</value>
         [DataMember(Name = "criteria", EmitDefaultValue = false)]
-        public List<DiscountCriteria> Criteria { get; set; }
+        public List<CreateProductDiscountCriteria> Criteria { get; set; }
 
         /// <summary>
         /// Whether to apply this discount to commission calculations

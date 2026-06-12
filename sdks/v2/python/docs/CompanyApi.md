@@ -7,14 +7,20 @@ Method | HTTP request | Description
 [**add_tag_to_company**](CompanyApi.md#add_tag_to_company) | **POST** /rest/v2/companies/{company_id}/tags/{tag_id} | Add Tag to Company
 [**create_company**](CompanyApi.md#create_company) | **POST** /rest/v2/companies | Create a Company
 [**create_company_custom_field**](CompanyApi.md#create_company_custom_field) | **POST** /rest/v2/companies/model/customFields | Create a Company Custom Field
+[**create_company_custom_field_group**](CompanyApi.md#create_company_custom_field_group) | **POST** /rest/v2/companies/model/customFields/groups | Create a Company Custom Field Group
 [**delete_company**](CompanyApi.md#delete_company) | **DELETE** /rest/v2/companies/{company_id} | Delete a Company
+[**delete_company_custom_field**](CompanyApi.md#delete_company_custom_field) | **DELETE** /rest/v2/companies/model/customFields/{custom_field_id} | Delete a Company Custom Field
+[**delete_company_custom_field_group**](CompanyApi.md#delete_company_custom_field_group) | **DELETE** /rest/v2/companies/model/customFields/groups/{group_id} | Delete a Company Custom Field Group
 [**get_company**](CompanyApi.md#get_company) | **GET** /rest/v2/companies/{company_id} | Retrieve a Company
+[**get_company_custom_field_group**](CompanyApi.md#get_company_custom_field_group) | **GET** /rest/v2/companies/model/customFields/groups/{group_id} | Retrieve a Company Custom Field Group
 [**list_companies**](CompanyApi.md#list_companies) | **GET** /rest/v2/companies | List Companies
+[**list_company_custom_field_groups**](CompanyApi.md#list_company_custom_field_groups) | **GET** /rest/v2/companies/model/customFields/groups | List Company Custom Field Groups
 [**list_tags_for_company**](CompanyApi.md#list_tags_for_company) | **GET** /rest/v2/companies/{company_id}/tags | List Applied Tags
 [**remove_tag_from_company**](CompanyApi.md#remove_tag_from_company) | **DELETE** /rest/v2/companies/{company_id}/tags/{tag_id} | Remove Tag
 [**retrieve_company_custom_field_model**](CompanyApi.md#retrieve_company_custom_field_model) | **GET** /rest/v2/companies/model | Retrieve Company Custom Field Model
 [**update_company**](CompanyApi.md#update_company) | **PATCH** /rest/v2/companies/{company_id} | Update a Company
 [**update_company_custom_field**](CompanyApi.md#update_company_custom_field) | **PATCH** /rest/v2/companies/model/customFields/{custom_field_id} | Update a Company Custom Field
+[**update_company_custom_field_group**](CompanyApi.md#update_company_custom_field_group) | **PATCH** /rest/v2/companies/model/customFields/groups/{group_id} | Update a Company Custom Field Group
 
 
 # **add_tag_to_company**
@@ -261,6 +267,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_company_custom_field_group**
+> CustomFieldGroup create_company_custom_field_group(create_custom_field_group_request)
+
+Create a Company Custom Field Group
+
+Creates a new custom field group for the Company record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.create_custom_field_group_request import CreateCustomFieldGroupRequest
+from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.CompanyApi(api_client)
+    create_custom_field_group_request = keap_core_v2_client.CreateCustomFieldGroupRequest() # CreateCustomFieldGroupRequest | 
+
+    try:
+        # Create a Company Custom Field Group
+        api_response = api_instance.create_company_custom_field_group(create_custom_field_group_request)
+        print("The response of CompanyApi->create_company_custom_field_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CompanyApi->create_company_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_custom_field_group_request** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_company**
 > delete_company(company_id)
 
@@ -309,6 +397,162 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **company_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_company_custom_field**
+> delete_company_custom_field(custom_field_id)
+
+Delete a Company Custom Field
+
+Deletes a custom field from the company model
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.CompanyApi(api_client)
+    custom_field_id = 'custom_field_id_example' # str | 
+
+    try:
+        # Delete a Company Custom Field
+        api_instance.delete_company_custom_field(custom_field_id)
+    except Exception as e:
+        print("Exception when calling CompanyApi->delete_company_custom_field: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **custom_field_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_company_custom_field_group**
+> delete_company_custom_field_group(group_id)
+
+Delete a Company Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.CompanyApi(api_client)
+    group_id = 'group_id_example' # str | 
+
+    try:
+        # Delete a Company Custom Field Group
+        api_instance.delete_company_custom_field_group(group_id)
+    except Exception as e:
+        print("Exception when calling CompanyApi->delete_company_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**|  | 
 
 ### Return type
 
@@ -422,6 +666,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_company_custom_field_group**
+> CustomFieldGroup get_company_custom_field_group(group_id)
+
+Retrieve a Company Custom Field Group
+
+Retrieves a single custom field group by id for the Company record type.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.CompanyApi(api_client)
+    group_id = 'group_id_example' # str | 
+
+    try:
+        # Retrieve a Company Custom Field Group
+        api_response = api_instance.get_company_custom_field_group(group_id)
+        print("The response of CompanyApi->get_company_custom_field_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CompanyApi->get_company_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_companies**
 > ListCompaniesResponse list_companies(fields=fields, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
 
@@ -485,6 +810,87 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListCompaniesResponse**](ListCompaniesResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_company_custom_field_groups**
+> ListCustomFieldGroupsResponse list_company_custom_field_groups(tab_id=tab_id)
+
+List Company Custom Field Groups
+
+Retrieves a list of custom field groups for the Company record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_custom_field_groups_response import ListCustomFieldGroupsResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.CompanyApi(api_client)
+    tab_id = 'tab_id_example' # str | Optional tab id to scope groups to a single tab (optional)
+
+    try:
+        # List Company Custom Field Groups
+        api_response = api_instance.list_company_custom_field_groups(tab_id=tab_id)
+        print("The response of CompanyApi->list_company_custom_field_groups:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CompanyApi->list_company_custom_field_groups: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**| Optional tab id to scope groups to a single tab | [optional] 
+
+### Return type
+
+[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
 
 ### Authorization
 
@@ -903,6 +1309,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomFieldMetaData**](CustomFieldMetaData.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_company_custom_field_group**
+> CustomFieldGroup update_company_custom_field_group(group_id, update_mask, update_custom_field_group_request)
+
+Update a Company Custom Field Group
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
+from keap_core_v2_client.models.update_custom_field_group_request import UpdateCustomFieldGroupRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.CompanyApi(api_client)
+    group_id = 'group_id_example' # str | 
+    update_mask = ['update_mask_example'] # List[str] | Comma-separated list of fields to update
+    update_custom_field_group_request = keap_core_v2_client.UpdateCustomFieldGroupRequest() # UpdateCustomFieldGroupRequest | 
+
+    try:
+        # Update a Company Custom Field Group
+        api_response = api_instance.update_company_custom_field_group(group_id, update_mask, update_custom_field_group_request)
+        print("The response of CompanyApi->update_company_custom_field_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CompanyApi->update_company_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**|  | 
+ **update_mask** | [**List[str]**](str.md)| Comma-separated list of fields to update | 
+ **update_custom_field_group_request** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 

@@ -123,7 +123,7 @@ NoteTemplate.prototype['description'] = undefined;
 
 /**
  * Note action type
- * @member {module:keap.core.v2/model/NoteTemplate.ActionTypeEnum} action_type
+ * @member {String} action_type
  */
 NoteTemplate.prototype['action_type'] = undefined;
 
@@ -142,56 +142,6 @@ NoteTemplate.prototype['notify_users'] = undefined;
 
 
 
-
-/**
- * Allowed values for the <code>action_type</code> property.
- * @enum {String}
- * @readonly
- */
-NoteTemplate['ActionTypeEnum'] = {
-
-    /**
-     * value: "APPOINTMENT"
-     * @const
-     */
-    "APPOINTMENT": "APPOINTMENT",
-
-    /**
-     * value: "CALL"
-     * @const
-     */
-    "CALL": "CALL",
-
-    /**
-     * value: "EMAIL"
-     * @const
-     */
-    "EMAIL": "EMAIL",
-
-    /**
-     * value: "FAX"
-     * @const
-     */
-    "FAX": "FAX",
-
-    /**
-     * value: "LETTER"
-     * @const
-     */
-    "LETTER": "LETTER",
-
-    /**
-     * value: "OTHER"
-     * @const
-     */
-    "OTHER": "OTHER",
-
-    /**
-     * value: "unknown_default_open_api"
-     * @const
-     */
-    "unknown_default_open_api": "unknown_default_open_api"
-};
 
 
 export default NoteTemplate;

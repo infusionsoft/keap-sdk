@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the discount | [optional] 
 **description** | **str** | Description of the discount | [optional] 
-**criteria** | [**List[DiscountCriteria]**](DiscountCriteria.md) | List of criteria that must be met for this discount to apply | [optional] 
+**criteria** | [**List[UpdateProductDiscountCriteria]**](UpdateProductDiscountCriteria.md) | List of criteria that must be met for this discount to apply | [optional] 
 **apply_to_commissions** | **bool** | Whether to apply this discount to commission calculations | [optional] 
 **product_id** | **str** | ID of the product this discount applies to | [optional] 
 **discount_type** | **str** | Type of discount: AMOUNT (fixed amount) or PERCENT (percentage) | [optional] 

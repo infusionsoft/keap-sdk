@@ -86,6 +86,7 @@ import { CreateCommissionProgramRequest } from '../models/CreateCommissionProgra
 import { CreateCompanyRequest } from '../models/CreateCompanyRequest';
 import { CreateContactLinkTypeRequest } from '../models/CreateContactLinkTypeRequest';
 import { CreateContactUtmPropertiesRequest } from '../models/CreateContactUtmPropertiesRequest';
+import { CreateCustomFieldGroupRequest } from '../models/CreateCustomFieldGroupRequest';
 import { CreateCustomFieldOptionRequest } from '../models/CreateCustomFieldOptionRequest';
 import { CreateCustomFieldRequest } from '../models/CreateCustomFieldRequest';
 import { CreateCustomFieldResponse } from '../models/CreateCustomFieldResponse';
@@ -107,6 +108,7 @@ import { CreateOrderTotalDiscountRequest } from '../models/CreateOrderTotalDisco
 import { CreatePaymentMethodConfigRequest } from '../models/CreatePaymentMethodConfigRequest';
 import { CreateProductCategoryRequest } from '../models/CreateProductCategoryRequest';
 import { CreateProductCommissionProgramRequest } from '../models/CreateProductCommissionProgramRequest';
+import { CreateProductDiscountCriteria } from '../models/CreateProductDiscountCriteria';
 import { CreateProductDiscountRequest } from '../models/CreateProductDiscountRequest';
 import { CreateProductInterestBundleRequest } from '../models/CreateProductInterestBundleRequest';
 import { CreateProductOptionListOption } from '../models/CreateProductOptionListOption';
@@ -129,6 +131,7 @@ import { CurrencyValue } from '../models/CurrencyValue';
 import { CurrencyValueDetail } from '../models/CurrencyValueDetail';
 import { CurrencyValueList } from '../models/CurrencyValueList';
 import { CustomField } from '../models/CustomField';
+import { CustomFieldGroup } from '../models/CustomFieldGroup';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';
 import { CustomFieldOption } from '../models/CustomFieldOption';
 import { CustomFieldValue } from '../models/CustomFieldValue';
@@ -201,6 +204,7 @@ import { ListContactPaymentMethodsResponse } from '../models/ListContactPaymentM
 import { ListContactTagsResponse } from '../models/ListContactTagsResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
+import { ListCustomFieldGroupsResponse } from '../models/ListCustomFieldGroupsResponse';
 import { ListEmailsSentResponse } from '../models/ListEmailsSentResponse';
 import { ListFilesResponse } from '../models/ListFilesResponse';
 import { ListFreeTrialDiscountsResponse } from '../models/ListFreeTrialDiscountsResponse';
@@ -243,6 +247,7 @@ import { ListUserGroupsResponse } from '../models/ListUserGroupsResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { ListWebformsResponse } from '../models/ListWebformsResponse';
 import { ListWordPressOptInOptionsResponse } from '../models/ListWordPressOptInOptionsResponse';
+import { MergeContactRequest } from '../models/MergeContactRequest';
 import { ModelError } from '../models/ModelError';
 import { Note } from '../models/Note';
 import { NoteTemplate } from '../models/NoteTemplate';
@@ -322,6 +327,7 @@ import { UpdateBusinessProfileRequest } from '../models/UpdateBusinessProfileReq
 import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountRequest';
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
+import { UpdateCustomFieldGroupRequest } from '../models/UpdateCustomFieldGroupRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
 import { UpdateEmailAddress } from '../models/UpdateEmailAddress';
@@ -337,6 +343,7 @@ import { UpdateOrderRequest } from '../models/UpdateOrderRequest';
 import { UpdateOrderTotalDiscountRequest } from '../models/UpdateOrderTotalDiscountRequest';
 import { UpdateProductCategoryRequest } from '../models/UpdateProductCategoryRequest';
 import { UpdateProductCommissionProgramRequest } from '../models/UpdateProductCommissionProgramRequest';
+import { UpdateProductDiscountCriteria } from '../models/UpdateProductDiscountCriteria';
 import { UpdateProductDiscountRequest } from '../models/UpdateProductDiscountRequest';
 import { UpdateProductInterestBundleRequest } from '../models/UpdateProductInterestBundleRequest';
 import { UpdateProductInterestRequest } from '../models/UpdateProductInterestRequest';
@@ -620,6 +627,40 @@ export class ObservableAffiliateApi {
     }
 
     /**
+     * Creates a new custom field group for the Affiliate record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create an Affiliate Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createAffiliateCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createAffiliateCustomFieldGroup(createCustomFieldGroupRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createAffiliateCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new custom field group for the Affiliate record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create an Affiliate Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createAffiliateCustomFieldGroup(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.createAffiliateCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
+    }
+
+    /**
      * Creates a Default Commission Program
      * Create a Default Commission Program
      * @param commissionProgramId
@@ -789,6 +830,40 @@ export class ObservableAffiliateApi {
      */
     public deleteAffiliateCustomField(customFieldId: string, _options?: ConfigurationOptions): Observable<void> {
         return this.deleteAffiliateCustomFieldWithHttpInfo(customFieldId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete an Affiliate Custom Field Group
+     * @param groupId
+     */
+    public deleteAffiliateCustomFieldGroupWithHttpInfo(groupId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteAffiliateCustomFieldGroup(groupId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteAffiliateCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete an Affiliate Custom Field Group
+     * @param groupId
+     */
+    public deleteAffiliateCustomFieldGroup(groupId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteAffiliateCustomFieldGroupWithHttpInfo(groupId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -967,6 +1042,40 @@ export class ObservableAffiliateApi {
      */
     public getAffiliateCommissions(affiliateId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListAffiliateCommissionsResponse> {
         return this.getAffiliateCommissionsWithHttpInfo(affiliateId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListAffiliateCommissionsResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Affiliate record type.
+     * Retrieve an Affiliate Custom Field Group
+     * @param groupId
+     */
+    public getAffiliateCustomFieldGroupWithHttpInfo(groupId: string, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getAffiliateCustomFieldGroup(groupId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAffiliateCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Affiliate record type.
+     * Retrieve an Affiliate Custom Field Group
+     * @param groupId
+     */
+    public getAffiliateCustomFieldGroup(groupId: string, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.getAffiliateCustomFieldGroupWithHttpInfo(groupId, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
     }
 
     /**
@@ -1189,6 +1298,40 @@ export class ObservableAffiliateApi {
      */
     public listAffiliateCommissionPrograms(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListAffiliateCommissionProgramsResponse> {
         return this.listAffiliateCommissionProgramsWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListAffiliateCommissionProgramsResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Affiliate record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Affiliate Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listAffiliateCustomFieldGroupsWithHttpInfo(tabId?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListCustomFieldGroupsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listAffiliateCustomFieldGroups(tabId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listAffiliateCustomFieldGroupsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Affiliate record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Affiliate Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listAffiliateCustomFieldGroups(tabId?: string, _options?: ConfigurationOptions): Observable<ListCustomFieldGroupsResponse> {
+        return this.listAffiliateCustomFieldGroupsWithHttpInfo(tabId, _options).pipe(map((apiResponse: HttpInfo<ListCustomFieldGroupsResponse>) => apiResponse.data));
     }
 
     /**
@@ -1529,6 +1672,44 @@ export class ObservableAffiliateApi {
      */
     public updateAffiliateCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
         return this.updateAffiliateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update an Affiliate Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateAffiliateCustomFieldGroupWithHttpInfo(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateAffiliateCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateAffiliateCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update an Affiliate Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateAffiliateCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.updateAffiliateCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
     }
 
     /**
@@ -2896,6 +3077,40 @@ export class ObservableCompanyApi {
     }
 
     /**
+     * Creates a new custom field group for the Company record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create a Company Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createCompanyCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createCompanyCustomFieldGroup(createCustomFieldGroupRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createCompanyCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new custom field group for the Company record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create a Company Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createCompanyCustomFieldGroup(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.createCompanyCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
+    }
+
+    /**
      * Deletes the specified Company
      * Delete a Company
      * @param companyId
@@ -2927,6 +3142,74 @@ export class ObservableCompanyApi {
      */
     public deleteCompany(companyId: string, _options?: ConfigurationOptions): Observable<void> {
         return this.deleteCompanyWithHttpInfo(companyId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a custom field from the company model
+     * Delete a Company Custom Field
+     * @param customFieldId
+     */
+    public deleteCompanyCustomFieldWithHttpInfo(customFieldId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteCompanyCustomField(customFieldId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteCompanyCustomFieldWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a custom field from the company model
+     * Delete a Company Custom Field
+     * @param customFieldId
+     */
+    public deleteCompanyCustomField(customFieldId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteCompanyCustomFieldWithHttpInfo(customFieldId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete a Company Custom Field Group
+     * @param groupId
+     */
+    public deleteCompanyCustomFieldGroupWithHttpInfo(groupId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteCompanyCustomFieldGroup(groupId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteCompanyCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete a Company Custom Field Group
+     * @param groupId
+     */
+    public deleteCompanyCustomFieldGroup(groupId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteCompanyCustomFieldGroupWithHttpInfo(groupId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -2963,6 +3246,40 @@ export class ObservableCompanyApi {
      */
     public getCompany(companyId: string, fields?: Array<string>, _options?: ConfigurationOptions): Observable<Company> {
         return this.getCompanyWithHttpInfo(companyId, fields, _options).pipe(map((apiResponse: HttpInfo<Company>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Company record type.
+     * Retrieve a Company Custom Field Group
+     * @param groupId
+     */
+    public getCompanyCustomFieldGroupWithHttpInfo(groupId: string, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getCompanyCustomFieldGroup(groupId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCompanyCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Company record type.
+     * Retrieve a Company Custom Field Group
+     * @param groupId
+     */
+    public getCompanyCustomFieldGroup(groupId: string, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.getCompanyCustomFieldGroupWithHttpInfo(groupId, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
     }
 
     /**
@@ -3005,6 +3322,40 @@ export class ObservableCompanyApi {
      */
     public listCompanies(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListCompaniesResponse> {
         return this.listCompaniesWithHttpInfo(fields, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListCompaniesResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Company record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Company Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listCompanyCustomFieldGroupsWithHttpInfo(tabId?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListCustomFieldGroupsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listCompanyCustomFieldGroups(tabId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listCompanyCustomFieldGroupsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Company record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Company Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listCompanyCustomFieldGroups(tabId?: string, _options?: ConfigurationOptions): Observable<ListCustomFieldGroupsResponse> {
+        return this.listCompanyCustomFieldGroupsWithHttpInfo(tabId, _options).pipe(map((apiResponse: HttpInfo<ListCustomFieldGroupsResponse>) => apiResponse.data));
     }
 
     /**
@@ -3193,6 +3544,44 @@ export class ObservableCompanyApi {
         return this.updateCompanyCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
     }
 
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update a Company Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateCompanyCustomFieldGroupWithHttpInfo(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateCompanyCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateCompanyCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update a Company Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateCompanyCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.updateCompanyCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
+    }
+
 }
 
 import { ContactApiRequestFactory, ContactApiResponseProcessor} from "../apis/ContactApi";
@@ -3284,6 +3673,40 @@ export class ObservableContactApi {
     }
 
     /**
+     * Creates a new custom field group for the Contact record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create a Contact Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createContactCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createContactCustomFieldGroup(createCustomFieldGroupRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createContactCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new custom field group for the Contact record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create a Contact Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createContactCustomFieldGroup(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.createContactCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
+    }
+
+    /**
      * Creates a new type of Contact Link
      * Create a Contact Link type
      * @param createContactLinkTypeRequest
@@ -3352,6 +3775,74 @@ export class ObservableContactApi {
     }
 
     /**
+     * Deletes a custom field from the Contacts model
+     * Delete a Contact Custom Field
+     * @param customFieldId
+     */
+    public deleteContactCustomFieldWithHttpInfo(customFieldId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteContactCustomField(customFieldId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteContactCustomFieldWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a custom field from the Contacts model
+     * Delete a Contact Custom Field
+     * @param customFieldId
+     */
+    public deleteContactCustomField(customFieldId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteContactCustomFieldWithHttpInfo(customFieldId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete a Contact Custom Field Group
+     * @param groupId
+     */
+    public deleteContactCustomFieldGroupWithHttpInfo(groupId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteContactCustomFieldGroup(groupId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteContactCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete a Contact Custom Field Group
+     * @param groupId
+     */
+    public deleteContactCustomFieldGroup(groupId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteContactCustomFieldGroupWithHttpInfo(groupId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
      * Retrieves a single Contact
      * Retrieve a Contact
      * @param contactId
@@ -3388,6 +3879,40 @@ export class ObservableContactApi {
     }
 
     /**
+     * Retrieves a single custom field group by id for the Contact record type.
+     * Retrieve a Contact Custom Field Group
+     * @param groupId
+     */
+    public getContactCustomFieldGroupWithHttpInfo(groupId: string, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getContactCustomFieldGroup(groupId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getContactCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Contact record type.
+     * Retrieve a Contact Custom Field Group
+     * @param groupId
+     */
+    public getContactCustomFieldGroup(groupId: string, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.getContactCustomFieldGroupWithHttpInfo(groupId, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
+    }
+
+    /**
      * Links two Contacts together using the provided Link type
      * Link Contacts
      * @param linkContactsRequest
@@ -3419,6 +3944,40 @@ export class ObservableContactApi {
      */
     public linkContacts(linkContactsRequest: LinkContactsRequest, _options?: ConfigurationOptions): Observable<ContactLink> {
         return this.linkContactsWithHttpInfo(linkContactsRequest, _options).pipe(map((apiResponse: HttpInfo<ContactLink>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Contact record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Contact Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listContactCustomFieldGroupsWithHttpInfo(tabId?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListCustomFieldGroupsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listContactCustomFieldGroups(tabId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listContactCustomFieldGroupsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Contact record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Contact Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listContactCustomFieldGroups(tabId?: string, _options?: ConfigurationOptions): Observable<ListCustomFieldGroupsResponse> {
+        return this.listContactCustomFieldGroupsWithHttpInfo(tabId, _options).pipe(map((apiResponse: HttpInfo<ListCustomFieldGroupsResponse>) => apiResponse.data));
     }
 
     /**
@@ -3580,6 +4139,42 @@ export class ObservableContactApi {
     }
 
     /**
+     * Merges two Contacts together. The duplicate contact will be merged into the primary contact.
+     * Merge two Contacts
+     * @param mergeContactRequest
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
+     */
+    public mergeContactsWithHttpInfo(mergeContactRequest: MergeContactRequest, fields?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<Contact>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.mergeContacts(mergeContactRequest, fields, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.mergeContactsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Merges two Contacts together. The duplicate contact will be merged into the primary contact.
+     * Merge two Contacts
+     * @param mergeContactRequest
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
+     */
+    public mergeContacts(mergeContactRequest: MergeContactRequest, fields?: Array<string>, _options?: ConfigurationOptions): Observable<Contact> {
+        return this.mergeContactsWithHttpInfo(mergeContactRequest, fields, _options).pipe(map((apiResponse: HttpInfo<Contact>) => apiResponse.data));
+    }
+
+    /**
      * Get the custom fields and optional properties for the Contact object
      * Retrieve Contact Model
      */
@@ -3683,6 +4278,44 @@ export class ObservableContactApi {
      */
     public updateContact(contactId: string, createUpdateContactRequest: CreateUpdateContactRequest, updateMask?: Set<'addresses' | 'anniversary_date' | 'birth_date' | 'company' | 'contact_type' | 'create_time' | 'custom_fields' | 'email_addresses' | 'family_name' | 'fax_numbers' | 'given_name' | 'id' | 'job_title' | 'leadsource_id' | 'links' | 'middle_name' | 'notes' | 'origin' | 'owner_id' | 'phone_numbers' | 'preferred_locale' | 'preferred_name' | 'prefix' | 'referral_code' | 'score_value' | 'social_accounts' | 'source_type' | 'spouse_name' | 'suffix' | 'tag_ids' | 'time_zone' | 'update_time' | 'utm_parameters' | 'website' | 'account_id' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'created_by' | 'groups' | 'last_updated_by'>, fields?: Array<string>, _options?: ConfigurationOptions): Observable<Contact> {
         return this.updateContactWithHttpInfo(contactId, createUpdateContactRequest, updateMask, fields, _options).pipe(map((apiResponse: HttpInfo<Contact>) => apiResponse.data));
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update a Contact Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateContactCustomFieldGroupWithHttpInfo(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateContactCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateContactCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update a Contact Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateContactCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.updateContactCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
     }
 
 }
@@ -5910,6 +6543,40 @@ export class ObservableNoteApi {
     }
 
     /**
+     * Creates a new custom field group for the Note record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Create a Note Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createNoteCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createNoteCustomFieldGroup(createCustomFieldGroupRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createNoteCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new custom field group for the Note record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Create a Note Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createNoteCustomFieldGroup(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.createNoteCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
+    }
+
+    /**
      * Deletes the specified Note
      * Delete a Note
      * @param contactId
@@ -5943,6 +6610,40 @@ export class ObservableNoteApi {
      */
     public deleteNote(contactId: string, noteId: string, _options?: ConfigurationOptions): Observable<void> {
         return this.deleteNoteWithHttpInfo(contactId, noteId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Note Custom Field Group
+     * @param groupId
+     */
+    public deleteNoteCustomFieldGroupWithHttpInfo(groupId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteNoteCustomFieldGroup(groupId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteNoteCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Note Custom Field Group
+     * @param groupId
+     */
+    public deleteNoteCustomFieldGroup(groupId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteNoteCustomFieldGroupWithHttpInfo(groupId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -6018,6 +6719,40 @@ export class ObservableNoteApi {
     }
 
     /**
+     * Retrieves a single custom field group by id for the Note record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve a Note Custom Field Group
+     * @param groupId
+     */
+    public getNoteCustomFieldGroupWithHttpInfo(groupId: string, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getNoteCustomFieldGroup(groupId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getNoteCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Note record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve a Note Custom Field Group
+     * @param groupId
+     */
+    public getNoteCustomFieldGroup(groupId: string, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.getNoteCustomFieldGroupWithHttpInfo(groupId, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
+    }
+
+    /**
      * Retrieves a list of all notes
      * List All Notes
      * @param [filter] Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons. 
@@ -6057,6 +6792,40 @@ export class ObservableNoteApi {
      */
     public listAllNotes(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, fields?: Array<string>, _options?: ConfigurationOptions): Observable<ListNotesResponse> {
         return this.listAllNotesWithHttpInfo(filter, pageToken, orderBy, pageSize, fields, _options).pipe(map((apiResponse: HttpInfo<ListNotesResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Note record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * List Note Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listNoteCustomFieldGroupsWithHttpInfo(tabId?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListCustomFieldGroupsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listNoteCustomFieldGroups(tabId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listNoteCustomFieldGroupsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Note record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * List Note Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listNoteCustomFieldGroups(tabId?: string, _options?: ConfigurationOptions): Observable<ListCustomFieldGroupsResponse> {
+        return this.listNoteCustomFieldGroupsWithHttpInfo(tabId, _options).pipe(map((apiResponse: HttpInfo<ListCustomFieldGroupsResponse>) => apiResponse.data));
     }
 
     /**
@@ -6218,6 +6987,44 @@ export class ObservableNoteApi {
     }
 
     /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Update a Note Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateNoteCustomFieldGroupWithHttpInfo(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateNoteCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateNoteCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Update a Note Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateNoteCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.updateNoteCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
+    }
+
+    /**
      * Updates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
      * Update a Custom Field
      * @param customFieldId
@@ -6310,6 +7117,40 @@ export class ObservableOpportunityApi {
     }
 
     /**
+     * Creates a new custom field group for the Opportunity record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create an Opportunity Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createOpportunityCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createOpportunityCustomFieldGroup(createCustomFieldGroupRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOpportunityCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new custom field group for the Opportunity record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create an Opportunity Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createOpportunityCustomFieldGroup(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.createOpportunityCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
+    }
+
+    /**
      * Creates a custom field of the specified type and options to the Opportunity object
      * Create an Opportunity Custom Field
      * @param createCustomFieldRequest
@@ -6378,6 +7219,40 @@ export class ObservableOpportunityApi {
     }
 
     /**
+     * Deletes a Custom Field from Opportunity.
+     * Delete an Opportunity Custom Field
+     * @param customFieldId
+     */
+    public deleteOpportunitiesCustomFieldWithHttpInfo(customFieldId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteOpportunitiesCustomField(customFieldId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOpportunitiesCustomFieldWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a Custom Field from Opportunity.
+     * Delete an Opportunity Custom Field
+     * @param customFieldId
+     */
+    public deleteOpportunitiesCustomField(customFieldId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteOpportunitiesCustomFieldWithHttpInfo(customFieldId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
      * Deletes the specified Opportunity
      * Delete an Opportunity
      * @param opportunityId
@@ -6409,6 +7284,40 @@ export class ObservableOpportunityApi {
      */
     public deleteOpportunity(opportunityId: string, _options?: ConfigurationOptions): Observable<void> {
         return this.deleteOpportunityWithHttpInfo(opportunityId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete an Opportunity Custom Field Group
+     * @param groupId
+     */
+    public deleteOpportunityCustomFieldGroupWithHttpInfo(groupId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteOpportunityCustomFieldGroup(groupId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOpportunityCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete an Opportunity Custom Field Group
+     * @param groupId
+     */
+    public deleteOpportunityCustomFieldGroup(groupId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteOpportunityCustomFieldGroupWithHttpInfo(groupId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -6446,40 +7355,6 @@ export class ObservableOpportunityApi {
     }
 
     /**
-     * Deletes a Custom Field from Opportunity.
-     * Delete an Opportunity Custom Field
-     * @param customFieldId
-     */
-    public deleteOpportunityesCustomFieldWithHttpInfo(customFieldId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.deleteOpportunityesCustomField(customFieldId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOpportunityesCustomFieldWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Deletes a Custom Field from Opportunity.
-     * Delete an Opportunity Custom Field
-     * @param customFieldId
-     */
-    public deleteOpportunityesCustomField(customFieldId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteOpportunityesCustomFieldWithHttpInfo(customFieldId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
-    }
-
-    /**
      * Retrieves the specified Opportunity
      * Retrieve a Opportunity
      * @param opportunityId
@@ -6513,6 +7388,40 @@ export class ObservableOpportunityApi {
      */
     public getOpportunity(opportunityId: string, fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: ConfigurationOptions): Observable<RestV2Opportunity> {
         return this.getOpportunityWithHttpInfo(opportunityId, fields, _options).pipe(map((apiResponse: HttpInfo<RestV2Opportunity>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Opportunity record type.
+     * Retrieve an Opportunity Custom Field Group
+     * @param groupId
+     */
+    public getOpportunityCustomFieldGroupWithHttpInfo(groupId: string, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getOpportunityCustomFieldGroup(groupId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOpportunityCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Opportunity record type.
+     * Retrieve an Opportunity Custom Field Group
+     * @param groupId
+     */
+    public getOpportunityCustomFieldGroup(groupId: string, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.getOpportunityCustomFieldGroupWithHttpInfo(groupId, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
     }
 
     /**
@@ -6589,6 +7498,40 @@ export class ObservableOpportunityApi {
      */
     public listOpportunities(fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListOpportunitiesResponse> {
         return this.listOpportunitiesWithHttpInfo(fields, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListOpportunitiesResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Opportunity record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Opportunity Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listOpportunityCustomFieldGroupsWithHttpInfo(tabId?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListCustomFieldGroupsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listOpportunityCustomFieldGroups(tabId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listOpportunityCustomFieldGroupsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Opportunity record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Opportunity Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listOpportunityCustomFieldGroups(tabId?: string, _options?: ConfigurationOptions): Observable<ListCustomFieldGroupsResponse> {
+        return this.listOpportunityCustomFieldGroupsWithHttpInfo(tabId, _options).pipe(map((apiResponse: HttpInfo<ListCustomFieldGroupsResponse>) => apiResponse.data));
     }
 
     /**
@@ -6739,6 +7682,44 @@ export class ObservableOpportunityApi {
      */
     public updateOpportunityCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
         return this.updateOpportunityCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update an Opportunity Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateOpportunityCustomFieldGroupWithHttpInfo(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateOpportunityCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateOpportunityCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update an Opportunity Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateOpportunityCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.updateOpportunityCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
     }
 
     /**
@@ -7172,6 +8153,40 @@ export class ObservableOrdersApi {
     }
 
     /**
+     * Creates a new custom field group for the Order record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create an Order Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createOrderCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createOrderCustomFieldGroup(createCustomFieldGroupRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOrderCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new custom field group for the Order record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create an Order Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createOrderCustomFieldGroup(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.createOrderCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
+    }
+
+    /**
      * Creates an order item on an existing order
      * Create an Order Item
      * @param orderId
@@ -7312,6 +8327,40 @@ export class ObservableOrdersApi {
     }
 
     /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete an Order Custom Field Group
+     * @param groupId
+     */
+    public deleteOrderCustomFieldGroupWithHttpInfo(groupId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteOrderCustomFieldGroup(groupId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOrderCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete an Order Custom Field Group
+     * @param groupId
+     */
+    public deleteOrderCustomFieldGroup(groupId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteOrderCustomFieldGroupWithHttpInfo(groupId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
      * Deletes an order item on an existing order
      * Delete an Order Item
      * @param orderId
@@ -7418,6 +8467,40 @@ export class ObservableOrdersApi {
     }
 
     /**
+     * Retrieves a single custom field group by id for the Order record type.
+     * Retrieve an Order Custom Field Group
+     * @param groupId
+     */
+    public getOrderCustomFieldGroupWithHttpInfo(groupId: string, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getOrderCustomFieldGroup(groupId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOrderCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Order record type.
+     * Retrieve an Order Custom Field Group
+     * @param groupId
+     */
+    public getOrderCustomFieldGroup(groupId: string, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.getOrderCustomFieldGroupWithHttpInfo(groupId, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
+    }
+
+    /**
      * Retrieves a single order item from an existing order
      * Retrieve an Order Item
      * @param orderId
@@ -7451,6 +8534,40 @@ export class ObservableOrdersApi {
      */
     public getOrderItem(orderId: string, orderItemId: string, _options?: ConfigurationOptions): Observable<OrderItem> {
         return this.getOrderItemWithHttpInfo(orderId, orderItemId, _options).pipe(map((apiResponse: HttpInfo<OrderItem>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Order record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Order Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listOrderCustomFieldGroupsWithHttpInfo(tabId?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListCustomFieldGroupsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listOrderCustomFieldGroups(tabId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listOrderCustomFieldGroupsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Order record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Order Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listOrderCustomFieldGroups(tabId?: string, _options?: ConfigurationOptions): Observable<ListCustomFieldGroupsResponse> {
+        return this.listOrderCustomFieldGroupsWithHttpInfo(tabId, _options).pipe(map((apiResponse: HttpInfo<ListCustomFieldGroupsResponse>) => apiResponse.data));
     }
 
     /**
@@ -7641,6 +8758,44 @@ export class ObservableOrdersApi {
      */
     public updateOrderCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
         return this.updateOrderCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update an Order Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateOrderCustomFieldGroupWithHttpInfo(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateOrderCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateOrderCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update an Order Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateOrderCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.updateOrderCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
     }
 
     /**
@@ -8304,6 +9459,42 @@ export class ObservableProductDiscountsApi {
     }
 
     /**
+     * Creates a Product Discount Criteria
+     * Create a Product Discount Criteria
+     * @param discountId
+     * @param createProductDiscountCriteria
+     */
+    public createProductDiscountCriteriaWithHttpInfo(discountId: string, createProductDiscountCriteria: CreateProductDiscountCriteria, _options?: ConfigurationOptions): Observable<HttpInfo<DiscountCriteria>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createProductDiscountCriteria(discountId, createProductDiscountCriteria, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createProductDiscountCriteriaWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a Product Discount Criteria
+     * Create a Product Discount Criteria
+     * @param discountId
+     * @param createProductDiscountCriteria
+     */
+    public createProductDiscountCriteria(discountId: string, createProductDiscountCriteria: CreateProductDiscountCriteria, _options?: ConfigurationOptions): Observable<DiscountCriteria> {
+        return this.createProductDiscountCriteriaWithHttpInfo(discountId, createProductDiscountCriteria, _options).pipe(map((apiResponse: HttpInfo<DiscountCriteria>) => apiResponse.data));
+    }
+
+    /**
      * Deletes a specified Product Discount
      * Delete a Product Discount
      * @param discountId
@@ -8335,6 +9526,42 @@ export class ObservableProductDiscountsApi {
      */
     public deleteProductDiscount(discountId: string, _options?: ConfigurationOptions): Observable<void> {
         return this.deleteProductDiscountWithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a specified Product Discount Criteria
+     * Delete a Product Discount Criteria
+     * @param discountId
+     * @param criteriaId
+     */
+    public deleteProductDiscountCriteriaWithHttpInfo(discountId: string, criteriaId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteProductDiscountCriteria(discountId, criteriaId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteProductDiscountCriteriaWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a specified Product Discount Criteria
+     * Delete a Product Discount Criteria
+     * @param discountId
+     * @param criteriaId
+     */
+    public deleteProductDiscountCriteria(discountId: string, criteriaId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteProductDiscountCriteriaWithHttpInfo(discountId, criteriaId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -10446,6 +11673,40 @@ export class ObservableSubscriptionsApi {
     }
 
     /**
+     * Creates a new custom field group for the Subscription record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create a Subscription Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createSubscriptionCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createSubscriptionCustomFieldGroup(createCustomFieldGroupRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createSubscriptionCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new custom field group for the Subscription record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+     * Create a Subscription Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createSubscriptionCustomFieldGroup(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.createSubscriptionCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
+    }
+
+    /**
      * Deletes a custom field from the Subscription object
      * Delete a Subscription Custom Field
      * @param customFieldId
@@ -10477,6 +11738,40 @@ export class ObservableSubscriptionsApi {
      */
     public deleteSubscriptionCustomField(customFieldId: string, _options?: ConfigurationOptions): Observable<void> {
         return this.deleteSubscriptionCustomFieldWithHttpInfo(customFieldId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete a Subscription Custom Field Group
+     * @param groupId
+     */
+    public deleteSubscriptionCustomFieldGroupWithHttpInfo(groupId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteSubscriptionCustomFieldGroup(groupId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteSubscriptionCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * Delete a Subscription Custom Field Group
+     * @param groupId
+     */
+    public deleteSubscriptionCustomFieldGroup(groupId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteSubscriptionCustomFieldGroupWithHttpInfo(groupId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -10514,6 +11809,40 @@ export class ObservableSubscriptionsApi {
     }
 
     /**
+     * Retrieves a single custom field group by id for the Subscription record type.
+     * Retrieve a Subscription Custom Field Group
+     * @param groupId
+     */
+    public getSubscriptionCustomFieldGroupWithHttpInfo(groupId: string, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getSubscriptionCustomFieldGroup(groupId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getSubscriptionCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Subscription record type.
+     * Retrieve a Subscription Custom Field Group
+     * @param groupId
+     */
+    public getSubscriptionCustomFieldGroup(groupId: string, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.getSubscriptionCustomFieldGroupWithHttpInfo(groupId, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
+    }
+
+    /**
      * Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
      * Invoice a Subscription
      * @param subscriptionId
@@ -10545,6 +11874,40 @@ export class ObservableSubscriptionsApi {
      */
     public invoiceSubscription(subscriptionId: string, _options?: ConfigurationOptions): Observable<OrderV2> {
         return this.invoiceSubscriptionWithHttpInfo(subscriptionId, _options).pipe(map((apiResponse: HttpInfo<OrderV2>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Subscription record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Subscription Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listSubscriptionCustomFieldGroupsWithHttpInfo(tabId?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListCustomFieldGroupsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listSubscriptionCustomFieldGroups(tabId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listSubscriptionCustomFieldGroupsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Subscription record type. Optionally filter by tab_id to scope to a specific tab.
+     * List Subscription Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listSubscriptionCustomFieldGroups(tabId?: string, _options?: ConfigurationOptions): Observable<ListCustomFieldGroupsResponse> {
+        return this.listSubscriptionCustomFieldGroupsWithHttpInfo(tabId, _options).pipe(map((apiResponse: HttpInfo<ListCustomFieldGroupsResponse>) => apiResponse.data));
     }
 
     /**
@@ -10693,6 +12056,44 @@ export class ObservableSubscriptionsApi {
      */
     public updateSubscriptionCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
         return this.updateSubscriptionCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update a Subscription Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateSubscriptionCustomFieldGroupWithHttpInfo(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateSubscriptionCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateSubscriptionCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * Update a Subscription Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateSubscriptionCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.updateSubscriptionCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
     }
 
 }
@@ -11318,6 +12719,40 @@ export class ObservableTaskApi {
     }
 
     /**
+     * Creates a new custom field group for the Task record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Create a Task Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createTaskCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createTaskCustomFieldGroup(createCustomFieldGroupRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createTaskCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new custom field group for the Task record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Create a Task Custom Field Group
+     * @param createCustomFieldGroupRequest
+     */
+    public createTaskCustomFieldGroup(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.createTaskCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
+    }
+
+    /**
      * Deletes a single task
      * Delete a Task
      * @param taskId
@@ -11386,6 +12821,40 @@ export class ObservableTaskApi {
     }
 
     /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Task Custom Field Group
+     * @param groupId
+     */
+    public deleteTaskCustomFieldGroupWithHttpInfo(groupId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteTaskCustomFieldGroup(groupId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteTaskCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Task Custom Field Group
+     * @param groupId
+     */
+    public deleteTaskCustomFieldGroup(groupId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteTaskCustomFieldGroupWithHttpInfo(groupId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
      * Retrieves a single task
      * Retrieve a Task
      * @param taskId
@@ -11419,6 +12888,74 @@ export class ObservableTaskApi {
      */
     public getTask(taskId: string, fields?: Array<string>, _options?: ConfigurationOptions): Observable<Task> {
         return this.getTaskWithHttpInfo(taskId, fields, _options).pipe(map((apiResponse: HttpInfo<Task>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Task record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve a Task Custom Field Group
+     * @param groupId
+     */
+    public getTaskCustomFieldGroupWithHttpInfo(groupId: string, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getTaskCustomFieldGroup(groupId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getTaskCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a single custom field group by id for the Task record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve a Task Custom Field Group
+     * @param groupId
+     */
+    public getTaskCustomFieldGroup(groupId: string, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.getTaskCustomFieldGroupWithHttpInfo(groupId, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Task record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * List Task Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listTaskCustomFieldGroupsWithHttpInfo(tabId?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListCustomFieldGroupsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listTaskCustomFieldGroups(tabId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listTaskCustomFieldGroupsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of custom field groups for the Task record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * List Task Custom Field Groups
+     * @param [tabId] Optional tab id to scope groups to a single tab
+     */
+    public listTaskCustomFieldGroups(tabId?: string, _options?: ConfigurationOptions): Observable<ListCustomFieldGroupsResponse> {
+        return this.listTaskCustomFieldGroupsWithHttpInfo(tabId, _options).pipe(map((apiResponse: HttpInfo<ListCustomFieldGroupsResponse>) => apiResponse.data));
     }
 
     /**
@@ -11571,6 +13108,44 @@ export class ObservableTaskApi {
      */
     public updateTaskCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Set<'group_id' | 'label' | 'options'>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
         return this.updateTaskCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Update a Task Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateTaskCustomFieldGroupWithHttpInfo(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateTaskCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateTaskCustomFieldGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+     * Update a Task Custom Field Group
+     * @param groupId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldGroupRequest
+     */
+    public updateTaskCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
+        return this.updateTaskCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
     }
 
 }

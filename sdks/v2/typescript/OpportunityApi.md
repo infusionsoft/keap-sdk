@@ -5,18 +5,23 @@ All URIs are relative to *https://api.keap.com/crm*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createOpportunity**](OpportunityApi.md#createOpportunity) | **POST** /rest/v2/opportunities | Create an Opportunity
+[**createOpportunityCustomFieldGroup**](OpportunityApi.md#createOpportunityCustomFieldGroup) | **POST** /rest/v2/opportunities/model/customFields/groups | Create an Opportunity Custom Field Group
 [**createOpportunityCustomFields**](OpportunityApi.md#createOpportunityCustomFields) | **POST** /rest/v2/opportunities/model/customFields | Create an Opportunity Custom Field
 [**createOpportunityStage**](OpportunityApi.md#createOpportunityStage) | **POST** /rest/v2/opportunities/stages | Create an Opportunity Stage
+[**deleteOpportunitiesCustomField**](OpportunityApi.md#deleteOpportunitiesCustomField) | **DELETE** /rest/v2/opportunities/model/customFields/{custom_field_id} | Delete an Opportunity Custom Field
 [**deleteOpportunity**](OpportunityApi.md#deleteOpportunity) | **DELETE** /rest/v2/opportunities/{opportunity_id} | Delete an Opportunity
+[**deleteOpportunityCustomFieldGroup**](OpportunityApi.md#deleteOpportunityCustomFieldGroup) | **DELETE** /rest/v2/opportunities/model/customFields/groups/{group_id} | Delete an Opportunity Custom Field Group
 [**deleteOpportunityStage**](OpportunityApi.md#deleteOpportunityStage) | **DELETE** /rest/v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage
-[**deleteOpportunityesCustomField**](OpportunityApi.md#deleteOpportunityesCustomField) | **DELETE** /rest/v2/opportunities/model/customFields/{custom_field_id} | Delete an Opportunity Custom Field
 [**getOpportunity**](OpportunityApi.md#getOpportunity) | **GET** /rest/v2/opportunities/{opportunity_id} | Retrieve a Opportunity
+[**getOpportunityCustomFieldGroup**](OpportunityApi.md#getOpportunityCustomFieldGroup) | **GET** /rest/v2/opportunities/model/customFields/groups/{group_id} | Retrieve an Opportunity Custom Field Group
 [**getOpportunityStage**](OpportunityApi.md#getOpportunityStage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
 [**listOpportunities**](OpportunityApi.md#listOpportunities) | **GET** /rest/v2/opportunities | List Opportunities
+[**listOpportunityCustomFieldGroups**](OpportunityApi.md#listOpportunityCustomFieldGroups) | **GET** /rest/v2/opportunities/model/customFields/groups | List Opportunity Custom Field Groups
 [**listOpportunityStages**](OpportunityApi.md#listOpportunityStages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages
 [**retrieveOpportunityCustomFieldModel**](OpportunityApi.md#retrieveOpportunityCustomFieldModel) | **GET** /rest/v2/opportunities/model | Retrieve Opportunity Custom Field Model
 [**updateOpportunity**](OpportunityApi.md#updateOpportunity) | **PATCH** /rest/v2/opportunities/{opportunity_id} | Update an opportunity
 [**updateOpportunityCustomField**](OpportunityApi.md#updateOpportunityCustomField) | **PATCH** /rest/v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity\&#39;s Custom Field
+[**updateOpportunityCustomFieldGroup**](OpportunityApi.md#updateOpportunityCustomFieldGroup) | **PATCH** /rest/v2/opportunities/model/customFields/groups/{group_id} | Update an Opportunity Custom Field Group
 [**updateOpportunityStage**](OpportunityApi.md#updateOpportunityStage) | **PATCH** /rest/v2/opportunities/stages/{stage_id} | Update an Opportunity Stage
 
 
@@ -79,6 +84,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 **RestV2Opportunity**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **createOpportunityCustomFieldGroup**
+> CustomFieldGroup createOpportunityCustomFieldGroup(createCustomFieldGroupRequest)
+
+Creates a new custom field group for the Opportunity record type. If `tab_id` is omitted, the group is added to the default \'Custom Fields\' tab.
+
+### Example
+
+
+```typescript
+import { createConfiguration, OpportunityApi } from '';
+import type { OpportunityApiCreateOpportunityCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new OpportunityApi(configuration);
+
+const request: OpportunityApiCreateOpportunityCustomFieldGroupRequest = {
+  
+  createCustomFieldGroupRequest: {
+    name: "name_example",
+    tabId: "tabId_example",
+  },
+};
+
+const data = await apiInstance.createOpportunityCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCustomFieldGroupRequest** | **CreateCustomFieldGroupRequest**|  |
+
+
+### Return type
+
+**CustomFieldGroup**
 
 ### Authorization
 
@@ -249,6 +318,67 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **deleteOpportunitiesCustomField**
+> void deleteOpportunitiesCustomField()
+
+Deletes a Custom Field from Opportunity.
+
+### Example
+
+
+```typescript
+import { createConfiguration, OpportunityApi } from '';
+import type { OpportunityApiDeleteOpportunitiesCustomFieldRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new OpportunityApi(configuration);
+
+const request: OpportunityApiDeleteOpportunitiesCustomFieldRequest = {
+  
+  customFieldId: "custom_field_id_example",
+};
+
+const data = await apiInstance.deleteOpportunitiesCustomField(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customFieldId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **deleteOpportunity**
 > void deleteOpportunity()
 
@@ -279,6 +409,67 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **opportunityId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **deleteOpportunityCustomFieldGroup**
+> void deleteOpportunityCustomFieldGroup()
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+
+
+```typescript
+import { createConfiguration, OpportunityApi } from '';
+import type { OpportunityApiDeleteOpportunityCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new OpportunityApi(configuration);
+
+const request: OpportunityApiDeleteOpportunityCustomFieldGroupRequest = {
+  
+  groupId: "group_id_example",
+};
+
+const data = await apiInstance.deleteOpportunityCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -371,67 +562,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **deleteOpportunityesCustomField**
-> void deleteOpportunityesCustomField()
-
-Deletes a Custom Field from Opportunity.
-
-### Example
-
-
-```typescript
-import { createConfiguration, OpportunityApi } from '';
-import type { OpportunityApiDeleteOpportunityesCustomFieldRequest } from '';
-
-const configuration = createConfiguration();
-const apiInstance = new OpportunityApi(configuration);
-
-const request: OpportunityApiDeleteOpportunityesCustomFieldRequest = {
-  
-  customFieldId: "custom_field_id_example",
-};
-
-const data = await apiInstance.deleteOpportunityesCustomField(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customFieldId** | [**string**] |  | defaults to undefined
-
-
-### Return type
-
-**void**
-
-### Authorization
-
-[oauth2](README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** | No Content |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**405** | Method Not Allowed |  -  |
-**409** | Conflict |  -  |
-**500** | Internal Server Error |  -  |
-**501** | Method Not Implemented |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
 # **getOpportunity**
 > RestV2Opportunity getOpportunity()
 
@@ -472,6 +602,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 **RestV2Opportunity**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getOpportunityCustomFieldGroup**
+> CustomFieldGroup getOpportunityCustomFieldGroup()
+
+Retrieves a single custom field group by id for the Opportunity record type.
+
+### Example
+
+
+```typescript
+import { createConfiguration, OpportunityApi } from '';
+import type { OpportunityApiGetOpportunityCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new OpportunityApi(configuration);
+
+const request: OpportunityApiGetOpportunityCustomFieldGroupRequest = {
+  
+  groupId: "group_id_example",
+};
+
+const data = await apiInstance.getOpportunityCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**CustomFieldGroup**
 
 ### Authorization
 
@@ -608,6 +799,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 **ListOpportunitiesResponse**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listOpportunityCustomFieldGroups**
+> ListCustomFieldGroupsResponse listOpportunityCustomFieldGroups()
+
+Retrieves a list of custom field groups for the Opportunity record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+
+
+```typescript
+import { createConfiguration, OpportunityApi } from '';
+import type { OpportunityApiListOpportunityCustomFieldGroupsRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new OpportunityApi(configuration);
+
+const request: OpportunityApiListOpportunityCustomFieldGroupsRequest = {
+    // Optional tab id to scope groups to a single tab (optional)
+  tabId: "tab_id_example",
+};
+
+const data = await apiInstance.listOpportunityCustomFieldGroups(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tabId** | [**string**] | Optional tab id to scope groups to a single tab | (optional) defaults to undefined
+
+
+### Return type
+
+**ListCustomFieldGroupsResponse**
 
 ### Authorization
 
@@ -903,6 +1155,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 **CustomFieldMetaData**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **updateOpportunityCustomFieldGroup**
+> CustomFieldGroup updateOpportunityCustomFieldGroup(updateCustomFieldGroupRequest)
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+
+### Example
+
+
+```typescript
+import { createConfiguration, OpportunityApi } from '';
+import type { OpportunityApiUpdateOpportunityCustomFieldGroupRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new OpportunityApi(configuration);
+
+const request: OpportunityApiUpdateOpportunityCustomFieldGroupRequest = {
+  
+  groupId: "group_id_example",
+    // Comma-separated list of fields to update
+  updateMask: [
+    "name",
+  ],
+  
+  updateCustomFieldGroupRequest: {
+    name: "name_example",
+    order: 1,
+    tabId: "tabId_example",
+  },
+};
+
+const data = await apiInstance.updateOpportunityCustomFieldGroup(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateCustomFieldGroupRequest** | **UpdateCustomFieldGroupRequest**|  |
+ **groupId** | [**string**] |  | defaults to undefined
+ **updateMask** | **Array<&#39;name&#39; &#124; &#39;tab_id&#39; &#124; &#39;order&#39;>** | Comma-separated list of fields to update | defaults to undefined
+
+
+### Return type
+
+**CustomFieldGroup**
 
 ### Authorization
 

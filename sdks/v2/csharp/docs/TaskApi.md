@@ -6,13 +6,18 @@ All URIs are relative to *https://api.keap.com/crm*
 |--------|--------------|-------------|
 | [**CreateTask**](TaskApi.md#createtask) | **POST** /rest/v2/tasks | Create a Task |
 | [**CreateTaskCustomField**](TaskApi.md#createtaskcustomfield) | **POST** /rest/v2/tasks/model/customFields | Create a Custom Field |
+| [**CreateTaskCustomFieldGroup**](TaskApi.md#createtaskcustomfieldgroup) | **POST** /rest/v2/tasks/model/customFields/groups | Create a Task Custom Field Group |
 | [**DeleteTask**](TaskApi.md#deletetask) | **DELETE** /rest/v2/tasks/{task_id} | Delete a Task |
 | [**DeleteTaskCustomField**](TaskApi.md#deletetaskcustomfield) | **DELETE** /rest/v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field |
+| [**DeleteTaskCustomFieldGroup**](TaskApi.md#deletetaskcustomfieldgroup) | **DELETE** /rest/v2/tasks/model/customFields/groups/{group_id} | Delete a Task Custom Field Group |
 | [**GetTask**](TaskApi.md#gettask) | **GET** /rest/v2/tasks/{task_id} | Retrieve a Task |
+| [**GetTaskCustomFieldGroup**](TaskApi.md#gettaskcustomfieldgroup) | **GET** /rest/v2/tasks/model/customFields/groups/{group_id} | Retrieve a Task Custom Field Group |
+| [**ListTaskCustomFieldGroups**](TaskApi.md#listtaskcustomfieldgroups) | **GET** /rest/v2/tasks/model/customFields/groups | List Task Custom Field Groups |
 | [**ListTasks**](TaskApi.md#listtasks) | **GET** /rest/v2/tasks | List Tasks |
 | [**RetrieveTaskModel**](TaskApi.md#retrievetaskmodel) | **GET** /rest/v2/tasks/model | Retrieve Task Model |
 | [**UpdateTask**](TaskApi.md#updatetask) | **PATCH** /rest/v2/tasks/{task_id} | Update a Task |
 | [**UpdateTaskCustomField**](TaskApi.md#updatetaskcustomfield) | **PATCH** /rest/v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field |
+| [**UpdateTaskCustomFieldGroup**](TaskApi.md#updatetaskcustomfieldgroup) | **PATCH** /rest/v2/tasks/model/customFields/groups/{group_id} | Update a Task Custom Field Group |
 
 <a id="createtask"></a>
 # **CreateTask**
@@ -194,6 +199,108 @@ catch (ApiException e)
 ### Return type
 
 [**CreateCustomFieldResponse**](CreateCustomFieldResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="createtaskcustomfieldgroup"></a>
+# **CreateTaskCustomFieldGroup**
+> CustomFieldGroup CreateTaskCustomFieldGroup (CreateCustomFieldGroupRequest createCustomFieldGroupRequest)
+
+Create a Task Custom Field Group
+
+Creates a new custom field group for the Task record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class CreateTaskCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TaskApi(config);
+            var createCustomFieldGroupRequest = new CreateCustomFieldGroupRequest(); // CreateCustomFieldGroupRequest | 
+
+            try
+            {
+                // Create a Task Custom Field Group
+                CustomFieldGroup result = apiInstance.CreateTaskCustomFieldGroup(createCustomFieldGroupRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling TaskApi.CreateTaskCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateTaskCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create a Task Custom Field Group
+    ApiResponse<CustomFieldGroup> response = apiInstance.CreateTaskCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaskApi.CreateTaskCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createCustomFieldGroupRequest** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 
@@ -416,6 +523,104 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="deletetaskcustomfieldgroup"></a>
+# **DeleteTaskCustomFieldGroup**
+> void DeleteTaskCustomFieldGroup (string groupId)
+
+Delete a Task Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteTaskCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TaskApi(config);
+            var groupId = "groupId_example";  // string | 
+
+            try
+            {
+                // Delete a Task Custom Field Group
+                apiInstance.DeleteTaskCustomFieldGroup(groupId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling TaskApi.DeleteTaskCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteTaskCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete a Task Custom Field Group
+    apiInstance.DeleteTaskCustomFieldGroupWithHttpInfo(groupId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaskApi.DeleteTaskCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **groupId** | **string** |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="gettask"></a>
 # **GetTask**
 > Task GetTask (string taskId, List<string>? fields = null)
@@ -494,6 +699,210 @@ catch (ApiException e)
 ### Return type
 
 [**Task**](Task.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="gettaskcustomfieldgroup"></a>
+# **GetTaskCustomFieldGroup**
+> CustomFieldGroup GetTaskCustomFieldGroup (string groupId)
+
+Retrieve a Task Custom Field Group
+
+Retrieves a single custom field group by id for the Task record type.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class GetTaskCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TaskApi(config);
+            var groupId = "groupId_example";  // string | 
+
+            try
+            {
+                // Retrieve a Task Custom Field Group
+                CustomFieldGroup result = apiInstance.GetTaskCustomFieldGroup(groupId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling TaskApi.GetTaskCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetTaskCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve a Task Custom Field Group
+    ApiResponse<CustomFieldGroup> response = apiInstance.GetTaskCustomFieldGroupWithHttpInfo(groupId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaskApi.GetTaskCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **groupId** | **string** |  |  |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listtaskcustomfieldgroups"></a>
+# **ListTaskCustomFieldGroups**
+> ListCustomFieldGroupsResponse ListTaskCustomFieldGroups (string? tabId = null)
+
+List Task Custom Field Groups
+
+Retrieves a list of custom field groups for the Task record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListTaskCustomFieldGroupsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TaskApi(config);
+            var tabId = "tabId_example";  // string? | Optional tab id to scope groups to a single tab (optional) 
+
+            try
+            {
+                // List Task Custom Field Groups
+                ListCustomFieldGroupsResponse result = apiInstance.ListTaskCustomFieldGroups(tabId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling TaskApi.ListTaskCustomFieldGroups: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListTaskCustomFieldGroupsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Task Custom Field Groups
+    ApiResponse<ListCustomFieldGroupsResponse> response = apiInstance.ListTaskCustomFieldGroupsWithHttpInfo(tabId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaskApi.ListTaskCustomFieldGroupsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tabId** | **string?** | Optional tab id to scope groups to a single tab | [optional]  |
+
+### Return type
+
+[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
 
 ### Authorization
 
@@ -915,6 +1324,112 @@ catch (ApiException e)
 ### Return type
 
 [**CustomFieldMetaData**](CustomFieldMetaData.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updatetaskcustomfieldgroup"></a>
+# **UpdateTaskCustomFieldGroup**
+> CustomFieldGroup UpdateTaskCustomFieldGroup (string groupId, List<string> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest)
+
+Update a Task Custom Field Group
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class UpdateTaskCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TaskApi(config);
+            var groupId = "groupId_example";  // string | 
+            var updateMask = new List<string>(); // List<string> | Comma-separated list of fields to update
+            var updateCustomFieldGroupRequest = new UpdateCustomFieldGroupRequest(); // UpdateCustomFieldGroupRequest | 
+
+            try
+            {
+                // Update a Task Custom Field Group
+                CustomFieldGroup result = apiInstance.UpdateTaskCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling TaskApi.UpdateTaskCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateTaskCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Update a Task Custom Field Group
+    ApiResponse<CustomFieldGroup> response = apiInstance.UpdateTaskCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaskApi.UpdateTaskCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **groupId** | **string** |  |  |
+| **updateMask** | [**List&lt;string&gt;**](string.md) | Comma-separated list of fields to update |  |
+| **updateCustomFieldGroupRequest** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 

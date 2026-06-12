@@ -96,6 +96,7 @@ import CreateCommissionProgramRequest from './model/CreateCommissionProgramReque
 import CreateCompanyRequest from './model/CreateCompanyRequest';
 import CreateContactLinkTypeRequest from './model/CreateContactLinkTypeRequest';
 import CreateContactUtmPropertiesRequest from './model/CreateContactUtmPropertiesRequest';
+import CreateCustomFieldGroupRequest from './model/CreateCustomFieldGroupRequest';
 import CreateCustomFieldOptionRequest from './model/CreateCustomFieldOptionRequest';
 import CreateCustomFieldRequest from './model/CreateCustomFieldRequest';
 import CreateCustomFieldResponse from './model/CreateCustomFieldResponse';
@@ -117,6 +118,7 @@ import CreateOrderTotalDiscountRequest from './model/CreateOrderTotalDiscountReq
 import CreatePaymentMethodConfigRequest from './model/CreatePaymentMethodConfigRequest';
 import CreateProductCategoryRequest from './model/CreateProductCategoryRequest';
 import CreateProductCommissionProgramRequest from './model/CreateProductCommissionProgramRequest';
+import CreateProductDiscountCriteria from './model/CreateProductDiscountCriteria';
 import CreateProductDiscountRequest from './model/CreateProductDiscountRequest';
 import CreateProductInterestBundleRequest from './model/CreateProductInterestBundleRequest';
 import CreateProductOptionListOption from './model/CreateProductOptionListOption';
@@ -139,6 +141,7 @@ import CurrencyValue from './model/CurrencyValue';
 import CurrencyValueDetail from './model/CurrencyValueDetail';
 import CurrencyValueList from './model/CurrencyValueList';
 import CustomField from './model/CustomField';
+import CustomFieldGroup from './model/CustomFieldGroup';
 import CustomFieldMetaData from './model/CustomFieldMetaData';
 import CustomFieldOption from './model/CustomFieldOption';
 import CustomFieldValue from './model/CustomFieldValue';
@@ -212,6 +215,7 @@ import ListContactPaymentMethodsResponse from './model/ListContactPaymentMethods
 import ListContactTagsResponse from './model/ListContactTagsResponse';
 import ListContactsResponse from './model/ListContactsResponse';
 import ListCountriesResponse from './model/ListCountriesResponse';
+import ListCustomFieldGroupsResponse from './model/ListCustomFieldGroupsResponse';
 import ListEmailsSentResponse from './model/ListEmailsSentResponse';
 import ListFilesResponse from './model/ListFilesResponse';
 import ListFreeTrialDiscountsResponse from './model/ListFreeTrialDiscountsResponse';
@@ -254,6 +258,7 @@ import ListUserGroupsResponse from './model/ListUserGroupsResponse';
 import ListUsersPaginatedResponse from './model/ListUsersPaginatedResponse';
 import ListWebformsResponse from './model/ListWebformsResponse';
 import ListWordPressOptInOptionsResponse from './model/ListWordPressOptInOptionsResponse';
+import MergeContactRequest from './model/MergeContactRequest';
 import Note from './model/Note';
 import NoteTemplate from './model/NoteTemplate';
 import ObjectModel from './model/ObjectModel';
@@ -332,6 +337,7 @@ import UpdateBusinessProfileRequest from './model/UpdateBusinessProfileRequest';
 import UpdateCategoryDiscountRequest from './model/UpdateCategoryDiscountRequest';
 import UpdateCommissionProgramRequest from './model/UpdateCommissionProgramRequest';
 import UpdateCompanyRequest from './model/UpdateCompanyRequest';
+import UpdateCustomFieldGroupRequest from './model/UpdateCustomFieldGroupRequest';
 import UpdateCustomFieldMetaDataRequest from './model/UpdateCustomFieldMetaDataRequest';
 import UpdateDefaultCommissionProgramRequest from './model/UpdateDefaultCommissionProgramRequest';
 import UpdateEmailAddress from './model/UpdateEmailAddress';
@@ -347,6 +353,7 @@ import UpdateOrderRequest from './model/UpdateOrderRequest';
 import UpdateOrderTotalDiscountRequest from './model/UpdateOrderTotalDiscountRequest';
 import UpdateProductCategoryRequest from './model/UpdateProductCategoryRequest';
 import UpdateProductCommissionProgramRequest from './model/UpdateProductCommissionProgramRequest';
+import UpdateProductDiscountCriteria from './model/UpdateProductDiscountCriteria';
 import UpdateProductDiscountRequest from './model/UpdateProductDiscountRequest';
 import UpdateProductInterestBundleRequest from './model/UpdateProductInterestBundleRequest';
 import UpdateProductInterestRequest from './model/UpdateProductInterestRequest';
@@ -442,7 +449,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.13
+* @version 2.0.14
 */
 export {
     /**
@@ -950,6 +957,12 @@ export {
     CreateContactUtmPropertiesRequest,
 
     /**
+     * The CreateCustomFieldGroupRequest model constructor.
+     * @property {module:keap.core.v2/model/CreateCustomFieldGroupRequest}
+     */
+    CreateCustomFieldGroupRequest,
+
+    /**
      * The CreateCustomFieldOptionRequest model constructor.
      * @property {module:keap.core.v2/model/CreateCustomFieldOptionRequest}
      */
@@ -1074,6 +1087,12 @@ export {
      * @property {module:keap.core.v2/model/CreateProductCommissionProgramRequest}
      */
     CreateProductCommissionProgramRequest,
+
+    /**
+     * The CreateProductDiscountCriteria model constructor.
+     * @property {module:keap.core.v2/model/CreateProductDiscountCriteria}
+     */
+    CreateProductDiscountCriteria,
 
     /**
      * The CreateProductDiscountRequest model constructor.
@@ -1206,6 +1225,12 @@ export {
      * @property {module:keap.core.v2/model/CustomField}
      */
     CustomField,
+
+    /**
+     * The CustomFieldGroup model constructor.
+     * @property {module:keap.core.v2/model/CustomFieldGroup}
+     */
+    CustomFieldGroup,
 
     /**
      * The CustomFieldMetaData model constructor.
@@ -1646,6 +1671,12 @@ export {
     ListCountriesResponse,
 
     /**
+     * The ListCustomFieldGroupsResponse model constructor.
+     * @property {module:keap.core.v2/model/ListCustomFieldGroupsResponse}
+     */
+    ListCustomFieldGroupsResponse,
+
+    /**
      * The ListEmailsSentResponse model constructor.
      * @property {module:keap.core.v2/model/ListEmailsSentResponse}
      */
@@ -1896,6 +1927,12 @@ export {
      * @property {module:keap.core.v2/model/ListWordPressOptInOptionsResponse}
      */
     ListWordPressOptInOptionsResponse,
+
+    /**
+     * The MergeContactRequest model constructor.
+     * @property {module:keap.core.v2/model/MergeContactRequest}
+     */
+    MergeContactRequest,
 
     /**
      * The Note model constructor.
@@ -2366,6 +2403,12 @@ export {
     UpdateCompanyRequest,
 
     /**
+     * The UpdateCustomFieldGroupRequest model constructor.
+     * @property {module:keap.core.v2/model/UpdateCustomFieldGroupRequest}
+     */
+    UpdateCustomFieldGroupRequest,
+
+    /**
      * The UpdateCustomFieldMetaDataRequest model constructor.
      * @property {module:keap.core.v2/model/UpdateCustomFieldMetaDataRequest}
      */
@@ -2454,6 +2497,12 @@ export {
      * @property {module:keap.core.v2/model/UpdateProductCommissionProgramRequest}
      */
     UpdateProductCommissionProgramRequest,
+
+    /**
+     * The UpdateProductDiscountCriteria model constructor.
+     * @property {module:keap.core.v2/model/UpdateProductDiscountCriteria}
+     */
+    UpdateProductDiscountCriteria,
 
     /**
      * The UpdateProductDiscountRequest model constructor.

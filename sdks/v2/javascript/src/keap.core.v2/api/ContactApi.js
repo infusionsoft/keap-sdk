@@ -17,8 +17,10 @@ import Contact from '../model/Contact';
 import ContactLink from '../model/ContactLink';
 import ContactLinkType from '../model/ContactLinkType';
 import CreateContactLinkTypeRequest from '../model/CreateContactLinkTypeRequest';
+import CreateCustomFieldGroupRequest from '../model/CreateCustomFieldGroupRequest';
 import CreateCustomFieldRequest from '../model/CreateCustomFieldRequest';
 import CreateUpdateContactRequest from '../model/CreateUpdateContactRequest';
+import CustomFieldGroup from '../model/CustomFieldGroup';
 import CustomFieldMetaData from '../model/CustomFieldMetaData';
 import Error from '../model/Error';
 import LinkContactsRequest from '../model/LinkContactsRequest';
@@ -26,7 +28,10 @@ import ListContactLinkTypesResponse from '../model/ListContactLinkTypesResponse'
 import ListContactLinksResponse from '../model/ListContactLinksResponse';
 import ListContactTagsResponse from '../model/ListContactTagsResponse';
 import ListContactsResponse from '../model/ListContactsResponse';
+import ListCustomFieldGroupsResponse from '../model/ListCustomFieldGroupsResponse';
+import MergeContactRequest from '../model/MergeContactRequest';
 import ObjectModel from '../model/ObjectModel';
+import UpdateCustomFieldGroupRequest from '../model/UpdateCustomFieldGroupRequest';
 
 /**
 * Contact service.
@@ -151,6 +156,53 @@ export default class ContactApi {
 
 
     /**
+     * Create a Contact Custom Field Group
+     * Creates a new custom field group for the Contact record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+     * @param {module:keap.core.v2/model/CreateCustomFieldGroupRequest} createCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldGroup} and HTTP response
+     */
+    createContactCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest) {
+      let postBody = createCustomFieldGroupRequest;
+      // verify the required parameter 'createCustomFieldGroupRequest' is set
+      if (createCustomFieldGroupRequest === undefined || createCustomFieldGroupRequest === null) {
+        throw new Error("Missing the required parameter 'createCustomFieldGroupRequest' when calling createContactCustomFieldGroup");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldGroup;
+      return this.apiClient.callApi(
+        '/rest/v2/contacts/model/customFields/groups', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create a Contact Custom Field Group
+     * Creates a new custom field group for the Contact record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+     * @param {module:keap.core.v2/model/CreateCustomFieldGroupRequest} createCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldGroup}
+     */
+    createContactCustomFieldGroup(createCustomFieldGroupRequest) {
+      return this.createContactCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Create a Contact Link type
      * Creates a new type of Contact Link
      * @param {module:keap.core.v2/model/CreateContactLinkTypeRequest} createContactLinkTypeRequest 
@@ -246,6 +298,102 @@ export default class ContactApi {
 
 
     /**
+     * Delete a Contact Custom Field
+     * Deletes a custom field from the Contacts model
+     * @param {String} customFieldId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteContactCustomFieldWithHttpInfo(customFieldId) {
+      let postBody = null;
+      // verify the required parameter 'customFieldId' is set
+      if (customFieldId === undefined || customFieldId === null) {
+        throw new Error("Missing the required parameter 'customFieldId' when calling deleteContactCustomField");
+      }
+
+      let pathParams = {
+        'custom_field_id': customFieldId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/contacts/model/customFields/{custom_field_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete a Contact Custom Field
+     * Deletes a custom field from the Contacts model
+     * @param {String} customFieldId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteContactCustomField(customFieldId) {
+      return this.deleteContactCustomFieldWithHttpInfo(customFieldId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Delete a Contact Custom Field Group
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteContactCustomFieldGroupWithHttpInfo(groupId) {
+      let postBody = null;
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling deleteContactCustomFieldGroup");
+      }
+
+      let pathParams = {
+        'group_id': groupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/contacts/model/customFields/groups/{group_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete a Contact Custom Field Group
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteContactCustomFieldGroup(groupId) {
+      return this.deleteContactCustomFieldGroupWithHttpInfo(groupId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Retrieve a Contact
      * Retrieves a single Contact
      * @param {String} contactId 
@@ -300,6 +448,54 @@ export default class ContactApi {
 
 
     /**
+     * Retrieve a Contact Custom Field Group
+     * Retrieves a single custom field group by id for the Contact record type.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldGroup} and HTTP response
+     */
+    getContactCustomFieldGroupWithHttpInfo(groupId) {
+      let postBody = null;
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling getContactCustomFieldGroup");
+      }
+
+      let pathParams = {
+        'group_id': groupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldGroup;
+      return this.apiClient.callApi(
+        '/rest/v2/contacts/model/customFields/groups/{group_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Retrieve a Contact Custom Field Group
+     * Retrieves a single custom field group by id for the Contact record type.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldGroup}
+     */
+    getContactCustomFieldGroup(groupId) {
+      return this.getContactCustomFieldGroupWithHttpInfo(groupId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Link Contacts
      * Links two Contacts together using the provided Link type
      * @param {module:keap.core.v2/model/LinkContactsRequest} linkContactsRequest 
@@ -340,6 +536,53 @@ export default class ContactApi {
      */
     linkContacts(linkContactsRequest) {
       return this.linkContactsWithHttpInfo(linkContactsRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List Contact Custom Field Groups
+     * Retrieves a list of custom field groups for the Contact record type. Optionally filter by tab_id to scope to a specific tab.
+     * @param {Object} opts Optional parameters
+     * @param {String} [tabId] Optional tab id to scope groups to a single tab
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListCustomFieldGroupsResponse} and HTTP response
+     */
+    listContactCustomFieldGroupsWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'tab_id': opts['tabId']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListCustomFieldGroupsResponse;
+      return this.apiClient.callApi(
+        '/rest/v2/contacts/model/customFields/groups', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List Contact Custom Field Groups
+     * Retrieves a list of custom field groups for the Contact record type. Optionally filter by tab_id to scope to a specific tab.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.tabId Optional tab id to scope groups to a single tab
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListCustomFieldGroupsResponse}
+     */
+    listContactCustomFieldGroups(opts) {
+      return this.listContactCustomFieldGroupsWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -573,6 +816,59 @@ export default class ContactApi {
 
 
     /**
+     * Merge two Contacts
+     * Merges two Contacts together. The duplicate contact will be merged into the primary contact.
+     * @param {module:keap.core.v2/model/MergeContactRequest} mergeContactRequest 
+     * @param {Object} opts Optional parameters
+     * @param {Array.<String>} [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/Contact} and HTTP response
+     */
+    mergeContactsWithHttpInfo(mergeContactRequest, opts) {
+      opts = opts || {};
+      let postBody = mergeContactRequest;
+      // verify the required parameter 'mergeContactRequest' is set
+      if (mergeContactRequest === undefined || mergeContactRequest === null) {
+        throw new Error("Missing the required parameter 'mergeContactRequest' when calling mergeContacts");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'fields': this.apiClient.buildCollectionParam(opts['fields'], 'csv')
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = Contact;
+      return this.apiClient.callApi(
+        '/rest/v2/contacts:merge', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Merge two Contacts
+     * Merges two Contacts together. The duplicate contact will be merged into the primary contact.
+     * @param {module:keap.core.v2/model/MergeContactRequest} mergeContactRequest 
+     * @param {Object} opts Optional parameters
+     * @param {Array.<String>} opts.fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/Contact}
+     */
+    mergeContacts(mergeContactRequest, opts) {
+      return this.mergeContactsWithHttpInfo(mergeContactRequest, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Retrieve Contact Model
      * Get the custom fields and optional properties for the Contact object
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ObjectModel} and HTTP response
@@ -717,6 +1013,67 @@ export default class ContactApi {
      */
     updateContact(contactId, createUpdateContactRequest, opts) {
       return this.updateContactWithHttpInfo(contactId, createUpdateContactRequest, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update a Contact Custom Field Group
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * @param {String} groupId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldGroupRequest} updateCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldGroup} and HTTP response
+     */
+    updateContactCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest) {
+      let postBody = updateCustomFieldGroupRequest;
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling updateContactCustomFieldGroup");
+      }
+      // verify the required parameter 'updateMask' is set
+      if (updateMask === undefined || updateMask === null) {
+        throw new Error("Missing the required parameter 'updateMask' when calling updateContactCustomFieldGroup");
+      }
+      // verify the required parameter 'updateCustomFieldGroupRequest' is set
+      if (updateCustomFieldGroupRequest === undefined || updateCustomFieldGroupRequest === null) {
+        throw new Error("Missing the required parameter 'updateCustomFieldGroupRequest' when calling updateContactCustomFieldGroup");
+      }
+
+      let pathParams = {
+        'group_id': groupId
+      };
+      let queryParams = {
+        'update_mask': this.apiClient.buildCollectionParam(updateMask, 'multi')
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldGroup;
+      return this.apiClient.callApi(
+        '/rest/v2/contacts/model/customFields/groups/{group_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Update a Contact Custom Field Group
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * @param {String} groupId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldGroupRequest} updateCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldGroup}
+     */
+    updateContactCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest) {
+      return this.updateContactCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

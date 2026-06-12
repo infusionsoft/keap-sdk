@@ -7,14 +7,20 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**AddTagToCompany**](CompanyApi.md#addtagtocompany) | **POST** /rest/v2/companies/{company_id}/tags/{tag_id} | Add Tag to Company |
 | [**CreateCompany**](CompanyApi.md#createcompany) | **POST** /rest/v2/companies | Create a Company |
 | [**CreateCompanyCustomField**](CompanyApi.md#createcompanycustomfield) | **POST** /rest/v2/companies/model/customFields | Create a Company Custom Field |
+| [**CreateCompanyCustomFieldGroup**](CompanyApi.md#createcompanycustomfieldgroup) | **POST** /rest/v2/companies/model/customFields/groups | Create a Company Custom Field Group |
 | [**DeleteCompany**](CompanyApi.md#deletecompany) | **DELETE** /rest/v2/companies/{company_id} | Delete a Company |
+| [**DeleteCompanyCustomField**](CompanyApi.md#deletecompanycustomfield) | **DELETE** /rest/v2/companies/model/customFields/{custom_field_id} | Delete a Company Custom Field |
+| [**DeleteCompanyCustomFieldGroup**](CompanyApi.md#deletecompanycustomfieldgroup) | **DELETE** /rest/v2/companies/model/customFields/groups/{group_id} | Delete a Company Custom Field Group |
 | [**GetCompany**](CompanyApi.md#getcompany) | **GET** /rest/v2/companies/{company_id} | Retrieve a Company |
+| [**GetCompanyCustomFieldGroup**](CompanyApi.md#getcompanycustomfieldgroup) | **GET** /rest/v2/companies/model/customFields/groups/{group_id} | Retrieve a Company Custom Field Group |
 | [**ListCompanies**](CompanyApi.md#listcompanies) | **GET** /rest/v2/companies | List Companies |
+| [**ListCompanyCustomFieldGroups**](CompanyApi.md#listcompanycustomfieldgroups) | **GET** /rest/v2/companies/model/customFields/groups | List Company Custom Field Groups |
 | [**ListTagsForCompany**](CompanyApi.md#listtagsforcompany) | **GET** /rest/v2/companies/{company_id}/tags | List Applied Tags |
 | [**RemoveTagFromCompany**](CompanyApi.md#removetagfromcompany) | **DELETE** /rest/v2/companies/{company_id}/tags/{tag_id} | Remove Tag |
 | [**RetrieveCompanyCustomFieldModel**](CompanyApi.md#retrievecompanycustomfieldmodel) | **GET** /rest/v2/companies/model | Retrieve Company Custom Field Model |
 | [**UpdateCompany**](CompanyApi.md#updatecompany) | **PATCH** /rest/v2/companies/{company_id} | Update a Company |
 | [**UpdateCompanyCustomField**](CompanyApi.md#updatecompanycustomfield) | **PATCH** /rest/v2/companies/model/customFields/{custom_field_id} | Update a Company Custom Field |
+| [**UpdateCompanyCustomFieldGroup**](CompanyApi.md#updatecompanycustomfieldgroup) | **PATCH** /rest/v2/companies/model/customFields/groups/{group_id} | Update a Company Custom Field Group |
 
 <a id="addtagtocompany"></a>
 # **AddTagToCompany**
@@ -320,6 +326,108 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="createcompanycustomfieldgroup"></a>
+# **CreateCompanyCustomFieldGroup**
+> CustomFieldGroup CreateCompanyCustomFieldGroup (CreateCustomFieldGroupRequest createCustomFieldGroupRequest)
+
+Create a Company Custom Field Group
+
+Creates a new custom field group for the Company record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class CreateCompanyCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new CompanyApi(config);
+            var createCustomFieldGroupRequest = new CreateCustomFieldGroupRequest(); // CreateCustomFieldGroupRequest | 
+
+            try
+            {
+                // Create a Company Custom Field Group
+                CustomFieldGroup result = apiInstance.CreateCompanyCustomFieldGroup(createCustomFieldGroupRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CompanyApi.CreateCompanyCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateCompanyCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create a Company Custom Field Group
+    ApiResponse<CustomFieldGroup> response = apiInstance.CreateCompanyCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling CompanyApi.CreateCompanyCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createCustomFieldGroupRequest** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="deletecompany"></a>
 # **DeleteCompany**
 > void DeleteCompany (string companyId)
@@ -388,6 +496,202 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **companyId** | **string** |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deletecompanycustomfield"></a>
+# **DeleteCompanyCustomField**
+> void DeleteCompanyCustomField (string customFieldId)
+
+Delete a Company Custom Field
+
+Deletes a custom field from the company model
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteCompanyCustomFieldExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new CompanyApi(config);
+            var customFieldId = "customFieldId_example";  // string | 
+
+            try
+            {
+                // Delete a Company Custom Field
+                apiInstance.DeleteCompanyCustomField(customFieldId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CompanyApi.DeleteCompanyCustomField: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteCompanyCustomFieldWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete a Company Custom Field
+    apiInstance.DeleteCompanyCustomFieldWithHttpInfo(customFieldId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling CompanyApi.DeleteCompanyCustomFieldWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **customFieldId** | **string** |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deletecompanycustomfieldgroup"></a>
+# **DeleteCompanyCustomFieldGroup**
+> void DeleteCompanyCustomFieldGroup (string groupId)
+
+Delete a Company Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteCompanyCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new CompanyApi(config);
+            var groupId = "groupId_example";  // string | 
+
+            try
+            {
+                // Delete a Company Custom Field Group
+                apiInstance.DeleteCompanyCustomFieldGroup(groupId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CompanyApi.DeleteCompanyCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteCompanyCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete a Company Custom Field Group
+    apiInstance.DeleteCompanyCustomFieldGroupWithHttpInfo(groupId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling CompanyApi.DeleteCompanyCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **groupId** | **string** |  |  |
 
 ### Return type
 
@@ -522,6 +826,108 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="getcompanycustomfieldgroup"></a>
+# **GetCompanyCustomFieldGroup**
+> CustomFieldGroup GetCompanyCustomFieldGroup (string groupId)
+
+Retrieve a Company Custom Field Group
+
+Retrieves a single custom field group by id for the Company record type.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class GetCompanyCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new CompanyApi(config);
+            var groupId = "groupId_example";  // string | 
+
+            try
+            {
+                // Retrieve a Company Custom Field Group
+                CustomFieldGroup result = apiInstance.GetCompanyCustomFieldGroup(groupId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CompanyApi.GetCompanyCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetCompanyCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve a Company Custom Field Group
+    ApiResponse<CustomFieldGroup> response = apiInstance.GetCompanyCustomFieldGroupWithHttpInfo(groupId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling CompanyApi.GetCompanyCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **groupId** | **string** |  |  |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="listcompanies"></a>
 # **ListCompanies**
 > ListCompaniesResponse ListCompanies (List<string>? fields = null, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
@@ -606,6 +1012,108 @@ catch (ApiException e)
 ### Return type
 
 [**ListCompaniesResponse**](ListCompaniesResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listcompanycustomfieldgroups"></a>
+# **ListCompanyCustomFieldGroups**
+> ListCustomFieldGroupsResponse ListCompanyCustomFieldGroups (string? tabId = null)
+
+List Company Custom Field Groups
+
+Retrieves a list of custom field groups for the Company record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListCompanyCustomFieldGroupsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new CompanyApi(config);
+            var tabId = "tabId_example";  // string? | Optional tab id to scope groups to a single tab (optional) 
+
+            try
+            {
+                // List Company Custom Field Groups
+                ListCustomFieldGroupsResponse result = apiInstance.ListCompanyCustomFieldGroups(tabId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CompanyApi.ListCompanyCustomFieldGroups: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListCompanyCustomFieldGroupsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Company Custom Field Groups
+    ApiResponse<ListCustomFieldGroupsResponse> response = apiInstance.ListCompanyCustomFieldGroupsWithHttpInfo(tabId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling CompanyApi.ListCompanyCustomFieldGroupsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tabId** | **string?** | Optional tab id to scope groups to a single tab | [optional]  |
+
+### Return type
+
+[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
 
 ### Authorization
 
@@ -1125,6 +1633,112 @@ catch (ApiException e)
 ### Return type
 
 [**CustomFieldMetaData**](CustomFieldMetaData.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updatecompanycustomfieldgroup"></a>
+# **UpdateCompanyCustomFieldGroup**
+> CustomFieldGroup UpdateCompanyCustomFieldGroup (string groupId, List<string> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest)
+
+Update a Company Custom Field Group
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class UpdateCompanyCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new CompanyApi(config);
+            var groupId = "groupId_example";  // string | 
+            var updateMask = new List<string>(); // List<string> | Comma-separated list of fields to update
+            var updateCustomFieldGroupRequest = new UpdateCustomFieldGroupRequest(); // UpdateCustomFieldGroupRequest | 
+
+            try
+            {
+                // Update a Company Custom Field Group
+                CustomFieldGroup result = apiInstance.UpdateCompanyCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CompanyApi.UpdateCompanyCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateCompanyCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Update a Company Custom Field Group
+    ApiResponse<CustomFieldGroup> response = apiInstance.UpdateCompanyCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling CompanyApi.UpdateCompanyCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **groupId** | **string** |  |  |
+| **updateMask** | [**List&lt;string&gt;**](string.md) | Comma-separated list of fields to update |  |
+| **updateCustomFieldGroupRequest** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 

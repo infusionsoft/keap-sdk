@@ -14,14 +14,18 @@
 
 import ApiClient from "../ApiClient";
 import CancelSubscriptionRequest from '../model/CancelSubscriptionRequest';
+import CreateCustomFieldGroupRequest from '../model/CreateCustomFieldGroupRequest';
 import CreateCustomFieldRequest from '../model/CreateCustomFieldRequest';
 import CreateSubscriptionRequest from '../model/CreateSubscriptionRequest';
+import CustomFieldGroup from '../model/CustomFieldGroup';
 import CustomFieldMetaData from '../model/CustomFieldMetaData';
 import Error from '../model/Error';
+import ListCustomFieldGroupsResponse from '../model/ListCustomFieldGroupsResponse';
 import ListSubscriptionsResponse from '../model/ListSubscriptionsResponse';
 import ObjectModel from '../model/ObjectModel';
 import OrderV2 from '../model/OrderV2';
 import Subscription from '../model/Subscription';
+import UpdateCustomFieldGroupRequest from '../model/UpdateCustomFieldGroupRequest';
 import UpdateCustomFieldMetaDataRequest from '../model/UpdateCustomFieldMetaDataRequest';
 import UpdateSubscriptionRequest from '../model/UpdateSubscriptionRequest';
 
@@ -193,6 +197,53 @@ export default class SubscriptionsApi {
 
 
     /**
+     * Create a Subscription Custom Field Group
+     * Creates a new custom field group for the Subscription record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+     * @param {module:keap.core.v2/model/CreateCustomFieldGroupRequest} createCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldGroup} and HTTP response
+     */
+    createSubscriptionCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest) {
+      let postBody = createCustomFieldGroupRequest;
+      // verify the required parameter 'createCustomFieldGroupRequest' is set
+      if (createCustomFieldGroupRequest === undefined || createCustomFieldGroupRequest === null) {
+        throw new Error("Missing the required parameter 'createCustomFieldGroupRequest' when calling createSubscriptionCustomFieldGroup");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldGroup;
+      return this.apiClient.callApi(
+        '/rest/v2/subscriptions/model/customFields/groups', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create a Subscription Custom Field Group
+     * Creates a new custom field group for the Subscription record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+     * @param {module:keap.core.v2/model/CreateCustomFieldGroupRequest} createCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldGroup}
+     */
+    createSubscriptionCustomFieldGroup(createCustomFieldGroupRequest) {
+      return this.createSubscriptionCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Delete a Subscription Custom Field
      * Deletes a custom field from the Subscription object
      * @param {String} customFieldId 
@@ -234,6 +285,54 @@ export default class SubscriptionsApi {
      */
     deleteSubscriptionCustomField(customFieldId) {
       return this.deleteSubscriptionCustomFieldWithHttpInfo(customFieldId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Delete a Subscription Custom Field Group
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteSubscriptionCustomFieldGroupWithHttpInfo(groupId) {
+      let postBody = null;
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling deleteSubscriptionCustomFieldGroup");
+      }
+
+      let pathParams = {
+        'group_id': groupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/subscriptions/model/customFields/groups/{group_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete a Subscription Custom Field Group
+     * Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteSubscriptionCustomFieldGroup(groupId) {
+      return this.deleteSubscriptionCustomFieldGroupWithHttpInfo(groupId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -289,6 +388,54 @@ export default class SubscriptionsApi {
 
 
     /**
+     * Retrieve a Subscription Custom Field Group
+     * Retrieves a single custom field group by id for the Subscription record type.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldGroup} and HTTP response
+     */
+    getSubscriptionCustomFieldGroupWithHttpInfo(groupId) {
+      let postBody = null;
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling getSubscriptionCustomFieldGroup");
+      }
+
+      let pathParams = {
+        'group_id': groupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldGroup;
+      return this.apiClient.callApi(
+        '/rest/v2/subscriptions/model/customFields/groups/{group_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Retrieve a Subscription Custom Field Group
+     * Retrieves a single custom field group by id for the Subscription record type.
+     * @param {String} groupId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldGroup}
+     */
+    getSubscriptionCustomFieldGroup(groupId) {
+      return this.getSubscriptionCustomFieldGroupWithHttpInfo(groupId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Invoice a Subscription
      * Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
      * @param {String} subscriptionId 
@@ -330,6 +477,53 @@ export default class SubscriptionsApi {
      */
     invoiceSubscription(subscriptionId) {
       return this.invoiceSubscriptionWithHttpInfo(subscriptionId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List Subscription Custom Field Groups
+     * Retrieves a list of custom field groups for the Subscription record type. Optionally filter by tab_id to scope to a specific tab.
+     * @param {Object} opts Optional parameters
+     * @param {String} [tabId] Optional tab id to scope groups to a single tab
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListCustomFieldGroupsResponse} and HTTP response
+     */
+    listSubscriptionCustomFieldGroupsWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'tab_id': opts['tabId']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListCustomFieldGroupsResponse;
+      return this.apiClient.callApi(
+        '/rest/v2/subscriptions/model/customFields/groups', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List Subscription Custom Field Groups
+     * Retrieves a list of custom field groups for the Subscription record type. Optionally filter by tab_id to scope to a specific tab.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.tabId Optional tab id to scope groups to a single tab
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListCustomFieldGroupsResponse}
+     */
+    listSubscriptionCustomFieldGroups(opts) {
+      return this.listSubscriptionCustomFieldGroupsWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -547,6 +741,67 @@ export default class SubscriptionsApi {
      */
     updateSubscriptionCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts) {
       return this.updateSubscriptionCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update a Subscription Custom Field Group
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * @param {String} groupId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldGroupRequest} updateCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldGroup} and HTTP response
+     */
+    updateSubscriptionCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest) {
+      let postBody = updateCustomFieldGroupRequest;
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling updateSubscriptionCustomFieldGroup");
+      }
+      // verify the required parameter 'updateMask' is set
+      if (updateMask === undefined || updateMask === null) {
+        throw new Error("Missing the required parameter 'updateMask' when calling updateSubscriptionCustomFieldGroup");
+      }
+      // verify the required parameter 'updateCustomFieldGroupRequest' is set
+      if (updateCustomFieldGroupRequest === undefined || updateCustomFieldGroupRequest === null) {
+        throw new Error("Missing the required parameter 'updateCustomFieldGroupRequest' when calling updateSubscriptionCustomFieldGroup");
+      }
+
+      let pathParams = {
+        'group_id': groupId
+      };
+      let queryParams = {
+        'update_mask': this.apiClient.buildCollectionParam(updateMask, 'multi')
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldGroup;
+      return this.apiClient.callApi(
+        '/rest/v2/subscriptions/model/customFields/groups/{group_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Update a Subscription Custom Field Group
+     * Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+     * @param {String} groupId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldGroupRequest} updateCustomFieldGroupRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldGroup}
+     */
+    updateSubscriptionCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest) {
+      return this.updateSubscriptionCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

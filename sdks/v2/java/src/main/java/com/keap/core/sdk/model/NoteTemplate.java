@@ -55,52 +55,8 @@ public class NoteTemplate implements Serializable {
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   @jakarta.annotation.Nullable  private String description;
 
-  /**
-   * Note action type
-   */
-  public enum ActionTypeEnum {
-    APPOINTMENT(String.valueOf("APPOINTMENT")),
-    
-    CALL(String.valueOf("CALL")),
-    
-    EMAIL(String.valueOf("EMAIL")),
-    
-    FAX(String.valueOf("FAX")),
-    
-    LETTER(String.valueOf("LETTER")),
-    
-    OTHER(String.valueOf("OTHER")),
-    
-    UNKNOWN_COULD_NOT_DESERIALIZE(String.valueOf("unknown_default_open_api"));
-
-    private String value;
-
-    ActionTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ActionTypeEnum fromValue(String value) {
-      for (ActionTypeEnum b : ActionTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return UNKNOWN_COULD_NOT_DESERIALIZE;
-    }
-  }
   public static final String JSON_PROPERTY_ACTION_TYPE = "action_type";
-  @jakarta.annotation.Nullable  private ActionTypeEnum actionType;
+  @jakarta.annotation.Nullable  private String actionType;
 
   public static final String JSON_PROPERTY_ASSIGNMENT_USER_ID = "assignment_user_id";
   @jakarta.annotation.Nullable  private Long assignmentUserId;
@@ -183,7 +139,7 @@ public class NoteTemplate implements Serializable {
   }
 
 
-  public NoteTemplate actionType(@jakarta.annotation.Nullable ActionTypeEnum actionType) {
+  public NoteTemplate actionType(@jakarta.annotation.Nullable String actionType) {
     this.actionType = actionType;
     return this;
   }
@@ -192,17 +148,17 @@ public class NoteTemplate implements Serializable {
    * Note action type
    * @return actionType
    */
-  @jakarta.annotation.Nullable  @Schema(example = "CALL", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Note action type")
+  @jakarta.annotation.Nullable  @Schema(example = "Call", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Note action type")
   @JsonProperty(JSON_PROPERTY_ACTION_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public ActionTypeEnum getActionType() {
+  public String getActionType() {
     return actionType;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ACTION_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setActionType(@jakarta.annotation.Nullable ActionTypeEnum actionType) {
+  public void setActionType(@jakarta.annotation.Nullable String actionType) {
     this.actionType = actionType;
   }
 
@@ -336,7 +292,7 @@ public class NoteTemplate implements Serializable {
               this.instance.description = description;
           return this;
         }
-            public NoteTemplate.Builder actionType(ActionTypeEnum actionType) {
+            public NoteTemplate.Builder actionType(String actionType) {
               this.instance.actionType = actionType;
           return this;
         }

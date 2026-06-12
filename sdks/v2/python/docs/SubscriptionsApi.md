@@ -7,13 +7,18 @@ Method | HTTP request | Description
 [**cancel_subscription**](SubscriptionsApi.md#cancel_subscription) | **POST** /rest/v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription
 [**create_subscription**](SubscriptionsApi.md#create_subscription) | **POST** /rest/v2/subscriptions | Create Subscription
 [**create_subscription_custom_field**](SubscriptionsApi.md#create_subscription_custom_field) | **POST** /rest/v2/subscriptions/model/customFields | Create a Subscription Custom Field
+[**create_subscription_custom_field_group**](SubscriptionsApi.md#create_subscription_custom_field_group) | **POST** /rest/v2/subscriptions/model/customFields/groups | Create a Subscription Custom Field Group
 [**delete_subscription_custom_field**](SubscriptionsApi.md#delete_subscription_custom_field) | **DELETE** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
+[**delete_subscription_custom_field_group**](SubscriptionsApi.md#delete_subscription_custom_field_group) | **DELETE** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Delete a Subscription Custom Field Group
 [**get_subscription**](SubscriptionsApi.md#get_subscription) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription
+[**get_subscription_custom_field_group**](SubscriptionsApi.md#get_subscription_custom_field_group) | **GET** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Retrieve a Subscription Custom Field Group
 [**invoice_subscription**](SubscriptionsApi.md#invoice_subscription) | **POST** /rest/v2/subscriptions/{subscription_id}:invoice | Invoice a Subscription
+[**list_subscription_custom_field_groups**](SubscriptionsApi.md#list_subscription_custom_field_groups) | **GET** /rest/v2/subscriptions/model/customFields/groups | List Subscription Custom Field Groups
 [**list_subscriptions**](SubscriptionsApi.md#list_subscriptions) | **GET** /rest/v2/subscriptions | List Subscriptions
 [**retrieve_subscription_custom_field_model**](SubscriptionsApi.md#retrieve_subscription_custom_field_model) | **GET** /rest/v2/subscriptions/model | Retrieve Subscription Custom Field Model
 [**update_subscription**](SubscriptionsApi.md#update_subscription) | **PATCH** /rest/v2/subscriptions/{subscription_id} | Update a Subscription
 [**update_subscription_custom_field**](SubscriptionsApi.md#update_subscription_custom_field) | **PATCH** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field
+[**update_subscription_custom_field_group**](SubscriptionsApi.md#update_subscription_custom_field_group) | **PATCH** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Update a Subscription Custom Field Group
 
 
 # **cancel_subscription**
@@ -261,6 +266,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_subscription_custom_field_group**
+> CustomFieldGroup create_subscription_custom_field_group(create_custom_field_group_request)
+
+Create a Subscription Custom Field Group
+
+Creates a new custom field group for the Subscription record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.create_custom_field_group_request import CreateCustomFieldGroupRequest
+from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
+    create_custom_field_group_request = keap_core_v2_client.CreateCustomFieldGroupRequest() # CreateCustomFieldGroupRequest | 
+
+    try:
+        # Create a Subscription Custom Field Group
+        api_response = api_instance.create_subscription_custom_field_group(create_custom_field_group_request)
+        print("The response of SubscriptionsApi->create_subscription_custom_field_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SubscriptionsApi->create_subscription_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_custom_field_group_request** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_subscription_custom_field**
 > delete_subscription_custom_field(custom_field_id)
 
@@ -309,6 +396,84 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **custom_field_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_subscription_custom_field_group**
+> delete_subscription_custom_field_group(group_id)
+
+Delete a Subscription Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
+    group_id = 'group_id_example' # str | 
+
+    try:
+        # Delete a Subscription Custom Field Group
+        api_instance.delete_subscription_custom_field_group(group_id)
+    except Exception as e:
+        print("Exception when calling SubscriptionsApi->delete_subscription_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**|  | 
 
 ### Return type
 
@@ -420,6 +585,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_subscription_custom_field_group**
+> CustomFieldGroup get_subscription_custom_field_group(group_id)
+
+Retrieve a Subscription Custom Field Group
+
+Retrieves a single custom field group by id for the Subscription record type.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
+    group_id = 'group_id_example' # str | 
+
+    try:
+        # Retrieve a Subscription Custom Field Group
+        api_response = api_instance.get_subscription_custom_field_group(group_id)
+        print("The response of SubscriptionsApi->get_subscription_custom_field_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SubscriptionsApi->get_subscription_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **invoice_subscription**
 > OrderV2 invoice_subscription(subscription_id)
 
@@ -475,6 +721,87 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OrderV2**](OrderV2.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_subscription_custom_field_groups**
+> ListCustomFieldGroupsResponse list_subscription_custom_field_groups(tab_id=tab_id)
+
+List Subscription Custom Field Groups
+
+Retrieves a list of custom field groups for the Subscription record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_custom_field_groups_response import ListCustomFieldGroupsResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
+    tab_id = 'tab_id_example' # str | Optional tab id to scope groups to a single tab (optional)
+
+    try:
+        # List Subscription Custom Field Groups
+        api_response = api_instance.list_subscription_custom_field_groups(tab_id=tab_id)
+        print("The response of SubscriptionsApi->list_subscription_custom_field_groups:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SubscriptionsApi->list_subscription_custom_field_groups: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**| Optional tab id to scope groups to a single tab | [optional] 
+
+### Return type
+
+[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
 
 ### Authorization
 
@@ -811,6 +1138,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomFieldMetaData**](CustomFieldMetaData.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_subscription_custom_field_group**
+> CustomFieldGroup update_subscription_custom_field_group(group_id, update_mask, update_custom_field_group_request)
+
+Update a Subscription Custom Field Group
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
+from keap_core_v2_client.models.update_custom_field_group_request import UpdateCustomFieldGroupRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
+    group_id = 'group_id_example' # str | 
+    update_mask = ['update_mask_example'] # List[str] | Comma-separated list of fields to update
+    update_custom_field_group_request = keap_core_v2_client.UpdateCustomFieldGroupRequest() # UpdateCustomFieldGroupRequest | 
+
+    try:
+        # Update a Subscription Custom Field Group
+        api_response = api_instance.update_subscription_custom_field_group(group_id, update_mask, update_custom_field_group_request)
+        print("The response of SubscriptionsApi->update_subscription_custom_field_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SubscriptionsApi->update_subscription_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**|  | 
+ **update_mask** | [**List[str]**](str.md)| Comma-separated list of fields to update | 
+ **update_custom_field_group_request** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 

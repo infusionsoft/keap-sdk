@@ -9,19 +9,24 @@ Method | HTTP request | Description
 [**attach_file_to_order**](OrdersApi.md#attach_file_to_order) | **POST** /rest/v2/orders/{order_id}:attachFile | Attach a File to an Order Invoice
 [**create_order**](OrdersApi.md#create_order) | **POST** /rest/v2/orders | Create an Order
 [**create_order_custom_field**](OrdersApi.md#create_order_custom_field) | **POST** /rest/v2/orders/model/customFields | Create an Order Custom Field
+[**create_order_custom_field_group**](OrdersApi.md#create_order_custom_field_group) | **POST** /rest/v2/orders/model/customFields/groups | Create an Order Custom Field Group
 [**create_order_item**](OrdersApi.md#create_order_item) | **POST** /rest/v2/orders/{order_id}/items | Create an Order Item
 [**create_payment_for_an_order**](OrdersApi.md#create_payment_for_an_order) | **POST** /rest/v2/orders/{order_id}/payments | Create a Payment
 [**delete_order**](OrdersApi.md#delete_order) | **DELETE** /rest/v2/orders/{order_id} | Delete an Order
 [**delete_order_custom_field**](OrdersApi.md#delete_order_custom_field) | **DELETE** /rest/v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
+[**delete_order_custom_field_group**](OrdersApi.md#delete_order_custom_field_group) | **DELETE** /rest/v2/orders/model/customFields/groups/{group_id} | Delete an Order Custom Field Group
 [**delete_order_item**](OrdersApi.md#delete_order_item) | **DELETE** /rest/v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item
 [**detach_file_from_order**](OrdersApi.md#detach_file_from_order) | **POST** /rest/v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice
 [**get_order**](OrdersApi.md#get_order) | **GET** /rest/v2/orders/{order_id} | Retrieve an Order
+[**get_order_custom_field_group**](OrdersApi.md#get_order_custom_field_group) | **GET** /rest/v2/orders/model/customFields/groups/{group_id} | Retrieve an Order Custom Field Group
 [**get_order_item**](OrdersApi.md#get_order_item) | **GET** /rest/v2/orders/{order_id}/items/{order_item_id} | Retrieve an Order Item
+[**list_order_custom_field_groups**](OrdersApi.md#list_order_custom_field_groups) | **GET** /rest/v2/orders/model/customFields/groups | List Order Custom Field Groups
 [**list_order_payments**](OrdersApi.md#list_order_payments) | **GET** /rest/v2/orders/{order_id}/payments | Retrieve Order Payments
 [**list_orders**](OrdersApi.md#list_orders) | **GET** /rest/v2/orders | List orders
 [**retrieve_order_custom_field_model**](OrdersApi.md#retrieve_order_custom_field_model) | **GET** /rest/v2/orders/model | Retrieve Order Custom Field Model
 [**update_order**](OrdersApi.md#update_order) | **PATCH** /rest/v2/orders/{order_id} | Update an Order
 [**update_order_custom_field**](OrdersApi.md#update_order_custom_field) | **PATCH** /rest/v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
+[**update_order_custom_field_group**](OrdersApi.md#update_order_custom_field_group) | **PATCH** /rest/v2/orders/model/customFields/groups/{group_id} | Update an Order Custom Field Group
 [**update_order_item**](OrdersApi.md#update_order_item) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item
 
 
@@ -440,6 +445,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_order_custom_field_group**
+> CustomFieldGroup create_order_custom_field_group(create_custom_field_group_request)
+
+Create an Order Custom Field Group
+
+Creates a new custom field group for the Order record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.create_custom_field_group_request import CreateCustomFieldGroupRequest
+from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.OrdersApi(api_client)
+    create_custom_field_group_request = keap_core_v2_client.CreateCustomFieldGroupRequest() # CreateCustomFieldGroupRequest | 
+
+    try:
+        # Create an Order Custom Field Group
+        api_response = api_instance.create_order_custom_field_group(create_custom_field_group_request)
+        print("The response of OrdersApi->create_order_custom_field_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrdersApi->create_order_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_custom_field_group_request** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_order_item**
 > OrderItem create_order_item(order_id, create_order_item_request)
 
@@ -766,6 +853,84 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_order_custom_field_group**
+> delete_order_custom_field_group(group_id)
+
+Delete an Order Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.OrdersApi(api_client)
+    group_id = 'group_id_example' # str | 
+
+    try:
+        # Delete an Order Custom Field Group
+        api_instance.delete_order_custom_field_group(group_id)
+    except Exception as e:
+        print("Exception when calling OrdersApi->delete_order_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_order_item**
 > delete_order_item(order_id, order_item_id)
 
@@ -1011,6 +1176,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_order_custom_field_group**
+> CustomFieldGroup get_order_custom_field_group(group_id)
+
+Retrieve an Order Custom Field Group
+
+Retrieves a single custom field group by id for the Order record type.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.OrdersApi(api_client)
+    group_id = 'group_id_example' # str | 
+
+    try:
+        # Retrieve an Order Custom Field Group
+        api_response = api_instance.get_order_custom_field_group(group_id)
+        print("The response of OrdersApi->get_order_custom_field_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrdersApi->get_order_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_order_item**
 > OrderItem get_order_item(order_id, order_item_id)
 
@@ -1068,6 +1314,87 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OrderItem**](OrderItem.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_order_custom_field_groups**
+> ListCustomFieldGroupsResponse list_order_custom_field_groups(tab_id=tab_id)
+
+List Order Custom Field Groups
+
+Retrieves a list of custom field groups for the Order record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_custom_field_groups_response import ListCustomFieldGroupsResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.OrdersApi(api_client)
+    tab_id = 'tab_id_example' # str | Optional tab id to scope groups to a single tab (optional)
+
+    try:
+        # List Order Custom Field Groups
+        api_response = api_instance.list_order_custom_field_groups(tab_id=tab_id)
+        print("The response of OrdersApi->list_order_custom_field_groups:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrdersApi->list_order_custom_field_groups: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**| Optional tab id to scope groups to a single tab | [optional] 
+
+### Return type
+
+[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
 
 ### Authorization
 
@@ -1493,6 +1820,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomFieldMetaData**](CustomFieldMetaData.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_order_custom_field_group**
+> CustomFieldGroup update_order_custom_field_group(group_id, update_mask, update_custom_field_group_request)
+
+Update an Order Custom Field Group
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
+from keap_core_v2_client.models.update_custom_field_group_request import UpdateCustomFieldGroupRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.OrdersApi(api_client)
+    group_id = 'group_id_example' # str | 
+    update_mask = ['update_mask_example'] # List[str] | Comma-separated list of fields to update
+    update_custom_field_group_request = keap_core_v2_client.UpdateCustomFieldGroupRequest() # UpdateCustomFieldGroupRequest | 
+
+    try:
+        # Update an Order Custom Field Group
+        api_response = api_instance.update_order_custom_field_group(group_id, update_mask, update_custom_field_group_request)
+        print("The response of OrdersApi->update_order_custom_field_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrdersApi->update_order_custom_field_group: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**|  | 
+ **update_mask** | [**List[str]**](str.md)| Comma-separated list of fields to update | 
+ **update_custom_field_group_request** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 

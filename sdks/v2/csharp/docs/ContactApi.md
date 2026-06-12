@@ -6,17 +6,24 @@ All URIs are relative to *https://api.keap.com/crm*
 |--------|--------------|-------------|
 | [**CreateContact**](ContactApi.md#createcontact) | **POST** /rest/v2/contacts | Create a Contact |
 | [**CreateContactCustomField**](ContactApi.md#createcontactcustomfield) | **POST** /rest/v2/contacts/model/customFields | Create a Contact Custom Field |
+| [**CreateContactCustomFieldGroup**](ContactApi.md#createcontactcustomfieldgroup) | **POST** /rest/v2/contacts/model/customFields/groups | Create a Contact Custom Field Group |
 | [**CreateContactLinkType**](ContactApi.md#createcontactlinktype) | **POST** /rest/v2/contacts/links/types | Create a Contact Link type |
 | [**DeleteContact**](ContactApi.md#deletecontact) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact |
+| [**DeleteContactCustomField**](ContactApi.md#deletecontactcustomfield) | **DELETE** /rest/v2/contacts/model/customFields/{custom_field_id} | Delete a Contact Custom Field |
+| [**DeleteContactCustomFieldGroup**](ContactApi.md#deletecontactcustomfieldgroup) | **DELETE** /rest/v2/contacts/model/customFields/groups/{group_id} | Delete a Contact Custom Field Group |
 | [**GetContact**](ContactApi.md#getcontact) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact |
+| [**GetContactCustomFieldGroup**](ContactApi.md#getcontactcustomfieldgroup) | **GET** /rest/v2/contacts/model/customFields/groups/{group_id} | Retrieve a Contact Custom Field Group |
 | [**LinkContacts**](ContactApi.md#linkcontacts) | **POST** /rest/v2/contacts:link | Link Contacts |
+| [**ListContactCustomFieldGroups**](ContactApi.md#listcontactcustomfieldgroups) | **GET** /rest/v2/contacts/model/customFields/groups | List Contact Custom Field Groups |
 | [**ListContactLinkTypes**](ContactApi.md#listcontactlinktypes) | **GET** /rest/v2/contacts/links/types | List Contact Link types |
 | [**ListContactLinks**](ContactApi.md#listcontactlinks) | **GET** /rest/v2/contacts/{contact_id}/links | List Linked Contacts |
 | [**ListContacts**](ContactApi.md#listcontacts) | **GET** /rest/v2/contacts | List Contacts |
 | [**ListTagsForContact**](ContactApi.md#listtagsforcontact) | **GET** /rest/v2/contacts/{contact_id}/tags | List Applied Tags |
+| [**MergeContacts**](ContactApi.md#mergecontacts) | **POST** /rest/v2/contacts:merge | Merge two Contacts |
 | [**RetrieveContactModel**](ContactApi.md#retrievecontactmodel) | **GET** /rest/v2/contacts/model | Retrieve Contact Model |
 | [**UnlinkContacts**](ContactApi.md#unlinkcontacts) | **POST** /rest/v2/contacts:unlink | Delete Link between two Contacts |
 | [**UpdateContact**](ContactApi.md#updatecontact) | **PATCH** /rest/v2/contacts/{contact_id} | Update a Contact |
+| [**UpdateContactCustomFieldGroup**](ContactApi.md#updatecontactcustomfieldgroup) | **PATCH** /rest/v2/contacts/model/customFields/groups/{group_id} | Update a Contact Custom Field Group |
 
 <a id="createcontact"></a>
 # **CreateContact**
@@ -200,6 +207,108 @@ catch (ApiException e)
 ### Return type
 
 [**CustomFieldMetaData**](CustomFieldMetaData.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="createcontactcustomfieldgroup"></a>
+# **CreateContactCustomFieldGroup**
+> CustomFieldGroup CreateContactCustomFieldGroup (CreateCustomFieldGroupRequest createCustomFieldGroupRequest)
+
+Create a Contact Custom Field Group
+
+Creates a new custom field group for the Contact record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class CreateContactCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ContactApi(config);
+            var createCustomFieldGroupRequest = new CreateCustomFieldGroupRequest(); // CreateCustomFieldGroupRequest | 
+
+            try
+            {
+                // Create a Contact Custom Field Group
+                CustomFieldGroup result = apiInstance.CreateContactCustomFieldGroup(createCustomFieldGroupRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ContactApi.CreateContactCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateContactCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create a Contact Custom Field Group
+    ApiResponse<CustomFieldGroup> response = apiInstance.CreateContactCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ContactApi.CreateContactCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createCustomFieldGroupRequest** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 
@@ -426,6 +535,202 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="deletecontactcustomfield"></a>
+# **DeleteContactCustomField**
+> void DeleteContactCustomField (string customFieldId)
+
+Delete a Contact Custom Field
+
+Deletes a custom field from the Contacts model
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteContactCustomFieldExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ContactApi(config);
+            var customFieldId = "customFieldId_example";  // string | 
+
+            try
+            {
+                // Delete a Contact Custom Field
+                apiInstance.DeleteContactCustomField(customFieldId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ContactApi.DeleteContactCustomField: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteContactCustomFieldWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete a Contact Custom Field
+    apiInstance.DeleteContactCustomFieldWithHttpInfo(customFieldId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ContactApi.DeleteContactCustomFieldWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **customFieldId** | **string** |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deletecontactcustomfieldgroup"></a>
+# **DeleteContactCustomFieldGroup**
+> void DeleteContactCustomFieldGroup (string groupId)
+
+Delete a Contact Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteContactCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ContactApi(config);
+            var groupId = "groupId_example";  // string | 
+
+            try
+            {
+                // Delete a Contact Custom Field Group
+                apiInstance.DeleteContactCustomFieldGroup(groupId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ContactApi.DeleteContactCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteContactCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete a Contact Custom Field Group
+    apiInstance.DeleteContactCustomFieldGroupWithHttpInfo(groupId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ContactApi.DeleteContactCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **groupId** | **string** |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="getcontact"></a>
 # **GetContact**
 > Contact GetContact (string contactId, List<string>? fields = null)
@@ -504,6 +809,108 @@ catch (ApiException e)
 ### Return type
 
 [**Contact**](Contact.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="getcontactcustomfieldgroup"></a>
+# **GetContactCustomFieldGroup**
+> CustomFieldGroup GetContactCustomFieldGroup (string groupId)
+
+Retrieve a Contact Custom Field Group
+
+Retrieves a single custom field group by id for the Contact record type.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class GetContactCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ContactApi(config);
+            var groupId = "groupId_example";  // string | 
+
+            try
+            {
+                // Retrieve a Contact Custom Field Group
+                CustomFieldGroup result = apiInstance.GetContactCustomFieldGroup(groupId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ContactApi.GetContactCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetContactCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve a Contact Custom Field Group
+    ApiResponse<CustomFieldGroup> response = apiInstance.GetContactCustomFieldGroupWithHttpInfo(groupId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ContactApi.GetContactCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **groupId** | **string** |  |  |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 
@@ -621,6 +1028,108 @@ catch (ApiException e)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listcontactcustomfieldgroups"></a>
+# **ListContactCustomFieldGroups**
+> ListCustomFieldGroupsResponse ListContactCustomFieldGroups (string? tabId = null)
+
+List Contact Custom Field Groups
+
+Retrieves a list of custom field groups for the Contact record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListContactCustomFieldGroupsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ContactApi(config);
+            var tabId = "tabId_example";  // string? | Optional tab id to scope groups to a single tab (optional) 
+
+            try
+            {
+                // List Contact Custom Field Groups
+                ListCustomFieldGroupsResponse result = apiInstance.ListContactCustomFieldGroups(tabId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ContactApi.ListContactCustomFieldGroups: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListContactCustomFieldGroupsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Contact Custom Field Groups
+    ApiResponse<ListCustomFieldGroupsResponse> response = apiInstance.ListContactCustomFieldGroupsWithHttpInfo(tabId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ContactApi.ListContactCustomFieldGroupsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tabId** | **string?** | Optional tab id to scope groups to a single tab | [optional]  |
+
+### Return type
+
+[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
@@ -1062,6 +1571,110 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="mergecontacts"></a>
+# **MergeContacts**
+> Contact MergeContacts (MergeContactRequest mergeContactRequest, List<string>? fields = null)
+
+Merge two Contacts
+
+Merges two Contacts together. The duplicate contact will be merged into the primary contact.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class MergeContactsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ContactApi(config);
+            var mergeContactRequest = new MergeContactRequest(); // MergeContactRequest | 
+            var fields = new List<string>?(); // List<string>? | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional) 
+
+            try
+            {
+                // Merge two Contacts
+                Contact result = apiInstance.MergeContacts(mergeContactRequest, fields);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ContactApi.MergeContacts: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the MergeContactsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Merge two Contacts
+    ApiResponse<Contact> response = apiInstance.MergeContactsWithHttpInfo(mergeContactRequest, fields);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ContactApi.MergeContactsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **mergeContactRequest** | [**MergeContactRequest**](MergeContactRequest.md) |  |  |
+| **fields** | [**List&lt;string&gt;?**](string.md) | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) | [optional]  |
+
+### Return type
+
+[**Contact**](Contact.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="retrievecontactmodel"></a>
 # **RetrieveContactModel**
 > ObjectModel RetrieveContactModel ()
@@ -1339,6 +1952,112 @@ catch (ApiException e)
 ### Return type
 
 [**Contact**](Contact.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updatecontactcustomfieldgroup"></a>
+# **UpdateContactCustomFieldGroup**
+> CustomFieldGroup UpdateContactCustomFieldGroup (string groupId, List<string> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest)
+
+Update a Contact Custom Field Group
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class UpdateContactCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ContactApi(config);
+            var groupId = "groupId_example";  // string | 
+            var updateMask = new List<string>(); // List<string> | Comma-separated list of fields to update
+            var updateCustomFieldGroupRequest = new UpdateCustomFieldGroupRequest(); // UpdateCustomFieldGroupRequest | 
+
+            try
+            {
+                // Update a Contact Custom Field Group
+                CustomFieldGroup result = apiInstance.UpdateContactCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ContactApi.UpdateContactCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateContactCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Update a Contact Custom Field Group
+    ApiResponse<CustomFieldGroup> response = apiInstance.UpdateContactCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ContactApi.UpdateContactCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **groupId** | **string** |  |  |
+| **updateMask** | [**List&lt;string&gt;**](string.md) | Comma-separated list of fields to update |  |
+| **updateCustomFieldGroupRequest** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 

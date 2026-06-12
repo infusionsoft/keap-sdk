@@ -33,59 +33,6 @@ namespace Keap.Core.V2.Model
     public partial class NoteTemplate : IValidatableObject
     {
         /// <summary>
-        /// Note action type
-        /// </summary>
-        /// <value>Note action type</value>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum ActionTypeEnum
-        {
-            /// <summary>
-            /// Enum APPOINTMENT for value: APPOINTMENT
-            /// </summary>
-            [EnumMember(Value = "APPOINTMENT")]
-            APPOINTMENT = 1,
-
-            /// <summary>
-            /// Enum CALL for value: CALL
-            /// </summary>
-            [EnumMember(Value = "CALL")]
-            CALL = 2,
-
-            /// <summary>
-            /// Enum EMAIL for value: EMAIL
-            /// </summary>
-            [EnumMember(Value = "EMAIL")]
-            EMAIL = 3,
-
-            /// <summary>
-            /// Enum FAX for value: FAX
-            /// </summary>
-            [EnumMember(Value = "FAX")]
-            FAX = 4,
-
-            /// <summary>
-            /// Enum LETTER for value: LETTER
-            /// </summary>
-            [EnumMember(Value = "LETTER")]
-            LETTER = 5,
-
-            /// <summary>
-            /// Enum OTHER for value: OTHER
-            /// </summary>
-            [EnumMember(Value = "OTHER")]
-            OTHER = 6
-        }
-
-        /// <summary>
-        /// Note action type
-        /// </summary>
-        /// <value>Note action type</value>
-        /*
-        <example>CALL</example>
-        */
-        [DataMember(Name = "action_type", EmitDefaultValue = false)]
-        public ActionTypeEnum? ActionType { get; set; }
-        /// <summary>
         /// Initializes a new instance of the <see cref="NoteTemplate" /> class.
         /// </summary>
         /// <param name="id">Template ID.</param>
@@ -94,7 +41,7 @@ namespace Keap.Core.V2.Model
         /// <param name="actionType">Note action type.</param>
         /// <param name="assignmentUserId">Default assigned user ID.</param>
         /// <param name="notifyUsers">List of user IDs to notify.</param>
-        public NoteTemplate(string id = default, string title = default, string description = default, ActionTypeEnum? actionType = default, long assignmentUserId = default, List<string> notifyUsers = default)
+        public NoteTemplate(string id = default, string title = default, string description = default, string actionType = default, long assignmentUserId = default, List<string> notifyUsers = default)
         {
             this.Id = id;
             this.Title = title;
@@ -133,6 +80,16 @@ namespace Keap.Core.V2.Model
         */
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Note action type
+        /// </summary>
+        /// <value>Note action type</value>
+        /*
+        <example>Call</example>
+        */
+        [DataMember(Name = "action_type", EmitDefaultValue = false)]
+        public string ActionType { get; set; }
 
         /// <summary>
         /// Default assigned user ID

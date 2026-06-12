@@ -7,13 +7,18 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**CancelSubscription**](SubscriptionsApi.md#cancelsubscription) | **POST** /rest/v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription |
 | [**CreateSubscription**](SubscriptionsApi.md#createsubscription) | **POST** /rest/v2/subscriptions | Create Subscription |
 | [**CreateSubscriptionCustomField**](SubscriptionsApi.md#createsubscriptioncustomfield) | **POST** /rest/v2/subscriptions/model/customFields | Create a Subscription Custom Field |
+| [**CreateSubscriptionCustomFieldGroup**](SubscriptionsApi.md#createsubscriptioncustomfieldgroup) | **POST** /rest/v2/subscriptions/model/customFields/groups | Create a Subscription Custom Field Group |
 | [**DeleteSubscriptionCustomField**](SubscriptionsApi.md#deletesubscriptioncustomfield) | **DELETE** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field |
+| [**DeleteSubscriptionCustomFieldGroup**](SubscriptionsApi.md#deletesubscriptioncustomfieldgroup) | **DELETE** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Delete a Subscription Custom Field Group |
 | [**GetSubscription**](SubscriptionsApi.md#getsubscription) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription |
+| [**GetSubscriptionCustomFieldGroup**](SubscriptionsApi.md#getsubscriptioncustomfieldgroup) | **GET** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Retrieve a Subscription Custom Field Group |
 | [**InvoiceSubscription**](SubscriptionsApi.md#invoicesubscription) | **POST** /rest/v2/subscriptions/{subscription_id}:invoice | Invoice a Subscription |
+| [**ListSubscriptionCustomFieldGroups**](SubscriptionsApi.md#listsubscriptioncustomfieldgroups) | **GET** /rest/v2/subscriptions/model/customFields/groups | List Subscription Custom Field Groups |
 | [**ListSubscriptions**](SubscriptionsApi.md#listsubscriptions) | **GET** /rest/v2/subscriptions | List Subscriptions |
 | [**RetrieveSubscriptionCustomFieldModel**](SubscriptionsApi.md#retrievesubscriptioncustomfieldmodel) | **GET** /rest/v2/subscriptions/model | Retrieve Subscription Custom Field Model |
 | [**UpdateSubscription**](SubscriptionsApi.md#updatesubscription) | **PATCH** /rest/v2/subscriptions/{subscription_id} | Update a Subscription |
 | [**UpdateSubscriptionCustomField**](SubscriptionsApi.md#updatesubscriptioncustomfield) | **PATCH** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field |
+| [**UpdateSubscriptionCustomFieldGroup**](SubscriptionsApi.md#updatesubscriptioncustomfieldgroup) | **PATCH** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Update a Subscription Custom Field Group |
 
 <a id="cancelsubscription"></a>
 # **CancelSubscription**
@@ -319,6 +324,108 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="createsubscriptioncustomfieldgroup"></a>
+# **CreateSubscriptionCustomFieldGroup**
+> CustomFieldGroup CreateSubscriptionCustomFieldGroup (CreateCustomFieldGroupRequest createCustomFieldGroupRequest)
+
+Create a Subscription Custom Field Group
+
+Creates a new custom field group for the Subscription record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class CreateSubscriptionCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new SubscriptionsApi(config);
+            var createCustomFieldGroupRequest = new CreateCustomFieldGroupRequest(); // CreateCustomFieldGroupRequest | 
+
+            try
+            {
+                // Create a Subscription Custom Field Group
+                CustomFieldGroup result = apiInstance.CreateSubscriptionCustomFieldGroup(createCustomFieldGroupRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling SubscriptionsApi.CreateSubscriptionCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateSubscriptionCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create a Subscription Custom Field Group
+    ApiResponse<CustomFieldGroup> response = apiInstance.CreateSubscriptionCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling SubscriptionsApi.CreateSubscriptionCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createCustomFieldGroupRequest** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="deletesubscriptioncustomfield"></a>
 # **DeleteSubscriptionCustomField**
 > void DeleteSubscriptionCustomField (string customFieldId)
@@ -387,6 +494,104 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **customFieldId** | **string** |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deletesubscriptioncustomfieldgroup"></a>
+# **DeleteSubscriptionCustomFieldGroup**
+> void DeleteSubscriptionCustomFieldGroup (string groupId)
+
+Delete a Subscription Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteSubscriptionCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new SubscriptionsApi(config);
+            var groupId = "groupId_example";  // string | 
+
+            try
+            {
+                // Delete a Subscription Custom Field Group
+                apiInstance.DeleteSubscriptionCustomFieldGroup(groupId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling SubscriptionsApi.DeleteSubscriptionCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteSubscriptionCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete a Subscription Custom Field Group
+    apiInstance.DeleteSubscriptionCustomFieldGroupWithHttpInfo(groupId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling SubscriptionsApi.DeleteSubscriptionCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **groupId** | **string** |  |  |
 
 ### Return type
 
@@ -519,6 +724,108 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="getsubscriptioncustomfieldgroup"></a>
+# **GetSubscriptionCustomFieldGroup**
+> CustomFieldGroup GetSubscriptionCustomFieldGroup (string groupId)
+
+Retrieve a Subscription Custom Field Group
+
+Retrieves a single custom field group by id for the Subscription record type.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class GetSubscriptionCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new SubscriptionsApi(config);
+            var groupId = "groupId_example";  // string | 
+
+            try
+            {
+                // Retrieve a Subscription Custom Field Group
+                CustomFieldGroup result = apiInstance.GetSubscriptionCustomFieldGroup(groupId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling SubscriptionsApi.GetSubscriptionCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetSubscriptionCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve a Subscription Custom Field Group
+    ApiResponse<CustomFieldGroup> response = apiInstance.GetSubscriptionCustomFieldGroupWithHttpInfo(groupId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling SubscriptionsApi.GetSubscriptionCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **groupId** | **string** |  |  |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="invoicesubscription"></a>
 # **InvoiceSubscription**
 > OrderV2 InvoiceSubscription (string subscriptionId)
@@ -595,6 +902,108 @@ catch (ApiException e)
 ### Return type
 
 [**OrderV2**](OrderV2.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listsubscriptioncustomfieldgroups"></a>
+# **ListSubscriptionCustomFieldGroups**
+> ListCustomFieldGroupsResponse ListSubscriptionCustomFieldGroups (string? tabId = null)
+
+List Subscription Custom Field Groups
+
+Retrieves a list of custom field groups for the Subscription record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListSubscriptionCustomFieldGroupsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new SubscriptionsApi(config);
+            var tabId = "tabId_example";  // string? | Optional tab id to scope groups to a single tab (optional) 
+
+            try
+            {
+                // List Subscription Custom Field Groups
+                ListCustomFieldGroupsResponse result = apiInstance.ListSubscriptionCustomFieldGroups(tabId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling SubscriptionsApi.ListSubscriptionCustomFieldGroups: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListSubscriptionCustomFieldGroupsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Subscription Custom Field Groups
+    ApiResponse<ListCustomFieldGroupsResponse> response = apiInstance.ListSubscriptionCustomFieldGroupsWithHttpInfo(tabId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling SubscriptionsApi.ListSubscriptionCustomFieldGroupsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tabId** | **string?** | Optional tab id to scope groups to a single tab | [optional]  |
+
+### Return type
+
+[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
 
 ### Authorization
 
@@ -1012,6 +1421,112 @@ catch (ApiException e)
 ### Return type
 
 [**CustomFieldMetaData**](CustomFieldMetaData.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updatesubscriptioncustomfieldgroup"></a>
+# **UpdateSubscriptionCustomFieldGroup**
+> CustomFieldGroup UpdateSubscriptionCustomFieldGroup (string groupId, List<string> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest)
+
+Update a Subscription Custom Field Group
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class UpdateSubscriptionCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new SubscriptionsApi(config);
+            var groupId = "groupId_example";  // string | 
+            var updateMask = new List<string>(); // List<string> | Comma-separated list of fields to update
+            var updateCustomFieldGroupRequest = new UpdateCustomFieldGroupRequest(); // UpdateCustomFieldGroupRequest | 
+
+            try
+            {
+                // Update a Subscription Custom Field Group
+                CustomFieldGroup result = apiInstance.UpdateSubscriptionCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling SubscriptionsApi.UpdateSubscriptionCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateSubscriptionCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Update a Subscription Custom Field Group
+    ApiResponse<CustomFieldGroup> response = apiInstance.UpdateSubscriptionCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling SubscriptionsApi.UpdateSubscriptionCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **groupId** | **string** |  |  |
+| **updateMask** | [**List&lt;string&gt;**](string.md) | Comma-separated list of fields to update |  |
+| **updateCustomFieldGroupRequest** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 

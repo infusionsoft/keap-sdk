@@ -28,7 +28,7 @@ export class NoteTemplate {
     /**
     * Note action type
     */
-    'actionType'?: NoteTemplateActionTypeEnum;
+    'actionType'?: string;
     /**
     * Default assigned user ID
     */
@@ -64,7 +64,7 @@ export class NoteTemplate {
         {
             "name": "actionType",
             "baseName": "action_type",
-            "type": "NoteTemplateActionTypeEnum",
+            "type": "string",
             "format": ""
         },
         {
@@ -87,13 +87,3 @@ export class NoteTemplate {
     public constructor() {
     }
 }
-
-export enum NoteTemplateActionTypeEnum {
-    Appointment = 'APPOINTMENT',
-    Call = 'CALL',
-    Email = 'EMAIL',
-    Fax = 'FAX',
-    Letter = 'LETTER',
-    Other = 'OTHER'
-}
-

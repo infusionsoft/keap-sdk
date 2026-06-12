@@ -35,8 +35,11 @@ class CreateSubscriptionPlanRequest {
      * Only for internal use.
      */
     static initialize(obj, cycleType, planPrice) { 
+        obj['frequency'] = 1;
         obj['cycle_type'] = cycleType;
+        obj['display_order_index'] = 0;
         obj['plan_price'] = planPrice;
+        obj['total_cycles'] = 0;
     }
 
     /**
@@ -109,8 +112,9 @@ CreateSubscriptionPlanRequest.prototype['active'] = undefined;
 /**
  * The frequency of the subscription plan. Must be greater than 0. Default is 1.
  * @member {Number} frequency
+ * @default 1
  */
-CreateSubscriptionPlanRequest.prototype['frequency'] = undefined;
+CreateSubscriptionPlanRequest.prototype['frequency'] = 1;
 
 /**
  * Allow prorating of the subscription plan.
@@ -125,10 +129,11 @@ CreateSubscriptionPlanRequest.prototype['allow_prorating'] = undefined;
 CreateSubscriptionPlanRequest.prototype['cycle_type'] = undefined;
 
 /**
- * The order that this plan will be displayed to the user.
+ * The order that this plan will be displayed to the user. Lower values indicate higher priority in order.
  * @member {Number} display_order_index
+ * @default 0
  */
-CreateSubscriptionPlanRequest.prototype['display_order_index'] = undefined;
+CreateSubscriptionPlanRequest.prototype['display_order_index'] = 0;
 
 /**
  * The price of the subscription plan in the smallest currency unit. Must be greater than or equal to 0.
@@ -139,8 +144,9 @@ CreateSubscriptionPlanRequest.prototype['plan_price'] = undefined;
 /**
  * How many cycles the subscription plan will have. 0 means infinite.
  * @member {Number} total_cycles
+ * @default 0
  */
-CreateSubscriptionPlanRequest.prototype['total_cycles'] = undefined;
+CreateSubscriptionPlanRequest.prototype['total_cycles'] = 0;
 
 
 

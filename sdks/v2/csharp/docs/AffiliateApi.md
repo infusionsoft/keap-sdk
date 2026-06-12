@@ -11,22 +11,26 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**AssignProductCommissionProgram**](AffiliateApi.md#assignproductcommissionprogram) | **POST** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program |
 | [**AssignSubscriptionCommissionProgram**](AffiliateApi.md#assignsubscriptioncommissionprogram) | **POST** /rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program |
 | [**CreateAffiliateCustomField**](AffiliateApi.md#createaffiliatecustomfield) | **POST** /rest/v2/affiliates/model/customFields | Create an Affiliate Custom Field |
+| [**CreateAffiliateCustomFieldGroup**](AffiliateApi.md#createaffiliatecustomfieldgroup) | **POST** /rest/v2/affiliates/model/customFields/groups | Create an Affiliate Custom Field Group |
 | [**CreateDefaultCommissionProgram**](AffiliateApi.md#createdefaultcommissionprogram) | **POST** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program |
 | [**CreateRedirectLink**](AffiliateApi.md#createredirectlink) | **POST** /rest/v2/affiliates/redirects | Create an Affiliate Link |
 | [**DeleteAffiliate**](AffiliateApi.md#deleteaffiliate) | **DELETE** /rest/v2/affiliates/{id} | Delete Affiliate |
 | [**DeleteAffiliateCommissionProgram**](AffiliateApi.md#deleteaffiliatecommissionprogram) | **DELETE** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
 | [**DeleteAffiliateCustomField**](AffiliateApi.md#deleteaffiliatecustomfield) | **DELETE** /rest/v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field |
+| [**DeleteAffiliateCustomFieldGroup**](AffiliateApi.md#deleteaffiliatecustomfieldgroup) | **DELETE** /rest/v2/affiliates/model/customFields/groups/{group_id} | Delete an Affiliate Custom Field Group |
 | [**DeleteCommissionProgramResource**](AffiliateApi.md#deletecommissionprogramresource) | **DELETE** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Remove Commission Program Resource |
 | [**DeleteRedirectLink**](AffiliateApi.md#deleteredirectlink) | **DELETE** /rest/v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
 | [**GetAffiliate**](AffiliateApi.md#getaffiliate) | **GET** /rest/v2/affiliates/{id} | Retrieve an Affiliate |
 | [**GetAffiliateCommissionTotal**](AffiliateApi.md#getaffiliatecommissiontotal) | **GET** /rest/v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal |
 | [**GetAffiliateCommissions**](AffiliateApi.md#getaffiliatecommissions) | **GET** /rest/v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commissions |
+| [**GetAffiliateCustomFieldGroup**](AffiliateApi.md#getaffiliatecustomfieldgroup) | **GET** /rest/v2/affiliates/model/customFields/groups/{group_id} | Retrieve an Affiliate Custom Field Group |
 | [**GetAffiliateCustomFields**](AffiliateApi.md#getaffiliatecustomfields) | **GET** /rest/v2/affiliates/model | Retrieve Affiliate Model |
 | [**GetCommissionProgram**](AffiliateApi.md#getcommissionprogram) | **GET** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program |
 | [**GetRedirectLink**](AffiliateApi.md#getredirectlink) | **GET** /rest/v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link |
 | [**GetReferralsByAffiliateId**](AffiliateApi.md#getreferralsbyaffiliateid) | **GET** /rest/v2/affiliates/{affiliate_id}/referrals | Retrieve Affiliate Referrals |
 | [**ListAffiliate**](AffiliateApi.md#listaffiliate) | **GET** /rest/v2/affiliates | List Affiliates |
 | [**ListAffiliateCommissionPrograms**](AffiliateApi.md#listaffiliatecommissionprograms) | **GET** /rest/v2/affiliates/commissionPrograms | List Affiliate Commission Programs |
+| [**ListAffiliateCustomFieldGroups**](AffiliateApi.md#listaffiliatecustomfieldgroups) | **GET** /rest/v2/affiliates/model/customFields/groups | List Affiliate Custom Field Groups |
 | [**ListAffiliateLinks**](AffiliateApi.md#listaffiliatelinks) | **GET** /rest/v2/affiliates/redirects | List Affiliate Links |
 | [**ListAffiliatePayments**](AffiliateApi.md#listaffiliatepayments) | **GET** /rest/v2/affiliates/{affiliate_id}/payments | List Affiliate Payments |
 | [**ListCommissionProgramResources**](AffiliateApi.md#listcommissionprogramresources) | **GET** /rest/v2/affiliates/commissionPrograms/{commission_program_id}/resources | Retrieve Commission Program Resources |
@@ -36,6 +40,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**RemoveSubscriptionPlanCommissionFromCommissions**](AffiliateApi.md#removesubscriptionplancommissionfromcommissions) | **POST** /rest/v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program |
 | [**UpdateAffiliate**](AffiliateApi.md#updateaffiliate) | **PATCH** /rest/v2/affiliates/{id} | Update an Affiliate |
 | [**UpdateAffiliateCustomField**](AffiliateApi.md#updateaffiliatecustomfield) | **PATCH** /rest/v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field |
+| [**UpdateAffiliateCustomFieldGroup**](AffiliateApi.md#updateaffiliatecustomfieldgroup) | **PATCH** /rest/v2/affiliates/model/customFields/groups/{group_id} | Update an Affiliate Custom Field Group |
 | [**UpdateCommissionProgram**](AffiliateApi.md#updatecommissionprogram) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
 | [**UpdateCommissionProgramResource**](AffiliateApi.md#updatecommissionprogramresource) | **PATCH** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Update Commission Program Resource |
 | [**UpdateDefaultCommissionProgram**](AffiliateApi.md#updatedefaultcommissionprogram) | **PATCH** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
@@ -759,6 +764,108 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="createaffiliatecustomfieldgroup"></a>
+# **CreateAffiliateCustomFieldGroup**
+> CustomFieldGroup CreateAffiliateCustomFieldGroup (CreateCustomFieldGroupRequest createCustomFieldGroupRequest)
+
+Create an Affiliate Custom Field Group
+
+Creates a new custom field group for the Affiliate record type. If `tab_id` is omitted, the group is added to the default 'Custom Fields' tab.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class CreateAffiliateCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AffiliateApi(config);
+            var createCustomFieldGroupRequest = new CreateCustomFieldGroupRequest(); // CreateCustomFieldGroupRequest | 
+
+            try
+            {
+                // Create an Affiliate Custom Field Group
+                CustomFieldGroup result = apiInstance.CreateAffiliateCustomFieldGroup(createCustomFieldGroupRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.CreateAffiliateCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateAffiliateCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create an Affiliate Custom Field Group
+    ApiResponse<CustomFieldGroup> response = apiInstance.CreateAffiliateCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.CreateAffiliateCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createCustomFieldGroupRequest** | [**CreateCustomFieldGroupRequest**](CreateCustomFieldGroupRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="createdefaultcommissionprogram"></a>
 # **CreateDefaultCommissionProgram**
 > GetRestCommissionProgram CreateDefaultCommissionProgram (string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest)
@@ -1229,6 +1336,104 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **customFieldId** | **string** |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deleteaffiliatecustomfieldgroup"></a>
+# **DeleteAffiliateCustomFieldGroup**
+> void DeleteAffiliateCustomFieldGroup (string groupId)
+
+Delete an Affiliate Custom Field Group
+
+Deletes a custom field group. Returns 409 Conflict if the group still contains custom fields.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteAffiliateCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AffiliateApi(config);
+            var groupId = "groupId_example";  // string | 
+
+            try
+            {
+                // Delete an Affiliate Custom Field Group
+                apiInstance.DeleteAffiliateCustomFieldGroup(groupId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.DeleteAffiliateCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteAffiliateCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete an Affiliate Custom Field Group
+    apiInstance.DeleteAffiliateCustomFieldGroupWithHttpInfo(groupId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.DeleteAffiliateCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **groupId** | **string** |  |  |
 
 ### Return type
 
@@ -1743,6 +1948,108 @@ catch (ApiException e)
 ### Return type
 
 [**ListAffiliateCommissionsResponse**](ListAffiliateCommissionsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="getaffiliatecustomfieldgroup"></a>
+# **GetAffiliateCustomFieldGroup**
+> CustomFieldGroup GetAffiliateCustomFieldGroup (string groupId)
+
+Retrieve an Affiliate Custom Field Group
+
+Retrieves a single custom field group by id for the Affiliate record type.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class GetAffiliateCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AffiliateApi(config);
+            var groupId = "groupId_example";  // string | 
+
+            try
+            {
+                // Retrieve an Affiliate Custom Field Group
+                CustomFieldGroup result = apiInstance.GetAffiliateCustomFieldGroup(groupId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.GetAffiliateCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetAffiliateCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve an Affiliate Custom Field Group
+    ApiResponse<CustomFieldGroup> response = apiInstance.GetAffiliateCustomFieldGroupWithHttpInfo(groupId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.GetAffiliateCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **groupId** | **string** |  |  |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 
@@ -2370,6 +2677,108 @@ catch (ApiException e)
 ### Return type
 
 [**ListAffiliateCommissionProgramsResponse**](ListAffiliateCommissionProgramsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listaffiliatecustomfieldgroups"></a>
+# **ListAffiliateCustomFieldGroups**
+> ListCustomFieldGroupsResponse ListAffiliateCustomFieldGroups (string? tabId = null)
+
+List Affiliate Custom Field Groups
+
+Retrieves a list of custom field groups for the Affiliate record type. Optionally filter by tab_id to scope to a specific tab.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListAffiliateCustomFieldGroupsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AffiliateApi(config);
+            var tabId = "tabId_example";  // string? | Optional tab id to scope groups to a single tab (optional) 
+
+            try
+            {
+                // List Affiliate Custom Field Groups
+                ListCustomFieldGroupsResponse result = apiInstance.ListAffiliateCustomFieldGroups(tabId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.ListAffiliateCustomFieldGroups: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListAffiliateCustomFieldGroupsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Affiliate Custom Field Groups
+    ApiResponse<ListCustomFieldGroupsResponse> response = apiInstance.ListAffiliateCustomFieldGroupsWithHttpInfo(tabId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.ListAffiliateCustomFieldGroupsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tabId** | **string?** | Optional tab id to scope groups to a single tab | [optional]  |
+
+### Return type
+
+[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
 
 ### Authorization
 
@@ -3310,6 +3719,112 @@ catch (ApiException e)
 ### Return type
 
 [**CustomFieldMetaData**](CustomFieldMetaData.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updateaffiliatecustomfieldgroup"></a>
+# **UpdateAffiliateCustomFieldGroup**
+> CustomFieldGroup UpdateAffiliateCustomFieldGroup (string groupId, List<string> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest)
+
+Update an Affiliate Custom Field Group
+
+Updates an existing custom field group. Only fields listed in `update_mask` are applied.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class UpdateAffiliateCustomFieldGroupExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AffiliateApi(config);
+            var groupId = "groupId_example";  // string | 
+            var updateMask = new List<string>(); // List<string> | Comma-separated list of fields to update
+            var updateCustomFieldGroupRequest = new UpdateCustomFieldGroupRequest(); // UpdateCustomFieldGroupRequest | 
+
+            try
+            {
+                // Update an Affiliate Custom Field Group
+                CustomFieldGroup result = apiInstance.UpdateAffiliateCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.UpdateAffiliateCustomFieldGroup: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateAffiliateCustomFieldGroupWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Update an Affiliate Custom Field Group
+    ApiResponse<CustomFieldGroup> response = apiInstance.UpdateAffiliateCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.UpdateAffiliateCustomFieldGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **groupId** | **string** |  |  |
+| **updateMask** | [**List&lt;string&gt;**](string.md) | Comma-separated list of fields to update |  |
+| **updateCustomFieldGroupRequest** | [**UpdateCustomFieldGroupRequest**](UpdateCustomFieldGroupRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldGroup**](CustomFieldGroup.md)
 
 ### Authorization
 

@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from keap_core_v2_client.models.discount_criteria import DiscountCriteria
+from keap_core_v2_client.models.update_product_discount_criteria import UpdateProductDiscountCriteria
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +29,7 @@ class UpdateProductDiscountRequest(BaseModel):
     """ # noqa: E501
     name: Optional[StrictStr] = Field(default=None, description="Name of the discount")
     description: Optional[StrictStr] = Field(default=None, description="Description of the discount")
-    criteria: Optional[List[DiscountCriteria]] = Field(default=None, description="List of criteria that must be met for this discount to apply")
+    criteria: Optional[List[UpdateProductDiscountCriteria]] = Field(default=None, description="List of criteria that must be met for this discount to apply")
     apply_to_commissions: Optional[StrictBool] = Field(default=None, description="Whether to apply this discount to commission calculations")
     product_id: Optional[StrictStr] = Field(default=None, description="ID of the product this discount applies to")
     discount_type: Optional[StrictStr] = Field(default=None, description="Type of discount: AMOUNT (fixed amount) or PERCENT (percentage)")
@@ -114,7 +114,7 @@ class UpdateProductDiscountRequest(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "criteria": [DiscountCriteria.from_dict(_item) for _item in obj["criteria"]] if obj.get("criteria") is not None else None,
+            "criteria": [UpdateProductDiscountCriteria.from_dict(_item) for _item in obj["criteria"]] if obj.get("criteria") is not None else None,
             "apply_to_commissions": obj.get("apply_to_commissions"),
             "product_id": obj.get("product_id"),
             "discount_type": obj.get("discount_type"),

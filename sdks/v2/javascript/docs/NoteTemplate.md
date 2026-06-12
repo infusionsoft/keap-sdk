@@ -12,24 +12,3 @@ Name | Type | Description | Notes
 **notifyUsers** | **[String]** | List of user IDs to notify | [optional] 
 
 
-
-## Enum: ActionTypeEnum
-
-
-* `APPOINTMENT` (value: `"APPOINTMENT"`)
-
-* `CALL` (value: `"CALL"`)
-
-* `EMAIL` (value: `"EMAIL"`)
-
-* `FAX` (value: `"FAX"`)
-
-* `LETTER` (value: `"LETTER"`)
-
-* `OTHER` (value: `"OTHER"`)
-
-* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
-
-
-
-

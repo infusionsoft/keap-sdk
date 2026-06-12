@@ -77,7 +77,13 @@ class ProductDiscountsApi
         'createProductDiscount' => [
             'application/json',
         ],
+        'createProductDiscountCriteria' => [
+            'application/json',
+        ],
         'deleteProductDiscount' => [
+            'application/json',
+        ],
+        'deleteProductDiscountCriteria' => [
             'application/json',
         ],
         'getProductDiscount' => [
@@ -521,6 +527,409 @@ class ProductDiscountsApi
     }
 
     /**
+     * Operation createProductDiscountCriteria
+     *
+     * Create a Product Discount Criteria
+     *
+     * @param  string $discount_id discount_id (required)
+     * @param  \Keap\Core\V2\Model\CreateProductDiscountCriteria $create_product_discount_criteria create_product_discount_criteria (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProductDiscountCriteria'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Keap\Core\V2\Model\DiscountCriteria|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     */
+    public function createProductDiscountCriteria($discount_id, $create_product_discount_criteria, string $contentType = self::contentTypes['createProductDiscountCriteria'][0])
+    {
+        list($response) = $this->createProductDiscountCriteriaWithHttpInfo($discount_id, $create_product_discount_criteria, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createProductDiscountCriteriaWithHttpInfo
+     *
+     * Create a Product Discount Criteria
+     *
+     * @param  string $discount_id (required)
+     * @param  \Keap\Core\V2\Model\CreateProductDiscountCriteria $create_product_discount_criteria (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProductDiscountCriteria'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Keap\Core\V2\Model\DiscountCriteria|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createProductDiscountCriteriaWithHttpInfo($discount_id, $create_product_discount_criteria, string $contentType = self::contentTypes['createProductDiscountCriteria'][0])
+    {
+        $request = $this->createProductDiscountCriteriaRequest($discount_id, $create_product_discount_criteria, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\DiscountCriteria',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 501:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Keap\Core\V2\Model\DiscountCriteria',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\DiscountCriteria',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createProductDiscountCriteriaAsync
+     *
+     * Create a Product Discount Criteria
+     *
+     * @param  string $discount_id (required)
+     * @param  \Keap\Core\V2\Model\CreateProductDiscountCriteria $create_product_discount_criteria (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProductDiscountCriteria'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createProductDiscountCriteriaAsync($discount_id, $create_product_discount_criteria, string $contentType = self::contentTypes['createProductDiscountCriteria'][0])
+    {
+        return $this->createProductDiscountCriteriaAsyncWithHttpInfo($discount_id, $create_product_discount_criteria, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createProductDiscountCriteriaAsyncWithHttpInfo
+     *
+     * Create a Product Discount Criteria
+     *
+     * @param  string $discount_id (required)
+     * @param  \Keap\Core\V2\Model\CreateProductDiscountCriteria $create_product_discount_criteria (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProductDiscountCriteria'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createProductDiscountCriteriaAsyncWithHttpInfo($discount_id, $create_product_discount_criteria, string $contentType = self::contentTypes['createProductDiscountCriteria'][0])
+    {
+        $returnType = '\Keap\Core\V2\Model\DiscountCriteria';
+        $request = $this->createProductDiscountCriteriaRequest($discount_id, $create_product_discount_criteria, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createProductDiscountCriteria'
+     *
+     * @param  string $discount_id (required)
+     * @param  \Keap\Core\V2\Model\CreateProductDiscountCriteria $create_product_discount_criteria (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProductDiscountCriteria'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createProductDiscountCriteriaRequest($discount_id, $create_product_discount_criteria, string $contentType = self::contentTypes['createProductDiscountCriteria'][0])
+    {
+
+        // verify the required parameter 'discount_id' is set
+        if ($discount_id === null || (is_array($discount_id) && count($discount_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $discount_id when calling createProductDiscountCriteria'
+            );
+        }
+
+        // verify the required parameter 'create_product_discount_criteria' is set
+        if ($create_product_discount_criteria === null || (is_array($create_product_discount_criteria) && count($create_product_discount_criteria) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_product_discount_criteria when calling createProductDiscountCriteria'
+            );
+        }
+
+
+        $resourcePath = '/rest/v2/discounts/products/{discount_id}/criteria';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($discount_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'discount_id' . '}',
+                ObjectSerializer::toPathValue($discount_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_product_discount_criteria)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_product_discount_criteria));
+            } else {
+                $httpBody = $create_product_discount_criteria;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation deleteProductDiscount
      *
      * Delete a Product Discount
@@ -744,6 +1153,312 @@ class ProductDiscountsApi
             $resourcePath = str_replace(
                 '{' . 'discount_id' . '}',
                 ObjectSerializer::toPathValue($discount_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteProductDiscountCriteria
+     *
+     * Delete a Product Discount Criteria
+     *
+     * @param  string $discount_id discount_id (required)
+     * @param  string $criteria_id criteria_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProductDiscountCriteria'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteProductDiscountCriteria($discount_id, $criteria_id, string $contentType = self::contentTypes['deleteProductDiscountCriteria'][0])
+    {
+        $this->deleteProductDiscountCriteriaWithHttpInfo($discount_id, $criteria_id, $contentType);
+    }
+
+    /**
+     * Operation deleteProductDiscountCriteriaWithHttpInfo
+     *
+     * Delete a Product Discount Criteria
+     *
+     * @param  string $discount_id (required)
+     * @param  string $criteria_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProductDiscountCriteria'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteProductDiscountCriteriaWithHttpInfo($discount_id, $criteria_id, string $contentType = self::contentTypes['deleteProductDiscountCriteria'][0])
+    {
+        $request = $this->deleteProductDiscountCriteriaRequest($discount_id, $criteria_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteProductDiscountCriteriaAsync
+     *
+     * Delete a Product Discount Criteria
+     *
+     * @param  string $discount_id (required)
+     * @param  string $criteria_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProductDiscountCriteria'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteProductDiscountCriteriaAsync($discount_id, $criteria_id, string $contentType = self::contentTypes['deleteProductDiscountCriteria'][0])
+    {
+        return $this->deleteProductDiscountCriteriaAsyncWithHttpInfo($discount_id, $criteria_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteProductDiscountCriteriaAsyncWithHttpInfo
+     *
+     * Delete a Product Discount Criteria
+     *
+     * @param  string $discount_id (required)
+     * @param  string $criteria_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProductDiscountCriteria'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteProductDiscountCriteriaAsyncWithHttpInfo($discount_id, $criteria_id, string $contentType = self::contentTypes['deleteProductDiscountCriteria'][0])
+    {
+        $returnType = '';
+        $request = $this->deleteProductDiscountCriteriaRequest($discount_id, $criteria_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteProductDiscountCriteria'
+     *
+     * @param  string $discount_id (required)
+     * @param  string $criteria_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProductDiscountCriteria'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteProductDiscountCriteriaRequest($discount_id, $criteria_id, string $contentType = self::contentTypes['deleteProductDiscountCriteria'][0])
+    {
+
+        // verify the required parameter 'discount_id' is set
+        if ($discount_id === null || (is_array($discount_id) && count($discount_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $discount_id when calling deleteProductDiscountCriteria'
+            );
+        }
+
+        // verify the required parameter 'criteria_id' is set
+        if ($criteria_id === null || (is_array($criteria_id) && count($criteria_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $criteria_id when calling deleteProductDiscountCriteria'
+            );
+        }
+
+
+        $resourcePath = '/rest/v2/discounts/products/{discount_id}/criteria/{criteria_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($discount_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'discount_id' . '}',
+                ObjectSerializer::toPathValue($discount_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($criteria_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'criteria_id' . '}',
+                ObjectSerializer::toPathValue($criteria_id),
                 $resourcePath
             );
         }

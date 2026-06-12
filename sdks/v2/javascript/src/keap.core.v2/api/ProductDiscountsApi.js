@@ -13,7 +13,9 @@
 
 
 import ApiClient from "../ApiClient";
+import CreateProductDiscountCriteria from '../model/CreateProductDiscountCriteria';
 import CreateProductDiscountRequest from '../model/CreateProductDiscountRequest';
+import DiscountCriteria from '../model/DiscountCriteria';
 import Error from '../model/Error';
 import ListProductDiscountsResponse from '../model/ListProductDiscountsResponse';
 import ProductDiscount from '../model/ProductDiscount';
@@ -86,6 +88,60 @@ export default class ProductDiscountsApi {
 
 
     /**
+     * Create a Product Discount Criteria
+     * Creates a Product Discount Criteria
+     * @param {String} discountId 
+     * @param {module:keap.core.v2/model/CreateProductDiscountCriteria} createProductDiscountCriteria 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/DiscountCriteria} and HTTP response
+     */
+    createProductDiscountCriteriaWithHttpInfo(discountId, createProductDiscountCriteria) {
+      let postBody = createProductDiscountCriteria;
+      // verify the required parameter 'discountId' is set
+      if (discountId === undefined || discountId === null) {
+        throw new Error("Missing the required parameter 'discountId' when calling createProductDiscountCriteria");
+      }
+      // verify the required parameter 'createProductDiscountCriteria' is set
+      if (createProductDiscountCriteria === undefined || createProductDiscountCriteria === null) {
+        throw new Error("Missing the required parameter 'createProductDiscountCriteria' when calling createProductDiscountCriteria");
+      }
+
+      let pathParams = {
+        'discount_id': discountId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = DiscountCriteria;
+      return this.apiClient.callApi(
+        '/rest/v2/discounts/products/{discount_id}/criteria', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create a Product Discount Criteria
+     * Creates a Product Discount Criteria
+     * @param {String} discountId 
+     * @param {module:keap.core.v2/model/CreateProductDiscountCriteria} createProductDiscountCriteria 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/DiscountCriteria}
+     */
+    createProductDiscountCriteria(discountId, createProductDiscountCriteria) {
+      return this.createProductDiscountCriteriaWithHttpInfo(discountId, createProductDiscountCriteria)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Delete a Product Discount
      * Deletes a specified Product Discount
      * @param {String} discountId 
@@ -127,6 +183,61 @@ export default class ProductDiscountsApi {
      */
     deleteProductDiscount(discountId) {
       return this.deleteProductDiscountWithHttpInfo(discountId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Delete a Product Discount Criteria
+     * Deletes a specified Product Discount Criteria
+     * @param {String} discountId 
+     * @param {String} criteriaId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteProductDiscountCriteriaWithHttpInfo(discountId, criteriaId) {
+      let postBody = null;
+      // verify the required parameter 'discountId' is set
+      if (discountId === undefined || discountId === null) {
+        throw new Error("Missing the required parameter 'discountId' when calling deleteProductDiscountCriteria");
+      }
+      // verify the required parameter 'criteriaId' is set
+      if (criteriaId === undefined || criteriaId === null) {
+        throw new Error("Missing the required parameter 'criteriaId' when calling deleteProductDiscountCriteria");
+      }
+
+      let pathParams = {
+        'discount_id': discountId,
+        'criteria_id': criteriaId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/discounts/products/{discount_id}/criteria/{criteria_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete a Product Discount Criteria
+     * Deletes a specified Product Discount Criteria
+     * @param {String} discountId 
+     * @param {String} criteriaId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteProductDiscountCriteria(discountId, criteriaId) {
+      return this.deleteProductDiscountCriteriaWithHttpInfo(discountId, criteriaId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

@@ -81,6 +81,7 @@ export * from '../models/CreateCommissionProgramRequest';
 export * from '../models/CreateCompanyRequest';
 export * from '../models/CreateContactLinkTypeRequest';
 export * from '../models/CreateContactUtmPropertiesRequest';
+export * from '../models/CreateCustomFieldGroupRequest';
 export * from '../models/CreateCustomFieldOptionRequest';
 export * from '../models/CreateCustomFieldRequest';
 export * from '../models/CreateCustomFieldResponse';
@@ -102,6 +103,7 @@ export * from '../models/CreateOrderTotalDiscountRequest';
 export * from '../models/CreatePaymentMethodConfigRequest';
 export * from '../models/CreateProductCategoryRequest';
 export * from '../models/CreateProductCommissionProgramRequest';
+export * from '../models/CreateProductDiscountCriteria';
 export * from '../models/CreateProductDiscountRequest';
 export * from '../models/CreateProductInterestBundleRequest';
 export * from '../models/CreateProductOptionListOption';
@@ -124,6 +126,7 @@ export * from '../models/CurrencyValue';
 export * from '../models/CurrencyValueDetail';
 export * from '../models/CurrencyValueList';
 export * from '../models/CustomField';
+export * from '../models/CustomFieldGroup';
 export * from '../models/CustomFieldMetaData';
 export * from '../models/CustomFieldOption';
 export * from '../models/CustomFieldValue';
@@ -196,6 +199,7 @@ export * from '../models/ListContactPaymentMethodsResponse';
 export * from '../models/ListContactTagsResponse';
 export * from '../models/ListContactsResponse';
 export * from '../models/ListCountriesResponse';
+export * from '../models/ListCustomFieldGroupsResponse';
 export * from '../models/ListEmailsSentResponse';
 export * from '../models/ListFilesResponse';
 export * from '../models/ListFreeTrialDiscountsResponse';
@@ -238,6 +242,7 @@ export * from '../models/ListUserGroupsResponse';
 export * from '../models/ListUsersPaginatedResponse';
 export * from '../models/ListWebformsResponse';
 export * from '../models/ListWordPressOptInOptionsResponse';
+export * from '../models/MergeContactRequest';
 export * from '../models/ModelError';
 export * from '../models/Note';
 export * from '../models/NoteTemplate';
@@ -317,6 +322,7 @@ export * from '../models/UpdateBusinessProfileRequest';
 export * from '../models/UpdateCategoryDiscountRequest';
 export * from '../models/UpdateCommissionProgramRequest';
 export * from '../models/UpdateCompanyRequest';
+export * from '../models/UpdateCustomFieldGroupRequest';
 export * from '../models/UpdateCustomFieldMetaDataRequest';
 export * from '../models/UpdateDefaultCommissionProgramRequest';
 export * from '../models/UpdateEmailAddress';
@@ -332,6 +338,7 @@ export * from '../models/UpdateOrderRequest';
 export * from '../models/UpdateOrderTotalDiscountRequest';
 export * from '../models/UpdateProductCategoryRequest';
 export * from '../models/UpdateProductCommissionProgramRequest';
+export * from '../models/UpdateProductDiscountCriteria';
 export * from '../models/UpdateProductDiscountRequest';
 export * from '../models/UpdateProductInterestBundleRequest';
 export * from '../models/UpdateProductInterestRequest';
@@ -437,6 +444,7 @@ import { CreateCommissionProgramRequest } from '../models/CreateCommissionProgra
 import { CreateCompanyRequest } from '../models/CreateCompanyRequest';
 import { CreateContactLinkTypeRequest } from '../models/CreateContactLinkTypeRequest';
 import { CreateContactUtmPropertiesRequest } from '../models/CreateContactUtmPropertiesRequest';
+import { CreateCustomFieldGroupRequest } from '../models/CreateCustomFieldGroupRequest';
 import { CreateCustomFieldOptionRequest } from '../models/CreateCustomFieldOptionRequest';
 import { CreateCustomFieldRequest  , CreateCustomFieldRequestFieldTypeEnum     } from '../models/CreateCustomFieldRequest';
 import { CreateCustomFieldResponse } from '../models/CreateCustomFieldResponse';
@@ -458,6 +466,7 @@ import { CreateOrderTotalDiscountRequest    , CreateOrderTotalDiscountRequestDis
 import { CreatePaymentMethodConfigRequest } from '../models/CreatePaymentMethodConfigRequest';
 import { CreateProductCategoryRequest } from '../models/CreateProductCategoryRequest';
 import { CreateProductCommissionProgramRequest     , CreateProductCommissionProgramRequestPayoutTypeEnum    } from '../models/CreateProductCommissionProgramRequest';
+import { CreateProductDiscountCriteria, CreateProductDiscountCriteriaTypeEnum           , CreateProductDiscountCriteriaOperatorEnum   } from '../models/CreateProductDiscountCriteria';
 import { CreateProductDiscountRequest     , CreateProductDiscountRequestDiscountTypeEnum    } from '../models/CreateProductDiscountRequest';
 import { CreateProductInterestBundleRequest } from '../models/CreateProductInterestBundleRequest';
 import { CreateProductOptionListOption } from '../models/CreateProductOptionListOption';
@@ -480,6 +489,7 @@ import { CurrencyValue } from '../models/CurrencyValue';
 import { CurrencyValueDetail } from '../models/CurrencyValueDetail';
 import { CurrencyValueList } from '../models/CurrencyValueList';
 import { CustomField } from '../models/CustomField';
+import { CustomFieldGroup    , CustomFieldGroupRecordTypeEnum   } from '../models/CustomFieldGroup';
 import { CustomFieldMetaData   , CustomFieldMetaDataRecordTypeEnum  , CustomFieldMetaDataFieldTypeEnum       } from '../models/CustomFieldMetaData';
 import { CustomFieldOption } from '../models/CustomFieldOption';
 import { CustomFieldValue } from '../models/CustomFieldValue';
@@ -552,6 +562,7 @@ import { ListContactPaymentMethodsResponse } from '../models/ListContactPaymentM
 import { ListContactTagsResponse } from '../models/ListContactTagsResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
+import { ListCustomFieldGroupsResponse } from '../models/ListCustomFieldGroupsResponse';
 import { ListEmailsSentResponse } from '../models/ListEmailsSentResponse';
 import { ListFilesResponse } from '../models/ListFilesResponse';
 import { ListFreeTrialDiscountsResponse } from '../models/ListFreeTrialDiscountsResponse';
@@ -594,9 +605,10 @@ import { ListUserGroupsResponse } from '../models/ListUserGroupsResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { ListWebformsResponse } from '../models/ListWebformsResponse';
 import { ListWordPressOptInOptionsResponse } from '../models/ListWordPressOptInOptionsResponse';
+import { MergeContactRequest } from '../models/MergeContactRequest';
 import { ModelError } from '../models/ModelError';
 import { Note } from '../models/Note';
-import { NoteTemplate   , NoteTemplateActionTypeEnum     } from '../models/NoteTemplate';
+import { NoteTemplate } from '../models/NoteTemplate';
 import { ObjectModel } from '../models/ObjectModel';
 import { OpportunityContact } from '../models/OpportunityContact';
 import { OpportunityStage } from '../models/OpportunityStage';
@@ -673,6 +685,7 @@ import { UpdateBusinessProfileRequest } from '../models/UpdateBusinessProfileReq
 import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountRequest';
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
+import { UpdateCustomFieldGroupRequest } from '../models/UpdateCustomFieldGroupRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
 import { UpdateDefaultCommissionProgramRequest     , UpdateDefaultCommissionProgramRequestPayoutTypeEnum   } from '../models/UpdateDefaultCommissionProgramRequest';
 import { UpdateEmailAddress } from '../models/UpdateEmailAddress';
@@ -688,6 +701,7 @@ import { UpdateOrderRequest     , UpdateOrderRequestOrderTypeEnum         } from
 import { UpdateOrderTotalDiscountRequest    , UpdateOrderTotalDiscountRequestDiscountTypeEnum   , UpdateOrderTotalDiscountRequestDiscountStrategyEnum   } from '../models/UpdateOrderTotalDiscountRequest';
 import { UpdateProductCategoryRequest } from '../models/UpdateProductCategoryRequest';
 import { UpdateProductCommissionProgramRequest     , UpdateProductCommissionProgramRequestPayoutTypeEnum    } from '../models/UpdateProductCommissionProgramRequest';
+import { UpdateProductDiscountCriteria          , UpdateProductDiscountCriteriaOperatorEnum   } from '../models/UpdateProductDiscountCriteria';
 import { UpdateProductDiscountRequest     , UpdateProductDiscountRequestDiscountTypeEnum    } from '../models/UpdateProductDiscountRequest';
 import { UpdateProductInterestBundleRequest } from '../models/UpdateProductInterestBundleRequest';
 import { UpdateProductInterestRequest } from '../models/UpdateProductInterestRequest';
@@ -744,6 +758,8 @@ let enumsMap: Set<string> = new Set<string>([
     "CreateOrderTotalDiscountRequestDiscountTypeEnum",
     "CreateOrderTotalDiscountRequestDiscountStrategyEnum",
     "CreateProductCommissionProgramRequestPayoutTypeEnum",
+    "CreateProductDiscountCriteriaTypeEnum",
+    "CreateProductDiscountCriteriaOperatorEnum",
     "CreateProductDiscountRequestDiscountTypeEnum",
     "CreateProductOptionRequestOptionTypeEnum",
     "CreateProductOptionTextOptionOnlyStartsWithEnum",
@@ -759,6 +775,7 @@ let enumsMap: Set<string> = new Set<string>([
     "CreateUpdateContactRequestSourceTypeEnum",
     "CreateUpdateTaskRequestPriorityEnum",
     "CreateUpdateTaskRequestRemindTimeMinsEnum",
+    "CustomFieldGroupRecordTypeEnum",
     "CustomFieldMetaDataRecordTypeEnum",
     "CustomFieldMetaDataFieldTypeEnum",
     "DefaultCommissionPayoutTypeEnum",
@@ -779,7 +796,6 @@ let enumsMap: Set<string> = new Set<string>([
     "ItemTypeEnum",
     "LeadSourceStatusEnum",
     "ListMerchantAccountResponseTypeEnum",
-    "NoteTemplateActionTypeEnum",
     "OrderItemItemTypeEnum",
     "OrderTotalDiscountDiscountTypeEnum",
     "OrderTotalDiscountDiscountStrategyEnum",
@@ -832,6 +848,7 @@ let enumsMap: Set<string> = new Set<string>([
     "UpdateOrderTotalDiscountRequestDiscountTypeEnum",
     "UpdateOrderTotalDiscountRequestDiscountStrategyEnum",
     "UpdateProductCommissionProgramRequestPayoutTypeEnum",
+    "UpdateProductDiscountCriteriaOperatorEnum",
     "UpdateProductDiscountRequestDiscountTypeEnum",
     "UpdateProductInventoryRequestDetailTypeEnum",
     "UpdateProductOptionRequestOnlyStartsWithEnum",
@@ -933,6 +950,7 @@ let typeMap: {[index: string]: any} = {
     "CreateCompanyRequest": CreateCompanyRequest,
     "CreateContactLinkTypeRequest": CreateContactLinkTypeRequest,
     "CreateContactUtmPropertiesRequest": CreateContactUtmPropertiesRequest,
+    "CreateCustomFieldGroupRequest": CreateCustomFieldGroupRequest,
     "CreateCustomFieldOptionRequest": CreateCustomFieldOptionRequest,
     "CreateCustomFieldRequest": CreateCustomFieldRequest,
     "CreateCustomFieldResponse": CreateCustomFieldResponse,
@@ -954,6 +972,7 @@ let typeMap: {[index: string]: any} = {
     "CreatePaymentMethodConfigRequest": CreatePaymentMethodConfigRequest,
     "CreateProductCategoryRequest": CreateProductCategoryRequest,
     "CreateProductCommissionProgramRequest": CreateProductCommissionProgramRequest,
+    "CreateProductDiscountCriteria": CreateProductDiscountCriteria,
     "CreateProductDiscountRequest": CreateProductDiscountRequest,
     "CreateProductInterestBundleRequest": CreateProductInterestBundleRequest,
     "CreateProductOptionListOption": CreateProductOptionListOption,
@@ -976,6 +995,7 @@ let typeMap: {[index: string]: any} = {
     "CurrencyValueDetail": CurrencyValueDetail,
     "CurrencyValueList": CurrencyValueList,
     "CustomField": CustomField,
+    "CustomFieldGroup": CustomFieldGroup,
     "CustomFieldMetaData": CustomFieldMetaData,
     "CustomFieldOption": CustomFieldOption,
     "CustomFieldValue": CustomFieldValue,
@@ -1048,6 +1068,7 @@ let typeMap: {[index: string]: any} = {
     "ListContactTagsResponse": ListContactTagsResponse,
     "ListContactsResponse": ListContactsResponse,
     "ListCountriesResponse": ListCountriesResponse,
+    "ListCustomFieldGroupsResponse": ListCustomFieldGroupsResponse,
     "ListEmailsSentResponse": ListEmailsSentResponse,
     "ListFilesResponse": ListFilesResponse,
     "ListFreeTrialDiscountsResponse": ListFreeTrialDiscountsResponse,
@@ -1090,6 +1111,7 @@ let typeMap: {[index: string]: any} = {
     "ListUsersPaginatedResponse": ListUsersPaginatedResponse,
     "ListWebformsResponse": ListWebformsResponse,
     "ListWordPressOptInOptionsResponse": ListWordPressOptInOptionsResponse,
+    "MergeContactRequest": MergeContactRequest,
     "ModelError": ModelError,
     "Note": Note,
     "NoteTemplate": NoteTemplate,
@@ -1169,6 +1191,7 @@ let typeMap: {[index: string]: any} = {
     "UpdateCategoryDiscountRequest": UpdateCategoryDiscountRequest,
     "UpdateCommissionProgramRequest": UpdateCommissionProgramRequest,
     "UpdateCompanyRequest": UpdateCompanyRequest,
+    "UpdateCustomFieldGroupRequest": UpdateCustomFieldGroupRequest,
     "UpdateCustomFieldMetaDataRequest": UpdateCustomFieldMetaDataRequest,
     "UpdateDefaultCommissionProgramRequest": UpdateDefaultCommissionProgramRequest,
     "UpdateEmailAddress": UpdateEmailAddress,
@@ -1184,6 +1207,7 @@ let typeMap: {[index: string]: any} = {
     "UpdateOrderTotalDiscountRequest": UpdateOrderTotalDiscountRequest,
     "UpdateProductCategoryRequest": UpdateProductCategoryRequest,
     "UpdateProductCommissionProgramRequest": UpdateProductCommissionProgramRequest,
+    "UpdateProductDiscountCriteria": UpdateProductDiscountCriteria,
     "UpdateProductDiscountRequest": UpdateProductDiscountRequest,
     "UpdateProductInterestBundleRequest": UpdateProductInterestBundleRequest,
     "UpdateProductInterestRequest": UpdateProductInterestRequest,

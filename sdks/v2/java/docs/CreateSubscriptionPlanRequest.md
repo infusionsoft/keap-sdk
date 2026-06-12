@@ -11,7 +11,7 @@
 |**frequency** | **Integer** | The frequency of the subscription plan. Must be greater than 0. Default is 1. |  [optional] |
 |**allowProrating** | **Boolean** | Allow prorating of the subscription plan. |  [optional] |
 |**cycleType** | [**CycleTypeEnum**](#CycleTypeEnum) | The cycle type of the subscription plan. |  |
-|**displayOrderIndex** | **Integer** | The order that this plan will be displayed to the user. |  [optional] |
+|**displayOrderIndex** | **Integer** | The order that this plan will be displayed to the user. Lower values indicate higher priority in order. |  [optional] |
 |**planPrice** | **Double** | The price of the subscription plan in the smallest currency unit. Must be greater than or equal to 0. |  |
 |**totalCycles** | **Integer** | How many cycles the subscription plan will have. 0 means infinite. |  [optional] |
 

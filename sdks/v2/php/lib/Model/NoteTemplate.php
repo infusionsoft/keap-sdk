@@ -258,29 +258,6 @@ class NoteTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const ACTION_TYPE_APPOINTMENT = 'APPOINTMENT';
-    public const ACTION_TYPE_CALL = 'CALL';
-    public const ACTION_TYPE_EMAIL = 'EMAIL';
-    public const ACTION_TYPE_FAX = 'FAX';
-    public const ACTION_TYPE_LETTER = 'LETTER';
-    public const ACTION_TYPE_OTHER = 'OTHER';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getActionTypeAllowableValues()
-    {
-        return [
-            self::ACTION_TYPE_APPOINTMENT,
-            self::ACTION_TYPE_CALL,
-            self::ACTION_TYPE_EMAIL,
-            self::ACTION_TYPE_FAX,
-            self::ACTION_TYPE_LETTER,
-            self::ACTION_TYPE_OTHER,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -331,15 +308,6 @@ class NoteTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getActionTypeAllowableValues();
-        if (!is_null($this->container['action_type']) && !in_array($this->container['action_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'action_type', must be one of '%s'",
-                $this->container['action_type'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -458,16 +426,6 @@ class NoteTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($action_type)) {
             throw new \InvalidArgumentException('non-nullable action_type cannot be null');
-        }
-        $allowedValues = $this->getActionTypeAllowableValues();
-        if (!in_array($action_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'action_type', must be one of '%s'",
-                    $action_type,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['action_type'] = $action_type;
 

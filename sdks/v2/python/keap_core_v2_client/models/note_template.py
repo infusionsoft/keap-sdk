@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -34,16 +34,6 @@ class NoteTemplate(BaseModel):
     notify_users: Optional[List[StrictStr]] = Field(default=None, description="List of user IDs to notify")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "title", "description", "action_type", "assignment_user_id", "notify_users"]
-
-    @field_validator('action_type')
-    def action_type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['APPOINTMENT', 'CALL', 'EMAIL', 'FAX', 'LETTER', 'OTHER']):
-            raise ValueError("must be one of enum values ('APPOINTMENT', 'CALL', 'EMAIL', 'FAX', 'LETTER', 'OTHER')")
-        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
