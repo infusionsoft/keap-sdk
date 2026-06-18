@@ -59,7 +59,7 @@ class UpdateShippingDiscountRequest implements ModelInterface, ArrayAccess, \Jso
     protected static $openAPITypes = [
         'name' => 'string',
         'description' => 'string',
-        'criteria' => '\Keap\Core\V2\Model\DiscountCriteria[]',
+        'criteria' => '\Keap\Core\V2\Model\UpdateShippingDiscountCriteria[]',
         'discount_type' => 'string',
         'discount_value' => 'float'
     ];
@@ -398,7 +398,7 @@ class UpdateShippingDiscountRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets criteria
      *
-     * @return \Keap\Core\V2\Model\DiscountCriteria[]|null
+     * @return \Keap\Core\V2\Model\UpdateShippingDiscountCriteria[]|null
      */
     public function getCriteria()
     {
@@ -408,7 +408,7 @@ class UpdateShippingDiscountRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets criteria
      *
-     * @param \Keap\Core\V2\Model\DiscountCriteria[]|null $criteria List of criteria that must be met for this discount to apply
+     * @param \Keap\Core\V2\Model\UpdateShippingDiscountCriteria[]|null $criteria List of criteria that must be met for this discount to apply
      *
      * @return self
      */

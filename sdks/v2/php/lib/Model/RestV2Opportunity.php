@@ -78,7 +78,10 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         'order_revenue' => 'float',
         'objection' => 'string',
         'status' => 'string',
-        'stage_entrance_time' => 'string'
+        'status_id' => 'string',
+        'stage_entrance_time' => 'string',
+        'last_updated_by' => 'string',
+        'created_by' => 'string'
     ];
 
     /**
@@ -110,7 +113,10 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         'order_revenue' => 'double',
         'objection' => null,
         'status' => null,
-        'stage_entrance_time' => null
+        'status_id' => null,
+        'stage_entrance_time' => null,
+        'last_updated_by' => null,
+        'created_by' => null
     ];
 
     /**
@@ -140,7 +146,10 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         'order_revenue' => false,
         'objection' => false,
         'status' => false,
-        'stage_entrance_time' => false
+        'status_id' => false,
+        'stage_entrance_time' => false,
+        'last_updated_by' => false,
+        'created_by' => false
     ];
 
     /**
@@ -250,7 +259,10 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         'order_revenue' => 'order_revenue',
         'objection' => 'objection',
         'status' => 'status',
-        'stage_entrance_time' => 'stage_entrance_time'
+        'status_id' => 'status_id',
+        'stage_entrance_time' => 'stage_entrance_time',
+        'last_updated_by' => 'last_updated_by',
+        'created_by' => 'created_by'
     ];
 
     /**
@@ -280,7 +292,10 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         'order_revenue' => 'setOrderRevenue',
         'objection' => 'setObjection',
         'status' => 'setStatus',
-        'stage_entrance_time' => 'setStageEntranceTime'
+        'status_id' => 'setStatusId',
+        'stage_entrance_time' => 'setStageEntranceTime',
+        'last_updated_by' => 'setLastUpdatedBy',
+        'created_by' => 'setCreatedBy'
     ];
 
     /**
@@ -310,7 +325,10 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         'order_revenue' => 'getOrderRevenue',
         'objection' => 'getObjection',
         'status' => 'getStatus',
-        'stage_entrance_time' => 'getStageEntranceTime'
+        'status_id' => 'getStatusId',
+        'stage_entrance_time' => 'getStageEntranceTime',
+        'last_updated_by' => 'getLastUpdatedBy',
+        'created_by' => 'getCreatedBy'
     ];
 
     /**
@@ -391,7 +409,10 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('order_revenue', $data ?? [], null);
         $this->setIfExists('objection', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('status_id', $data ?? [], null);
         $this->setIfExists('stage_entrance_time', $data ?? [], null);
+        $this->setIfExists('last_updated_by', $data ?? [], null);
+        $this->setIfExists('created_by', $data ?? [], null);
     }
 
     /**
@@ -1013,6 +1034,33 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
+     * Gets status_id
+     *
+     * @return string|null
+     */
+    public function getStatusId()
+    {
+        return $this->container['status_id'];
+    }
+
+    /**
+     * Sets status_id
+     *
+     * @param string|null $status_id Status ID
+     *
+     * @return self
+     */
+    public function setStatusId($status_id)
+    {
+        if (is_null($status_id)) {
+            throw new \InvalidArgumentException('non-nullable status_id cannot be null');
+        }
+        $this->container['status_id'] = $status_id;
+
+        return $this;
+    }
+
+    /**
      * Gets stage_entrance_time
      *
      * @return string|null
@@ -1035,6 +1083,60 @@ class RestV2Opportunity implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable stage_entrance_time cannot be null');
         }
         $this->container['stage_entrance_time'] = $stage_entrance_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_updated_by
+     *
+     * @return string|null
+     */
+    public function getLastUpdatedBy()
+    {
+        return $this->container['last_updated_by'];
+    }
+
+    /**
+     * Sets last_updated_by
+     *
+     * @param string|null $last_updated_by User who last updated the opportunity record
+     *
+     * @return self
+     */
+    public function setLastUpdatedBy($last_updated_by)
+    {
+        if (is_null($last_updated_by)) {
+            throw new \InvalidArgumentException('non-nullable last_updated_by cannot be null');
+        }
+        $this->container['last_updated_by'] = $last_updated_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_by
+     *
+     * @return string|null
+     */
+    public function getCreatedBy()
+    {
+        return $this->container['created_by'];
+    }
+
+    /**
+     * Sets created_by
+     *
+     * @param string|null $created_by User who created the opportunity record
+     *
+     * @return self
+     */
+    public function setCreatedBy($created_by)
+    {
+        if (is_null($created_by)) {
+            throw new \InvalidArgumentException('non-nullable created_by cannot be null');
+        }
+        $this->container['created_by'] = $created_by;
 
         return $this;
     }

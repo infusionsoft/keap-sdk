@@ -25,6 +25,9 @@ Name | Type | Description | Notes
 **orderRevenue** | **Number** | Order revenue | [optional] 
 **objection** | **String** | Objection reason | [optional] 
 **status** | **String** | Status name | [optional] 
+**statusId** | **String** | Status ID | [optional] 
 **stageEntranceTime** | **String** | Timestamp when the opportunity entered its current stage (ISO-8601) | [optional] 
+**lastUpdatedBy** | **String** | User who last updated the opportunity record | [optional] 
+**createdBy** | **String** | User who created the opportunity record | [optional] 
 
 

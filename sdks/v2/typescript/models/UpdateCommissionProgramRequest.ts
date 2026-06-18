@@ -16,7 +16,7 @@ export class UpdateCommissionProgramRequest {
     /**
     * The name of the Commission Program
     */
-    'name': string;
+    'name'?: string;
     /**
     * The notes of the Commission Program
     */
@@ -24,7 +24,7 @@ export class UpdateCommissionProgramRequest {
     /**
     * The priority of the Commission Program
     */
-    'priority': number;
+    'priority'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 

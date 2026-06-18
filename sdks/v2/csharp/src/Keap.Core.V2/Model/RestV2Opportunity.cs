@@ -61,8 +61,11 @@ namespace Keap.Core.V2.Model
         /// <param name="orderRevenue">Order revenue.</param>
         /// <param name="objection">Objection reason.</param>
         /// <param name="status">Status name.</param>
+        /// <param name="statusId">Status ID.</param>
         /// <param name="stageEntranceTime">Timestamp when the opportunity entered its current stage (ISO-8601).</param>
-        public RestV2Opportunity(string id = default, OpportunityContact contact = default, OpportunityStage stage = default, RestV2User user = default, string opportunityTitle = default, string nextActionTime = default, string nextActionNotes = default, string opportunityNotes = default, string estimatedCloseTime = default, bool includeInForecast = default, double projectedRevenueLow = default, double projectedRevenueHigh = default, List<CustomField> customFields = default, string createdTime = default, string lastUpdatedTime = default, string affiliateId = default, string leadSource = default, double monthlyRevenue = default, double orderRevenue = default, string objection = default, string status = default, string stageEntranceTime = default)
+        /// <param name="lastUpdatedBy">User who last updated the opportunity record.</param>
+        /// <param name="createdBy">User who created the opportunity record.</param>
+        public RestV2Opportunity(string id = default, OpportunityContact contact = default, OpportunityStage stage = default, RestV2User user = default, string opportunityTitle = default, string nextActionTime = default, string nextActionNotes = default, string opportunityNotes = default, string estimatedCloseTime = default, bool includeInForecast = default, double projectedRevenueLow = default, double projectedRevenueHigh = default, List<CustomField> customFields = default, string createdTime = default, string lastUpdatedTime = default, string affiliateId = default, string leadSource = default, double monthlyRevenue = default, double orderRevenue = default, string objection = default, string status = default, string statusId = default, string stageEntranceTime = default, string lastUpdatedBy = default, string createdBy = default)
         {
             // to ensure "contact" is required (not null)
             if (contact == null)
@@ -100,7 +103,10 @@ namespace Keap.Core.V2.Model
             this.OrderRevenue = orderRevenue;
             this.Objection = objection;
             this.Status = status;
+            this.StatusId = statusId;
             this.StageEntranceTime = stageEntranceTime;
+            this.LastUpdatedBy = lastUpdatedBy;
+            this.CreatedBy = createdBy;
         }
 
         /// <summary>
@@ -298,6 +304,16 @@ namespace Keap.Core.V2.Model
         public string Status { get; set; }
 
         /// <summary>
+        /// Status ID
+        /// </summary>
+        /// <value>Status ID</value>
+        /*
+        <example>123</example>
+        */
+        [DataMember(Name = "status_id", EmitDefaultValue = false)]
+        public string StatusId { get; set; }
+
+        /// <summary>
         /// Timestamp when the opportunity entered its current stage (ISO-8601)
         /// </summary>
         /// <value>Timestamp when the opportunity entered its current stage (ISO-8601)</value>
@@ -306,6 +322,26 @@ namespace Keap.Core.V2.Model
         */
         [DataMember(Name = "stage_entrance_time", EmitDefaultValue = false)]
         public string StageEntranceTime { get; set; }
+
+        /// <summary>
+        /// User who last updated the opportunity record
+        /// </summary>
+        /// <value>User who last updated the opportunity record</value>
+        /*
+        <example>945</example>
+        */
+        [DataMember(Name = "last_updated_by", EmitDefaultValue = false)]
+        public string LastUpdatedBy { get; set; }
+
+        /// <summary>
+        /// User who created the opportunity record
+        /// </summary>
+        /// <value>User who created the opportunity record</value>
+        /*
+        <example>852</example>
+        */
+        [DataMember(Name = "created_by", EmitDefaultValue = false)]
+        public string CreatedBy { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -336,7 +372,10 @@ namespace Keap.Core.V2.Model
             sb.Append("  OrderRevenue: ").Append(OrderRevenue).Append("\n");
             sb.Append("  Objection: ").Append(Objection).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  StatusId: ").Append(StatusId).Append("\n");
             sb.Append("  StageEntranceTime: ").Append(StageEntranceTime).Append("\n");
+            sb.Append("  LastUpdatedBy: ").Append(LastUpdatedBy).Append("\n");
+            sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -116,6 +116,7 @@ import { CreateProductOptionTextOption } from '../models/CreateProductOptionText
 import { CreateProductRequestDetail } from '../models/CreateProductRequestDetail';
 import { CreateProgramResourceRequest } from '../models/CreateProgramResourceRequest';
 import { CreateReferralRequest } from '../models/CreateReferralRequest';
+import { CreateShippingDiscountCriteria } from '../models/CreateShippingDiscountCriteria';
 import { CreateShippingDiscountRequest } from '../models/CreateShippingDiscountRequest';
 import { CreateSubscriptionCommissionProgramRequest } from '../models/CreateSubscriptionCommissionProgramRequest';
 import { CreateSubscriptionPlanRequest } from '../models/CreateSubscriptionPlanRequest';
@@ -204,6 +205,7 @@ import { ListContactTagsResponse } from '../models/ListContactTagsResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
 import { ListCustomFieldGroupsResponse } from '../models/ListCustomFieldGroupsResponse';
+import { ListEmailAddressStatusResponse } from '../models/ListEmailAddressStatusResponse';
 import { ListEmailsSentResponse } from '../models/ListEmailsSentResponse';
 import { ListFilesResponse } from '../models/ListFilesResponse';
 import { ListFreeTrialDiscountsResponse } from '../models/ListFreeTrialDiscountsResponse';
@@ -216,6 +218,7 @@ import { ListMerchantsResponse } from '../models/ListMerchantsResponse';
 import { ListNoteTemplateResponse } from '../models/ListNoteTemplateResponse';
 import { ListNotesResponse } from '../models/ListNotesResponse';
 import { ListOpportunitiesResponse } from '../models/ListOpportunitiesResponse';
+import { ListOpportunityStageMoveResponse } from '../models/ListOpportunityStageMoveResponse';
 import { ListOpportunityStagesResponse } from '../models/ListOpportunityStagesResponse';
 import { ListOption } from '../models/ListOption';
 import { ListOrderPaymentsResponse } from '../models/ListOrderPaymentsResponse';
@@ -253,6 +256,7 @@ import { NoteTemplate } from '../models/NoteTemplate';
 import { ObjectModel } from '../models/ObjectModel';
 import { OpportunityContact } from '../models/OpportunityContact';
 import { OpportunityStage } from '../models/OpportunityStage';
+import { OpportunityStageMove } from '../models/OpportunityStageMove';
 import { OrderItem } from '../models/OrderItem';
 import { OrderItemProduct } from '../models/OrderItemProduct';
 import { OrderTotalDiscount } from '../models/OrderTotalDiscount';
@@ -351,6 +355,7 @@ import { UpdateProductOptionListOption } from '../models/UpdateProductOptionList
 import { UpdateProductOptionRequest } from '../models/UpdateProductOptionRequest';
 import { UpdateProductRequestDetail } from '../models/UpdateProductRequestDetail';
 import { UpdateProgramResourceRequest } from '../models/UpdateProgramResourceRequest';
+import { UpdateShippingDiscountCriteria } from '../models/UpdateShippingDiscountCriteria';
 import { UpdateShippingDiscountRequest } from '../models/UpdateShippingDiscountRequest';
 import { UpdateSubscriptionCommissionProgramRequest } from '../models/UpdateSubscriptionCommissionProgramRequest';
 import { UpdateSubscriptionPlanRequest } from '../models/UpdateSubscriptionPlanRequest';
@@ -4428,6 +4433,39 @@ export interface EmailAddressApiGetEmailAddressStatusRequest {
     email: string
 }
 
+export interface EmailAddressApiListEmailAddressStatusesRequest {
+    /**
+     * Filter to apply, allowed fields are: - (Set[String]) &#x60;emails&#x60; - (Set[EmailOptStatus]) &#x60;statuses&#x60; - (Boolean) &#x60;opted_in&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;opted_in%3D%3Dtrue&#x60; - &#x60;filter&#x3D;emails%3D%3Dexample%40test.com&#x60; - &#x60;filter&#x3D;emails%3D%3Dexample%40test.com%2Csecond%40test.com&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof EmailAddressApilistEmailAddressStatuses
+     */
+    filter?: string
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof EmailAddressApilistEmailAddressStatuses
+     */
+    pageToken?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;email&#x60; - &#x60;status&#x60; - &#x60;create_time&#x60; - &#x60;last_click_time&#x60; - &#x60;last_open_time&#x60; - &#x60;last_sent_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof EmailAddressApilistEmailAddressStatuses
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 0
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof EmailAddressApilistEmailAddressStatuses
+     */
+    pageSize?: number
+}
+
 export interface EmailAddressApiUpdateEmailAddressOptStatusRequest {
     /**
      * 
@@ -4467,6 +4505,24 @@ export class ObjectEmailAddressApi {
      */
     public getEmailAddressStatus(param: EmailAddressApiGetEmailAddressStatusRequest, options?: ConfigurationOptions): Promise<RestEmailAddressStatus> {
         return this.api.getEmailAddressStatus(param.email,  options).toPromise();
+    }
+
+    /**
+     * Retrieve a list of the Status of Email Addresses
+     * List Email Address Statuses
+     * @param param the request object
+     */
+    public listEmailAddressStatusesWithHttpInfo(param: EmailAddressApiListEmailAddressStatusesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListEmailAddressStatusResponse>> {
+        return this.api.listEmailAddressStatusesWithHttpInfo(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
+    }
+
+    /**
+     * Retrieve a list of the Status of Email Addresses
+     * List Email Address Statuses
+     * @param param the request object
+     */
+    public listEmailAddressStatuses(param: EmailAddressApiListEmailAddressStatusesRequest = {}, options?: ConfigurationOptions): Promise<ListEmailAddressStatusResponse> {
+        return this.api.listEmailAddressStatuses(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
     }
 
     /**
@@ -6806,12 +6862,12 @@ export interface OpportunityApiCreateOpportunityRequest {
      */
     createOpportunityRequest: CreateOpportunityRequest
     /**
-     * Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+     * Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      * Defaults to: undefined
-     * @type Set&lt;&#39;custom_fields&#39; | &#39;monthly_revenue&#39; | &#39;order_revenue&#39; | &#39;objection&#39; | &#39;status&#39; | &#39;stage_entrance_time&#39;&gt;
+     * @type Set&lt;&#39;custom_fields&#39; | &#39;created_by&#39; | &#39;last_updated_by&#39; | &#39;status_id&#39; | &#39;monthly_revenue&#39; | &#39;order_revenue&#39; | &#39;objection&#39; | &#39;status&#39; | &#39;stage_entrance_time&#39;&gt;
      * @memberof OpportunityApicreateOpportunity
      */
-    fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>
+    fields?: Set<'custom_fields' | 'created_by' | 'last_updated_by' | 'status_id' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>
 }
 
 export interface OpportunityApiCreateOpportunityCustomFieldGroupRequest {
@@ -6890,12 +6946,12 @@ export interface OpportunityApiGetOpportunityRequest {
      */
     opportunityId: string
     /**
-     * Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+     * Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      * Defaults to: undefined
-     * @type Set&lt;&#39;custom_fields&#39; | &#39;monthly_revenue&#39; | &#39;order_revenue&#39; | &#39;objection&#39; | &#39;status&#39; | &#39;stage_entrance_time&#39;&gt;
+     * @type Set&lt;&#39;custom_fields&#39; | &#39;created_by&#39; | &#39;last_updated_by&#39; | &#39;status_id&#39; | &#39;monthly_revenue&#39; | &#39;order_revenue&#39; | &#39;objection&#39; | &#39;status&#39; | &#39;stage_entrance_time&#39;&gt;
      * @memberof OpportunityApigetOpportunity
      */
-    fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>
+    fields?: Set<'custom_fields' | 'created_by' | 'last_updated_by' | 'status_id' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>
 }
 
 export interface OpportunityApiGetOpportunityCustomFieldGroupRequest {
@@ -6918,14 +6974,24 @@ export interface OpportunityApiGetOpportunityStageRequest {
     stageId: string
 }
 
+export interface OpportunityApiGetOpportunityStageMoveRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApigetOpportunityStageMove
+     */
+    stageMoveId: string
+}
+
 export interface OpportunityApiListOpportunitiesRequest {
     /**
-     * Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+     * Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      * Defaults to: undefined
-     * @type Set&lt;&#39;custom_fields&#39; | &#39;monthly_revenue&#39; | &#39;order_revenue&#39; | &#39;objection&#39; | &#39;status&#39; | &#39;stage_entrance_time&#39;&gt;
+     * @type Set&lt;&#39;custom_fields&#39; | &#39;created_by&#39; | &#39;last_updated_by&#39; | &#39;status_id&#39; | &#39;monthly_revenue&#39; | &#39;order_revenue&#39; | &#39;objection&#39; | &#39;status&#39; | &#39;stage_entrance_time&#39;&gt;
      * @memberof OpportunityApilistOpportunities
      */
-    fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>
+    fields?: Set<'custom_fields' | 'created_by' | 'last_updated_by' | 'status_id' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>
     /**
      * Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. 
      * Defaults to: undefined
@@ -6966,6 +7032,39 @@ export interface OpportunityApiListOpportunityCustomFieldGroupsRequest {
      * @memberof OpportunityApilistOpportunityCustomFieldGroups
      */
     tabId?: string
+}
+
+export interface OpportunityApiListOpportunityStageMovesRequest {
+    /**
+     * Filter to apply. Allowed fields: - (Id) &#x60;opportunity_id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60; - (Id) &#x60;user_id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;  Separate multiple filters with semicolons: &#x60;opportunity_id&#x3D;&#x3D;7;user_id&#x3D;&#x3D;1&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApilistOpportunityStageMoves
+     */
+    filter?: string
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApilistOpportunityStageMoves
+     */
+    pageToken?: string
+    /**
+     * Field and direction to order results. Supported fields: &#x60;move_date&#x60;, &#x60;id&#x60; Directions: &#x60;asc&#x60; | &#x60;desc&#x60; Example: &#x60;move_date desc&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApilistOpportunityStageMoves
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 0
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof OpportunityApilistOpportunityStageMoves
+     */
+    pageSize?: number
 }
 
 export interface OpportunityApiListOpportunityStagesRequest {
@@ -7026,12 +7125,12 @@ export interface OpportunityApiUpdateOpportunityRequest {
      */
     updateMask?: Set<'opportunity_title' | 'next_action_time' | 'next_action_notes' | 'opportunity_notes' | 'estimated_close_time' | 'include_in_forecast' | 'projected_revenue_low' | 'projected_revenue_high' | 'contact_id' | 'stage_id' | 'user_id' | 'custom_fields' | 'affiliate_id'>
     /**
-     * Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+     * Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      * Defaults to: undefined
-     * @type Set&lt;&#39;custom_fields&#39; | &#39;monthly_revenue&#39; | &#39;order_revenue&#39; | &#39;objection&#39; | &#39;status&#39; | &#39;stage_entrance_time&#39;&gt;
+     * @type Set&lt;&#39;custom_fields&#39; | &#39;created_by&#39; | &#39;last_updated_by&#39; | &#39;status_id&#39; | &#39;monthly_revenue&#39; | &#39;order_revenue&#39; | &#39;objection&#39; | &#39;status&#39; | &#39;stage_entrance_time&#39;&gt;
      * @memberof OpportunityApiupdateOpportunity
      */
-    fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>
+    fields?: Set<'custom_fields' | 'created_by' | 'last_updated_by' | 'status_id' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>
 }
 
 export interface OpportunityApiUpdateOpportunityCustomFieldRequest {
@@ -7309,6 +7408,24 @@ export class ObjectOpportunityApi {
     }
 
     /**
+     * Retrieves a single historical record of an opportunity being moved from one pipeline stage to another.
+     * Retrieve an Opportunity Stage Move
+     * @param param the request object
+     */
+    public getOpportunityStageMoveWithHttpInfo(param: OpportunityApiGetOpportunityStageMoveRequest, options?: ConfigurationOptions): Promise<HttpInfo<OpportunityStageMove>> {
+        return this.api.getOpportunityStageMoveWithHttpInfo(param.stageMoveId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single historical record of an opportunity being moved from one pipeline stage to another.
+     * Retrieve an Opportunity Stage Move
+     * @param param the request object
+     */
+    public getOpportunityStageMove(param: OpportunityApiGetOpportunityStageMoveRequest, options?: ConfigurationOptions): Promise<OpportunityStageMove> {
+        return this.api.getOpportunityStageMove(param.stageMoveId,  options).toPromise();
+    }
+
+    /**
      * Retrieves a list of all Opportunities.
      * List Opportunities
      * @param param the request object
@@ -7342,6 +7459,24 @@ export class ObjectOpportunityApi {
      */
     public listOpportunityCustomFieldGroups(param: OpportunityApiListOpportunityCustomFieldGroupsRequest = {}, options?: ConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
         return this.api.listOpportunityCustomFieldGroups(param.tabId,  options).toPromise();
+    }
+
+    /**
+     * Returns a paginated list of historical stage-move records.
+     * List Opportunity Stage Moves
+     * @param param the request object
+     */
+    public listOpportunityStageMovesWithHttpInfo(param: OpportunityApiListOpportunityStageMovesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListOpportunityStageMoveResponse>> {
+        return this.api.listOpportunityStageMovesWithHttpInfo(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
+    }
+
+    /**
+     * Returns a paginated list of historical stage-move records.
+     * List Opportunity Stage Moves
+     * @param param the request object
+     */
+    public listOpportunityStageMoves(param: OpportunityApiListOpportunityStageMovesRequest = {}, options?: ConfigurationOptions): Promise<ListOpportunityStageMoveResponse> {
+        return this.api.listOpportunityStageMoves(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
     }
 
     /**
@@ -10461,7 +10596,7 @@ import { SalesApiRequestFactory, SalesApiResponseProcessor} from "../apis/SalesA
 
 export interface SalesApiListPaymentsRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - (List[String]) &#x60;ids&#x60; - (String) &#x60;amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;order_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;merchant_account_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;order_id%3D%3D123%3Bcontact_id%3D%3D567&#x60;
+     * Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - (List[String]) &#x60;ids&#x60; - (String) &#x60;amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;order_id&#x60; - (List[String]) &#x60;order_ids&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;merchant_account_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;order_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;order_ids%3D%3D1,2,3&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof SalesApilistPayments
@@ -10725,6 +10860,22 @@ export interface ShippingDiscountsApiCreateShippingDiscountRequest {
     createShippingDiscountRequest: CreateShippingDiscountRequest
 }
 
+export interface ShippingDiscountsApiCreateShippingDiscountCriteriaRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ShippingDiscountsApicreateShippingDiscountCriteria
+     */
+    discountId: string
+    /**
+     * 
+     * @type CreateShippingDiscountCriteria
+     * @memberof ShippingDiscountsApicreateShippingDiscountCriteria
+     */
+    createShippingDiscountCriteria: CreateShippingDiscountCriteria
+}
+
 export interface ShippingDiscountsApiDeleteShippingDiscountRequest {
     /**
      * 
@@ -10733,6 +10884,23 @@ export interface ShippingDiscountsApiDeleteShippingDiscountRequest {
      * @memberof ShippingDiscountsApideleteShippingDiscount
      */
     discountId: string
+}
+
+export interface ShippingDiscountsApiDeleteShippingDiscountCriteriaRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ShippingDiscountsApideleteShippingDiscountCriteria
+     */
+    discountId: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ShippingDiscountsApideleteShippingDiscountCriteria
+     */
+    criteriaId: string
 }
 
 export interface ShippingDiscountsApiGetShippingDiscountRequest {
@@ -10827,6 +10995,24 @@ export class ObjectShippingDiscountsApi {
     }
 
     /**
+     * Creates a Shipping Discount Criteria
+     * Create a Shipping Discount Criteria
+     * @param param the request object
+     */
+    public createShippingDiscountCriteriaWithHttpInfo(param: ShippingDiscountsApiCreateShippingDiscountCriteriaRequest, options?: ConfigurationOptions): Promise<HttpInfo<DiscountCriteria>> {
+        return this.api.createShippingDiscountCriteriaWithHttpInfo(param.discountId, param.createShippingDiscountCriteria,  options).toPromise();
+    }
+
+    /**
+     * Creates a Shipping Discount Criteria
+     * Create a Shipping Discount Criteria
+     * @param param the request object
+     */
+    public createShippingDiscountCriteria(param: ShippingDiscountsApiCreateShippingDiscountCriteriaRequest, options?: ConfigurationOptions): Promise<DiscountCriteria> {
+        return this.api.createShippingDiscountCriteria(param.discountId, param.createShippingDiscountCriteria,  options).toPromise();
+    }
+
+    /**
      * Deletes a specified Shipping Discount
      * Delete a Shipping Discount
      * @param param the request object
@@ -10842,6 +11028,24 @@ export class ObjectShippingDiscountsApi {
      */
     public deleteShippingDiscount(param: ShippingDiscountsApiDeleteShippingDiscountRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.deleteShippingDiscount(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specified Shipping Discount Criteria
+     * Delete a Shipping Discount Criteria
+     * @param param the request object
+     */
+    public deleteShippingDiscountCriteriaWithHttpInfo(param: ShippingDiscountsApiDeleteShippingDiscountCriteriaRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteShippingDiscountCriteriaWithHttpInfo(param.discountId, param.criteriaId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specified Shipping Discount Criteria
+     * Delete a Shipping Discount Criteria
+     * @param param the request object
+     */
+    public deleteShippingDiscountCriteria(param: ShippingDiscountsApiDeleteShippingDiscountCriteriaRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteShippingDiscountCriteria(param.discountId, param.criteriaId,  options).toPromise();
     }
 
     /**

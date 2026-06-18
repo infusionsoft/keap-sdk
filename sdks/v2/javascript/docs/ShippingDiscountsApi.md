@@ -5,7 +5,9 @@ All URIs are relative to *https://api.keap.com/crm*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createShippingDiscount**](ShippingDiscountsApi.md#createShippingDiscount) | **POST** /rest/v2/discounts/shipping | Create a Shipping Discount
+[**createShippingDiscountCriteria**](ShippingDiscountsApi.md#createShippingDiscountCriteria) | **POST** /rest/v2/discounts/shipping/{discount_id}/criteria | Create a Shipping Discount Criteria
 [**deleteShippingDiscount**](ShippingDiscountsApi.md#deleteShippingDiscount) | **DELETE** /rest/v2/discounts/shipping/{discount_id} | Delete a Shipping Discount
+[**deleteShippingDiscountCriteria**](ShippingDiscountsApi.md#deleteShippingDiscountCriteria) | **DELETE** /rest/v2/discounts/shipping/{discount_id}/criteria/{criteria_id} | Delete a Shipping Discount Criteria
 [**getShippingDiscount**](ShippingDiscountsApi.md#getShippingDiscount) | **GET** /rest/v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount
 [**listShippingDiscounts**](ShippingDiscountsApi.md#listShippingDiscounts) | **GET** /rest/v2/discounts/shipping | List all Shipping Discounts
 [**updateShippingDiscount**](ShippingDiscountsApi.md#updateShippingDiscount) | **PATCH** /rest/v2/discounts/shipping/{discount_id} | Update a Shipping Discount
@@ -60,6 +62,56 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## createShippingDiscountCriteria
+
+> DiscountCriteria createShippingDiscountCriteria(discountId, createShippingDiscountCriteria)
+
+Create a Shipping Discount Criteria
+
+Creates a Shipping Discount Criteria
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.ShippingDiscountsApi();
+let discountId = "discountId_example"; // String | 
+let createShippingDiscountCriteria = new KeapCoreServiceV2Sdk.CreateShippingDiscountCriteria(); // CreateShippingDiscountCriteria | 
+apiInstance.createShippingDiscountCriteria(discountId, createShippingDiscountCriteria).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **discountId** | **String**|  | 
+ **createShippingDiscountCriteria** | [**CreateShippingDiscountCriteria**](CreateShippingDiscountCriteria.md)|  | 
+
+### Return type
+
+[**DiscountCriteria**](DiscountCriteria.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## deleteShippingDiscount
 
 > deleteShippingDiscount(discountId)
@@ -93,6 +145,56 @@ apiInstance.deleteShippingDiscount(discountId).then(() => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **discountId** | **String**|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## deleteShippingDiscountCriteria
+
+> deleteShippingDiscountCriteria(discountId, criteriaId)
+
+Delete a Shipping Discount Criteria
+
+Deletes a specified Shipping Discount Criteria
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.ShippingDiscountsApi();
+let discountId = "discountId_example"; // String | 
+let criteriaId = "criteriaId_example"; // String | 
+apiInstance.deleteShippingDiscountCriteria(discountId, criteriaId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **discountId** | **String**|  | 
+ **criteriaId** | **String**|  | 
 
 ### Return type
 

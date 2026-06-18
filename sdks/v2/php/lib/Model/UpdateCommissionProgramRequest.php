@@ -288,12 +288,6 @@ class UpdateCommissionProgramRequest implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['priority'] === null) {
-            $invalidProperties[] = "'priority' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -312,7 +306,7 @@ class UpdateCommissionProgramRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets name
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {
@@ -322,7 +316,7 @@ class UpdateCommissionProgramRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets name
      *
-     * @param string $name The name of the Commission Program
+     * @param string|null $name The name of the Commission Program
      *
      * @return self
      */
@@ -366,7 +360,7 @@ class UpdateCommissionProgramRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets priority
      *
-     * @return int
+     * @return int|null
      */
     public function getPriority()
     {
@@ -376,7 +370,7 @@ class UpdateCommissionProgramRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets priority
      *
-     * @param int $priority The priority of the Commission Program
+     * @param int|null $priority The priority of the Commission Program
      *
      * @return self
      */

@@ -5,7 +5,9 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**createShippingDiscount()**](ShippingDiscountsApi.md#createShippingDiscount) | **POST** /rest/v2/discounts/shipping | Create a Shipping Discount |
+| [**createShippingDiscountCriteria()**](ShippingDiscountsApi.md#createShippingDiscountCriteria) | **POST** /rest/v2/discounts/shipping/{discount_id}/criteria | Create a Shipping Discount Criteria |
 | [**deleteShippingDiscount()**](ShippingDiscountsApi.md#deleteShippingDiscount) | **DELETE** /rest/v2/discounts/shipping/{discount_id} | Delete a Shipping Discount |
+| [**deleteShippingDiscountCriteria()**](ShippingDiscountsApi.md#deleteShippingDiscountCriteria) | **DELETE** /rest/v2/discounts/shipping/{discount_id}/criteria/{criteria_id} | Delete a Shipping Discount Criteria |
 | [**getShippingDiscount()**](ShippingDiscountsApi.md#getShippingDiscount) | **GET** /rest/v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount |
 | [**listShippingDiscounts()**](ShippingDiscountsApi.md#listShippingDiscounts) | **GET** /rest/v2/discounts/shipping | List all Shipping Discounts |
 | [**updateShippingDiscount()**](ShippingDiscountsApi.md#updateShippingDiscount) | **PATCH** /rest/v2/discounts/shipping/{discount_id} | Update a Shipping Discount |
@@ -70,6 +72,67 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createShippingDiscountCriteria()`
+
+```php
+createShippingDiscountCriteria($discount_id, $create_shipping_discount_criteria): \Keap\Core\V2\Model\DiscountCriteria
+```
+
+Create a Shipping Discount Criteria
+
+Creates a Shipping Discount Criteria
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\ShippingDiscountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$discount_id = 'discount_id_example'; // string
+$create_shipping_discount_criteria = new \Keap\Core\V2\Model\CreateShippingDiscountCriteria(); // \Keap\Core\V2\Model\CreateShippingDiscountCriteria
+
+try {
+    $result = $apiInstance->createShippingDiscountCriteria($discount_id, $create_shipping_discount_criteria);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ShippingDiscountsApi->createShippingDiscountCriteria: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **discount_id** | **string**|  | |
+| **create_shipping_discount_criteria** | [**\Keap\Core\V2\Model\CreateShippingDiscountCriteria**](../Model/CreateShippingDiscountCriteria.md)|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\DiscountCriteria**](../Model/DiscountCriteria.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteShippingDiscount()`
 
 ```php
@@ -110,6 +173,66 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **discount_id** | **string**|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteShippingDiscountCriteria()`
+
+```php
+deleteShippingDiscountCriteria($discount_id, $criteria_id)
+```
+
+Delete a Shipping Discount Criteria
+
+Deletes a specified Shipping Discount Criteria
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\ShippingDiscountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$discount_id = 'discount_id_example'; // string
+$criteria_id = 'criteria_id_example'; // string
+
+try {
+    $apiInstance->deleteShippingDiscountCriteria($discount_id, $criteria_id);
+} catch (Exception $e) {
+    echo 'Exception when calling ShippingDiscountsApi->deleteShippingDiscountCriteria: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **discount_id** | **string**|  | |
+| **criteria_id** | **string**|  | |
 
 ### Return type
 

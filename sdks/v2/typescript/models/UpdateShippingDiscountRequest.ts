@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { DiscountCriteria } from '../models/DiscountCriteria';
+import { UpdateShippingDiscountCriteria } from '../models/UpdateShippingDiscountCriteria';
 import { HttpFile } from '../http/http';
 
 export class UpdateShippingDiscountRequest {
@@ -25,7 +25,7 @@ export class UpdateShippingDiscountRequest {
     /**
     * List of criteria that must be met for this discount to apply
     */
-    'criteria'?: Array<DiscountCriteria>;
+    'criteria'?: Array<UpdateShippingDiscountCriteria>;
     /**
     * Type of discount: AMOUNT (fixed amount) or PERCENT (percentage)
     */
@@ -55,7 +55,7 @@ export class UpdateShippingDiscountRequest {
         {
             "name": "criteria",
             "baseName": "criteria",
-            "type": "Array<DiscountCriteria>",
+            "type": "Array<UpdateShippingDiscountCriteria>",
             "format": ""
         },
         {

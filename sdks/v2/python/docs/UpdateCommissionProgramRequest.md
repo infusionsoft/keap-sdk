@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | The name of the Commission Program | 
+**name** | **str** | The name of the Commission Program | [optional] 
 **notes** | **str** | The notes of the Commission Program | [optional] 
-**priority** | **int** | The priority of the Commission Program | 
+**priority** | **int** | The priority of the Commission Program | [optional] 
 
 ## Example
 

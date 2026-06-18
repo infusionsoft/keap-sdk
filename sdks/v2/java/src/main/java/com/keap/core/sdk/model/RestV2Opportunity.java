@@ -60,7 +60,10 @@ import jakarta.validation.Valid;
   RestV2Opportunity.JSON_PROPERTY_ORDER_REVENUE,
   RestV2Opportunity.JSON_PROPERTY_OBJECTION,
   RestV2Opportunity.JSON_PROPERTY_STATUS,
-  RestV2Opportunity.JSON_PROPERTY_STAGE_ENTRANCE_TIME
+  RestV2Opportunity.JSON_PROPERTY_STATUS_ID,
+  RestV2Opportunity.JSON_PROPERTY_STAGE_ENTRANCE_TIME,
+  RestV2Opportunity.JSON_PROPERTY_LAST_UPDATED_BY,
+  RestV2Opportunity.JSON_PROPERTY_CREATED_BY
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class RestV2Opportunity implements Serializable {
@@ -129,8 +132,17 @@ public class RestV2Opportunity implements Serializable {
   public static final String JSON_PROPERTY_STATUS = "status";
   @jakarta.annotation.Nullable  private String status;
 
+  public static final String JSON_PROPERTY_STATUS_ID = "status_id";
+  @jakarta.annotation.Nullable  private String statusId;
+
   public static final String JSON_PROPERTY_STAGE_ENTRANCE_TIME = "stage_entrance_time";
   @jakarta.annotation.Nullable  private String stageEntranceTime;
+
+  public static final String JSON_PROPERTY_LAST_UPDATED_BY = "last_updated_by";
+  @jakarta.annotation.Nullable  private String lastUpdatedBy;
+
+  public static final String JSON_PROPERTY_CREATED_BY = "created_by";
+  @jakarta.annotation.Nullable  private String createdBy;
 
   public RestV2Opportunity() { 
   }
@@ -654,6 +666,30 @@ public class RestV2Opportunity implements Serializable {
   }
 
 
+  public RestV2Opportunity statusId(@jakarta.annotation.Nullable String statusId) {
+    this.statusId = statusId;
+    return this;
+  }
+
+  /**
+   * Status ID
+   * @return statusId
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "123", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Status ID")
+  @JsonProperty(JSON_PROPERTY_STATUS_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getStatusId() {
+    return statusId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_STATUS_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setStatusId(@jakarta.annotation.Nullable String statusId) {
+    this.statusId = statusId;
+  }
+
+
   public RestV2Opportunity stageEntranceTime(@jakarta.annotation.Nullable String stageEntranceTime) {
     this.stageEntranceTime = stageEntranceTime;
     return this;
@@ -675,6 +711,54 @@ public class RestV2Opportunity implements Serializable {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStageEntranceTime(@jakarta.annotation.Nullable String stageEntranceTime) {
     this.stageEntranceTime = stageEntranceTime;
+  }
+
+
+  public RestV2Opportunity lastUpdatedBy(@jakarta.annotation.Nullable String lastUpdatedBy) {
+    this.lastUpdatedBy = lastUpdatedBy;
+    return this;
+  }
+
+  /**
+   * User who last updated the opportunity record
+   * @return lastUpdatedBy
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "945", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "User who last updated the opportunity record")
+  @JsonProperty(JSON_PROPERTY_LAST_UPDATED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getLastUpdatedBy() {
+    return lastUpdatedBy;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LAST_UPDATED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLastUpdatedBy(@jakarta.annotation.Nullable String lastUpdatedBy) {
+    this.lastUpdatedBy = lastUpdatedBy;
+  }
+
+
+  public RestV2Opportunity createdBy(@jakarta.annotation.Nullable String createdBy) {
+    this.createdBy = createdBy;
+    return this;
+  }
+
+  /**
+   * User who created the opportunity record
+   * @return createdBy
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "852", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "User who created the opportunity record")
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getCreatedBy() {
+    return createdBy;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCreatedBy(@jakarta.annotation.Nullable String createdBy) {
+    this.createdBy = createdBy;
   }
 
   /**
@@ -710,12 +794,15 @@ public class RestV2Opportunity implements Serializable {
         Objects.equals(this.orderRevenue, restV2Opportunity.orderRevenue) &&
         Objects.equals(this.objection, restV2Opportunity.objection) &&
         Objects.equals(this.status, restV2Opportunity.status) &&
-        Objects.equals(this.stageEntranceTime, restV2Opportunity.stageEntranceTime);
+        Objects.equals(this.statusId, restV2Opportunity.statusId) &&
+        Objects.equals(this.stageEntranceTime, restV2Opportunity.stageEntranceTime) &&
+        Objects.equals(this.lastUpdatedBy, restV2Opportunity.lastUpdatedBy) &&
+        Objects.equals(this.createdBy, restV2Opportunity.createdBy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, contact, stage, user, opportunityTitle, nextActionTime, nextActionNotes, opportunityNotes, estimatedCloseTime, includeInForecast, projectedRevenueLow, projectedRevenueHigh, customFields, createdTime, lastUpdatedTime, affiliateId, leadSource, monthlyRevenue, orderRevenue, objection, status, stageEntranceTime);
+    return Objects.hash(id, contact, stage, user, opportunityTitle, nextActionTime, nextActionNotes, opportunityNotes, estimatedCloseTime, includeInForecast, projectedRevenueLow, projectedRevenueHigh, customFields, createdTime, lastUpdatedTime, affiliateId, leadSource, monthlyRevenue, orderRevenue, objection, status, statusId, stageEntranceTime, lastUpdatedBy, createdBy);
   }
 
   @Override
@@ -743,7 +830,10 @@ public class RestV2Opportunity implements Serializable {
     sb.append("    orderRevenue: ").append(toIndentedString(orderRevenue)).append("\n");
     sb.append("    objection: ").append(toIndentedString(objection)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    statusId: ").append(toIndentedString(statusId)).append("\n");
     sb.append("    stageEntranceTime: ").append(toIndentedString(stageEntranceTime)).append("\n");
+    sb.append("    lastUpdatedBy: ").append(toIndentedString(lastUpdatedBy)).append("\n");
+    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -855,8 +945,20 @@ public class RestV2Opportunity implements Serializable {
               this.instance.status = status;
           return this;
         }
+            public RestV2Opportunity.Builder statusId(String statusId) {
+              this.instance.statusId = statusId;
+          return this;
+        }
             public RestV2Opportunity.Builder stageEntranceTime(String stageEntranceTime) {
               this.instance.stageEntranceTime = stageEntranceTime;
+          return this;
+        }
+            public RestV2Opportunity.Builder lastUpdatedBy(String lastUpdatedBy) {
+              this.instance.lastUpdatedBy = lastUpdatedBy;
+          return this;
+        }
+            public RestV2Opportunity.Builder createdBy(String createdBy) {
+              this.instance.createdBy = createdBy;
           return this;
         }
         
@@ -914,7 +1016,10 @@ public class RestV2Opportunity implements Serializable {
           .orderRevenue(getOrderRevenue())
           .objection(getObjection())
           .status(getStatus())
-          .stageEntranceTime(getStageEntranceTime());
+          .statusId(getStatusId())
+          .stageEntranceTime(getStageEntranceTime())
+          .lastUpdatedBy(getLastUpdatedBy())
+          .createdBy(getCreatedBy());
       }
 }
 

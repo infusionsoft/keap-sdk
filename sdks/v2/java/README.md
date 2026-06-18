@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.14</version>
+  <version>2.0.15</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.14"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.15"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.14.jar`
+- `target/core-service-v2-java-sdk-2.0.15.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -340,6 +340,8 @@ Class | Method | HTTP request | Description
 *EmailApi* | [**sendEmailTemplateWithHttpInfo**](docs/EmailApi.md#sendEmailTemplateWithHttpInfo) | **POST** /rest/v2/emails/templates:send | Send an email based on a template
 *EmailAddressApi* | [**getEmailAddressStatus**](docs/EmailAddressApi.md#getEmailAddressStatus) | **GET** /rest/v2/emailAddresses/{email}/status | Retrieve an Email Address status
 *EmailAddressApi* | [**getEmailAddressStatusWithHttpInfo**](docs/EmailAddressApi.md#getEmailAddressStatusWithHttpInfo) | **GET** /rest/v2/emailAddresses/{email}/status | Retrieve an Email Address status
+*EmailAddressApi* | [**listEmailAddressStatuses**](docs/EmailAddressApi.md#listEmailAddressStatuses) | **GET** /rest/v2/emailAddresses | List Email Address Statuses
+*EmailAddressApi* | [**listEmailAddressStatusesWithHttpInfo**](docs/EmailAddressApi.md#listEmailAddressStatusesWithHttpInfo) | **GET** /rest/v2/emailAddresses | List Email Address Statuses
 *EmailAddressApi* | [**updateEmailAddressOptStatus**](docs/EmailAddressApi.md#updateEmailAddressOptStatus) | **PATCH** /rest/v2/emailAddresses/{email}/status | Update an Email Address opt-in status
 *EmailAddressApi* | [**updateEmailAddressOptStatusWithHttpInfo**](docs/EmailAddressApi.md#updateEmailAddressOptStatusWithHttpInfo) | **PATCH** /rest/v2/emailAddresses/{email}/status | Update an Email Address opt-in status
 *FilesApi* | [**createFile**](docs/FilesApi.md#createFile) | **POST** /rest/v2/files | Create a file
@@ -480,10 +482,14 @@ Class | Method | HTTP request | Description
 *OpportunityApi* | [**getOpportunityCustomFieldGroupWithHttpInfo**](docs/OpportunityApi.md#getOpportunityCustomFieldGroupWithHttpInfo) | **GET** /rest/v2/opportunities/model/customFields/groups/{group_id} | Retrieve an Opportunity Custom Field Group
 *OpportunityApi* | [**getOpportunityStage**](docs/OpportunityApi.md#getOpportunityStage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
 *OpportunityApi* | [**getOpportunityStageWithHttpInfo**](docs/OpportunityApi.md#getOpportunityStageWithHttpInfo) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
+*OpportunityApi* | [**getOpportunityStageMove**](docs/OpportunityApi.md#getOpportunityStageMove) | **GET** /rest/v2/opportunities/stageMoves/{stage_move_id} | Retrieve an Opportunity Stage Move
+*OpportunityApi* | [**getOpportunityStageMoveWithHttpInfo**](docs/OpportunityApi.md#getOpportunityStageMoveWithHttpInfo) | **GET** /rest/v2/opportunities/stageMoves/{stage_move_id} | Retrieve an Opportunity Stage Move
 *OpportunityApi* | [**listOpportunities**](docs/OpportunityApi.md#listOpportunities) | **GET** /rest/v2/opportunities | List Opportunities
 *OpportunityApi* | [**listOpportunitiesWithHttpInfo**](docs/OpportunityApi.md#listOpportunitiesWithHttpInfo) | **GET** /rest/v2/opportunities | List Opportunities
 *OpportunityApi* | [**listOpportunityCustomFieldGroups**](docs/OpportunityApi.md#listOpportunityCustomFieldGroups) | **GET** /rest/v2/opportunities/model/customFields/groups | List Opportunity Custom Field Groups
 *OpportunityApi* | [**listOpportunityCustomFieldGroupsWithHttpInfo**](docs/OpportunityApi.md#listOpportunityCustomFieldGroupsWithHttpInfo) | **GET** /rest/v2/opportunities/model/customFields/groups | List Opportunity Custom Field Groups
+*OpportunityApi* | [**listOpportunityStageMoves**](docs/OpportunityApi.md#listOpportunityStageMoves) | **GET** /rest/v2/opportunities/stageMoves | List Opportunity Stage Moves
+*OpportunityApi* | [**listOpportunityStageMovesWithHttpInfo**](docs/OpportunityApi.md#listOpportunityStageMovesWithHttpInfo) | **GET** /rest/v2/opportunities/stageMoves | List Opportunity Stage Moves
 *OpportunityApi* | [**listOpportunityStages**](docs/OpportunityApi.md#listOpportunityStages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages
 *OpportunityApi* | [**listOpportunityStagesWithHttpInfo**](docs/OpportunityApi.md#listOpportunityStagesWithHttpInfo) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages
 *OpportunityApi* | [**retrieveOpportunityCustomFieldModel**](docs/OpportunityApi.md#retrieveOpportunityCustomFieldModel) | **GET** /rest/v2/opportunities/model | Retrieve Opportunity Custom Field Model
@@ -672,8 +678,12 @@ Class | Method | HTTP request | Description
 *ShippingApi* | [**listShippingMethodsWithHttpInfo**](docs/ShippingApi.md#listShippingMethodsWithHttpInfo) | **GET** /rest/v2/shipping | List Shipping methods
 *ShippingDiscountsApi* | [**createShippingDiscount**](docs/ShippingDiscountsApi.md#createShippingDiscount) | **POST** /rest/v2/discounts/shipping | Create a Shipping Discount
 *ShippingDiscountsApi* | [**createShippingDiscountWithHttpInfo**](docs/ShippingDiscountsApi.md#createShippingDiscountWithHttpInfo) | **POST** /rest/v2/discounts/shipping | Create a Shipping Discount
+*ShippingDiscountsApi* | [**createShippingDiscountCriteria**](docs/ShippingDiscountsApi.md#createShippingDiscountCriteria) | **POST** /rest/v2/discounts/shipping/{discount_id}/criteria | Create a Shipping Discount Criteria
+*ShippingDiscountsApi* | [**createShippingDiscountCriteriaWithHttpInfo**](docs/ShippingDiscountsApi.md#createShippingDiscountCriteriaWithHttpInfo) | **POST** /rest/v2/discounts/shipping/{discount_id}/criteria | Create a Shipping Discount Criteria
 *ShippingDiscountsApi* | [**deleteShippingDiscount**](docs/ShippingDiscountsApi.md#deleteShippingDiscount) | **DELETE** /rest/v2/discounts/shipping/{discount_id} | Delete a Shipping Discount
 *ShippingDiscountsApi* | [**deleteShippingDiscountWithHttpInfo**](docs/ShippingDiscountsApi.md#deleteShippingDiscountWithHttpInfo) | **DELETE** /rest/v2/discounts/shipping/{discount_id} | Delete a Shipping Discount
+*ShippingDiscountsApi* | [**deleteShippingDiscountCriteria**](docs/ShippingDiscountsApi.md#deleteShippingDiscountCriteria) | **DELETE** /rest/v2/discounts/shipping/{discount_id}/criteria/{criteria_id} | Delete a Shipping Discount Criteria
+*ShippingDiscountsApi* | [**deleteShippingDiscountCriteriaWithHttpInfo**](docs/ShippingDiscountsApi.md#deleteShippingDiscountCriteriaWithHttpInfo) | **DELETE** /rest/v2/discounts/shipping/{discount_id}/criteria/{criteria_id} | Delete a Shipping Discount Criteria
 *ShippingDiscountsApi* | [**getShippingDiscount**](docs/ShippingDiscountsApi.md#getShippingDiscount) | **GET** /rest/v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount
 *ShippingDiscountsApi* | [**getShippingDiscountWithHttpInfo**](docs/ShippingDiscountsApi.md#getShippingDiscountWithHttpInfo) | **GET** /rest/v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount
 *ShippingDiscountsApi* | [**listShippingDiscounts**](docs/ShippingDiscountsApi.md#listShippingDiscounts) | **GET** /rest/v2/discounts/shipping | List all Shipping Discounts
@@ -912,6 +922,7 @@ Class | Method | HTTP request | Description
  - [CreateProductRequestDetail](docs/CreateProductRequestDetail.md)
  - [CreateProgramResourceRequest](docs/CreateProgramResourceRequest.md)
  - [CreateReferralRequest](docs/CreateReferralRequest.md)
+ - [CreateShippingDiscountCriteria](docs/CreateShippingDiscountCriteria.md)
  - [CreateShippingDiscountRequest](docs/CreateShippingDiscountRequest.md)
  - [CreateSubscriptionCommissionProgramRequest](docs/CreateSubscriptionCommissionProgramRequest.md)
  - [CreateSubscriptionPlanRequest](docs/CreateSubscriptionPlanRequest.md)
@@ -1001,6 +1012,7 @@ Class | Method | HTTP request | Description
  - [ListContactsResponse](docs/ListContactsResponse.md)
  - [ListCountriesResponse](docs/ListCountriesResponse.md)
  - [ListCustomFieldGroupsResponse](docs/ListCustomFieldGroupsResponse.md)
+ - [ListEmailAddressStatusResponse](docs/ListEmailAddressStatusResponse.md)
  - [ListEmailsSentResponse](docs/ListEmailsSentResponse.md)
  - [ListFilesResponse](docs/ListFilesResponse.md)
  - [ListFreeTrialDiscountsResponse](docs/ListFreeTrialDiscountsResponse.md)
@@ -1013,6 +1025,7 @@ Class | Method | HTTP request | Description
  - [ListNoteTemplateResponse](docs/ListNoteTemplateResponse.md)
  - [ListNotesResponse](docs/ListNotesResponse.md)
  - [ListOpportunitiesResponse](docs/ListOpportunitiesResponse.md)
+ - [ListOpportunityStageMoveResponse](docs/ListOpportunityStageMoveResponse.md)
  - [ListOpportunityStagesResponse](docs/ListOpportunityStagesResponse.md)
  - [ListOption](docs/ListOption.md)
  - [ListOrderPaymentsResponse](docs/ListOrderPaymentsResponse.md)
@@ -1049,6 +1062,7 @@ Class | Method | HTTP request | Description
  - [ObjectModel](docs/ObjectModel.md)
  - [OpportunityContact](docs/OpportunityContact.md)
  - [OpportunityStage](docs/OpportunityStage.md)
+ - [OpportunityStageMove](docs/OpportunityStageMove.md)
  - [OrderItem](docs/OrderItem.md)
  - [OrderItemProduct](docs/OrderItemProduct.md)
  - [OrderTotalDiscount](docs/OrderTotalDiscount.md)
@@ -1147,6 +1161,7 @@ Class | Method | HTTP request | Description
  - [UpdateProductOptionRequest](docs/UpdateProductOptionRequest.md)
  - [UpdateProductRequestDetail](docs/UpdateProductRequestDetail.md)
  - [UpdateProgramResourceRequest](docs/UpdateProgramResourceRequest.md)
+ - [UpdateShippingDiscountCriteria](docs/UpdateShippingDiscountCriteria.md)
  - [UpdateShippingDiscountRequest](docs/UpdateShippingDiscountRequest.md)
  - [UpdateSubscriptionCommissionProgramRequest](docs/UpdateSubscriptionCommissionProgramRequest.md)
  - [UpdateSubscriptionPlanRequest](docs/UpdateSubscriptionPlanRequest.md)

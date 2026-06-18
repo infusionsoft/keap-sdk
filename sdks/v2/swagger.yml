@@ -4418,7 +4418,8 @@ paths:
         description: 'Comma-delimited list of optional Opportunities properties to
           include in the response. Legacy field names are supported for optional fields
           only if legacy opportunities feature is enabled. Allowed optional values:
-          custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time'
+          custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional
+          values: monthly_revenue,order_revenue,objection,status,stage_entrance_time'
         required: false
         schema:
           type: array
@@ -4426,6 +4427,9 @@ paths:
             type: string
             enum:
             - custom_fields
+            - created_by
+            - last_updated_by
+            - status_id
             - monthly_revenue
             - order_revenue
             - objection
@@ -4548,7 +4552,8 @@ paths:
         description: 'Comma-delimited list of optional Opportunities properties to
           include in the response. Legacy field names are supported for optional fields
           only if legacy opportunities feature is enabled. Allowed optional values:
-          custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time'
+          custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional
+          values: monthly_revenue,order_revenue,objection,status,stage_entrance_time'
         required: false
         schema:
           type: array
@@ -4556,6 +4561,9 @@ paths:
             type: string
             enum:
             - custom_fields
+            - created_by
+            - last_updated_by
+            - status_id
             - monthly_revenue
             - order_revenue
             - objection
@@ -7214,6 +7222,80 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/discounts/shipping/{discount_id}/criteria:
+    post:
+      tags:
+      - Shipping Discounts
+      summary: Create a Shipping Discount Criteria
+      description: Creates a Shipping Discount Criteria
+      operationId: createShippingDiscountCriteria
+      parameters:
+      - name: discount_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateShippingDiscountCriteria'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscountCriteria'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/discounts/products:
     get:
       tags:
@@ -8219,7 +8301,13 @@ paths:
         required: true
       responses:
         '200':
-          description: OK
+          description: OK - existing contact updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '201':
+          description: Created - new contact created
           content:
             application/json:
               schema:
@@ -16050,7 +16138,8 @@ paths:
         description: 'Comma-delimited list of optional Opportunities properties to
           include in the response. Legacy field names are supported for optional fields
           only if legacy opportunities feature is enabled. Allowed optional values:
-          custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time'
+          custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional
+          values: monthly_revenue,order_revenue,objection,status,stage_entrance_time'
         required: false
         schema:
           type: array
@@ -16058,6 +16147,9 @@ paths:
             type: string
             enum:
             - custom_fields
+            - created_by
+            - last_updated_by
+            - status_id
             - monthly_revenue
             - order_revenue
             - objection
@@ -16223,7 +16315,8 @@ paths:
         description: 'Comma-delimited list of optional Opportunities properties to
           include in the response. Legacy field names are supported for optional fields
           only if legacy opportunities feature is enabled. Allowed optional values:
-          custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time'
+          custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional
+          values: monthly_revenue,order_revenue,objection,status,stage_entrance_time'
         required: false
         schema:
           type: array
@@ -16231,6 +16324,9 @@ paths:
             type: string
             enum:
             - custom_fields
+            - created_by
+            - last_updated_by
+            - status_id
             - monthly_revenue
             - order_revenue
             - objection
@@ -23512,6 +23608,7 @@ paths:
           - (List[String]) `ids`
           - (String) `amount` - Allowable operators: "==","<=", "<", ">=", ">", "!="
           - (String) `order_id`
+          - (List[String]) `order_ids`
           - (String) `contact_id`
           - (String) `since_time`
           - (String) `until_time`
@@ -23523,6 +23620,7 @@ paths:
           - `filter=id%3D%3D123`
           - `filter=ids%3D%3D1,10,4,24`
           - `filter=order_id%3D%3D123%3Bcontact_id%3D%3D567`
+          - `filter=order_ids%3D%3D1,2,3`
         required: false
         schema:
           type: string
@@ -24094,6 +24192,175 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ObjectModel'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/opportunities/stageMoves:
+    get:
+      tags:
+      - Opportunity
+      summary: List Opportunity Stage Moves
+      description: Returns a paginated list of historical stage-move records.
+      operationId: listOpportunityStageMoves
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply. Allowed fields:
+          - (Id) `opportunity_id` — supports `==`
+          - (Id) `user_id` — supports `==`
+
+          Separate multiple filters with semicolons: `opportunity_id==7;user_id==1`
+        required: false
+        schema:
+          type: string
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |
+          Field and direction to order results.
+          Supported fields: `move_date`, `id`
+          Directions: `asc` | `desc`
+          Example: `move_date desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          maximum: 1000
+          minimum: 0
+        example: 0
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOpportunityStageMoveResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/opportunities/stageMoves/{stage_move_id}:
+    get:
+      tags:
+      - Opportunity
+      summary: Retrieve an Opportunity Stage Move
+      description: Retrieves a single historical record of an opportunity being moved
+        from one pipeline stage to another.
+      operationId: getOpportunityStageMove
+      parameters:
+      - name: stage_move_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityStageMove'
         '400':
           description: Bad Request
           content:
@@ -25292,6 +25559,122 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EmailTemplate'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/emailAddresses:
+    get:
+      tags:
+      - Email Address
+      summary: List Email Address Statuses
+      description: Retrieve a list of the Status of Email Addresses
+      operationId: listEmailAddressStatuses
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (Set[String]) `emails`
+          - (Set[EmailOptStatus]) `statuses`
+          - (Boolean) `opted_in`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`.
+          For the filters listed above, here are some examples:
+          - `filter=opted_in%3D%3Dtrue`
+          - `filter=emails%3D%3Dexample%40test.com`
+          - `filter=emails%3D%3Dexample%40test.com%2Csecond%40test.com`
+        required: false
+        schema:
+          type: string
+        example: filter=opted_in%3D%3Dtrue
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `email`
+          - `status`
+          - `create_time`
+          - `last_click_time`
+          - `last_open_time`
+          - `last_sent_time`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+        example: order_by=last_sent_time desc
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          maximum: 1000
+          minimum: 0
+        example: 0
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEmailAddressStatusResponse'
         '400':
           description: Bad Request
           content:
@@ -27289,6 +27672,75 @@ paths:
       operationId: deleteIntegrationsWordPressOptIn
       parameters:
       - name: option_key
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/discounts/shipping/{discount_id}/criteria/{criteria_id}:
+    delete:
+      tags:
+      - Shipping Discounts
+      summary: Delete a Shipping Discount Criteria
+      description: Deletes a specified Shipping Discount Criteria
+      operationId: deleteShippingDiscountCriteria
+      parameters:
+      - name: discount_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: criteria_id
         in: path
         required: true
         schema:
@@ -30223,10 +30675,22 @@ components:
           type: string
           description: Status name
           example: Active
+        status_id:
+          type: string
+          description: Status ID
+          example: 123
         stage_entrance_time:
           type: string
           description: Timestamp when the opportunity entered its current stage (ISO-8601)
           example: '2024-03-20T10:00:00Z'
+        last_updated_by:
+          type: string
+          description: User who last updated the opportunity record
+          example: 945
+        created_by:
+          type: string
+          description: User who created the opportunity record
+          example: 852
       required:
       - contact
       - opportunity_title
@@ -31118,6 +31582,70 @@ components:
       - contact_ids
       - template_id
       - user_id
+    CreateShippingDiscountCriteria:
+      type: object
+      properties:
+        type:
+          type: string
+          description: 'Type of criteria: DATE_RANGE, PROMO_CODE, PRODUCT, SUBSCRIPTION_PLAN,
+            or ORDER_TOTAL'
+          enum:
+          - DATE_RANGE
+          - PROMO_CODE
+          - PRODUCT
+          - SUBSCRIPTION_PLAN
+          - ORDER_TOTAL
+          example: DATE_RANGE
+        code:
+          type: string
+          description: Promotional code for PROMO_CODE criteria
+          example: SUMMER2024
+        range_start_time:
+          type: string
+          format: date-time
+          description: Start date/time for DATE_RANGE criteria (ISO-8601 format)
+          example: '2024-01-01T00:00:00Z'
+        range_end_time:
+          type: string
+          format: date-time
+          description: End date/time for DATE_RANGE criteria (ISO-8601 format)
+          example: '2024-12-31T23:59:59Z'
+        product_id:
+          type: string
+          description: Product ID for PRODUCT criteria
+          example: 456
+        product_quantity_min:
+          type: integer
+          format: int32
+          description: Minimum product quantity for PRODUCT criteria
+          example: 1
+        product_quantity_max:
+          type: integer
+          format: int32
+          description: Maximum product quantity for PRODUCT criteria
+          example: 10
+        plan_id:
+          type: string
+          description: Subscription plan ID for SUBSCRIPTION_PLAN criteria
+          example: 789
+        subscription_quantity:
+          type: integer
+          format: int32
+          description: Subscription quantity for SUBSCRIPTION_PLAN criteria
+          example: 1
+        total_amount:
+          type: number
+          format: double
+          description: Total amount threshold for ORDER_TOTAL criteria
+          example: 100
+        operator:
+          type: string
+          description: 'Comparison operator for ORDER_TOTAL criteria: LESS_THAN or
+            GREATER_THAN'
+          enum:
+          - LESS_THAN
+          - GREATER_THAN
+          example: GREATER_THAN
     CreateShippingDiscountRequest:
       type: object
       properties:
@@ -31133,7 +31661,7 @@ components:
           type: array
           description: List of criteria that must be met for this discount to apply
           items:
-            $ref: '#/components/schemas/DiscountCriteria'
+            $ref: '#/components/schemas/CreateShippingDiscountCriteria'
         discount_type:
           type: string
           description: 'Type of discount: AMOUNT (fixed amount) or PERCENT (percentage)'
@@ -34690,6 +35218,65 @@ components:
       - email
       - opted_in
       - status
+    UpdateShippingDiscountCriteria:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Promotional code for PROMO_CODE criteria
+          example: SUMMER2024
+        criteria_id:
+          type: string
+          description: Unique identifier for this criteria
+          example: 501
+        range_start_time:
+          type: string
+          format: date-time
+          description: Start date/time for DATE_RANGE criteria (ISO-8601 format)
+          example: '2024-01-01T00:00:00Z'
+        range_end_time:
+          type: string
+          format: date-time
+          description: End date/time for DATE_RANGE criteria (ISO-8601 format)
+          example: '2024-12-31T23:59:59Z'
+        product_id:
+          type: string
+          description: Product ID for PRODUCT criteria
+          example: 456
+        product_quantity_min:
+          type: integer
+          format: int32
+          description: Minimum product quantity for PRODUCT criteria
+          example: 1
+        product_quantity_max:
+          type: integer
+          format: int32
+          description: Maximum product quantity for PRODUCT criteria
+          example: 10
+        plan_id:
+          type: string
+          description: Subscription plan ID for SUBSCRIPTION_PLAN criteria
+          example: 789
+        subscription_quantity:
+          type: integer
+          format: int32
+          description: Subscription quantity for SUBSCRIPTION_PLAN criteria
+          example: 1
+        total_amount:
+          type: number
+          format: double
+          description: Total amount threshold for ORDER_TOTAL criteria
+          example: 100
+        operator:
+          type: string
+          description: 'Comparison operator for ORDER_TOTAL criteria: LESS_THAN or
+            GREATER_THAN'
+          enum:
+          - LESS_THAN
+          - GREATER_THAN
+          example: GREATER_THAN
+      required:
+      - criteria_id
     UpdateShippingDiscountRequest:
       type: object
       properties:
@@ -34705,7 +35292,7 @@ components:
           type: array
           description: List of criteria that must be met for this discount to apply
           items:
-            $ref: '#/components/schemas/DiscountCriteria'
+            $ref: '#/components/schemas/UpdateShippingDiscountCriteria'
         discount_type:
           type: string
           description: 'Type of discount: AMOUNT (fixed amount) or PERCENT (percentage)'
@@ -35301,9 +35888,6 @@ components:
           format: int32
           description: The priority of the Commission Program
           example: 1
-      required:
-      - name
-      - priority
     UpdateSubscriptionCommissionProgramRequest:
       type: object
       properties:
@@ -36758,6 +37342,57 @@ components:
             $ref: '#/components/schemas/RestOpportunityStage'
         next_page_token:
           type: string
+    ListOpportunityStageMoveResponse:
+      type: object
+      properties:
+        stage_moves:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpportunityStageMove'
+        next_page_token:
+          type: string
+    OpportunityStageMove:
+      type: object
+      description: Historical record of an opportunity moving from one pipeline stage
+        to another
+      properties:
+        id:
+          type: string
+          description: Unique ID of this stage-move record
+          example: 42
+        opportunity_id:
+          type: string
+          description: ID of the opportunity that was moved
+          example: 7
+        move_time:
+          type: string
+          description: Date-time when the move occurred (ISO-8601 UTC)
+          example: 2024-03-15T10:30:00.000+0000
+        move_from_stage_id:
+          type: string
+          description: ID of the stage moved FROM. 0 = no previous stage (first move)
+          example: 3
+        move_to_stage_id:
+          type: string
+          description: ID of the stage moved TO
+          example: 5
+        prev_stage_move_time:
+          type: string
+          description: Date-time of the previous stage-move (ISO-8601 UTC). Null if
+            first move.
+          example: 2024-02-10T08:00:00.000+0000
+        user_id:
+          type: string
+          description: ID of the user associated with this move
+          example: 1
+        created_by:
+          type: string
+          description: ID of the user who created this record
+          example: 1
+        create_time:
+          type: string
+          description: Date-time this record was created (ISO-8601 UTC)
+          example: 2024-03-15T10:30:00.000+0000
     GetUserInfoResponse:
       type: object
       description: User information response
@@ -37135,6 +37770,15 @@ components:
           type: string
           description: The merge context of the email
           example: Contact
+    ListEmailAddressStatusResponse:
+      type: object
+      properties:
+        email_addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestEmailAddressStatus'
+        next_page_token:
+          type: string
     ListShippingDiscountsResponse:
       type: object
       properties:

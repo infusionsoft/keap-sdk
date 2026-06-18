@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from keap_core_v2_client.models.discount_criteria import DiscountCriteria
+from keap_core_v2_client.models.create_shipping_discount_criteria import CreateShippingDiscountCriteria
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +29,7 @@ class CreateShippingDiscountRequest(BaseModel):
     """ # noqa: E501
     name: StrictStr = Field(description="Name of the discount")
     description: Optional[StrictStr] = Field(default=None, description="Description of the discount")
-    criteria: Optional[List[DiscountCriteria]] = Field(default=None, description="List of criteria that must be met for this discount to apply")
+    criteria: Optional[List[CreateShippingDiscountCriteria]] = Field(default=None, description="List of criteria that must be met for this discount to apply")
     discount_type: StrictStr = Field(description="Type of discount: AMOUNT (fixed amount) or PERCENT (percentage)")
     discount_value: Union[StrictFloat, StrictInt] = Field(description="Value of the discount (amount or percentage depending on discount_type)")
     additional_properties: Dict[str, Any] = {}
@@ -109,7 +109,7 @@ class CreateShippingDiscountRequest(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "criteria": [DiscountCriteria.from_dict(_item) for _item in obj["criteria"]] if obj.get("criteria") is not None else None,
+            "criteria": [CreateShippingDiscountCriteria.from_dict(_item) for _item in obj["criteria"]] if obj.get("criteria") is not None else None,
             "discount_type": obj.get("discount_type"),
             "discount_value": obj.get("discount_value")
         })

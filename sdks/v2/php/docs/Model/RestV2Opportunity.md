@@ -25,6 +25,9 @@ Name | Type | Description | Notes
 **order_revenue** | **float** | Order revenue | [optional]
 **objection** | **string** | Objection reason | [optional]
 **status** | **string** | Status name | [optional]
+**status_id** | **string** | Status ID | [optional]
 **stage_entrance_time** | **string** | Timestamp when the opportunity entered its current stage (ISO-8601) | [optional]
+**last_updated_by** | **string** | User who last updated the opportunity record | [optional]
+**created_by** | **string** | User who created the opportunity record | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

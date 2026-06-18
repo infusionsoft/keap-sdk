@@ -116,6 +116,7 @@ import { CreateProductOptionTextOption } from '../models/CreateProductOptionText
 import { CreateProductRequestDetail } from '../models/CreateProductRequestDetail';
 import { CreateProgramResourceRequest } from '../models/CreateProgramResourceRequest';
 import { CreateReferralRequest } from '../models/CreateReferralRequest';
+import { CreateShippingDiscountCriteria } from '../models/CreateShippingDiscountCriteria';
 import { CreateShippingDiscountRequest } from '../models/CreateShippingDiscountRequest';
 import { CreateSubscriptionCommissionProgramRequest } from '../models/CreateSubscriptionCommissionProgramRequest';
 import { CreateSubscriptionPlanRequest } from '../models/CreateSubscriptionPlanRequest';
@@ -204,6 +205,7 @@ import { ListContactTagsResponse } from '../models/ListContactTagsResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
 import { ListCustomFieldGroupsResponse } from '../models/ListCustomFieldGroupsResponse';
+import { ListEmailAddressStatusResponse } from '../models/ListEmailAddressStatusResponse';
 import { ListEmailsSentResponse } from '../models/ListEmailsSentResponse';
 import { ListFilesResponse } from '../models/ListFilesResponse';
 import { ListFreeTrialDiscountsResponse } from '../models/ListFreeTrialDiscountsResponse';
@@ -216,6 +218,7 @@ import { ListMerchantsResponse } from '../models/ListMerchantsResponse';
 import { ListNoteTemplateResponse } from '../models/ListNoteTemplateResponse';
 import { ListNotesResponse } from '../models/ListNotesResponse';
 import { ListOpportunitiesResponse } from '../models/ListOpportunitiesResponse';
+import { ListOpportunityStageMoveResponse } from '../models/ListOpportunityStageMoveResponse';
 import { ListOpportunityStagesResponse } from '../models/ListOpportunityStagesResponse';
 import { ListOption } from '../models/ListOption';
 import { ListOrderPaymentsResponse } from '../models/ListOrderPaymentsResponse';
@@ -253,6 +256,7 @@ import { NoteTemplate } from '../models/NoteTemplate';
 import { ObjectModel } from '../models/ObjectModel';
 import { OpportunityContact } from '../models/OpportunityContact';
 import { OpportunityStage } from '../models/OpportunityStage';
+import { OpportunityStageMove } from '../models/OpportunityStageMove';
 import { OrderItem } from '../models/OrderItem';
 import { OrderItemProduct } from '../models/OrderItemProduct';
 import { OrderTotalDiscount } from '../models/OrderTotalDiscount';
@@ -351,6 +355,7 @@ import { UpdateProductOptionListOption } from '../models/UpdateProductOptionList
 import { UpdateProductOptionRequest } from '../models/UpdateProductOptionRequest';
 import { UpdateProductRequestDetail } from '../models/UpdateProductRequestDetail';
 import { UpdateProgramResourceRequest } from '../models/UpdateProgramResourceRequest';
+import { UpdateShippingDiscountCriteria } from '../models/UpdateShippingDiscountCriteria';
 import { UpdateShippingDiscountRequest } from '../models/UpdateShippingDiscountRequest';
 import { UpdateSubscriptionCommissionProgramRequest } from '../models/UpdateSubscriptionCommissionProgramRequest';
 import { UpdateSubscriptionPlanRequest } from '../models/UpdateSubscriptionPlanRequest';
@@ -3314,6 +3319,34 @@ export class PromiseEmailAddressApi {
     }
 
     /**
+     * Retrieve a list of the Status of Email Addresses
+     * List Email Address Statuses
+     * @param [filter] Filter to apply, allowed fields are: - (Set[String]) &#x60;emails&#x60; - (Set[EmailOptStatus]) &#x60;statuses&#x60; - (Boolean) &#x60;opted_in&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;opted_in%3D%3Dtrue&#x60; - &#x60;filter&#x3D;emails%3D%3Dexample%40test.com&#x60; - &#x60;filter&#x3D;emails%3D%3Dexample%40test.com%2Csecond%40test.com&#x60; 
+     * @param [pageToken] Page token
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;email&#x60; - &#x60;status&#x60; - &#x60;create_time&#x60; - &#x60;last_click_time&#x60; - &#x60;last_open_time&#x60; - &#x60;last_sent_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     */
+    public listEmailAddressStatusesWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListEmailAddressStatusResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listEmailAddressStatusesWithHttpInfo(filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieve a list of the Status of Email Addresses
+     * List Email Address Statuses
+     * @param [filter] Filter to apply, allowed fields are: - (Set[String]) &#x60;emails&#x60; - (Set[EmailOptStatus]) &#x60;statuses&#x60; - (Boolean) &#x60;opted_in&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;opted_in%3D%3Dtrue&#x60; - &#x60;filter&#x3D;emails%3D%3Dexample%40test.com&#x60; - &#x60;filter&#x3D;emails%3D%3Dexample%40test.com%2Csecond%40test.com&#x60; 
+     * @param [pageToken] Page token
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;email&#x60; - &#x60;status&#x60; - &#x60;create_time&#x60; - &#x60;last_click_time&#x60; - &#x60;last_open_time&#x60; - &#x60;last_sent_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     */
+    public listEmailAddressStatuses(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<ListEmailAddressStatusResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listEmailAddressStatuses(filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Updates an Email Address opt-in status  You may opt-in or mark an email address as _Marketable_ by including the following field in the request JSON with an opt-in reason. (This field is also shown in the complete request body sample.) The reason you provide here will help with compliance. Example reasons: \"Customer opted-in through webform\", \"Company gave explicit permission.\"  ```json \"opt_in_reason\": \"your reason for opt-in\" ``` Note that the email address status will only be updated to `Unconfirmed` (marketable) for email addresses that are currently in the following states: - `Unengaged Marketable` - `Unengaged Non-Marketable` - `Non-Marketable` - `Opt-Out: Manual`  All other existing statuses e.g. `List Unsubscribe`, `Opt-Out`, `System` etc will remain non-marketable and in their existing state.
      * Update an Email Address opt-in status
      * @param email
@@ -5001,9 +5034,9 @@ export class PromiseOpportunityApi {
      * Creates a new opportunity as the authenticated user.
      * Create an Opportunity
      * @param createOpportunityRequest
-     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      */
-    public createOpportunityWithHttpInfo(createOpportunityRequest: CreateOpportunityRequest, fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
+    public createOpportunityWithHttpInfo(createOpportunityRequest: CreateOpportunityRequest, fields?: Set<'custom_fields' | 'created_by' | 'last_updated_by' | 'status_id' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.createOpportunityWithHttpInfo(createOpportunityRequest, fields, observableOptions);
         return result.toPromise();
@@ -5013,9 +5046,9 @@ export class PromiseOpportunityApi {
      * Creates a new opportunity as the authenticated user.
      * Create an Opportunity
      * @param createOpportunityRequest
-     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      */
-    public createOpportunity(createOpportunityRequest: CreateOpportunityRequest, fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<RestV2Opportunity> {
+    public createOpportunity(createOpportunityRequest: CreateOpportunityRequest, fields?: Set<'custom_fields' | 'created_by' | 'last_updated_by' | 'status_id' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<RestV2Opportunity> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.createOpportunity(createOpportunityRequest, fields, observableOptions);
         return result.toPromise();
@@ -5179,9 +5212,9 @@ export class PromiseOpportunityApi {
      * Retrieves the specified Opportunity
      * Retrieve a Opportunity
      * @param opportunityId
-     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      */
-    public getOpportunityWithHttpInfo(opportunityId: string, fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
+    public getOpportunityWithHttpInfo(opportunityId: string, fields?: Set<'custom_fields' | 'created_by' | 'last_updated_by' | 'status_id' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getOpportunityWithHttpInfo(opportunityId, fields, observableOptions);
         return result.toPromise();
@@ -5191,9 +5224,9 @@ export class PromiseOpportunityApi {
      * Retrieves the specified Opportunity
      * Retrieve a Opportunity
      * @param opportunityId
-     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      */
-    public getOpportunity(opportunityId: string, fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<RestV2Opportunity> {
+    public getOpportunity(opportunityId: string, fields?: Set<'custom_fields' | 'created_by' | 'last_updated_by' | 'status_id' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<RestV2Opportunity> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getOpportunity(opportunityId, fields, observableOptions);
         return result.toPromise();
@@ -5244,15 +5277,37 @@ export class PromiseOpportunityApi {
     }
 
     /**
+     * Retrieves a single historical record of an opportunity being moved from one pipeline stage to another.
+     * Retrieve an Opportunity Stage Move
+     * @param stageMoveId
+     */
+    public getOpportunityStageMoveWithHttpInfo(stageMoveId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OpportunityStageMove>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getOpportunityStageMoveWithHttpInfo(stageMoveId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single historical record of an opportunity being moved from one pipeline stage to another.
+     * Retrieve an Opportunity Stage Move
+     * @param stageMoveId
+     */
+    public getOpportunityStageMove(stageMoveId: string, _options?: PromiseConfigurationOptions): Promise<OpportunityStageMove> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getOpportunityStageMove(stageMoveId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a list of all Opportunities.
      * List Opportunities
-     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. 
      * @param [orderBy] Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listOpportunitiesWithHttpInfo(fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListOpportunitiesResponse>> {
+    public listOpportunitiesWithHttpInfo(fields?: Set<'custom_fields' | 'created_by' | 'last_updated_by' | 'status_id' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListOpportunitiesResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listOpportunitiesWithHttpInfo(fields, filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
@@ -5261,13 +5316,13 @@ export class PromiseOpportunityApi {
     /**
      * Retrieves a list of all Opportunities.
      * List Opportunities
-     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. 
      * @param [orderBy] Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listOpportunities(fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListOpportunitiesResponse> {
+    public listOpportunities(fields?: Set<'custom_fields' | 'created_by' | 'last_updated_by' | 'status_id' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListOpportunitiesResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listOpportunities(fields, filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
@@ -5292,6 +5347,34 @@ export class PromiseOpportunityApi {
     public listOpportunityCustomFieldGroups(tabId?: string, _options?: PromiseConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listOpportunityCustomFieldGroups(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns a paginated list of historical stage-move records.
+     * List Opportunity Stage Moves
+     * @param [filter] Filter to apply. Allowed fields: - (Id) &#x60;opportunity_id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60; - (Id) &#x60;user_id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;  Separate multiple filters with semicolons: &#x60;opportunity_id&#x3D;&#x3D;7;user_id&#x3D;&#x3D;1&#x60; 
+     * @param [pageToken] Page token
+     * @param [orderBy] Field and direction to order results. Supported fields: &#x60;move_date&#x60;, &#x60;id&#x60; Directions: &#x60;asc&#x60; | &#x60;desc&#x60; Example: &#x60;move_date desc&#x60; 
+     * @param [pageSize] Total number of items to return per page
+     */
+    public listOpportunityStageMovesWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListOpportunityStageMoveResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listOpportunityStageMovesWithHttpInfo(filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns a paginated list of historical stage-move records.
+     * List Opportunity Stage Moves
+     * @param [filter] Filter to apply. Allowed fields: - (Id) &#x60;opportunity_id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60; - (Id) &#x60;user_id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;  Separate multiple filters with semicolons: &#x60;opportunity_id&#x3D;&#x3D;7;user_id&#x3D;&#x3D;1&#x60; 
+     * @param [pageToken] Page token
+     * @param [orderBy] Field and direction to order results. Supported fields: &#x60;move_date&#x60;, &#x60;id&#x60; Directions: &#x60;asc&#x60; | &#x60;desc&#x60; Example: &#x60;move_date desc&#x60; 
+     * @param [pageSize] Total number of items to return per page
+     */
+    public listOpportunityStageMoves(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<ListOpportunityStageMoveResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listOpportunityStageMoves(filter, pageToken, orderBy, pageSize, observableOptions);
         return result.toPromise();
     }
 
@@ -5349,9 +5432,9 @@ export class PromiseOpportunityApi {
      * @param opportunityId
      * @param updateOpportunityRequestV2
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      */
-    public updateOpportunityWithHttpInfo(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: Set<'opportunity_title' | 'next_action_time' | 'next_action_notes' | 'opportunity_notes' | 'estimated_close_time' | 'include_in_forecast' | 'projected_revenue_low' | 'projected_revenue_high' | 'contact_id' | 'stage_id' | 'user_id' | 'custom_fields' | 'affiliate_id'>, fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
+    public updateOpportunityWithHttpInfo(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: Set<'opportunity_title' | 'next_action_time' | 'next_action_notes' | 'opportunity_notes' | 'estimated_close_time' | 'include_in_forecast' | 'projected_revenue_low' | 'projected_revenue_high' | 'contact_id' | 'stage_id' | 'user_id' | 'custom_fields' | 'affiliate_id'>, fields?: Set<'custom_fields' | 'created_by' | 'last_updated_by' | 'status_id' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOpportunityWithHttpInfo(opportunityId, updateOpportunityRequestV2, updateMask, fields, observableOptions);
         return result.toPromise();
@@ -5363,9 +5446,9 @@ export class PromiseOpportunityApi {
      * @param opportunityId
      * @param updateOpportunityRequestV2
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
+     * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
      */
-    public updateOpportunity(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: Set<'opportunity_title' | 'next_action_time' | 'next_action_notes' | 'opportunity_notes' | 'estimated_close_time' | 'include_in_forecast' | 'projected_revenue_low' | 'projected_revenue_high' | 'contact_id' | 'stage_id' | 'user_id' | 'custom_fields' | 'affiliate_id'>, fields?: Set<'custom_fields' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<RestV2Opportunity> {
+    public updateOpportunity(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: Set<'opportunity_title' | 'next_action_time' | 'next_action_notes' | 'opportunity_notes' | 'estimated_close_time' | 'include_in_forecast' | 'projected_revenue_low' | 'projected_revenue_high' | 'contact_id' | 'stage_id' | 'user_id' | 'custom_fields' | 'affiliate_id'>, fields?: Set<'custom_fields' | 'created_by' | 'last_updated_by' | 'status_id' | 'monthly_revenue' | 'order_revenue' | 'objection' | 'status' | 'stage_entrance_time'>, _options?: PromiseConfigurationOptions): Promise<RestV2Opportunity> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOpportunity(opportunityId, updateOpportunityRequestV2, updateMask, fields, observableOptions);
         return result.toPromise();
@@ -7607,7 +7690,7 @@ export class PromiseSalesApi {
     /**
      * Retrieves a list of payments
      * List Payments
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - (List[String]) &#x60;ids&#x60; - (String) &#x60;amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;order_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;merchant_account_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;order_id%3D%3D123%3Bcontact_id%3D%3D567&#x60;
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - (List[String]) &#x60;ids&#x60; - (String) &#x60;amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;order_id&#x60; - (List[String]) &#x60;order_ids&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;merchant_account_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;order_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;order_ids%3D%3D1,2,3&#x60;
      * @param [pageToken] Page token
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;amount&#x60; - &#x60;payment_time&#x60; - &#x60;contact_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
@@ -7621,7 +7704,7 @@ export class PromiseSalesApi {
     /**
      * Retrieves a list of payments
      * List Payments
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - (List[String]) &#x60;ids&#x60; - (String) &#x60;amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;order_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;merchant_account_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;order_id%3D%3D123%3Bcontact_id%3D%3D567&#x60;
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - (List[String]) &#x60;ids&#x60; - (String) &#x60;amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;order_id&#x60; - (List[String]) &#x60;order_ids&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;merchant_account_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;order_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;order_ids%3D%3D1,2,3&#x60;
      * @param [pageToken] Page token
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;amount&#x60; - &#x60;payment_time&#x60; - &#x60;contact_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
@@ -7844,6 +7927,30 @@ export class PromiseShippingDiscountsApi {
     }
 
     /**
+     * Creates a Shipping Discount Criteria
+     * Create a Shipping Discount Criteria
+     * @param discountId
+     * @param createShippingDiscountCriteria
+     */
+    public createShippingDiscountCriteriaWithHttpInfo(discountId: string, createShippingDiscountCriteria: CreateShippingDiscountCriteria, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DiscountCriteria>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createShippingDiscountCriteriaWithHttpInfo(discountId, createShippingDiscountCriteria, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a Shipping Discount Criteria
+     * Create a Shipping Discount Criteria
+     * @param discountId
+     * @param createShippingDiscountCriteria
+     */
+    public createShippingDiscountCriteria(discountId: string, createShippingDiscountCriteria: CreateShippingDiscountCriteria, _options?: PromiseConfigurationOptions): Promise<DiscountCriteria> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createShippingDiscountCriteria(discountId, createShippingDiscountCriteria, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes a specified Shipping Discount
      * Delete a Shipping Discount
      * @param discountId
@@ -7862,6 +7969,30 @@ export class PromiseShippingDiscountsApi {
     public deleteShippingDiscount(discountId: string, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteShippingDiscount(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified Shipping Discount Criteria
+     * Delete a Shipping Discount Criteria
+     * @param discountId
+     * @param criteriaId
+     */
+    public deleteShippingDiscountCriteriaWithHttpInfo(discountId: string, criteriaId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteShippingDiscountCriteriaWithHttpInfo(discountId, criteriaId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified Shipping Discount Criteria
+     * Delete a Shipping Discount Criteria
+     * @param discountId
+     * @param criteriaId
+     */
+    public deleteShippingDiscountCriteria(discountId: string, criteriaId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteShippingDiscountCriteria(discountId, criteriaId, observableOptions);
         return result.toPromise();
     }
 

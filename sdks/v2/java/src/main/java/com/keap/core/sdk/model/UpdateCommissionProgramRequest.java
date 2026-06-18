@@ -42,18 +42,18 @@ public class UpdateCommissionProgramRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @jakarta.annotation.Nonnull  private String name;
+  @jakarta.annotation.Nullable  private String name;
 
   public static final String JSON_PROPERTY_NOTES = "notes";
   @jakarta.annotation.Nullable  private String notes;
 
   public static final String JSON_PROPERTY_PRIORITY = "priority";
-  @jakarta.annotation.Nonnull  private Integer priority;
+  @jakarta.annotation.Nullable  private Integer priority;
 
   public UpdateCommissionProgramRequest() { 
   }
 
-  public UpdateCommissionProgramRequest name(@jakarta.annotation.Nonnull String name) {
+  public UpdateCommissionProgramRequest name(@jakarta.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -62,18 +62,17 @@ public class UpdateCommissionProgramRequest implements Serializable {
    * The name of the Commission Program
    * @return name
    */
-  @jakarta.annotation.Nonnull  @NotNull
-  @Schema(example = "Fitness program", requiredMode = Schema.RequiredMode.REQUIRED, description = "The name of the Commission Program")
+  @jakarta.annotation.Nullable  @Schema(example = "Fitness program", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The name of the Commission Program")
   @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
     return name;
   }
 
 
   @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@jakarta.annotation.Nonnull String name) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setName(@jakarta.annotation.Nullable String name) {
     this.name = name;
   }
 
@@ -102,7 +101,7 @@ public class UpdateCommissionProgramRequest implements Serializable {
   }
 
 
-  public UpdateCommissionProgramRequest priority(@jakarta.annotation.Nonnull Integer priority) {
+  public UpdateCommissionProgramRequest priority(@jakarta.annotation.Nullable Integer priority) {
     this.priority = priority;
     return this;
   }
@@ -111,18 +110,17 @@ public class UpdateCommissionProgramRequest implements Serializable {
    * The priority of the Commission Program
    * @return priority
    */
-  @jakarta.annotation.Nonnull  @NotNull
-  @Schema(example = "1", requiredMode = Schema.RequiredMode.REQUIRED, description = "The priority of the Commission Program")
+  @jakarta.annotation.Nullable  @Schema(example = "1", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The priority of the Commission Program")
   @JsonProperty(JSON_PROPERTY_PRIORITY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getPriority() {
     return priority;
   }
 
 
   @JsonProperty(JSON_PROPERTY_PRIORITY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPriority(@jakarta.annotation.Nonnull Integer priority) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPriority(@jakarta.annotation.Nullable Integer priority) {
     this.priority = priority;
   }
 

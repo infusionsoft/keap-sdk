@@ -6,8 +6,12 @@ All URIs are relative to *https://api.keap.com/crm*
 |------------- | ------------- | -------------|
 | [**createShippingDiscount**](ShippingDiscountsApi.md#createShippingDiscount) | **POST** /rest/v2/discounts/shipping | Create a Shipping Discount |
 | [**createShippingDiscountWithHttpInfo**](ShippingDiscountsApi.md#createShippingDiscountWithHttpInfo) | **POST** /rest/v2/discounts/shipping | Create a Shipping Discount |
+| [**createShippingDiscountCriteria**](ShippingDiscountsApi.md#createShippingDiscountCriteria) | **POST** /rest/v2/discounts/shipping/{discount_id}/criteria | Create a Shipping Discount Criteria |
+| [**createShippingDiscountCriteriaWithHttpInfo**](ShippingDiscountsApi.md#createShippingDiscountCriteriaWithHttpInfo) | **POST** /rest/v2/discounts/shipping/{discount_id}/criteria | Create a Shipping Discount Criteria |
 | [**deleteShippingDiscount**](ShippingDiscountsApi.md#deleteShippingDiscount) | **DELETE** /rest/v2/discounts/shipping/{discount_id} | Delete a Shipping Discount |
 | [**deleteShippingDiscountWithHttpInfo**](ShippingDiscountsApi.md#deleteShippingDiscountWithHttpInfo) | **DELETE** /rest/v2/discounts/shipping/{discount_id} | Delete a Shipping Discount |
+| [**deleteShippingDiscountCriteria**](ShippingDiscountsApi.md#deleteShippingDiscountCriteria) | **DELETE** /rest/v2/discounts/shipping/{discount_id}/criteria/{criteria_id} | Delete a Shipping Discount Criteria |
+| [**deleteShippingDiscountCriteriaWithHttpInfo**](ShippingDiscountsApi.md#deleteShippingDiscountCriteriaWithHttpInfo) | **DELETE** /rest/v2/discounts/shipping/{discount_id}/criteria/{criteria_id} | Delete a Shipping Discount Criteria |
 | [**getShippingDiscount**](ShippingDiscountsApi.md#getShippingDiscount) | **GET** /rest/v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount |
 | [**getShippingDiscountWithHttpInfo**](ShippingDiscountsApi.md#getShippingDiscountWithHttpInfo) | **GET** /rest/v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount |
 | [**listShippingDiscounts**](ShippingDiscountsApi.md#listShippingDiscounts) | **GET** /rest/v2/discounts/shipping | List all Shipping Discounts |
@@ -177,6 +181,170 @@ ApiResponse<[**ShippingDiscount**](ShippingDiscount.md)>
 | **501** | Method Not Implemented |  -  |
 
 
+## createShippingDiscountCriteria
+
+> DiscountCriteria createShippingDiscountCriteria(discountId, createShippingDiscountCriteria)
+
+Create a Shipping Discount Criteria
+
+Creates a Shipping Discount Criteria
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ShippingDiscountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ShippingDiscountsApi apiInstance = new ShippingDiscountsApi(defaultClient);
+        String discountId = "discountId_example"; // String | 
+        CreateShippingDiscountCriteria createShippingDiscountCriteria = new CreateShippingDiscountCriteria(); // CreateShippingDiscountCriteria | 
+        try {
+            DiscountCriteria result = apiInstance.createShippingDiscountCriteria(discountId, createShippingDiscountCriteria);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ShippingDiscountsApi#createShippingDiscountCriteria");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **discountId** | **String**|  | |
+| **createShippingDiscountCriteria** | [**CreateShippingDiscountCriteria**](CreateShippingDiscountCriteria.md)|  | |
+
+### Return type
+
+[**DiscountCriteria**](DiscountCriteria.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## createShippingDiscountCriteriaWithHttpInfo
+
+> ApiResponse<DiscountCriteria> createShippingDiscountCriteria createShippingDiscountCriteriaWithHttpInfo(discountId, createShippingDiscountCriteria)
+
+Create a Shipping Discount Criteria
+
+Creates a Shipping Discount Criteria
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ShippingDiscountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ShippingDiscountsApi apiInstance = new ShippingDiscountsApi(defaultClient);
+        String discountId = "discountId_example"; // String | 
+        CreateShippingDiscountCriteria createShippingDiscountCriteria = new CreateShippingDiscountCriteria(); // CreateShippingDiscountCriteria | 
+        try {
+            ApiResponse<DiscountCriteria> response = apiInstance.createShippingDiscountCriteriaWithHttpInfo(discountId, createShippingDiscountCriteria);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ShippingDiscountsApi#createShippingDiscountCriteria");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **discountId** | **String**|  | |
+| **createShippingDiscountCriteria** | [**CreateShippingDiscountCriteria**](CreateShippingDiscountCriteria.md)|  | |
+
+### Return type
+
+ApiResponse<[**DiscountCriteria**](DiscountCriteria.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## deleteShippingDiscount
 
 > void deleteShippingDiscount(discountId)
@@ -306,6 +474,168 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **discountId** | **String**|  | |
+
+### Return type
+
+
+ApiResponse<Void>
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## deleteShippingDiscountCriteria
+
+> void deleteShippingDiscountCriteria(discountId, criteriaId)
+
+Delete a Shipping Discount Criteria
+
+Deletes a specified Shipping Discount Criteria
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ShippingDiscountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ShippingDiscountsApi apiInstance = new ShippingDiscountsApi(defaultClient);
+        String discountId = "discountId_example"; // String | 
+        String criteriaId = "criteriaId_example"; // String | 
+        try {
+            apiInstance.deleteShippingDiscountCriteria(discountId, criteriaId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ShippingDiscountsApi#deleteShippingDiscountCriteria");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **discountId** | **String**|  | |
+| **criteriaId** | **String**|  | |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## deleteShippingDiscountCriteriaWithHttpInfo
+
+> ApiResponse<Void> deleteShippingDiscountCriteria deleteShippingDiscountCriteriaWithHttpInfo(discountId, criteriaId)
+
+Delete a Shipping Discount Criteria
+
+Deletes a specified Shipping Discount Criteria
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ShippingDiscountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ShippingDiscountsApi apiInstance = new ShippingDiscountsApi(defaultClient);
+        String discountId = "discountId_example"; // String | 
+        String criteriaId = "criteriaId_example"; // String | 
+        try {
+            ApiResponse<Void> response = apiInstance.deleteShippingDiscountCriteriaWithHttpInfo(discountId, criteriaId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ShippingDiscountsApi#deleteShippingDiscountCriteria");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **discountId** | **String**|  | |
+| **criteriaId** | **String**|  | |
 
 ### Return type
 

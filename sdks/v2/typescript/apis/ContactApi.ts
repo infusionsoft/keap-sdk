@@ -1044,6 +1044,13 @@ export class ContactApiResponseProcessor {
             ) as Contact;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("201", response.httpStatusCode)) {
+            const body: Contact = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Contact", ""
+            ) as Contact;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
         if (isCodeInRange("400", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),

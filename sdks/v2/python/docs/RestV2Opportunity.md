@@ -26,7 +26,10 @@ Name | Type | Description | Notes
 **order_revenue** | **float** | Order revenue | [optional] 
 **objection** | **str** | Objection reason | [optional] 
 **status** | **str** | Status name | [optional] 
+**status_id** | **str** | Status ID | [optional] 
 **stage_entrance_time** | **str** | Timestamp when the opportunity entered its current stage (ISO-8601) | [optional] 
+**last_updated_by** | **str** | User who last updated the opportunity record | [optional] 
+**created_by** | **str** | User who created the opportunity record | [optional] 
 
 ## Example
 

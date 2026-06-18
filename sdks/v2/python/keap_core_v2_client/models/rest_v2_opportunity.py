@@ -51,9 +51,12 @@ class RestV2Opportunity(BaseModel):
     order_revenue: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Order revenue")
     objection: Optional[StrictStr] = Field(default=None, description="Objection reason")
     status: Optional[StrictStr] = Field(default=None, description="Status name")
+    status_id: Optional[StrictStr] = Field(default=None, description="Status ID")
     stage_entrance_time: Optional[StrictStr] = Field(default=None, description="Timestamp when the opportunity entered its current stage (ISO-8601)")
+    last_updated_by: Optional[StrictStr] = Field(default=None, description="User who last updated the opportunity record")
+    created_by: Optional[StrictStr] = Field(default=None, description="User who created the opportunity record")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "contact", "stage", "user", "opportunity_title", "next_action_time", "next_action_notes", "opportunity_notes", "estimated_close_time", "include_in_forecast", "projected_revenue_low", "projected_revenue_high", "custom_fields", "created_time", "last_updated_time", "affiliate_id", "lead_source", "monthly_revenue", "order_revenue", "objection", "status", "stage_entrance_time"]
+    __properties: ClassVar[List[str]] = ["id", "contact", "stage", "user", "opportunity_title", "next_action_time", "next_action_notes", "opportunity_notes", "estimated_close_time", "include_in_forecast", "projected_revenue_low", "projected_revenue_high", "custom_fields", "created_time", "last_updated_time", "affiliate_id", "lead_source", "monthly_revenue", "order_revenue", "objection", "status", "status_id", "stage_entrance_time", "last_updated_by", "created_by"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -150,7 +153,10 @@ class RestV2Opportunity(BaseModel):
             "order_revenue": obj.get("order_revenue"),
             "objection": obj.get("objection"),
             "status": obj.get("status"),
-            "stage_entrance_time": obj.get("stage_entrance_time")
+            "status_id": obj.get("status_id"),
+            "stage_entrance_time": obj.get("stage_entrance_time"),
+            "last_updated_by": obj.get("last_updated_by"),
+            "created_by": obj.get("created_by")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

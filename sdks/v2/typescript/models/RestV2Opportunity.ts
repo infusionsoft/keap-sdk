@@ -90,9 +90,21 @@ export class RestV2Opportunity {
     */
     'status'?: string;
     /**
+    * Status ID
+    */
+    'statusId'?: string;
+    /**
     * Timestamp when the opportunity entered its current stage (ISO-8601)
     */
     'stageEntranceTime'?: string;
+    /**
+    * User who last updated the opportunity record
+    */
+    'lastUpdatedBy'?: string;
+    /**
+    * User who created the opportunity record
+    */
+    'createdBy'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -226,8 +238,26 @@ export class RestV2Opportunity {
             "format": ""
         },
         {
+            "name": "statusId",
+            "baseName": "status_id",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "stageEntranceTime",
             "baseName": "stage_entrance_time",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "lastUpdatedBy",
+            "baseName": "last_updated_by",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "createdBy",
+            "baseName": "created_by",
             "type": "string",
             "format": ""
         }    ];

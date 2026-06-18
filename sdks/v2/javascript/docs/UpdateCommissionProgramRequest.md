@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | The name of the Commission Program | 
+**name** | **String** | The name of the Commission Program | [optional] 
 **notes** | **String** | The notes of the Commission Program | [optional] 
-**priority** | **Number** | The priority of the Commission Program | 
+**priority** | **Number** | The priority of the Commission Program | [optional] 
 
 

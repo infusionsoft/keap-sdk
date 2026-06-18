@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**name** | **String** | Name of the discount |  |
 |**description** | **String** | Description of the discount |  [optional] |
-|**criteria** | [**List&lt;DiscountCriteria&gt;**](DiscountCriteria.md) | List of criteria that must be met for this discount to apply |  [optional] |
+|**criteria** | [**List&lt;CreateShippingDiscountCriteria&gt;**](CreateShippingDiscountCriteria.md) | List of criteria that must be met for this discount to apply |  [optional] |
 |**discountType** | [**DiscountTypeEnum**](#DiscountTypeEnum) | Type of discount: AMOUNT (fixed amount) or PERCENT (percentage) |  |
 |**discountValue** | **Double** | Value of the discount (amount or percentage depending on discount_type) |  |
 

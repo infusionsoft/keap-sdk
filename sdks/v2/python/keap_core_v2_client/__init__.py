@@ -14,7 +14,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-__version__ = "2.0.14"
+__version__ = "2.0.15"
 
 # import apis into sdk package
 from keap_core_v2_client.api.affiliate_api import AffiliateApi
@@ -187,6 +187,7 @@ from keap_core_v2_client.models.create_product_option_text_option import CreateP
 from keap_core_v2_client.models.create_product_request_detail import CreateProductRequestDetail
 from keap_core_v2_client.models.create_program_resource_request import CreateProgramResourceRequest
 from keap_core_v2_client.models.create_referral_request import CreateReferralRequest
+from keap_core_v2_client.models.create_shipping_discount_criteria import CreateShippingDiscountCriteria
 from keap_core_v2_client.models.create_shipping_discount_request import CreateShippingDiscountRequest
 from keap_core_v2_client.models.create_subscription_commission_program_request import CreateSubscriptionCommissionProgramRequest
 from keap_core_v2_client.models.create_subscription_plan_request import CreateSubscriptionPlanRequest
@@ -276,6 +277,7 @@ from keap_core_v2_client.models.list_contact_tags_response import ListContactTag
 from keap_core_v2_client.models.list_contacts_response import ListContactsResponse
 from keap_core_v2_client.models.list_countries_response import ListCountriesResponse
 from keap_core_v2_client.models.list_custom_field_groups_response import ListCustomFieldGroupsResponse
+from keap_core_v2_client.models.list_email_address_status_response import ListEmailAddressStatusResponse
 from keap_core_v2_client.models.list_emails_sent_response import ListEmailsSentResponse
 from keap_core_v2_client.models.list_files_response import ListFilesResponse
 from keap_core_v2_client.models.list_free_trial_discounts_response import ListFreeTrialDiscountsResponse
@@ -288,6 +290,7 @@ from keap_core_v2_client.models.list_merchants_response import ListMerchantsResp
 from keap_core_v2_client.models.list_note_template_response import ListNoteTemplateResponse
 from keap_core_v2_client.models.list_notes_response import ListNotesResponse
 from keap_core_v2_client.models.list_opportunities_response import ListOpportunitiesResponse
+from keap_core_v2_client.models.list_opportunity_stage_move_response import ListOpportunityStageMoveResponse
 from keap_core_v2_client.models.list_opportunity_stages_response import ListOpportunityStagesResponse
 from keap_core_v2_client.models.list_option import ListOption
 from keap_core_v2_client.models.list_order_payments_response import ListOrderPaymentsResponse
@@ -324,6 +327,7 @@ from keap_core_v2_client.models.note_template import NoteTemplate
 from keap_core_v2_client.models.object_model import ObjectModel
 from keap_core_v2_client.models.opportunity_contact import OpportunityContact
 from keap_core_v2_client.models.opportunity_stage import OpportunityStage
+from keap_core_v2_client.models.opportunity_stage_move import OpportunityStageMove
 from keap_core_v2_client.models.order_item import OrderItem
 from keap_core_v2_client.models.order_item_product import OrderItemProduct
 from keap_core_v2_client.models.order_total_discount import OrderTotalDiscount
@@ -422,6 +426,7 @@ from keap_core_v2_client.models.update_product_option_list_option import UpdateP
 from keap_core_v2_client.models.update_product_option_request import UpdateProductOptionRequest
 from keap_core_v2_client.models.update_product_request_detail import UpdateProductRequestDetail
 from keap_core_v2_client.models.update_program_resource_request import UpdateProgramResourceRequest
+from keap_core_v2_client.models.update_shipping_discount_criteria import UpdateShippingDiscountCriteria
 from keap_core_v2_client.models.update_shipping_discount_request import UpdateShippingDiscountRequest
 from keap_core_v2_client.models.update_subscription_commission_program_request import UpdateSubscriptionCommissionProgramRequest
 from keap_core_v2_client.models.update_subscription_plan_request import UpdateSubscriptionPlanRequest

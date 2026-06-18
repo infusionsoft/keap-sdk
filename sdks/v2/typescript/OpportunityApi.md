@@ -15,8 +15,10 @@ Method | HTTP request | Description
 [**getOpportunity**](OpportunityApi.md#getOpportunity) | **GET** /rest/v2/opportunities/{opportunity_id} | Retrieve a Opportunity
 [**getOpportunityCustomFieldGroup**](OpportunityApi.md#getOpportunityCustomFieldGroup) | **GET** /rest/v2/opportunities/model/customFields/groups/{group_id} | Retrieve an Opportunity Custom Field Group
 [**getOpportunityStage**](OpportunityApi.md#getOpportunityStage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
+[**getOpportunityStageMove**](OpportunityApi.md#getOpportunityStageMove) | **GET** /rest/v2/opportunities/stageMoves/{stage_move_id} | Retrieve an Opportunity Stage Move
 [**listOpportunities**](OpportunityApi.md#listOpportunities) | **GET** /rest/v2/opportunities | List Opportunities
 [**listOpportunityCustomFieldGroups**](OpportunityApi.md#listOpportunityCustomFieldGroups) | **GET** /rest/v2/opportunities/model/customFields/groups | List Opportunity Custom Field Groups
+[**listOpportunityStageMoves**](OpportunityApi.md#listOpportunityStageMoves) | **GET** /rest/v2/opportunities/stageMoves | List Opportunity Stage Moves
 [**listOpportunityStages**](OpportunityApi.md#listOpportunityStages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages
 [**retrieveOpportunityCustomFieldModel**](OpportunityApi.md#retrieveOpportunityCustomFieldModel) | **GET** /rest/v2/opportunities/model | Retrieve Opportunity Custom Field Model
 [**updateOpportunity**](OpportunityApi.md#updateOpportunity) | **PATCH** /rest/v2/opportunities/{opportunity_id} | Update an opportunity
@@ -62,7 +64,7 @@ const request: OpportunityApiCreateOpportunityRequest = {
     ],
     affiliateId: "789",
   },
-    // Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
+    // Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
   fields: [
     "custom_fields",
   ],
@@ -78,7 +80,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createOpportunityRequest** | **CreateOpportunityRequest**|  |
- **fields** | **Array<&#39;custom_fields&#39; &#124; &#39;monthly_revenue&#39; &#124; &#39;order_revenue&#39; &#124; &#39;objection&#39; &#124; &#39;status&#39; &#124; &#39;stage_entrance_time&#39;>** | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | (optional) defaults to undefined
+ **fields** | **Array<&#39;custom_fields&#39; &#124; &#39;created_by&#39; &#124; &#39;last_updated_by&#39; &#124; &#39;status_id&#39; &#124; &#39;monthly_revenue&#39; &#124; &#39;order_revenue&#39; &#124; &#39;objection&#39; &#124; &#39;status&#39; &#124; &#39;stage_entrance_time&#39;>** | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | (optional) defaults to undefined
 
 
 ### Return type
@@ -580,7 +582,7 @@ const apiInstance = new OpportunityApi(configuration);
 const request: OpportunityApiGetOpportunityRequest = {
   
   opportunityId: "opportunity_id_example",
-    // Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
+    // Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
   fields: [
     "custom_fields",
   ],
@@ -596,7 +598,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **opportunityId** | [**string**] |  | defaults to undefined
- **fields** | **Array<&#39;custom_fields&#39; &#124; &#39;monthly_revenue&#39; &#124; &#39;order_revenue&#39; &#124; &#39;objection&#39; &#124; &#39;status&#39; &#124; &#39;stage_entrance_time&#39;>** | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | (optional) defaults to undefined
+ **fields** | **Array<&#39;custom_fields&#39; &#124; &#39;created_by&#39; &#124; &#39;last_updated_by&#39; &#124; &#39;status_id&#39; &#124; &#39;monthly_revenue&#39; &#124; &#39;order_revenue&#39; &#124; &#39;objection&#39; &#124; &#39;status&#39; &#124; &#39;stage_entrance_time&#39;>** | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | (optional) defaults to undefined
 
 
 ### Return type
@@ -750,6 +752,67 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getOpportunityStageMove**
+> OpportunityStageMove getOpportunityStageMove()
+
+Retrieves a single historical record of an opportunity being moved from one pipeline stage to another.
+
+### Example
+
+
+```typescript
+import { createConfiguration, OpportunityApi } from '';
+import type { OpportunityApiGetOpportunityStageMoveRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new OpportunityApi(configuration);
+
+const request: OpportunityApiGetOpportunityStageMoveRequest = {
+  
+  stageMoveId: "stage_move_id_example",
+};
+
+const data = await apiInstance.getOpportunityStageMove(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stageMoveId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**OpportunityStageMove**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **listOpportunities**
 > ListOpportunitiesResponse listOpportunities()
 
@@ -766,7 +829,7 @@ const configuration = createConfiguration();
 const apiInstance = new OpportunityApi(configuration);
 
 const request: OpportunityApiListOpportunitiesRequest = {
-    // Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
+    // Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
   fields: [
     "custom_fields",
   ],
@@ -789,7 +852,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fields** | **Array<&#39;custom_fields&#39; &#124; &#39;monthly_revenue&#39; &#124; &#39;order_revenue&#39; &#124; &#39;objection&#39; &#124; &#39;status&#39; &#124; &#39;stage_entrance_time&#39;>** | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | (optional) defaults to undefined
+ **fields** | **Array<&#39;custom_fields&#39; &#124; &#39;created_by&#39; &#124; &#39;last_updated_by&#39; &#124; &#39;status_id&#39; &#124; &#39;monthly_revenue&#39; &#124; &#39;order_revenue&#39; &#124; &#39;objection&#39; &#124; &#39;status&#39; &#124; &#39;stage_entrance_time&#39;>** | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | (optional) defaults to undefined
  **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  | (optional) defaults to undefined
  **orderBy** | [**string**] | Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
@@ -860,6 +923,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 **ListCustomFieldGroupsResponse**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listOpportunityStageMoves**
+> ListOpportunityStageMoveResponse listOpportunityStageMoves()
+
+Returns a paginated list of historical stage-move records.
+
+### Example
+
+
+```typescript
+import { createConfiguration, OpportunityApi } from '';
+import type { OpportunityApiListOpportunityStageMovesRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new OpportunityApi(configuration);
+
+const request: OpportunityApiListOpportunityStageMovesRequest = {
+    // Filter to apply. Allowed fields: - (Id) `opportunity_id` — supports `==` - (Id) `user_id` — supports `==`  Separate multiple filters with semicolons: `opportunity_id==7;user_id==1`  (optional)
+  filter: "filter_example",
+    // Page token (optional)
+  pageToken: "page_token_example",
+    // Field and direction to order results. Supported fields: `move_date`, `id` Directions: `asc` | `desc` Example: `move_date desc`  (optional)
+  orderBy: "order_by_example",
+    // Total number of items to return per page (optional)
+  pageSize: 0,
+};
+
+const data = await apiInstance.listOpportunityStageMoves(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | [**string**] | Filter to apply. Allowed fields: - (Id) &#x60;opportunity_id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60; - (Id) &#x60;user_id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;  Separate multiple filters with semicolons: &#x60;opportunity_id&#x3D;&#x3D;7;user_id&#x3D;&#x3D;1&#x60;  | (optional) defaults to undefined
+ **pageToken** | [**string**] | Page token | (optional) defaults to undefined
+ **orderBy** | [**string**] | Field and direction to order results. Supported fields: &#x60;move_date&#x60;, &#x60;id&#x60; Directions: &#x60;asc&#x60; | &#x60;desc&#x60; Example: &#x60;move_date desc&#x60;  | (optional) defaults to undefined
+ **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
+
+
+### Return type
+
+**ListOpportunityStageMoveResponse**
 
 ### Authorization
 
@@ -1053,7 +1186,7 @@ const request: OpportunityApiUpdateOpportunityRequest = {
   updateMask: [
     "opportunity_title",
   ],
-    // Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
+    // Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
   fields: [
     "custom_fields",
   ],
@@ -1071,7 +1204,7 @@ Name | Type | Description  | Notes
  **updateOpportunityRequestV2** | **UpdateOpportunityRequestV2**|  |
  **opportunityId** | [**string**] |  | defaults to undefined
  **updateMask** | **Array<&#39;opportunity_title&#39; &#124; &#39;next_action_time&#39; &#124; &#39;next_action_notes&#39; &#124; &#39;opportunity_notes&#39; &#124; &#39;estimated_close_time&#39; &#124; &#39;include_in_forecast&#39; &#124; &#39;projected_revenue_low&#39; &#124; &#39;projected_revenue_high&#39; &#124; &#39;contact_id&#39; &#124; &#39;stage_id&#39; &#124; &#39;user_id&#39; &#124; &#39;custom_fields&#39; &#124; &#39;affiliate_id&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
- **fields** | **Array<&#39;custom_fields&#39; &#124; &#39;monthly_revenue&#39; &#124; &#39;order_revenue&#39; &#124; &#39;objection&#39; &#124; &#39;status&#39; &#124; &#39;stage_entrance_time&#39;>** | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | (optional) defaults to undefined
+ **fields** | **Array<&#39;custom_fields&#39; &#124; &#39;created_by&#39; &#124; &#39;last_updated_by&#39; &#124; &#39;status_id&#39; &#124; &#39;monthly_revenue&#39; &#124; &#39;order_revenue&#39; &#124; &#39;objection&#39; &#124; &#39;status&#39; &#124; &#39;stage_entrance_time&#39;>** | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | (optional) defaults to undefined
 
 
 ### Return type

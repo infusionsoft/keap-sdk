@@ -74,7 +74,7 @@ namespace Keap.Core.V2.Model
         /// <param name="criteria">List of criteria that must be met for this discount to apply.</param>
         /// <param name="discountType">Type of discount: AMOUNT (fixed amount) or PERCENT (percentage) (required).</param>
         /// <param name="discountValue">Value of the discount (amount or percentage depending on discount_type) (required).</param>
-        public CreateShippingDiscountRequest(string name = default, string description = default, List<DiscountCriteria> criteria = default, DiscountTypeEnum discountType = default, double discountValue = default)
+        public CreateShippingDiscountRequest(string name = default, string description = default, List<CreateShippingDiscountCriteria> criteria = default, DiscountTypeEnum discountType = default, double discountValue = default)
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -113,7 +113,7 @@ namespace Keap.Core.V2.Model
         /// </summary>
         /// <value>List of criteria that must be met for this discount to apply</value>
         [DataMember(Name = "criteria", EmitDefaultValue = false)]
-        public List<DiscountCriteria> Criteria { get; set; }
+        public List<CreateShippingDiscountCriteria> Criteria { get; set; }
 
         /// <summary>
         /// Value of the discount (amount or percentage depending on discount_type)

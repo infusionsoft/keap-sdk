@@ -127,6 +127,7 @@ import CreateProductOptionTextOption from './model/CreateProductOptionTextOption
 import CreateProductRequestDetail from './model/CreateProductRequestDetail';
 import CreateProgramResourceRequest from './model/CreateProgramResourceRequest';
 import CreateReferralRequest from './model/CreateReferralRequest';
+import CreateShippingDiscountCriteria from './model/CreateShippingDiscountCriteria';
 import CreateShippingDiscountRequest from './model/CreateShippingDiscountRequest';
 import CreateSubscriptionCommissionProgramRequest from './model/CreateSubscriptionCommissionProgramRequest';
 import CreateSubscriptionPlanRequest from './model/CreateSubscriptionPlanRequest';
@@ -216,6 +217,7 @@ import ListContactTagsResponse from './model/ListContactTagsResponse';
 import ListContactsResponse from './model/ListContactsResponse';
 import ListCountriesResponse from './model/ListCountriesResponse';
 import ListCustomFieldGroupsResponse from './model/ListCustomFieldGroupsResponse';
+import ListEmailAddressStatusResponse from './model/ListEmailAddressStatusResponse';
 import ListEmailsSentResponse from './model/ListEmailsSentResponse';
 import ListFilesResponse from './model/ListFilesResponse';
 import ListFreeTrialDiscountsResponse from './model/ListFreeTrialDiscountsResponse';
@@ -228,6 +230,7 @@ import ListMerchantsResponse from './model/ListMerchantsResponse';
 import ListNoteTemplateResponse from './model/ListNoteTemplateResponse';
 import ListNotesResponse from './model/ListNotesResponse';
 import ListOpportunitiesResponse from './model/ListOpportunitiesResponse';
+import ListOpportunityStageMoveResponse from './model/ListOpportunityStageMoveResponse';
 import ListOpportunityStagesResponse from './model/ListOpportunityStagesResponse';
 import ListOption from './model/ListOption';
 import ListOrderPaymentsResponse from './model/ListOrderPaymentsResponse';
@@ -264,6 +267,7 @@ import NoteTemplate from './model/NoteTemplate';
 import ObjectModel from './model/ObjectModel';
 import OpportunityContact from './model/OpportunityContact';
 import OpportunityStage from './model/OpportunityStage';
+import OpportunityStageMove from './model/OpportunityStageMove';
 import OrderItem from './model/OrderItem';
 import OrderItemProduct from './model/OrderItemProduct';
 import OrderTotalDiscount from './model/OrderTotalDiscount';
@@ -362,6 +366,7 @@ import UpdateProductOptionListOption from './model/UpdateProductOptionListOption
 import UpdateProductOptionRequest from './model/UpdateProductOptionRequest';
 import UpdateProductRequestDetail from './model/UpdateProductRequestDetail';
 import UpdateProgramResourceRequest from './model/UpdateProgramResourceRequest';
+import UpdateShippingDiscountCriteria from './model/UpdateShippingDiscountCriteria';
 import UpdateShippingDiscountRequest from './model/UpdateShippingDiscountRequest';
 import UpdateSubscriptionCommissionProgramRequest from './model/UpdateSubscriptionCommissionProgramRequest';
 import UpdateSubscriptionPlanRequest from './model/UpdateSubscriptionPlanRequest';
@@ -449,7 +454,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.14
+* @version 2.0.15
 */
 export {
     /**
@@ -1143,6 +1148,12 @@ export {
     CreateReferralRequest,
 
     /**
+     * The CreateShippingDiscountCriteria model constructor.
+     * @property {module:keap.core.v2/model/CreateShippingDiscountCriteria}
+     */
+    CreateShippingDiscountCriteria,
+
+    /**
      * The CreateShippingDiscountRequest model constructor.
      * @property {module:keap.core.v2/model/CreateShippingDiscountRequest}
      */
@@ -1677,6 +1688,12 @@ export {
     ListCustomFieldGroupsResponse,
 
     /**
+     * The ListEmailAddressStatusResponse model constructor.
+     * @property {module:keap.core.v2/model/ListEmailAddressStatusResponse}
+     */
+    ListEmailAddressStatusResponse,
+
+    /**
      * The ListEmailsSentResponse model constructor.
      * @property {module:keap.core.v2/model/ListEmailsSentResponse}
      */
@@ -1747,6 +1764,12 @@ export {
      * @property {module:keap.core.v2/model/ListOpportunitiesResponse}
      */
     ListOpportunitiesResponse,
+
+    /**
+     * The ListOpportunityStageMoveResponse model constructor.
+     * @property {module:keap.core.v2/model/ListOpportunityStageMoveResponse}
+     */
+    ListOpportunityStageMoveResponse,
 
     /**
      * The ListOpportunityStagesResponse model constructor.
@@ -1963,6 +1986,12 @@ export {
      * @property {module:keap.core.v2/model/OpportunityStage}
      */
     OpportunityStage,
+
+    /**
+     * The OpportunityStageMove model constructor.
+     * @property {module:keap.core.v2/model/OpportunityStageMove}
+     */
+    OpportunityStageMove,
 
     /**
      * The OrderItem model constructor.
@@ -2551,6 +2580,12 @@ export {
      * @property {module:keap.core.v2/model/UpdateProgramResourceRequest}
      */
     UpdateProgramResourceRequest,
+
+    /**
+     * The UpdateShippingDiscountCriteria model constructor.
+     * @property {module:keap.core.v2/model/UpdateShippingDiscountCriteria}
+     */
+    UpdateShippingDiscountCriteria,
 
     /**
      * The UpdateShippingDiscountRequest model constructor.

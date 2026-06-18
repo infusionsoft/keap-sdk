@@ -112,6 +112,7 @@ export * from '../models/CreateProductOptionTextOption';
 export * from '../models/CreateProductRequestDetail';
 export * from '../models/CreateProgramResourceRequest';
 export * from '../models/CreateReferralRequest';
+export * from '../models/CreateShippingDiscountCriteria';
 export * from '../models/CreateShippingDiscountRequest';
 export * from '../models/CreateSubscriptionCommissionProgramRequest';
 export * from '../models/CreateSubscriptionPlanRequest';
@@ -200,6 +201,7 @@ export * from '../models/ListContactTagsResponse';
 export * from '../models/ListContactsResponse';
 export * from '../models/ListCountriesResponse';
 export * from '../models/ListCustomFieldGroupsResponse';
+export * from '../models/ListEmailAddressStatusResponse';
 export * from '../models/ListEmailsSentResponse';
 export * from '../models/ListFilesResponse';
 export * from '../models/ListFreeTrialDiscountsResponse';
@@ -212,6 +214,7 @@ export * from '../models/ListMerchantsResponse';
 export * from '../models/ListNoteTemplateResponse';
 export * from '../models/ListNotesResponse';
 export * from '../models/ListOpportunitiesResponse';
+export * from '../models/ListOpportunityStageMoveResponse';
 export * from '../models/ListOpportunityStagesResponse';
 export * from '../models/ListOption';
 export * from '../models/ListOrderPaymentsResponse';
@@ -249,6 +252,7 @@ export * from '../models/NoteTemplate';
 export * from '../models/ObjectModel';
 export * from '../models/OpportunityContact';
 export * from '../models/OpportunityStage';
+export * from '../models/OpportunityStageMove';
 export * from '../models/OrderItem';
 export * from '../models/OrderItemProduct';
 export * from '../models/OrderTotalDiscount';
@@ -347,6 +351,7 @@ export * from '../models/UpdateProductOptionListOption';
 export * from '../models/UpdateProductOptionRequest';
 export * from '../models/UpdateProductRequestDetail';
 export * from '../models/UpdateProgramResourceRequest';
+export * from '../models/UpdateShippingDiscountCriteria';
 export * from '../models/UpdateShippingDiscountRequest';
 export * from '../models/UpdateSubscriptionCommissionProgramRequest';
 export * from '../models/UpdateSubscriptionPlanRequest';
@@ -475,6 +480,7 @@ import { CreateProductOptionTextOption   , CreateProductOptionTextOptionOnlyStar
 import { CreateProductRequestDetail } from '../models/CreateProductRequestDetail';
 import { CreateProgramResourceRequest , CreateProgramResourceRequestTypeEnum          } from '../models/CreateProgramResourceRequest';
 import { CreateReferralRequest       , CreateReferralRequestReferralTypeEnum   } from '../models/CreateReferralRequest';
+import { CreateShippingDiscountCriteria, CreateShippingDiscountCriteriaTypeEnum           , CreateShippingDiscountCriteriaOperatorEnum   } from '../models/CreateShippingDiscountCriteria';
 import { CreateShippingDiscountRequest   , CreateShippingDiscountRequestDiscountTypeEnum    } from '../models/CreateShippingDiscountRequest';
 import { CreateSubscriptionCommissionProgramRequest     , CreateSubscriptionCommissionProgramRequestPayoutTypeEnum    } from '../models/CreateSubscriptionCommissionProgramRequest';
 import { CreateSubscriptionPlanRequest   , CreateSubscriptionPlanRequestCycleTypeEnum      } from '../models/CreateSubscriptionPlanRequest';
@@ -563,6 +569,7 @@ import { ListContactTagsResponse } from '../models/ListContactTagsResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
 import { ListCustomFieldGroupsResponse } from '../models/ListCustomFieldGroupsResponse';
+import { ListEmailAddressStatusResponse } from '../models/ListEmailAddressStatusResponse';
 import { ListEmailsSentResponse } from '../models/ListEmailsSentResponse';
 import { ListFilesResponse } from '../models/ListFilesResponse';
 import { ListFreeTrialDiscountsResponse } from '../models/ListFreeTrialDiscountsResponse';
@@ -575,6 +582,7 @@ import { ListMerchantsResponse } from '../models/ListMerchantsResponse';
 import { ListNoteTemplateResponse } from '../models/ListNoteTemplateResponse';
 import { ListNotesResponse } from '../models/ListNotesResponse';
 import { ListOpportunitiesResponse } from '../models/ListOpportunitiesResponse';
+import { ListOpportunityStageMoveResponse } from '../models/ListOpportunityStageMoveResponse';
 import { ListOpportunityStagesResponse } from '../models/ListOpportunityStagesResponse';
 import { ListOption } from '../models/ListOption';
 import { ListOrderPaymentsResponse } from '../models/ListOrderPaymentsResponse';
@@ -612,6 +620,7 @@ import { NoteTemplate } from '../models/NoteTemplate';
 import { ObjectModel } from '../models/ObjectModel';
 import { OpportunityContact } from '../models/OpportunityContact';
 import { OpportunityStage } from '../models/OpportunityStage';
+import { OpportunityStageMove } from '../models/OpportunityStageMove';
 import { OrderItem         , OrderItemItemTypeEnum      } from '../models/OrderItem';
 import { OrderItemProduct } from '../models/OrderItemProduct';
 import { OrderTotalDiscount     , OrderTotalDiscountDiscountTypeEnum   , OrderTotalDiscountDiscountStrategyEnum   } from '../models/OrderTotalDiscount';
@@ -710,6 +719,7 @@ import { UpdateProductOptionListOption } from '../models/UpdateProductOptionList
 import { UpdateProductOptionRequest      , UpdateProductOptionRequestOnlyStartsWithEnum  , UpdateProductOptionRequestOnlyEndsWithEnum  , UpdateProductOptionRequestOnlyContainsEnum    } from '../models/UpdateProductOptionRequest';
 import { UpdateProductRequestDetail } from '../models/UpdateProductRequestDetail';
 import { UpdateProgramResourceRequest } from '../models/UpdateProgramResourceRequest';
+import { UpdateShippingDiscountCriteria          , UpdateShippingDiscountCriteriaOperatorEnum   } from '../models/UpdateShippingDiscountCriteria';
 import { UpdateShippingDiscountRequest   , UpdateShippingDiscountRequestDiscountTypeEnum    } from '../models/UpdateShippingDiscountRequest';
 import { UpdateSubscriptionCommissionProgramRequest     , UpdateSubscriptionCommissionProgramRequestPayoutTypeEnum    } from '../models/UpdateSubscriptionCommissionProgramRequest';
 import { UpdateSubscriptionPlanRequest   , UpdateSubscriptionPlanRequestCycleTypeEnum      } from '../models/UpdateSubscriptionPlanRequest';
@@ -767,6 +777,8 @@ let enumsMap: Set<string> = new Set<string>([
     "CreateProductOptionTextOptionOnlyContainsEnum",
     "CreateProgramResourceRequestTypeEnum",
     "CreateReferralRequestReferralTypeEnum",
+    "CreateShippingDiscountCriteriaTypeEnum",
+    "CreateShippingDiscountCriteriaOperatorEnum",
     "CreateShippingDiscountRequestDiscountTypeEnum",
     "CreateSubscriptionCommissionProgramRequestPayoutTypeEnum",
     "CreateSubscriptionPlanRequestCycleTypeEnum",
@@ -854,6 +866,7 @@ let enumsMap: Set<string> = new Set<string>([
     "UpdateProductOptionRequestOnlyStartsWithEnum",
     "UpdateProductOptionRequestOnlyEndsWithEnum",
     "UpdateProductOptionRequestOnlyContainsEnum",
+    "UpdateShippingDiscountCriteriaOperatorEnum",
     "UpdateShippingDiscountRequestDiscountTypeEnum",
     "UpdateSubscriptionCommissionProgramRequestPayoutTypeEnum",
     "UpdateSubscriptionPlanRequestCycleTypeEnum",
@@ -981,6 +994,7 @@ let typeMap: {[index: string]: any} = {
     "CreateProductRequestDetail": CreateProductRequestDetail,
     "CreateProgramResourceRequest": CreateProgramResourceRequest,
     "CreateReferralRequest": CreateReferralRequest,
+    "CreateShippingDiscountCriteria": CreateShippingDiscountCriteria,
     "CreateShippingDiscountRequest": CreateShippingDiscountRequest,
     "CreateSubscriptionCommissionProgramRequest": CreateSubscriptionCommissionProgramRequest,
     "CreateSubscriptionPlanRequest": CreateSubscriptionPlanRequest,
@@ -1069,6 +1083,7 @@ let typeMap: {[index: string]: any} = {
     "ListContactsResponse": ListContactsResponse,
     "ListCountriesResponse": ListCountriesResponse,
     "ListCustomFieldGroupsResponse": ListCustomFieldGroupsResponse,
+    "ListEmailAddressStatusResponse": ListEmailAddressStatusResponse,
     "ListEmailsSentResponse": ListEmailsSentResponse,
     "ListFilesResponse": ListFilesResponse,
     "ListFreeTrialDiscountsResponse": ListFreeTrialDiscountsResponse,
@@ -1081,6 +1096,7 @@ let typeMap: {[index: string]: any} = {
     "ListNoteTemplateResponse": ListNoteTemplateResponse,
     "ListNotesResponse": ListNotesResponse,
     "ListOpportunitiesResponse": ListOpportunitiesResponse,
+    "ListOpportunityStageMoveResponse": ListOpportunityStageMoveResponse,
     "ListOpportunityStagesResponse": ListOpportunityStagesResponse,
     "ListOption": ListOption,
     "ListOrderPaymentsResponse": ListOrderPaymentsResponse,
@@ -1118,6 +1134,7 @@ let typeMap: {[index: string]: any} = {
     "ObjectModel": ObjectModel,
     "OpportunityContact": OpportunityContact,
     "OpportunityStage": OpportunityStage,
+    "OpportunityStageMove": OpportunityStageMove,
     "OrderItem": OrderItem,
     "OrderItemProduct": OrderItemProduct,
     "OrderTotalDiscount": OrderTotalDiscount,
@@ -1216,6 +1233,7 @@ let typeMap: {[index: string]: any} = {
     "UpdateProductOptionRequest": UpdateProductOptionRequest,
     "UpdateProductRequestDetail": UpdateProductRequestDetail,
     "UpdateProgramResourceRequest": UpdateProgramResourceRequest,
+    "UpdateShippingDiscountCriteria": UpdateShippingDiscountCriteria,
     "UpdateShippingDiscountRequest": UpdateShippingDiscountRequest,
     "UpdateSubscriptionCommissionProgramRequest": UpdateSubscriptionCommissionProgramRequest,
     "UpdateSubscriptionPlanRequest": UpdateSubscriptionPlanRequest,

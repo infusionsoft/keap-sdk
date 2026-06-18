@@ -119,8 +119,17 @@ class RestV2Opportunity {
             if (data.hasOwnProperty('status')) {
                 obj['status'] = ApiClient.convertToType(data['status'], 'String');
             }
+            if (data.hasOwnProperty('status_id')) {
+                obj['status_id'] = ApiClient.convertToType(data['status_id'], 'String');
+            }
             if (data.hasOwnProperty('stage_entrance_time')) {
                 obj['stage_entrance_time'] = ApiClient.convertToType(data['stage_entrance_time'], 'String');
+            }
+            if (data.hasOwnProperty('last_updated_by')) {
+                obj['last_updated_by'] = ApiClient.convertToType(data['last_updated_by'], 'String');
+            }
+            if (data.hasOwnProperty('created_by')) {
+                obj['created_by'] = ApiClient.convertToType(data['created_by'], 'String');
             }
         }
         return obj;
@@ -209,8 +218,20 @@ class RestV2Opportunity {
             throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
         }
         // ensure the json data is a string
+        if (data['status_id'] && !(typeof data['status_id'] === 'string' || data['status_id'] instanceof String)) {
+            throw new Error("Expected the field `status_id` to be a primitive type in the JSON string but got " + data['status_id']);
+        }
+        // ensure the json data is a string
         if (data['stage_entrance_time'] && !(typeof data['stage_entrance_time'] === 'string' || data['stage_entrance_time'] instanceof String)) {
             throw new Error("Expected the field `stage_entrance_time` to be a primitive type in the JSON string but got " + data['stage_entrance_time']);
+        }
+        // ensure the json data is a string
+        if (data['last_updated_by'] && !(typeof data['last_updated_by'] === 'string' || data['last_updated_by'] instanceof String)) {
+            throw new Error("Expected the field `last_updated_by` to be a primitive type in the JSON string but got " + data['last_updated_by']);
+        }
+        // ensure the json data is a string
+        if (data['created_by'] && !(typeof data['created_by'] === 'string' || data['created_by'] instanceof String)) {
+            throw new Error("Expected the field `created_by` to be a primitive type in the JSON string but got " + data['created_by']);
         }
 
         return true;
@@ -344,10 +365,28 @@ RestV2Opportunity.prototype['objection'] = undefined;
 RestV2Opportunity.prototype['status'] = undefined;
 
 /**
+ * Status ID
+ * @member {String} status_id
+ */
+RestV2Opportunity.prototype['status_id'] = undefined;
+
+/**
  * Timestamp when the opportunity entered its current stage (ISO-8601)
  * @member {String} stage_entrance_time
  */
 RestV2Opportunity.prototype['stage_entrance_time'] = undefined;
+
+/**
+ * User who last updated the opportunity record
+ * @member {String} last_updated_by
+ */
+RestV2Opportunity.prototype['last_updated_by'] = undefined;
+
+/**
+ * User who created the opportunity record
+ * @member {String} created_by
+ */
+RestV2Opportunity.prototype['created_by'] = undefined;
 
 
 

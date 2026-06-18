@@ -5,7 +5,9 @@ All URIs are relative to *https://api.keap.com/crm*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createShippingDiscount**](ShippingDiscountsApi.md#createShippingDiscount) | **POST** /rest/v2/discounts/shipping | Create a Shipping Discount
+[**createShippingDiscountCriteria**](ShippingDiscountsApi.md#createShippingDiscountCriteria) | **POST** /rest/v2/discounts/shipping/{discount_id}/criteria | Create a Shipping Discount Criteria
 [**deleteShippingDiscount**](ShippingDiscountsApi.md#deleteShippingDiscount) | **DELETE** /rest/v2/discounts/shipping/{discount_id} | Delete a Shipping Discount
+[**deleteShippingDiscountCriteria**](ShippingDiscountsApi.md#deleteShippingDiscountCriteria) | **DELETE** /rest/v2/discounts/shipping/{discount_id}/criteria/{criteria_id} | Delete a Shipping Discount Criteria
 [**getShippingDiscount**](ShippingDiscountsApi.md#getShippingDiscount) | **GET** /rest/v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount
 [**listShippingDiscounts**](ShippingDiscountsApi.md#listShippingDiscounts) | **GET** /rest/v2/discounts/shipping | List all Shipping Discounts
 [**updateShippingDiscount**](ShippingDiscountsApi.md#updateShippingDiscount) | **PATCH** /rest/v2/discounts/shipping/{discount_id} | Update a Shipping Discount
@@ -35,7 +37,6 @@ const request: ShippingDiscountsApiCreateShippingDiscountRequest = {
       {
         type: "DATE_RANGE",
         code: "SUMMER2024",
-        criteriaId: "501",
         rangeStartTime: new Date('2024-01-01T00:00:00Z'),
         rangeEndTime: new Date('2024-12-31T23:59:59Z'),
         productId: "456",
@@ -93,6 +94,82 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **createShippingDiscountCriteria**
+> DiscountCriteria createShippingDiscountCriteria(createShippingDiscountCriteria)
+
+Creates a Shipping Discount Criteria
+
+### Example
+
+
+```typescript
+import { createConfiguration, ShippingDiscountsApi } from '';
+import type { ShippingDiscountsApiCreateShippingDiscountCriteriaRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new ShippingDiscountsApi(configuration);
+
+const request: ShippingDiscountsApiCreateShippingDiscountCriteriaRequest = {
+  
+  discountId: "discount_id_example",
+  
+  createShippingDiscountCriteria: {
+    type: "DATE_RANGE",
+    code: "SUMMER2024",
+    rangeStartTime: new Date('2024-01-01T00:00:00Z'),
+    rangeEndTime: new Date('2024-12-31T23:59:59Z'),
+    productId: "456",
+    productQuantityMin: 1,
+    productQuantityMax: 10,
+    planId: "789",
+    subscriptionQuantity: 1,
+    totalAmount: 100,
+    operator: "GREATER_THAN",
+  },
+};
+
+const data = await apiInstance.createShippingDiscountCriteria(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createShippingDiscountCriteria** | **CreateShippingDiscountCriteria**|  |
+ **discountId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**DiscountCriteria**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **deleteShippingDiscount**
 > void deleteShippingDiscount()
 
@@ -123,6 +200,70 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **discountId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **deleteShippingDiscountCriteria**
+> void deleteShippingDiscountCriteria()
+
+Deletes a specified Shipping Discount Criteria
+
+### Example
+
+
+```typescript
+import { createConfiguration, ShippingDiscountsApi } from '';
+import type { ShippingDiscountsApiDeleteShippingDiscountCriteriaRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new ShippingDiscountsApi(configuration);
+
+const request: ShippingDiscountsApiDeleteShippingDiscountCriteriaRequest = {
+  
+  discountId: "discount_id_example",
+  
+  criteriaId: "criteria_id_example",
+};
+
+const data = await apiInstance.deleteShippingDiscountCriteria(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **discountId** | [**string**] |  | defaults to undefined
+ **criteriaId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -309,7 +450,6 @@ const request: ShippingDiscountsApiUpdateShippingDiscountRequest = {
     description: "Free shipping on orders over $100",
     criteria: [
       {
-        type: "DATE_RANGE",
         code: "SUMMER2024",
         criteriaId: "501",
         rangeStartTime: new Date('2024-01-01T00:00:00Z'),

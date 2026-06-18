@@ -35,24 +35,14 @@ namespace Keap.Core.V2.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateCommissionProgramRequest" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected UpdateCommissionProgramRequest() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateCommissionProgramRequest" /> class.
-        /// </summary>
-        /// <param name="name">The name of the Commission Program (required).</param>
+        /// <param name="name">The name of the Commission Program.</param>
         /// <param name="notes">The notes of the Commission Program.</param>
-        /// <param name="priority">The priority of the Commission Program (required).</param>
+        /// <param name="priority">The priority of the Commission Program.</param>
         public UpdateCommissionProgramRequest(string name = default, string notes = default, int priority = default)
         {
-            // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for UpdateCommissionProgramRequest and cannot be null");
-            }
             this.Name = name;
-            this.Priority = priority;
             this.Notes = notes;
+            this.Priority = priority;
         }
 
         /// <summary>
@@ -62,7 +52,7 @@ namespace Keap.Core.V2.Model
         /*
         <example>Fitness program</example>
         */
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
@@ -82,7 +72,7 @@ namespace Keap.Core.V2.Model
         /*
         <example>1</example>
         */
-        [DataMember(Name = "priority", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "priority", EmitDefaultValue = false)]
         public int Priority { get; set; }
 
         /// <summary>

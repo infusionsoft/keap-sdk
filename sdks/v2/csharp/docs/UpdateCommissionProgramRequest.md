@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | The name of the Commission Program | 
+**Name** | **string** | The name of the Commission Program | [optional] 
 **Notes** | **string** | The notes of the Commission Program | [optional] 
-**Priority** | **int** | The priority of the Commission Program | 
+**Priority** | **int** | The priority of the Commission Program | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

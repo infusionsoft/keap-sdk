@@ -21,12 +21,10 @@ class UpdateCommissionProgramRequest {
     /**
      * Constructs a new <code>UpdateCommissionProgramRequest</code>.
      * @alias module:keap.core.v2/model/UpdateCommissionProgramRequest
-     * @param name {String} The name of the Commission Program
-     * @param priority {Number} The priority of the Commission Program
      */
-    constructor(name, priority) { 
+    constructor() { 
         
-        UpdateCommissionProgramRequest.initialize(this, name, priority);
+        UpdateCommissionProgramRequest.initialize(this);
     }
 
     /**
@@ -34,9 +32,7 @@ class UpdateCommissionProgramRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, name, priority) { 
-        obj['name'] = name;
-        obj['priority'] = priority;
+    static initialize(obj) { 
     }
 
     /**
@@ -69,12 +65,6 @@ class UpdateCommissionProgramRequest {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateCommissionProgramRequest</code>.
      */
     static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of UpdateCommissionProgramRequest.RequiredProperties) {
-            if (!data.hasOwnProperty(property)) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
         // ensure the json data is a string
         if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
@@ -90,7 +80,7 @@ class UpdateCommissionProgramRequest {
 
 }
 
-UpdateCommissionProgramRequest.RequiredProperties = ["name", "priority"];
+
 
 /**
  * The name of the Commission Program

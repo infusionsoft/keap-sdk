@@ -119,6 +119,7 @@ class ContactApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Contact",
+            '201': "Contact",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -202,6 +203,7 @@ class ContactApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Contact",
+            '201': "Contact",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -285,6 +287,7 @@ class ContactApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Contact",
+            '201': "Contact",
             '400': "Error",
             '401': "Error",
             '403': "Error",

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { DiscountCriteria } from '../models/DiscountCriteria';
+import { CreateShippingDiscountCriteria } from '../models/CreateShippingDiscountCriteria';
 import { HttpFile } from '../http/http';
 
 export class CreateShippingDiscountRequest {
@@ -25,7 +25,7 @@ export class CreateShippingDiscountRequest {
     /**
     * List of criteria that must be met for this discount to apply
     */
-    'criteria'?: Array<DiscountCriteria>;
+    'criteria'?: Array<CreateShippingDiscountCriteria>;
     /**
     * Type of discount: AMOUNT (fixed amount) or PERCENT (percentage)
     */
@@ -55,7 +55,7 @@ export class CreateShippingDiscountRequest {
         {
             "name": "criteria",
             "baseName": "criteria",
-            "type": "Array<DiscountCriteria>",
+            "type": "Array<CreateShippingDiscountCriteria>",
             "format": ""
         },
         {

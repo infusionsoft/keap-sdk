@@ -191,6 +191,7 @@ Class | Method | HTTP request | Description
 *EmailApi* | [**sendEmail**](docs/Api/EmailApi.md#sendemail) | **POST** /rest/v2/emails:send | Send an Email
 *EmailApi* | [**sendEmailTemplate**](docs/Api/EmailApi.md#sendemailtemplate) | **POST** /rest/v2/emails/templates:send | Send an email based on a template
 *EmailAddressApi* | [**getEmailAddressStatus**](docs/Api/EmailAddressApi.md#getemailaddressstatus) | **GET** /rest/v2/emailAddresses/{email}/status | Retrieve an Email Address status
+*EmailAddressApi* | [**listEmailAddressStatuses**](docs/Api/EmailAddressApi.md#listemailaddressstatuses) | **GET** /rest/v2/emailAddresses | List Email Address Statuses
 *EmailAddressApi* | [**updateEmailAddressOptStatus**](docs/Api/EmailAddressApi.md#updateemailaddressoptstatus) | **PATCH** /rest/v2/emailAddresses/{email}/status | Update an Email Address opt-in status
 *FilesApi* | [**createFile**](docs/Api/FilesApi.md#createfile) | **POST** /rest/v2/files | Create a file
 *FilesApi* | [**deleteFile**](docs/Api/FilesApi.md#deletefile) | **DELETE** /rest/v2/files/{file_id} | Delete a file
@@ -261,8 +262,10 @@ Class | Method | HTTP request | Description
 *OpportunityApi* | [**getOpportunity**](docs/Api/OpportunityApi.md#getopportunity) | **GET** /rest/v2/opportunities/{opportunity_id} | Retrieve a Opportunity
 *OpportunityApi* | [**getOpportunityCustomFieldGroup**](docs/Api/OpportunityApi.md#getopportunitycustomfieldgroup) | **GET** /rest/v2/opportunities/model/customFields/groups/{group_id} | Retrieve an Opportunity Custom Field Group
 *OpportunityApi* | [**getOpportunityStage**](docs/Api/OpportunityApi.md#getopportunitystage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
+*OpportunityApi* | [**getOpportunityStageMove**](docs/Api/OpportunityApi.md#getopportunitystagemove) | **GET** /rest/v2/opportunities/stageMoves/{stage_move_id} | Retrieve an Opportunity Stage Move
 *OpportunityApi* | [**listOpportunities**](docs/Api/OpportunityApi.md#listopportunities) | **GET** /rest/v2/opportunities | List Opportunities
 *OpportunityApi* | [**listOpportunityCustomFieldGroups**](docs/Api/OpportunityApi.md#listopportunitycustomfieldgroups) | **GET** /rest/v2/opportunities/model/customFields/groups | List Opportunity Custom Field Groups
+*OpportunityApi* | [**listOpportunityStageMoves**](docs/Api/OpportunityApi.md#listopportunitystagemoves) | **GET** /rest/v2/opportunities/stageMoves | List Opportunity Stage Moves
 *OpportunityApi* | [**listOpportunityStages**](docs/Api/OpportunityApi.md#listopportunitystages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages
 *OpportunityApi* | [**retrieveOpportunityCustomFieldModel**](docs/Api/OpportunityApi.md#retrieveopportunitycustomfieldmodel) | **GET** /rest/v2/opportunities/model | Retrieve Opportunity Custom Field Model
 *OpportunityApi* | [**updateOpportunity**](docs/Api/OpportunityApi.md#updateopportunity) | **PATCH** /rest/v2/opportunities/{opportunity_id} | Update an opportunity
@@ -357,7 +360,9 @@ Class | Method | HTTP request | Description
 *SettingsApi* | [**isApplicationEnabled**](docs/Api/SettingsApi.md#isapplicationenabled) | **GET** /rest/v2/settings/applications:isEnabled | Get Application Status
 *ShippingApi* | [**listShippingMethods**](docs/Api/ShippingApi.md#listshippingmethods) | **GET** /rest/v2/shipping | List Shipping methods
 *ShippingDiscountsApi* | [**createShippingDiscount**](docs/Api/ShippingDiscountsApi.md#createshippingdiscount) | **POST** /rest/v2/discounts/shipping | Create a Shipping Discount
+*ShippingDiscountsApi* | [**createShippingDiscountCriteria**](docs/Api/ShippingDiscountsApi.md#createshippingdiscountcriteria) | **POST** /rest/v2/discounts/shipping/{discount_id}/criteria | Create a Shipping Discount Criteria
 *ShippingDiscountsApi* | [**deleteShippingDiscount**](docs/Api/ShippingDiscountsApi.md#deleteshippingdiscount) | **DELETE** /rest/v2/discounts/shipping/{discount_id} | Delete a Shipping Discount
+*ShippingDiscountsApi* | [**deleteShippingDiscountCriteria**](docs/Api/ShippingDiscountsApi.md#deleteshippingdiscountcriteria) | **DELETE** /rest/v2/discounts/shipping/{discount_id}/criteria/{criteria_id} | Delete a Shipping Discount Criteria
 *ShippingDiscountsApi* | [**getShippingDiscount**](docs/Api/ShippingDiscountsApi.md#getshippingdiscount) | **GET** /rest/v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount
 *ShippingDiscountsApi* | [**listShippingDiscounts**](docs/Api/ShippingDiscountsApi.md#listshippingdiscounts) | **GET** /rest/v2/discounts/shipping | List all Shipping Discounts
 *ShippingDiscountsApi* | [**updateShippingDiscount**](docs/Api/ShippingDiscountsApi.md#updateshippingdiscount) | **PATCH** /rest/v2/discounts/shipping/{discount_id} | Update a Shipping Discount
@@ -535,6 +540,7 @@ Class | Method | HTTP request | Description
 - [CreateProductRequestDetail](docs/Model/CreateProductRequestDetail.md)
 - [CreateProgramResourceRequest](docs/Model/CreateProgramResourceRequest.md)
 - [CreateReferralRequest](docs/Model/CreateReferralRequest.md)
+- [CreateShippingDiscountCriteria](docs/Model/CreateShippingDiscountCriteria.md)
 - [CreateShippingDiscountRequest](docs/Model/CreateShippingDiscountRequest.md)
 - [CreateSubscriptionCommissionProgramRequest](docs/Model/CreateSubscriptionCommissionProgramRequest.md)
 - [CreateSubscriptionPlanRequest](docs/Model/CreateSubscriptionPlanRequest.md)
@@ -624,6 +630,7 @@ Class | Method | HTTP request | Description
 - [ListContactsResponse](docs/Model/ListContactsResponse.md)
 - [ListCountriesResponse](docs/Model/ListCountriesResponse.md)
 - [ListCustomFieldGroupsResponse](docs/Model/ListCustomFieldGroupsResponse.md)
+- [ListEmailAddressStatusResponse](docs/Model/ListEmailAddressStatusResponse.md)
 - [ListEmailsSentResponse](docs/Model/ListEmailsSentResponse.md)
 - [ListFilesResponse](docs/Model/ListFilesResponse.md)
 - [ListFreeTrialDiscountsResponse](docs/Model/ListFreeTrialDiscountsResponse.md)
@@ -636,6 +643,7 @@ Class | Method | HTTP request | Description
 - [ListNoteTemplateResponse](docs/Model/ListNoteTemplateResponse.md)
 - [ListNotesResponse](docs/Model/ListNotesResponse.md)
 - [ListOpportunitiesResponse](docs/Model/ListOpportunitiesResponse.md)
+- [ListOpportunityStageMoveResponse](docs/Model/ListOpportunityStageMoveResponse.md)
 - [ListOpportunityStagesResponse](docs/Model/ListOpportunityStagesResponse.md)
 - [ListOption](docs/Model/ListOption.md)
 - [ListOrderPaymentsResponse](docs/Model/ListOrderPaymentsResponse.md)
@@ -672,6 +680,7 @@ Class | Method | HTTP request | Description
 - [ObjectModel](docs/Model/ObjectModel.md)
 - [OpportunityContact](docs/Model/OpportunityContact.md)
 - [OpportunityStage](docs/Model/OpportunityStage.md)
+- [OpportunityStageMove](docs/Model/OpportunityStageMove.md)
 - [OrderItem](docs/Model/OrderItem.md)
 - [OrderItemProduct](docs/Model/OrderItemProduct.md)
 - [OrderTotalDiscount](docs/Model/OrderTotalDiscount.md)
@@ -770,6 +779,7 @@ Class | Method | HTTP request | Description
 - [UpdateProductOptionRequest](docs/Model/UpdateProductOptionRequest.md)
 - [UpdateProductRequestDetail](docs/Model/UpdateProductRequestDetail.md)
 - [UpdateProgramResourceRequest](docs/Model/UpdateProgramResourceRequest.md)
+- [UpdateShippingDiscountCriteria](docs/Model/UpdateShippingDiscountCriteria.md)
 - [UpdateShippingDiscountRequest](docs/Model/UpdateShippingDiscountRequest.md)
 - [UpdateSubscriptionCommissionProgramRequest](docs/Model/UpdateSubscriptionCommissionProgramRequest.md)
 - [UpdateSubscriptionPlanRequest](docs/Model/UpdateSubscriptionPlanRequest.md)
@@ -812,6 +822,6 @@ api.keap@thryv.com
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `v2`
-    - Package version: `2.0.14`
+    - Package version: `2.0.15`
     - Generator version: `7.13.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

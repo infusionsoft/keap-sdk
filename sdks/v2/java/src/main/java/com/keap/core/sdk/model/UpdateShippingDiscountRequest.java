@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.keap.core.sdk.model.DiscountCriteria;
+import com.keap.core.sdk.model.UpdateShippingDiscountCriteria;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,7 +53,7 @@ public class UpdateShippingDiscountRequest implements Serializable {
   @jakarta.annotation.Nullable  private String description;
 
   public static final String JSON_PROPERTY_CRITERIA = "criteria";
-  @jakarta.annotation.Nullable  private List<@Valid DiscountCriteria> criteria = new ArrayList<>();
+  @jakarta.annotation.Nullable  private List<@Valid UpdateShippingDiscountCriteria> criteria = new ArrayList<>();
 
   /**
    * Type of discount: AMOUNT (fixed amount) or PERCENT (percentage)
@@ -148,12 +148,12 @@ public class UpdateShippingDiscountRequest implements Serializable {
   }
 
 
-  public UpdateShippingDiscountRequest criteria(@jakarta.annotation.Nullable List<@Valid DiscountCriteria> criteria) {
+  public UpdateShippingDiscountRequest criteria(@jakarta.annotation.Nullable List<@Valid UpdateShippingDiscountCriteria> criteria) {
     this.criteria = criteria;
     return this;
   }
 
-  public UpdateShippingDiscountRequest addCriteriaItem(DiscountCriteria criteriaItem) {
+  public UpdateShippingDiscountRequest addCriteriaItem(UpdateShippingDiscountCriteria criteriaItem) {
     if (this.criteria == null) {
       this.criteria = new ArrayList<>();
     }
@@ -169,14 +169,14 @@ public class UpdateShippingDiscountRequest implements Serializable {
   @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "List of criteria that must be met for this discount to apply")
   @JsonProperty(JSON_PROPERTY_CRITERIA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<@Valid DiscountCriteria> getCriteria() {
+  public List<@Valid UpdateShippingDiscountCriteria> getCriteria() {
     return criteria;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CRITERIA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCriteria(@jakarta.annotation.Nullable List<@Valid DiscountCriteria> criteria) {
+  public void setCriteria(@jakarta.annotation.Nullable List<@Valid UpdateShippingDiscountCriteria> criteria) {
     this.criteria = criteria;
   }
 
@@ -296,7 +296,7 @@ public class UpdateShippingDiscountRequest implements Serializable {
               this.instance.description = description;
           return this;
         }
-            public UpdateShippingDiscountRequest.Builder criteria(List<DiscountCriteria> criteria) {
+            public UpdateShippingDiscountRequest.Builder criteria(List<UpdateShippingDiscountCriteria> criteria) {
               this.instance.criteria = criteria;
           return this;
         }

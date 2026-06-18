@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import DiscountCriteria from './DiscountCriteria';
+import UpdateShippingDiscountCriteria from './UpdateShippingDiscountCriteria';
 
 /**
  * The UpdateShippingDiscountRequest model module.
@@ -54,7 +54,7 @@ class UpdateShippingDiscountRequest {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
             if (data.hasOwnProperty('criteria')) {
-                obj['criteria'] = ApiClient.convertToType(data['criteria'], [DiscountCriteria]);
+                obj['criteria'] = ApiClient.convertToType(data['criteria'], [UpdateShippingDiscountCriteria]);
             }
             if (data.hasOwnProperty('discount_type')) {
                 obj['discount_type'] = ApiClient.convertToType(data['discount_type'], 'String');
@@ -87,7 +87,7 @@ class UpdateShippingDiscountRequest {
             }
             // validate the optional field `criteria` (array)
             for (const item of data['criteria']) {
-                DiscountCriteria.validateJSON(item);
+                UpdateShippingDiscountCriteria.validateJSON(item);
             };
         }
         // ensure the json data is a string
@@ -117,7 +117,7 @@ UpdateShippingDiscountRequest.prototype['description'] = undefined;
 
 /**
  * List of criteria that must be met for this discount to apply
- * @member {Array.<module:keap.core.v2/model/DiscountCriteria>} criteria
+ * @member {Array.<module:keap.core.v2/model/UpdateShippingDiscountCriteria>} criteria
  */
 UpdateShippingDiscountRequest.prototype['criteria'] = undefined;
 

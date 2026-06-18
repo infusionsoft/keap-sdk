@@ -26,9 +26,9 @@ class UpdateCommissionProgramRequest(BaseModel):
     """
     UpdateCommissionProgramRequest
     """ # noqa: E501
-    name: StrictStr = Field(description="The name of the Commission Program")
+    name: Optional[StrictStr] = Field(default=None, description="The name of the Commission Program")
     notes: Optional[StrictStr] = Field(default=None, description="The notes of the Commission Program")
-    priority: StrictInt = Field(description="The priority of the Commission Program")
+    priority: Optional[StrictInt] = Field(default=None, description="The priority of the Commission Program")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["name", "notes", "priority"]
 

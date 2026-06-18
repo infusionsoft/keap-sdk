@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the discount | 
 **description** | **str** | Description of the discount | [optional] 
-**criteria** | [**List[DiscountCriteria]**](DiscountCriteria.md) | List of criteria that must be met for this discount to apply | [optional] 
+**criteria** | [**List[CreateShippingDiscountCriteria]**](CreateShippingDiscountCriteria.md) | List of criteria that must be met for this discount to apply | [optional] 
 **discount_type** | **str** | Type of discount: AMOUNT (fixed amount) or PERCENT (percentage) | 
 **discount_value** | **float** | Value of the discount (amount or percentage depending on discount_type) | 
 
