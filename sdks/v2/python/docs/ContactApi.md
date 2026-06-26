@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**delete_contact**](ContactApi.md#delete_contact) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact
 [**delete_contact_custom_field**](ContactApi.md#delete_contact_custom_field) | **DELETE** /rest/v2/contacts/model/customFields/{custom_field_id} | Delete a Contact Custom Field
 [**delete_contact_custom_field_group**](ContactApi.md#delete_contact_custom_field_group) | **DELETE** /rest/v2/contacts/model/customFields/groups/{group_id} | Delete a Contact Custom Field Group
+[**delete_contact_link_type**](ContactApi.md#delete_contact_link_type) | **DELETE** /rest/v2/contacts/links/types/{link_type_id} | Delete a Contact Link type
 [**get_contact**](ContactApi.md#get_contact) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact
 [**get_contact_custom_field_group**](ContactApi.md#get_contact_custom_field_group) | **GET** /rest/v2/contacts/model/customFields/groups/{group_id} | Retrieve a Contact Custom Field Group
 [**link_contacts**](ContactApi.md#link_contacts) | **POST** /rest/v2/contacts:link | Link Contacts
@@ -24,6 +25,7 @@ Method | HTTP request | Description
 [**unlink_contacts**](ContactApi.md#unlink_contacts) | **POST** /rest/v2/contacts:unlink | Delete Link between two Contacts
 [**update_contact**](ContactApi.md#update_contact) | **PATCH** /rest/v2/contacts/{contact_id} | Update a Contact
 [**update_contact_custom_field_group**](ContactApi.md#update_contact_custom_field_group) | **PATCH** /rest/v2/contacts/model/customFields/groups/{group_id} | Update a Contact Custom Field Group
+[**update_contact_link_type**](ContactApi.md#update_contact_link_type) | **PATCH** /rest/v2/contacts/links/types/{link_type_id} | Update a Contact Link type
 
 
 # **create_contact**
@@ -565,6 +567,84 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **group_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_contact_link_type**
+> delete_contact_link_type(link_type_id)
+
+Delete a Contact Link type
+
+Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ContactApi(api_client)
+    link_type_id = 'link_type_id_example' # str | Contact Link type identifier
+
+    try:
+        # Delete a Contact Link type
+        api_instance.delete_contact_link_type(link_type_id)
+    except Exception as e:
+        print("Exception when calling ContactApi->delete_contact_link_type: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **link_type_id** | **str**| Contact Link type identifier | 
 
 ### Return type
 
@@ -1656,6 +1736,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_contact_link_type**
+> ContactLinkType update_contact_link_type(link_type_id, update_mask, update_contact_link_type_request)
+
+Update a Contact Link type
+
+Updates the specified Contact Link type. Only fields listed in `update_mask` are applied. Reducing `max_links` below the current number of Linked Contacts of this type returns 409 Conflict.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.contact_link_type import ContactLinkType
+from keap_core_v2_client.models.update_contact_link_type_request import UpdateContactLinkTypeRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ContactApi(api_client)
+    link_type_id = 'link_type_id_example' # str | Contact Link type identifier
+    update_mask = ['update_mask_example'] # List[str] | Comma-separated list of fields to update
+    update_contact_link_type_request = keap_core_v2_client.UpdateContactLinkTypeRequest() # UpdateContactLinkTypeRequest | 
+
+    try:
+        # Update a Contact Link type
+        api_response = api_instance.update_contact_link_type(link_type_id, update_mask, update_contact_link_type_request)
+        print("The response of ContactApi->update_contact_link_type:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ContactApi->update_contact_link_type: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **link_type_id** | **str**| Contact Link type identifier | 
+ **update_mask** | [**List[str]**](str.md)| Comma-separated list of fields to update | 
+ **update_contact_link_type_request** | [**UpdateContactLinkTypeRequest**](UpdateContactLinkTypeRequest.md)|  | 
+
+### Return type
+
+[**ContactLinkType**](ContactLinkType.md)
 
 ### Authorization
 

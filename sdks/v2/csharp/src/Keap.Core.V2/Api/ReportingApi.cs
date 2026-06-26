@@ -81,6 +81,29 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of Report</returns>
         ApiResponse<Report> RetrieveReportWithHttpInfo(string reportId, int operationIndex = 0);
         /// <summary>
+        /// Retrieve Report Model
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the list of fields available for a Report (Saved Search). The returned field &#x60;name&#x60; values can be used in the &#x60;fields&#x60; parameter when running the report.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="reportId">The unique identifier of the report (Saved Search)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ReportModel</returns>
+        ReportModel RetrieveReportModel(string reportId, int operationIndex = 0);
+
+        /// <summary>
+        /// Retrieve Report Model
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the list of fields available for a Report (Saved Search). The returned field &#x60;name&#x60; values can be used in the &#x60;fields&#x60; parameter when running the report.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="reportId">The unique identifier of the report (Saved Search)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ReportModel</returns>
+        ApiResponse<ReportModel> RetrieveReportModelWithHttpInfo(string reportId, int operationIndex = 0);
+        /// <summary>
         /// Run a Report
         /// </summary>
         /// <remarks>
@@ -170,6 +193,31 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Report)</returns>
         System.Threading.Tasks.Task<ApiResponse<Report>> RetrieveReportWithHttpInfoAsync(string reportId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Retrieve Report Model
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the list of fields available for a Report (Saved Search). The returned field &#x60;name&#x60; values can be used in the &#x60;fields&#x60; parameter when running the report.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="reportId">The unique identifier of the report (Saved Search)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ReportModel</returns>
+        System.Threading.Tasks.Task<ReportModel> RetrieveReportModelAsync(string reportId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Retrieve Report Model
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the list of fields available for a Report (Saved Search). The returned field &#x60;name&#x60; values can be used in the &#x60;fields&#x60; parameter when running the report.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="reportId">The unique identifier of the report (Saved Search)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ReportModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ReportModel>> RetrieveReportModelWithHttpInfoAsync(string reportId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Run a Report
         /// </summary>
@@ -692,6 +740,183 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("RetrieveReport", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Retrieve Report Model Retrieves the list of fields available for a Report (Saved Search). The returned field &#x60;name&#x60; values can be used in the &#x60;fields&#x60; parameter when running the report.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="reportId">The unique identifier of the report (Saved Search)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ReportModel</returns>
+        public ReportModel RetrieveReportModel(string reportId, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<ReportModel> localVarResponse = RetrieveReportModelWithHttpInfo(reportId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve Report Model Retrieves the list of fields available for a Report (Saved Search). The returned field &#x60;name&#x60; values can be used in the &#x60;fields&#x60; parameter when running the report.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="reportId">The unique identifier of the report (Saved Search)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ReportModel</returns>
+        public Keap.Core.V2.Client.ApiResponse<ReportModel> RetrieveReportModelWithHttpInfo(string reportId, int operationIndex = 0)
+        {
+            // verify the required parameter 'reportId' is set
+            if (reportId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'reportId' when calling ReportingApi->RetrieveReportModel");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("report_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(reportId)); // path parameter
+
+            localVarRequestOptions.Operation = "ReportingApi.RetrieveReportModel";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ReportModel>("/rest/v2/reporting/reports/{report_id}/model", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RetrieveReportModel", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Retrieve Report Model Retrieves the list of fields available for a Report (Saved Search). The returned field &#x60;name&#x60; values can be used in the &#x60;fields&#x60; parameter when running the report.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="reportId">The unique identifier of the report (Saved Search)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ReportModel</returns>
+        public async System.Threading.Tasks.Task<ReportModel> RetrieveReportModelAsync(string reportId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<ReportModel> localVarResponse = await RetrieveReportModelWithHttpInfoAsync(reportId, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve Report Model Retrieves the list of fields available for a Report (Saved Search). The returned field &#x60;name&#x60; values can be used in the &#x60;fields&#x60; parameter when running the report.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="reportId">The unique identifier of the report (Saved Search)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ReportModel)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ReportModel>> RetrieveReportModelWithHttpInfoAsync(string reportId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'reportId' is set
+            if (reportId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'reportId' when calling ReportingApi->RetrieveReportModel");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("report_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(reportId)); // path parameter
+
+            localVarRequestOptions.Operation = "ReportingApi.RetrieveReportModel";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ReportModel>("/rest/v2/reporting/reports/{report_id}/model", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RetrieveReportModel", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

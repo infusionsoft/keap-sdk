@@ -5,7 +5,9 @@ All URIs are relative to *https://api.keap.com/crm*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createOrderTotalDiscount**](OrderTotalDiscountsApi.md#createOrderTotalDiscount) | **POST** /rest/v2/discounts/orderTotals | Create an Order Total Discount
+[**createOrderTotalDiscountCriteria**](OrderTotalDiscountsApi.md#createOrderTotalDiscountCriteria) | **POST** /rest/v2/discounts/orderTotals/{discount_id}/criteria | Create an Order Total Discount Criteria
 [**deleteOrderTotalDiscount**](OrderTotalDiscountsApi.md#deleteOrderTotalDiscount) | **DELETE** /rest/v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount
+[**deleteOrderTotalDiscountCriteria**](OrderTotalDiscountsApi.md#deleteOrderTotalDiscountCriteria) | **DELETE** /rest/v2/discounts/orderTotals/{discount_id}/criteria/{criteria_id} | Delete an Order Total Discount Criteria
 [**getOrderTotalDiscount**](OrderTotalDiscountsApi.md#getOrderTotalDiscount) | **GET** /rest/v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount
 [**listOrderTotalDiscounts**](OrderTotalDiscountsApi.md#listOrderTotalDiscounts) | **GET** /rest/v2/discounts/orderTotals | List all Order Total Discounts
 [**updateOrderTotalDiscount**](OrderTotalDiscountsApi.md#updateOrderTotalDiscount) | **PATCH** /rest/v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount
@@ -35,7 +37,6 @@ const request: OrderTotalDiscountsApiCreateOrderTotalDiscountRequest = {
       {
         type: "DATE_RANGE",
         code: "SUMMER2024",
-        criteriaId: "501",
         rangeStartTime: new Date('2024-01-01T00:00:00Z'),
         rangeEndTime: new Date('2024-12-31T23:59:59Z'),
         productId: "456",
@@ -95,6 +96,82 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **createOrderTotalDiscountCriteria**
+> DiscountCriteria createOrderTotalDiscountCriteria(createOrderTotalDiscountCriteria)
+
+Creates an Order Total Discount Criteria
+
+### Example
+
+
+```typescript
+import { createConfiguration, OrderTotalDiscountsApi } from '';
+import type { OrderTotalDiscountsApiCreateOrderTotalDiscountCriteriaRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new OrderTotalDiscountsApi(configuration);
+
+const request: OrderTotalDiscountsApiCreateOrderTotalDiscountCriteriaRequest = {
+  
+  discountId: "discount_id_example",
+  
+  createOrderTotalDiscountCriteria: {
+    type: "DATE_RANGE",
+    code: "SUMMER2024",
+    rangeStartTime: new Date('2024-01-01T00:00:00Z'),
+    rangeEndTime: new Date('2024-12-31T23:59:59Z'),
+    productId: "456",
+    productQuantityMin: 1,
+    productQuantityMax: 10,
+    planId: "789",
+    subscriptionQuantity: 1,
+    totalAmount: 100,
+    operator: "GREATER_THAN",
+  },
+};
+
+const data = await apiInstance.createOrderTotalDiscountCriteria(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createOrderTotalDiscountCriteria** | **CreateOrderTotalDiscountCriteria**|  |
+ **discountId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**DiscountCriteria**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **deleteOrderTotalDiscount**
 > void deleteOrderTotalDiscount()
 
@@ -125,6 +202,70 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **discountId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **deleteOrderTotalDiscountCriteria**
+> void deleteOrderTotalDiscountCriteria()
+
+Deletes a specified Order Total Discount Criteria
+
+### Example
+
+
+```typescript
+import { createConfiguration, OrderTotalDiscountsApi } from '';
+import type { OrderTotalDiscountsApiDeleteOrderTotalDiscountCriteriaRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new OrderTotalDiscountsApi(configuration);
+
+const request: OrderTotalDiscountsApiDeleteOrderTotalDiscountCriteriaRequest = {
+  
+  discountId: "discount_id_example",
+  
+  criteriaId: "criteria_id_example",
+};
+
+const data = await apiInstance.deleteOrderTotalDiscountCriteria(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **discountId** | [**string**] |  | defaults to undefined
+ **criteriaId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -311,7 +452,6 @@ const request: OrderTotalDiscountsApiUpdateOrderTotalDiscountRequest = {
     description: "$50 off orders over $500",
     criteria: [
       {
-        type: "DATE_RANGE",
         code: "SUMMER2024",
         criteriaId: "501",
         rangeStartTime: new Date('2024-01-01T00:00:00Z'),

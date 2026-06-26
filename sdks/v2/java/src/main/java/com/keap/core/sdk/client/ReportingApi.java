@@ -21,6 +21,7 @@ import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.ListReportsResponse;
 import com.keap.core.sdk.model.Report;
 import com.keap.core.sdk.model.ReportExecutionResult;
+import com.keap.core.sdk.model.ReportModel;
 import com.keap.core.sdk.model.RunReportRequest;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -279,6 +280,92 @@ import io.github.resilience4j.retry.Retry;
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
 
     String localVarPath = "/rest/v2/reporting/reports/{report_id}"
+        .replace("{report_id}", ApiClient.urlEncode(reportId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Retrieve Report Model
+   * Retrieves the list of fields available for a Report (Saved Search). The returned field &#x60;name&#x60; values can be used in the &#x60;fields&#x60; parameter when running the report.
+   * @param reportId The unique identifier of the report (Saved Search) (required)
+   * @return ReportModel
+   * @throws ApiException if fails to make API call
+   */
+  public ReportModel retrieveReportModel(String reportId) throws ApiException {
+    ApiResponse<ReportModel> localVarResponse = retrieveReportModelWithHttpInfo(reportId);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Retrieve Report Model
+   * Retrieves the list of fields available for a Report (Saved Search). The returned field &#x60;name&#x60; values can be used in the &#x60;fields&#x60; parameter when running the report.
+   * @param reportId The unique identifier of the report (Saved Search) (required)
+   * @return ApiResponse&lt;ReportModel&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ReportModel> retrieveReportModelWithHttpInfo(String reportId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = retrieveReportModelRequestBuilder(reportId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("retrieveReportModel", localVarResponse);
+        }
+        return new ApiResponse<ReportModel>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ReportModel>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder retrieveReportModelRequestBuilder(String reportId) throws ApiException {
+    // verify the required parameter 'reportId' is set
+    if (reportId == null) {
+      throw new ApiException(400, "Missing the required parameter 'reportId' when calling retrieveReportModel");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/reporting/reports/{report_id}/model"
         .replace("{report_id}", ApiClient.urlEncode(reportId.toString()));
 
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));

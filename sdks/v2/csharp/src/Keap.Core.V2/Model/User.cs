@@ -87,6 +87,10 @@ namespace Keap.Core.V2.Model
         /// <param name="keapId">The Keap ID of the user.</param>
         /// <param name="givenName">The user&#39;s first name.</param>
         /// <param name="familyName">The user&#39;s last name.</param>
+        /// <param name="middleName">The user&#39;s middle name.</param>
+        /// <param name="nickname">The user&#39;s nickname or preferred name.</param>
+        /// <param name="spouseName">The name of the user&#39;s spouse.</param>
+        /// <param name="suffix">The user&#39;s name suffix.</param>
         /// <param name="phoneNumbers">List of user&#39;s phone numbers.</param>
         /// <param name="faxNumbers">List of user&#39;s fax numbers.</param>
         /// <param name="emailAddresses">List of user&#39;s email addresses.</param>
@@ -96,7 +100,7 @@ namespace Keap.Core.V2.Model
         /// <param name="createTime">When the user was created, in ISO-8601 format.</param>
         /// <param name="updatedBy">ID of the user who last updated this user.</param>
         /// <param name="updateTime">When the user was last updated, in ISO-8601 format.</param>
-        public User(Address address = default, string title = default, string website = default, bool partner = default, bool admin = default, StatusEnum? status = default, string id = default, string globalUserId = default, string keapId = default, string givenName = default, string familyName = default, List<PhoneNumber> phoneNumbers = default, List<FaxNumber> faxNumbers = default, List<EmailAddress> emailAddresses = default, List<SocialAccount> socialAccounts = default, string companyName = default, long createdBy = default, DateTime createTime = default, long updatedBy = default, DateTime updateTime = default)
+        public User(Address address = default, string title = default, string website = default, bool partner = default, bool admin = default, StatusEnum? status = default, string id = default, string globalUserId = default, string keapId = default, string givenName = default, string familyName = default, string middleName = default, string nickname = default, string spouseName = default, string suffix = default, List<PhoneNumber> phoneNumbers = default, List<FaxNumber> faxNumbers = default, List<EmailAddress> emailAddresses = default, List<SocialAccount> socialAccounts = default, string companyName = default, long createdBy = default, DateTime createTime = default, long updatedBy = default, DateTime updateTime = default)
         {
             this.Address = address;
             this.Title = title;
@@ -109,6 +113,10 @@ namespace Keap.Core.V2.Model
             this.KeapId = keapId;
             this.GivenName = givenName;
             this.FamilyName = familyName;
+            this.MiddleName = middleName;
+            this.Nickname = nickname;
+            this.SpouseName = spouseName;
+            this.Suffix = suffix;
             this.PhoneNumbers = phoneNumbers;
             this.FaxNumbers = faxNumbers;
             this.EmailAddresses = emailAddresses;
@@ -218,6 +226,46 @@ namespace Keap.Core.V2.Model
         public string FamilyName { get; set; }
 
         /// <summary>
+        /// The user&#39;s middle name
+        /// </summary>
+        /// <value>The user&#39;s middle name</value>
+        /*
+        <example>Edward</example>
+        */
+        [DataMember(Name = "middle_name", EmitDefaultValue = false)]
+        public string MiddleName { get; set; }
+
+        /// <summary>
+        /// The user&#39;s nickname or preferred name
+        /// </summary>
+        /// <value>The user&#39;s nickname or preferred name</value>
+        /*
+        <example>Tony</example>
+        */
+        [DataMember(Name = "nickname", EmitDefaultValue = false)]
+        public string Nickname { get; set; }
+
+        /// <summary>
+        /// The name of the user&#39;s spouse
+        /// </summary>
+        /// <value>The name of the user&#39;s spouse</value>
+        /*
+        <example>Mia</example>
+        */
+        [DataMember(Name = "spouse_name", EmitDefaultValue = false)]
+        public string SpouseName { get; set; }
+
+        /// <summary>
+        /// The user&#39;s name suffix
+        /// </summary>
+        /// <value>The user&#39;s name suffix</value>
+        /*
+        <example>Jr.</example>
+        */
+        [DataMember(Name = "suffix", EmitDefaultValue = false)]
+        public string Suffix { get; set; }
+
+        /// <summary>
         /// List of user&#39;s phone numbers
         /// </summary>
         /// <value>List of user&#39;s phone numbers</value>
@@ -314,6 +362,10 @@ namespace Keap.Core.V2.Model
             sb.Append("  KeapId: ").Append(KeapId).Append("\n");
             sb.Append("  GivenName: ").Append(GivenName).Append("\n");
             sb.Append("  FamilyName: ").Append(FamilyName).Append("\n");
+            sb.Append("  MiddleName: ").Append(MiddleName).Append("\n");
+            sb.Append("  Nickname: ").Append(Nickname).Append("\n");
+            sb.Append("  SpouseName: ").Append(SpouseName).Append("\n");
+            sb.Append("  Suffix: ").Append(Suffix).Append("\n");
             sb.Append("  PhoneNumbers: ").Append(PhoneNumbers).Append("\n");
             sb.Append("  FaxNumbers: ").Append(FaxNumbers).Append("\n");
             sb.Append("  EmailAddresses: ").Append(EmailAddresses).Append("\n");

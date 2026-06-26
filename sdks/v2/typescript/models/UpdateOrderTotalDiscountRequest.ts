@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { DiscountCriteria } from '../models/DiscountCriteria';
+import { UpdateOrderTotalDiscountCriteria } from '../models/UpdateOrderTotalDiscountCriteria';
 import { HttpFile } from '../http/http';
 
 export class UpdateOrderTotalDiscountRequest {
@@ -25,7 +25,7 @@ export class UpdateOrderTotalDiscountRequest {
     /**
     * List of criteria that must be met for this discount to apply
     */
-    'criteria'?: Array<DiscountCriteria>;
+    'criteria'?: Array<UpdateOrderTotalDiscountCriteria>;
     /**
     * Whether to apply this discount to commission calculations
     */
@@ -63,7 +63,7 @@ export class UpdateOrderTotalDiscountRequest {
         {
             "name": "criteria",
             "baseName": "criteria",
-            "type": "Array<DiscountCriteria>",
+            "type": "Array<UpdateOrderTotalDiscountCriteria>",
             "format": ""
         },
         {

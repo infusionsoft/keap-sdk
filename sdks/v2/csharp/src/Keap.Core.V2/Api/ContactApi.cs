@@ -194,6 +194,29 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteContactCustomFieldGroupWithHttpInfo(string groupId, int operationIndex = 0);
         /// <summary>
+        /// Delete a Contact Link type
+        /// </summary>
+        /// <remarks>
+        /// Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="linkTypeId">Contact Link type identifier</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        void DeleteContactLinkType(string linkTypeId, int operationIndex = 0);
+
+        /// <summary>
+        /// Delete a Contact Link type
+        /// </summary>
+        /// <remarks>
+        /// Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="linkTypeId">Contact Link type identifier</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteContactLinkTypeWithHttpInfo(string linkTypeId, int operationIndex = 0);
+        /// <summary>
         /// Retrieve a Contact
         /// </summary>
         /// <remarks>
@@ -526,6 +549,33 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomFieldGroup</returns>
         ApiResponse<CustomFieldGroup> UpdateContactCustomFieldGroupWithHttpInfo(string groupId, List<string> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest, int operationIndex = 0);
+        /// <summary>
+        /// Update a Contact Link type
+        /// </summary>
+        /// <remarks>
+        /// Updates the specified Contact Link type. Only fields listed in &#x60;update_mask&#x60; are applied. Reducing &#x60;max_links&#x60; below the current number of Linked Contacts of this type returns 409 Conflict.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="linkTypeId">Contact Link type identifier</param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateContactLinkTypeRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ContactLinkType</returns>
+        ContactLinkType UpdateContactLinkType(string linkTypeId, List<string> updateMask, UpdateContactLinkTypeRequest updateContactLinkTypeRequest, int operationIndex = 0);
+
+        /// <summary>
+        /// Update a Contact Link type
+        /// </summary>
+        /// <remarks>
+        /// Updates the specified Contact Link type. Only fields listed in &#x60;update_mask&#x60; are applied. Reducing &#x60;max_links&#x60; below the current number of Linked Contacts of this type returns 409 Conflict.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="linkTypeId">Contact Link type identifier</param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateContactLinkTypeRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ContactLinkType</returns>
+        ApiResponse<ContactLinkType> UpdateContactLinkTypeWithHttpInfo(string linkTypeId, List<string> updateMask, UpdateContactLinkTypeRequest updateContactLinkTypeRequest, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -714,6 +764,31 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteContactCustomFieldGroupWithHttpInfoAsync(string groupId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Delete a Contact Link type
+        /// </summary>
+        /// <remarks>
+        /// Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="linkTypeId">Contact Link type identifier</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteContactLinkTypeAsync(string linkTypeId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Delete a Contact Link type
+        /// </summary>
+        /// <remarks>
+        /// Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="linkTypeId">Contact Link type identifier</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteContactLinkTypeWithHttpInfoAsync(string linkTypeId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieve a Contact
         /// </summary>
@@ -1073,6 +1148,35 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CustomFieldGroup)</returns>
         System.Threading.Tasks.Task<ApiResponse<CustomFieldGroup>> UpdateContactCustomFieldGroupWithHttpInfoAsync(string groupId, List<string> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Update a Contact Link type
+        /// </summary>
+        /// <remarks>
+        /// Updates the specified Contact Link type. Only fields listed in &#x60;update_mask&#x60; are applied. Reducing &#x60;max_links&#x60; below the current number of Linked Contacts of this type returns 409 Conflict.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="linkTypeId">Contact Link type identifier</param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateContactLinkTypeRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ContactLinkType</returns>
+        System.Threading.Tasks.Task<ContactLinkType> UpdateContactLinkTypeAsync(string linkTypeId, List<string> updateMask, UpdateContactLinkTypeRequest updateContactLinkTypeRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Update a Contact Link type
+        /// </summary>
+        /// <remarks>
+        /// Updates the specified Contact Link type. Only fields listed in &#x60;update_mask&#x60; are applied. Reducing &#x60;max_links&#x60; below the current number of Linked Contacts of this type returns 409 Conflict.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="linkTypeId">Contact Link type identifier</param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateContactLinkTypeRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ContactLinkType)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ContactLinkType>> UpdateContactLinkTypeWithHttpInfoAsync(string linkTypeId, List<string> updateMask, UpdateContactLinkTypeRequest updateContactLinkTypeRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -2449,6 +2553,181 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DeleteContactCustomFieldGroup", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete a Contact Link type Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="linkTypeId">Contact Link type identifier</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        public void DeleteContactLinkType(string linkTypeId, int operationIndex = 0)
+        {
+            DeleteContactLinkTypeWithHttpInfo(linkTypeId);
+        }
+
+        /// <summary>
+        /// Delete a Contact Link type Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="linkTypeId">Contact Link type identifier</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Keap.Core.V2.Client.ApiResponse<Object> DeleteContactLinkTypeWithHttpInfo(string linkTypeId, int operationIndex = 0)
+        {
+            // verify the required parameter 'linkTypeId' is set
+            if (linkTypeId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'linkTypeId' when calling ContactApi->DeleteContactLinkType");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("link_type_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(linkTypeId)); // path parameter
+
+            localVarRequestOptions.Operation = "ContactApi.DeleteContactLinkType";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<Object>("/rest/v2/contacts/links/types/{link_type_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteContactLinkType", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete a Contact Link type Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="linkTypeId">Contact Link type identifier</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteContactLinkTypeAsync(string linkTypeId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            await DeleteContactLinkTypeWithHttpInfoAsync(linkTypeId, operationIndex, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Delete a Contact Link type Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="linkTypeId">Contact Link type identifier</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Object>> DeleteContactLinkTypeWithHttpInfoAsync(string linkTypeId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'linkTypeId' is set
+            if (linkTypeId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'linkTypeId' when calling ContactApi->DeleteContactLinkType");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("link_type_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(linkTypeId)); // path parameter
+
+            localVarRequestOptions.Operation = "ContactApi.DeleteContactLinkType";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/rest/v2/contacts/links/types/{link_type_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteContactLinkType", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -4956,6 +5235,221 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateContactCustomFieldGroup", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update a Contact Link type Updates the specified Contact Link type. Only fields listed in &#x60;update_mask&#x60; are applied. Reducing &#x60;max_links&#x60; below the current number of Linked Contacts of this type returns 409 Conflict.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="linkTypeId">Contact Link type identifier</param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateContactLinkTypeRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ContactLinkType</returns>
+        public ContactLinkType UpdateContactLinkType(string linkTypeId, List<string> updateMask, UpdateContactLinkTypeRequest updateContactLinkTypeRequest, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<ContactLinkType> localVarResponse = UpdateContactLinkTypeWithHttpInfo(linkTypeId, updateMask, updateContactLinkTypeRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update a Contact Link type Updates the specified Contact Link type. Only fields listed in &#x60;update_mask&#x60; are applied. Reducing &#x60;max_links&#x60; below the current number of Linked Contacts of this type returns 409 Conflict.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="linkTypeId">Contact Link type identifier</param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateContactLinkTypeRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ContactLinkType</returns>
+        public Keap.Core.V2.Client.ApiResponse<ContactLinkType> UpdateContactLinkTypeWithHttpInfo(string linkTypeId, List<string> updateMask, UpdateContactLinkTypeRequest updateContactLinkTypeRequest, int operationIndex = 0)
+        {
+            // verify the required parameter 'linkTypeId' is set
+            if (linkTypeId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'linkTypeId' when calling ContactApi->UpdateContactLinkType");
+            }
+
+            // verify the required parameter 'updateMask' is set
+            if (updateMask == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateMask' when calling ContactApi->UpdateContactLinkType");
+            }
+
+            // verify the required parameter 'updateContactLinkTypeRequest' is set
+            if (updateContactLinkTypeRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateContactLinkTypeRequest' when calling ContactApi->UpdateContactLinkType");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("link_type_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(linkTypeId)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
+            localVarRequestOptions.Data = updateContactLinkTypeRequest;
+
+            localVarRequestOptions.Operation = "ContactApi.UpdateContactLinkType";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<ContactLinkType>("/rest/v2/contacts/links/types/{link_type_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateContactLinkType", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update a Contact Link type Updates the specified Contact Link type. Only fields listed in &#x60;update_mask&#x60; are applied. Reducing &#x60;max_links&#x60; below the current number of Linked Contacts of this type returns 409 Conflict.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="linkTypeId">Contact Link type identifier</param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateContactLinkTypeRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ContactLinkType</returns>
+        public async System.Threading.Tasks.Task<ContactLinkType> UpdateContactLinkTypeAsync(string linkTypeId, List<string> updateMask, UpdateContactLinkTypeRequest updateContactLinkTypeRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<ContactLinkType> localVarResponse = await UpdateContactLinkTypeWithHttpInfoAsync(linkTypeId, updateMask, updateContactLinkTypeRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update a Contact Link type Updates the specified Contact Link type. Only fields listed in &#x60;update_mask&#x60; are applied. Reducing &#x60;max_links&#x60; below the current number of Linked Contacts of this type returns 409 Conflict.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="linkTypeId">Contact Link type identifier</param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateContactLinkTypeRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ContactLinkType)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ContactLinkType>> UpdateContactLinkTypeWithHttpInfoAsync(string linkTypeId, List<string> updateMask, UpdateContactLinkTypeRequest updateContactLinkTypeRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'linkTypeId' is set
+            if (linkTypeId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'linkTypeId' when calling ContactApi->UpdateContactLinkType");
+            }
+
+            // verify the required parameter 'updateMask' is set
+            if (updateMask == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateMask' when calling ContactApi->UpdateContactLinkType");
+            }
+
+            // verify the required parameter 'updateContactLinkTypeRequest' is set
+            if (updateContactLinkTypeRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateContactLinkTypeRequest' when calling ContactApi->UpdateContactLinkType");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("link_type_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(linkTypeId)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
+            localVarRequestOptions.Data = updateContactLinkTypeRequest;
+
+            localVarRequestOptions.Operation = "ContactApi.UpdateContactLinkType";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<ContactLinkType>("/rest/v2/contacts/links/types/{link_type_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateContactLinkType", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

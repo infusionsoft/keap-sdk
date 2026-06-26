@@ -11,6 +11,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**DeleteContact**](ContactApi.md#deletecontact) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact |
 | [**DeleteContactCustomField**](ContactApi.md#deletecontactcustomfield) | **DELETE** /rest/v2/contacts/model/customFields/{custom_field_id} | Delete a Contact Custom Field |
 | [**DeleteContactCustomFieldGroup**](ContactApi.md#deletecontactcustomfieldgroup) | **DELETE** /rest/v2/contacts/model/customFields/groups/{group_id} | Delete a Contact Custom Field Group |
+| [**DeleteContactLinkType**](ContactApi.md#deletecontactlinktype) | **DELETE** /rest/v2/contacts/links/types/{link_type_id} | Delete a Contact Link type |
 | [**GetContact**](ContactApi.md#getcontact) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact |
 | [**GetContactCustomFieldGroup**](ContactApi.md#getcontactcustomfieldgroup) | **GET** /rest/v2/contacts/model/customFields/groups/{group_id} | Retrieve a Contact Custom Field Group |
 | [**LinkContacts**](ContactApi.md#linkcontacts) | **POST** /rest/v2/contacts:link | Link Contacts |
@@ -24,6 +25,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**UnlinkContacts**](ContactApi.md#unlinkcontacts) | **POST** /rest/v2/contacts:unlink | Delete Link between two Contacts |
 | [**UpdateContact**](ContactApi.md#updatecontact) | **PATCH** /rest/v2/contacts/{contact_id} | Update a Contact |
 | [**UpdateContactCustomFieldGroup**](ContactApi.md#updatecontactcustomfieldgroup) | **PATCH** /rest/v2/contacts/model/customFields/groups/{group_id} | Update a Contact Custom Field Group |
+| [**UpdateContactLinkType**](ContactApi.md#updatecontactlinktype) | **PATCH** /rest/v2/contacts/links/types/{link_type_id} | Update a Contact Link type |
 
 <a id="createcontact"></a>
 # **CreateContact**
@@ -702,6 +704,104 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **groupId** | **string** |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deletecontactlinktype"></a>
+# **DeleteContactLinkType**
+> void DeleteContactLinkType (string linkTypeId)
+
+Delete a Contact Link type
+
+Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteContactLinkTypeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ContactApi(config);
+            var linkTypeId = "linkTypeId_example";  // string | Contact Link type identifier
+
+            try
+            {
+                // Delete a Contact Link type
+                apiInstance.DeleteContactLinkType(linkTypeId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ContactApi.DeleteContactLinkType: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteContactLinkTypeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete a Contact Link type
+    apiInstance.DeleteContactLinkTypeWithHttpInfo(linkTypeId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ContactApi.DeleteContactLinkTypeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **linkTypeId** | **string** | Contact Link type identifier |  |
 
 ### Return type
 
@@ -2059,6 +2159,112 @@ catch (ApiException e)
 ### Return type
 
 [**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updatecontactlinktype"></a>
+# **UpdateContactLinkType**
+> ContactLinkType UpdateContactLinkType (string linkTypeId, List<string> updateMask, UpdateContactLinkTypeRequest updateContactLinkTypeRequest)
+
+Update a Contact Link type
+
+Updates the specified Contact Link type. Only fields listed in `update_mask` are applied. Reducing `max_links` below the current number of Linked Contacts of this type returns 409 Conflict.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class UpdateContactLinkTypeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ContactApi(config);
+            var linkTypeId = "linkTypeId_example";  // string | Contact Link type identifier
+            var updateMask = new List<string>(); // List<string> | Comma-separated list of fields to update
+            var updateContactLinkTypeRequest = new UpdateContactLinkTypeRequest(); // UpdateContactLinkTypeRequest | 
+
+            try
+            {
+                // Update a Contact Link type
+                ContactLinkType result = apiInstance.UpdateContactLinkType(linkTypeId, updateMask, updateContactLinkTypeRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ContactApi.UpdateContactLinkType: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateContactLinkTypeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Update a Contact Link type
+    ApiResponse<ContactLinkType> response = apiInstance.UpdateContactLinkTypeWithHttpInfo(linkTypeId, updateMask, updateContactLinkTypeRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ContactApi.UpdateContactLinkTypeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **linkTypeId** | **string** | Contact Link type identifier |  |
+| **updateMask** | [**List&lt;string&gt;**](string.md) | Comma-separated list of fields to update |  |
+| **updateContactLinkTypeRequest** | [**UpdateContactLinkTypeRequest**](UpdateContactLinkTypeRequest.md) |  |  |
+
+### Return type
+
+[**ContactLinkType**](ContactLinkType.md)
 
 ### Authorization
 

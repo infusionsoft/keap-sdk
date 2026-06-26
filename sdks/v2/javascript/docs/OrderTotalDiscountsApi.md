@@ -5,7 +5,9 @@ All URIs are relative to *https://api.keap.com/crm*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createOrderTotalDiscount**](OrderTotalDiscountsApi.md#createOrderTotalDiscount) | **POST** /rest/v2/discounts/orderTotals | Create an Order Total Discount
+[**createOrderTotalDiscountCriteria**](OrderTotalDiscountsApi.md#createOrderTotalDiscountCriteria) | **POST** /rest/v2/discounts/orderTotals/{discount_id}/criteria | Create an Order Total Discount Criteria
 [**deleteOrderTotalDiscount**](OrderTotalDiscountsApi.md#deleteOrderTotalDiscount) | **DELETE** /rest/v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount
+[**deleteOrderTotalDiscountCriteria**](OrderTotalDiscountsApi.md#deleteOrderTotalDiscountCriteria) | **DELETE** /rest/v2/discounts/orderTotals/{discount_id}/criteria/{criteria_id} | Delete an Order Total Discount Criteria
 [**getOrderTotalDiscount**](OrderTotalDiscountsApi.md#getOrderTotalDiscount) | **GET** /rest/v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount
 [**listOrderTotalDiscounts**](OrderTotalDiscountsApi.md#listOrderTotalDiscounts) | **GET** /rest/v2/discounts/orderTotals | List all Order Total Discounts
 [**updateOrderTotalDiscount**](OrderTotalDiscountsApi.md#updateOrderTotalDiscount) | **PATCH** /rest/v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount
@@ -60,6 +62,56 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## createOrderTotalDiscountCriteria
+
+> DiscountCriteria createOrderTotalDiscountCriteria(discountId, createOrderTotalDiscountCriteria)
+
+Create an Order Total Discount Criteria
+
+Creates an Order Total Discount Criteria
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.OrderTotalDiscountsApi();
+let discountId = "discountId_example"; // String | 
+let createOrderTotalDiscountCriteria = new KeapCoreServiceV2Sdk.CreateOrderTotalDiscountCriteria(); // CreateOrderTotalDiscountCriteria | 
+apiInstance.createOrderTotalDiscountCriteria(discountId, createOrderTotalDiscountCriteria).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **discountId** | **String**|  | 
+ **createOrderTotalDiscountCriteria** | [**CreateOrderTotalDiscountCriteria**](CreateOrderTotalDiscountCriteria.md)|  | 
+
+### Return type
+
+[**DiscountCriteria**](DiscountCriteria.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## deleteOrderTotalDiscount
 
 > deleteOrderTotalDiscount(discountId)
@@ -93,6 +145,56 @@ apiInstance.deleteOrderTotalDiscount(discountId).then(() => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **discountId** | **String**|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## deleteOrderTotalDiscountCriteria
+
+> deleteOrderTotalDiscountCriteria(discountId, criteriaId)
+
+Delete an Order Total Discount Criteria
+
+Deletes a specified Order Total Discount Criteria
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.OrderTotalDiscountsApi();
+let discountId = "discountId_example"; // String | 
+let criteriaId = "criteriaId_example"; // String | 
+apiInstance.deleteOrderTotalDiscountCriteria(discountId, criteriaId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **discountId** | **String**|  | 
+ **criteriaId** | **String**|  | 
 
 ### Return type
 

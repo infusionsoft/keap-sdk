@@ -17,6 +17,7 @@ import Error from '../model/Error';
 import ListReportsResponse from '../model/ListReportsResponse';
 import Report from '../model/Report';
 import ReportExecutionResult from '../model/ReportExecutionResult';
+import ReportModel from '../model/ReportModel';
 import RunReportRequest from '../model/RunReportRequest';
 
 /**
@@ -136,6 +137,54 @@ export default class ReportingApi {
      */
     retrieveReport(reportId) {
       return this.retrieveReportWithHttpInfo(reportId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Retrieve Report Model
+     * Retrieves the list of fields available for a Report (Saved Search). The returned field `name` values can be used in the `fields` parameter when running the report.
+     * @param {String} reportId The unique identifier of the report (Saved Search)
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ReportModel} and HTTP response
+     */
+    retrieveReportModelWithHttpInfo(reportId) {
+      let postBody = null;
+      // verify the required parameter 'reportId' is set
+      if (reportId === undefined || reportId === null) {
+        throw new Error("Missing the required parameter 'reportId' when calling retrieveReportModel");
+      }
+
+      let pathParams = {
+        'report_id': reportId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ReportModel;
+      return this.apiClient.callApi(
+        '/rest/v2/reporting/reports/{report_id}/model', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Retrieve Report Model
+     * Retrieves the list of fields available for a Report (Saved Search). The returned field `name` values can be used in the `fields` parameter when running the report.
+     * @param {String} reportId The unique identifier of the report (Saved Search)
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ReportModel}
+     */
+    retrieveReportModel(reportId) {
+      return this.retrieveReportModelWithHttpInfo(reportId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

@@ -168,6 +168,7 @@ Class | Method | HTTP request | Description
 *ContactApi* | [**deleteContact**](docs/Api/ContactApi.md#deletecontact) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact
 *ContactApi* | [**deleteContactCustomField**](docs/Api/ContactApi.md#deletecontactcustomfield) | **DELETE** /rest/v2/contacts/model/customFields/{custom_field_id} | Delete a Contact Custom Field
 *ContactApi* | [**deleteContactCustomFieldGroup**](docs/Api/ContactApi.md#deletecontactcustomfieldgroup) | **DELETE** /rest/v2/contacts/model/customFields/groups/{group_id} | Delete a Contact Custom Field Group
+*ContactApi* | [**deleteContactLinkType**](docs/Api/ContactApi.md#deletecontactlinktype) | **DELETE** /rest/v2/contacts/links/types/{link_type_id} | Delete a Contact Link type
 *ContactApi* | [**getContact**](docs/Api/ContactApi.md#getcontact) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact
 *ContactApi* | [**getContactCustomFieldGroup**](docs/Api/ContactApi.md#getcontactcustomfieldgroup) | **GET** /rest/v2/contacts/model/customFields/groups/{group_id} | Retrieve a Contact Custom Field Group
 *ContactApi* | [**linkContacts**](docs/Api/ContactApi.md#linkcontacts) | **POST** /rest/v2/contacts:link | Link Contacts
@@ -181,6 +182,7 @@ Class | Method | HTTP request | Description
 *ContactApi* | [**unlinkContacts**](docs/Api/ContactApi.md#unlinkcontacts) | **POST** /rest/v2/contacts:unlink | Delete Link between two Contacts
 *ContactApi* | [**updateContact**](docs/Api/ContactApi.md#updatecontact) | **PATCH** /rest/v2/contacts/{contact_id} | Update a Contact
 *ContactApi* | [**updateContactCustomFieldGroup**](docs/Api/ContactApi.md#updatecontactcustomfieldgroup) | **PATCH** /rest/v2/contacts/model/customFields/groups/{group_id} | Update a Contact Custom Field Group
+*ContactApi* | [**updateContactLinkType**](docs/Api/ContactApi.md#updatecontactlinktype) | **PATCH** /rest/v2/contacts/links/types/{link_type_id} | Update a Contact Link type
 *EmailApi* | [**createEmail**](docs/Api/EmailApi.md#createemail) | **POST** /rest/v2/emails | Create an Email Record
 *EmailApi* | [**createEmails**](docs/Api/EmailApi.md#createemails) | **POST** /rest/v2/emails:batchAdd | Create a set of Email Records
 *EmailApi* | [**deleteEmail**](docs/Api/EmailApi.md#deleteemail) | **DELETE** /rest/v2/emails/{id} | Delete an Email Record
@@ -273,7 +275,9 @@ Class | Method | HTTP request | Description
 *OpportunityApi* | [**updateOpportunityCustomFieldGroup**](docs/Api/OpportunityApi.md#updateopportunitycustomfieldgroup) | **PATCH** /rest/v2/opportunities/model/customFields/groups/{group_id} | Update an Opportunity Custom Field Group
 *OpportunityApi* | [**updateOpportunityStage**](docs/Api/OpportunityApi.md#updateopportunitystage) | **PATCH** /rest/v2/opportunities/stages/{stage_id} | Update an Opportunity Stage
 *OrderTotalDiscountsApi* | [**createOrderTotalDiscount**](docs/Api/OrderTotalDiscountsApi.md#createordertotaldiscount) | **POST** /rest/v2/discounts/orderTotals | Create an Order Total Discount
+*OrderTotalDiscountsApi* | [**createOrderTotalDiscountCriteria**](docs/Api/OrderTotalDiscountsApi.md#createordertotaldiscountcriteria) | **POST** /rest/v2/discounts/orderTotals/{discount_id}/criteria | Create an Order Total Discount Criteria
 *OrderTotalDiscountsApi* | [**deleteOrderTotalDiscount**](docs/Api/OrderTotalDiscountsApi.md#deleteordertotaldiscount) | **DELETE** /rest/v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount
+*OrderTotalDiscountsApi* | [**deleteOrderTotalDiscountCriteria**](docs/Api/OrderTotalDiscountsApi.md#deleteordertotaldiscountcriteria) | **DELETE** /rest/v2/discounts/orderTotals/{discount_id}/criteria/{criteria_id} | Delete an Order Total Discount Criteria
 *OrderTotalDiscountsApi* | [**getOrderTotalDiscount**](docs/Api/OrderTotalDiscountsApi.md#getordertotaldiscount) | **GET** /rest/v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount
 *OrderTotalDiscountsApi* | [**listOrderTotalDiscounts**](docs/Api/OrderTotalDiscountsApi.md#listordertotaldiscounts) | **GET** /rest/v2/discounts/orderTotals | List all Order Total Discounts
 *OrderTotalDiscountsApi* | [**updateOrderTotalDiscount**](docs/Api/OrderTotalDiscountsApi.md#updateordertotaldiscount) | **PATCH** /rest/v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount
@@ -351,6 +355,7 @@ Class | Method | HTTP request | Description
 *ReferralApi* | [**listReferrals**](docs/Api/ReferralApi.md#listreferrals) | **GET** /rest/v2/referrals | List Referrals
 *ReportingApi* | [**listReports**](docs/Api/ReportingApi.md#listreports) | **GET** /rest/v2/reporting/reports | List Reports
 *ReportingApi* | [**retrieveReport**](docs/Api/ReportingApi.md#retrievereport) | **GET** /rest/v2/reporting/reports/{report_id} | Retrieve Report
+*ReportingApi* | [**retrieveReportModel**](docs/Api/ReportingApi.md#retrievereportmodel) | **GET** /rest/v2/reporting/reports/{report_id}/model | Retrieve Report Model
 *ReportingApi* | [**runReport**](docs/Api/ReportingApi.md#runreport) | **POST** /rest/v2/reporting/reports/{report_id}:run | Run a Report
 *SalesApi* | [**listPayments**](docs/Api/SalesApi.md#listpayments) | **GET** /rest/v2/sales/payments | List Payments
 *SalesApi* | [**listTransactions**](docs/Api/SalesApi.md#listtransactions) | **GET** /rest/v2/sales/transactions | List Transactions
@@ -527,6 +532,7 @@ Class | Method | HTTP request | Description
 - [CreateOpportunityStageRequest](docs/Model/CreateOpportunityStageRequest.md)
 - [CreateOrUpdateAffiliateLinkRequest](docs/Model/CreateOrUpdateAffiliateLinkRequest.md)
 - [CreateOrderItemRequest](docs/Model/CreateOrderItemRequest.md)
+- [CreateOrderTotalDiscountCriteria](docs/Model/CreateOrderTotalDiscountCriteria.md)
 - [CreateOrderTotalDiscountRequest](docs/Model/CreateOrderTotalDiscountRequest.md)
 - [CreatePaymentMethodConfigRequest](docs/Model/CreatePaymentMethodConfigRequest.md)
 - [CreateProductCategoryRequest](docs/Model/CreateProductCategoryRequest.md)
@@ -717,6 +723,8 @@ Class | Method | HTTP request | Description
 - [ReportEntryRecord](docs/Model/ReportEntryRecord.md)
 - [ReportEntryValue](docs/Model/ReportEntryValue.md)
 - [ReportExecutionResult](docs/Model/ReportExecutionResult.md)
+- [ReportField](docs/Model/ReportField.md)
+- [ReportModel](docs/Model/ReportModel.md)
 - [ResourceCommissionProgram](docs/Model/ResourceCommissionProgram.md)
 - [RestAffiliate](docs/Model/RestAffiliate.md)
 - [RestAffiliatePayment](docs/Model/RestAffiliatePayment.md)
@@ -754,6 +762,7 @@ Class | Method | HTTP request | Description
 - [UpdateCategoryDiscountRequest](docs/Model/UpdateCategoryDiscountRequest.md)
 - [UpdateCommissionProgramRequest](docs/Model/UpdateCommissionProgramRequest.md)
 - [UpdateCompanyRequest](docs/Model/UpdateCompanyRequest.md)
+- [UpdateContactLinkTypeRequest](docs/Model/UpdateContactLinkTypeRequest.md)
 - [UpdateCustomFieldGroupRequest](docs/Model/UpdateCustomFieldGroupRequest.md)
 - [UpdateCustomFieldMetaDataRequest](docs/Model/UpdateCustomFieldMetaDataRequest.md)
 - [UpdateDefaultCommissionProgramRequest](docs/Model/UpdateDefaultCommissionProgramRequest.md)
@@ -767,6 +776,7 @@ Class | Method | HTTP request | Description
 - [UpdateOpportunityStageRequest](docs/Model/UpdateOpportunityStageRequest.md)
 - [UpdateOrderItemRequest](docs/Model/UpdateOrderItemRequest.md)
 - [UpdateOrderRequest](docs/Model/UpdateOrderRequest.md)
+- [UpdateOrderTotalDiscountCriteria](docs/Model/UpdateOrderTotalDiscountCriteria.md)
 - [UpdateOrderTotalDiscountRequest](docs/Model/UpdateOrderTotalDiscountRequest.md)
 - [UpdateProductCategoryRequest](docs/Model/UpdateProductCategoryRequest.md)
 - [UpdateProductCommissionProgramRequest](docs/Model/UpdateProductCommissionProgramRequest.md)
@@ -822,6 +832,6 @@ api.keap@thryv.com
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `v2`
-    - Package version: `2.0.15`
+    - Package version: `2.0.16`
     - Generator version: `7.13.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

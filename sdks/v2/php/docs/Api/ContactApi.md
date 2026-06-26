@@ -11,6 +11,7 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**deleteContact()**](ContactApi.md#deleteContact) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact |
 | [**deleteContactCustomField()**](ContactApi.md#deleteContactCustomField) | **DELETE** /rest/v2/contacts/model/customFields/{custom_field_id} | Delete a Contact Custom Field |
 | [**deleteContactCustomFieldGroup()**](ContactApi.md#deleteContactCustomFieldGroup) | **DELETE** /rest/v2/contacts/model/customFields/groups/{group_id} | Delete a Contact Custom Field Group |
+| [**deleteContactLinkType()**](ContactApi.md#deleteContactLinkType) | **DELETE** /rest/v2/contacts/links/types/{link_type_id} | Delete a Contact Link type |
 | [**getContact()**](ContactApi.md#getContact) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact |
 | [**getContactCustomFieldGroup()**](ContactApi.md#getContactCustomFieldGroup) | **GET** /rest/v2/contacts/model/customFields/groups/{group_id} | Retrieve a Contact Custom Field Group |
 | [**linkContacts()**](ContactApi.md#linkContacts) | **POST** /rest/v2/contacts:link | Link Contacts |
@@ -24,6 +25,7 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**unlinkContacts()**](ContactApi.md#unlinkContacts) | **POST** /rest/v2/contacts:unlink | Delete Link between two Contacts |
 | [**updateContact()**](ContactApi.md#updateContact) | **PATCH** /rest/v2/contacts/{contact_id} | Update a Contact |
 | [**updateContactCustomFieldGroup()**](ContactApi.md#updateContactCustomFieldGroup) | **PATCH** /rest/v2/contacts/model/customFields/groups/{group_id} | Update a Contact Custom Field Group |
+| [**updateContactLinkType()**](ContactApi.md#updateContactLinkType) | **PATCH** /rest/v2/contacts/links/types/{link_type_id} | Update a Contact Link type |
 
 
 ## `createContact()`
@@ -422,6 +424,64 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **group_id** | **string**|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteContactLinkType()`
+
+```php
+deleteContactLinkType($link_type_id)
+```
+
+Delete a Contact Link type
+
+Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\ContactApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$link_type_id = 'link_type_id_example'; // string | Contact Link type identifier
+
+try {
+    $apiInstance->deleteContactLinkType($link_type_id);
+} catch (Exception $e) {
+    echo 'Exception when calling ContactApi->deleteContactLinkType: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **link_type_id** | **string**| Contact Link type identifier | |
 
 ### Return type
 
@@ -1225,6 +1285,69 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\CustomFieldGroup**](../Model/CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateContactLinkType()`
+
+```php
+updateContactLinkType($link_type_id, $update_mask, $update_contact_link_type_request): \Keap\Core\V2\Model\ContactLinkType
+```
+
+Update a Contact Link type
+
+Updates the specified Contact Link type. Only fields listed in `update_mask` are applied. Reducing `max_links` below the current number of Linked Contacts of this type returns 409 Conflict.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\ContactApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$link_type_id = 'link_type_id_example'; // string | Contact Link type identifier
+$update_mask = array('update_mask_example'); // string[] | Comma-separated list of fields to update
+$update_contact_link_type_request = new \Keap\Core\V2\Model\UpdateContactLinkTypeRequest(); // \Keap\Core\V2\Model\UpdateContactLinkTypeRequest
+
+try {
+    $result = $apiInstance->updateContactLinkType($link_type_id, $update_mask, $update_contact_link_type_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContactApi->updateContactLinkType: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **link_type_id** | **string**| Contact Link type identifier | |
+| **update_mask** | [**string[]**](../Model/string.md)| Comma-separated list of fields to update | |
+| **update_contact_link_type_request** | [**\Keap\Core\V2\Model\UpdateContactLinkTypeRequest**](../Model/UpdateContactLinkTypeRequest.md)|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\ContactLinkType**](../Model/ContactLinkType.md)
 
 ### Authorization
 

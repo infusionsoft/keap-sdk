@@ -66,6 +66,22 @@ export class User {
     */
     'familyName'?: string;
     /**
+    * The user\'s middle name
+    */
+    'middleName'?: string;
+    /**
+    * The user\'s nickname or preferred name
+    */
+    'nickname'?: string;
+    /**
+    * The name of the user\'s spouse
+    */
+    'spouseName'?: string;
+    /**
+    * The user\'s name suffix
+    */
+    'suffix'?: string;
+    /**
     * List of user\'s phone numbers
     */
     'phoneNumbers'?: Array<PhoneNumber>;
@@ -170,6 +186,30 @@ export class User {
         {
             "name": "familyName",
             "baseName": "family_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "middleName",
+            "baseName": "middle_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "nickname",
+            "baseName": "nickname",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "spouseName",
+            "baseName": "spouse_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "suffix",
+            "baseName": "suffix",
             "type": "string",
             "format": ""
         },

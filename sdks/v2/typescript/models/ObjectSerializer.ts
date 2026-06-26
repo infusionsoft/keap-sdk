@@ -99,6 +99,7 @@ export * from '../models/CreateOpportunityStageChecklistItem';
 export * from '../models/CreateOpportunityStageRequest';
 export * from '../models/CreateOrUpdateAffiliateLinkRequest';
 export * from '../models/CreateOrderItemRequest';
+export * from '../models/CreateOrderTotalDiscountCriteria';
 export * from '../models/CreateOrderTotalDiscountRequest';
 export * from '../models/CreatePaymentMethodConfigRequest';
 export * from '../models/CreateProductCategoryRequest';
@@ -289,6 +290,8 @@ export * from '../models/Report';
 export * from '../models/ReportEntryRecord';
 export * from '../models/ReportEntryValue';
 export * from '../models/ReportExecutionResult';
+export * from '../models/ReportField';
+export * from '../models/ReportModel';
 export * from '../models/ResourceCommissionProgram';
 export * from '../models/RestAffiliate';
 export * from '../models/RestAffiliatePayment';
@@ -326,6 +329,7 @@ export * from '../models/UpdateBusinessProfileRequest';
 export * from '../models/UpdateCategoryDiscountRequest';
 export * from '../models/UpdateCommissionProgramRequest';
 export * from '../models/UpdateCompanyRequest';
+export * from '../models/UpdateContactLinkTypeRequest';
 export * from '../models/UpdateCustomFieldGroupRequest';
 export * from '../models/UpdateCustomFieldMetaDataRequest';
 export * from '../models/UpdateDefaultCommissionProgramRequest';
@@ -339,6 +343,7 @@ export * from '../models/UpdateOpportunityStageChecklistItem';
 export * from '../models/UpdateOpportunityStageRequest';
 export * from '../models/UpdateOrderItemRequest';
 export * from '../models/UpdateOrderRequest';
+export * from '../models/UpdateOrderTotalDiscountCriteria';
 export * from '../models/UpdateOrderTotalDiscountRequest';
 export * from '../models/UpdateProductCategoryRequest';
 export * from '../models/UpdateProductCommissionProgramRequest';
@@ -467,6 +472,7 @@ import { CreateOpportunityStageChecklistItem } from '../models/CreateOpportunity
 import { CreateOpportunityStageRequest } from '../models/CreateOpportunityStageRequest';
 import { CreateOrUpdateAffiliateLinkRequest } from '../models/CreateOrUpdateAffiliateLinkRequest';
 import { CreateOrderItemRequest       , CreateOrderItemRequestItemTypeEnum     } from '../models/CreateOrderItemRequest';
+import { CreateOrderTotalDiscountCriteria, CreateOrderTotalDiscountCriteriaTypeEnum           , CreateOrderTotalDiscountCriteriaOperatorEnum   } from '../models/CreateOrderTotalDiscountCriteria';
 import { CreateOrderTotalDiscountRequest    , CreateOrderTotalDiscountRequestDiscountTypeEnum   , CreateOrderTotalDiscountRequestDiscountStrategyEnum   } from '../models/CreateOrderTotalDiscountRequest';
 import { CreatePaymentMethodConfigRequest } from '../models/CreatePaymentMethodConfigRequest';
 import { CreateProductCategoryRequest } from '../models/CreateProductCategoryRequest';
@@ -657,6 +663,8 @@ import { Report } from '../models/Report';
 import { ReportEntryRecord } from '../models/ReportEntryRecord';
 import { ReportEntryValue } from '../models/ReportEntryValue';
 import { ReportExecutionResult } from '../models/ReportExecutionResult';
+import { ReportField } from '../models/ReportField';
+import { ReportModel } from '../models/ReportModel';
 import { ResourceCommissionProgram } from '../models/ResourceCommissionProgram';
 import { RestAffiliate   , RestAffiliateStatusEnum           } from '../models/RestAffiliate';
 import { RestAffiliatePayment    , RestAffiliatePaymentPayTypeEnum    } from '../models/RestAffiliatePayment';
@@ -694,6 +702,7 @@ import { UpdateBusinessProfileRequest } from '../models/UpdateBusinessProfileReq
 import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountRequest';
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
+import { UpdateContactLinkTypeRequest } from '../models/UpdateContactLinkTypeRequest';
 import { UpdateCustomFieldGroupRequest } from '../models/UpdateCustomFieldGroupRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
 import { UpdateDefaultCommissionProgramRequest     , UpdateDefaultCommissionProgramRequestPayoutTypeEnum   } from '../models/UpdateDefaultCommissionProgramRequest';
@@ -707,6 +716,7 @@ import { UpdateOpportunityStageChecklistItem } from '../models/UpdateOpportunity
 import { UpdateOpportunityStageRequest } from '../models/UpdateOpportunityStageRequest';
 import { UpdateOrderItemRequest } from '../models/UpdateOrderItemRequest';
 import { UpdateOrderRequest     , UpdateOrderRequestOrderTypeEnum         } from '../models/UpdateOrderRequest';
+import { UpdateOrderTotalDiscountCriteria          , UpdateOrderTotalDiscountCriteriaOperatorEnum   } from '../models/UpdateOrderTotalDiscountCriteria';
 import { UpdateOrderTotalDiscountRequest    , UpdateOrderTotalDiscountRequestDiscountTypeEnum   , UpdateOrderTotalDiscountRequestDiscountStrategyEnum   } from '../models/UpdateOrderTotalDiscountRequest';
 import { UpdateProductCategoryRequest } from '../models/UpdateProductCategoryRequest';
 import { UpdateProductCommissionProgramRequest     , UpdateProductCommissionProgramRequestPayoutTypeEnum    } from '../models/UpdateProductCommissionProgramRequest';
@@ -729,7 +739,7 @@ import { UpdateTagResponse } from '../models/UpdateTagResponse';
 import { UpdateTaskResponse    , UpdateTaskResponsePriorityEnum       , UpdateTaskResponseRemindTimeMinsEnum          } from '../models/UpdateTaskResponse';
 import { UpdateUserRequest } from '../models/UpdateUserRequest';
 import { UpdatedPaymentPlan } from '../models/UpdatedPaymentPlan';
-import { User     , UserStatusEnum                 } from '../models/User';
+import { User     , UserStatusEnum                     } from '../models/User';
 import { UserGroup } from '../models/UserGroup';
 import { Webform        , WebformDuplicateCheckOptionEnum  , WebformExitOptionEnum  , WebformWebformTypeEnum     } from '../models/Webform';
 import { WordPressOptInOption } from '../models/WordPressOptInOption';
@@ -765,6 +775,8 @@ let enumsMap: Set<string> = new Set<string>([
     "CreateEmailSentRequestOriginalProviderEnum",
     "CreateLeadSourceRequestStatusEnum",
     "CreateOrderItemRequestItemTypeEnum",
+    "CreateOrderTotalDiscountCriteriaTypeEnum",
+    "CreateOrderTotalDiscountCriteriaOperatorEnum",
     "CreateOrderTotalDiscountRequestDiscountTypeEnum",
     "CreateOrderTotalDiscountRequestDiscountStrategyEnum",
     "CreateProductCommissionProgramRequestPayoutTypeEnum",
@@ -857,6 +869,7 @@ let enumsMap: Set<string> = new Set<string>([
     "UpdateAffiliateRequestStatusEnum",
     "UpdateDefaultCommissionProgramRequestPayoutTypeEnum",
     "UpdateOrderRequestOrderTypeEnum",
+    "UpdateOrderTotalDiscountCriteriaOperatorEnum",
     "UpdateOrderTotalDiscountRequestDiscountTypeEnum",
     "UpdateOrderTotalDiscountRequestDiscountStrategyEnum",
     "UpdateProductCommissionProgramRequestPayoutTypeEnum",
@@ -981,6 +994,7 @@ let typeMap: {[index: string]: any} = {
     "CreateOpportunityStageRequest": CreateOpportunityStageRequest,
     "CreateOrUpdateAffiliateLinkRequest": CreateOrUpdateAffiliateLinkRequest,
     "CreateOrderItemRequest": CreateOrderItemRequest,
+    "CreateOrderTotalDiscountCriteria": CreateOrderTotalDiscountCriteria,
     "CreateOrderTotalDiscountRequest": CreateOrderTotalDiscountRequest,
     "CreatePaymentMethodConfigRequest": CreatePaymentMethodConfigRequest,
     "CreateProductCategoryRequest": CreateProductCategoryRequest,
@@ -1171,6 +1185,8 @@ let typeMap: {[index: string]: any} = {
     "ReportEntryRecord": ReportEntryRecord,
     "ReportEntryValue": ReportEntryValue,
     "ReportExecutionResult": ReportExecutionResult,
+    "ReportField": ReportField,
+    "ReportModel": ReportModel,
     "ResourceCommissionProgram": ResourceCommissionProgram,
     "RestAffiliate": RestAffiliate,
     "RestAffiliatePayment": RestAffiliatePayment,
@@ -1208,6 +1224,7 @@ let typeMap: {[index: string]: any} = {
     "UpdateCategoryDiscountRequest": UpdateCategoryDiscountRequest,
     "UpdateCommissionProgramRequest": UpdateCommissionProgramRequest,
     "UpdateCompanyRequest": UpdateCompanyRequest,
+    "UpdateContactLinkTypeRequest": UpdateContactLinkTypeRequest,
     "UpdateCustomFieldGroupRequest": UpdateCustomFieldGroupRequest,
     "UpdateCustomFieldMetaDataRequest": UpdateCustomFieldMetaDataRequest,
     "UpdateDefaultCommissionProgramRequest": UpdateDefaultCommissionProgramRequest,
@@ -1221,6 +1238,7 @@ let typeMap: {[index: string]: any} = {
     "UpdateOpportunityStageRequest": UpdateOpportunityStageRequest,
     "UpdateOrderItemRequest": UpdateOrderItemRequest,
     "UpdateOrderRequest": UpdateOrderRequest,
+    "UpdateOrderTotalDiscountCriteria": UpdateOrderTotalDiscountCriteria,
     "UpdateOrderTotalDiscountRequest": UpdateOrderTotalDiscountRequest,
     "UpdateProductCategoryRequest": UpdateProductCategoryRequest,
     "UpdateProductCommissionProgramRequest": UpdateProductCommissionProgramRequest,

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**listReports**](ReportingApi.md#listReports) | **GET** /rest/v2/reporting/reports | List Reports
 [**retrieveReport**](ReportingApi.md#retrieveReport) | **GET** /rest/v2/reporting/reports/{report_id} | Retrieve Report
+[**retrieveReportModel**](ReportingApi.md#retrieveReportModel) | **GET** /rest/v2/reporting/reports/{report_id}/model | Retrieve Report Model
 [**runReport**](ReportingApi.md#runReport) | **POST** /rest/v2/reporting/reports/{report_id}:run | Run a Report
 
 
@@ -103,6 +104,54 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Report**](Report.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## retrieveReportModel
+
+> ReportModel retrieveReportModel(reportId)
+
+Retrieve Report Model
+
+Retrieves the list of fields available for a Report (Saved Search). The returned field &#x60;name&#x60; values can be used in the &#x60;fields&#x60; parameter when running the report.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.ReportingApi();
+let reportId = "123"; // String | The unique identifier of the report (Saved Search)
+apiInstance.retrieveReportModel(reportId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **reportId** | **String**| The unique identifier of the report (Saved Search) | 
+
+### Return type
+
+[**ReportModel**](ReportModel.md)
 
 ### Authorization
 

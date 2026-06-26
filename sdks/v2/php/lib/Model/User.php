@@ -69,6 +69,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'keap_id' => 'string',
         'given_name' => 'string',
         'family_name' => 'string',
+        'middle_name' => 'string',
+        'nickname' => 'string',
+        'spouse_name' => 'string',
+        'suffix' => 'string',
         'phone_numbers' => '\Keap\Core\V2\Model\PhoneNumber[]',
         'fax_numbers' => '\Keap\Core\V2\Model\FaxNumber[]',
         'email_addresses' => '\Keap\Core\V2\Model\EmailAddress[]',
@@ -99,6 +103,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'keap_id' => null,
         'given_name' => null,
         'family_name' => null,
+        'middle_name' => null,
+        'nickname' => null,
+        'spouse_name' => null,
+        'suffix' => null,
         'phone_numbers' => null,
         'fax_numbers' => null,
         'email_addresses' => null,
@@ -127,6 +135,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'keap_id' => false,
         'given_name' => false,
         'family_name' => false,
+        'middle_name' => false,
+        'nickname' => false,
+        'spouse_name' => false,
+        'suffix' => false,
         'phone_numbers' => false,
         'fax_numbers' => false,
         'email_addresses' => false,
@@ -235,6 +247,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'keap_id' => 'keap_id',
         'given_name' => 'given_name',
         'family_name' => 'family_name',
+        'middle_name' => 'middle_name',
+        'nickname' => 'nickname',
+        'spouse_name' => 'spouse_name',
+        'suffix' => 'suffix',
         'phone_numbers' => 'phone_numbers',
         'fax_numbers' => 'fax_numbers',
         'email_addresses' => 'email_addresses',
@@ -263,6 +279,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'keap_id' => 'setKeapId',
         'given_name' => 'setGivenName',
         'family_name' => 'setFamilyName',
+        'middle_name' => 'setMiddleName',
+        'nickname' => 'setNickname',
+        'spouse_name' => 'setSpouseName',
+        'suffix' => 'setSuffix',
         'phone_numbers' => 'setPhoneNumbers',
         'fax_numbers' => 'setFaxNumbers',
         'email_addresses' => 'setEmailAddresses',
@@ -291,6 +311,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'keap_id' => 'getKeapId',
         'given_name' => 'getGivenName',
         'family_name' => 'getFamilyName',
+        'middle_name' => 'getMiddleName',
+        'nickname' => 'getNickname',
+        'spouse_name' => 'getSpouseName',
+        'suffix' => 'getSuffix',
         'phone_numbers' => 'getPhoneNumbers',
         'fax_numbers' => 'getFaxNumbers',
         'email_addresses' => 'getEmailAddresses',
@@ -389,6 +413,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('keap_id', $data ?? [], null);
         $this->setIfExists('given_name', $data ?? [], null);
         $this->setIfExists('family_name', $data ?? [], null);
+        $this->setIfExists('middle_name', $data ?? [], null);
+        $this->setIfExists('nickname', $data ?? [], null);
+        $this->setIfExists('spouse_name', $data ?? [], null);
+        $this->setIfExists('suffix', $data ?? [], null);
         $this->setIfExists('phone_numbers', $data ?? [], null);
         $this->setIfExists('fax_numbers', $data ?? [], null);
         $this->setIfExists('email_addresses', $data ?? [], null);
@@ -754,6 +782,114 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable family_name cannot be null');
         }
         $this->container['family_name'] = $family_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets middle_name
+     *
+     * @return string|null
+     */
+    public function getMiddleName()
+    {
+        return $this->container['middle_name'];
+    }
+
+    /**
+     * Sets middle_name
+     *
+     * @param string|null $middle_name The user's middle name
+     *
+     * @return self
+     */
+    public function setMiddleName($middle_name)
+    {
+        if (is_null($middle_name)) {
+            throw new \InvalidArgumentException('non-nullable middle_name cannot be null');
+        }
+        $this->container['middle_name'] = $middle_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets nickname
+     *
+     * @return string|null
+     */
+    public function getNickname()
+    {
+        return $this->container['nickname'];
+    }
+
+    /**
+     * Sets nickname
+     *
+     * @param string|null $nickname The user's nickname or preferred name
+     *
+     * @return self
+     */
+    public function setNickname($nickname)
+    {
+        if (is_null($nickname)) {
+            throw new \InvalidArgumentException('non-nullable nickname cannot be null');
+        }
+        $this->container['nickname'] = $nickname;
+
+        return $this;
+    }
+
+    /**
+     * Gets spouse_name
+     *
+     * @return string|null
+     */
+    public function getSpouseName()
+    {
+        return $this->container['spouse_name'];
+    }
+
+    /**
+     * Sets spouse_name
+     *
+     * @param string|null $spouse_name The name of the user's spouse
+     *
+     * @return self
+     */
+    public function setSpouseName($spouse_name)
+    {
+        if (is_null($spouse_name)) {
+            throw new \InvalidArgumentException('non-nullable spouse_name cannot be null');
+        }
+        $this->container['spouse_name'] = $spouse_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets suffix
+     *
+     * @return string|null
+     */
+    public function getSuffix()
+    {
+        return $this->container['suffix'];
+    }
+
+    /**
+     * Sets suffix
+     *
+     * @param string|null $suffix The user's name suffix
+     *
+     * @return self
+     */
+    public function setSuffix($suffix)
+    {
+        if (is_null($suffix)) {
+            throw new \InvalidArgumentException('non-nullable suffix cannot be null');
+        }
+        $this->container['suffix'] = $suffix;
 
         return $this;
     }

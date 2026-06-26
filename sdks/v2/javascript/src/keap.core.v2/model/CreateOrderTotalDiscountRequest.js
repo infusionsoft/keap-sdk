@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import DiscountCriteria from './DiscountCriteria';
+import CreateOrderTotalDiscountCriteria from './CreateOrderTotalDiscountCriteria';
 
 /**
  * The CreateOrderTotalDiscountRequest model module.
@@ -60,7 +60,7 @@ class CreateOrderTotalDiscountRequest {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
             if (data.hasOwnProperty('criteria')) {
-                obj['criteria'] = ApiClient.convertToType(data['criteria'], [DiscountCriteria]);
+                obj['criteria'] = ApiClient.convertToType(data['criteria'], [CreateOrderTotalDiscountCriteria]);
             }
             if (data.hasOwnProperty('apply_to_commissions')) {
                 obj['apply_to_commissions'] = ApiClient.convertToType(data['apply_to_commissions'], 'Boolean');
@@ -105,7 +105,7 @@ class CreateOrderTotalDiscountRequest {
             }
             // validate the optional field `criteria` (array)
             for (const item of data['criteria']) {
-                DiscountCriteria.validateJSON(item);
+                CreateOrderTotalDiscountCriteria.validateJSON(item);
             };
         }
         // ensure the json data is a string
@@ -139,7 +139,7 @@ CreateOrderTotalDiscountRequest.prototype['description'] = undefined;
 
 /**
  * List of criteria that must be met for this discount to apply
- * @member {Array.<module:keap.core.v2/model/DiscountCriteria>} criteria
+ * @member {Array.<module:keap.core.v2/model/CreateOrderTotalDiscountCriteria>} criteria
  */
 CreateOrderTotalDiscountRequest.prototype['criteria'] = undefined;
 

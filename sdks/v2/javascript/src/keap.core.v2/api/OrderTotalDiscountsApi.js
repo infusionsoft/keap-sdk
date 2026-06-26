@@ -13,7 +13,9 @@
 
 
 import ApiClient from "../ApiClient";
+import CreateOrderTotalDiscountCriteria from '../model/CreateOrderTotalDiscountCriteria';
 import CreateOrderTotalDiscountRequest from '../model/CreateOrderTotalDiscountRequest';
+import DiscountCriteria from '../model/DiscountCriteria';
 import Error from '../model/Error';
 import ListOrderTotalDiscountsResponse from '../model/ListOrderTotalDiscountsResponse';
 import OrderTotalDiscount from '../model/OrderTotalDiscount';
@@ -86,6 +88,60 @@ export default class OrderTotalDiscountsApi {
 
 
     /**
+     * Create an Order Total Discount Criteria
+     * Creates an Order Total Discount Criteria
+     * @param {String} discountId 
+     * @param {module:keap.core.v2/model/CreateOrderTotalDiscountCriteria} createOrderTotalDiscountCriteria 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/DiscountCriteria} and HTTP response
+     */
+    createOrderTotalDiscountCriteriaWithHttpInfo(discountId, createOrderTotalDiscountCriteria) {
+      let postBody = createOrderTotalDiscountCriteria;
+      // verify the required parameter 'discountId' is set
+      if (discountId === undefined || discountId === null) {
+        throw new Error("Missing the required parameter 'discountId' when calling createOrderTotalDiscountCriteria");
+      }
+      // verify the required parameter 'createOrderTotalDiscountCriteria' is set
+      if (createOrderTotalDiscountCriteria === undefined || createOrderTotalDiscountCriteria === null) {
+        throw new Error("Missing the required parameter 'createOrderTotalDiscountCriteria' when calling createOrderTotalDiscountCriteria");
+      }
+
+      let pathParams = {
+        'discount_id': discountId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = DiscountCriteria;
+      return this.apiClient.callApi(
+        '/rest/v2/discounts/orderTotals/{discount_id}/criteria', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create an Order Total Discount Criteria
+     * Creates an Order Total Discount Criteria
+     * @param {String} discountId 
+     * @param {module:keap.core.v2/model/CreateOrderTotalDiscountCriteria} createOrderTotalDiscountCriteria 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/DiscountCriteria}
+     */
+    createOrderTotalDiscountCriteria(discountId, createOrderTotalDiscountCriteria) {
+      return this.createOrderTotalDiscountCriteriaWithHttpInfo(discountId, createOrderTotalDiscountCriteria)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Delete an Order Total Discount
      * Deletes a specified Order Total Discount
      * @param {String} discountId 
@@ -127,6 +183,61 @@ export default class OrderTotalDiscountsApi {
      */
     deleteOrderTotalDiscount(discountId) {
       return this.deleteOrderTotalDiscountWithHttpInfo(discountId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Delete an Order Total Discount Criteria
+     * Deletes a specified Order Total Discount Criteria
+     * @param {String} discountId 
+     * @param {String} criteriaId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteOrderTotalDiscountCriteriaWithHttpInfo(discountId, criteriaId) {
+      let postBody = null;
+      // verify the required parameter 'discountId' is set
+      if (discountId === undefined || discountId === null) {
+        throw new Error("Missing the required parameter 'discountId' when calling deleteOrderTotalDiscountCriteria");
+      }
+      // verify the required parameter 'criteriaId' is set
+      if (criteriaId === undefined || criteriaId === null) {
+        throw new Error("Missing the required parameter 'criteriaId' when calling deleteOrderTotalDiscountCriteria");
+      }
+
+      let pathParams = {
+        'discount_id': discountId,
+        'criteria_id': criteriaId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/discounts/orderTotals/{discount_id}/criteria/{criteria_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete an Order Total Discount Criteria
+     * Deletes a specified Order Total Discount Criteria
+     * @param {String} discountId 
+     * @param {String} criteriaId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteOrderTotalDiscountCriteria(discountId, criteriaId) {
+      return this.deleteOrderTotalDiscountCriteriaWithHttpInfo(discountId, criteriaId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

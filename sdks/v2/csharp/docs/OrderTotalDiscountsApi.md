@@ -5,7 +5,9 @@ All URIs are relative to *https://api.keap.com/crm*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**CreateOrderTotalDiscount**](OrderTotalDiscountsApi.md#createordertotaldiscount) | **POST** /rest/v2/discounts/orderTotals | Create an Order Total Discount |
+| [**CreateOrderTotalDiscountCriteria**](OrderTotalDiscountsApi.md#createordertotaldiscountcriteria) | **POST** /rest/v2/discounts/orderTotals/{discount_id}/criteria | Create an Order Total Discount Criteria |
 | [**DeleteOrderTotalDiscount**](OrderTotalDiscountsApi.md#deleteordertotaldiscount) | **DELETE** /rest/v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount |
+| [**DeleteOrderTotalDiscountCriteria**](OrderTotalDiscountsApi.md#deleteordertotaldiscountcriteria) | **DELETE** /rest/v2/discounts/orderTotals/{discount_id}/criteria/{criteria_id} | Delete an Order Total Discount Criteria |
 | [**GetOrderTotalDiscount**](OrderTotalDiscountsApi.md#getordertotaldiscount) | **GET** /rest/v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount |
 | [**ListOrderTotalDiscounts**](OrderTotalDiscountsApi.md#listordertotaldiscounts) | **GET** /rest/v2/discounts/orderTotals | List all Order Total Discounts |
 | [**UpdateOrderTotalDiscount**](OrderTotalDiscountsApi.md#updateordertotaldiscount) | **PATCH** /rest/v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount |
@@ -112,6 +114,110 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="createordertotaldiscountcriteria"></a>
+# **CreateOrderTotalDiscountCriteria**
+> DiscountCriteria CreateOrderTotalDiscountCriteria (string discountId, CreateOrderTotalDiscountCriteria createOrderTotalDiscountCriteria)
+
+Create an Order Total Discount Criteria
+
+Creates an Order Total Discount Criteria
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class CreateOrderTotalDiscountCriteriaExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new OrderTotalDiscountsApi(config);
+            var discountId = "discountId_example";  // string | 
+            var createOrderTotalDiscountCriteria = new CreateOrderTotalDiscountCriteria(); // CreateOrderTotalDiscountCriteria | 
+
+            try
+            {
+                // Create an Order Total Discount Criteria
+                DiscountCriteria result = apiInstance.CreateOrderTotalDiscountCriteria(discountId, createOrderTotalDiscountCriteria);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OrderTotalDiscountsApi.CreateOrderTotalDiscountCriteria: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateOrderTotalDiscountCriteriaWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create an Order Total Discount Criteria
+    ApiResponse<DiscountCriteria> response = apiInstance.CreateOrderTotalDiscountCriteriaWithHttpInfo(discountId, createOrderTotalDiscountCriteria);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OrderTotalDiscountsApi.CreateOrderTotalDiscountCriteriaWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **discountId** | **string** |  |  |
+| **createOrderTotalDiscountCriteria** | [**CreateOrderTotalDiscountCriteria**](CreateOrderTotalDiscountCriteria.md) |  |  |
+
+### Return type
+
+[**DiscountCriteria**](DiscountCriteria.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="deleteordertotaldiscount"></a>
 # **DeleteOrderTotalDiscount**
 > void DeleteOrderTotalDiscount (string discountId)
@@ -180,6 +286,106 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **discountId** | **string** |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deleteordertotaldiscountcriteria"></a>
+# **DeleteOrderTotalDiscountCriteria**
+> void DeleteOrderTotalDiscountCriteria (string discountId, string criteriaId)
+
+Delete an Order Total Discount Criteria
+
+Deletes a specified Order Total Discount Criteria
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteOrderTotalDiscountCriteriaExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new OrderTotalDiscountsApi(config);
+            var discountId = "discountId_example";  // string | 
+            var criteriaId = "criteriaId_example";  // string | 
+
+            try
+            {
+                // Delete an Order Total Discount Criteria
+                apiInstance.DeleteOrderTotalDiscountCriteria(discountId, criteriaId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OrderTotalDiscountsApi.DeleteOrderTotalDiscountCriteria: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteOrderTotalDiscountCriteriaWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete an Order Total Discount Criteria
+    apiInstance.DeleteOrderTotalDiscountCriteriaWithHttpInfo(discountId, criteriaId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OrderTotalDiscountsApi.DeleteOrderTotalDiscountCriteriaWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **discountId** | **string** |  |  |
+| **criteriaId** | **string** |  |  |
 
 ### Return type
 

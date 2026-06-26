@@ -36,6 +36,7 @@ import com.keap.core.sdk.model.ListCustomFieldGroupsResponse;
 import com.keap.core.sdk.model.MergeContactRequest;
 import com.keap.core.sdk.model.ObjectModel;
 import java.util.Set;
+import com.keap.core.sdk.model.UpdateContactLinkTypeRequest;
 import com.keap.core.sdk.model.UpdateCustomFieldGroupRequest;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -747,6 +748,95 @@ import io.github.resilience4j.retry.Retry;
 
     String localVarPath = "/rest/v2/contacts/model/customFields/groups/{group_id}"
         .replace("{group_id}", ApiClient.urlEncode(groupId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Delete a Contact Link type
+   * Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+   * @param linkTypeId Contact Link type identifier (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteContactLinkType(String linkTypeId) throws ApiException {
+    deleteContactLinkTypeWithHttpInfo(linkTypeId);
+  }
+
+  /**
+   * Delete a Contact Link type
+   * Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+   * @param linkTypeId Contact Link type identifier (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteContactLinkTypeWithHttpInfo(String linkTypeId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteContactLinkTypeRequestBuilder(linkTypeId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteContactLinkType", localVarResponse);
+        }
+        return new ApiResponse<Void>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          null
+        );
+      } finally {
+        // Drain the InputStream
+        while (localVarResponse.body().read() != -1) {
+            // Ignore
+        }
+        localVarResponse.body().close();
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteContactLinkTypeRequestBuilder(String linkTypeId) throws ApiException {
+    // verify the required parameter 'linkTypeId' is set
+    if (linkTypeId == null) {
+      throw new ApiException(400, "Missing the required parameter 'linkTypeId' when calling deleteContactLinkType");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/contacts/links/types/{link_type_id}"
+        .replace("{link_type_id}", ApiClient.urlEncode(linkTypeId.toString()));
 
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
 
@@ -2066,6 +2156,125 @@ import io.github.resilience4j.retry.Retry;
 
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCustomFieldGroupRequest);
+      localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Update a Contact Link type
+   * Updates the specified Contact Link type. Only fields listed in &#x60;update_mask&#x60; are applied. Reducing &#x60;max_links&#x60; below the current number of Linked Contacts of this type returns 409 Conflict.
+   * @param linkTypeId Contact Link type identifier (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateContactLinkTypeRequest  (required)
+   * @return ContactLinkType
+   * @throws ApiException if fails to make API call
+   */
+  public ContactLinkType updateContactLinkType(String linkTypeId, Set<String> updateMask, UpdateContactLinkTypeRequest updateContactLinkTypeRequest) throws ApiException {
+    ApiResponse<ContactLinkType> localVarResponse = updateContactLinkTypeWithHttpInfo(linkTypeId, updateMask, updateContactLinkTypeRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Update a Contact Link type
+   * Updates the specified Contact Link type. Only fields listed in &#x60;update_mask&#x60; are applied. Reducing &#x60;max_links&#x60; below the current number of Linked Contacts of this type returns 409 Conflict.
+   * @param linkTypeId Contact Link type identifier (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateContactLinkTypeRequest  (required)
+   * @return ApiResponse&lt;ContactLinkType&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ContactLinkType> updateContactLinkTypeWithHttpInfo(String linkTypeId, Set<String> updateMask, UpdateContactLinkTypeRequest updateContactLinkTypeRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateContactLinkTypeRequestBuilder(linkTypeId, updateMask, updateContactLinkTypeRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updateContactLinkType", localVarResponse);
+        }
+        return new ApiResponse<ContactLinkType>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ContactLinkType>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updateContactLinkTypeRequestBuilder(String linkTypeId, Set<String> updateMask, UpdateContactLinkTypeRequest updateContactLinkTypeRequest) throws ApiException {
+    // verify the required parameter 'linkTypeId' is set
+    if (linkTypeId == null) {
+      throw new ApiException(400, "Missing the required parameter 'linkTypeId' when calling updateContactLinkType");
+    }
+    // verify the required parameter 'updateMask' is set
+    if (updateMask == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateMask' when calling updateContactLinkType");
+    }
+    // verify the required parameter 'updateContactLinkTypeRequest' is set
+    if (updateContactLinkTypeRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateContactLinkTypeRequest' when calling updateContactLinkType");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/contacts/links/types/{link_type_id}"
+        .replace("{link_type_id}", ApiClient.urlEncode(linkTypeId.toString()));
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "update_mask";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateContactLinkTypeRequest);
       localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);

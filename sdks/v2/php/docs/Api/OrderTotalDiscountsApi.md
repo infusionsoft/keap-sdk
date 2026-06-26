@@ -5,7 +5,9 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**createOrderTotalDiscount()**](OrderTotalDiscountsApi.md#createOrderTotalDiscount) | **POST** /rest/v2/discounts/orderTotals | Create an Order Total Discount |
+| [**createOrderTotalDiscountCriteria()**](OrderTotalDiscountsApi.md#createOrderTotalDiscountCriteria) | **POST** /rest/v2/discounts/orderTotals/{discount_id}/criteria | Create an Order Total Discount Criteria |
 | [**deleteOrderTotalDiscount()**](OrderTotalDiscountsApi.md#deleteOrderTotalDiscount) | **DELETE** /rest/v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount |
+| [**deleteOrderTotalDiscountCriteria()**](OrderTotalDiscountsApi.md#deleteOrderTotalDiscountCriteria) | **DELETE** /rest/v2/discounts/orderTotals/{discount_id}/criteria/{criteria_id} | Delete an Order Total Discount Criteria |
 | [**getOrderTotalDiscount()**](OrderTotalDiscountsApi.md#getOrderTotalDiscount) | **GET** /rest/v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount |
 | [**listOrderTotalDiscounts()**](OrderTotalDiscountsApi.md#listOrderTotalDiscounts) | **GET** /rest/v2/discounts/orderTotals | List all Order Total Discounts |
 | [**updateOrderTotalDiscount()**](OrderTotalDiscountsApi.md#updateOrderTotalDiscount) | **PATCH** /rest/v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount |
@@ -70,6 +72,67 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createOrderTotalDiscountCriteria()`
+
+```php
+createOrderTotalDiscountCriteria($discount_id, $create_order_total_discount_criteria): \Keap\Core\V2\Model\DiscountCriteria
+```
+
+Create an Order Total Discount Criteria
+
+Creates an Order Total Discount Criteria
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\OrderTotalDiscountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$discount_id = 'discount_id_example'; // string
+$create_order_total_discount_criteria = new \Keap\Core\V2\Model\CreateOrderTotalDiscountCriteria(); // \Keap\Core\V2\Model\CreateOrderTotalDiscountCriteria
+
+try {
+    $result = $apiInstance->createOrderTotalDiscountCriteria($discount_id, $create_order_total_discount_criteria);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OrderTotalDiscountsApi->createOrderTotalDiscountCriteria: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **discount_id** | **string**|  | |
+| **create_order_total_discount_criteria** | [**\Keap\Core\V2\Model\CreateOrderTotalDiscountCriteria**](../Model/CreateOrderTotalDiscountCriteria.md)|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\DiscountCriteria**](../Model/DiscountCriteria.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteOrderTotalDiscount()`
 
 ```php
@@ -110,6 +173,66 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **discount_id** | **string**|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteOrderTotalDiscountCriteria()`
+
+```php
+deleteOrderTotalDiscountCriteria($discount_id, $criteria_id)
+```
+
+Delete an Order Total Discount Criteria
+
+Deletes a specified Order Total Discount Criteria
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\OrderTotalDiscountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$discount_id = 'discount_id_example'; // string
+$criteria_id = 'criteria_id_example'; // string
+
+try {
+    $apiInstance->deleteOrderTotalDiscountCriteria($discount_id, $criteria_id);
+} catch (Exception $e) {
+    echo 'Exception when calling OrderTotalDiscountsApi->deleteOrderTotalDiscountCriteria: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **discount_id** | **string**|  | |
+| **criteria_id** | **string**|  | |
 
 ### Return type
 

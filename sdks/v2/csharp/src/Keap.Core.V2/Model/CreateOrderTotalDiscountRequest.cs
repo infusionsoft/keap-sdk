@@ -105,7 +105,7 @@ namespace Keap.Core.V2.Model
         /// <param name="discountType">Type of discount: AMOUNT (fixed amount) or PERCENT (percentage) (required).</param>
         /// <param name="discountValue">Value of the discount (amount or percentage depending on discount_type) (required).</param>
         /// <param name="discountStrategy">Strategy for applying discount: GROSS (before tax) or NET (after tax).</param>
-        public CreateOrderTotalDiscountRequest(string name = default, string description = default, List<DiscountCriteria> criteria = default, bool applyToCommissions = default, DiscountTypeEnum discountType = default, double discountValue = default, DiscountStrategyEnum? discountStrategy = default)
+        public CreateOrderTotalDiscountRequest(string name = default, string description = default, List<CreateOrderTotalDiscountCriteria> criteria = default, bool applyToCommissions = default, DiscountTypeEnum discountType = default, double discountValue = default, DiscountStrategyEnum? discountStrategy = default)
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -146,7 +146,7 @@ namespace Keap.Core.V2.Model
         /// </summary>
         /// <value>List of criteria that must be met for this discount to apply</value>
         [DataMember(Name = "criteria", EmitDefaultValue = false)]
-        public List<DiscountCriteria> Criteria { get; set; }
+        public List<CreateOrderTotalDiscountCriteria> Criteria { get; set; }
 
         /// <summary>
         /// Whether to apply this discount to commission calculations

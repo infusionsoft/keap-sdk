@@ -104,6 +104,7 @@ import { CreateOpportunityStageChecklistItem } from '../models/CreateOpportunity
 import { CreateOpportunityStageRequest } from '../models/CreateOpportunityStageRequest';
 import { CreateOrUpdateAffiliateLinkRequest } from '../models/CreateOrUpdateAffiliateLinkRequest';
 import { CreateOrderItemRequest } from '../models/CreateOrderItemRequest';
+import { CreateOrderTotalDiscountCriteria } from '../models/CreateOrderTotalDiscountCriteria';
 import { CreateOrderTotalDiscountRequest } from '../models/CreateOrderTotalDiscountRequest';
 import { CreatePaymentMethodConfigRequest } from '../models/CreatePaymentMethodConfigRequest';
 import { CreateProductCategoryRequest } from '../models/CreateProductCategoryRequest';
@@ -294,6 +295,8 @@ import { Report } from '../models/Report';
 import { ReportEntryRecord } from '../models/ReportEntryRecord';
 import { ReportEntryValue } from '../models/ReportEntryValue';
 import { ReportExecutionResult } from '../models/ReportExecutionResult';
+import { ReportField } from '../models/ReportField';
+import { ReportModel } from '../models/ReportModel';
 import { ResourceCommissionProgram } from '../models/ResourceCommissionProgram';
 import { RestAffiliate } from '../models/RestAffiliate';
 import { RestAffiliatePayment } from '../models/RestAffiliatePayment';
@@ -331,6 +334,7 @@ import { UpdateBusinessProfileRequest } from '../models/UpdateBusinessProfileReq
 import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountRequest';
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
+import { UpdateContactLinkTypeRequest } from '../models/UpdateContactLinkTypeRequest';
 import { UpdateCustomFieldGroupRequest } from '../models/UpdateCustomFieldGroupRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
@@ -344,6 +348,7 @@ import { UpdateOpportunityStageChecklistItem } from '../models/UpdateOpportunity
 import { UpdateOpportunityStageRequest } from '../models/UpdateOpportunityStageRequest';
 import { UpdateOrderItemRequest } from '../models/UpdateOrderItemRequest';
 import { UpdateOrderRequest } from '../models/UpdateOrderRequest';
+import { UpdateOrderTotalDiscountCriteria } from '../models/UpdateOrderTotalDiscountCriteria';
 import { UpdateOrderTotalDiscountRequest } from '../models/UpdateOrderTotalDiscountRequest';
 import { UpdateProductCategoryRequest } from '../models/UpdateProductCategoryRequest';
 import { UpdateProductCommissionProgramRequest } from '../models/UpdateProductCommissionProgramRequest';
@@ -3848,6 +3853,40 @@ export class ObservableContactApi {
     }
 
     /**
+     * Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+     * Delete a Contact Link type
+     * @param linkTypeId Contact Link type identifier
+     */
+    public deleteContactLinkTypeWithHttpInfo(linkTypeId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteContactLinkType(linkTypeId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteContactLinkTypeWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+     * Delete a Contact Link type
+     * @param linkTypeId Contact Link type identifier
+     */
+    public deleteContactLinkType(linkTypeId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteContactLinkTypeWithHttpInfo(linkTypeId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
      * Retrieves a single Contact
      * Retrieve a Contact
      * @param contactId
@@ -4321,6 +4360,44 @@ export class ObservableContactApi {
      */
     public updateContactCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: ConfigurationOptions): Observable<CustomFieldGroup> {
         return this.updateContactCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldGroup>) => apiResponse.data));
+    }
+
+    /**
+     * Updates the specified Contact Link type. Only fields listed in `update_mask` are applied. Reducing `max_links` below the current number of Linked Contacts of this type returns 409 Conflict.
+     * Update a Contact Link type
+     * @param linkTypeId Contact Link type identifier
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateContactLinkTypeRequest
+     */
+    public updateContactLinkTypeWithHttpInfo(linkTypeId: string, updateMask: Set<'name' | 'max_links'>, updateContactLinkTypeRequest: UpdateContactLinkTypeRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ContactLinkType>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateContactLinkType(linkTypeId, updateMask, updateContactLinkTypeRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateContactLinkTypeWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates the specified Contact Link type. Only fields listed in `update_mask` are applied. Reducing `max_links` below the current number of Linked Contacts of this type returns 409 Conflict.
+     * Update a Contact Link type
+     * @param linkTypeId Contact Link type identifier
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateContactLinkTypeRequest
+     */
+    public updateContactLinkType(linkTypeId: string, updateMask: Set<'name' | 'max_links'>, updateContactLinkTypeRequest: UpdateContactLinkTypeRequest, _options?: ConfigurationOptions): Observable<ContactLinkType> {
+        return this.updateContactLinkTypeWithHttpInfo(linkTypeId, updateMask, updateContactLinkTypeRequest, _options).pipe(map((apiResponse: HttpInfo<ContactLinkType>) => apiResponse.data));
     }
 
 }
@@ -7932,6 +8009,42 @@ export class ObservableOrderTotalDiscountsApi {
     }
 
     /**
+     * Creates an Order Total Discount Criteria
+     * Create an Order Total Discount Criteria
+     * @param discountId
+     * @param createOrderTotalDiscountCriteria
+     */
+    public createOrderTotalDiscountCriteriaWithHttpInfo(discountId: string, createOrderTotalDiscountCriteria: CreateOrderTotalDiscountCriteria, _options?: ConfigurationOptions): Observable<HttpInfo<DiscountCriteria>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createOrderTotalDiscountCriteria(discountId, createOrderTotalDiscountCriteria, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOrderTotalDiscountCriteriaWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates an Order Total Discount Criteria
+     * Create an Order Total Discount Criteria
+     * @param discountId
+     * @param createOrderTotalDiscountCriteria
+     */
+    public createOrderTotalDiscountCriteria(discountId: string, createOrderTotalDiscountCriteria: CreateOrderTotalDiscountCriteria, _options?: ConfigurationOptions): Observable<DiscountCriteria> {
+        return this.createOrderTotalDiscountCriteriaWithHttpInfo(discountId, createOrderTotalDiscountCriteria, _options).pipe(map((apiResponse: HttpInfo<DiscountCriteria>) => apiResponse.data));
+    }
+
+    /**
      * Deletes a specified Order Total Discount
      * Delete an Order Total Discount
      * @param discountId
@@ -7963,6 +8076,42 @@ export class ObservableOrderTotalDiscountsApi {
      */
     public deleteOrderTotalDiscount(discountId: string, _options?: ConfigurationOptions): Observable<void> {
         return this.deleteOrderTotalDiscountWithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a specified Order Total Discount Criteria
+     * Delete an Order Total Discount Criteria
+     * @param discountId
+     * @param criteriaId
+     */
+    public deleteOrderTotalDiscountCriteriaWithHttpInfo(discountId: string, criteriaId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteOrderTotalDiscountCriteria(discountId, criteriaId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOrderTotalDiscountCriteriaWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a specified Order Total Discount Criteria
+     * Delete an Order Total Discount Criteria
+     * @param discountId
+     * @param criteriaId
+     */
+    public deleteOrderTotalDiscountCriteria(discountId: string, criteriaId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteOrderTotalDiscountCriteriaWithHttpInfo(discountId, criteriaId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -10927,6 +11076,40 @@ export class ObservableReportingApi {
      */
     public retrieveReport(reportId: string, _options?: ConfigurationOptions): Observable<Report> {
         return this.retrieveReportWithHttpInfo(reportId, _options).pipe(map((apiResponse: HttpInfo<Report>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves the list of fields available for a Report (Saved Search). The returned field `name` values can be used in the `fields` parameter when running the report.
+     * Retrieve Report Model
+     * @param reportId The unique identifier of the report (Saved Search)
+     */
+    public retrieveReportModelWithHttpInfo(reportId: string, _options?: ConfigurationOptions): Observable<HttpInfo<ReportModel>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.retrieveReportModel(reportId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.retrieveReportModelWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves the list of fields available for a Report (Saved Search). The returned field `name` values can be used in the `fields` parameter when running the report.
+     * Retrieve Report Model
+     * @param reportId The unique identifier of the report (Saved Search)
+     */
+    public retrieveReportModel(reportId: string, _options?: ConfigurationOptions): Observable<ReportModel> {
+        return this.retrieveReportModelWithHttpInfo(reportId, _options).pipe(map((apiResponse: HttpInfo<ReportModel>) => apiResponse.data));
     }
 
     /**

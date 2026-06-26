@@ -53,6 +53,10 @@ import jakarta.validation.Valid;
   User.JSON_PROPERTY_KEAP_ID,
   User.JSON_PROPERTY_GIVEN_NAME,
   User.JSON_PROPERTY_FAMILY_NAME,
+  User.JSON_PROPERTY_MIDDLE_NAME,
+  User.JSON_PROPERTY_NICKNAME,
+  User.JSON_PROPERTY_SPOUSE_NAME,
+  User.JSON_PROPERTY_SUFFIX,
   User.JSON_PROPERTY_PHONE_NUMBERS,
   User.JSON_PROPERTY_FAX_NUMBERS,
   User.JSON_PROPERTY_EMAIL_ADDRESSES,
@@ -139,6 +143,18 @@ public class User implements Serializable {
 
   public static final String JSON_PROPERTY_FAMILY_NAME = "family_name";
   @jakarta.annotation.Nullable  private String familyName;
+
+  public static final String JSON_PROPERTY_MIDDLE_NAME = "middle_name";
+  @jakarta.annotation.Nullable  private String middleName;
+
+  public static final String JSON_PROPERTY_NICKNAME = "nickname";
+  @jakarta.annotation.Nullable  private String nickname;
+
+  public static final String JSON_PROPERTY_SPOUSE_NAME = "spouse_name";
+  @jakarta.annotation.Nullable  private String spouseName;
+
+  public static final String JSON_PROPERTY_SUFFIX = "suffix";
+  @jakarta.annotation.Nullable  private String suffix;
 
   public static final String JSON_PROPERTY_PHONE_NUMBERS = "phone_numbers";
   @jakarta.annotation.Nullable  private List<@Valid PhoneNumber> phoneNumbers = new ArrayList<>();
@@ -435,6 +451,102 @@ public class User implements Serializable {
   }
 
 
+  public User middleName(@jakarta.annotation.Nullable String middleName) {
+    this.middleName = middleName;
+    return this;
+  }
+
+  /**
+   * The user&#39;s middle name
+   * @return middleName
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Edward", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The user's middle name")
+  @JsonProperty(JSON_PROPERTY_MIDDLE_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getMiddleName() {
+    return middleName;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MIDDLE_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMiddleName(@jakarta.annotation.Nullable String middleName) {
+    this.middleName = middleName;
+  }
+
+
+  public User nickname(@jakarta.annotation.Nullable String nickname) {
+    this.nickname = nickname;
+    return this;
+  }
+
+  /**
+   * The user&#39;s nickname or preferred name
+   * @return nickname
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Tony", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The user's nickname or preferred name")
+  @JsonProperty(JSON_PROPERTY_NICKNAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getNickname() {
+    return nickname;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NICKNAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNickname(@jakarta.annotation.Nullable String nickname) {
+    this.nickname = nickname;
+  }
+
+
+  public User spouseName(@jakarta.annotation.Nullable String spouseName) {
+    this.spouseName = spouseName;
+    return this;
+  }
+
+  /**
+   * The name of the user&#39;s spouse
+   * @return spouseName
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Mia", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The name of the user's spouse")
+  @JsonProperty(JSON_PROPERTY_SPOUSE_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getSpouseName() {
+    return spouseName;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SPOUSE_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSpouseName(@jakarta.annotation.Nullable String spouseName) {
+    this.spouseName = spouseName;
+  }
+
+
+  public User suffix(@jakarta.annotation.Nullable String suffix) {
+    this.suffix = suffix;
+    return this;
+  }
+
+  /**
+   * The user&#39;s name suffix
+   * @return suffix
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Jr.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The user's name suffix")
+  @JsonProperty(JSON_PROPERTY_SUFFIX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getSuffix() {
+    return suffix;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SUFFIX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSuffix(@jakarta.annotation.Nullable String suffix) {
+    this.suffix = suffix;
+  }
+
+
   public User phoneNumbers(@jakarta.annotation.Nullable List<@Valid PhoneNumber> phoneNumbers) {
     this.phoneNumbers = phoneNumbers;
     return this;
@@ -711,6 +823,10 @@ public class User implements Serializable {
         Objects.equals(this.keapId, user.keapId) &&
         Objects.equals(this.givenName, user.givenName) &&
         Objects.equals(this.familyName, user.familyName) &&
+        Objects.equals(this.middleName, user.middleName) &&
+        Objects.equals(this.nickname, user.nickname) &&
+        Objects.equals(this.spouseName, user.spouseName) &&
+        Objects.equals(this.suffix, user.suffix) &&
         Objects.equals(this.phoneNumbers, user.phoneNumbers) &&
         Objects.equals(this.faxNumbers, user.faxNumbers) &&
         Objects.equals(this.emailAddresses, user.emailAddresses) &&
@@ -724,7 +840,7 @@ public class User implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, title, website, partner, admin, status, id, globalUserId, keapId, givenName, familyName, phoneNumbers, faxNumbers, emailAddresses, socialAccounts, companyName, createdBy, createTime, updatedBy, updateTime);
+    return Objects.hash(address, title, website, partner, admin, status, id, globalUserId, keapId, givenName, familyName, middleName, nickname, spouseName, suffix, phoneNumbers, faxNumbers, emailAddresses, socialAccounts, companyName, createdBy, createTime, updatedBy, updateTime);
   }
 
   @Override
@@ -742,6 +858,10 @@ public class User implements Serializable {
     sb.append("    keapId: ").append(toIndentedString(keapId)).append("\n");
     sb.append("    givenName: ").append(toIndentedString(givenName)).append("\n");
     sb.append("    familyName: ").append(toIndentedString(familyName)).append("\n");
+    sb.append("    middleName: ").append(toIndentedString(middleName)).append("\n");
+    sb.append("    nickname: ").append(toIndentedString(nickname)).append("\n");
+    sb.append("    spouseName: ").append(toIndentedString(spouseName)).append("\n");
+    sb.append("    suffix: ").append(toIndentedString(suffix)).append("\n");
     sb.append("    phoneNumbers: ").append(toIndentedString(phoneNumbers)).append("\n");
     sb.append("    faxNumbers: ").append(toIndentedString(faxNumbers)).append("\n");
     sb.append("    emailAddresses: ").append(toIndentedString(emailAddresses)).append("\n");
@@ -820,6 +940,22 @@ public class User implements Serializable {
         }
             public User.Builder familyName(String familyName) {
               this.instance.familyName = familyName;
+          return this;
+        }
+            public User.Builder middleName(String middleName) {
+              this.instance.middleName = middleName;
+          return this;
+        }
+            public User.Builder nickname(String nickname) {
+              this.instance.nickname = nickname;
+          return this;
+        }
+            public User.Builder spouseName(String spouseName) {
+              this.instance.spouseName = spouseName;
+          return this;
+        }
+            public User.Builder suffix(String suffix) {
+              this.instance.suffix = suffix;
           return this;
         }
             public User.Builder phoneNumbers(List<PhoneNumber> phoneNumbers) {
@@ -903,6 +1039,10 @@ public class User implements Serializable {
           .keapId(getKeapId())
           .givenName(getGivenName())
           .familyName(getFamilyName())
+          .middleName(getMiddleName())
+          .nickname(getNickname())
+          .spouseName(getSpouseName())
+          .suffix(getSuffix())
           .phoneNumbers(getPhoneNumbers())
           .faxNumbers(getFaxNumbers())
           .emailAddresses(getEmailAddresses())

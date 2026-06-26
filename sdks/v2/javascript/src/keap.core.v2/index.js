@@ -114,6 +114,7 @@ import CreateOpportunityStageChecklistItem from './model/CreateOpportunityStageC
 import CreateOpportunityStageRequest from './model/CreateOpportunityStageRequest';
 import CreateOrUpdateAffiliateLinkRequest from './model/CreateOrUpdateAffiliateLinkRequest';
 import CreateOrderItemRequest from './model/CreateOrderItemRequest';
+import CreateOrderTotalDiscountCriteria from './model/CreateOrderTotalDiscountCriteria';
 import CreateOrderTotalDiscountRequest from './model/CreateOrderTotalDiscountRequest';
 import CreatePaymentMethodConfigRequest from './model/CreatePaymentMethodConfigRequest';
 import CreateProductCategoryRequest from './model/CreateProductCategoryRequest';
@@ -304,6 +305,8 @@ import Report from './model/Report';
 import ReportEntryRecord from './model/ReportEntryRecord';
 import ReportEntryValue from './model/ReportEntryValue';
 import ReportExecutionResult from './model/ReportExecutionResult';
+import ReportField from './model/ReportField';
+import ReportModel from './model/ReportModel';
 import ResourceCommissionProgram from './model/ResourceCommissionProgram';
 import RestAffiliate from './model/RestAffiliate';
 import RestAffiliatePayment from './model/RestAffiliatePayment';
@@ -341,6 +344,7 @@ import UpdateBusinessProfileRequest from './model/UpdateBusinessProfileRequest';
 import UpdateCategoryDiscountRequest from './model/UpdateCategoryDiscountRequest';
 import UpdateCommissionProgramRequest from './model/UpdateCommissionProgramRequest';
 import UpdateCompanyRequest from './model/UpdateCompanyRequest';
+import UpdateContactLinkTypeRequest from './model/UpdateContactLinkTypeRequest';
 import UpdateCustomFieldGroupRequest from './model/UpdateCustomFieldGroupRequest';
 import UpdateCustomFieldMetaDataRequest from './model/UpdateCustomFieldMetaDataRequest';
 import UpdateDefaultCommissionProgramRequest from './model/UpdateDefaultCommissionProgramRequest';
@@ -354,6 +358,7 @@ import UpdateOpportunityStageChecklistItem from './model/UpdateOpportunityStageC
 import UpdateOpportunityStageRequest from './model/UpdateOpportunityStageRequest';
 import UpdateOrderItemRequest from './model/UpdateOrderItemRequest';
 import UpdateOrderRequest from './model/UpdateOrderRequest';
+import UpdateOrderTotalDiscountCriteria from './model/UpdateOrderTotalDiscountCriteria';
 import UpdateOrderTotalDiscountRequest from './model/UpdateOrderTotalDiscountRequest';
 import UpdateProductCategoryRequest from './model/UpdateProductCategoryRequest';
 import UpdateProductCommissionProgramRequest from './model/UpdateProductCommissionProgramRequest';
@@ -454,7 +459,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.15
+* @version 2.0.16
 */
 export {
     /**
@@ -1068,6 +1073,12 @@ export {
      * @property {module:keap.core.v2/model/CreateOrderItemRequest}
      */
     CreateOrderItemRequest,
+
+    /**
+     * The CreateOrderTotalDiscountCriteria model constructor.
+     * @property {module:keap.core.v2/model/CreateOrderTotalDiscountCriteria}
+     */
+    CreateOrderTotalDiscountCriteria,
 
     /**
      * The CreateOrderTotalDiscountRequest model constructor.
@@ -2210,6 +2221,18 @@ export {
     ReportExecutionResult,
 
     /**
+     * The ReportField model constructor.
+     * @property {module:keap.core.v2/model/ReportField}
+     */
+    ReportField,
+
+    /**
+     * The ReportModel model constructor.
+     * @property {module:keap.core.v2/model/ReportModel}
+     */
+    ReportModel,
+
+    /**
      * The ResourceCommissionProgram model constructor.
      * @property {module:keap.core.v2/model/ResourceCommissionProgram}
      */
@@ -2432,6 +2455,12 @@ export {
     UpdateCompanyRequest,
 
     /**
+     * The UpdateContactLinkTypeRequest model constructor.
+     * @property {module:keap.core.v2/model/UpdateContactLinkTypeRequest}
+     */
+    UpdateContactLinkTypeRequest,
+
+    /**
      * The UpdateCustomFieldGroupRequest model constructor.
      * @property {module:keap.core.v2/model/UpdateCustomFieldGroupRequest}
      */
@@ -2508,6 +2537,12 @@ export {
      * @property {module:keap.core.v2/model/UpdateOrderRequest}
      */
     UpdateOrderRequest,
+
+    /**
+     * The UpdateOrderTotalDiscountCriteria model constructor.
+     * @property {module:keap.core.v2/model/UpdateOrderTotalDiscountCriteria}
+     */
+    UpdateOrderTotalDiscountCriteria,
 
     /**
      * The UpdateOrderTotalDiscountRequest model constructor.

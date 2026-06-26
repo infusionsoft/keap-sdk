@@ -18,6 +18,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**deleteContactCustomFieldWithHttpInfo**](ContactApi.md#deleteContactCustomFieldWithHttpInfo) | **DELETE** /rest/v2/contacts/model/customFields/{custom_field_id} | Delete a Contact Custom Field |
 | [**deleteContactCustomFieldGroup**](ContactApi.md#deleteContactCustomFieldGroup) | **DELETE** /rest/v2/contacts/model/customFields/groups/{group_id} | Delete a Contact Custom Field Group |
 | [**deleteContactCustomFieldGroupWithHttpInfo**](ContactApi.md#deleteContactCustomFieldGroupWithHttpInfo) | **DELETE** /rest/v2/contacts/model/customFields/groups/{group_id} | Delete a Contact Custom Field Group |
+| [**deleteContactLinkType**](ContactApi.md#deleteContactLinkType) | **DELETE** /rest/v2/contacts/links/types/{link_type_id} | Delete a Contact Link type |
+| [**deleteContactLinkTypeWithHttpInfo**](ContactApi.md#deleteContactLinkTypeWithHttpInfo) | **DELETE** /rest/v2/contacts/links/types/{link_type_id} | Delete a Contact Link type |
 | [**getContact**](ContactApi.md#getContact) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact |
 | [**getContactWithHttpInfo**](ContactApi.md#getContactWithHttpInfo) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact |
 | [**getContactCustomFieldGroup**](ContactApi.md#getContactCustomFieldGroup) | **GET** /rest/v2/contacts/model/customFields/groups/{group_id} | Retrieve a Contact Custom Field Group |
@@ -44,6 +46,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**updateContactWithHttpInfo**](ContactApi.md#updateContactWithHttpInfo) | **PATCH** /rest/v2/contacts/{contact_id} | Update a Contact |
 | [**updateContactCustomFieldGroup**](ContactApi.md#updateContactCustomFieldGroup) | **PATCH** /rest/v2/contacts/model/customFields/groups/{group_id} | Update a Contact Custom Field Group |
 | [**updateContactCustomFieldGroupWithHttpInfo**](ContactApi.md#updateContactCustomFieldGroupWithHttpInfo) | **PATCH** /rest/v2/contacts/model/customFields/groups/{group_id} | Update a Contact Custom Field Group |
+| [**updateContactLinkType**](ContactApi.md#updateContactLinkType) | **PATCH** /rest/v2/contacts/links/types/{link_type_id} | Update a Contact Link type |
+| [**updateContactLinkTypeWithHttpInfo**](ContactApi.md#updateContactLinkTypeWithHttpInfo) | **PATCH** /rest/v2/contacts/links/types/{link_type_id} | Update a Contact Link type |
 
 
 
@@ -1142,6 +1146,164 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **groupId** | **String**|  | |
+
+### Return type
+
+
+ApiResponse<Void>
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## deleteContactLinkType
+
+> void deleteContactLinkType(linkTypeId)
+
+Delete a Contact Link type
+
+Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ContactApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ContactApi apiInstance = new ContactApi(defaultClient);
+        String linkTypeId = "linkTypeId_example"; // String | Contact Link type identifier
+        try {
+            apiInstance.deleteContactLinkType(linkTypeId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ContactApi#deleteContactLinkType");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **linkTypeId** | **String**| Contact Link type identifier | |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## deleteContactLinkTypeWithHttpInfo
+
+> ApiResponse<Void> deleteContactLinkType deleteContactLinkTypeWithHttpInfo(linkTypeId)
+
+Delete a Contact Link type
+
+Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ContactApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ContactApi apiInstance = new ContactApi(defaultClient);
+        String linkTypeId = "linkTypeId_example"; // String | Contact Link type identifier
+        try {
+            ApiResponse<Void> response = apiInstance.deleteContactLinkTypeWithHttpInfo(linkTypeId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ContactApi#deleteContactLinkType");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **linkTypeId** | **String**| Contact Link type identifier | |
 
 ### Return type
 
@@ -3288,6 +3450,174 @@ public class Example {
 ### Return type
 
 ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## updateContactLinkType
+
+> ContactLinkType updateContactLinkType(linkTypeId, updateMask, updateContactLinkTypeRequest)
+
+Update a Contact Link type
+
+Updates the specified Contact Link type. Only fields listed in &#x60;update_mask&#x60; are applied. Reducing &#x60;max_links&#x60; below the current number of Linked Contacts of this type returns 409 Conflict.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ContactApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ContactApi apiInstance = new ContactApi(defaultClient);
+        String linkTypeId = "linkTypeId_example"; // String | Contact Link type identifier
+        Set<String> updateMask = Arrays.asList(); // Set<String> | Comma-separated list of fields to update
+        UpdateContactLinkTypeRequest updateContactLinkTypeRequest = new UpdateContactLinkTypeRequest(); // UpdateContactLinkTypeRequest | 
+        try {
+            ContactLinkType result = apiInstance.updateContactLinkType(linkTypeId, updateMask, updateContactLinkTypeRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ContactApi#updateContactLinkType");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **linkTypeId** | **String**| Contact Link type identifier | |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| Comma-separated list of fields to update | [enum: name, max_links] |
+| **updateContactLinkTypeRequest** | [**UpdateContactLinkTypeRequest**](UpdateContactLinkTypeRequest.md)|  | |
+
+### Return type
+
+[**ContactLinkType**](ContactLinkType.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## updateContactLinkTypeWithHttpInfo
+
+> ApiResponse<ContactLinkType> updateContactLinkType updateContactLinkTypeWithHttpInfo(linkTypeId, updateMask, updateContactLinkTypeRequest)
+
+Update a Contact Link type
+
+Updates the specified Contact Link type. Only fields listed in &#x60;update_mask&#x60; are applied. Reducing &#x60;max_links&#x60; below the current number of Linked Contacts of this type returns 409 Conflict.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ContactApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ContactApi apiInstance = new ContactApi(defaultClient);
+        String linkTypeId = "linkTypeId_example"; // String | Contact Link type identifier
+        Set<String> updateMask = Arrays.asList(); // Set<String> | Comma-separated list of fields to update
+        UpdateContactLinkTypeRequest updateContactLinkTypeRequest = new UpdateContactLinkTypeRequest(); // UpdateContactLinkTypeRequest | 
+        try {
+            ApiResponse<ContactLinkType> response = apiInstance.updateContactLinkTypeWithHttpInfo(linkTypeId, updateMask, updateContactLinkTypeRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ContactApi#updateContactLinkType");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **linkTypeId** | **String**| Contact Link type identifier | |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| Comma-separated list of fields to update | [enum: name, max_links] |
+| **updateContactLinkTypeRequest** | [**UpdateContactLinkTypeRequest**](UpdateContactLinkTypeRequest.md)|  | |
+
+### Return type
+
+ApiResponse<[**ContactLinkType**](ContactLinkType.md)>
 
 
 ### Authorization

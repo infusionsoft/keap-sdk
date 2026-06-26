@@ -103,6 +103,7 @@ import { CreateOpportunityStageChecklistItem } from '../models/CreateOpportunity
 import { CreateOpportunityStageRequest } from '../models/CreateOpportunityStageRequest';
 import { CreateOrUpdateAffiliateLinkRequest } from '../models/CreateOrUpdateAffiliateLinkRequest';
 import { CreateOrderItemRequest } from '../models/CreateOrderItemRequest';
+import { CreateOrderTotalDiscountCriteria } from '../models/CreateOrderTotalDiscountCriteria';
 import { CreateOrderTotalDiscountRequest } from '../models/CreateOrderTotalDiscountRequest';
 import { CreatePaymentMethodConfigRequest } from '../models/CreatePaymentMethodConfigRequest';
 import { CreateProductCategoryRequest } from '../models/CreateProductCategoryRequest';
@@ -293,6 +294,8 @@ import { Report } from '../models/Report';
 import { ReportEntryRecord } from '../models/ReportEntryRecord';
 import { ReportEntryValue } from '../models/ReportEntryValue';
 import { ReportExecutionResult } from '../models/ReportExecutionResult';
+import { ReportField } from '../models/ReportField';
+import { ReportModel } from '../models/ReportModel';
 import { ResourceCommissionProgram } from '../models/ResourceCommissionProgram';
 import { RestAffiliate } from '../models/RestAffiliate';
 import { RestAffiliatePayment } from '../models/RestAffiliatePayment';
@@ -330,6 +333,7 @@ import { UpdateBusinessProfileRequest } from '../models/UpdateBusinessProfileReq
 import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountRequest';
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
+import { UpdateContactLinkTypeRequest } from '../models/UpdateContactLinkTypeRequest';
 import { UpdateCustomFieldGroupRequest } from '../models/UpdateCustomFieldGroupRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
@@ -343,6 +347,7 @@ import { UpdateOpportunityStageChecklistItem } from '../models/UpdateOpportunity
 import { UpdateOpportunityStageRequest } from '../models/UpdateOpportunityStageRequest';
 import { UpdateOrderItemRequest } from '../models/UpdateOrderItemRequest';
 import { UpdateOrderRequest } from '../models/UpdateOrderRequest';
+import { UpdateOrderTotalDiscountCriteria } from '../models/UpdateOrderTotalDiscountCriteria';
 import { UpdateOrderTotalDiscountRequest } from '../models/UpdateOrderTotalDiscountRequest';
 import { UpdateProductCategoryRequest } from '../models/UpdateProductCategoryRequest';
 import { UpdateProductCommissionProgramRequest } from '../models/UpdateProductCommissionProgramRequest';
@@ -3519,6 +3524,16 @@ export interface ContactApiDeleteContactCustomFieldGroupRequest {
     groupId: string
 }
 
+export interface ContactApiDeleteContactLinkTypeRequest {
+    /**
+     * Contact Link type identifier
+     * Defaults to: undefined
+     * @type string
+     * @memberof ContactApideleteContactLinkType
+     */
+    linkTypeId: string
+}
+
 export interface ContactApiGetContactRequest {
     /**
      * 
@@ -3769,6 +3784,29 @@ export interface ContactApiUpdateContactCustomFieldGroupRequest {
     updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest
 }
 
+export interface ContactApiUpdateContactLinkTypeRequest {
+    /**
+     * Contact Link type identifier
+     * Defaults to: undefined
+     * @type string
+     * @memberof ContactApiupdateContactLinkType
+     */
+    linkTypeId: string
+    /**
+     * Comma-separated list of fields to update
+     * Defaults to: undefined
+     * @type Set&lt;&#39;name&#39; | &#39;max_links&#39;&gt;
+     * @memberof ContactApiupdateContactLinkType
+     */
+    updateMask: Set<'name' | 'max_links'>
+    /**
+     * 
+     * @type UpdateContactLinkTypeRequest
+     * @memberof ContactApiupdateContactLinkType
+     */
+    updateContactLinkTypeRequest: UpdateContactLinkTypeRequest
+}
+
 export class ObjectContactApi {
     private api: ObservableContactApi
 
@@ -3900,6 +3938,24 @@ export class ObjectContactApi {
      */
     public deleteContactCustomFieldGroup(param: ContactApiDeleteContactCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.deleteContactCustomFieldGroup(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+     * Delete a Contact Link type
+     * @param param the request object
+     */
+    public deleteContactLinkTypeWithHttpInfo(param: ContactApiDeleteContactLinkTypeRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteContactLinkTypeWithHttpInfo(param.linkTypeId,  options).toPromise();
+    }
+
+    /**
+     * Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+     * Delete a Contact Link type
+     * @param param the request object
+     */
+    public deleteContactLinkType(param: ContactApiDeleteContactLinkTypeRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteContactLinkType(param.linkTypeId,  options).toPromise();
     }
 
     /**
@@ -4134,6 +4190,24 @@ export class ObjectContactApi {
      */
     public updateContactCustomFieldGroup(param: ContactApiUpdateContactCustomFieldGroupRequest, options?: ConfigurationOptions): Promise<CustomFieldGroup> {
         return this.api.updateContactCustomFieldGroup(param.groupId, param.updateMask, param.updateCustomFieldGroupRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates the specified Contact Link type. Only fields listed in `update_mask` are applied. Reducing `max_links` below the current number of Linked Contacts of this type returns 409 Conflict.
+     * Update a Contact Link type
+     * @param param the request object
+     */
+    public updateContactLinkTypeWithHttpInfo(param: ContactApiUpdateContactLinkTypeRequest, options?: ConfigurationOptions): Promise<HttpInfo<ContactLinkType>> {
+        return this.api.updateContactLinkTypeWithHttpInfo(param.linkTypeId, param.updateMask, param.updateContactLinkTypeRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates the specified Contact Link type. Only fields listed in `update_mask` are applied. Reducing `max_links` below the current number of Linked Contacts of this type returns 409 Conflict.
+     * Update a Contact Link type
+     * @param param the request object
+     */
+    public updateContactLinkType(param: ContactApiUpdateContactLinkTypeRequest, options?: ConfigurationOptions): Promise<ContactLinkType> {
+        return this.api.updateContactLinkType(param.linkTypeId, param.updateMask, param.updateContactLinkTypeRequest,  options).toPromise();
     }
 
 }
@@ -7601,6 +7675,22 @@ export interface OrderTotalDiscountsApiCreateOrderTotalDiscountRequest {
     createOrderTotalDiscountRequest: CreateOrderTotalDiscountRequest
 }
 
+export interface OrderTotalDiscountsApiCreateOrderTotalDiscountCriteriaRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrderTotalDiscountsApicreateOrderTotalDiscountCriteria
+     */
+    discountId: string
+    /**
+     * 
+     * @type CreateOrderTotalDiscountCriteria
+     * @memberof OrderTotalDiscountsApicreateOrderTotalDiscountCriteria
+     */
+    createOrderTotalDiscountCriteria: CreateOrderTotalDiscountCriteria
+}
+
 export interface OrderTotalDiscountsApiDeleteOrderTotalDiscountRequest {
     /**
      * 
@@ -7609,6 +7699,23 @@ export interface OrderTotalDiscountsApiDeleteOrderTotalDiscountRequest {
      * @memberof OrderTotalDiscountsApideleteOrderTotalDiscount
      */
     discountId: string
+}
+
+export interface OrderTotalDiscountsApiDeleteOrderTotalDiscountCriteriaRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrderTotalDiscountsApideleteOrderTotalDiscountCriteria
+     */
+    discountId: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrderTotalDiscountsApideleteOrderTotalDiscountCriteria
+     */
+    criteriaId: string
 }
 
 export interface OrderTotalDiscountsApiGetOrderTotalDiscountRequest {
@@ -7703,6 +7810,24 @@ export class ObjectOrderTotalDiscountsApi {
     }
 
     /**
+     * Creates an Order Total Discount Criteria
+     * Create an Order Total Discount Criteria
+     * @param param the request object
+     */
+    public createOrderTotalDiscountCriteriaWithHttpInfo(param: OrderTotalDiscountsApiCreateOrderTotalDiscountCriteriaRequest, options?: ConfigurationOptions): Promise<HttpInfo<DiscountCriteria>> {
+        return this.api.createOrderTotalDiscountCriteriaWithHttpInfo(param.discountId, param.createOrderTotalDiscountCriteria,  options).toPromise();
+    }
+
+    /**
+     * Creates an Order Total Discount Criteria
+     * Create an Order Total Discount Criteria
+     * @param param the request object
+     */
+    public createOrderTotalDiscountCriteria(param: OrderTotalDiscountsApiCreateOrderTotalDiscountCriteriaRequest, options?: ConfigurationOptions): Promise<DiscountCriteria> {
+        return this.api.createOrderTotalDiscountCriteria(param.discountId, param.createOrderTotalDiscountCriteria,  options).toPromise();
+    }
+
+    /**
      * Deletes a specified Order Total Discount
      * Delete an Order Total Discount
      * @param param the request object
@@ -7718,6 +7843,24 @@ export class ObjectOrderTotalDiscountsApi {
      */
     public deleteOrderTotalDiscount(param: OrderTotalDiscountsApiDeleteOrderTotalDiscountRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.deleteOrderTotalDiscount(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specified Order Total Discount Criteria
+     * Delete an Order Total Discount Criteria
+     * @param param the request object
+     */
+    public deleteOrderTotalDiscountCriteriaWithHttpInfo(param: OrderTotalDiscountsApiDeleteOrderTotalDiscountCriteriaRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteOrderTotalDiscountCriteriaWithHttpInfo(param.discountId, param.criteriaId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specified Order Total Discount Criteria
+     * Delete an Order Total Discount Criteria
+     * @param param the request object
+     */
+    public deleteOrderTotalDiscountCriteria(param: OrderTotalDiscountsApiDeleteOrderTotalDiscountCriteriaRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteOrderTotalDiscountCriteria(param.discountId, param.criteriaId,  options).toPromise();
     }
 
     /**
@@ -10511,6 +10654,16 @@ export interface ReportingApiRetrieveReportRequest {
     reportId: string
 }
 
+export interface ReportingApiRetrieveReportModelRequest {
+    /**
+     * The unique identifier of the report (Saved Search)
+     * Defaults to: undefined
+     * @type string
+     * @memberof ReportingApiretrieveReportModel
+     */
+    reportId: string
+}
+
 export interface ReportingApiRunReportRequest {
     /**
      * The unique identifier of the report (Saved Search) to execute
@@ -10569,6 +10722,24 @@ export class ObjectReportingApi {
      */
     public retrieveReport(param: ReportingApiRetrieveReportRequest, options?: ConfigurationOptions): Promise<Report> {
         return this.api.retrieveReport(param.reportId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves the list of fields available for a Report (Saved Search). The returned field `name` values can be used in the `fields` parameter when running the report.
+     * Retrieve Report Model
+     * @param param the request object
+     */
+    public retrieveReportModelWithHttpInfo(param: ReportingApiRetrieveReportModelRequest, options?: ConfigurationOptions): Promise<HttpInfo<ReportModel>> {
+        return this.api.retrieveReportModelWithHttpInfo(param.reportId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves the list of fields available for a Report (Saved Search). The returned field `name` values can be used in the `fields` parameter when running the report.
+     * Retrieve Report Model
+     * @param param the request object
+     */
+    public retrieveReportModel(param: ReportingApiRetrieveReportModelRequest, options?: ConfigurationOptions): Promise<ReportModel> {
+        return this.api.retrieveReportModel(param.reportId,  options).toPromise();
     }
 
     /**

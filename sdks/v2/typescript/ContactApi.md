@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**deleteContact**](ContactApi.md#deleteContact) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact
 [**deleteContactCustomField**](ContactApi.md#deleteContactCustomField) | **DELETE** /rest/v2/contacts/model/customFields/{custom_field_id} | Delete a Contact Custom Field
 [**deleteContactCustomFieldGroup**](ContactApi.md#deleteContactCustomFieldGroup) | **DELETE** /rest/v2/contacts/model/customFields/groups/{group_id} | Delete a Contact Custom Field Group
+[**deleteContactLinkType**](ContactApi.md#deleteContactLinkType) | **DELETE** /rest/v2/contacts/links/types/{link_type_id} | Delete a Contact Link type
 [**getContact**](ContactApi.md#getContact) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact
 [**getContactCustomFieldGroup**](ContactApi.md#getContactCustomFieldGroup) | **GET** /rest/v2/contacts/model/customFields/groups/{group_id} | Retrieve a Contact Custom Field Group
 [**linkContacts**](ContactApi.md#linkContacts) | **POST** /rest/v2/contacts:link | Link Contacts
@@ -24,6 +25,7 @@ Method | HTTP request | Description
 [**unlinkContacts**](ContactApi.md#unlinkContacts) | **POST** /rest/v2/contacts:unlink | Delete Link between two Contacts
 [**updateContact**](ContactApi.md#updateContact) | **PATCH** /rest/v2/contacts/{contact_id} | Update a Contact
 [**updateContactCustomFieldGroup**](ContactApi.md#updateContactCustomFieldGroup) | **PATCH** /rest/v2/contacts/model/customFields/groups/{group_id} | Update a Contact Custom Field Group
+[**updateContactLinkType**](ContactApi.md#updateContactLinkType) | **PATCH** /rest/v2/contacts/links/types/{link_type_id} | Update a Contact Link type
 
 
 # **createContact**
@@ -534,6 +536,67 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **deleteContactLinkType**
+> void deleteContactLinkType()
+
+Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+
+### Example
+
+
+```typescript
+import { createConfiguration, ContactApi } from '';
+import type { ContactApiDeleteContactLinkTypeRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new ContactApi(configuration);
+
+const request: ContactApiDeleteContactLinkTypeRequest = {
+    // Contact Link type identifier
+  linkTypeId: "link_type_id_example",
+};
+
+const data = await apiInstance.deleteContactLinkType(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **linkTypeId** | [**string**] | Contact Link type identifier | defaults to undefined
 
 
 ### Return type
@@ -1493,6 +1556,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 **CustomFieldGroup**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **updateContactLinkType**
+> ContactLinkType updateContactLinkType(updateContactLinkTypeRequest)
+
+Updates the specified Contact Link type. Only fields listed in `update_mask` are applied. Reducing `max_links` below the current number of Linked Contacts of this type returns 409 Conflict.
+
+### Example
+
+
+```typescript
+import { createConfiguration, ContactApi } from '';
+import type { ContactApiUpdateContactLinkTypeRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new ContactApi(configuration);
+
+const request: ContactApiUpdateContactLinkTypeRequest = {
+    // Contact Link type identifier
+  linkTypeId: "link_type_id_example",
+    // Comma-separated list of fields to update
+  updateMask: [
+    "name",
+  ],
+  
+  updateContactLinkTypeRequest: {
+    name: "Spouse",
+    maxLinks: 1,
+  },
+};
+
+const data = await apiInstance.updateContactLinkType(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateContactLinkTypeRequest** | **UpdateContactLinkTypeRequest**|  |
+ **linkTypeId** | [**string**] | Contact Link type identifier | defaults to undefined
+ **updateMask** | **Array<&#39;name&#39; &#124; &#39;max_links&#39;>** | Comma-separated list of fields to update | defaults to undefined
+
+
+### Return type
+
+**ContactLinkType**
 
 ### Authorization
 

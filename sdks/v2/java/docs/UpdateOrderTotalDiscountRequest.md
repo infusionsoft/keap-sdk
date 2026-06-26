@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**name** | **String** | Name of the discount |  [optional] |
 |**description** | **String** | Description of the discount |  [optional] |
-|**criteria** | [**List&lt;DiscountCriteria&gt;**](DiscountCriteria.md) | List of criteria that must be met for this discount to apply |  [optional] |
+|**criteria** | [**List&lt;UpdateOrderTotalDiscountCriteria&gt;**](UpdateOrderTotalDiscountCriteria.md) | List of criteria that must be met for this discount to apply |  [optional] |
 |**applyToCommissions** | **Boolean** | Whether to apply this discount to commission calculations |  [optional] |
 |**discountType** | [**DiscountTypeEnum**](#DiscountTypeEnum) | Type of discount: AMOUNT (fixed amount) or PERCENT (percentage) |  [optional] |
 |**discountValue** | **Double** | Value of the discount (amount or percentage depending on discount_type) |  [optional] |

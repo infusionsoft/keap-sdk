@@ -103,6 +103,7 @@ import { CreateOpportunityStageChecklistItem } from '../models/CreateOpportunity
 import { CreateOpportunityStageRequest } from '../models/CreateOpportunityStageRequest';
 import { CreateOrUpdateAffiliateLinkRequest } from '../models/CreateOrUpdateAffiliateLinkRequest';
 import { CreateOrderItemRequest } from '../models/CreateOrderItemRequest';
+import { CreateOrderTotalDiscountCriteria } from '../models/CreateOrderTotalDiscountCriteria';
 import { CreateOrderTotalDiscountRequest } from '../models/CreateOrderTotalDiscountRequest';
 import { CreatePaymentMethodConfigRequest } from '../models/CreatePaymentMethodConfigRequest';
 import { CreateProductCategoryRequest } from '../models/CreateProductCategoryRequest';
@@ -293,6 +294,8 @@ import { Report } from '../models/Report';
 import { ReportEntryRecord } from '../models/ReportEntryRecord';
 import { ReportEntryValue } from '../models/ReportEntryValue';
 import { ReportExecutionResult } from '../models/ReportExecutionResult';
+import { ReportField } from '../models/ReportField';
+import { ReportModel } from '../models/ReportModel';
 import { ResourceCommissionProgram } from '../models/ResourceCommissionProgram';
 import { RestAffiliate } from '../models/RestAffiliate';
 import { RestAffiliatePayment } from '../models/RestAffiliatePayment';
@@ -330,6 +333,7 @@ import { UpdateBusinessProfileRequest } from '../models/UpdateBusinessProfileReq
 import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountRequest';
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
+import { UpdateContactLinkTypeRequest } from '../models/UpdateContactLinkTypeRequest';
 import { UpdateCustomFieldGroupRequest } from '../models/UpdateCustomFieldGroupRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
@@ -343,6 +347,7 @@ import { UpdateOpportunityStageChecklistItem } from '../models/UpdateOpportunity
 import { UpdateOpportunityStageRequest } from '../models/UpdateOpportunityStageRequest';
 import { UpdateOrderItemRequest } from '../models/UpdateOrderItemRequest';
 import { UpdateOrderRequest } from '../models/UpdateOrderRequest';
+import { UpdateOrderTotalDiscountCriteria } from '../models/UpdateOrderTotalDiscountCriteria';
 import { UpdateOrderTotalDiscountRequest } from '../models/UpdateOrderTotalDiscountRequest';
 import { UpdateProductCategoryRequest } from '../models/UpdateProductCategoryRequest';
 import { UpdateProductCommissionProgramRequest } from '../models/UpdateProductCommissionProgramRequest';
@@ -2735,6 +2740,28 @@ export class PromiseContactApi {
     }
 
     /**
+     * Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+     * Delete a Contact Link type
+     * @param linkTypeId Contact Link type identifier
+     */
+    public deleteContactLinkTypeWithHttpInfo(linkTypeId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteContactLinkTypeWithHttpInfo(linkTypeId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+     * Delete a Contact Link type
+     * @param linkTypeId Contact Link type identifier
+     */
+    public deleteContactLinkType(linkTypeId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteContactLinkType(linkTypeId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a single Contact
      * Retrieve a Contact
      * @param contactId
@@ -3051,6 +3078,32 @@ export class PromiseContactApi {
     public updateContactCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateContactCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates the specified Contact Link type. Only fields listed in `update_mask` are applied. Reducing `max_links` below the current number of Linked Contacts of this type returns 409 Conflict.
+     * Update a Contact Link type
+     * @param linkTypeId Contact Link type identifier
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateContactLinkTypeRequest
+     */
+    public updateContactLinkTypeWithHttpInfo(linkTypeId: string, updateMask: Set<'name' | 'max_links'>, updateContactLinkTypeRequest: UpdateContactLinkTypeRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ContactLinkType>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateContactLinkTypeWithHttpInfo(linkTypeId, updateMask, updateContactLinkTypeRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates the specified Contact Link type. Only fields listed in `update_mask` are applied. Reducing `max_links` below the current number of Linked Contacts of this type returns 409 Conflict.
+     * Update a Contact Link type
+     * @param linkTypeId Contact Link type identifier
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateContactLinkTypeRequest
+     */
+    public updateContactLinkType(linkTypeId: string, updateMask: Set<'name' | 'max_links'>, updateContactLinkTypeRequest: UpdateContactLinkTypeRequest, _options?: PromiseConfigurationOptions): Promise<ContactLinkType> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateContactLinkType(linkTypeId, updateMask, updateContactLinkTypeRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -5574,6 +5627,30 @@ export class PromiseOrderTotalDiscountsApi {
     }
 
     /**
+     * Creates an Order Total Discount Criteria
+     * Create an Order Total Discount Criteria
+     * @param discountId
+     * @param createOrderTotalDiscountCriteria
+     */
+    public createOrderTotalDiscountCriteriaWithHttpInfo(discountId: string, createOrderTotalDiscountCriteria: CreateOrderTotalDiscountCriteria, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DiscountCriteria>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createOrderTotalDiscountCriteriaWithHttpInfo(discountId, createOrderTotalDiscountCriteria, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates an Order Total Discount Criteria
+     * Create an Order Total Discount Criteria
+     * @param discountId
+     * @param createOrderTotalDiscountCriteria
+     */
+    public createOrderTotalDiscountCriteria(discountId: string, createOrderTotalDiscountCriteria: CreateOrderTotalDiscountCriteria, _options?: PromiseConfigurationOptions): Promise<DiscountCriteria> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createOrderTotalDiscountCriteria(discountId, createOrderTotalDiscountCriteria, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes a specified Order Total Discount
      * Delete an Order Total Discount
      * @param discountId
@@ -5592,6 +5669,30 @@ export class PromiseOrderTotalDiscountsApi {
     public deleteOrderTotalDiscount(discountId: string, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteOrderTotalDiscount(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified Order Total Discount Criteria
+     * Delete an Order Total Discount Criteria
+     * @param discountId
+     * @param criteriaId
+     */
+    public deleteOrderTotalDiscountCriteriaWithHttpInfo(discountId: string, criteriaId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOrderTotalDiscountCriteriaWithHttpInfo(discountId, criteriaId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified Order Total Discount Criteria
+     * Delete an Order Total Discount Criteria
+     * @param discountId
+     * @param criteriaId
+     */
+    public deleteOrderTotalDiscountCriteria(discountId: string, criteriaId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOrderTotalDiscountCriteria(discountId, criteriaId, observableOptions);
         return result.toPromise();
     }
 
@@ -7641,6 +7742,28 @@ export class PromiseReportingApi {
     public retrieveReport(reportId: string, _options?: PromiseConfigurationOptions): Promise<Report> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.retrieveReport(reportId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves the list of fields available for a Report (Saved Search). The returned field `name` values can be used in the `fields` parameter when running the report.
+     * Retrieve Report Model
+     * @param reportId The unique identifier of the report (Saved Search)
+     */
+    public retrieveReportModelWithHttpInfo(reportId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ReportModel>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.retrieveReportModelWithHttpInfo(reportId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves the list of fields available for a Report (Saved Search). The returned field `name` values can be used in the `fields` parameter when running the report.
+     * Retrieve Report Model
+     * @param reportId The unique identifier of the report (Saved Search)
+     */
+    public retrieveReportModel(reportId: string, _options?: PromiseConfigurationOptions): Promise<ReportModel> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.retrieveReportModel(reportId, observableOptions);
         return result.toPromise();
     }
 

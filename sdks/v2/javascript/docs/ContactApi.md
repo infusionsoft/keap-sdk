@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**deleteContact**](ContactApi.md#deleteContact) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact
 [**deleteContactCustomField**](ContactApi.md#deleteContactCustomField) | **DELETE** /rest/v2/contacts/model/customFields/{custom_field_id} | Delete a Contact Custom Field
 [**deleteContactCustomFieldGroup**](ContactApi.md#deleteContactCustomFieldGroup) | **DELETE** /rest/v2/contacts/model/customFields/groups/{group_id} | Delete a Contact Custom Field Group
+[**deleteContactLinkType**](ContactApi.md#deleteContactLinkType) | **DELETE** /rest/v2/contacts/links/types/{link_type_id} | Delete a Contact Link type
 [**getContact**](ContactApi.md#getContact) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact
 [**getContactCustomFieldGroup**](ContactApi.md#getContactCustomFieldGroup) | **GET** /rest/v2/contacts/model/customFields/groups/{group_id} | Retrieve a Contact Custom Field Group
 [**linkContacts**](ContactApi.md#linkContacts) | **POST** /rest/v2/contacts:link | Link Contacts
@@ -24,6 +25,7 @@ Method | HTTP request | Description
 [**unlinkContacts**](ContactApi.md#unlinkContacts) | **POST** /rest/v2/contacts:unlink | Delete Link between two Contacts
 [**updateContact**](ContactApi.md#updateContact) | **PATCH** /rest/v2/contacts/{contact_id} | Update a Contact
 [**updateContactCustomFieldGroup**](ContactApi.md#updateContactCustomFieldGroup) | **PATCH** /rest/v2/contacts/model/customFields/groups/{group_id} | Update a Contact Custom Field Group
+[**updateContactLinkType**](ContactApi.md#updateContactLinkType) | **PATCH** /rest/v2/contacts/links/types/{link_type_id} | Update a Contact Link type
 
 
 
@@ -354,6 +356,54 @@ apiInstance.deleteContactCustomFieldGroup(groupId).then(() => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **String**|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## deleteContactLinkType
+
+> deleteContactLinkType(linkTypeId)
+
+Delete a Contact Link type
+
+Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
+let linkTypeId = "linkTypeId_example"; // String | Contact Link type identifier
+apiInstance.deleteContactLinkType(linkTypeId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **linkTypeId** | **String**| Contact Link type identifier | 
 
 ### Return type
 
@@ -1028,6 +1078,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## updateContactLinkType
+
+> ContactLinkType updateContactLinkType(linkTypeId, updateMask, updateContactLinkTypeRequest)
+
+Update a Contact Link type
+
+Updates the specified Contact Link type. Only fields listed in &#x60;update_mask&#x60; are applied. Reducing &#x60;max_links&#x60; below the current number of Linked Contacts of this type returns 409 Conflict.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
+let linkTypeId = "linkTypeId_example"; // String | Contact Link type identifier
+let updateMask = ["null"]; // [String] | Comma-separated list of fields to update
+let updateContactLinkTypeRequest = new KeapCoreServiceV2Sdk.UpdateContactLinkTypeRequest(); // UpdateContactLinkTypeRequest | 
+apiInstance.updateContactLinkType(linkTypeId, updateMask, updateContactLinkTypeRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **linkTypeId** | **String**| Contact Link type identifier | 
+ **updateMask** | [**[String]**](String.md)| Comma-separated list of fields to update | 
+ **updateContactLinkTypeRequest** | [**UpdateContactLinkTypeRequest**](UpdateContactLinkTypeRequest.md)|  | 
+
+### Return type
+
+[**ContactLinkType**](ContactLinkType.md)
 
 ### Authorization
 

@@ -59,7 +59,7 @@ class CreateOrderTotalDiscountRequest implements ModelInterface, ArrayAccess, \J
     protected static $openAPITypes = [
         'name' => 'string',
         'description' => 'string',
-        'criteria' => '\Keap\Core\V2\Model\DiscountCriteria[]',
+        'criteria' => '\Keap\Core\V2\Model\CreateOrderTotalDiscountCriteria[]',
         'apply_to_commissions' => 'bool',
         'discount_type' => 'string',
         'discount_value' => 'float',
@@ -445,7 +445,7 @@ class CreateOrderTotalDiscountRequest implements ModelInterface, ArrayAccess, \J
     /**
      * Gets criteria
      *
-     * @return \Keap\Core\V2\Model\DiscountCriteria[]|null
+     * @return \Keap\Core\V2\Model\CreateOrderTotalDiscountCriteria[]|null
      */
     public function getCriteria()
     {
@@ -455,7 +455,7 @@ class CreateOrderTotalDiscountRequest implements ModelInterface, ArrayAccess, \J
     /**
      * Sets criteria
      *
-     * @param \Keap\Core\V2\Model\DiscountCriteria[]|null $criteria List of criteria that must be met for this discount to apply
+     * @param \Keap\Core\V2\Model\CreateOrderTotalDiscountCriteria[]|null $criteria List of criteria that must be met for this discount to apply
      *
      * @return self
      */

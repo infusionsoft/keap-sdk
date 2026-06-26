@@ -6,6 +6,7 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | ------------- | ------------- | ------------- |
 | [**listReports()**](ReportingApi.md#listReports) | **GET** /rest/v2/reporting/reports | List Reports |
 | [**retrieveReport()**](ReportingApi.md#retrieveReport) | **GET** /rest/v2/reporting/reports/{report_id} | Retrieve Report |
+| [**retrieveReportModel()**](ReportingApi.md#retrieveReportModel) | **GET** /rest/v2/reporting/reports/{report_id}/model | Retrieve Report Model |
 | [**runReport()**](ReportingApi.md#runReport) | **POST** /rest/v2/reporting/reports/{report_id}:run | Run a Report |
 
 
@@ -119,6 +120,65 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\Report**](../Model/Report.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `retrieveReportModel()`
+
+```php
+retrieveReportModel($report_id): \Keap\Core\V2\Model\ReportModel
+```
+
+Retrieve Report Model
+
+Retrieves the list of fields available for a Report (Saved Search). The returned field `name` values can be used in the `fields` parameter when running the report.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\ReportingApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$report_id = 123; // string | The unique identifier of the report (Saved Search)
+
+try {
+    $result = $apiInstance->retrieveReportModel($report_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReportingApi->retrieveReportModel: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **report_id** | **string**| The unique identifier of the report (Saved Search) | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\ReportModel**](../Model/ReportModel.md)
 
 ### Authorization
 

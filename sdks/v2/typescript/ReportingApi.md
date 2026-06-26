@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**listReports**](ReportingApi.md#listReports) | **GET** /rest/v2/reporting/reports | List Reports
 [**retrieveReport**](ReportingApi.md#retrieveReport) | **GET** /rest/v2/reporting/reports/{report_id} | Retrieve Report
+[**retrieveReportModel**](ReportingApi.md#retrieveReportModel) | **GET** /rest/v2/reporting/reports/{report_id}/model | Retrieve Report Model
 [**runReport**](ReportingApi.md#runReport) | **POST** /rest/v2/reporting/reports/{report_id}:run | Run a Report
 
 
@@ -114,6 +115,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 **Report**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **retrieveReportModel**
+> ReportModel retrieveReportModel()
+
+Retrieves the list of fields available for a Report (Saved Search). The returned field `name` values can be used in the `fields` parameter when running the report.
+
+### Example
+
+
+```typescript
+import { createConfiguration, ReportingApi } from '';
+import type { ReportingApiRetrieveReportModelRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new ReportingApi(configuration);
+
+const request: ReportingApiRetrieveReportModelRequest = {
+    // The unique identifier of the report (Saved Search)
+  reportId: "123",
+};
+
+const data = await apiInstance.retrieveReportModel(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **reportId** | [**string**] | The unique identifier of the report (Saved Search) | defaults to undefined
+
+
+### Return type
+
+**ReportModel**
 
 ### Authorization
 

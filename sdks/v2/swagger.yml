@@ -7919,6 +7919,80 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/discounts/orderTotals/{discount_id}/criteria:
+    post:
+      tags:
+      - Order Total Discounts
+      summary: Create an Order Total Discount Criteria
+      description: Creates an Order Total Discount Criteria
+      operationId: createOrderTotalDiscountCriteria
+      parameters:
+      - name: discount_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderTotalDiscountCriteria'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscountCriteria'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/discounts/freeTrials:
     get:
       tags:
@@ -20319,6 +20393,160 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/contacts/links/types/{link_type_id}:
+    delete:
+      tags:
+      - Contact
+      summary: Delete a Contact Link type
+      description: Deletes the specified Contact Link type. The Link type cannot be
+        deleted if it is currently applied to any Linked Contacts.
+      operationId: deleteContactLinkType
+      parameters:
+      - name: link_type_id
+        in: path
+        description: Contact Link type identifier
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Contact
+      summary: Update a Contact Link type
+      description: Updates the specified Contact Link type. Only fields listed in
+        `update_mask` are applied. Reducing `max_links` below the current number of
+        Linked Contacts of this type returns 409 Conflict.
+      operationId: updateContactLinkType
+      parameters:
+      - name: link_type_id
+        in: path
+        description: Contact Link type identifier
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: Comma-separated list of fields to update
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - name
+            - max_links
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateContactLinkTypeRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactLinkType'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/companies/{company_id}:
     get:
       tags:
@@ -23846,6 +24074,78 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Report'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/reporting/reports/{report_id}/model:
+    get:
+      tags:
+      - Reporting
+      summary: Retrieve Report Model
+      description: Retrieves the list of fields available for a Report (Saved Search).
+        The returned field `name` values can be used in the `fields` parameter when
+        running the report.
+      operationId: retrieveReportModel
+      parameters:
+      - name: report_id
+        in: path
+        description: The unique identifier of the report (Saved Search)
+        required: true
+        schema:
+          type: string
+        example: 123
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportModel'
         '400':
           description: Bad Request
           content:
@@ -27803,6 +28103,75 @@ paths:
       summary: Delete a Product Discount Criteria
       description: Deletes a specified Product Discount Criteria
       operationId: deleteProductDiscountCriteria
+      parameters:
+      - name: discount_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: criteria_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/discounts/orderTotals/{discount_id}/criteria/{criteria_id}:
+    delete:
+      tags:
+      - Order Total Discounts
+      summary: Delete an Order Total Discount Criteria
+      description: Deletes a specified Order Total Discount Criteria
+      operationId: deleteOrderTotalDiscountCriteria
       parameters:
       - name: discount_id
         in: path
@@ -32053,6 +32422,70 @@ components:
           format: date-time
           description: End date/time for DATE_RANGE criteria (ISO-8601 format)
           example: '2024-12-31T23:59:59Z'
+    CreateOrderTotalDiscountCriteria:
+      type: object
+      properties:
+        type:
+          type: string
+          description: 'Type of criteria: DATE_RANGE, PROMO_CODE, PRODUCT, SUBSCRIPTION_PLAN,
+            or ORDER_TOTAL'
+          enum:
+          - DATE_RANGE
+          - PROMO_CODE
+          - PRODUCT
+          - SUBSCRIPTION_PLAN
+          - ORDER_TOTAL
+          example: DATE_RANGE
+        code:
+          type: string
+          description: Promotional code for PROMO_CODE criteria
+          example: SUMMER2024
+        range_start_time:
+          type: string
+          format: date-time
+          description: Start date/time for DATE_RANGE criteria (ISO-8601 format)
+          example: '2024-01-01T00:00:00Z'
+        range_end_time:
+          type: string
+          format: date-time
+          description: End date/time for DATE_RANGE criteria (ISO-8601 format)
+          example: '2024-12-31T23:59:59Z'
+        product_id:
+          type: string
+          description: Product ID for PRODUCT criteria
+          example: 456
+        product_quantity_min:
+          type: integer
+          format: int32
+          description: Minimum product quantity for PRODUCT criteria
+          example: 1
+        product_quantity_max:
+          type: integer
+          format: int32
+          description: Maximum product quantity for PRODUCT criteria
+          example: 10
+        plan_id:
+          type: string
+          description: Subscription plan ID for SUBSCRIPTION_PLAN criteria
+          example: 789
+        subscription_quantity:
+          type: integer
+          format: int32
+          description: Subscription quantity for SUBSCRIPTION_PLAN criteria
+          example: 1
+        total_amount:
+          type: number
+          format: double
+          description: Total amount threshold for ORDER_TOTAL criteria
+          example: 100
+        operator:
+          type: string
+          description: 'Comparison operator for ORDER_TOTAL criteria: LESS_THAN or
+            GREATER_THAN'
+          enum:
+          - LESS_THAN
+          - GREATER_THAN
+          example: GREATER_THAN
     CreateOrderTotalDiscountRequest:
       type: object
       properties:
@@ -32068,7 +32501,7 @@ components:
           type: array
           description: List of criteria that must be met for this discount to apply
           items:
-            $ref: '#/components/schemas/DiscountCriteria'
+            $ref: '#/components/schemas/CreateOrderTotalDiscountCriteria'
         apply_to_commissions:
           type: boolean
           description: Whether to apply this discount to commission calculations
@@ -34166,6 +34599,22 @@ components:
           type: string
           description: The user's last name
           example: Smith
+        middle_name:
+          type: string
+          description: The user's middle name
+          example: Edward
+        nickname:
+          type: string
+          description: The user's nickname or preferred name
+          example: Tony
+        spouse_name:
+          type: string
+          description: The name of the user's spouse
+          example: Mia
+        suffix:
+          type: string
+          description: The user's name suffix
+          example: Jr.
         phone_numbers:
           type: array
           description: List of user's phone numbers
@@ -35435,6 +35884,65 @@ components:
           - '12'
           items:
             type: string
+    UpdateOrderTotalDiscountCriteria:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Promotional code for PROMO_CODE criteria
+          example: SUMMER2024
+        criteria_id:
+          type: string
+          description: Unique identifier for this criteria
+          example: 501
+        range_start_time:
+          type: string
+          format: date-time
+          description: Start date/time for DATE_RANGE criteria (ISO-8601 format)
+          example: '2024-01-01T00:00:00Z'
+        range_end_time:
+          type: string
+          format: date-time
+          description: End date/time for DATE_RANGE criteria (ISO-8601 format)
+          example: '2024-12-31T23:59:59Z'
+        product_id:
+          type: string
+          description: Product ID for PRODUCT criteria
+          example: 456
+        product_quantity_min:
+          type: integer
+          format: int32
+          description: Minimum product quantity for PRODUCT criteria
+          example: 1
+        product_quantity_max:
+          type: integer
+          format: int32
+          description: Maximum product quantity for PRODUCT criteria
+          example: 10
+        plan_id:
+          type: string
+          description: Subscription plan ID for SUBSCRIPTION_PLAN criteria
+          example: 789
+        subscription_quantity:
+          type: integer
+          format: int32
+          description: Subscription quantity for SUBSCRIPTION_PLAN criteria
+          example: 1
+        total_amount:
+          type: number
+          format: double
+          description: Total amount threshold for ORDER_TOTAL criteria
+          example: 100
+        operator:
+          type: string
+          description: 'Comparison operator for ORDER_TOTAL criteria: LESS_THAN or
+            GREATER_THAN'
+          enum:
+          - LESS_THAN
+          - GREATER_THAN
+          example: GREATER_THAN
+      required:
+      - criteria_id
     UpdateOrderTotalDiscountRequest:
       type: object
       properties:
@@ -35450,7 +35958,7 @@ components:
           type: array
           description: List of criteria that must be met for this discount to apply
           items:
-            $ref: '#/components/schemas/DiscountCriteria'
+            $ref: '#/components/schemas/UpdateOrderTotalDiscountCriteria'
         apply_to_commissions:
           type: boolean
           description: Whether to apply this discount to commission calculations
@@ -35600,6 +36108,18 @@ components:
             content: Preferred
           items:
             $ref: '#/components/schemas/CustomFieldValueObject'
+    UpdateContactLinkTypeRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Link type name
+          example: Spouse
+        max_links:
+          type: integer
+          format: int64
+          description: Maximum number of links allowed (must be > 0)
+          example: 1
     UpdateCompanyRequest:
       type: object
       description: company
@@ -36902,6 +37422,26 @@ components:
           - ALL_USERS
           items:
             type: string
+    ReportField:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The field name as accepted by the report execution `fields`
+            parameter
+          example: Id
+        label:
+          type: string
+          description: The human-readable label for the field
+          example: ID
+    ReportModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          description: The list of fields available for this Report (Saved Search)
+          items:
+            $ref: '#/components/schemas/ReportField'
     ListReferralsResponse:
       type: object
       properties:

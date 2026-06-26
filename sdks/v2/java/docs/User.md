@@ -19,6 +19,10 @@ A user in the system
 |**keapId** | **String** | The Keap ID of the user |  [optional] |
 |**givenName** | **String** | The user&#39;s first name |  [optional] |
 |**familyName** | **String** | The user&#39;s last name |  [optional] |
+|**middleName** | **String** | The user&#39;s middle name |  [optional] |
+|**nickname** | **String** | The user&#39;s nickname or preferred name |  [optional] |
+|**spouseName** | **String** | The name of the user&#39;s spouse |  [optional] |
+|**suffix** | **String** | The user&#39;s name suffix |  [optional] |
 |**phoneNumbers** | [**List&lt;PhoneNumber&gt;**](PhoneNumber.md) | List of user&#39;s phone numbers |  [optional] |
 |**faxNumbers** | [**List&lt;FaxNumber&gt;**](FaxNumber.md) | List of user&#39;s fax numbers |  [optional] |
 |**emailAddresses** | [**List&lt;EmailAddress&gt;**](EmailAddress.md) | List of user&#39;s email addresses |  [optional] |

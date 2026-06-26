@@ -6,8 +6,12 @@ All URIs are relative to *https://api.keap.com/crm*
 |------------- | ------------- | -------------|
 | [**createOrderTotalDiscount**](OrderTotalDiscountsApi.md#createOrderTotalDiscount) | **POST** /rest/v2/discounts/orderTotals | Create an Order Total Discount |
 | [**createOrderTotalDiscountWithHttpInfo**](OrderTotalDiscountsApi.md#createOrderTotalDiscountWithHttpInfo) | **POST** /rest/v2/discounts/orderTotals | Create an Order Total Discount |
+| [**createOrderTotalDiscountCriteria**](OrderTotalDiscountsApi.md#createOrderTotalDiscountCriteria) | **POST** /rest/v2/discounts/orderTotals/{discount_id}/criteria | Create an Order Total Discount Criteria |
+| [**createOrderTotalDiscountCriteriaWithHttpInfo**](OrderTotalDiscountsApi.md#createOrderTotalDiscountCriteriaWithHttpInfo) | **POST** /rest/v2/discounts/orderTotals/{discount_id}/criteria | Create an Order Total Discount Criteria |
 | [**deleteOrderTotalDiscount**](OrderTotalDiscountsApi.md#deleteOrderTotalDiscount) | **DELETE** /rest/v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount |
 | [**deleteOrderTotalDiscountWithHttpInfo**](OrderTotalDiscountsApi.md#deleteOrderTotalDiscountWithHttpInfo) | **DELETE** /rest/v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount |
+| [**deleteOrderTotalDiscountCriteria**](OrderTotalDiscountsApi.md#deleteOrderTotalDiscountCriteria) | **DELETE** /rest/v2/discounts/orderTotals/{discount_id}/criteria/{criteria_id} | Delete an Order Total Discount Criteria |
+| [**deleteOrderTotalDiscountCriteriaWithHttpInfo**](OrderTotalDiscountsApi.md#deleteOrderTotalDiscountCriteriaWithHttpInfo) | **DELETE** /rest/v2/discounts/orderTotals/{discount_id}/criteria/{criteria_id} | Delete an Order Total Discount Criteria |
 | [**getOrderTotalDiscount**](OrderTotalDiscountsApi.md#getOrderTotalDiscount) | **GET** /rest/v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount |
 | [**getOrderTotalDiscountWithHttpInfo**](OrderTotalDiscountsApi.md#getOrderTotalDiscountWithHttpInfo) | **GET** /rest/v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount |
 | [**listOrderTotalDiscounts**](OrderTotalDiscountsApi.md#listOrderTotalDiscounts) | **GET** /rest/v2/discounts/orderTotals | List all Order Total Discounts |
@@ -177,6 +181,170 @@ ApiResponse<[**OrderTotalDiscount**](OrderTotalDiscount.md)>
 | **501** | Method Not Implemented |  -  |
 
 
+## createOrderTotalDiscountCriteria
+
+> DiscountCriteria createOrderTotalDiscountCriteria(discountId, createOrderTotalDiscountCriteria)
+
+Create an Order Total Discount Criteria
+
+Creates an Order Total Discount Criteria
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OrderTotalDiscountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OrderTotalDiscountsApi apiInstance = new OrderTotalDiscountsApi(defaultClient);
+        String discountId = "discountId_example"; // String | 
+        CreateOrderTotalDiscountCriteria createOrderTotalDiscountCriteria = new CreateOrderTotalDiscountCriteria(); // CreateOrderTotalDiscountCriteria | 
+        try {
+            DiscountCriteria result = apiInstance.createOrderTotalDiscountCriteria(discountId, createOrderTotalDiscountCriteria);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrderTotalDiscountsApi#createOrderTotalDiscountCriteria");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **discountId** | **String**|  | |
+| **createOrderTotalDiscountCriteria** | [**CreateOrderTotalDiscountCriteria**](CreateOrderTotalDiscountCriteria.md)|  | |
+
+### Return type
+
+[**DiscountCriteria**](DiscountCriteria.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## createOrderTotalDiscountCriteriaWithHttpInfo
+
+> ApiResponse<DiscountCriteria> createOrderTotalDiscountCriteria createOrderTotalDiscountCriteriaWithHttpInfo(discountId, createOrderTotalDiscountCriteria)
+
+Create an Order Total Discount Criteria
+
+Creates an Order Total Discount Criteria
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OrderTotalDiscountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OrderTotalDiscountsApi apiInstance = new OrderTotalDiscountsApi(defaultClient);
+        String discountId = "discountId_example"; // String | 
+        CreateOrderTotalDiscountCriteria createOrderTotalDiscountCriteria = new CreateOrderTotalDiscountCriteria(); // CreateOrderTotalDiscountCriteria | 
+        try {
+            ApiResponse<DiscountCriteria> response = apiInstance.createOrderTotalDiscountCriteriaWithHttpInfo(discountId, createOrderTotalDiscountCriteria);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrderTotalDiscountsApi#createOrderTotalDiscountCriteria");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **discountId** | **String**|  | |
+| **createOrderTotalDiscountCriteria** | [**CreateOrderTotalDiscountCriteria**](CreateOrderTotalDiscountCriteria.md)|  | |
+
+### Return type
+
+ApiResponse<[**DiscountCriteria**](DiscountCriteria.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## deleteOrderTotalDiscount
 
 > void deleteOrderTotalDiscount(discountId)
@@ -306,6 +474,168 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **discountId** | **String**|  | |
+
+### Return type
+
+
+ApiResponse<Void>
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## deleteOrderTotalDiscountCriteria
+
+> void deleteOrderTotalDiscountCriteria(discountId, criteriaId)
+
+Delete an Order Total Discount Criteria
+
+Deletes a specified Order Total Discount Criteria
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OrderTotalDiscountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OrderTotalDiscountsApi apiInstance = new OrderTotalDiscountsApi(defaultClient);
+        String discountId = "discountId_example"; // String | 
+        String criteriaId = "criteriaId_example"; // String | 
+        try {
+            apiInstance.deleteOrderTotalDiscountCriteria(discountId, criteriaId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrderTotalDiscountsApi#deleteOrderTotalDiscountCriteria");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **discountId** | **String**|  | |
+| **criteriaId** | **String**|  | |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## deleteOrderTotalDiscountCriteriaWithHttpInfo
+
+> ApiResponse<Void> deleteOrderTotalDiscountCriteria deleteOrderTotalDiscountCriteriaWithHttpInfo(discountId, criteriaId)
+
+Delete an Order Total Discount Criteria
+
+Deletes a specified Order Total Discount Criteria
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OrderTotalDiscountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OrderTotalDiscountsApi apiInstance = new OrderTotalDiscountsApi(defaultClient);
+        String discountId = "discountId_example"; // String | 
+        String criteriaId = "criteriaId_example"; // String | 
+        try {
+            ApiResponse<Void> response = apiInstance.deleteOrderTotalDiscountCriteriaWithHttpInfo(discountId, criteriaId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrderTotalDiscountsApi#deleteOrderTotalDiscountCriteria");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **discountId** | **String**|  | |
+| **criteriaId** | **String**|  | |
 
 ### Return type
 

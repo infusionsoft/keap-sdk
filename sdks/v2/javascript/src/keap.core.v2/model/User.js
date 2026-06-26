@@ -85,6 +85,18 @@ class User {
             if (data.hasOwnProperty('family_name')) {
                 obj['family_name'] = ApiClient.convertToType(data['family_name'], 'String');
             }
+            if (data.hasOwnProperty('middle_name')) {
+                obj['middle_name'] = ApiClient.convertToType(data['middle_name'], 'String');
+            }
+            if (data.hasOwnProperty('nickname')) {
+                obj['nickname'] = ApiClient.convertToType(data['nickname'], 'String');
+            }
+            if (data.hasOwnProperty('spouse_name')) {
+                obj['spouse_name'] = ApiClient.convertToType(data['spouse_name'], 'String');
+            }
+            if (data.hasOwnProperty('suffix')) {
+                obj['suffix'] = ApiClient.convertToType(data['suffix'], 'String');
+            }
             if (data.hasOwnProperty('phone_numbers')) {
                 obj['phone_numbers'] = ApiClient.convertToType(data['phone_numbers'], [PhoneNumber]);
             }
@@ -157,6 +169,22 @@ class User {
         // ensure the json data is a string
         if (data['family_name'] && !(typeof data['family_name'] === 'string' || data['family_name'] instanceof String)) {
             throw new Error("Expected the field `family_name` to be a primitive type in the JSON string but got " + data['family_name']);
+        }
+        // ensure the json data is a string
+        if (data['middle_name'] && !(typeof data['middle_name'] === 'string' || data['middle_name'] instanceof String)) {
+            throw new Error("Expected the field `middle_name` to be a primitive type in the JSON string but got " + data['middle_name']);
+        }
+        // ensure the json data is a string
+        if (data['nickname'] && !(typeof data['nickname'] === 'string' || data['nickname'] instanceof String)) {
+            throw new Error("Expected the field `nickname` to be a primitive type in the JSON string but got " + data['nickname']);
+        }
+        // ensure the json data is a string
+        if (data['spouse_name'] && !(typeof data['spouse_name'] === 'string' || data['spouse_name'] instanceof String)) {
+            throw new Error("Expected the field `spouse_name` to be a primitive type in the JSON string but got " + data['spouse_name']);
+        }
+        // ensure the json data is a string
+        if (data['suffix'] && !(typeof data['suffix'] === 'string' || data['suffix'] instanceof String)) {
+            throw new Error("Expected the field `suffix` to be a primitive type in the JSON string but got " + data['suffix']);
         }
         if (data['phone_numbers']) { // data not null
             // ensure the json data is an array
@@ -276,6 +304,30 @@ User.prototype['given_name'] = undefined;
  * @member {String} family_name
  */
 User.prototype['family_name'] = undefined;
+
+/**
+ * The user's middle name
+ * @member {String} middle_name
+ */
+User.prototype['middle_name'] = undefined;
+
+/**
+ * The user's nickname or preferred name
+ * @member {String} nickname
+ */
+User.prototype['nickname'] = undefined;
+
+/**
+ * The name of the user's spouse
+ * @member {String} spouse_name
+ */
+User.prototype['spouse_name'] = undefined;
+
+/**
+ * The user's name suffix
+ * @member {String} suffix
+ */
+User.prototype['suffix'] = undefined;
 
 /**
  * List of user's phone numbers

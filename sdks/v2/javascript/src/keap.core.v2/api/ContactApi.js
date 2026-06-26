@@ -31,6 +31,7 @@ import ListContactsResponse from '../model/ListContactsResponse';
 import ListCustomFieldGroupsResponse from '../model/ListCustomFieldGroupsResponse';
 import MergeContactRequest from '../model/MergeContactRequest';
 import ObjectModel from '../model/ObjectModel';
+import UpdateContactLinkTypeRequest from '../model/UpdateContactLinkTypeRequest';
 import UpdateCustomFieldGroupRequest from '../model/UpdateCustomFieldGroupRequest';
 
 /**
@@ -387,6 +388,54 @@ export default class ContactApi {
      */
     deleteContactCustomFieldGroup(groupId) {
       return this.deleteContactCustomFieldGroupWithHttpInfo(groupId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Delete a Contact Link type
+     * Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+     * @param {String} linkTypeId Contact Link type identifier
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteContactLinkTypeWithHttpInfo(linkTypeId) {
+      let postBody = null;
+      // verify the required parameter 'linkTypeId' is set
+      if (linkTypeId === undefined || linkTypeId === null) {
+        throw new Error("Missing the required parameter 'linkTypeId' when calling deleteContactLinkType");
+      }
+
+      let pathParams = {
+        'link_type_id': linkTypeId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/contacts/links/types/{link_type_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete a Contact Link type
+     * Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
+     * @param {String} linkTypeId Contact Link type identifier
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteContactLinkType(linkTypeId) {
+      return this.deleteContactLinkTypeWithHttpInfo(linkTypeId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1074,6 +1123,67 @@ export default class ContactApi {
      */
     updateContactCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest) {
       return this.updateContactCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update a Contact Link type
+     * Updates the specified Contact Link type. Only fields listed in `update_mask` are applied. Reducing `max_links` below the current number of Linked Contacts of this type returns 409 Conflict.
+     * @param {String} linkTypeId Contact Link type identifier
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateContactLinkTypeRequest} updateContactLinkTypeRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ContactLinkType} and HTTP response
+     */
+    updateContactLinkTypeWithHttpInfo(linkTypeId, updateMask, updateContactLinkTypeRequest) {
+      let postBody = updateContactLinkTypeRequest;
+      // verify the required parameter 'linkTypeId' is set
+      if (linkTypeId === undefined || linkTypeId === null) {
+        throw new Error("Missing the required parameter 'linkTypeId' when calling updateContactLinkType");
+      }
+      // verify the required parameter 'updateMask' is set
+      if (updateMask === undefined || updateMask === null) {
+        throw new Error("Missing the required parameter 'updateMask' when calling updateContactLinkType");
+      }
+      // verify the required parameter 'updateContactLinkTypeRequest' is set
+      if (updateContactLinkTypeRequest === undefined || updateContactLinkTypeRequest === null) {
+        throw new Error("Missing the required parameter 'updateContactLinkTypeRequest' when calling updateContactLinkType");
+      }
+
+      let pathParams = {
+        'link_type_id': linkTypeId
+      };
+      let queryParams = {
+        'update_mask': this.apiClient.buildCollectionParam(updateMask, 'multi')
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = ContactLinkType;
+      return this.apiClient.callApi(
+        '/rest/v2/contacts/links/types/{link_type_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Update a Contact Link type
+     * Updates the specified Contact Link type. Only fields listed in `update_mask` are applied. Reducing `max_links` below the current number of Linked Contacts of this type returns 409 Conflict.
+     * @param {String} linkTypeId Contact Link type identifier
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateContactLinkTypeRequest} updateContactLinkTypeRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ContactLinkType}
+     */
+    updateContactLinkType(linkTypeId, updateMask, updateContactLinkTypeRequest) {
+      return this.updateContactLinkTypeWithHttpInfo(linkTypeId, updateMask, updateContactLinkTypeRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

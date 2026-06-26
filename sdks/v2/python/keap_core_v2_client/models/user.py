@@ -43,6 +43,10 @@ class User(BaseModel):
     keap_id: Optional[StrictStr] = Field(default=None, description="The Keap ID of the user")
     given_name: Optional[StrictStr] = Field(default=None, description="The user's first name")
     family_name: Optional[StrictStr] = Field(default=None, description="The user's last name")
+    middle_name: Optional[StrictStr] = Field(default=None, description="The user's middle name")
+    nickname: Optional[StrictStr] = Field(default=None, description="The user's nickname or preferred name")
+    spouse_name: Optional[StrictStr] = Field(default=None, description="The name of the user's spouse")
+    suffix: Optional[StrictStr] = Field(default=None, description="The user's name suffix")
     phone_numbers: Optional[List[PhoneNumber]] = Field(default=None, description="List of user's phone numbers")
     fax_numbers: Optional[List[FaxNumber]] = Field(default=None, description="List of user's fax numbers")
     email_addresses: Optional[List[EmailAddress]] = Field(default=None, description="List of user's email addresses")
@@ -53,7 +57,7 @@ class User(BaseModel):
     updated_by: Optional[StrictInt] = Field(default=None, description="ID of the user who last updated this user")
     update_time: Optional[datetime] = Field(default=None, description="When the user was last updated, in ISO-8601 format")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["address", "title", "website", "partner", "admin", "status", "id", "global_user_id", "keap_id", "given_name", "family_name", "phone_numbers", "fax_numbers", "email_addresses", "social_accounts", "company_name", "created_by", "create_time", "updated_by", "update_time"]
+    __properties: ClassVar[List[str]] = ["address", "title", "website", "partner", "admin", "status", "id", "global_user_id", "keap_id", "given_name", "family_name", "middle_name", "nickname", "spouse_name", "suffix", "phone_numbers", "fax_numbers", "email_addresses", "social_accounts", "company_name", "created_by", "create_time", "updated_by", "update_time"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -165,6 +169,10 @@ class User(BaseModel):
             "keap_id": obj.get("keap_id"),
             "given_name": obj.get("given_name"),
             "family_name": obj.get("family_name"),
+            "middle_name": obj.get("middle_name"),
+            "nickname": obj.get("nickname"),
+            "spouse_name": obj.get("spouse_name"),
+            "suffix": obj.get("suffix"),
             "phone_numbers": [PhoneNumber.from_dict(_item) for _item in obj["phone_numbers"]] if obj.get("phone_numbers") is not None else None,
             "fax_numbers": [FaxNumber.from_dict(_item) for _item in obj["fax_numbers"]] if obj.get("fax_numbers") is not None else None,
             "email_addresses": [EmailAddress.from_dict(_item) for _item in obj["email_addresses"]] if obj.get("email_addresses") is not None else None,
