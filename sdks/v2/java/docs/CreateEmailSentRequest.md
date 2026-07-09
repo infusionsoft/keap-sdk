@@ -16,7 +16,7 @@ Request to create an email record
 |**sentToBccAddressList** | **List&lt;String&gt;** | List of BCC email addresses |  [optional] |
 |**sentFromAddress** | **String** | The sender&#39;s email address |  [optional] |
 |**sentFromReplyAddress** | **String** | The reply-to email address |  [optional] |
-|**sentTime** | **ZonedDateTime** | When the email was sent, in ISO-8601 format |  [optional] |
+|**sentTime** | **ZonedDateTime** | When the email was sent, in ISO-8601 format. If omitted, the stored sent_time will be null. |  [optional] |
 |**receivedTime** | **ZonedDateTime** | When the email was received, in ISO-8601 format |  [optional] |
 |**openedTime** | **ZonedDateTime** | When the email was opened, in ISO-8601 format |  [optional] |
 |**clickedTime** | **ZonedDateTime** | When a link in the email was clicked, in ISO-8601 format |  [optional] |

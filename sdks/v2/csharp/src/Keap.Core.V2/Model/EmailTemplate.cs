@@ -70,6 +70,7 @@ namespace Keap.Core.V2.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EmailTemplate" /> class.
         /// </summary>
+        /// <param name="id">The id of the template.</param>
         /// <param name="pieceTitle">The title of the template.</param>
         /// <param name="categories">The categories associated with the email.</param>
         /// <param name="fromAddress">The from address of the email.</param>
@@ -81,8 +82,9 @@ namespace Keap.Core.V2.Model
         /// <param name="htmlBody">The HTML body of the email.</param>
         /// <param name="contentType">The content type of the email.</param>
         /// <param name="mergeContext">The merge context of the email.</param>
-        public EmailTemplate(string pieceTitle = default, List<string> categories = default, string fromAddress = default, string toAddress = default, string ccAddress = default, string bccAddress = default, string subject = default, string textBody = default, string htmlBody = default, ContentTypeEnum? contentType = default, string mergeContext = default)
+        public EmailTemplate(long id = default, string pieceTitle = default, List<string> categories = default, string fromAddress = default, string toAddress = default, string ccAddress = default, string bccAddress = default, string subject = default, string textBody = default, string htmlBody = default, ContentTypeEnum? contentType = default, string mergeContext = default)
         {
+            this.Id = id;
             this.PieceTitle = pieceTitle;
             this.Categories = categories;
             this.FromAddress = fromAddress;
@@ -95,6 +97,13 @@ namespace Keap.Core.V2.Model
             this.ContentType = contentType;
             this.MergeContext = mergeContext;
         }
+
+        /// <summary>
+        /// The id of the template
+        /// </summary>
+        /// <value>The id of the template</value>
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public long Id { get; set; }
 
         /// <summary>
         /// The title of the template
@@ -204,6 +213,7 @@ namespace Keap.Core.V2.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class EmailTemplate {\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  PieceTitle: ").Append(PieceTitle).Append("\n");
             sb.Append("  Categories: ").Append(Categories).Append("\n");
             sb.Append("  FromAddress: ").Append(FromAddress).Append("\n");

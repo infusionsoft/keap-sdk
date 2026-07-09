@@ -89,7 +89,7 @@ namespace Keap.Core.V2.Model
         /// <param name="sentToBccAddressList">List of BCC email addresses.</param>
         /// <param name="sentFromAddress">The sender&#39;s email address.</param>
         /// <param name="sentFromReplyAddress">The reply-to email address.</param>
-        /// <param name="sentTime">When the email was sent, in ISO-8601 format.</param>
+        /// <param name="sentTime">When the email was sent, in ISO-8601 format. If omitted, the stored sent_time will be null..</param>
         /// <param name="receivedTime">When the email was received, in ISO-8601 format.</param>
         /// <param name="openedTime">When the email was opened, in ISO-8601 format.</param>
         /// <param name="clickedTime">When a link in the email was clicked, in ISO-8601 format.</param>
@@ -205,9 +205,9 @@ namespace Keap.Core.V2.Model
         public string SentFromReplyAddress { get; set; }
 
         /// <summary>
-        /// When the email was sent, in ISO-8601 format
+        /// When the email was sent, in ISO-8601 format. If omitted, the stored sent_time will be null.
         /// </summary>
-        /// <value>When the email was sent, in ISO-8601 format</value>
+        /// <value>When the email was sent, in ISO-8601 format. If omitted, the stored sent_time will be null.</value>
         /*
         <example>2024-05-21T14:30:00Z</example>
         */

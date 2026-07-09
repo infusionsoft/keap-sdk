@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **sentToBccAddressList** | **[String]** | List of BCC email addresses | [optional] 
 **sentFromAddress** | **String** | The sender&#39;s email address | [optional] 
 **sentFromReplyAddress** | **String** | The reply-to email address | [optional] 
-**sentTime** | **Date** | When the email was sent, in ISO-8601 format | [optional] 
+**sentTime** | **Date** | When the email was sent, in ISO-8601 format. If omitted, the stored sent_time will be null. | [optional] 
 **receivedTime** | **Date** | When the email was received, in ISO-8601 format | [optional] 
 **openedTime** | **Date** | When the email was opened, in ISO-8601 format | [optional] 
 **clickedTime** | **Date** | When a link in the email was clicked, in ISO-8601 format | [optional] 

@@ -6,6 +6,7 @@ An email template
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **int** | The id of the template | [optional] 
 **piece_title** | **str** | The title of the template | [optional] 
 **categories** | **List[str]** | The categories associated with the email | [optional] 
 **from_address** | **str** | The from address of the email | [optional] 

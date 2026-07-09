@@ -17,7 +17,9 @@ import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Pair;
 
+import com.keap.core.sdk.model.CreateFreeTrialDiscountCriteria;
 import com.keap.core.sdk.model.CreateFreeTrialDiscountRequest;
+import com.keap.core.sdk.model.DiscountCriteria;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.FreeTrialDiscount;
 import com.keap.core.sdk.model.ListFreeTrialDiscountsResponse;
@@ -195,6 +197,104 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Create a Subscription Free Trial Discount Criteria
+   * Creates a Subscription Free Trial Discount Criteria
+   * @param discountId  (required)
+   * @param createFreeTrialDiscountCriteria  (required)
+   * @return DiscountCriteria
+   * @throws ApiException if fails to make API call
+   */
+  public DiscountCriteria createFreeTrialDiscountCriteria(String discountId, CreateFreeTrialDiscountCriteria createFreeTrialDiscountCriteria) throws ApiException {
+    ApiResponse<DiscountCriteria> localVarResponse = createFreeTrialDiscountCriteriaWithHttpInfo(discountId, createFreeTrialDiscountCriteria);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Create a Subscription Free Trial Discount Criteria
+   * Creates a Subscription Free Trial Discount Criteria
+   * @param discountId  (required)
+   * @param createFreeTrialDiscountCriteria  (required)
+   * @return ApiResponse&lt;DiscountCriteria&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<DiscountCriteria> createFreeTrialDiscountCriteriaWithHttpInfo(String discountId, CreateFreeTrialDiscountCriteria createFreeTrialDiscountCriteria) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createFreeTrialDiscountCriteriaRequestBuilder(discountId, createFreeTrialDiscountCriteria);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("createFreeTrialDiscountCriteria", localVarResponse);
+        }
+        return new ApiResponse<DiscountCriteria>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<DiscountCriteria>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder createFreeTrialDiscountCriteriaRequestBuilder(String discountId, CreateFreeTrialDiscountCriteria createFreeTrialDiscountCriteria) throws ApiException {
+    // verify the required parameter 'discountId' is set
+    if (discountId == null) {
+      throw new ApiException(400, "Missing the required parameter 'discountId' when calling createFreeTrialDiscountCriteria");
+    }
+    // verify the required parameter 'createFreeTrialDiscountCriteria' is set
+    if (createFreeTrialDiscountCriteria == null) {
+      throw new ApiException(400, "Missing the required parameter 'createFreeTrialDiscountCriteria' when calling createFreeTrialDiscountCriteria");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/discounts/freeTrials/{discount_id}/criteria"
+        .replace("{discount_id}", ApiClient.urlEncode(discountId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(createFreeTrialDiscountCriteria);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Delete a Subscription Free Trial Discount
    * Deletes a specified Subscription Free Trial Discount
    * @param discountId  (required)
@@ -267,6 +367,102 @@ import io.github.resilience4j.retry.Retry;
 
     String localVarPath = "/rest/v2/discounts/freeTrials/{discount_id}"
         .replace("{discount_id}", ApiClient.urlEncode(discountId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Delete a Subscription Free Trial Discount Criteria
+   * Deletes a specified Subscription Free Trial Discount Criteria
+   * @param discountId  (required)
+   * @param criteriaId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteFreeTrialDiscountCriteria(String discountId, String criteriaId) throws ApiException {
+    deleteFreeTrialDiscountCriteriaWithHttpInfo(discountId, criteriaId);
+  }
+
+  /**
+   * Delete a Subscription Free Trial Discount Criteria
+   * Deletes a specified Subscription Free Trial Discount Criteria
+   * @param discountId  (required)
+   * @param criteriaId  (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteFreeTrialDiscountCriteriaWithHttpInfo(String discountId, String criteriaId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteFreeTrialDiscountCriteriaRequestBuilder(discountId, criteriaId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteFreeTrialDiscountCriteria", localVarResponse);
+        }
+        return new ApiResponse<Void>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          null
+        );
+      } finally {
+        // Drain the InputStream
+        while (localVarResponse.body().read() != -1) {
+            // Ignore
+        }
+        localVarResponse.body().close();
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteFreeTrialDiscountCriteriaRequestBuilder(String discountId, String criteriaId) throws ApiException {
+    // verify the required parameter 'discountId' is set
+    if (discountId == null) {
+      throw new ApiException(400, "Missing the required parameter 'discountId' when calling deleteFreeTrialDiscountCriteria");
+    }
+    // verify the required parameter 'criteriaId' is set
+    if (criteriaId == null) {
+      throw new ApiException(400, "Missing the required parameter 'criteriaId' when calling deleteFreeTrialDiscountCriteria");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/discounts/freeTrials/{discount_id}/criteria/{criteria_id}"
+        .replace("{discount_id}", ApiClient.urlEncode(discountId.toString()))
+        .replace("{criteria_id}", ApiClient.urlEncode(criteriaId.toString()));
 
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
 

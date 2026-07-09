@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Name of the discount | 
 **Description** | **string** | Description of the discount | [optional] 
-**Criteria** | [**List&lt;DiscountCriteria&gt;**](DiscountCriteria.md) | List of criteria that must be met for this discount to apply | [optional] 
+**Criteria** | [**List&lt;CreateFreeTrialDiscountCriteria&gt;**](CreateFreeTrialDiscountCriteria.md) | List of criteria that must be met for this discount to apply | [optional] 
 **HidePrice** | **bool** | Whether to hide the price during the trial period | [optional] 
 **SubscriptionPlanId** | **string** | ID of the subscription plan this trial applies to | 
 **FreeTrialDays** | **int** | Number of free trial days. Must be a positive number. Defaults to 0. | [optional] 

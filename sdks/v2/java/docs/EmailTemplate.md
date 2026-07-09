@@ -8,6 +8,7 @@ An email template
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**id** | **Long** | The id of the template |  [optional] |
 |**pieceTitle** | **String** | The title of the template |  [optional] |
 |**categories** | **List&lt;String&gt;** | The categories associated with the email |  [optional] |
 |**fromAddress** | **String** | The from address of the email |  [optional] |

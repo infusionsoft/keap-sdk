@@ -58,6 +58,7 @@ class EmailTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'int',
         'piece_title' => 'string',
         'categories' => 'string[]',
         'from_address' => 'string',
@@ -79,6 +80,7 @@ class EmailTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => 'int64',
         'piece_title' => null,
         'categories' => null,
         'from_address' => null,
@@ -98,6 +100,7 @@ class EmailTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'id' => false,
         'piece_title' => false,
         'categories' => false,
         'from_address' => false,
@@ -197,6 +200,7 @@ class EmailTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'piece_title' => 'piece_title',
         'categories' => 'categories',
         'from_address' => 'from_address',
@@ -216,6 +220,7 @@ class EmailTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'piece_title' => 'setPieceTitle',
         'categories' => 'setCategories',
         'from_address' => 'setFromAddress',
@@ -235,6 +240,7 @@ class EmailTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'piece_title' => 'getPieceTitle',
         'categories' => 'getCategories',
         'from_address' => 'getFromAddress',
@@ -322,6 +328,7 @@ class EmailTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('piece_title', $data ?? [], null);
         $this->setIfExists('categories', $data ?? [], null);
         $this->setIfExists('from_address', $data ?? [], null);
@@ -385,6 +392,33 @@ class EmailTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return int|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int|null $id The id of the template
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets piece_title

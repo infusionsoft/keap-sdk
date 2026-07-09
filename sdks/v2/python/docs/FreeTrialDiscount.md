@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **id** | **str** | Unique identifier for this free trial discount | [optional] 
 **name** | **str** | Name of the discount | [optional] 
 **description** | **str** | Description of the discount | [optional] 
-**criteria** | [**List[DiscountCriteria]**](DiscountCriteria.md) | List of criteria that must be met for this discount to apply | [optional] 
+**criteria** | [**List[FreeTrialDiscountCriteriaResponse]**](FreeTrialDiscountCriteriaResponse.md) | List of criteria that must be met for this discount to apply | [optional] 
 **hide_price** | **bool** | Whether to hide the price during the trial period | [optional] 
 **subscription_plan_id** | **str** | ID of the subscription plan this trial applies to | [optional] 
 **free_trial_days** | **int** | Number of days for the free trial period | [optional] 

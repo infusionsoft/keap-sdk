@@ -9,7 +9,8 @@ Name | Type | Description | Notes
 **contacts** | **List[str]** | An array of Contact Ids to receive the email | 
 **subject** | **str** | The subject line of the email | 
 **attachments** | [**List[EmailSendRequestAttachment]**](EmailSendRequestAttachment.md) | Attachments to be sent with each copy of the email, maximum of 10 with size of 1MB each | [optional] 
-**user_id** | **str** | The user ID to send the email on behalf of | 
+**user_id** | **str** | The user ID to send the email on behalf of. Exactly one of user_id or from_address is required. | [optional] 
+**from_address** | **str** | The authenticated sender email address to send from. Exactly one of user_id or from_address is required. | [optional] 
 **html_content** | **str** | The HTML-formatted content of the email, encoded in Base64 | [optional] 
 **plain_content** | **str** | The plain-text content of the email, encoded in Base64 | [optional] 
 **address_field** | **str** | Email field of each Contact record to address the email to, such as &#39;Email&#39;, &#39;EmailAddress2&#39;, &#39;EmailAddress3&#39; or &#39;_CustomFieldName&#39;, defaulting to the contact&#39;s primary email | [optional] 

@@ -5,7 +5,9 @@ All URIs are relative to *https://api.keap.com/crm*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createFreeTrialDiscount**](FreeTrialDiscountsApi.md#createFreeTrialDiscount) | **POST** /rest/v2/discounts/freeTrials | Create a Subscription Free Trial Discount
+[**createFreeTrialDiscountCriteria**](FreeTrialDiscountsApi.md#createFreeTrialDiscountCriteria) | **POST** /rest/v2/discounts/freeTrials/{discount_id}/criteria | Create a Subscription Free Trial Discount Criteria
 [**deleteFreeTrialDiscount**](FreeTrialDiscountsApi.md#deleteFreeTrialDiscount) | **DELETE** /rest/v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount
+[**deleteFreeTrialDiscountCriteria**](FreeTrialDiscountsApi.md#deleteFreeTrialDiscountCriteria) | **DELETE** /rest/v2/discounts/freeTrials/{discount_id}/criteria/{criteria_id} | Delete a Subscription Free Trial Discount Criteria
 [**getFreeTrialDiscount**](FreeTrialDiscountsApi.md#getFreeTrialDiscount) | **GET** /rest/v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount
 [**listFreeTrialDiscounts**](FreeTrialDiscountsApi.md#listFreeTrialDiscounts) | **GET** /rest/v2/discounts/freeTrials | List all Subscription Free Trial Discounts
 [**updateFreeTrialDiscount**](FreeTrialDiscountsApi.md#updateFreeTrialDiscount) | **PATCH** /rest/v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount
@@ -60,6 +62,56 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## createFreeTrialDiscountCriteria
+
+> DiscountCriteria createFreeTrialDiscountCriteria(discountId, createFreeTrialDiscountCriteria)
+
+Create a Subscription Free Trial Discount Criteria
+
+Creates a Subscription Free Trial Discount Criteria
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.FreeTrialDiscountsApi();
+let discountId = "discountId_example"; // String | 
+let createFreeTrialDiscountCriteria = new KeapCoreServiceV2Sdk.CreateFreeTrialDiscountCriteria(); // CreateFreeTrialDiscountCriteria | 
+apiInstance.createFreeTrialDiscountCriteria(discountId, createFreeTrialDiscountCriteria).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **discountId** | **String**|  | 
+ **createFreeTrialDiscountCriteria** | [**CreateFreeTrialDiscountCriteria**](CreateFreeTrialDiscountCriteria.md)|  | 
+
+### Return type
+
+[**DiscountCriteria**](DiscountCriteria.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## deleteFreeTrialDiscount
 
 > deleteFreeTrialDiscount(discountId)
@@ -93,6 +145,56 @@ apiInstance.deleteFreeTrialDiscount(discountId).then(() => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **discountId** | **String**|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## deleteFreeTrialDiscountCriteria
+
+> deleteFreeTrialDiscountCriteria(discountId, criteriaId)
+
+Delete a Subscription Free Trial Discount Criteria
+
+Deletes a specified Subscription Free Trial Discount Criteria
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.FreeTrialDiscountsApi();
+let discountId = "discountId_example"; // String | 
+let criteriaId = "criteriaId_example"; // String | 
+apiInstance.deleteFreeTrialDiscountCriteria(discountId, criteriaId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **discountId** | **String**|  | 
+ **criteriaId** | **String**|  | 
 
 ### Return type
 

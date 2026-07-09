@@ -19,6 +19,7 @@ import AddToAutomationSequenceRequest from '../model/AddToAutomationSequenceRequ
 import AddToAutomationSequenceResponse from '../model/AddToAutomationSequenceResponse';
 import AssignAutomationCategoryRequest from '../model/AssignAutomationCategoryRequest';
 import Automation from '../model/Automation';
+import AutomationStateRequest from '../model/AutomationStateRequest';
 import BatchUnpublishAutomationRequest from '../model/BatchUnpublishAutomationRequest';
 import Error from '../model/Error';
 import ListAutomationIdsResponse from '../model/ListAutomationIdsResponse';
@@ -502,6 +503,60 @@ export default class AutomationApi {
      */
     unpublishAutomation(automationId, unpublishAutomationRequest) {
       return this.unpublishAutomationWithHttpInfo(automationId, unpublishAutomationRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update the state of an Easy Automation
+     * Updates the lifecycle state of an existing Easy Automation. Supported states: `disabled`, `enabled`.
+     * @param {String} automationId 
+     * @param {module:keap.core.v2/model/AutomationStateRequest} automationStateRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    updateStateWithHttpInfo(automationId, automationStateRequest) {
+      let postBody = automationStateRequest;
+      // verify the required parameter 'automationId' is set
+      if (automationId === undefined || automationId === null) {
+        throw new Error("Missing the required parameter 'automationId' when calling updateState");
+      }
+      // verify the required parameter 'automationStateRequest' is set
+      if (automationStateRequest === undefined || automationStateRequest === null) {
+        throw new Error("Missing the required parameter 'automationStateRequest' when calling updateState");
+      }
+
+      let pathParams = {
+        'automation_id': automationId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/easy-automations/{automation_id}/state', 'PUT',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Update the state of an Easy Automation
+     * Updates the lifecycle state of an existing Easy Automation. Supported states: `disabled`, `enabled`.
+     * @param {String} automationId 
+     * @param {module:keap.core.v2/model/AutomationStateRequest} automationStateRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    updateState(automationId, automationStateRequest) {
+      return this.updateStateWithHttpInfo(automationId, automationStateRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

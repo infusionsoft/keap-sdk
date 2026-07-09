@@ -17,6 +17,10 @@ import { HttpFile } from '../http/http';
 */
 export class EmailTemplate {
     /**
+    * The id of the template
+    */
+    'id'?: number;
+    /**
     * The title of the template
     */
     'pieceTitle'?: string;
@@ -66,6 +70,12 @@ export class EmailTemplate {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "id",
+            "baseName": "id",
+            "type": "number",
+            "format": "int64"
+        },
         {
             "name": "pieceTitle",
             "baseName": "piece_title",

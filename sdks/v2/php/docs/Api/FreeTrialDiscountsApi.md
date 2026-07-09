@@ -5,7 +5,9 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**createFreeTrialDiscount()**](FreeTrialDiscountsApi.md#createFreeTrialDiscount) | **POST** /rest/v2/discounts/freeTrials | Create a Subscription Free Trial Discount |
+| [**createFreeTrialDiscountCriteria()**](FreeTrialDiscountsApi.md#createFreeTrialDiscountCriteria) | **POST** /rest/v2/discounts/freeTrials/{discount_id}/criteria | Create a Subscription Free Trial Discount Criteria |
 | [**deleteFreeTrialDiscount()**](FreeTrialDiscountsApi.md#deleteFreeTrialDiscount) | **DELETE** /rest/v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount |
+| [**deleteFreeTrialDiscountCriteria()**](FreeTrialDiscountsApi.md#deleteFreeTrialDiscountCriteria) | **DELETE** /rest/v2/discounts/freeTrials/{discount_id}/criteria/{criteria_id} | Delete a Subscription Free Trial Discount Criteria |
 | [**getFreeTrialDiscount()**](FreeTrialDiscountsApi.md#getFreeTrialDiscount) | **GET** /rest/v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount |
 | [**listFreeTrialDiscounts()**](FreeTrialDiscountsApi.md#listFreeTrialDiscounts) | **GET** /rest/v2/discounts/freeTrials | List all Subscription Free Trial Discounts |
 | [**updateFreeTrialDiscount()**](FreeTrialDiscountsApi.md#updateFreeTrialDiscount) | **PATCH** /rest/v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount |
@@ -70,6 +72,67 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createFreeTrialDiscountCriteria()`
+
+```php
+createFreeTrialDiscountCriteria($discount_id, $create_free_trial_discount_criteria): \Keap\Core\V2\Model\DiscountCriteria
+```
+
+Create a Subscription Free Trial Discount Criteria
+
+Creates a Subscription Free Trial Discount Criteria
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\FreeTrialDiscountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$discount_id = 'discount_id_example'; // string
+$create_free_trial_discount_criteria = new \Keap\Core\V2\Model\CreateFreeTrialDiscountCriteria(); // \Keap\Core\V2\Model\CreateFreeTrialDiscountCriteria
+
+try {
+    $result = $apiInstance->createFreeTrialDiscountCriteria($discount_id, $create_free_trial_discount_criteria);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling FreeTrialDiscountsApi->createFreeTrialDiscountCriteria: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **discount_id** | **string**|  | |
+| **create_free_trial_discount_criteria** | [**\Keap\Core\V2\Model\CreateFreeTrialDiscountCriteria**](../Model/CreateFreeTrialDiscountCriteria.md)|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\DiscountCriteria**](../Model/DiscountCriteria.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteFreeTrialDiscount()`
 
 ```php
@@ -110,6 +173,66 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **discount_id** | **string**|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteFreeTrialDiscountCriteria()`
+
+```php
+deleteFreeTrialDiscountCriteria($discount_id, $criteria_id)
+```
+
+Delete a Subscription Free Trial Discount Criteria
+
+Deletes a specified Subscription Free Trial Discount Criteria
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\FreeTrialDiscountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$discount_id = 'discount_id_example'; // string
+$criteria_id = 'criteria_id_example'; // string
+
+try {
+    $apiInstance->deleteFreeTrialDiscountCriteria($discount_id, $criteria_id);
+} catch (Exception $e) {
+    echo 'Exception when calling FreeTrialDiscountsApi->deleteFreeTrialDiscountCriteria: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **discount_id** | **string**|  | |
+| **criteria_id** | **string**|  | |
 
 ### Return type
 

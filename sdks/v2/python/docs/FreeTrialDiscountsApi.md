@@ -5,7 +5,9 @@ All URIs are relative to *https://api.keap.com/crm*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_free_trial_discount**](FreeTrialDiscountsApi.md#create_free_trial_discount) | **POST** /rest/v2/discounts/freeTrials | Create a Subscription Free Trial Discount
+[**create_free_trial_discount_criteria**](FreeTrialDiscountsApi.md#create_free_trial_discount_criteria) | **POST** /rest/v2/discounts/freeTrials/{discount_id}/criteria | Create a Subscription Free Trial Discount Criteria
 [**delete_free_trial_discount**](FreeTrialDiscountsApi.md#delete_free_trial_discount) | **DELETE** /rest/v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount
+[**delete_free_trial_discount_criteria**](FreeTrialDiscountsApi.md#delete_free_trial_discount_criteria) | **DELETE** /rest/v2/discounts/freeTrials/{discount_id}/criteria/{criteria_id} | Delete a Subscription Free Trial Discount Criteria
 [**get_free_trial_discount**](FreeTrialDiscountsApi.md#get_free_trial_discount) | **GET** /rest/v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount
 [**list_free_trial_discounts**](FreeTrialDiscountsApi.md#list_free_trial_discounts) | **GET** /rest/v2/discounts/freeTrials | List all Subscription Free Trial Discounts
 [**update_free_trial_discount**](FreeTrialDiscountsApi.md#update_free_trial_discount) | **PATCH** /rest/v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount
@@ -93,6 +95,90 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_free_trial_discount_criteria**
+> DiscountCriteria create_free_trial_discount_criteria(discount_id, create_free_trial_discount_criteria)
+
+Create a Subscription Free Trial Discount Criteria
+
+Creates a Subscription Free Trial Discount Criteria
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.create_free_trial_discount_criteria import CreateFreeTrialDiscountCriteria
+from keap_core_v2_client.models.discount_criteria import DiscountCriteria
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.FreeTrialDiscountsApi(api_client)
+    discount_id = 'discount_id_example' # str | 
+    create_free_trial_discount_criteria = keap_core_v2_client.CreateFreeTrialDiscountCriteria() # CreateFreeTrialDiscountCriteria | 
+
+    try:
+        # Create a Subscription Free Trial Discount Criteria
+        api_response = api_instance.create_free_trial_discount_criteria(discount_id, create_free_trial_discount_criteria)
+        print("The response of FreeTrialDiscountsApi->create_free_trial_discount_criteria:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FreeTrialDiscountsApi->create_free_trial_discount_criteria: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **discount_id** | **str**|  | 
+ **create_free_trial_discount_criteria** | [**CreateFreeTrialDiscountCriteria**](CreateFreeTrialDiscountCriteria.md)|  | 
+
+### Return type
+
+[**DiscountCriteria**](DiscountCriteria.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_free_trial_discount**
 > delete_free_trial_discount(discount_id)
 
@@ -141,6 +227,86 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **discount_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_free_trial_discount_criteria**
+> delete_free_trial_discount_criteria(discount_id, criteria_id)
+
+Delete a Subscription Free Trial Discount Criteria
+
+Deletes a specified Subscription Free Trial Discount Criteria
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.FreeTrialDiscountsApi(api_client)
+    discount_id = 'discount_id_example' # str | 
+    criteria_id = 'criteria_id_example' # str | 
+
+    try:
+        # Delete a Subscription Free Trial Discount Criteria
+        api_instance.delete_free_trial_discount_criteria(discount_id, criteria_id)
+    except Exception as e:
+        print("Exception when calling FreeTrialDiscountsApi->delete_free_trial_discount_criteria: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **discount_id** | **str**|  | 
+ **criteria_id** | **str**|  | 
 
 ### Return type
 

@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -26,6 +26,7 @@ class EmailTemplate(BaseModel):
     """
     An email template
     """ # noqa: E501
+    id: Optional[StrictInt] = Field(default=None, description="The id of the template")
     piece_title: Optional[StrictStr] = Field(default=None, description="The title of the template")
     categories: Optional[List[StrictStr]] = Field(default=None, description="The categories associated with the email")
     from_address: Optional[StrictStr] = Field(default=None, description="The from address of the email")
@@ -38,7 +39,7 @@ class EmailTemplate(BaseModel):
     content_type: Optional[StrictStr] = Field(default=None, description="The content type of the email")
     merge_context: Optional[StrictStr] = Field(default=None, description="The merge context of the email")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["piece_title", "categories", "from_address", "to_address", "cc_address", "bcc_address", "subject", "text_body", "html_body", "content_type", "merge_context"]
+    __properties: ClassVar[List[str]] = ["id", "piece_title", "categories", "from_address", "to_address", "cc_address", "bcc_address", "subject", "text_body", "html_body", "content_type", "merge_context"]
 
     @field_validator('content_type')
     def content_type_validate_enum(cls, value):
@@ -108,6 +109,7 @@ class EmailTemplate(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "id": obj.get("id"),
             "piece_title": obj.get("piece_title"),
             "categories": obj.get("categories"),
             "from_address": obj.get("from_address"),

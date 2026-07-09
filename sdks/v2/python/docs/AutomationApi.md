@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**list_all_automation_ids**](AutomationApi.md#list_all_automation_ids) | **GET** /rest/v2/automations/ids | List Automations Ids
 [**list_automations**](AutomationApi.md#list_automations) | **GET** /rest/v2/automations | List Automations
 [**unpublish_automation**](AutomationApi.md#unpublish_automation) | **PUT** /rest/v2/automations/{automation_id}/unpublish | Unpublish an Automation
+[**update_state**](AutomationApi.md#update_state) | **PUT** /rest/v2/easy-automations/{automation_id}/state | Update the state of an Easy Automation
 
 
 # **achieve_goal**
@@ -745,6 +746,87 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_state**
+> update_state(automation_id, automation_state_request)
+
+Update the state of an Easy Automation
+
+Updates the lifecycle state of an existing Easy Automation. Supported states: `disabled`, `enabled`.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.automation_state_request import AutomationStateRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AutomationApi(api_client)
+    automation_id = 'automation_id_example' # str | 
+    automation_state_request = keap_core_v2_client.AutomationStateRequest() # AutomationStateRequest | 
+
+    try:
+        # Update the state of an Easy Automation
+        api_instance.update_state(automation_id, automation_state_request)
+    except Exception as e:
+        print("Exception when calling AutomationApi->update_state: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **automation_id** | **str**|  | 
+ **automation_state_request** | [**AutomationStateRequest**](AutomationStateRequest.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

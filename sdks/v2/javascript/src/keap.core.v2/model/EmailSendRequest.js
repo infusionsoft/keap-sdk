@@ -25,11 +25,10 @@ class EmailSendRequest {
      * @alias module:keap.core.v2/model/EmailSendRequest
      * @param contacts {Array.<String>} An array of Contact Ids to receive the email
      * @param subject {String} The subject line of the email
-     * @param userId {String} The user ID to send the email on behalf of
      */
-    constructor(contacts, subject, userId) { 
+    constructor(contacts, subject) { 
         
-        EmailSendRequest.initialize(this, contacts, subject, userId);
+        EmailSendRequest.initialize(this, contacts, subject);
     }
 
     /**
@@ -37,10 +36,9 @@ class EmailSendRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, contacts, subject, userId) { 
+    static initialize(obj, contacts, subject) { 
         obj['contacts'] = contacts;
         obj['subject'] = subject;
-        obj['user_id'] = userId;
     }
 
     /**
@@ -65,6 +63,9 @@ class EmailSendRequest {
             }
             if (data.hasOwnProperty('user_id')) {
                 obj['user_id'] = ApiClient.convertToType(data['user_id'], 'String');
+            }
+            if (data.hasOwnProperty('from_address')) {
+                obj['from_address'] = ApiClient.convertToType(data['from_address'], 'String');
             }
             if (data.hasOwnProperty('html_content')) {
                 obj['html_content'] = ApiClient.convertToType(data['html_content'], 'String');
@@ -114,6 +115,10 @@ class EmailSendRequest {
             throw new Error("Expected the field `user_id` to be a primitive type in the JSON string but got " + data['user_id']);
         }
         // ensure the json data is a string
+        if (data['from_address'] && !(typeof data['from_address'] === 'string' || data['from_address'] instanceof String)) {
+            throw new Error("Expected the field `from_address` to be a primitive type in the JSON string but got " + data['from_address']);
+        }
+        // ensure the json data is a string
         if (data['html_content'] && !(typeof data['html_content'] === 'string' || data['html_content'] instanceof String)) {
             throw new Error("Expected the field `html_content` to be a primitive type in the JSON string but got " + data['html_content']);
         }
@@ -132,7 +137,7 @@ class EmailSendRequest {
 
 }
 
-EmailSendRequest.RequiredProperties = ["contacts", "subject", "user_id"];
+EmailSendRequest.RequiredProperties = ["contacts", "subject"];
 
 /**
  * An array of Contact Ids to receive the email
@@ -153,10 +158,16 @@ EmailSendRequest.prototype['subject'] = undefined;
 EmailSendRequest.prototype['attachments'] = undefined;
 
 /**
- * The user ID to send the email on behalf of
+ * The user ID to send the email on behalf of. Exactly one of user_id or from_address is required.
  * @member {String} user_id
  */
 EmailSendRequest.prototype['user_id'] = undefined;
+
+/**
+ * The authenticated sender email address to send from. Exactly one of user_id or from_address is required.
+ * @member {String} from_address
+ */
+EmailSendRequest.prototype['from_address'] = undefined;
 
 /**
  * The HTML-formatted content of the email, encoded in Base64

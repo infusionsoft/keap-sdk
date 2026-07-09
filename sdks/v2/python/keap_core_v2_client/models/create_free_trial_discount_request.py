@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from keap_core_v2_client.models.discount_criteria import DiscountCriteria
+from keap_core_v2_client.models.create_free_trial_discount_criteria import CreateFreeTrialDiscountCriteria
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +29,7 @@ class CreateFreeTrialDiscountRequest(BaseModel):
     """ # noqa: E501
     name: StrictStr = Field(description="Name of the discount")
     description: Optional[StrictStr] = Field(default=None, description="Description of the discount")
-    criteria: Optional[List[DiscountCriteria]] = Field(default=None, description="List of criteria that must be met for this discount to apply")
+    criteria: Optional[List[CreateFreeTrialDiscountCriteria]] = Field(default=None, description="List of criteria that must be met for this discount to apply")
     hide_price: Optional[StrictBool] = Field(default=None, description="Whether to hide the price during the trial period")
     subscription_plan_id: StrictStr = Field(description="ID of the subscription plan this trial applies to")
     free_trial_days: Optional[StrictInt] = Field(default=None, description="Number of free trial days. Must be a positive number. Defaults to 0.")
@@ -103,7 +103,7 @@ class CreateFreeTrialDiscountRequest(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "criteria": [DiscountCriteria.from_dict(_item) for _item in obj["criteria"]] if obj.get("criteria") is not None else None,
+            "criteria": [CreateFreeTrialDiscountCriteria.from_dict(_item) for _item in obj["criteria"]] if obj.get("criteria") is not None else None,
             "hide_price": obj.get("hide_price"),
             "subscription_plan_id": obj.get("subscription_plan_id"),
             "free_trial_days": obj.get("free_trial_days")

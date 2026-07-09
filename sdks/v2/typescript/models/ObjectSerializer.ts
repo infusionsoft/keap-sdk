@@ -50,6 +50,7 @@ export * from '../models/AssignedProducts';
 export * from '../models/Automation';
 export * from '../models/AutomationCategory';
 export * from '../models/AutomationLockStatus';
+export * from '../models/AutomationStateRequest';
 export * from '../models/BasicCompany';
 export * from '../models/BasicContact';
 export * from '../models/BasicUser';
@@ -88,6 +89,7 @@ export * from '../models/CreateCustomFieldResponse';
 export * from '../models/CreateDefaultCommissionProgramRequest';
 export * from '../models/CreateEmailSentRequest';
 export * from '../models/CreateEmailsSentRequest';
+export * from '../models/CreateFreeTrialDiscountCriteria';
 export * from '../models/CreateFreeTrialDiscountRequest';
 export * from '../models/CreateIntegrationsWordPressOptInOption';
 export * from '../models/CreateLeadSourceExpenseRequest';
@@ -156,6 +158,7 @@ export * from '../models/FileMetadata';
 export * from '../models/FileOperationRequest';
 export * from '../models/FlowEventResultDTO';
 export * from '../models/FreeTrialDiscount';
+export * from '../models/FreeTrialDiscountCriteriaResponse';
 export * from '../models/GetApplicationEnabledStatusResponse';
 export * from '../models/GetBusinessProfileResponse';
 export * from '../models/GetContactOptionTypesResponse';
@@ -260,6 +263,7 @@ export * from '../models/OrderTotalDiscount';
 export * from '../models/OrderV2';
 export * from '../models/Origin';
 export * from '../models/OriginRequest';
+export * from '../models/ParticipantCount';
 export * from '../models/PatchAutomationCategoryRequest';
 export * from '../models/Payment';
 export * from '../models/PaymentMethod';
@@ -334,6 +338,7 @@ export * from '../models/UpdateCustomFieldGroupRequest';
 export * from '../models/UpdateCustomFieldMetaDataRequest';
 export * from '../models/UpdateDefaultCommissionProgramRequest';
 export * from '../models/UpdateEmailAddress';
+export * from '../models/UpdateFreeTrialDiscountCriteria';
 export * from '../models/UpdateFreeTrialDiscountRequest';
 export * from '../models/UpdateLeadSourceExpenseRequest';
 export * from '../models/UpdateNoteRequest';
@@ -423,6 +428,7 @@ import { AssignedProducts } from '../models/AssignedProducts';
 import { Automation   , AutomationStatusEnum          } from '../models/Automation';
 import { AutomationCategory } from '../models/AutomationCategory';
 import { AutomationLockStatus } from '../models/AutomationLockStatus';
+import { AutomationStateRequest, AutomationStateRequestStateEnum   } from '../models/AutomationStateRequest';
 import { BasicCompany } from '../models/BasicCompany';
 import { BasicContact } from '../models/BasicContact';
 import { BasicUser } from '../models/BasicUser';
@@ -461,6 +467,7 @@ import { CreateCustomFieldResponse } from '../models/CreateCustomFieldResponse';
 import { CreateDefaultCommissionProgramRequest     , CreateDefaultCommissionProgramRequestPayoutTypeEnum   } from '../models/CreateDefaultCommissionProgramRequest';
 import { CreateEmailSentRequest              , CreateEmailSentRequestOriginalProviderEnum     } from '../models/CreateEmailSentRequest';
 import { CreateEmailsSentRequest } from '../models/CreateEmailsSentRequest';
+import { CreateFreeTrialDiscountCriteria, CreateFreeTrialDiscountCriteriaTypeEnum           , CreateFreeTrialDiscountCriteriaOperatorEnum   } from '../models/CreateFreeTrialDiscountCriteria';
 import { CreateFreeTrialDiscountRequest } from '../models/CreateFreeTrialDiscountRequest';
 import { CreateIntegrationsWordPressOptInOption } from '../models/CreateIntegrationsWordPressOptInOption';
 import { CreateLeadSourceExpenseRequest } from '../models/CreateLeadSourceExpenseRequest';
@@ -521,7 +528,7 @@ import { EmailSendTemplateRequest } from '../models/EmailSendTemplateRequest';
 import { EmailSent              , EmailSentOriginalProviderEnum    } from '../models/EmailSent';
 import { EmailSentCreateError } from '../models/EmailSentCreateError';
 import { EmailSentWithContent              , EmailSentWithContentOriginalProviderEnum      } from '../models/EmailSentWithContent';
-import { EmailTemplate         , EmailTemplateContentTypeEnum    } from '../models/EmailTemplate';
+import { EmailTemplate          , EmailTemplateContentTypeEnum    } from '../models/EmailTemplate';
 import { EmailsSentList } from '../models/EmailsSentList';
 import { ErrorDetails } from '../models/ErrorDetails';
 import { FaxNumber  , FaxNumberFieldEnum   } from '../models/FaxNumber';
@@ -529,6 +536,7 @@ import { FileMetadata , FileMetadataCategoryEnum       , FileMetadataFileBoxType
 import { FileOperationRequest } from '../models/FileOperationRequest';
 import { FlowEventResultDTO } from '../models/FlowEventResultDTO';
 import { FreeTrialDiscount } from '../models/FreeTrialDiscount';
+import { FreeTrialDiscountCriteriaResponse, FreeTrialDiscountCriteriaResponseTypeEnum            , FreeTrialDiscountCriteriaResponseOperatorEnum   } from '../models/FreeTrialDiscountCriteriaResponse';
 import { GetApplicationEnabledStatusResponse } from '../models/GetApplicationEnabledStatusResponse';
 import { GetBusinessProfileResponse } from '../models/GetBusinessProfileResponse';
 import { GetContactOptionTypesResponse } from '../models/GetContactOptionTypesResponse';
@@ -633,6 +641,7 @@ import { OrderTotalDiscount     , OrderTotalDiscountDiscountTypeEnum   , OrderTo
 import { OrderV2  , OrderV2StatusEnum      , OrderV2OrderTypeEnum  , OrderV2SourceTypeEnum                        } from '../models/OrderV2';
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
+import { ParticipantCount } from '../models/ParticipantCount';
 import { PatchAutomationCategoryRequest } from '../models/PatchAutomationCategoryRequest';
 import { Payment    , PaymentStatusEnum           , PaymentMerchantAccountTypeEnum    } from '../models/Payment';
 import { PaymentMethod   , PaymentMethodMerchantAccountTypeEnum   , PaymentMethodPaymentMethodTypeEnum    , PaymentMethodStatusEnum   } from '../models/PaymentMethod';
@@ -707,6 +716,7 @@ import { UpdateCustomFieldGroupRequest } from '../models/UpdateCustomFieldGroupR
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
 import { UpdateDefaultCommissionProgramRequest     , UpdateDefaultCommissionProgramRequestPayoutTypeEnum   } from '../models/UpdateDefaultCommissionProgramRequest';
 import { UpdateEmailAddress } from '../models/UpdateEmailAddress';
+import { UpdateFreeTrialDiscountCriteria, UpdateFreeTrialDiscountCriteriaTypeEnum            , UpdateFreeTrialDiscountCriteriaOperatorEnum   } from '../models/UpdateFreeTrialDiscountCriteria';
 import { UpdateFreeTrialDiscountRequest } from '../models/UpdateFreeTrialDiscountRequest';
 import { UpdateLeadSourceExpenseRequest } from '../models/UpdateLeadSourceExpenseRequest';
 import { UpdateNoteRequest } from '../models/UpdateNoteRequest';
@@ -765,6 +775,7 @@ let enumsMap: Set<string> = new Set<string>([
     "AffiliateProgramResourceTypeEnum",
     "ApplyCommissionRequestPayoutTypeEnum",
     "AutomationStatusEnum",
+    "AutomationStateRequestStateEnum",
     "CardInfoCardTypeEnum",
     "CategoryDiscountCriteriaRequestTypeEnum",
     "CategoryDiscountCriteriaResponseTypeEnum",
@@ -773,6 +784,8 @@ let enumsMap: Set<string> = new Set<string>([
     "CreateCustomFieldRequestFieldTypeEnum",
     "CreateDefaultCommissionProgramRequestPayoutTypeEnum",
     "CreateEmailSentRequestOriginalProviderEnum",
+    "CreateFreeTrialDiscountCriteriaTypeEnum",
+    "CreateFreeTrialDiscountCriteriaOperatorEnum",
     "CreateLeadSourceRequestStatusEnum",
     "CreateOrderItemRequestItemTypeEnum",
     "CreateOrderTotalDiscountCriteriaTypeEnum",
@@ -815,6 +828,8 @@ let enumsMap: Set<string> = new Set<string>([
     "FaxNumberFieldEnum",
     "FileMetadataCategoryEnum",
     "FileMetadataFileBoxTypeEnum",
+    "FreeTrialDiscountCriteriaResponseTypeEnum",
+    "FreeTrialDiscountCriteriaResponseOperatorEnum",
     "GoalTypeEnum",
     "InvoiceOrderPaymentPayStatusEnum",
     "ItemTypeEnum",
@@ -868,6 +883,8 @@ let enumsMap: Set<string> = new Set<string>([
     "TransactionV2MerchantAccountTypeEnum",
     "UpdateAffiliateRequestStatusEnum",
     "UpdateDefaultCommissionProgramRequestPayoutTypeEnum",
+    "UpdateFreeTrialDiscountCriteriaTypeEnum",
+    "UpdateFreeTrialDiscountCriteriaOperatorEnum",
     "UpdateOrderRequestOrderTypeEnum",
     "UpdateOrderTotalDiscountCriteriaOperatorEnum",
     "UpdateOrderTotalDiscountRequestDiscountTypeEnum",
@@ -945,6 +962,7 @@ let typeMap: {[index: string]: any} = {
     "Automation": Automation,
     "AutomationCategory": AutomationCategory,
     "AutomationLockStatus": AutomationLockStatus,
+    "AutomationStateRequest": AutomationStateRequest,
     "BasicCompany": BasicCompany,
     "BasicContact": BasicContact,
     "BasicUser": BasicUser,
@@ -983,6 +1001,7 @@ let typeMap: {[index: string]: any} = {
     "CreateDefaultCommissionProgramRequest": CreateDefaultCommissionProgramRequest,
     "CreateEmailSentRequest": CreateEmailSentRequest,
     "CreateEmailsSentRequest": CreateEmailsSentRequest,
+    "CreateFreeTrialDiscountCriteria": CreateFreeTrialDiscountCriteria,
     "CreateFreeTrialDiscountRequest": CreateFreeTrialDiscountRequest,
     "CreateIntegrationsWordPressOptInOption": CreateIntegrationsWordPressOptInOption,
     "CreateLeadSourceExpenseRequest": CreateLeadSourceExpenseRequest,
@@ -1051,6 +1070,7 @@ let typeMap: {[index: string]: any} = {
     "FileOperationRequest": FileOperationRequest,
     "FlowEventResultDTO": FlowEventResultDTO,
     "FreeTrialDiscount": FreeTrialDiscount,
+    "FreeTrialDiscountCriteriaResponse": FreeTrialDiscountCriteriaResponse,
     "GetApplicationEnabledStatusResponse": GetApplicationEnabledStatusResponse,
     "GetBusinessProfileResponse": GetBusinessProfileResponse,
     "GetContactOptionTypesResponse": GetContactOptionTypesResponse,
@@ -1155,6 +1175,7 @@ let typeMap: {[index: string]: any} = {
     "OrderV2": OrderV2,
     "Origin": Origin,
     "OriginRequest": OriginRequest,
+    "ParticipantCount": ParticipantCount,
     "PatchAutomationCategoryRequest": PatchAutomationCategoryRequest,
     "Payment": Payment,
     "PaymentMethod": PaymentMethod,
@@ -1229,6 +1250,7 @@ let typeMap: {[index: string]: any} = {
     "UpdateCustomFieldMetaDataRequest": UpdateCustomFieldMetaDataRequest,
     "UpdateDefaultCommissionProgramRequest": UpdateDefaultCommissionProgramRequest,
     "UpdateEmailAddress": UpdateEmailAddress,
+    "UpdateFreeTrialDiscountCriteria": UpdateFreeTrialDiscountCriteria,
     "UpdateFreeTrialDiscountRequest": UpdateFreeTrialDiscountRequest,
     "UpdateLeadSourceExpenseRequest": UpdateLeadSourceExpenseRequest,
     "UpdateNoteRequest": UpdateNoteRequest,

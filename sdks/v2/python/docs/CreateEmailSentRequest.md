@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **sent_to_bcc_address_list** | **List[str]** | List of BCC email addresses | [optional] 
 **sent_from_address** | **str** | The sender&#39;s email address | [optional] 
 **sent_from_reply_address** | **str** | The reply-to email address | [optional] 
-**sent_time** | **datetime** | When the email was sent, in ISO-8601 format | [optional] 
+**sent_time** | **datetime** | When the email was sent, in ISO-8601 format. If omitted, the stored sent_time will be null. | [optional] 
 **received_time** | **datetime** | When the email was received, in ISO-8601 format | [optional] 
 **opened_time** | **datetime** | When the email was opened, in ISO-8601 format | [optional] 
 **clicked_time** | **datetime** | When a link in the email was clicked, in ISO-8601 format | [optional] 

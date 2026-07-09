@@ -14,7 +14,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-__version__ = "2.0.16"
+__version__ = "2.0.17"
 
 # import apis into sdk package
 from keap_core_v2_client.api.affiliate_api import AffiliateApi
@@ -125,6 +125,7 @@ from keap_core_v2_client.models.assigned_products import AssignedProducts
 from keap_core_v2_client.models.automation import Automation
 from keap_core_v2_client.models.automation_category import AutomationCategory
 from keap_core_v2_client.models.automation_lock_status import AutomationLockStatus
+from keap_core_v2_client.models.automation_state_request import AutomationStateRequest
 from keap_core_v2_client.models.basic_company import BasicCompany
 from keap_core_v2_client.models.basic_contact import BasicContact
 from keap_core_v2_client.models.basic_user import BasicUser
@@ -163,6 +164,7 @@ from keap_core_v2_client.models.create_custom_field_response import CreateCustom
 from keap_core_v2_client.models.create_default_commission_program_request import CreateDefaultCommissionProgramRequest
 from keap_core_v2_client.models.create_email_sent_request import CreateEmailSentRequest
 from keap_core_v2_client.models.create_emails_sent_request import CreateEmailsSentRequest
+from keap_core_v2_client.models.create_free_trial_discount_criteria import CreateFreeTrialDiscountCriteria
 from keap_core_v2_client.models.create_free_trial_discount_request import CreateFreeTrialDiscountRequest
 from keap_core_v2_client.models.create_integrations_word_press_opt_in_option import CreateIntegrationsWordPressOptInOption
 from keap_core_v2_client.models.create_lead_source_expense_request import CreateLeadSourceExpenseRequest
@@ -232,6 +234,7 @@ from keap_core_v2_client.models.file_metadata import FileMetadata
 from keap_core_v2_client.models.file_operation_request import FileOperationRequest
 from keap_core_v2_client.models.flow_event_result_dto import FlowEventResultDTO
 from keap_core_v2_client.models.free_trial_discount import FreeTrialDiscount
+from keap_core_v2_client.models.free_trial_discount_criteria_response import FreeTrialDiscountCriteriaResponse
 from keap_core_v2_client.models.get_application_enabled_status_response import GetApplicationEnabledStatusResponse
 from keap_core_v2_client.models.get_business_profile_response import GetBusinessProfileResponse
 from keap_core_v2_client.models.get_contact_option_types_response import GetContactOptionTypesResponse
@@ -335,6 +338,7 @@ from keap_core_v2_client.models.order_total_discount import OrderTotalDiscount
 from keap_core_v2_client.models.order_v2 import OrderV2
 from keap_core_v2_client.models.origin import Origin
 from keap_core_v2_client.models.origin_request import OriginRequest
+from keap_core_v2_client.models.participant_count import ParticipantCount
 from keap_core_v2_client.models.patch_automation_category_request import PatchAutomationCategoryRequest
 from keap_core_v2_client.models.payment import Payment
 from keap_core_v2_client.models.payment_method import PaymentMethod
@@ -409,6 +413,7 @@ from keap_core_v2_client.models.update_custom_field_group_request import UpdateC
 from keap_core_v2_client.models.update_custom_field_meta_data_request import UpdateCustomFieldMetaDataRequest
 from keap_core_v2_client.models.update_default_commission_program_request import UpdateDefaultCommissionProgramRequest
 from keap_core_v2_client.models.update_email_address import UpdateEmailAddress
+from keap_core_v2_client.models.update_free_trial_discount_criteria import UpdateFreeTrialDiscountCriteria
 from keap_core_v2_client.models.update_free_trial_discount_request import UpdateFreeTrialDiscountRequest
 from keap_core_v2_client.models.update_lead_source_expense_request import UpdateLeadSourceExpenseRequest
 from keap_core_v2_client.models.update_note_request import UpdateNoteRequest

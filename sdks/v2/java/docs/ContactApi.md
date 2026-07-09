@@ -57,7 +57,7 @@ All URIs are relative to *https://api.keap.com/crm*
 
 Create a Contact
 
-Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified. Optionally accepts a &#x60;duplicate_option&#x60; query parameter which performs duplicate checking by one of the following options: &#x60;Email&#x60;, &#x60;EmailAndName&#x60;, &#x60;EmailAndNameAndCompany&#x60;. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the &#x60;duplicate_option&#x60; provided, a new contact record will be created. When &#x60;duplicate_option&#x60; is not specified, a new contact is always created.
+Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60;, &#x60;phone_numbers&#x60;, or &#x60;addresses&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified. Optionally accepts a &#x60;duplicate_option&#x60; query parameter which performs duplicate checking by one of the following options: &#x60;Email&#x60;, &#x60;EmailAndName&#x60;, &#x60;EmailAndNameAndCompany&#x60;. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the &#x60;duplicate_option&#x60; provided, a new contact record will be created. When &#x60;duplicate_option&#x60; is not specified, a new contact is always created.
 
 ### Example
 
@@ -140,7 +140,7 @@ public class Example {
 
 Create a Contact
 
-Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified. Optionally accepts a &#x60;duplicate_option&#x60; query parameter which performs duplicate checking by one of the following options: &#x60;Email&#x60;, &#x60;EmailAndName&#x60;, &#x60;EmailAndNameAndCompany&#x60;. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the &#x60;duplicate_option&#x60; provided, a new contact record will be created. When &#x60;duplicate_option&#x60; is not specified, a new contact is always created.
+Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60;, &#x60;phone_numbers&#x60;, or &#x60;addresses&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified. Optionally accepts a &#x60;duplicate_option&#x60; query parameter which performs duplicate checking by one of the following options: &#x60;Email&#x60;, &#x60;EmailAndName&#x60;, &#x60;EmailAndNameAndCompany&#x60;. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the &#x60;duplicate_option&#x60; provided, a new contact record will be created. When &#x60;duplicate_option&#x60; is not specified, a new contact is always created.
 
 ### Example
 

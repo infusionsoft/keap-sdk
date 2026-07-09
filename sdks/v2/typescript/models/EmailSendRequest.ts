@@ -30,9 +30,13 @@ export class EmailSendRequest {
     */
     'attachments'?: Set<EmailSendRequestAttachment>;
     /**
-    * The user ID to send the email on behalf of
+    * The user ID to send the email on behalf of. Exactly one of user_id or from_address is required.
     */
-    'userId': string;
+    'userId'?: string;
+    /**
+    * The authenticated sender email address to send from. Exactly one of user_id or from_address is required.
+    */
+    'fromAddress'?: string;
     /**
     * The HTML-formatted content of the email, encoded in Base64
     */
@@ -72,6 +76,12 @@ export class EmailSendRequest {
         {
             "name": "userId",
             "baseName": "user_id",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "fromAddress",
+            "baseName": "from_address",
             "type": "string",
             "format": ""
         },

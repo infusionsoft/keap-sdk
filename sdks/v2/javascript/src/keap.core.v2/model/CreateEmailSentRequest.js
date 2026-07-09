@@ -226,7 +226,7 @@ CreateEmailSentRequest.prototype['sent_from_address'] = undefined;
 CreateEmailSentRequest.prototype['sent_from_reply_address'] = undefined;
 
 /**
- * When the email was sent, in ISO-8601 format
+ * When the email was sent, in ISO-8601 format. If omitted, the stored sent_time will be null.
  * @member {Date} sent_time
  */
 CreateEmailSentRequest.prototype['sent_time'] = undefined;

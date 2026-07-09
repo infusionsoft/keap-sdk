@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.keap.core.sdk.model.DiscountCriteria;
+import com.keap.core.sdk.model.FreeTrialDiscountCriteriaResponse;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,7 +58,7 @@ public class FreeTrialDiscount implements Serializable {
   @jakarta.annotation.Nullable  private String description;
 
   public static final String JSON_PROPERTY_CRITERIA = "criteria";
-  @jakarta.annotation.Nullable  private List<@Valid DiscountCriteria> criteria = new ArrayList<>();
+  @jakarta.annotation.Nullable  private List<@Valid FreeTrialDiscountCriteriaResponse> criteria = new ArrayList<>();
 
   public static final String JSON_PROPERTY_HIDE_PRICE = "hide_price";
   @jakarta.annotation.Nullable  private Boolean hidePrice;
@@ -144,12 +144,12 @@ public class FreeTrialDiscount implements Serializable {
   }
 
 
-  public FreeTrialDiscount criteria(@jakarta.annotation.Nullable List<@Valid DiscountCriteria> criteria) {
+  public FreeTrialDiscount criteria(@jakarta.annotation.Nullable List<@Valid FreeTrialDiscountCriteriaResponse> criteria) {
     this.criteria = criteria;
     return this;
   }
 
-  public FreeTrialDiscount addCriteriaItem(DiscountCriteria criteriaItem) {
+  public FreeTrialDiscount addCriteriaItem(FreeTrialDiscountCriteriaResponse criteriaItem) {
     if (this.criteria == null) {
       this.criteria = new ArrayList<>();
     }
@@ -165,14 +165,14 @@ public class FreeTrialDiscount implements Serializable {
   @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "List of criteria that must be met for this discount to apply")
   @JsonProperty(JSON_PROPERTY_CRITERIA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<@Valid DiscountCriteria> getCriteria() {
+  public List<@Valid FreeTrialDiscountCriteriaResponse> getCriteria() {
     return criteria;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CRITERIA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCriteria(@jakarta.annotation.Nullable List<@Valid DiscountCriteria> criteria) {
+  public void setCriteria(@jakarta.annotation.Nullable List<@Valid FreeTrialDiscountCriteriaResponse> criteria) {
     this.criteria = criteria;
   }
 
@@ -324,7 +324,7 @@ public class FreeTrialDiscount implements Serializable {
               this.instance.description = description;
           return this;
         }
-            public FreeTrialDiscount.Builder criteria(List<DiscountCriteria> criteria) {
+            public FreeTrialDiscount.Builder criteria(List<FreeTrialDiscountCriteriaResponse> criteria) {
               this.instance.criteria = criteria;
           return this;
         }

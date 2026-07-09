@@ -54,6 +54,7 @@ import { AssignedProducts } from '../models/AssignedProducts';
 import { Automation } from '../models/Automation';
 import { AutomationCategory } from '../models/AutomationCategory';
 import { AutomationLockStatus } from '../models/AutomationLockStatus';
+import { AutomationStateRequest } from '../models/AutomationStateRequest';
 import { BasicCompany } from '../models/BasicCompany';
 import { BasicContact } from '../models/BasicContact';
 import { BasicUser } from '../models/BasicUser';
@@ -92,6 +93,7 @@ import { CreateCustomFieldResponse } from '../models/CreateCustomFieldResponse';
 import { CreateDefaultCommissionProgramRequest } from '../models/CreateDefaultCommissionProgramRequest';
 import { CreateEmailSentRequest } from '../models/CreateEmailSentRequest';
 import { CreateEmailsSentRequest } from '../models/CreateEmailsSentRequest';
+import { CreateFreeTrialDiscountCriteria } from '../models/CreateFreeTrialDiscountCriteria';
 import { CreateFreeTrialDiscountRequest } from '../models/CreateFreeTrialDiscountRequest';
 import { CreateIntegrationsWordPressOptInOption } from '../models/CreateIntegrationsWordPressOptInOption';
 import { CreateLeadSourceExpenseRequest } from '../models/CreateLeadSourceExpenseRequest';
@@ -160,6 +162,7 @@ import { FileMetadata } from '../models/FileMetadata';
 import { FileOperationRequest } from '../models/FileOperationRequest';
 import { FlowEventResultDTO } from '../models/FlowEventResultDTO';
 import { FreeTrialDiscount } from '../models/FreeTrialDiscount';
+import { FreeTrialDiscountCriteriaResponse } from '../models/FreeTrialDiscountCriteriaResponse';
 import { GetApplicationEnabledStatusResponse } from '../models/GetApplicationEnabledStatusResponse';
 import { GetBusinessProfileResponse } from '../models/GetBusinessProfileResponse';
 import { GetContactOptionTypesResponse } from '../models/GetContactOptionTypesResponse';
@@ -264,6 +267,7 @@ import { OrderTotalDiscount } from '../models/OrderTotalDiscount';
 import { OrderV2 } from '../models/OrderV2';
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
+import { ParticipantCount } from '../models/ParticipantCount';
 import { PatchAutomationCategoryRequest } from '../models/PatchAutomationCategoryRequest';
 import { Payment } from '../models/Payment';
 import { PaymentMethod } from '../models/PaymentMethod';
@@ -338,6 +342,7 @@ import { UpdateCustomFieldGroupRequest } from '../models/UpdateCustomFieldGroupR
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
 import { UpdateEmailAddress } from '../models/UpdateEmailAddress';
+import { UpdateFreeTrialDiscountCriteria } from '../models/UpdateFreeTrialDiscountCriteria';
 import { UpdateFreeTrialDiscountRequest } from '../models/UpdateFreeTrialDiscountRequest';
 import { UpdateLeadSourceExpenseRequest } from '../models/UpdateLeadSourceExpenseRequest';
 import { UpdateNoteRequest } from '../models/UpdateNoteRequest';
@@ -1663,6 +1668,30 @@ export class PromiseAutomationApi {
         return result.toPromise();
     }
 
+    /**
+     * Updates the lifecycle state of an existing Easy Automation. Supported states: `disabled`, `enabled`.
+     * Update the state of an Easy Automation
+     * @param automationId
+     * @param automationStateRequest
+     */
+    public updateStateWithHttpInfo(automationId: string, automationStateRequest: AutomationStateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateStateWithHttpInfo(automationId, automationStateRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates the lifecycle state of an existing Easy Automation. Supported states: `disabled`, `enabled`.
+     * Update the state of an Easy Automation
+     * @param automationId
+     * @param automationStateRequest
+     */
+    public updateState(automationId: string, automationStateRequest: AutomationStateRequest, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateState(automationId, automationStateRequest, observableOptions);
+        return result.toPromise();
+    }
+
 
 }
 
@@ -2362,7 +2391,7 @@ export class PromiseCompanyApi {
      * Retrieves a list of all Companies.<br/><br/>
      * List Companies
      * @param [fields] Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren\&#39;t included, by default.)
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10) 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  Custom fields can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;Industry%3D%3DTech%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;since_time&#x60;/&#x60;until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Examples (for a custom field named &#x60;Height&#x60;): - &#x60;filter&#x3D;Height%3D%3DTall&#x60; - &#x60;filter&#x3D;Height%3E100&#x60; Custom field filtering on non-indexed fields is supported but may be slower. 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -2377,7 +2406,7 @@ export class PromiseCompanyApi {
      * Retrieves a list of all Companies.<br/><br/>
      * List Companies
      * @param [fields] Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren\&#39;t included, by default.)
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10) 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  Custom fields can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;Industry%3D%3DTech%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;since_time&#x60;/&#x60;until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Examples (for a custom field named &#x60;Height&#x60;): - &#x60;filter&#x3D;Height%3D%3DTall&#x60; - &#x60;filter&#x3D;Height%3E100&#x60; Custom field filtering on non-indexed fields is supported but may be slower. 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -2582,7 +2611,7 @@ export class PromiseContactApi {
     }
 
     /**
-     * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified. Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
+     * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses`, `phone_numbers`, or `addresses` and `country_code` is required if `region` is specified. Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
      * Create a Contact
      * @param createUpdateContactRequest
      * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
@@ -2595,7 +2624,7 @@ export class PromiseContactApi {
     }
 
     /**
-     * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified. Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
+     * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses`, `phone_numbers`, or `addresses` and `country_code` is required if `region` is specified. Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
      * Create a Contact
      * @param createUpdateContactRequest
      * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
@@ -3638,6 +3667,30 @@ export class PromiseFreeTrialDiscountsApi {
     }
 
     /**
+     * Creates a Subscription Free Trial Discount Criteria
+     * Create a Subscription Free Trial Discount Criteria
+     * @param discountId
+     * @param createFreeTrialDiscountCriteria
+     */
+    public createFreeTrialDiscountCriteriaWithHttpInfo(discountId: string, createFreeTrialDiscountCriteria: CreateFreeTrialDiscountCriteria, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DiscountCriteria>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createFreeTrialDiscountCriteriaWithHttpInfo(discountId, createFreeTrialDiscountCriteria, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a Subscription Free Trial Discount Criteria
+     * Create a Subscription Free Trial Discount Criteria
+     * @param discountId
+     * @param createFreeTrialDiscountCriteria
+     */
+    public createFreeTrialDiscountCriteria(discountId: string, createFreeTrialDiscountCriteria: CreateFreeTrialDiscountCriteria, _options?: PromiseConfigurationOptions): Promise<DiscountCriteria> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createFreeTrialDiscountCriteria(discountId, createFreeTrialDiscountCriteria, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes a specified Subscription Free Trial Discount
      * Delete a Subscription Free Trial Discount
      * @param discountId
@@ -3656,6 +3709,30 @@ export class PromiseFreeTrialDiscountsApi {
     public deleteFreeTrialDiscount(discountId: string, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteFreeTrialDiscount(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified Subscription Free Trial Discount Criteria
+     * Delete a Subscription Free Trial Discount Criteria
+     * @param discountId
+     * @param criteriaId
+     */
+    public deleteFreeTrialDiscountCriteriaWithHttpInfo(discountId: string, criteriaId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteFreeTrialDiscountCriteriaWithHttpInfo(discountId, criteriaId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified Subscription Free Trial Discount Criteria
+     * Delete a Subscription Free Trial Discount Criteria
+     * @param discountId
+     * @param criteriaId
+     */
+    public deleteFreeTrialDiscountCriteria(discountId: string, criteriaId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteFreeTrialDiscountCriteria(discountId, criteriaId, observableOptions);
         return result.toPromise();
     }
 

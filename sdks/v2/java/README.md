@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.16</version>
+  <version>2.0.17</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.16"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.17"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.16.jar`
+- `target/core-service-v2-java-sdk-2.0.17.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -212,6 +212,8 @@ Class | Method | HTTP request | Description
 *AutomationApi* | [**listAutomationsWithHttpInfo**](docs/AutomationApi.md#listAutomationsWithHttpInfo) | **GET** /rest/v2/automations | List Automations
 *AutomationApi* | [**unpublishAutomation**](docs/AutomationApi.md#unpublishAutomation) | **PUT** /rest/v2/automations/{automation_id}/unpublish | Unpublish an Automation
 *AutomationApi* | [**unpublishAutomationWithHttpInfo**](docs/AutomationApi.md#unpublishAutomationWithHttpInfo) | **PUT** /rest/v2/automations/{automation_id}/unpublish | Unpublish an Automation
+*AutomationApi* | [**updateState**](docs/AutomationApi.md#updateState) | **PUT** /rest/v2/easy-automations/{automation_id}/state | Update the state of an Easy Automation
+*AutomationApi* | [**updateStateWithHttpInfo**](docs/AutomationApi.md#updateStateWithHttpInfo) | **PUT** /rest/v2/easy-automations/{automation_id}/state | Update the state of an Easy Automation
 *AutomationCategoryApi* | [**createCategory**](docs/AutomationCategoryApi.md#createCategory) | **POST** /rest/v2/automationCategory | Create automation category
 *AutomationCategoryApi* | [**createCategoryWithHttpInfo**](docs/AutomationCategoryApi.md#createCategoryWithHttpInfo) | **POST** /rest/v2/automationCategory | Create automation category
 *AutomationCategoryApi* | [**deleteCategories**](docs/AutomationCategoryApi.md#deleteCategories) | **DELETE** /rest/v2/automationCategory | Delete automation category
@@ -362,8 +364,12 @@ Class | Method | HTTP request | Description
 *FilesApi* | [**updateFileWithHttpInfo**](docs/FilesApi.md#updateFileWithHttpInfo) | **POST** /rest/v2/files/{file_id} | Update a file
 *FreeTrialDiscountsApi* | [**createFreeTrialDiscount**](docs/FreeTrialDiscountsApi.md#createFreeTrialDiscount) | **POST** /rest/v2/discounts/freeTrials | Create a Subscription Free Trial Discount
 *FreeTrialDiscountsApi* | [**createFreeTrialDiscountWithHttpInfo**](docs/FreeTrialDiscountsApi.md#createFreeTrialDiscountWithHttpInfo) | **POST** /rest/v2/discounts/freeTrials | Create a Subscription Free Trial Discount
+*FreeTrialDiscountsApi* | [**createFreeTrialDiscountCriteria**](docs/FreeTrialDiscountsApi.md#createFreeTrialDiscountCriteria) | **POST** /rest/v2/discounts/freeTrials/{discount_id}/criteria | Create a Subscription Free Trial Discount Criteria
+*FreeTrialDiscountsApi* | [**createFreeTrialDiscountCriteriaWithHttpInfo**](docs/FreeTrialDiscountsApi.md#createFreeTrialDiscountCriteriaWithHttpInfo) | **POST** /rest/v2/discounts/freeTrials/{discount_id}/criteria | Create a Subscription Free Trial Discount Criteria
 *FreeTrialDiscountsApi* | [**deleteFreeTrialDiscount**](docs/FreeTrialDiscountsApi.md#deleteFreeTrialDiscount) | **DELETE** /rest/v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount
 *FreeTrialDiscountsApi* | [**deleteFreeTrialDiscountWithHttpInfo**](docs/FreeTrialDiscountsApi.md#deleteFreeTrialDiscountWithHttpInfo) | **DELETE** /rest/v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount
+*FreeTrialDiscountsApi* | [**deleteFreeTrialDiscountCriteria**](docs/FreeTrialDiscountsApi.md#deleteFreeTrialDiscountCriteria) | **DELETE** /rest/v2/discounts/freeTrials/{discount_id}/criteria/{criteria_id} | Delete a Subscription Free Trial Discount Criteria
+*FreeTrialDiscountsApi* | [**deleteFreeTrialDiscountCriteriaWithHttpInfo**](docs/FreeTrialDiscountsApi.md#deleteFreeTrialDiscountCriteriaWithHttpInfo) | **DELETE** /rest/v2/discounts/freeTrials/{discount_id}/criteria/{criteria_id} | Delete a Subscription Free Trial Discount Criteria
 *FreeTrialDiscountsApi* | [**getFreeTrialDiscount**](docs/FreeTrialDiscountsApi.md#getFreeTrialDiscount) | **GET** /rest/v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount
 *FreeTrialDiscountsApi* | [**getFreeTrialDiscountWithHttpInfo**](docs/FreeTrialDiscountsApi.md#getFreeTrialDiscountWithHttpInfo) | **GET** /rest/v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount
 *FreeTrialDiscountsApi* | [**listFreeTrialDiscounts**](docs/FreeTrialDiscountsApi.md#listFreeTrialDiscounts) | **GET** /rest/v2/discounts/freeTrials | List all Subscription Free Trial Discounts
@@ -870,6 +876,7 @@ Class | Method | HTTP request | Description
  - [Automation](docs/Automation.md)
  - [AutomationCategory](docs/AutomationCategory.md)
  - [AutomationLockStatus](docs/AutomationLockStatus.md)
+ - [AutomationStateRequest](docs/AutomationStateRequest.md)
  - [BasicCompany](docs/BasicCompany.md)
  - [BasicContact](docs/BasicContact.md)
  - [BasicUser](docs/BasicUser.md)
@@ -908,6 +915,7 @@ Class | Method | HTTP request | Description
  - [CreateDefaultCommissionProgramRequest](docs/CreateDefaultCommissionProgramRequest.md)
  - [CreateEmailSentRequest](docs/CreateEmailSentRequest.md)
  - [CreateEmailsSentRequest](docs/CreateEmailsSentRequest.md)
+ - [CreateFreeTrialDiscountCriteria](docs/CreateFreeTrialDiscountCriteria.md)
  - [CreateFreeTrialDiscountRequest](docs/CreateFreeTrialDiscountRequest.md)
  - [CreateIntegrationsWordPressOptInOption](docs/CreateIntegrationsWordPressOptInOption.md)
  - [CreateLeadSourceExpenseRequest](docs/CreateLeadSourceExpenseRequest.md)
@@ -977,6 +985,7 @@ Class | Method | HTTP request | Description
  - [FileOperationRequest](docs/FileOperationRequest.md)
  - [FlowEventResultDTO](docs/FlowEventResultDTO.md)
  - [FreeTrialDiscount](docs/FreeTrialDiscount.md)
+ - [FreeTrialDiscountCriteriaResponse](docs/FreeTrialDiscountCriteriaResponse.md)
  - [GetApplicationEnabledStatusResponse](docs/GetApplicationEnabledStatusResponse.md)
  - [GetBusinessProfileResponse](docs/GetBusinessProfileResponse.md)
  - [GetContactOptionTypesResponse](docs/GetContactOptionTypesResponse.md)
@@ -1080,6 +1089,7 @@ Class | Method | HTTP request | Description
  - [OrderV2](docs/OrderV2.md)
  - [Origin](docs/Origin.md)
  - [OriginRequest](docs/OriginRequest.md)
+ - [ParticipantCount](docs/ParticipantCount.md)
  - [PatchAutomationCategoryRequest](docs/PatchAutomationCategoryRequest.md)
  - [Payment](docs/Payment.md)
  - [PaymentMethod](docs/PaymentMethod.md)
@@ -1154,6 +1164,7 @@ Class | Method | HTTP request | Description
  - [UpdateCustomFieldMetaDataRequest](docs/UpdateCustomFieldMetaDataRequest.md)
  - [UpdateDefaultCommissionProgramRequest](docs/UpdateDefaultCommissionProgramRequest.md)
  - [UpdateEmailAddress](docs/UpdateEmailAddress.md)
+ - [UpdateFreeTrialDiscountCriteria](docs/UpdateFreeTrialDiscountCriteria.md)
  - [UpdateFreeTrialDiscountRequest](docs/UpdateFreeTrialDiscountRequest.md)
  - [UpdateLeadSourceExpenseRequest](docs/UpdateLeadSourceExpenseRequest.md)
  - [UpdateNoteRequest](docs/UpdateNoteRequest.md)

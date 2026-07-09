@@ -368,11 +368,11 @@ public class CreateEmailSentRequest implements Serializable {
   }
 
   /**
-   * When the email was sent, in ISO-8601 format
+   * When the email was sent, in ISO-8601 format. If omitted, the stored sent_time will be null.
    * @return sentTime
    */
   @jakarta.annotation.Nullable  @Valid
-  @Schema(example = "2024-05-21T14:30:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "When the email was sent, in ISO-8601 format")
+  @Schema(example = "2024-05-21T14:30:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "When the email was sent, in ISO-8601 format. If omitted, the stored sent_time will be null.")
   @JsonProperty(JSON_PROPERTY_SENT_TIME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ZonedDateTime getSentTime() {

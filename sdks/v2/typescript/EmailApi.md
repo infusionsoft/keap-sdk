@@ -520,6 +520,7 @@ const request: EmailApiSendEmailRequest = {
       },
     ],
     userId: "1",
+    fromAddress: "sales@example.com",
     htmlContent: "PGgxPldlbGNvbWU8L2gxPg==",
     plainContent: "V2VsY29tZSB0byBvdXIgbmV3c2xldHRlcg==",
     addressField: "EMAIL1",

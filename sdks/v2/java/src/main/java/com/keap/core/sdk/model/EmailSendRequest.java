@@ -44,6 +44,7 @@ import jakarta.validation.Valid;
   EmailSendRequest.JSON_PROPERTY_SUBJECT,
   EmailSendRequest.JSON_PROPERTY_ATTACHMENTS,
   EmailSendRequest.JSON_PROPERTY_USER_ID,
+  EmailSendRequest.JSON_PROPERTY_FROM_ADDRESS,
   EmailSendRequest.JSON_PROPERTY_HTML_CONTENT,
   EmailSendRequest.JSON_PROPERTY_PLAIN_CONTENT,
   EmailSendRequest.JSON_PROPERTY_ADDRESS_FIELD
@@ -62,7 +63,10 @@ public class EmailSendRequest implements Serializable {
   @jakarta.annotation.Nullable  private Set<@Valid EmailSendRequestAttachment> attachments = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_USER_ID = "user_id";
-  @jakarta.annotation.Nonnull  private String userId;
+  @jakarta.annotation.Nullable  private String userId;
+
+  public static final String JSON_PROPERTY_FROM_ADDRESS = "from_address";
+  @jakarta.annotation.Nullable  private String fromAddress;
 
   public static final String JSON_PROPERTY_HTML_CONTENT = "html_content";
   @jakarta.annotation.Nullable  private String htmlContent;
@@ -168,28 +172,51 @@ public class EmailSendRequest implements Serializable {
   }
 
 
-  public EmailSendRequest userId(@jakarta.annotation.Nonnull String userId) {
+  public EmailSendRequest userId(@jakarta.annotation.Nullable String userId) {
     this.userId = userId;
     return this;
   }
 
   /**
-   * The user ID to send the email on behalf of
+   * The user ID to send the email on behalf of. Exactly one of user_id or from_address is required.
    * @return userId
    */
-  @jakarta.annotation.Nonnull  @NotNull
-  @Schema(example = "1", requiredMode = Schema.RequiredMode.REQUIRED, description = "The user ID to send the email on behalf of")
+  @jakarta.annotation.Nullable  @Schema(example = "1", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The user ID to send the email on behalf of. Exactly one of user_id or from_address is required.")
   @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUserId() {
     return userId;
   }
 
 
   @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserId(@jakarta.annotation.Nonnull String userId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserId(@jakarta.annotation.Nullable String userId) {
     this.userId = userId;
+  }
+
+
+  public EmailSendRequest fromAddress(@jakarta.annotation.Nullable String fromAddress) {
+    this.fromAddress = fromAddress;
+    return this;
+  }
+
+  /**
+   * The authenticated sender email address to send from. Exactly one of user_id or from_address is required.
+   * @return fromAddress
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "sales@example.com", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The authenticated sender email address to send from. Exactly one of user_id or from_address is required.")
+  @JsonProperty(JSON_PROPERTY_FROM_ADDRESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getFromAddress() {
+    return fromAddress;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FROM_ADDRESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFromAddress(@jakarta.annotation.Nullable String fromAddress) {
+    this.fromAddress = fromAddress;
   }
 
 
@@ -280,6 +307,7 @@ public class EmailSendRequest implements Serializable {
         Objects.equals(this.subject, emailSendRequest.subject) &&
         Objects.equals(this.attachments, emailSendRequest.attachments) &&
         Objects.equals(this.userId, emailSendRequest.userId) &&
+        Objects.equals(this.fromAddress, emailSendRequest.fromAddress) &&
         Objects.equals(this.htmlContent, emailSendRequest.htmlContent) &&
         Objects.equals(this.plainContent, emailSendRequest.plainContent) &&
         Objects.equals(this.addressField, emailSendRequest.addressField);
@@ -287,7 +315,7 @@ public class EmailSendRequest implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(contacts, subject, attachments, userId, htmlContent, plainContent, addressField);
+    return Objects.hash(contacts, subject, attachments, userId, fromAddress, htmlContent, plainContent, addressField);
   }
 
   @Override
@@ -298,6 +326,7 @@ public class EmailSendRequest implements Serializable {
     sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
     sb.append("    attachments: ").append(toIndentedString(attachments)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    fromAddress: ").append(toIndentedString(fromAddress)).append("\n");
     sb.append("    htmlContent: ").append(toIndentedString(htmlContent)).append("\n");
     sb.append("    plainContent: ").append(toIndentedString(plainContent)).append("\n");
     sb.append("    addressField: ").append(toIndentedString(addressField)).append("\n");
@@ -342,6 +371,10 @@ public class EmailSendRequest implements Serializable {
         }
             public EmailSendRequest.Builder userId(String userId) {
               this.instance.userId = userId;
+          return this;
+        }
+            public EmailSendRequest.Builder fromAddress(String fromAddress) {
+              this.instance.fromAddress = fromAddress;
           return this;
         }
             public EmailSendRequest.Builder htmlContent(String htmlContent) {
@@ -394,6 +427,7 @@ public class EmailSendRequest implements Serializable {
           .subject(getSubject())
           .attachments(getAttachments())
           .userId(getUserId())
+          .fromAddress(getFromAddress())
           .htmlContent(getHtmlContent())
           .plainContent(getPlainContent())
           .addressField(getAddressField());

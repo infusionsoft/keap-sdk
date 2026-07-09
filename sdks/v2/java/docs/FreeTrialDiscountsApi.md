@@ -6,8 +6,12 @@ All URIs are relative to *https://api.keap.com/crm*
 |------------- | ------------- | -------------|
 | [**createFreeTrialDiscount**](FreeTrialDiscountsApi.md#createFreeTrialDiscount) | **POST** /rest/v2/discounts/freeTrials | Create a Subscription Free Trial Discount |
 | [**createFreeTrialDiscountWithHttpInfo**](FreeTrialDiscountsApi.md#createFreeTrialDiscountWithHttpInfo) | **POST** /rest/v2/discounts/freeTrials | Create a Subscription Free Trial Discount |
+| [**createFreeTrialDiscountCriteria**](FreeTrialDiscountsApi.md#createFreeTrialDiscountCriteria) | **POST** /rest/v2/discounts/freeTrials/{discount_id}/criteria | Create a Subscription Free Trial Discount Criteria |
+| [**createFreeTrialDiscountCriteriaWithHttpInfo**](FreeTrialDiscountsApi.md#createFreeTrialDiscountCriteriaWithHttpInfo) | **POST** /rest/v2/discounts/freeTrials/{discount_id}/criteria | Create a Subscription Free Trial Discount Criteria |
 | [**deleteFreeTrialDiscount**](FreeTrialDiscountsApi.md#deleteFreeTrialDiscount) | **DELETE** /rest/v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount |
 | [**deleteFreeTrialDiscountWithHttpInfo**](FreeTrialDiscountsApi.md#deleteFreeTrialDiscountWithHttpInfo) | **DELETE** /rest/v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount |
+| [**deleteFreeTrialDiscountCriteria**](FreeTrialDiscountsApi.md#deleteFreeTrialDiscountCriteria) | **DELETE** /rest/v2/discounts/freeTrials/{discount_id}/criteria/{criteria_id} | Delete a Subscription Free Trial Discount Criteria |
+| [**deleteFreeTrialDiscountCriteriaWithHttpInfo**](FreeTrialDiscountsApi.md#deleteFreeTrialDiscountCriteriaWithHttpInfo) | **DELETE** /rest/v2/discounts/freeTrials/{discount_id}/criteria/{criteria_id} | Delete a Subscription Free Trial Discount Criteria |
 | [**getFreeTrialDiscount**](FreeTrialDiscountsApi.md#getFreeTrialDiscount) | **GET** /rest/v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount |
 | [**getFreeTrialDiscountWithHttpInfo**](FreeTrialDiscountsApi.md#getFreeTrialDiscountWithHttpInfo) | **GET** /rest/v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount |
 | [**listFreeTrialDiscounts**](FreeTrialDiscountsApi.md#listFreeTrialDiscounts) | **GET** /rest/v2/discounts/freeTrials | List all Subscription Free Trial Discounts |
@@ -177,6 +181,170 @@ ApiResponse<[**FreeTrialDiscount**](FreeTrialDiscount.md)>
 | **501** | Method Not Implemented |  -  |
 
 
+## createFreeTrialDiscountCriteria
+
+> DiscountCriteria createFreeTrialDiscountCriteria(discountId, createFreeTrialDiscountCriteria)
+
+Create a Subscription Free Trial Discount Criteria
+
+Creates a Subscription Free Trial Discount Criteria
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.FreeTrialDiscountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        FreeTrialDiscountsApi apiInstance = new FreeTrialDiscountsApi(defaultClient);
+        String discountId = "discountId_example"; // String | 
+        CreateFreeTrialDiscountCriteria createFreeTrialDiscountCriteria = new CreateFreeTrialDiscountCriteria(); // CreateFreeTrialDiscountCriteria | 
+        try {
+            DiscountCriteria result = apiInstance.createFreeTrialDiscountCriteria(discountId, createFreeTrialDiscountCriteria);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FreeTrialDiscountsApi#createFreeTrialDiscountCriteria");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **discountId** | **String**|  | |
+| **createFreeTrialDiscountCriteria** | [**CreateFreeTrialDiscountCriteria**](CreateFreeTrialDiscountCriteria.md)|  | |
+
+### Return type
+
+[**DiscountCriteria**](DiscountCriteria.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## createFreeTrialDiscountCriteriaWithHttpInfo
+
+> ApiResponse<DiscountCriteria> createFreeTrialDiscountCriteria createFreeTrialDiscountCriteriaWithHttpInfo(discountId, createFreeTrialDiscountCriteria)
+
+Create a Subscription Free Trial Discount Criteria
+
+Creates a Subscription Free Trial Discount Criteria
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.FreeTrialDiscountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        FreeTrialDiscountsApi apiInstance = new FreeTrialDiscountsApi(defaultClient);
+        String discountId = "discountId_example"; // String | 
+        CreateFreeTrialDiscountCriteria createFreeTrialDiscountCriteria = new CreateFreeTrialDiscountCriteria(); // CreateFreeTrialDiscountCriteria | 
+        try {
+            ApiResponse<DiscountCriteria> response = apiInstance.createFreeTrialDiscountCriteriaWithHttpInfo(discountId, createFreeTrialDiscountCriteria);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FreeTrialDiscountsApi#createFreeTrialDiscountCriteria");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **discountId** | **String**|  | |
+| **createFreeTrialDiscountCriteria** | [**CreateFreeTrialDiscountCriteria**](CreateFreeTrialDiscountCriteria.md)|  | |
+
+### Return type
+
+ApiResponse<[**DiscountCriteria**](DiscountCriteria.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## deleteFreeTrialDiscount
 
 > void deleteFreeTrialDiscount(discountId)
@@ -306,6 +474,168 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **discountId** | **String**|  | |
+
+### Return type
+
+
+ApiResponse<Void>
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## deleteFreeTrialDiscountCriteria
+
+> void deleteFreeTrialDiscountCriteria(discountId, criteriaId)
+
+Delete a Subscription Free Trial Discount Criteria
+
+Deletes a specified Subscription Free Trial Discount Criteria
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.FreeTrialDiscountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        FreeTrialDiscountsApi apiInstance = new FreeTrialDiscountsApi(defaultClient);
+        String discountId = "discountId_example"; // String | 
+        String criteriaId = "criteriaId_example"; // String | 
+        try {
+            apiInstance.deleteFreeTrialDiscountCriteria(discountId, criteriaId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FreeTrialDiscountsApi#deleteFreeTrialDiscountCriteria");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **discountId** | **String**|  | |
+| **criteriaId** | **String**|  | |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## deleteFreeTrialDiscountCriteriaWithHttpInfo
+
+> ApiResponse<Void> deleteFreeTrialDiscountCriteria deleteFreeTrialDiscountCriteriaWithHttpInfo(discountId, criteriaId)
+
+Delete a Subscription Free Trial Discount Criteria
+
+Deletes a specified Subscription Free Trial Discount Criteria
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.FreeTrialDiscountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        FreeTrialDiscountsApi apiInstance = new FreeTrialDiscountsApi(defaultClient);
+        String discountId = "discountId_example"; // String | 
+        String criteriaId = "criteriaId_example"; // String | 
+        try {
+            ApiResponse<Void> response = apiInstance.deleteFreeTrialDiscountCriteriaWithHttpInfo(discountId, criteriaId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FreeTrialDiscountsApi#deleteFreeTrialDiscountCriteria");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **discountId** | **String**|  | |
+| **criteriaId** | **String**|  | |
 
 ### Return type
 

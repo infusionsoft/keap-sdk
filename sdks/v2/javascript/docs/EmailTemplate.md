@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **Number** | The id of the template | [optional] 
 **pieceTitle** | **String** | The title of the template | [optional] 
 **categories** | **[String]** | The categories associated with the email | [optional] 
 **fromAddress** | **String** | The from address of the email | [optional] 

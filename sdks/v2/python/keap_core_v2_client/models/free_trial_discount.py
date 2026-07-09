@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from keap_core_v2_client.models.discount_criteria import DiscountCriteria
+from keap_core_v2_client.models.free_trial_discount_criteria_response import FreeTrialDiscountCriteriaResponse
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,7 +30,7 @@ class FreeTrialDiscount(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="Unique identifier for this free trial discount")
     name: Optional[StrictStr] = Field(default=None, description="Name of the discount")
     description: Optional[StrictStr] = Field(default=None, description="Description of the discount")
-    criteria: Optional[List[DiscountCriteria]] = Field(default=None, description="List of criteria that must be met for this discount to apply")
+    criteria: Optional[List[FreeTrialDiscountCriteriaResponse]] = Field(default=None, description="List of criteria that must be met for this discount to apply")
     hide_price: Optional[StrictBool] = Field(default=None, description="Whether to hide the price during the trial period")
     subscription_plan_id: Optional[StrictStr] = Field(default=None, description="ID of the subscription plan this trial applies to")
     free_trial_days: Optional[StrictInt] = Field(default=None, description="Number of days for the free trial period")
@@ -105,7 +105,7 @@ class FreeTrialDiscount(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "criteria": [DiscountCriteria.from_dict(_item) for _item in obj["criteria"]] if obj.get("criteria") is not None else None,
+            "criteria": [FreeTrialDiscountCriteriaResponse.from_dict(_item) for _item in obj["criteria"]] if obj.get("criteria") is not None else None,
             "hide_price": obj.get("hide_price"),
             "subscription_plan_id": obj.get("subscription_plan_id"),
             "free_trial_days": obj.get("free_trial_days")

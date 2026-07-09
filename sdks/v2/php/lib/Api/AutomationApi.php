@@ -101,6 +101,9 @@ class AutomationApi
         'unpublishAutomation' => [
             'application/json',
         ],
+        'updateState' => [
+            'application/json',
+        ],
     ];
 
     /**
@@ -3310,6 +3313,311 @@ class AutomationApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($unpublish_automation_request));
             } else {
                 $httpBody = $unpublish_automation_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateState
+     *
+     * Update the state of an Easy Automation
+     *
+     * @param  string $automation_id automation_id (required)
+     * @param  \Keap\Core\V2\Model\AutomationStateRequest $automation_state_request automation_state_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateState'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function updateState($automation_id, $automation_state_request, string $contentType = self::contentTypes['updateState'][0])
+    {
+        $this->updateStateWithHttpInfo($automation_id, $automation_state_request, $contentType);
+    }
+
+    /**
+     * Operation updateStateWithHttpInfo
+     *
+     * Update the state of an Easy Automation
+     *
+     * @param  string $automation_id (required)
+     * @param  \Keap\Core\V2\Model\AutomationStateRequest $automation_state_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateState'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateStateWithHttpInfo($automation_id, $automation_state_request, string $contentType = self::contentTypes['updateState'][0])
+    {
+        $request = $this->updateStateRequest($automation_id, $automation_state_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateStateAsync
+     *
+     * Update the state of an Easy Automation
+     *
+     * @param  string $automation_id (required)
+     * @param  \Keap\Core\V2\Model\AutomationStateRequest $automation_state_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateState'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateStateAsync($automation_id, $automation_state_request, string $contentType = self::contentTypes['updateState'][0])
+    {
+        return $this->updateStateAsyncWithHttpInfo($automation_id, $automation_state_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateStateAsyncWithHttpInfo
+     *
+     * Update the state of an Easy Automation
+     *
+     * @param  string $automation_id (required)
+     * @param  \Keap\Core\V2\Model\AutomationStateRequest $automation_state_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateState'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateStateAsyncWithHttpInfo($automation_id, $automation_state_request, string $contentType = self::contentTypes['updateState'][0])
+    {
+        $returnType = '';
+        $request = $this->updateStateRequest($automation_id, $automation_state_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateState'
+     *
+     * @param  string $automation_id (required)
+     * @param  \Keap\Core\V2\Model\AutomationStateRequest $automation_state_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateState'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateStateRequest($automation_id, $automation_state_request, string $contentType = self::contentTypes['updateState'][0])
+    {
+
+        // verify the required parameter 'automation_id' is set
+        if ($automation_id === null || (is_array($automation_id) && count($automation_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $automation_id when calling updateState'
+            );
+        }
+
+        // verify the required parameter 'automation_state_request' is set
+        if ($automation_state_request === null || (is_array($automation_state_request) && count($automation_state_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $automation_state_request when calling updateState'
+            );
+        }
+
+
+        $resourcePath = '/rest/v2/easy-automations/{automation_id}/state';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($automation_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'automation_id' . '}',
+                ObjectSerializer::toPathValue($automation_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($automation_state_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($automation_state_request));
+            } else {
+                $httpBody = $automation_state_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

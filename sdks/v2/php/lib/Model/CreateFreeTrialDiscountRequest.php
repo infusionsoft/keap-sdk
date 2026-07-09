@@ -59,7 +59,7 @@ class CreateFreeTrialDiscountRequest implements ModelInterface, ArrayAccess, \Js
     protected static $openAPITypes = [
         'name' => 'string',
         'description' => 'string',
-        'criteria' => '\Keap\Core\V2\Model\DiscountCriteria[]',
+        'criteria' => '\Keap\Core\V2\Model\CreateFreeTrialDiscountCriteria[]',
         'hide_price' => 'bool',
         'subscription_plan_id' => 'string',
         'free_trial_days' => 'int'
@@ -387,7 +387,7 @@ class CreateFreeTrialDiscountRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets criteria
      *
-     * @return \Keap\Core\V2\Model\DiscountCriteria[]|null
+     * @return \Keap\Core\V2\Model\CreateFreeTrialDiscountCriteria[]|null
      */
     public function getCriteria()
     {
@@ -397,7 +397,7 @@ class CreateFreeTrialDiscountRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets criteria
      *
-     * @param \Keap\Core\V2\Model\DiscountCriteria[]|null $criteria List of criteria that must be met for this discount to apply
+     * @param \Keap\Core\V2\Model\CreateFreeTrialDiscountCriteria[]|null $criteria List of criteria that must be met for this discount to apply
      *
      * @return self
      */

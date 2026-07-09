@@ -62,6 +62,7 @@ class EmailSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'subject' => 'string',
         'attachments' => '\Keap\Core\V2\Model\EmailSendRequestAttachment[]',
         'user_id' => 'string',
+        'from_address' => 'string',
         'html_content' => 'string',
         'plain_content' => 'string',
         'address_field' => 'string'
@@ -79,6 +80,7 @@ class EmailSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'subject' => null,
         'attachments' => null,
         'user_id' => null,
+        'from_address' => null,
         'html_content' => null,
         'plain_content' => null,
         'address_field' => null
@@ -94,6 +96,7 @@ class EmailSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'subject' => false,
         'attachments' => false,
         'user_id' => false,
+        'from_address' => false,
         'html_content' => false,
         'plain_content' => false,
         'address_field' => false
@@ -189,6 +192,7 @@ class EmailSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'subject' => 'subject',
         'attachments' => 'attachments',
         'user_id' => 'user_id',
+        'from_address' => 'from_address',
         'html_content' => 'html_content',
         'plain_content' => 'plain_content',
         'address_field' => 'address_field'
@@ -204,6 +208,7 @@ class EmailSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'subject' => 'setSubject',
         'attachments' => 'setAttachments',
         'user_id' => 'setUserId',
+        'from_address' => 'setFromAddress',
         'html_content' => 'setHtmlContent',
         'plain_content' => 'setPlainContent',
         'address_field' => 'setAddressField'
@@ -219,6 +224,7 @@ class EmailSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'subject' => 'getSubject',
         'attachments' => 'getAttachments',
         'user_id' => 'getUserId',
+        'from_address' => 'getFromAddress',
         'html_content' => 'getHtmlContent',
         'plain_content' => 'getPlainContent',
         'address_field' => 'getAddressField'
@@ -285,6 +291,7 @@ class EmailSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('subject', $data ?? [], null);
         $this->setIfExists('attachments', $data ?? [], null);
         $this->setIfExists('user_id', $data ?? [], null);
+        $this->setIfExists('from_address', $data ?? [], null);
         $this->setIfExists('html_content', $data ?? [], null);
         $this->setIfExists('plain_content', $data ?? [], null);
         $this->setIfExists('address_field', $data ?? [], null);
@@ -322,9 +329,6 @@ class EmailSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['subject'] === null) {
             $invalidProperties[] = "'subject' can't be null";
-        }
-        if ($this->container['user_id'] === null) {
-            $invalidProperties[] = "'user_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -427,7 +431,7 @@ class EmailSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets user_id
      *
-     * @return string
+     * @return string|null
      */
     public function getUserId()
     {
@@ -437,7 +441,7 @@ class EmailSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets user_id
      *
-     * @param string $user_id The user ID to send the email on behalf of
+     * @param string|null $user_id The user ID to send the email on behalf of. Exactly one of user_id or from_address is required.
      *
      * @return self
      */
@@ -447,6 +451,33 @@ class EmailSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable user_id cannot be null');
         }
         $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_address
+     *
+     * @return string|null
+     */
+    public function getFromAddress()
+    {
+        return $this->container['from_address'];
+    }
+
+    /**
+     * Sets from_address
+     *
+     * @param string|null $from_address The authenticated sender email address to send from. Exactly one of user_id or from_address is required.
+     *
+     * @return self
+     */
+    public function setFromAddress($from_address)
+    {
+        if (is_null($from_address)) {
+            throw new \InvalidArgumentException('non-nullable from_address cannot be null');
+        }
+        $this->container['from_address'] = $from_address;
 
         return $this;
     }

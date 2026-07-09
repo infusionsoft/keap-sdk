@@ -127,6 +127,7 @@ Class | Method | HTTP request | Description
 *AutomationApi* | [**listAllAutomationIds**](docs/Api/AutomationApi.md#listallautomationids) | **GET** /rest/v2/automations/ids | List Automations Ids
 *AutomationApi* | [**listAutomations**](docs/Api/AutomationApi.md#listautomations) | **GET** /rest/v2/automations | List Automations
 *AutomationApi* | [**unpublishAutomation**](docs/Api/AutomationApi.md#unpublishautomation) | **PUT** /rest/v2/automations/{automation_id}/unpublish | Unpublish an Automation
+*AutomationApi* | [**updateState**](docs/Api/AutomationApi.md#updatestate) | **PUT** /rest/v2/easy-automations/{automation_id}/state | Update the state of an Easy Automation
 *AutomationCategoryApi* | [**createCategory**](docs/Api/AutomationCategoryApi.md#createcategory) | **POST** /rest/v2/automationCategory | Create automation category
 *AutomationCategoryApi* | [**deleteCategories**](docs/Api/AutomationCategoryApi.md#deletecategories) | **DELETE** /rest/v2/automationCategory | Delete automation category
 *AutomationCategoryApi* | [**listCategories**](docs/Api/AutomationCategoryApi.md#listcategories) | **GET** /rest/v2/automationCategory | List automation categories
@@ -202,7 +203,9 @@ Class | Method | HTTP request | Description
 *FilesApi* | [**listFiles**](docs/Api/FilesApi.md#listfiles) | **GET** /rest/v2/files | List all files
 *FilesApi* | [**updateFile**](docs/Api/FilesApi.md#updatefile) | **POST** /rest/v2/files/{file_id} | Update a file
 *FreeTrialDiscountsApi* | [**createFreeTrialDiscount**](docs/Api/FreeTrialDiscountsApi.md#createfreetrialdiscount) | **POST** /rest/v2/discounts/freeTrials | Create a Subscription Free Trial Discount
+*FreeTrialDiscountsApi* | [**createFreeTrialDiscountCriteria**](docs/Api/FreeTrialDiscountsApi.md#createfreetrialdiscountcriteria) | **POST** /rest/v2/discounts/freeTrials/{discount_id}/criteria | Create a Subscription Free Trial Discount Criteria
 *FreeTrialDiscountsApi* | [**deleteFreeTrialDiscount**](docs/Api/FreeTrialDiscountsApi.md#deletefreetrialdiscount) | **DELETE** /rest/v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount
+*FreeTrialDiscountsApi* | [**deleteFreeTrialDiscountCriteria**](docs/Api/FreeTrialDiscountsApi.md#deletefreetrialdiscountcriteria) | **DELETE** /rest/v2/discounts/freeTrials/{discount_id}/criteria/{criteria_id} | Delete a Subscription Free Trial Discount Criteria
 *FreeTrialDiscountsApi* | [**getFreeTrialDiscount**](docs/Api/FreeTrialDiscountsApi.md#getfreetrialdiscount) | **GET** /rest/v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount
 *FreeTrialDiscountsApi* | [**listFreeTrialDiscounts**](docs/Api/FreeTrialDiscountsApi.md#listfreetrialdiscounts) | **GET** /rest/v2/discounts/freeTrials | List all Subscription Free Trial Discounts
 *FreeTrialDiscountsApi* | [**updateFreeTrialDiscount**](docs/Api/FreeTrialDiscountsApi.md#updatefreetrialdiscount) | **PATCH** /rest/v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount
@@ -483,6 +486,7 @@ Class | Method | HTTP request | Description
 - [Automation](docs/Model/Automation.md)
 - [AutomationCategory](docs/Model/AutomationCategory.md)
 - [AutomationLockStatus](docs/Model/AutomationLockStatus.md)
+- [AutomationStateRequest](docs/Model/AutomationStateRequest.md)
 - [BasicCompany](docs/Model/BasicCompany.md)
 - [BasicContact](docs/Model/BasicContact.md)
 - [BasicUser](docs/Model/BasicUser.md)
@@ -521,6 +525,7 @@ Class | Method | HTTP request | Description
 - [CreateDefaultCommissionProgramRequest](docs/Model/CreateDefaultCommissionProgramRequest.md)
 - [CreateEmailSentRequest](docs/Model/CreateEmailSentRequest.md)
 - [CreateEmailsSentRequest](docs/Model/CreateEmailsSentRequest.md)
+- [CreateFreeTrialDiscountCriteria](docs/Model/CreateFreeTrialDiscountCriteria.md)
 - [CreateFreeTrialDiscountRequest](docs/Model/CreateFreeTrialDiscountRequest.md)
 - [CreateIntegrationsWordPressOptInOption](docs/Model/CreateIntegrationsWordPressOptInOption.md)
 - [CreateLeadSourceExpenseRequest](docs/Model/CreateLeadSourceExpenseRequest.md)
@@ -590,6 +595,7 @@ Class | Method | HTTP request | Description
 - [FileOperationRequest](docs/Model/FileOperationRequest.md)
 - [FlowEventResultDTO](docs/Model/FlowEventResultDTO.md)
 - [FreeTrialDiscount](docs/Model/FreeTrialDiscount.md)
+- [FreeTrialDiscountCriteriaResponse](docs/Model/FreeTrialDiscountCriteriaResponse.md)
 - [GetApplicationEnabledStatusResponse](docs/Model/GetApplicationEnabledStatusResponse.md)
 - [GetBusinessProfileResponse](docs/Model/GetBusinessProfileResponse.md)
 - [GetContactOptionTypesResponse](docs/Model/GetContactOptionTypesResponse.md)
@@ -693,6 +699,7 @@ Class | Method | HTTP request | Description
 - [OrderV2](docs/Model/OrderV2.md)
 - [Origin](docs/Model/Origin.md)
 - [OriginRequest](docs/Model/OriginRequest.md)
+- [ParticipantCount](docs/Model/ParticipantCount.md)
 - [PatchAutomationCategoryRequest](docs/Model/PatchAutomationCategoryRequest.md)
 - [Payment](docs/Model/Payment.md)
 - [PaymentMethod](docs/Model/PaymentMethod.md)
@@ -767,6 +774,7 @@ Class | Method | HTTP request | Description
 - [UpdateCustomFieldMetaDataRequest](docs/Model/UpdateCustomFieldMetaDataRequest.md)
 - [UpdateDefaultCommissionProgramRequest](docs/Model/UpdateDefaultCommissionProgramRequest.md)
 - [UpdateEmailAddress](docs/Model/UpdateEmailAddress.md)
+- [UpdateFreeTrialDiscountCriteria](docs/Model/UpdateFreeTrialDiscountCriteria.md)
 - [UpdateFreeTrialDiscountRequest](docs/Model/UpdateFreeTrialDiscountRequest.md)
 - [UpdateLeadSourceExpenseRequest](docs/Model/UpdateLeadSourceExpenseRequest.md)
 - [UpdateNoteRequest](docs/Model/UpdateNoteRequest.md)
@@ -832,6 +840,6 @@ api.keap@thryv.com
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `v2`
-    - Package version: `2.0.16`
+    - Package version: `2.0.17`
     - Generator version: `7.13.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

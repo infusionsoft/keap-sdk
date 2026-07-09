@@ -5,6 +5,7 @@ An email template
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | **long** | The id of the template | [optional] 
 **PieceTitle** | **string** | The title of the template | [optional] 
 **Categories** | **List&lt;string&gt;** | The categories associated with the email | [optional] 
 **FromAddress** | **string** | The from address of the email | [optional] 

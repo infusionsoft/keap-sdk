@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import DiscountCriteria from './DiscountCriteria';
+import UpdateFreeTrialDiscountCriteria from './UpdateFreeTrialDiscountCriteria';
 
 /**
  * The UpdateFreeTrialDiscountRequest model module.
@@ -54,7 +54,7 @@ class UpdateFreeTrialDiscountRequest {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
             if (data.hasOwnProperty('criteria')) {
-                obj['criteria'] = ApiClient.convertToType(data['criteria'], [DiscountCriteria]);
+                obj['criteria'] = ApiClient.convertToType(data['criteria'], [UpdateFreeTrialDiscountCriteria]);
             }
             if (data.hasOwnProperty('free_trial_days')) {
                 obj['free_trial_days'] = ApiClient.convertToType(data['free_trial_days'], 'Number');
@@ -90,7 +90,7 @@ class UpdateFreeTrialDiscountRequest {
             }
             // validate the optional field `criteria` (array)
             for (const item of data['criteria']) {
-                DiscountCriteria.validateJSON(item);
+                UpdateFreeTrialDiscountCriteria.validateJSON(item);
             };
         }
         // ensure the json data is a string
@@ -120,7 +120,7 @@ UpdateFreeTrialDiscountRequest.prototype['description'] = undefined;
 
 /**
  * List of criteria that must be met for this discount to apply
- * @member {Array.<module:keap.core.v2/model/DiscountCriteria>} criteria
+ * @member {Array.<module:keap.core.v2/model/UpdateFreeTrialDiscountCriteria>} criteria
  */
 UpdateFreeTrialDiscountRequest.prototype['criteria'] = undefined;
 

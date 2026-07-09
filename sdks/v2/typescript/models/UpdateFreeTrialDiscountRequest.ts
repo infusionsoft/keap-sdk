@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { DiscountCriteria } from '../models/DiscountCriteria';
+import { UpdateFreeTrialDiscountCriteria } from '../models/UpdateFreeTrialDiscountCriteria';
 import { HttpFile } from '../http/http';
 
 export class UpdateFreeTrialDiscountRequest {
@@ -25,7 +25,7 @@ export class UpdateFreeTrialDiscountRequest {
     /**
     * List of criteria that must be met for this discount to apply
     */
-    'criteria'?: Array<DiscountCriteria>;
+    'criteria'?: Array<UpdateFreeTrialDiscountCriteria>;
     /**
     * Number of free trial days
     */
@@ -59,7 +59,7 @@ export class UpdateFreeTrialDiscountRequest {
         {
             "name": "criteria",
             "baseName": "criteria",
-            "type": "Array<DiscountCriteria>",
+            "type": "Array<UpdateFreeTrialDiscountCriteria>",
             "format": ""
         },
         {

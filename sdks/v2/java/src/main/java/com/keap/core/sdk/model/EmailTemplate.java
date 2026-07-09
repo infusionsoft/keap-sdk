@@ -36,6 +36,7 @@ import jakarta.validation.Valid;
  */
 @Schema(description = "An email template")
 @JsonPropertyOrder({
+  EmailTemplate.JSON_PROPERTY_ID,
   EmailTemplate.JSON_PROPERTY_PIECE_TITLE,
   EmailTemplate.JSON_PROPERTY_CATEGORIES,
   EmailTemplate.JSON_PROPERTY_FROM_ADDRESS,
@@ -51,6 +52,9 @@ import jakarta.validation.Valid;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class EmailTemplate implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  public static final String JSON_PROPERTY_ID = "id";
+  @jakarta.annotation.Nullable  private Long id;
 
   public static final String JSON_PROPERTY_PIECE_TITLE = "piece_title";
   @jakarta.annotation.Nullable  private String pieceTitle;
@@ -125,6 +129,30 @@ public class EmailTemplate implements Serializable {
 
   public EmailTemplate() { 
   }
+
+  public EmailTemplate id(@jakarta.annotation.Nullable Long id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * The id of the template
+   * @return id
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The id of the template")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getId() {
+    return id;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@jakarta.annotation.Nullable Long id) {
+    this.id = id;
+  }
+
 
   public EmailTemplate pieceTitle(@jakarta.annotation.Nullable String pieceTitle) {
     this.pieceTitle = pieceTitle;
@@ -409,7 +437,8 @@ public class EmailTemplate implements Serializable {
       return false;
     }
     EmailTemplate emailTemplate = (EmailTemplate) o;
-    return Objects.equals(this.pieceTitle, emailTemplate.pieceTitle) &&
+    return Objects.equals(this.id, emailTemplate.id) &&
+        Objects.equals(this.pieceTitle, emailTemplate.pieceTitle) &&
         Objects.equals(this.categories, emailTemplate.categories) &&
         Objects.equals(this.fromAddress, emailTemplate.fromAddress) &&
         Objects.equals(this.toAddress, emailTemplate.toAddress) &&
@@ -424,13 +453,14 @@ public class EmailTemplate implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(pieceTitle, categories, fromAddress, toAddress, ccAddress, bccAddress, subject, textBody, htmlBody, contentType, mergeContext);
+    return Objects.hash(id, pieceTitle, categories, fromAddress, toAddress, ccAddress, bccAddress, subject, textBody, htmlBody, contentType, mergeContext);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EmailTemplate {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    pieceTitle: ").append(toIndentedString(pieceTitle)).append("\n");
     sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
     sb.append("    fromAddress: ").append(toIndentedString(fromAddress)).append("\n");
@@ -469,7 +499,11 @@ public class EmailTemplate implements Serializable {
           this.instance = instance;
         }
     
-        public EmailTemplate.Builder pieceTitle(String pieceTitle) {
+        public EmailTemplate.Builder id(Long id) {
+              this.instance.id = id;
+          return this;
+        }
+            public EmailTemplate.Builder pieceTitle(String pieceTitle) {
               this.instance.pieceTitle = pieceTitle;
           return this;
         }
@@ -547,6 +581,7 @@ public class EmailTemplate implements Serializable {
       */
       public EmailTemplate.Builder toBuilder() {
         return new EmailTemplate.Builder()
+          .id(getId())
           .pieceTitle(getPieceTitle())
           .categories(getCategories())
           .fromAddress(getFromAddress())

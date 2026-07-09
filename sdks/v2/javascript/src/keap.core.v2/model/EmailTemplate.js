@@ -47,6 +47,9 @@ class EmailTemplate {
         if (data) {
             obj = obj || new EmailTemplate();
 
+            if (data.hasOwnProperty('id')) {
+                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
+            }
             if (data.hasOwnProperty('piece_title')) {
                 obj['piece_title'] = ApiClient.convertToType(data['piece_title'], 'String');
             }
@@ -142,6 +145,12 @@ class EmailTemplate {
 }
 
 
+
+/**
+ * The id of the template
+ * @member {Number} id
+ */
+EmailTemplate.prototype['id'] = undefined;
 
 /**
  * The title of the template

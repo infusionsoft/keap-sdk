@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { DiscountCriteria } from '../models/DiscountCriteria';
+import { CreateFreeTrialDiscountCriteria } from '../models/CreateFreeTrialDiscountCriteria';
 import { HttpFile } from '../http/http';
 
 export class CreateFreeTrialDiscountRequest {
@@ -25,7 +25,7 @@ export class CreateFreeTrialDiscountRequest {
     /**
     * List of criteria that must be met for this discount to apply
     */
-    'criteria'?: Array<DiscountCriteria>;
+    'criteria'?: Array<CreateFreeTrialDiscountCriteria>;
     /**
     * Whether to hide the price during the trial period
     */
@@ -59,7 +59,7 @@ export class CreateFreeTrialDiscountRequest {
         {
             "name": "criteria",
             "baseName": "criteria",
-            "type": "Array<DiscountCriteria>",
+            "type": "Array<CreateFreeTrialDiscountCriteria>",
             "format": ""
         },
         {

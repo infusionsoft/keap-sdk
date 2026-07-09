@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**listAllAutomationIds**](AutomationApi.md#listAllAutomationIds) | **GET** /rest/v2/automations/ids | List Automations Ids
 [**listAutomations**](AutomationApi.md#listAutomations) | **GET** /rest/v2/automations | List Automations
 [**unpublishAutomation**](AutomationApi.md#unpublishAutomation) | **PUT** /rest/v2/automations/{automation_id}/unpublish | Unpublish an Automation
+[**updateState**](AutomationApi.md#updateState) | **PUT** /rest/v2/easy-automations/{automation_id}/state | Update the state of an Easy Automation
 
 
 
@@ -455,6 +456,56 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **automationId** | **String**|  | 
  **unpublishAutomationRequest** | [**UnpublishAutomationRequest**](UnpublishAutomationRequest.md)|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## updateState
+
+> updateState(automationId, automationStateRequest)
+
+Update the state of an Easy Automation
+
+Updates the lifecycle state of an existing Easy Automation. Supported states: &#x60;disabled&#x60;, &#x60;enabled&#x60;.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.AutomationApi();
+let automationId = "automationId_example"; // String | 
+let automationStateRequest = new KeapCoreServiceV2Sdk.AutomationStateRequest(); // AutomationStateRequest | 
+apiInstance.updateState(automationId, automationStateRequest).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **automationId** | **String**|  | 
+ **automationStateRequest** | [**AutomationStateRequest**](AutomationStateRequest.md)|  | 
 
 ### Return type
 

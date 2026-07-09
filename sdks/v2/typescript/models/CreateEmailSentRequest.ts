@@ -49,7 +49,7 @@ export class CreateEmailSentRequest {
     */
     'sentFromReplyAddress'?: string;
     /**
-    * When the email was sent, in ISO-8601 format
+    * When the email was sent, in ISO-8601 format. If omitted, the stored sent_time will be null.
     */
     'sentTime'?: Date;
     /**

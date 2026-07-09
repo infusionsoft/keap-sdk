@@ -13,7 +13,9 @@
 
 
 import ApiClient from "../ApiClient";
+import CreateFreeTrialDiscountCriteria from '../model/CreateFreeTrialDiscountCriteria';
 import CreateFreeTrialDiscountRequest from '../model/CreateFreeTrialDiscountRequest';
+import DiscountCriteria from '../model/DiscountCriteria';
 import Error from '../model/Error';
 import FreeTrialDiscount from '../model/FreeTrialDiscount';
 import ListFreeTrialDiscountsResponse from '../model/ListFreeTrialDiscountsResponse';
@@ -86,6 +88,60 @@ export default class FreeTrialDiscountsApi {
 
 
     /**
+     * Create a Subscription Free Trial Discount Criteria
+     * Creates a Subscription Free Trial Discount Criteria
+     * @param {String} discountId 
+     * @param {module:keap.core.v2/model/CreateFreeTrialDiscountCriteria} createFreeTrialDiscountCriteria 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/DiscountCriteria} and HTTP response
+     */
+    createFreeTrialDiscountCriteriaWithHttpInfo(discountId, createFreeTrialDiscountCriteria) {
+      let postBody = createFreeTrialDiscountCriteria;
+      // verify the required parameter 'discountId' is set
+      if (discountId === undefined || discountId === null) {
+        throw new Error("Missing the required parameter 'discountId' when calling createFreeTrialDiscountCriteria");
+      }
+      // verify the required parameter 'createFreeTrialDiscountCriteria' is set
+      if (createFreeTrialDiscountCriteria === undefined || createFreeTrialDiscountCriteria === null) {
+        throw new Error("Missing the required parameter 'createFreeTrialDiscountCriteria' when calling createFreeTrialDiscountCriteria");
+      }
+
+      let pathParams = {
+        'discount_id': discountId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = DiscountCriteria;
+      return this.apiClient.callApi(
+        '/rest/v2/discounts/freeTrials/{discount_id}/criteria', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create a Subscription Free Trial Discount Criteria
+     * Creates a Subscription Free Trial Discount Criteria
+     * @param {String} discountId 
+     * @param {module:keap.core.v2/model/CreateFreeTrialDiscountCriteria} createFreeTrialDiscountCriteria 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/DiscountCriteria}
+     */
+    createFreeTrialDiscountCriteria(discountId, createFreeTrialDiscountCriteria) {
+      return this.createFreeTrialDiscountCriteriaWithHttpInfo(discountId, createFreeTrialDiscountCriteria)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Delete a Subscription Free Trial Discount
      * Deletes a specified Subscription Free Trial Discount
      * @param {String} discountId 
@@ -127,6 +183,61 @@ export default class FreeTrialDiscountsApi {
      */
     deleteFreeTrialDiscount(discountId) {
       return this.deleteFreeTrialDiscountWithHttpInfo(discountId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Delete a Subscription Free Trial Discount Criteria
+     * Deletes a specified Subscription Free Trial Discount Criteria
+     * @param {String} discountId 
+     * @param {String} criteriaId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteFreeTrialDiscountCriteriaWithHttpInfo(discountId, criteriaId) {
+      let postBody = null;
+      // verify the required parameter 'discountId' is set
+      if (discountId === undefined || discountId === null) {
+        throw new Error("Missing the required parameter 'discountId' when calling deleteFreeTrialDiscountCriteria");
+      }
+      // verify the required parameter 'criteriaId' is set
+      if (criteriaId === undefined || criteriaId === null) {
+        throw new Error("Missing the required parameter 'criteriaId' when calling deleteFreeTrialDiscountCriteria");
+      }
+
+      let pathParams = {
+        'discount_id': discountId,
+        'criteria_id': criteriaId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/discounts/freeTrials/{discount_id}/criteria/{criteria_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete a Subscription Free Trial Discount Criteria
+     * Deletes a specified Subscription Free Trial Discount Criteria
+     * @param {String} discountId 
+     * @param {String} criteriaId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteFreeTrialDiscountCriteria(discountId, criteriaId) {
+      return this.deleteFreeTrialDiscountCriteriaWithHttpInfo(discountId, criteriaId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

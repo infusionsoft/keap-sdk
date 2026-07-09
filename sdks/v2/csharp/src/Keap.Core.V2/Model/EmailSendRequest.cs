@@ -43,11 +43,12 @@ namespace Keap.Core.V2.Model
         /// <param name="contacts">An array of Contact Ids to receive the email (required).</param>
         /// <param name="subject">The subject line of the email (required).</param>
         /// <param name="attachments">Attachments to be sent with each copy of the email, maximum of 10 with size of 1MB each.</param>
-        /// <param name="userId">The user ID to send the email on behalf of (required).</param>
+        /// <param name="userId">The user ID to send the email on behalf of. Exactly one of user_id or from_address is required..</param>
+        /// <param name="fromAddress">The authenticated sender email address to send from. Exactly one of user_id or from_address is required..</param>
         /// <param name="htmlContent">The HTML-formatted content of the email, encoded in Base64.</param>
         /// <param name="plainContent">The plain-text content of the email, encoded in Base64.</param>
         /// <param name="addressField">Email field of each Contact record to address the email to, such as &#39;Email&#39;, &#39;EmailAddress2&#39;, &#39;EmailAddress3&#39; or &#39;_CustomFieldName&#39;, defaulting to the contact&#39;s primary email.</param>
-        public EmailSendRequest(List<string> contacts = default, string subject = default, List<EmailSendRequestAttachment> attachments = default, string userId = default, string htmlContent = default, string plainContent = default, string addressField = default)
+        public EmailSendRequest(List<string> contacts = default, string subject = default, List<EmailSendRequestAttachment> attachments = default, string userId = default, string fromAddress = default, string htmlContent = default, string plainContent = default, string addressField = default)
         {
             // to ensure "contacts" is required (not null)
             if (contacts == null)
@@ -61,13 +62,9 @@ namespace Keap.Core.V2.Model
                 throw new ArgumentNullException("subject is a required property for EmailSendRequest and cannot be null");
             }
             this.Subject = subject;
-            // to ensure "userId" is required (not null)
-            if (userId == null)
-            {
-                throw new ArgumentNullException("userId is a required property for EmailSendRequest and cannot be null");
-            }
-            this.UserId = userId;
             this.Attachments = attachments;
+            this.UserId = userId;
+            this.FromAddress = fromAddress;
             this.HtmlContent = htmlContent;
             this.PlainContent = plainContent;
             this.AddressField = addressField;
@@ -101,14 +98,24 @@ namespace Keap.Core.V2.Model
         public List<EmailSendRequestAttachment> Attachments { get; set; }
 
         /// <summary>
-        /// The user ID to send the email on behalf of
+        /// The user ID to send the email on behalf of. Exactly one of user_id or from_address is required.
         /// </summary>
-        /// <value>The user ID to send the email on behalf of</value>
+        /// <value>The user ID to send the email on behalf of. Exactly one of user_id or from_address is required.</value>
         /*
         <example>1</example>
         */
-        [DataMember(Name = "user_id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "user_id", EmitDefaultValue = false)]
         public string UserId { get; set; }
+
+        /// <summary>
+        /// The authenticated sender email address to send from. Exactly one of user_id or from_address is required.
+        /// </summary>
+        /// <value>The authenticated sender email address to send from. Exactly one of user_id or from_address is required.</value>
+        /*
+        <example>sales@example.com</example>
+        */
+        [DataMember(Name = "from_address", EmitDefaultValue = false)]
+        public string FromAddress { get; set; }
 
         /// <summary>
         /// The HTML-formatted content of the email, encoded in Base64
@@ -152,6 +159,7 @@ namespace Keap.Core.V2.Model
             sb.Append("  Subject: ").Append(Subject).Append("\n");
             sb.Append("  Attachments: ").Append(Attachments).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  FromAddress: ").Append(FromAddress).Append("\n");
             sb.Append("  HtmlContent: ").Append(HtmlContent).Append("\n");
             sb.Append("  PlainContent: ").Append(PlainContent).Append("\n");
             sb.Append("  AddressField: ").Append(AddressField).Append("\n");

@@ -46,7 +46,7 @@ namespace Keap.Core.V2.Model
         /// <param name="hidePrice">Whether to hide the price during the trial period.</param>
         /// <param name="subscriptionPlanId">ID of the subscription plan this trial applies to (required).</param>
         /// <param name="freeTrialDays">Number of free trial days. Must be a positive number. Defaults to 0..</param>
-        public CreateFreeTrialDiscountRequest(string name = default, string description = default, List<DiscountCriteria> criteria = default, bool hidePrice = default, string subscriptionPlanId = default, int freeTrialDays = default)
+        public CreateFreeTrialDiscountRequest(string name = default, string description = default, List<CreateFreeTrialDiscountCriteria> criteria = default, bool hidePrice = default, string subscriptionPlanId = default, int freeTrialDays = default)
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -91,7 +91,7 @@ namespace Keap.Core.V2.Model
         /// </summary>
         /// <value>List of criteria that must be met for this discount to apply</value>
         [DataMember(Name = "criteria", EmitDefaultValue = false)]
-        public List<DiscountCriteria> Criteria { get; set; }
+        public List<CreateFreeTrialDiscountCriteria> Criteria { get; set; }
 
         /// <summary>
         /// Whether to hide the price during the trial period

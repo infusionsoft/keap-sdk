@@ -65,6 +65,7 @@ import AssignedProducts from './model/AssignedProducts';
 import Automation from './model/Automation';
 import AutomationCategory from './model/AutomationCategory';
 import AutomationLockStatus from './model/AutomationLockStatus';
+import AutomationStateRequest from './model/AutomationStateRequest';
 import BasicCompany from './model/BasicCompany';
 import BasicContact from './model/BasicContact';
 import BasicUser from './model/BasicUser';
@@ -103,6 +104,7 @@ import CreateCustomFieldResponse from './model/CreateCustomFieldResponse';
 import CreateDefaultCommissionProgramRequest from './model/CreateDefaultCommissionProgramRequest';
 import CreateEmailSentRequest from './model/CreateEmailSentRequest';
 import CreateEmailsSentRequest from './model/CreateEmailsSentRequest';
+import CreateFreeTrialDiscountCriteria from './model/CreateFreeTrialDiscountCriteria';
 import CreateFreeTrialDiscountRequest from './model/CreateFreeTrialDiscountRequest';
 import CreateIntegrationsWordPressOptInOption from './model/CreateIntegrationsWordPressOptInOption';
 import CreateLeadSourceExpenseRequest from './model/CreateLeadSourceExpenseRequest';
@@ -172,6 +174,7 @@ import FileMetadata from './model/FileMetadata';
 import FileOperationRequest from './model/FileOperationRequest';
 import FlowEventResultDTO from './model/FlowEventResultDTO';
 import FreeTrialDiscount from './model/FreeTrialDiscount';
+import FreeTrialDiscountCriteriaResponse from './model/FreeTrialDiscountCriteriaResponse';
 import GetApplicationEnabledStatusResponse from './model/GetApplicationEnabledStatusResponse';
 import GetBusinessProfileResponse from './model/GetBusinessProfileResponse';
 import GetContactOptionTypesResponse from './model/GetContactOptionTypesResponse';
@@ -275,6 +278,7 @@ import OrderTotalDiscount from './model/OrderTotalDiscount';
 import OrderV2 from './model/OrderV2';
 import Origin from './model/Origin';
 import OriginRequest from './model/OriginRequest';
+import ParticipantCount from './model/ParticipantCount';
 import PatchAutomationCategoryRequest from './model/PatchAutomationCategoryRequest';
 import Payment from './model/Payment';
 import PaymentMethod from './model/PaymentMethod';
@@ -349,6 +353,7 @@ import UpdateCustomFieldGroupRequest from './model/UpdateCustomFieldGroupRequest
 import UpdateCustomFieldMetaDataRequest from './model/UpdateCustomFieldMetaDataRequest';
 import UpdateDefaultCommissionProgramRequest from './model/UpdateDefaultCommissionProgramRequest';
 import UpdateEmailAddress from './model/UpdateEmailAddress';
+import UpdateFreeTrialDiscountCriteria from './model/UpdateFreeTrialDiscountCriteria';
 import UpdateFreeTrialDiscountRequest from './model/UpdateFreeTrialDiscountRequest';
 import UpdateLeadSourceExpenseRequest from './model/UpdateLeadSourceExpenseRequest';
 import UpdateNoteRequest from './model/UpdateNoteRequest';
@@ -459,7 +464,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.16
+* @version 2.0.17
 */
 export {
     /**
@@ -781,6 +786,12 @@ export {
     AutomationLockStatus,
 
     /**
+     * The AutomationStateRequest model constructor.
+     * @property {module:keap.core.v2/model/AutomationStateRequest}
+     */
+    AutomationStateRequest,
+
+    /**
      * The BasicCompany model constructor.
      * @property {module:keap.core.v2/model/BasicCompany}
      */
@@ -1007,6 +1018,12 @@ export {
      * @property {module:keap.core.v2/model/CreateEmailsSentRequest}
      */
     CreateEmailsSentRequest,
+
+    /**
+     * The CreateFreeTrialDiscountCriteria model constructor.
+     * @property {module:keap.core.v2/model/CreateFreeTrialDiscountCriteria}
+     */
+    CreateFreeTrialDiscountCriteria,
 
     /**
      * The CreateFreeTrialDiscountRequest model constructor.
@@ -1421,6 +1438,12 @@ export {
      * @property {module:keap.core.v2/model/FreeTrialDiscount}
      */
     FreeTrialDiscount,
+
+    /**
+     * The FreeTrialDiscountCriteriaResponse model constructor.
+     * @property {module:keap.core.v2/model/FreeTrialDiscountCriteriaResponse}
+     */
+    FreeTrialDiscountCriteriaResponse,
 
     /**
      * The GetApplicationEnabledStatusResponse model constructor.
@@ -2041,6 +2064,12 @@ export {
     OriginRequest,
 
     /**
+     * The ParticipantCount model constructor.
+     * @property {module:keap.core.v2/model/ParticipantCount}
+     */
+    ParticipantCount,
+
+    /**
      * The PatchAutomationCategoryRequest model constructor.
      * @property {module:keap.core.v2/model/PatchAutomationCategoryRequest}
      */
@@ -2483,6 +2512,12 @@ export {
      * @property {module:keap.core.v2/model/UpdateEmailAddress}
      */
     UpdateEmailAddress,
+
+    /**
+     * The UpdateFreeTrialDiscountCriteria model constructor.
+     * @property {module:keap.core.v2/model/UpdateFreeTrialDiscountCriteria}
+     */
+    UpdateFreeTrialDiscountCriteria,
 
     /**
      * The UpdateFreeTrialDiscountRequest model constructor.

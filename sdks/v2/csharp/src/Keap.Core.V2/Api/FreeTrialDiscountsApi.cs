@@ -52,6 +52,31 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of FreeTrialDiscount</returns>
         ApiResponse<FreeTrialDiscount> CreateFreeTrialDiscountWithHttpInfo(CreateFreeTrialDiscountRequest createFreeTrialDiscountRequest, int operationIndex = 0);
         /// <summary>
+        /// Create a Subscription Free Trial Discount Criteria
+        /// </summary>
+        /// <remarks>
+        /// Creates a Subscription Free Trial Discount Criteria
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="createFreeTrialDiscountCriteria"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>DiscountCriteria</returns>
+        DiscountCriteria CreateFreeTrialDiscountCriteria(string discountId, CreateFreeTrialDiscountCriteria createFreeTrialDiscountCriteria, int operationIndex = 0);
+
+        /// <summary>
+        /// Create a Subscription Free Trial Discount Criteria
+        /// </summary>
+        /// <remarks>
+        /// Creates a Subscription Free Trial Discount Criteria
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="createFreeTrialDiscountCriteria"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of DiscountCriteria</returns>
+        ApiResponse<DiscountCriteria> CreateFreeTrialDiscountCriteriaWithHttpInfo(string discountId, CreateFreeTrialDiscountCriteria createFreeTrialDiscountCriteria, int operationIndex = 0);
+        /// <summary>
         /// Delete a Subscription Free Trial Discount
         /// </summary>
         /// <remarks>
@@ -74,6 +99,31 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteFreeTrialDiscountWithHttpInfo(string discountId, int operationIndex = 0);
+        /// <summary>
+        /// Delete a Subscription Free Trial Discount Criteria
+        /// </summary>
+        /// <remarks>
+        /// Deletes a specified Subscription Free Trial Discount Criteria
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="criteriaId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        void DeleteFreeTrialDiscountCriteria(string discountId, string criteriaId, int operationIndex = 0);
+
+        /// <summary>
+        /// Delete a Subscription Free Trial Discount Criteria
+        /// </summary>
+        /// <remarks>
+        /// Deletes a specified Subscription Free Trial Discount Criteria
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="criteriaId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteFreeTrialDiscountCriteriaWithHttpInfo(string discountId, string criteriaId, int operationIndex = 0);
         /// <summary>
         /// Retrieve a Subscription Free Trial Discount
         /// </summary>
@@ -188,6 +238,33 @@ namespace Keap.Core.V2.Api
         /// <returns>Task of ApiResponse (FreeTrialDiscount)</returns>
         System.Threading.Tasks.Task<ApiResponse<FreeTrialDiscount>> CreateFreeTrialDiscountWithHttpInfoAsync(CreateFreeTrialDiscountRequest createFreeTrialDiscountRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Create a Subscription Free Trial Discount Criteria
+        /// </summary>
+        /// <remarks>
+        /// Creates a Subscription Free Trial Discount Criteria
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="createFreeTrialDiscountCriteria"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DiscountCriteria</returns>
+        System.Threading.Tasks.Task<DiscountCriteria> CreateFreeTrialDiscountCriteriaAsync(string discountId, CreateFreeTrialDiscountCriteria createFreeTrialDiscountCriteria, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Create a Subscription Free Trial Discount Criteria
+        /// </summary>
+        /// <remarks>
+        /// Creates a Subscription Free Trial Discount Criteria
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="createFreeTrialDiscountCriteria"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DiscountCriteria)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DiscountCriteria>> CreateFreeTrialDiscountCriteriaWithHttpInfoAsync(string discountId, CreateFreeTrialDiscountCriteria createFreeTrialDiscountCriteria, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Delete a Subscription Free Trial Discount
         /// </summary>
         /// <remarks>
@@ -212,6 +289,33 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteFreeTrialDiscountWithHttpInfoAsync(string discountId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Delete a Subscription Free Trial Discount Criteria
+        /// </summary>
+        /// <remarks>
+        /// Deletes a specified Subscription Free Trial Discount Criteria
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="criteriaId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteFreeTrialDiscountCriteriaAsync(string discountId, string criteriaId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Delete a Subscription Free Trial Discount Criteria
+        /// </summary>
+        /// <remarks>
+        /// Deletes a specified Subscription Free Trial Discount Criteria
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="criteriaId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteFreeTrialDiscountCriteriaWithHttpInfoAsync(string discountId, string criteriaId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieve a Subscription Free Trial Discount
         /// </summary>
@@ -597,6 +701,203 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
+        /// Create a Subscription Free Trial Discount Criteria Creates a Subscription Free Trial Discount Criteria
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="createFreeTrialDiscountCriteria"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>DiscountCriteria</returns>
+        public DiscountCriteria CreateFreeTrialDiscountCriteria(string discountId, CreateFreeTrialDiscountCriteria createFreeTrialDiscountCriteria, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<DiscountCriteria> localVarResponse = CreateFreeTrialDiscountCriteriaWithHttpInfo(discountId, createFreeTrialDiscountCriteria);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a Subscription Free Trial Discount Criteria Creates a Subscription Free Trial Discount Criteria
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="createFreeTrialDiscountCriteria"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of DiscountCriteria</returns>
+        public Keap.Core.V2.Client.ApiResponse<DiscountCriteria> CreateFreeTrialDiscountCriteriaWithHttpInfo(string discountId, CreateFreeTrialDiscountCriteria createFreeTrialDiscountCriteria, int operationIndex = 0)
+        {
+            // verify the required parameter 'discountId' is set
+            if (discountId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'discountId' when calling FreeTrialDiscountsApi->CreateFreeTrialDiscountCriteria");
+            }
+
+            // verify the required parameter 'createFreeTrialDiscountCriteria' is set
+            if (createFreeTrialDiscountCriteria == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'createFreeTrialDiscountCriteria' when calling FreeTrialDiscountsApi->CreateFreeTrialDiscountCriteria");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("discount_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(discountId)); // path parameter
+            localVarRequestOptions.Data = createFreeTrialDiscountCriteria;
+
+            localVarRequestOptions.Operation = "FreeTrialDiscountsApi.CreateFreeTrialDiscountCriteria";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<DiscountCriteria>("/rest/v2/discounts/freeTrials/{discount_id}/criteria", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateFreeTrialDiscountCriteria", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Create a Subscription Free Trial Discount Criteria Creates a Subscription Free Trial Discount Criteria
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="createFreeTrialDiscountCriteria"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DiscountCriteria</returns>
+        public async System.Threading.Tasks.Task<DiscountCriteria> CreateFreeTrialDiscountCriteriaAsync(string discountId, CreateFreeTrialDiscountCriteria createFreeTrialDiscountCriteria, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<DiscountCriteria> localVarResponse = await CreateFreeTrialDiscountCriteriaWithHttpInfoAsync(discountId, createFreeTrialDiscountCriteria, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a Subscription Free Trial Discount Criteria Creates a Subscription Free Trial Discount Criteria
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="createFreeTrialDiscountCriteria"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DiscountCriteria)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<DiscountCriteria>> CreateFreeTrialDiscountCriteriaWithHttpInfoAsync(string discountId, CreateFreeTrialDiscountCriteria createFreeTrialDiscountCriteria, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'discountId' is set
+            if (discountId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'discountId' when calling FreeTrialDiscountsApi->CreateFreeTrialDiscountCriteria");
+            }
+
+            // verify the required parameter 'createFreeTrialDiscountCriteria' is set
+            if (createFreeTrialDiscountCriteria == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'createFreeTrialDiscountCriteria' when calling FreeTrialDiscountsApi->CreateFreeTrialDiscountCriteria");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("discount_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(discountId)); // path parameter
+            localVarRequestOptions.Data = createFreeTrialDiscountCriteria;
+
+            localVarRequestOptions.Operation = "FreeTrialDiscountsApi.CreateFreeTrialDiscountCriteria";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<DiscountCriteria>("/rest/v2/discounts/freeTrials/{discount_id}/criteria", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateFreeTrialDiscountCriteria", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Delete a Subscription Free Trial Discount Deletes a specified Subscription Free Trial Discount
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
@@ -762,6 +1063,199 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DeleteFreeTrialDiscount", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete a Subscription Free Trial Discount Criteria Deletes a specified Subscription Free Trial Discount Criteria
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="criteriaId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        public void DeleteFreeTrialDiscountCriteria(string discountId, string criteriaId, int operationIndex = 0)
+        {
+            DeleteFreeTrialDiscountCriteriaWithHttpInfo(discountId, criteriaId);
+        }
+
+        /// <summary>
+        /// Delete a Subscription Free Trial Discount Criteria Deletes a specified Subscription Free Trial Discount Criteria
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="criteriaId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Keap.Core.V2.Client.ApiResponse<Object> DeleteFreeTrialDiscountCriteriaWithHttpInfo(string discountId, string criteriaId, int operationIndex = 0)
+        {
+            // verify the required parameter 'discountId' is set
+            if (discountId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'discountId' when calling FreeTrialDiscountsApi->DeleteFreeTrialDiscountCriteria");
+            }
+
+            // verify the required parameter 'criteriaId' is set
+            if (criteriaId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'criteriaId' when calling FreeTrialDiscountsApi->DeleteFreeTrialDiscountCriteria");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("discount_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(discountId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("criteria_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(criteriaId)); // path parameter
+
+            localVarRequestOptions.Operation = "FreeTrialDiscountsApi.DeleteFreeTrialDiscountCriteria";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<Object>("/rest/v2/discounts/freeTrials/{discount_id}/criteria/{criteria_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteFreeTrialDiscountCriteria", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete a Subscription Free Trial Discount Criteria Deletes a specified Subscription Free Trial Discount Criteria
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="criteriaId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteFreeTrialDiscountCriteriaAsync(string discountId, string criteriaId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            await DeleteFreeTrialDiscountCriteriaWithHttpInfoAsync(discountId, criteriaId, operationIndex, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Delete a Subscription Free Trial Discount Criteria Deletes a specified Subscription Free Trial Discount Criteria
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="criteriaId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Object>> DeleteFreeTrialDiscountCriteriaWithHttpInfoAsync(string discountId, string criteriaId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'discountId' is set
+            if (discountId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'discountId' when calling FreeTrialDiscountsApi->DeleteFreeTrialDiscountCriteria");
+            }
+
+            // verify the required parameter 'criteriaId' is set
+            if (criteriaId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'criteriaId' when calling FreeTrialDiscountsApi->DeleteFreeTrialDiscountCriteria");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("discount_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(discountId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("criteria_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(criteriaId)); // path parameter
+
+            localVarRequestOptions.Operation = "FreeTrialDiscountsApi.DeleteFreeTrialDiscountCriteria";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/rest/v2/discounts/freeTrials/{discount_id}/criteria/{criteria_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteFreeTrialDiscountCriteria", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

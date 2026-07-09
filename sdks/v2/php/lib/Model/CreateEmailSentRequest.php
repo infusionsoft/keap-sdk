@@ -662,7 +662,7 @@ class CreateEmailSentRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets sent_time
      *
-     * @param \DateTime|null $sent_time When the email was sent, in ISO-8601 format
+     * @param \DateTime|null $sent_time When the email was sent, in ISO-8601 format. If omitted, the stored sent_time will be null.
      *
      * @return self
      */

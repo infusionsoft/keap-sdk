@@ -23,6 +23,7 @@ import com.keap.core.sdk.model.AddToAutomationSequenceRequest;
 import com.keap.core.sdk.model.AddToAutomationSequenceResponse;
 import com.keap.core.sdk.model.AssignAutomationCategoryRequest;
 import com.keap.core.sdk.model.Automation;
+import com.keap.core.sdk.model.AutomationStateRequest;
 import com.keap.core.sdk.model.BatchUnpublishAutomationRequest;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.ListAutomationIdsResponse;
@@ -979,6 +980,107 @@ import io.github.resilience4j.retry.Retry;
 
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(unpublishAutomationRequest);
+      localVarRequestBuilder.method("PUT", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Update the state of an Easy Automation
+   * Updates the lifecycle state of an existing Easy Automation. Supported states: &#x60;disabled&#x60;, &#x60;enabled&#x60;.
+   * @param automationId  (required)
+   * @param automationStateRequest  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void updateState(String automationId, AutomationStateRequest automationStateRequest) throws ApiException {
+    updateStateWithHttpInfo(automationId, automationStateRequest);
+  }
+
+  /**
+   * Update the state of an Easy Automation
+   * Updates the lifecycle state of an existing Easy Automation. Supported states: &#x60;disabled&#x60;, &#x60;enabled&#x60;.
+   * @param automationId  (required)
+   * @param automationStateRequest  (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> updateStateWithHttpInfo(String automationId, AutomationStateRequest automationStateRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateStateRequestBuilder(automationId, automationStateRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updateState", localVarResponse);
+        }
+        return new ApiResponse<Void>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          null
+        );
+      } finally {
+        // Drain the InputStream
+        while (localVarResponse.body().read() != -1) {
+            // Ignore
+        }
+        localVarResponse.body().close();
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updateStateRequestBuilder(String automationId, AutomationStateRequest automationStateRequest) throws ApiException {
+    // verify the required parameter 'automationId' is set
+    if (automationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'automationId' when calling updateState");
+    }
+    // verify the required parameter 'automationStateRequest' is set
+    if (automationStateRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'automationStateRequest' when calling updateState");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/easy-automations/{automation_id}/state"
+        .replace("{automation_id}", ApiClient.urlEncode(automationId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(automationStateRequest);
       localVarRequestBuilder.method("PUT", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);

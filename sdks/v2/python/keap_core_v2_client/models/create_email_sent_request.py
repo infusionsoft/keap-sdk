@@ -35,7 +35,7 @@ class CreateEmailSentRequest(BaseModel):
     sent_to_bcc_address_list: Optional[List[StrictStr]] = Field(default=None, description="List of BCC email addresses")
     sent_from_address: Optional[StrictStr] = Field(default=None, description="The sender's email address")
     sent_from_reply_address: Optional[StrictStr] = Field(default=None, description="The reply-to email address")
-    sent_time: Optional[datetime] = Field(default=None, description="When the email was sent, in ISO-8601 format")
+    sent_time: Optional[datetime] = Field(default=None, description="When the email was sent, in ISO-8601 format. If omitted, the stored sent_time will be null.")
     received_time: Optional[datetime] = Field(default=None, description="When the email was received, in ISO-8601 format")
     opened_time: Optional[datetime] = Field(default=None, description="When the email was opened, in ISO-8601 format")
     clicked_time: Optional[datetime] = Field(default=None, description="When a link in the email was clicked, in ISO-8601 format")

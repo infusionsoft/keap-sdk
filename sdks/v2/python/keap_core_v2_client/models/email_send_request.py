@@ -30,12 +30,13 @@ class EmailSendRequest(BaseModel):
     contacts: List[StrictStr] = Field(description="An array of Contact Ids to receive the email")
     subject: StrictStr = Field(description="The subject line of the email")
     attachments: Optional[List[EmailSendRequestAttachment]] = Field(default=None, description="Attachments to be sent with each copy of the email, maximum of 10 with size of 1MB each")
-    user_id: StrictStr = Field(description="The user ID to send the email on behalf of")
+    user_id: Optional[StrictStr] = Field(default=None, description="The user ID to send the email on behalf of. Exactly one of user_id or from_address is required.")
+    from_address: Optional[StrictStr] = Field(default=None, description="The authenticated sender email address to send from. Exactly one of user_id or from_address is required.")
     html_content: Optional[StrictStr] = Field(default=None, description="The HTML-formatted content of the email, encoded in Base64")
     plain_content: Optional[StrictStr] = Field(default=None, description="The plain-text content of the email, encoded in Base64")
     address_field: Optional[StrictStr] = Field(default=None, description="Email field of each Contact record to address the email to, such as 'Email', 'EmailAddress2', 'EmailAddress3' or '_CustomFieldName', defaulting to the contact's primary email")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["contacts", "subject", "attachments", "user_id", "html_content", "plain_content", "address_field"]
+    __properties: ClassVar[List[str]] = ["contacts", "subject", "attachments", "user_id", "from_address", "html_content", "plain_content", "address_field"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -106,6 +107,7 @@ class EmailSendRequest(BaseModel):
             "subject": obj.get("subject"),
             "attachments": [EmailSendRequestAttachment.from_dict(_item) for _item in obj["attachments"]] if obj.get("attachments") is not None else None,
             "user_id": obj.get("user_id"),
+            "from_address": obj.get("from_address"),
             "html_content": obj.get("html_content"),
             "plain_content": obj.get("plain_content"),
             "address_field": obj.get("address_field")
