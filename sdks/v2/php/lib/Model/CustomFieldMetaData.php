@@ -35,6 +35,7 @@ use \Keap\Core\V2\ObjectSerializer;
  * CustomFieldMetaData Class Doc Comment
  *
  * @category Class
+ * @description Metadata describing a custom field, including its type and options
  * @package  Keap\Core\V2
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -460,7 +461,7 @@ class CustomFieldMetaData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string|null $id The unique identifier of the custom field
      *
      * @return self
      */
@@ -487,7 +488,7 @@ class CustomFieldMetaData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets label
      *
-     * @param string|null $label label
+     * @param string|null $label The display label of the custom field
      *
      * @return self
      */
@@ -514,7 +515,7 @@ class CustomFieldMetaData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets options
      *
-     * @param \Keap\Core\V2\Model\CustomFieldOption[]|null $options options
+     * @param \Keap\Core\V2\Model\CustomFieldOption[]|null $options The list of available options for select/radio/multiselect/drilldown field types
      *
      * @return self
      */
@@ -541,7 +542,7 @@ class CustomFieldMetaData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets record_type
      *
-     * @param string|null $record_type record_type
+     * @param string|null $record_type The entity type this custom field belongs to (e.g. CONTACT, COMPANY)
      *
      * @return self
      */
@@ -578,7 +579,7 @@ class CustomFieldMetaData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets field_type
      *
-     * @param string|null $field_type field_type
+     * @param string|null $field_type The data type of the custom field (e.g. Text, Number, Date, Select)
      *
      * @return self
      */
@@ -615,7 +616,7 @@ class CustomFieldMetaData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets default_value
      *
-     * @param string|null $default_value default_value
+     * @param string|null $default_value The default value for this custom field, if any
      *
      * @return self
      */
@@ -642,7 +643,7 @@ class CustomFieldMetaData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets group_id
      *
-     * @param string|null $group_id group_id
+     * @param string|null $group_id The ID of the group this custom field belongs to
      *
      * @return self
      */
@@ -669,7 +670,7 @@ class CustomFieldMetaData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets group_name
      *
-     * @param string|null $group_name group_name
+     * @param string|null $group_name The name of the group this custom field belongs to
      *
      * @return self
      */
@@ -696,7 +697,7 @@ class CustomFieldMetaData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets field_name
      *
-     * @param string|null $field_name field_name
+     * @param string|null $field_name The database column name for this custom field. Use this value when filtering contacts (e.g. for field_name 'firstName1', filter with 'firstName1==John').
      *
      * @return self
      */

@@ -13,15 +13,45 @@
 import { CustomFieldOption } from '../models/CustomFieldOption';
 import { HttpFile } from '../http/http';
 
+/**
+* Metadata describing a custom field, including its type and options
+*/
 export class CustomFieldMetaData {
+    /**
+    * The unique identifier of the custom field
+    */
     'id'?: string;
+    /**
+    * The display label of the custom field
+    */
     'label'?: string;
+    /**
+    * The list of available options for select/radio/multiselect/drilldown field types
+    */
     'options'?: Array<CustomFieldOption>;
+    /**
+    * The entity type this custom field belongs to (e.g. CONTACT, COMPANY)
+    */
     'recordType'?: CustomFieldMetaDataRecordTypeEnum;
+    /**
+    * The data type of the custom field (e.g. Text, Number, Date, Select)
+    */
     'fieldType'?: CustomFieldMetaDataFieldTypeEnum;
+    /**
+    * The default value for this custom field, if any
+    */
     'defaultValue'?: string;
+    /**
+    * The ID of the group this custom field belongs to
+    */
     'groupId'?: string;
+    /**
+    * The name of the group this custom field belongs to
+    */
     'groupName'?: string;
+    /**
+    * The database column name for this custom field. Use this value when filtering contacts (e.g. for field_name \'firstName1\', filter with \'firstName1==John\').
+    */
     'fieldName'?: string;
 
     static readonly discriminator: string | undefined = undefined;

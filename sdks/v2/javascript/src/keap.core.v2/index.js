@@ -278,7 +278,6 @@ import OrderTotalDiscount from './model/OrderTotalDiscount';
 import OrderV2 from './model/OrderV2';
 import Origin from './model/Origin';
 import OriginRequest from './model/OriginRequest';
-import ParticipantCount from './model/ParticipantCount';
 import PatchAutomationCategoryRequest from './model/PatchAutomationCategoryRequest';
 import Payment from './model/Payment';
 import PaymentMethod from './model/PaymentMethod';
@@ -464,7 +463,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.17
+* @version 2.0.18
 */
 export {
     /**
@@ -2062,12 +2061,6 @@ export {
      * @property {module:keap.core.v2/model/OriginRequest}
      */
     OriginRequest,
-
-    /**
-     * The ParticipantCount model constructor.
-     * @property {module:keap.core.v2/model/ParticipantCount}
-     */
-    ParticipantCount,
 
     /**
      * The PatchAutomationCategoryRequest model constructor.

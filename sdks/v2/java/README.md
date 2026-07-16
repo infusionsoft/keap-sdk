@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.17</version>
+  <version>2.0.18</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.17"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.18"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.17.jar`
+- `target/core-service-v2-java-sdk-2.0.18.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -1089,7 +1089,6 @@ Class | Method | HTTP request | Description
  - [OrderV2](docs/OrderV2.md)
  - [Origin](docs/Origin.md)
  - [OriginRequest](docs/OriginRequest.md)
- - [ParticipantCount](docs/ParticipantCount.md)
  - [PatchAutomationCategoryRequest](docs/PatchAutomationCategoryRequest.md)
  - [Payment](docs/Payment.md)
  - [PaymentMethod](docs/PaymentMethod.md)

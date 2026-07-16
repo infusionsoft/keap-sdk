@@ -21,6 +21,7 @@ import CustomFieldOption from './CustomFieldOption';
 class CustomFieldMetaData {
     /**
      * Constructs a new <code>CustomFieldMetaData</code>.
+     * Metadata describing a custom field, including its type and options
      * @alias module:keap.core.v2/model/CustomFieldMetaData
      */
     constructor() { 
@@ -136,46 +137,55 @@ class CustomFieldMetaData {
 
 
 /**
+ * The unique identifier of the custom field
  * @member {String} id
  */
 CustomFieldMetaData.prototype['id'] = undefined;
 
 /**
+ * The display label of the custom field
  * @member {String} label
  */
 CustomFieldMetaData.prototype['label'] = undefined;
 
 /**
+ * The list of available options for select/radio/multiselect/drilldown field types
  * @member {Array.<module:keap.core.v2/model/CustomFieldOption>} options
  */
 CustomFieldMetaData.prototype['options'] = undefined;
 
 /**
+ * The entity type this custom field belongs to (e.g. CONTACT, COMPANY)
  * @member {module:keap.core.v2/model/CustomFieldMetaData.RecordTypeEnum} record_type
  */
 CustomFieldMetaData.prototype['record_type'] = undefined;
 
 /**
+ * The data type of the custom field (e.g. Text, Number, Date, Select)
  * @member {module:keap.core.v2/model/CustomFieldMetaData.FieldTypeEnum} field_type
  */
 CustomFieldMetaData.prototype['field_type'] = undefined;
 
 /**
+ * The default value for this custom field, if any
  * @member {String} default_value
  */
 CustomFieldMetaData.prototype['default_value'] = undefined;
 
 /**
+ * The ID of the group this custom field belongs to
  * @member {String} group_id
  */
 CustomFieldMetaData.prototype['group_id'] = undefined;
 
 /**
+ * The name of the group this custom field belongs to
  * @member {String} group_name
  */
 CustomFieldMetaData.prototype['group_name'] = undefined;
 
 /**
+ * The database column name for this custom field. Use this value when filtering contacts (e.g. for field_name 'firstName1', filter with 'firstName1==John').
  * @member {String} field_name
  */
 CustomFieldMetaData.prototype['field_name'] = undefined;

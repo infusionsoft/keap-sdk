@@ -33,8 +33,9 @@ import jakarta.validation.Valid;
 
 
 /**
- * CustomFieldMetaData
+ * Metadata describing a custom field, including its type and options
  */
+@Schema(description = "Metadata describing a custom field, including its type and options")
 @JsonPropertyOrder({
   CustomFieldMetaData.JSON_PROPERTY_ID,
   CustomFieldMetaData.JSON_PROPERTY_LABEL,
@@ -60,7 +61,7 @@ public class CustomFieldMetaData implements Serializable {
   @jakarta.annotation.Nullable  private List<@Valid CustomFieldOption> options = new ArrayList<>();
 
   /**
-   * Gets or Sets recordType
+   * The entity type this custom field belongs to (e.g. CONTACT, COMPANY)
    */
   public enum RecordTypeEnum {
     CONTACT(String.valueOf("CONTACT")),
@@ -109,7 +110,7 @@ public class CustomFieldMetaData implements Serializable {
   @jakarta.annotation.Nullable  private RecordTypeEnum recordType;
 
   /**
-   * Gets or Sets fieldType
+   * The data type of the custom field (e.g. Text, Number, Date, Select)
    */
   public enum FieldTypeEnum {
     CURRENCY(String.valueOf("CURRENCY")),
@@ -212,10 +213,10 @@ public class CustomFieldMetaData implements Serializable {
   }
 
   /**
-   * Get id
+   * The unique identifier of the custom field
    * @return id
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @jakarta.annotation.Nullable  @Schema(example = "123", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The unique identifier of the custom field")
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getId() {
@@ -236,10 +237,10 @@ public class CustomFieldMetaData implements Serializable {
   }
 
   /**
-   * Get label
+   * The display label of the custom field
    * @return label
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @jakarta.annotation.Nullable  @Schema(example = "Favorite Color", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The display label of the custom field")
   @JsonProperty(JSON_PROPERTY_LABEL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLabel() {
@@ -268,11 +269,11 @@ public class CustomFieldMetaData implements Serializable {
   }
 
   /**
-   * Get options
+   * The list of available options for select/radio/multiselect/drilldown field types
    * @return options
    */
   @jakarta.annotation.Nullable  @Valid
-  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The list of available options for select/radio/multiselect/drilldown field types")
   @JsonProperty(JSON_PROPERTY_OPTIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<@Valid CustomFieldOption> getOptions() {
@@ -293,10 +294,10 @@ public class CustomFieldMetaData implements Serializable {
   }
 
   /**
-   * Get recordType
+   * The entity type this custom field belongs to (e.g. CONTACT, COMPANY)
    * @return recordType
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The entity type this custom field belongs to (e.g. CONTACT, COMPANY)")
   @JsonProperty(JSON_PROPERTY_RECORD_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RecordTypeEnum getRecordType() {
@@ -317,10 +318,10 @@ public class CustomFieldMetaData implements Serializable {
   }
 
   /**
-   * Get fieldType
+   * The data type of the custom field (e.g. Text, Number, Date, Select)
    * @return fieldType
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The data type of the custom field (e.g. Text, Number, Date, Select)")
   @JsonProperty(JSON_PROPERTY_FIELD_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public FieldTypeEnum getFieldType() {
@@ -341,10 +342,10 @@ public class CustomFieldMetaData implements Serializable {
   }
 
   /**
-   * Get defaultValue
+   * The default value for this custom field, if any
    * @return defaultValue
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The default value for this custom field, if any")
   @JsonProperty(JSON_PROPERTY_DEFAULT_VALUE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDefaultValue() {
@@ -365,10 +366,10 @@ public class CustomFieldMetaData implements Serializable {
   }
 
   /**
-   * Get groupId
+   * The ID of the group this custom field belongs to
    * @return groupId
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @jakarta.annotation.Nullable  @Schema(example = "45", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The ID of the group this custom field belongs to")
   @JsonProperty(JSON_PROPERTY_GROUP_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getGroupId() {
@@ -389,10 +390,10 @@ public class CustomFieldMetaData implements Serializable {
   }
 
   /**
-   * Get groupName
+   * The name of the group this custom field belongs to
    * @return groupName
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @jakarta.annotation.Nullable  @Schema(example = "Personal Info", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The name of the group this custom field belongs to")
   @JsonProperty(JSON_PROPERTY_GROUP_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getGroupName() {
@@ -413,10 +414,10 @@ public class CustomFieldMetaData implements Serializable {
   }
 
   /**
-   * Get fieldName
+   * The database column name for this custom field. Use this value when filtering contacts (e.g. for field_name &#39;firstName1&#39;, filter with &#39;firstName1&#x3D;&#x3D;John&#39;).
    * @return fieldName
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @jakarta.annotation.Nullable  @Schema(example = "firstName1", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The database column name for this custom field. Use this value when filtering contacts (e.g. for field_name 'firstName1', filter with 'firstName1==John').")
   @JsonProperty(JSON_PROPERTY_FIELD_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFieldName() {

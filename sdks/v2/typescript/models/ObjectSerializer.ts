@@ -263,7 +263,6 @@ export * from '../models/OrderTotalDiscount';
 export * from '../models/OrderV2';
 export * from '../models/Origin';
 export * from '../models/OriginRequest';
-export * from '../models/ParticipantCount';
 export * from '../models/PatchAutomationCategoryRequest';
 export * from '../models/Payment';
 export * from '../models/PaymentMethod';
@@ -641,7 +640,6 @@ import { OrderTotalDiscount     , OrderTotalDiscountDiscountTypeEnum   , OrderTo
 import { OrderV2  , OrderV2StatusEnum      , OrderV2OrderTypeEnum  , OrderV2SourceTypeEnum                        } from '../models/OrderV2';
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
-import { ParticipantCount } from '../models/ParticipantCount';
 import { PatchAutomationCategoryRequest } from '../models/PatchAutomationCategoryRequest';
 import { Payment    , PaymentStatusEnum           , PaymentMerchantAccountTypeEnum    } from '../models/Payment';
 import { PaymentMethod   , PaymentMethodMerchantAccountTypeEnum   , PaymentMethodPaymentMethodTypeEnum    , PaymentMethodStatusEnum   } from '../models/PaymentMethod';
@@ -1175,7 +1173,6 @@ let typeMap: {[index: string]: any} = {
     "OrderV2": OrderV2,
     "Origin": Origin,
     "OriginRequest": OriginRequest,
-    "ParticipantCount": ParticipantCount,
     "PatchAutomationCategoryRequest": PatchAutomationCategoryRequest,
     "Payment": Payment,
     "PaymentMethod": PaymentMethod,

@@ -27,14 +27,15 @@ using OpenAPIDateConverter = Keap.Core.V2.Client.OpenAPIDateConverter;
 namespace Keap.Core.V2.Model
 {
     /// <summary>
-    /// CustomFieldMetaData
+    /// Metadata describing a custom field, including its type and options
     /// </summary>
     [DataContract(Name = "CustomFieldMetaData")]
     public partial class CustomFieldMetaData : IValidatableObject
     {
         /// <summary>
-        /// Defines RecordType
+        /// The entity type this custom field belongs to (e.g. CONTACT, COMPANY)
         /// </summary>
+        /// <value>The entity type this custom field belongs to (e.g. CONTACT, COMPANY)</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum RecordTypeEnum
         {
@@ -82,13 +83,15 @@ namespace Keap.Core.V2.Model
         }
 
         /// <summary>
-        /// Gets or Sets RecordType
+        /// The entity type this custom field belongs to (e.g. CONTACT, COMPANY)
         /// </summary>
+        /// <value>The entity type this custom field belongs to (e.g. CONTACT, COMPANY)</value>
         [DataMember(Name = "record_type", EmitDefaultValue = false)]
         public RecordTypeEnum? RecordType { get; set; }
         /// <summary>
-        /// Defines FieldType
+        /// The data type of the custom field (e.g. Text, Number, Date, Select)
         /// </summary>
+        /// <value>The data type of the custom field (e.g. Text, Number, Date, Select)</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum FieldTypeEnum
         {
@@ -238,22 +241,23 @@ namespace Keap.Core.V2.Model
         }
 
         /// <summary>
-        /// Gets or Sets FieldType
+        /// The data type of the custom field (e.g. Text, Number, Date, Select)
         /// </summary>
+        /// <value>The data type of the custom field (e.g. Text, Number, Date, Select)</value>
         [DataMember(Name = "field_type", EmitDefaultValue = false)]
         public FieldTypeEnum? FieldType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomFieldMetaData" /> class.
         /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="label">label.</param>
-        /// <param name="options">options.</param>
-        /// <param name="recordType">recordType.</param>
-        /// <param name="fieldType">fieldType.</param>
-        /// <param name="defaultValue">defaultValue.</param>
-        /// <param name="groupId">groupId.</param>
-        /// <param name="groupName">groupName.</param>
-        /// <param name="fieldName">fieldName.</param>
+        /// <param name="id">The unique identifier of the custom field.</param>
+        /// <param name="label">The display label of the custom field.</param>
+        /// <param name="options">The list of available options for select/radio/multiselect/drilldown field types.</param>
+        /// <param name="recordType">The entity type this custom field belongs to (e.g. CONTACT, COMPANY).</param>
+        /// <param name="fieldType">The data type of the custom field (e.g. Text, Number, Date, Select).</param>
+        /// <param name="defaultValue">The default value for this custom field, if any.</param>
+        /// <param name="groupId">The ID of the group this custom field belongs to.</param>
+        /// <param name="groupName">The name of the group this custom field belongs to.</param>
+        /// <param name="fieldName">The database column name for this custom field. Use this value when filtering contacts (e.g. for field_name &#39;firstName1&#39;, filter with &#39;firstName1&#x3D;&#x3D;John&#39;)..</param>
         public CustomFieldMetaData(string id = default, string label = default, List<CustomFieldOption> options = default, RecordTypeEnum? recordType = default, FieldTypeEnum? fieldType = default, string defaultValue = default, string groupId = default, string groupName = default, string fieldName = default)
         {
             this.Id = id;
@@ -268,44 +272,66 @@ namespace Keap.Core.V2.Model
         }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// The unique identifier of the custom field
         /// </summary>
+        /// <value>The unique identifier of the custom field</value>
+        /*
+        <example>123</example>
+        */
         [DataMember(Name = "id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Label
+        /// The display label of the custom field
         /// </summary>
+        /// <value>The display label of the custom field</value>
+        /*
+        <example>Favorite Color</example>
+        */
         [DataMember(Name = "label", EmitDefaultValue = false)]
         public string Label { get; set; }
 
         /// <summary>
-        /// Gets or Sets Options
+        /// The list of available options for select/radio/multiselect/drilldown field types
         /// </summary>
+        /// <value>The list of available options for select/radio/multiselect/drilldown field types</value>
         [DataMember(Name = "options", EmitDefaultValue = false)]
         public List<CustomFieldOption> Options { get; set; }
 
         /// <summary>
-        /// Gets or Sets DefaultValue
+        /// The default value for this custom field, if any
         /// </summary>
+        /// <value>The default value for this custom field, if any</value>
         [DataMember(Name = "default_value", EmitDefaultValue = false)]
         public string DefaultValue { get; set; }
 
         /// <summary>
-        /// Gets or Sets GroupId
+        /// The ID of the group this custom field belongs to
         /// </summary>
+        /// <value>The ID of the group this custom field belongs to</value>
+        /*
+        <example>45</example>
+        */
         [DataMember(Name = "group_id", EmitDefaultValue = false)]
         public string GroupId { get; set; }
 
         /// <summary>
-        /// Gets or Sets GroupName
+        /// The name of the group this custom field belongs to
         /// </summary>
+        /// <value>The name of the group this custom field belongs to</value>
+        /*
+        <example>Personal Info</example>
+        */
         [DataMember(Name = "group_name", EmitDefaultValue = false)]
         public string GroupName { get; set; }
 
         /// <summary>
-        /// Gets or Sets FieldName
+        /// The database column name for this custom field. Use this value when filtering contacts (e.g. for field_name &#39;firstName1&#39;, filter with &#39;firstName1&#x3D;&#x3D;John&#39;).
         /// </summary>
+        /// <value>The database column name for this custom field. Use this value when filtering contacts (e.g. for field_name &#39;firstName1&#39;, filter with &#39;firstName1&#x3D;&#x3D;John&#39;).</value>
+        /*
+        <example>firstName1</example>
+        */
         [DataMember(Name = "field_name", EmitDefaultValue = false)]
         public string FieldName { get; set; }
 

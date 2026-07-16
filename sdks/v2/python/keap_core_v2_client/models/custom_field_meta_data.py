@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from keap_core_v2_client.models.custom_field_option import CustomFieldOption
 from typing import Optional, Set
@@ -25,17 +25,17 @@ from typing_extensions import Self
 
 class CustomFieldMetaData(BaseModel):
     """
-    CustomFieldMetaData
+    Metadata describing a custom field, including its type and options
     """ # noqa: E501
-    id: Optional[StrictStr] = None
-    label: Optional[StrictStr] = None
-    options: Optional[List[CustomFieldOption]] = None
-    record_type: Optional[StrictStr] = None
-    field_type: Optional[StrictStr] = None
-    default_value: Optional[StrictStr] = None
-    group_id: Optional[StrictStr] = None
-    group_name: Optional[StrictStr] = None
-    field_name: Optional[StrictStr] = None
+    id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the custom field")
+    label: Optional[StrictStr] = Field(default=None, description="The display label of the custom field")
+    options: Optional[List[CustomFieldOption]] = Field(default=None, description="The list of available options for select/radio/multiselect/drilldown field types")
+    record_type: Optional[StrictStr] = Field(default=None, description="The entity type this custom field belongs to (e.g. CONTACT, COMPANY)")
+    field_type: Optional[StrictStr] = Field(default=None, description="The data type of the custom field (e.g. Text, Number, Date, Select)")
+    default_value: Optional[StrictStr] = Field(default=None, description="The default value for this custom field, if any")
+    group_id: Optional[StrictStr] = Field(default=None, description="The ID of the group this custom field belongs to")
+    group_name: Optional[StrictStr] = Field(default=None, description="The name of the group this custom field belongs to")
+    field_name: Optional[StrictStr] = Field(default=None, description="The database column name for this custom field. Use this value when filtering contacts (e.g. for field_name 'firstName1', filter with 'firstName1==John').")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "label", "options", "record_type", "field_type", "default_value", "group_id", "group_name", "field_name"]
 

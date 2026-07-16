@@ -3530,6 +3530,17 @@ paths:
           - (String) `shipping_postal_code`
           - (String) `shipping_country_code`
 
+          Custom fields can be filtered by their field_name (case-insensitive, as returned
+          by GET /v2/orders/model). A standard field above takes precedence over a custom
+          field with the same name. The supported operators depend on the custom field's type:
+          - Text-like fields (text, name, email, phone, website): `==` only, with optional
+            trailing wildcard (e.g. `_OrderTitle0%3D%3DValue%2A`)
+          - Choice fields (dropdown, radio, yes/no, user, state): `==` only
+          - Numeric fields: `==`, `>`, `<`, `>=`, `<=`
+          - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `created_since_time`/`created_until_time`)
+          - Multi-select fields: `==` matches records that contain the given option
+          Custom field filtering on non-indexed fields is supported but may be slower.
+
           You will need to apply the `==` operator (or other supported operators), to check the equality
           of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above,
           here are some examples:
@@ -3538,12 +3549,16 @@ paths:
           - `filter=ids%3D%3D1,10,4,24`
           - `filter=invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8`
           - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567`
-          - `filter=title%3D%3DOrder`
-          - `filter=order_type%3D%3DONLINE`
           - `filter=shipping_locality%3D%3DPhoenix`
           - `filter=shipping_region_code%3D%3DIN-MH`
           - `filter=shipping_postal_code%3D%3D85001`
           - `filter=shipping_country_code%3D%3DIND`
+
+          Custom field examples (for custom fields with field_name `_OrderTitle0` and `_OrderValue1`):
+          - `filter=_OrderTitle0%3D%3DTest` (custom field exact match)
+          - `filter=_OrderTitle0%3D%3DTest%2A` (custom field prefix wildcard)
+          - `filter=_OrderValue1%3E100` (custom field numeric comparison)
+          - `filter=product_id%3D%3D123%3B_OrderStatus0%3D%3DActive` (combined standard + custom field filter)
 
           For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A)
           for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage:
@@ -8374,6 +8389,16 @@ paths:
           - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`)
           - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=`
           (e.g. `contact_id>5` encoded as `contact_id%3E5`)
+          Custom fields can be filtered by their field_name (case-insensitive, as returned
+          by GET /v2/contacts/model). A standard field above takes precedence over a custom
+          field with the same name. The supported operators depend on the custom field's type:
+          - Text-like fields (text, name, email, phone, website): `==` only, with optional
+            trailing wildcard (e.g. `firstName1%3D%3DValue%2A`)
+          - Choice fields (dropdown, radio, yes/no, user, state): `==` only
+          - Numeric fields: `==`, `>`, `<`, `>=`, `<=`
+          - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `start_update_time`/`end_update_time`)
+          - Multi-select fields: `==` matches records that contain the given option
+          Custom field filtering on non-indexed fields is supported but may be slower.
 
           You will need to apply the `==` operator to check the equality of one of the filters with your searched
           word, in the encoded form `%3D%3D`.
@@ -8387,6 +8412,12 @@ paths:
           - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona`
           - `filter=contact_id%3E5` (contact_id > 5)
           - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)
+
+          Custom field examples (for custom fields with field_name `firstName1` and `Score0`):
+          - `filter=firstName1%3D%3DJohn` (custom field exact match)
+          - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard)
+          - `filter=Score0%3E100` (custom field numeric comparison)
+          - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter)
         required: false
         schema:
           type: string
@@ -10683,6 +10714,7 @@ paths:
           - (String) `referral_contact_id`
           - (String) `status`
           - (String) `code`
+          - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)
 
           You will need to apply the `==` operator to check the equality of one of the filters with the
           value you want to match, in the encoded form `%3D%3D`. For the filters listed above,
@@ -10696,6 +10728,27 @@ paths:
           For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A)
           for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage:
           - `field==foo*` finds anything in `field` that begins with `foo`
+
+          Custom Field Filtering:
+          Custom fields are referenced by their field name as configured in the system.
+          Standard field names take precedence over custom field names.
+
+          Supported operators by field type:
+          - Text fields: ==, and wildcard support (e.g., `value*`)
+          - Numeric fields: ==, <, <=, >, >=
+          - Date fields: ==, <, <=, >, >= (ISO 8601 format)
+          - Choice/Select fields: ==
+          - Multi-select fields: == (matches if value is present)
+
+          Examples of custom field filtering:
+          - `filter=tier%3D%3DPlatinum` - Text field exact match
+          - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with "West")
+          - `filter=revenue%3E100000` - Numeric field greater than 100000
+          - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024
+          - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields
+
+          Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons.
+          Only prefix wildcards (e.g., `value*`) are allowed.
         required: false
         schema:
           type: string
@@ -28881,17 +28934,26 @@ components:
           $ref: '#/components/schemas/CustomFieldMetaData'
     CustomFieldMetaData:
       type: object
+      description: Metadata describing a custom field, including its type and options
       properties:
         id:
           type: string
+          description: The unique identifier of the custom field
+          example: 123
         label:
           type: string
+          description: The display label of the custom field
+          example: Favorite Color
         options:
           type: array
+          description: The list of available options for select/radio/multiselect/drilldown
+            field types
           items:
             $ref: '#/components/schemas/CustomFieldOption'
         record_type:
           type: string
+          description: The entity type this custom field belongs to (e.g. CONTACT,
+            COMPANY)
           enum:
           - CONTACT
           - REFERRAL_PARTNER
@@ -28902,6 +28964,8 @@ components:
           - SUBSCRIPTION
         field_type:
           type: string
+          description: The data type of the custom field (e.g. Text, Number, Date,
+            Select)
           enum:
           - CURRENCY
           - DATE
@@ -28929,12 +28993,21 @@ components:
           - YES_NO
         default_value:
           type: string
+          description: The default value for this custom field, if any
         group_id:
           type: string
+          description: The ID of the group this custom field belongs to
+          example: 45
         group_name:
           type: string
+          description: The name of the group this custom field belongs to
+          example: Personal Info
         field_name:
           type: string
+          description: The database column name for this custom field. Use this value
+            when filtering contacts (e.g. for field_name 'firstName1', filter with
+            'firstName1==John').
+          example: firstName1
     CustomFieldOption:
       type: object
       properties:
@@ -38770,20 +38843,6 @@ components:
             $ref: '#/components/schemas/RestEmailAddressStatus'
         next_page_token:
           type: string
-    ParticipantCount:
-      type: object
-      description: Participant count summary for an automation
-      properties:
-        participants:
-          type: integer
-          format: int64
-          description: Total participant instances in the automation
-          example: 57
-        unique_contacts:
-          type: integer
-          format: int64
-          description: Number of distinct contacts active in the automation
-          example: 42
     ListShippingDiscountsResponse:
       type: object
       properties:
